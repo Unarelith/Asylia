@@ -1,0 +1,84 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  TimeManager.cpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  14/03/2014 22:04:44
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Quentin BAZIN, <quent42340@gmail.com>
+ *        Company:  Deloptia
+ *
+ * =====================================================================================
+ */
+#include "Asylia.hpp"
+
+u32 TimeManager::renderingTimeMean = 33;
+u32 TimeManager::tempBeginRendering = 0;
+u32 TimeManager::pause = 0;
+u32 TimeManager::frameBegin = 0;
+u32 TimeManager::frameEnd = 0;
+u32 TimeManager::timeToWait = 0;
+std::vector<u32> TimeManager::renderingTimeValues;
+
+void TimeManager::beginMeasuringRenderingTime() {
+	tempBeginRendering = SDL_GetTicks();
+}
+
+void TimeManager::pauseMeasuringRenderingTime() {
+	pause = SDL_GetTicks();
+}
+
+void TimeManager::resumeMeasuringRenderingTime() {
+	pause = SDL_GetTicks() - pause;
+}
+
+void TimeManager::endMeasuringRenderingTime() {
+	u32 sum;
+	
+	renderingTimeValues.push_back(SDL_GetTicks() - (tempBeginRendering - pause));
+	if(renderingTimeValues.size() > 10) {
+		sum = std::accumulate(renderingTimeValues.begin(), renderingTimeValues.end(), 0);
+		renderingTimeMean = sum / renderingTimeValues.size();
+	}
+	
+	pause = 0;
+}
+
+bool TimeManager::isTimeToUpdate() {
+	frameBegin = SDL_GetTicks();
+	if(frameBegin - frameEnd < timeToWait) {
+		return false;
+	} else {
+		timeToWait = 0;
+		return true;
+	}
+}
+
+bool TimeManager::hasEnoughTimeToDraw() {
+	if(SDL_GetTicks() - frameBegin + renderingTimeMean > 33) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
+void TimeManager::waitUntilItsTime() {
+	SDL_Delay(timeToWait - ((SDL_GetTicks() - frameBegin) + (frameBegin - frameEnd)));
+}
+
+void TimeManager::measureFrameDuration() {
+	if(timeToWait == 0) {
+		frameEnd = SDL_GetTicks();
+		if(frameEnd - frameBegin <= 33) {
+			timeToWait = 33 - (frameEnd - frameBegin);
+		} else {
+			timeToWait = 0;
+		}
+	}
+}
+
