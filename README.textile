@@ -1,0 +1,7 @@
+h1. Asylia
+
+h3. By Quent42340
+
+* Asylia is a classic RPG game made with SDL 2.0 and written in C++.
+* Asylia is a game that uses XML for configuration scripts, and lua for modding/event management.
+

@@ -1,0 +1,22 @@
+Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHORS ChangeLog COPYING Makefile Notes TODO *.textile *.mk *.xml *.tmx *.lua" {
+ .gitignore
+ AUTHORS
+ Makefile
+ TODO
+ README.textile
+ include=include {
+  Asylia.hpp
+  Color.hpp
+  Game.hpp
+  GameWindow.hpp
+  SDLHeaders.hpp
+  TimeManager.hpp
+ }
+ source=source {
+  Color.cpp
+  main.cpp
+  Game.cpp
+  GameWindow.cpp
+  TimeManager.cpp
+ }
+}
