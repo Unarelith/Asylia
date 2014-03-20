@@ -37,6 +37,8 @@ class GameWindow {
 		
 		void drawFillRect(s16 x, s16 y, u16 w, u16 h, Color c);
 		
+		SDL_Renderer *renderer() const { return m_renderer; }
+		
 		static GameWindow *main;
 		
 	private:

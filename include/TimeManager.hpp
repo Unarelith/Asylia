@@ -20,8 +20,6 @@
 
 namespace TimeManager {
 	void beginMeasuringRenderingTime();
-	void pauseMeasuringRenderingTime();
-	void resumeMeasuringRenderingTime();
 	void endMeasuringRenderingTime();
 	
 	bool isTimeToUpdate();
@@ -31,7 +29,6 @@ namespace TimeManager {
 	
 	extern u32 renderingTimeMean;
 	extern u32 tempBeginRendering;
-	extern u32 pause;
 	extern u32 frameBegin;
 	extern u32 frameEnd;
 	extern u32 timeToWait;

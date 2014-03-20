@@ -26,15 +26,7 @@ class Game {
 		void SDLinit();
 		void SDLquit();
 		
-		static void mainLoop(void (*processInputs_)(void) = &processInputs,
-							 void (*update_)(void) = &update,
-							 void (*render_)(void) = &render);
-		
-		static void processInputs();
-		static void update();
-		static void render();
-		
-		static void pollEvents(bool *quit = NULL);
+		void mainLoop();
 		
 		static bool quit;
 };

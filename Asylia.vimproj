@@ -5,18 +5,30 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  TODO
  README.textile
  include=include {
+  Activity.hpp
+  ActivityManager.hpp
   Asylia.hpp
   Color.hpp
   Game.hpp
   GameWindow.hpp
+  Image.hpp
+  Keyboard.hpp
+  Map.hpp
+  SDLManager.hpp
   SDLHeaders.hpp
   TimeManager.hpp
  }
  source=source {
+  Activity.cpp
+  ActivityManager.cpp
   Color.cpp
   main.cpp
   Game.cpp
   GameWindow.cpp
+  Image.cpp
+  Keyboard.cpp
+  Map.cpp
+  SDLManager.cpp
   TimeManager.cpp
  }
 }

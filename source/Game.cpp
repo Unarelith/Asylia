@@ -20,7 +20,7 @@
 bool Game::quit = false;
 
 Game::Game() {
-	SDLinit();
+	SDLManager::init();
 	
 #ifdef __ANDROID__
 	SDL_DisplayMode current;
@@ -32,115 +32,56 @@ Game::Game() {
 #else
 	GameWindow::main = new GameWindow(APP_NAME, 640, 480);
 #endif
+	
+	ActivityManager::init();
 }
 
 Game::~Game() {
 	delete GameWindow::main;
 	
-	SDLquit();
+	SDLManager::free();
 }
 
-void Game::SDLinit() {
-	if(SDL_Init(SDL_INIT_VIDEO) < 0) {
-		error("SDL init error: %s\n", SDL_GetError());
-		exit(EXIT_FAILURE);
-	}
+void Game::mainLoop() {
+	Image test("graphics/interface/Interface.png");
 	
-	if(!IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) {
-		error("SDL_image init error: %s\n", IMG_GetError());
-		exit(EXIT_FAILURE);
-	}
+	u16 viewportCenterX = 320;
+	u16 viewportCenterY = 240;
 	
-	if(TTF_Init() < 0) {
-		error("SDL_ttf init error: %s\n", TTF_GetError());
-		exit(EXIT_FAILURE);
-	}
-	
-	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) {
-		error("SDL_mixer init error: %s\n", Mix_GetError());
-		exit(EXIT_FAILURE);
-	}
-	Mix_AllocateChannels(32);
-	Mix_Volume(1, MIX_MAX_VOLUME / 2);
-	
-	if(!SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1")) {
-		warn("Warning: VSync not enabled!");
-	}
-}
-
-void Game::SDLquit() {
-	Mix_CloseAudio();
-	TTF_Quit();
-	IMG_Quit();
-	SDL_Quit();
-}
-
-void Game::mainLoop(void (*processInputs_)(void), void (*update_)(void), void (*render_)(void)) {
 	while(!quit) {
 		if(TimeManager::isTimeToUpdate()) {
-			(*processInputs_)();
-			(*update_)();
+			ActivityManager::activities.top()->pollEvents();
+			
+			Keyboard::update();
+			
+			ActivityManager::activities.top()->processInputs();
+			
+			if(Keyboard::isKeyPressed(Keyboard::GameUp)) viewportCenterY -= 8;
+			if(Keyboard::isKeyPressed(Keyboard::GameDown)) viewportCenterY += 8;
+			if(Keyboard::isKeyPressed(Keyboard::GameLeft)) viewportCenterX -= 8;
+			if(Keyboard::isKeyPressed(Keyboard::GameRight)) viewportCenterX += 8;
+			
+			ActivityManager::activities.top()->update();
+			
 			if(TimeManager::hasEnoughTimeToDraw()) {
-				(*render_)();
+				TimeManager::beginMeasuringRenderingTime();
+				
+				GameWindow::main->clear();
+				
+				ActivityManager::activities.top()->render();
+				
+				test.render(0, 0, 1920 / 1.2, 1280 / 1.2);
+				
+				GameWindow::main->centerViewportWithObject(viewportCenterX, viewportCenterY, 0, 0);
 				GameWindow::main->update();
+				
+				TimeManager::endMeasuringRenderingTime();
 			}
 		} else {
 			TimeManager::waitUntilItsTime();
 		}
 		
 		TimeManager::measureFrameDuration();
-	}
-}
-
-void Game::processInputs() {
-	pollEvents();
-}
-
-void Game::update() {
-	
-}
-
-void Game::render() {
-	TimeManager::beginMeasuringRenderingTime();
-	
-	GameWindow::main->clear();
-	
-	
-	
-	TimeManager::endMeasuringRenderingTime();
-}
-
-void Game::pollEvents(bool *quit) {
-	SDL_Event event;
-	while(SDL_PollEvent(&event) != 0) {
-		switch(event.type) {
-			case SDL_QUIT:
-				Game::quit = true;
-				if(quit) *quit = true;
-				break;
-#ifndef __ANDROID__
-			case SDL_KEYDOWN:
-				switch(event.key.keysym.sym) {
-					case SDLK_ESCAPE:
-						Game::quit = true;
-						if(quit) *quit = true;
-						break;
-					default: break;
-				}
-#else
-			case SDL_FINGERDOWN:
-			case SDL_FINGERMOTION:
-				Keyboard::updatePad(&event);
-				break;
-			case SDL_FINGERUP:
-				Keyboard::resetPad(&event, true);
-				break;
-			case SDL_APP_WILLENTERBACKGROUND:
-				continue;
-#endif
-			default:
-				break;
-		}
 	}
 }
 

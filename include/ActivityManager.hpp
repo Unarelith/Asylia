@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  ActivityManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  14/03/2014 21:22:59
+ *        Created:  20/03/2014 21:15:19
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef ACTIVITYMANAGER_HPP_
+#define ACTIVITYMANAGER_HPP_
 
-int main(int argc, char *argv[]) {
-	Game game;
+namespace ActivityManager {
+	void init();
 	
-	game.mainLoop();
-	
-	return 0;
-}
+	extern std::stack<Activity*> activities;
+};
 
+#endif // ACTIVITYMANAGER_HPP_

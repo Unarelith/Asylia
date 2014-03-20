@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  Map.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  14/03/2014 21:22:59
+ *        Created:  14/03/2014 22:40:42
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,4 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
-
-int main(int argc, char *argv[]) {
-	Game game;
-	
-	game.mainLoop();
-	
-	return 0;
-}
 

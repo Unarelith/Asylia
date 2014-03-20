@@ -43,7 +43,7 @@ GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
 	m_viewportH = m_height * 2;
 	
 #ifdef __ANDROID__
-	SDL_RenderSetLogicalSize(m_renderer, m_viewportW, m_viewportH);
+	SDL_RenderSetLogicalSize(m_renderer, m_width * 2, m_height * 2);
 #endif
 }
 
@@ -76,8 +76,11 @@ void GameWindow::updateViewportPosition(s16 x, s16 y) {
 	m_viewportX = x;
 	m_viewportY = y;
 	
+	if(m_viewportX + m_width > m_viewportW) m_viewportW += m_width;
+	if(m_viewportY + m_height > m_viewportH) m_viewportH += m_height;
+	
 	// Set viewport
-	SDL_Rect viewportRect = {-x, y - m_viewportH / 2, m_viewportW, m_viewportH};
+	SDL_Rect viewportRect = {-x, y - m_height, m_viewportW, m_viewportH};
 	SDL_RenderSetViewport(m_renderer, &viewportRect);
 }
 

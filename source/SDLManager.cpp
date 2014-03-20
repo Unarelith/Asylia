@@ -1,0 +1,54 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  SDLManager.cpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  20/03/2014 21:39:52
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Quentin BAZIN, <quent42340@gmail.com>
+ *        Company:  Deloptia
+ *
+ * =====================================================================================
+ */
+#include "Asylia.hpp"
+
+void SDLManager::init() {
+	if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+		error("SDL init error: %s\n", SDL_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	if(!IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) {
+		error("SDL_image init error: %s\n", IMG_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	if(TTF_Init() < 0) {
+		error("SDL_ttf init error: %s\n", TTF_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) {
+		error("SDL_mixer init error: %s\n", Mix_GetError());
+		exit(EXIT_FAILURE);
+	}
+	Mix_AllocateChannels(32);
+	Mix_Volume(1, MIX_MAX_VOLUME / 2);
+	
+	if(!SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1")) {
+		warn("Warning: VSync not enabled!");
+	}
+}
+
+void SDLManager::free() {
+	Mix_CloseAudio();
+	TTF_Quit();
+	IMG_Quit();
+	SDL_Quit();
+}
+

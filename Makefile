@@ -64,7 +64,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) $(foreach dir,$(OTHERLIBS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean run lua edit install uninstall
+.PHONY: $(BUILD) clean run edit install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@

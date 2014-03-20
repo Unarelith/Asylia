@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  SDLManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  14/03/2014 21:22:59
+ *        Created:  20/03/2014 21:39:03
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef SDLMANAGER_HPP_
+#define SDLMANAGER_HPP_
 
-int main(int argc, char *argv[]) {
-	Game game;
-	
-	game.mainLoop();
-	
-	return 0;
-}
+namespace SDLManager {
+	void init();
+	void free();
+};
 
+#endif // SDLMANAGER_HPP_

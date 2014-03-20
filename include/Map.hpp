@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  Map.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  14/03/2014 21:22:59
+ *        Created:  14/03/2014 22:40:38
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef MAP_HPP_
+#define MAP_HPP_
 
-int main(int argc, char *argv[]) {
-	Game game;
-	
-	game.mainLoop();
-	
-	return 0;
-}
+class Map {
+	public:
+		Map();
+		~Map();
+		
+		void render();
+};
 
+#endif // MAP_HPP_

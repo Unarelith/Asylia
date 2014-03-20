@@ -19,7 +19,6 @@
 
 u32 TimeManager::renderingTimeMean = 33;
 u32 TimeManager::tempBeginRendering = 0;
-u32 TimeManager::pause = 0;
 u32 TimeManager::frameBegin = 0;
 u32 TimeManager::frameEnd = 0;
 u32 TimeManager::timeToWait = 0;
@@ -29,24 +28,14 @@ void TimeManager::beginMeasuringRenderingTime() {
 	tempBeginRendering = SDL_GetTicks();
 }
 
-void TimeManager::pauseMeasuringRenderingTime() {
-	pause = SDL_GetTicks();
-}
-
-void TimeManager::resumeMeasuringRenderingTime() {
-	pause = SDL_GetTicks() - pause;
-}
-
 void TimeManager::endMeasuringRenderingTime() {
 	u32 sum;
 	
-	renderingTimeValues.push_back(SDL_GetTicks() - (tempBeginRendering - pause));
+	renderingTimeValues.push_back(SDL_GetTicks() - tempBeginRendering);
 	if(renderingTimeValues.size() > 10) {
 		sum = std::accumulate(renderingTimeValues.begin(), renderingTimeValues.end(), 0);
 		renderingTimeMean = sum / renderingTimeValues.size();
 	}
-	
-	pause = 0;
 }
 
 bool TimeManager::isTimeToUpdate() {

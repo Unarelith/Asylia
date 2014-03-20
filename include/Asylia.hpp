@@ -21,6 +21,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <stack>
 #include <numeric>
 
 #include "SDLHeaders.hpp"
@@ -62,9 +63,14 @@ typedef signed long s32;
 	#endif
 #endif
 
+#include "SDLManager.hpp"
 #include "Color.hpp"
+#include "Keyboard.hpp"
 #include "Game.hpp"
 #include "GameWindow.hpp"
 #include "TimeManager.hpp"
+#include "Activity.hpp"
+#include "ActivityManager.hpp"
+#include "Image.hpp"
 
 #endif // ASYLIA_HPP_

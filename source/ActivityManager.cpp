@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  main.cpp
+ *       Filename:  ActivityManager.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  14/03/2014 21:22:59
+ *        Created:  20/03/2014 21:49:08
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,11 +17,9 @@
  */
 #include "Asylia.hpp"
 
-int main(int argc, char *argv[]) {
-	Game game;
-	
-	game.mainLoop();
-	
-	return 0;
+std::stack<Activity*> ActivityManager::activities;
+
+void ActivityManager::init() {
+	activities.push(new GameActivity);
 }
 
