@@ -35,8 +35,6 @@ typedef signed long s32;
 
 #define APP_NAME "Asylia"
 
-//#define ASK_FOR_DRIVER
-
 #define OVERWORLD_SIZE 1
 
 #define CHARA_SPEED 4

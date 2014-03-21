@@ -21,8 +21,8 @@
 GameWindow *GameWindow::main = NULL;
 
 GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
-	m_width = 800;//width * 2;
-	m_height = 400;//height * 2;
+	m_width = width;
+	m_height = height;
 	
 	m_window = SDL_CreateWindow(caption, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN);
 	if(!m_window) {
@@ -30,20 +30,7 @@ GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
 		exit(EXIT_FAILURE);
 	}
 	
-	int driverID = -1;
-#ifdef ASK_FOR_DRIVER
-	u8 numRenderDrivers = SDL_GetNumRenderDrivers();
-	printf("Driver list:\n");
-	for(u8 i = 0 ; i < numRenderDrivers ; i++) {
-		SDL_RendererInfo renderInfo;
-		SDL_GetRenderDriverInfo(i, &renderInfo);
-		printf("\t%d | %s\n", i, renderInfo.name);
-	}
-	printf("Choose a driver: ");
-	scanf("%d", &driverID);
-#endif
-	
-	m_renderer = SDL_CreateRenderer(m_window, driverID, SDL_RENDERER_ACCELERATED);
+	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
 	if(!m_renderer) {
 		error("Renderer couldn't be created: %s\n", SDL_GetError());
 		exit(EXIT_FAILURE);
@@ -52,8 +39,8 @@ GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
 	m_viewportX = 0;
 	m_viewportY = 0;
 	
-	m_viewportW = m_width * 2;
-	m_viewportH = m_height * 2;
+	m_viewportW = m_width;
+	m_viewportH = m_height;
 	
 #ifdef __ANDROID__
 	SDL_RenderSetLogicalSize(m_renderer, m_width * 2, m_height * 2);
