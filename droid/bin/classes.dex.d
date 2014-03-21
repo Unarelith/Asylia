@@ -1,0 +1,22 @@
+/home/linux/NewProjects/Asylia/droid/bin/classes.dex : \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity$ShowTextInputTask.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity$SDLCommandHandler.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLMain.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLSurface.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/DummyEdit.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/org/libsdl/app/SDLInputConnection.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/R.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/R$drawable.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/BuildConfig.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/Asylia.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/R$string.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/R$layout.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/quent42340/asylia/R$attr.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/R.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/R$drawable.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/BuildConfig.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/R$string.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/Hoelia.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/R$layout.class \
+/home/linux/NewProjects/Asylia/droid/bin/classes/com/deloptia/hoelia/R$attr.class \

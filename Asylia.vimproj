@@ -17,7 +17,20 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    Grassland.tmx
   }
  }
+ droid=droid {
+  src=src {
+   com=com {
+    quent42340=quent42340 {
+	 asylia=asylia {
+	  Asylia.java
+	 }
+	}
+   }
+  }
+ }
  external=external {
+  AndroidIO.hpp
+  AndroidIO.cpp
   tinyxml2.hpp
   tinyxml2.cpp
  }

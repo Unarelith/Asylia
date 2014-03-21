@@ -19,12 +19,16 @@
 #define DEBUG_HPP_
 
 #ifdef __ANDROID__
+	#include <android/log.h>
+#endif
+
+#ifdef __ANDROID__
 	#define VIEWPORT
 	#define PAD
 	
 	#define info(txt...) __android_log_print(ANDROID_LOG_INFO, APP_NAME, txt)
 	#define debug(txt...) __android_log_print(ANDROID_LOG_DEBUG, APP_NAME, txt)
-	#define warn(txt...) __android_log_print(ANDROID_LOG_WARNING, APP_NAME, txt)
+	#define warn(txt...) __android_log_print(ANDROID_LOG_WARN, APP_NAME, txt)
 	#define error(txt...) __android_log_print(ANDROID_LOG_ERROR, APP_NAME, txt)
 #else
 	#ifdef COLORED_DEBUG

@@ -64,7 +64,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) $(foreach dir,$(OTHERLIBS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean run edit install uninstall
+.PHONY: $(BUILD) clean run edit droid install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -79,6 +79,18 @@ run:
 edit:
 	@echo editing ...
 	@gvim -c "Project $(TARGET).vimproj"
+
+#---------------------------------------------------------------------------------
+droid:
+	@echo making for android ...
+	@cd droid && \
+	pwd && \
+	$(ANDROID_NDK)/ndk-build NDK_DEBUG=1 && \
+	ant debug && \
+	dropbox start > /dev/null && \
+	cp -f bin/$(TARGET)-debug.apk ~/Dropbox/Public/$(TARGET)-debug.apk && \
+	cd ..
+	@echo done.
 
 #---------------------------------------------------------------------------------
 clean:

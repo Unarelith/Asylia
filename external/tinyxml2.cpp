@@ -1,5 +1,6 @@
 /*
 Original code by Lee Thomason (www.grinninglizard.com)
+Modified by Quent42340
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any
@@ -22,6 +23,9 @@ distribution.
 */
 
 #include "tinyxml2.hpp"
+#include "Config.hpp"
+#include "Debug.hpp"
+#include "AndroidIO.hpp"
 
 #include <new>		// yes, this one new style header, is in the Android SDK.
 #   ifdef ANDROID_NDK
@@ -1671,6 +1675,9 @@ XMLError XMLDocument::LoadFile( const char* filename )
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 )
     errno_t err = fopen_s(&fp, filename, "rb" );
     if ( !fp || err) {
+#elif defined(__ANDROID__)
+	fp = android_fopen(filename, "rb");
+    if ( !fp) {
 #else
     fp = fopen( filename, "rb" );
     if ( !fp) {
@@ -1732,6 +1739,9 @@ XMLError XMLDocument::SaveFile( const char* filename, bool compact )
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 )
     errno_t err = fopen_s(&fp, filename, "w" );
     if ( !fp || err) {
+#elif defined(__ANDROID__)
+	fp = android_fopen(filename, "w");
+    if ( !fp) {
 #else
     fp = fopen( filename, "w" );
     if ( !fp) {
@@ -1814,8 +1824,8 @@ void XMLDocument::PrintError() const
             TIXML_SNPRINTF( buf2, LEN, "%s", _errorStr2 );
         }
 
-        printf( "XMLDocument error id=%d str1=%s str2=%s\n",
-                _errorID, buf1, buf2 );
+        error( "XMLDocument error id=%d str1=%s str2=%s\n",
+               _errorID, buf1, buf2 );
     }
 }
 

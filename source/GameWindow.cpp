@@ -17,7 +17,6 @@
  */
 #include "Asylia.hpp"
 
-
 GameWindow *GameWindow::main = NULL;
 
 GameWindow::GameWindow(const char *caption) {
@@ -53,7 +52,7 @@ GameWindow::GameWindow(const char *caption) {
 	m_viewportH = m_height;
 	
 #ifdef __ANDROID__
-	SDL_RenderSetLogicalSize(m_renderer, m_width * 2, m_height * 2);
+	SDL_RenderSetLogicalSize(m_renderer, m_width, m_height);
 #endif
 }
 

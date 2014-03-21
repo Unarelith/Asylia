@@ -1,6 +1,6 @@
 build
+droid/bin
 *~
 Asylia
-MapTexGen
 *.swp
 *.swo
