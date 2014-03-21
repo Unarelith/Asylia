@@ -1,6 +1,6 @@
 build
 droid/bin
-droid/lib
+droid/libs
 droid/obj
 *~
 Asylia
