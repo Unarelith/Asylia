@@ -70,7 +70,7 @@ Image::~Image() {
 	SDL_DestroyTexture(m_texture);
 }
 
-void Image::render() {
+void Image::renderCopy() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 }
 
@@ -85,7 +85,7 @@ void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, u16 clipW, 
 	if(clipW != 0) m_clipRect.w = clipW;
 	if(clipH != 0) m_clipRect.h = clipH;
 	
-	render();
+	renderCopy();
 }
 
 void Image::setPosRect(s16 x, s16 y, u16 w, u16 h) {

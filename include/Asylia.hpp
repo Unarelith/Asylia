@@ -24,6 +24,12 @@
 #include <stack>
 #include <numeric>
 
+#include "AndroidIO.hpp"
+
+#include "lua.hpp"
+#include "SLB.hpp"
+#include "LuaHandler.hpp"
+
 #include "tinyxml2.hpp"
 
 using namespace tinyxml2;

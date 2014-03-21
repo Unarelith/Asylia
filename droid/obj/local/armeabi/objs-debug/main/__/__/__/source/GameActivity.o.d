@@ -160,25 +160,37 @@ obj/local/armeabi/objs-debug/main/__/__/__/source/GameActivity.o: \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/numeric \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_numeric.h \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_numeric.c \
+ jni/src/../../../external/AndroidIO.hpp \
+ /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/android/asset_manager.h \
+ /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/android/asset_manager_jni.h \
+ /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/jni.h \
+ jni/src/../../../external/lua.hpp jni/src/../../../external/lua.h \
+ jni/src/../../../external/luaconf.h jni/src/../../../external/lualib.h \
+ jni/src/../../../external/lauxlib.h jni/src/../../../external/SLB.hpp \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdio \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstring \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/new \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stdexcept \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_stdexcept.h \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/typeinfo \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_typeinfo.h \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/../../gabi++/include/typeinfo \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/assert.h \
+ /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/assert.h \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/map \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_map.h \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_tree.h \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_tree.c \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/iostream \
+ /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdlib \
+ jni/src/../../../include/LuaHandler.hpp \
  jni/src/../../../external/tinyxml2.hpp \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cctype \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_cctype.h \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/ctype.h \
  /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/ctype.h \
- /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdio \
- /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdlib \
- /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstring \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdarg \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/unistd.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/select.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/sysconf.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/capability.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/pathconf.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h \
  jni/src/../../../include/SDLHeaders.hpp jni/src/../SDL2/include/SDL.h \
  jni/src/../SDL2/include/SDL_main.h jni/src/../SDL2/include/SDL_stdinc.h \
  jni/src/../SDL2/include/SDL_config.h \
@@ -558,6 +570,60 @@ jni/src/../../../include/Asylia.hpp:
 
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_numeric.c:
 
+jni/src/../../../external/AndroidIO.hpp:
+
+/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/android/asset_manager.h:
+
+/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/android/asset_manager_jni.h:
+
+/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/jni.h:
+
+jni/src/../../../external/lua.hpp:
+
+jni/src/../../../external/lua.h:
+
+jni/src/../../../external/luaconf.h:
+
+jni/src/../../../external/lualib.h:
+
+jni/src/../../../external/lauxlib.h:
+
+jni/src/../../../external/SLB.hpp:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdio:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstring:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/new:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stdexcept:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_stdexcept.h:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/typeinfo:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_typeinfo.h:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/../../gabi++/include/typeinfo:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/assert.h:
+
+/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/assert.h:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/map:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_map.h:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_tree.h:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_tree.c:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/iostream:
+
+/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdlib:
+
+jni/src/../../../include/LuaHandler.hpp:
+
 jni/src/../../../external/tinyxml2.hpp:
 
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cctype:
@@ -568,33 +634,9 @@ jni/src/../../../external/tinyxml2.hpp:
 
 /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/ctype.h:
 
-/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdio:
-
-/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdlib:
-
-/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstring:
-
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdarg:
 
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/unistd.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/select.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/sysconf.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/capability.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/pathconf.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h:
 
 jni/src/../../../include/SDLHeaders.hpp:
 

@@ -20,11 +20,15 @@
 bool Game::quit = false;
 
 Game::Game() {
+	LuaHandler::init();
+	
 	SDLManager::init();
 	
 	GameWindow::main = new GameWindow(APP_NAME);
 	
 	MapManager::init();
+	
+	LuaHandler::bindClasses();
 	
 	ActivityManager::init();
 }
@@ -35,6 +39,8 @@ Game::~Game() {
 	delete GameWindow::main;
 	
 	SDLManager::free();
+	
+	LuaHandler::free();
 }
 
 void Game::mainLoop() {

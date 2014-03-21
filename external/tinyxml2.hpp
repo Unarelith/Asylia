@@ -1,6 +1,5 @@
 /*
 Original code by Lee Thomason (www.grinninglizard.com)
-Modified by Quent42340
 
 This software is provided 'as-is', without any express or implied
 warranty. In no event will the authors be held liable for any
@@ -41,9 +40,6 @@ distribution.
 #   include <cstring>
 #   include <cstdarg>
 #endif
-
-#include <unistd.h>
-#include <fcntl.h>
 
 /*
    TODO: intern strings instead of allocation.

@@ -1,5 +1,7 @@
 build
 droid/bin
+droid/lib
+droid/obj
 *~
 Asylia
 *.swp

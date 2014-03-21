@@ -1675,9 +1675,6 @@ XMLError XMLDocument::LoadFile( const char* filename )
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 )
     errno_t err = fopen_s(&fp, filename, "rb" );
     if ( !fp || err) {
-#elif defined(__ANDROID__)
-	fp = android_fopen(filename, "rb");
-    if ( !fp) {
 #else
     fp = fopen( filename, "rb" );
     if ( !fp) {
@@ -1739,9 +1736,6 @@ XMLError XMLDocument::SaveFile( const char* filename, bool compact )
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 )
     errno_t err = fopen_s(&fp, filename, "w" );
     if ( !fp || err) {
-#elif defined(__ANDROID__)
-	fp = android_fopen(filename, "w");
-    if ( !fp) {
 #else
     fp = fopen( filename, "w" );
     if ( !fp) {

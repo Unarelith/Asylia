@@ -29,10 +29,18 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   }
  }
  external=external {
-  AndroidIO.hpp
+  lua.c
+  lauxlib.h
+  lua.h
+  luaconf.h
+  lualib.h
+  lua.hpp
   AndroidIO.cpp
-  tinyxml2.hpp
+  AndroidIO.hpp
+  SLB.cpp
+  SLB.hpp
   tinyxml2.cpp
+  tinyxml2.hpp
  }
  include=include {
   activities {
@@ -51,6 +59,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   GameWindow.hpp
   Image.hpp
   Keyboard.hpp
+  LuaHandler.hpp
   Map.hpp
   MapManager.hpp
   SDLManager.hpp
@@ -74,6 +83,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   GameWindow.cpp
   Image.cpp
   Keyboard.cpp
+  LuaHandler.cpp
   Map.cpp
   MapManager.cpp
   SDLManager.cpp

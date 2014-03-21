@@ -68,24 +68,6 @@ obj/local/armeabi/objs-debug/main/__/__/__/external/tinyxml2.o: \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/using/cstring \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdarg \
  /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/unistd.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/select.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/time.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/time.h \
- /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/signal.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/signal.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/signal.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/siginfo.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/sysconf.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/capability.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/pathconf.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/fcntl.h \
- /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h \
  jni/src/../../../include/Config.hpp jni/src/../../../include/Debug.hpp \
  /home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/android/log.h \
  jni/src/../../../external/AndroidIO.hpp \
@@ -236,42 +218,6 @@ jni/src/../../../external/tinyxml2.hpp:
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/cstdarg:
 
 /home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/stl/_cstdarg.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/unistd.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/select.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/time.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/time.h:
-
-/home/linux/Development/AndroidNDK/sources/cxx-stl/stlport/stlport/signal.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/../include/signal.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/signal.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/signal.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/sigcontext.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/siginfo.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/siginfo.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/sys/sysconf.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/capability.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/pathconf.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/linux/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm/fcntl.h:
-
-/home/linux/Development/AndroidNDK/platforms/android-9/arch-arm/usr/include/asm-generic/fcntl.h:
 
 jni/src/../../../include/Config.hpp:
 
