@@ -45,8 +45,8 @@ Game::~Game() {
 void Game::mainLoop() {
 	Image test("graphics/interface/Interface.png");
 	
-	u16 viewportCenterX = 320;
-	u16 viewportCenterY = 240;
+	u16 viewportCenterX = GameWindow::main->width() / 2;
+	u16 viewportCenterY = GameWindow::main->height() / 2;
 	
 	while(!quit) {
 		if(TimeManager::isTimeToUpdate()) {
@@ -56,10 +56,10 @@ void Game::mainLoop() {
 			
 			ActivityManager::activities.top()->processInputs();
 			
-			if(Keyboard::isKeyPressed(Keyboard::GameUp)) viewportCenterY -= 8;
-			if(Keyboard::isKeyPressed(Keyboard::GameDown)) viewportCenterY += 8;
-			if(Keyboard::isKeyPressed(Keyboard::GameLeft)) viewportCenterX -= 8;
-			if(Keyboard::isKeyPressed(Keyboard::GameRight)) viewportCenterX += 8;
+			if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 200)) viewportCenterY--;
+			if(Keyboard::isKeyPressedWithDelay(Keyboard::GameDown, 200)) viewportCenterY++;
+			if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) viewportCenterX--;
+			if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) viewportCenterX++;
 			
 			ActivityManager::activities.top()->update();
 			

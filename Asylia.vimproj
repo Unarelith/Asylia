@@ -2,6 +2,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  .gitignore
  AUTHORS
  Makefile
+ Notes
  TODO
  README.textile
  include=include {

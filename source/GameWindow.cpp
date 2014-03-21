@@ -21,8 +21,8 @@
 GameWindow *GameWindow::main = NULL;
 
 GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
-	m_width = width;
-	m_height = height;
+	m_width = 800;//width * 2;
+	m_height = 400;//height * 2;
 	
 	m_window = SDL_CreateWindow(caption, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN);
 	if(!m_window) {
@@ -30,7 +30,20 @@ GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
 		exit(EXIT_FAILURE);
 	}
 	
-	m_renderer = SDL_CreateRenderer(m_window, -1, SDL_RENDERER_ACCELERATED);
+	int driverID = -1;
+#ifdef ASK_FOR_DRIVER
+	u8 numRenderDrivers = SDL_GetNumRenderDrivers();
+	printf("Driver list:\n");
+	for(u8 i = 0 ; i < numRenderDrivers ; i++) {
+		SDL_RendererInfo renderInfo;
+		SDL_GetRenderDriverInfo(i, &renderInfo);
+		printf("\t%d | %s\n", i, renderInfo.name);
+	}
+	printf("Choose a driver: ");
+	scanf("%d", &driverID);
+#endif
+	
+	m_renderer = SDL_CreateRenderer(m_window, driverID, SDL_RENDERER_ACCELERATED);
 	if(!m_renderer) {
 		error("Renderer couldn't be created: %s\n", SDL_GetError());
 		exit(EXIT_FAILURE);
@@ -80,7 +93,7 @@ void GameWindow::updateViewportPosition(s16 x, s16 y) {
 	if(m_viewportY + m_height > m_viewportH) m_viewportH += m_height;
 	
 	// Set viewport
-	SDL_Rect viewportRect = {-x, y - m_height, m_viewportW, m_viewportH};
+	SDL_Rect viewportRect = {-x, y - m_viewportH + m_height, m_viewportW, m_viewportH};
 	SDL_RenderSetViewport(m_renderer, &viewportRect);
 }
 

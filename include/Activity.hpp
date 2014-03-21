@@ -40,6 +40,16 @@ class GameActivity : public Activity {
 		void render();
 };
 
+class LuaActivity : public Activity {
+	public:
+		LuaActivity();
+		~LuaActivity() {}
+		
+		void processInputs();
+		void update();
+		void render();
+};
+
 class MenuActivity : public Activity {
 	public:
 		MenuActivity() {}

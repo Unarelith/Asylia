@@ -63,6 +63,22 @@ void GameActivity::render() {
 	
 }
 
+LuaActivity::LuaActivity() {
+	
+}
+
+void LuaActivity::processInputs() {
+	
+}
+
+void LuaActivity::update() {
+	
+}
+
+void LuaActivity::render() {
+	
+}
+
 void MenuActivity::processInputs() {
 	
 }
