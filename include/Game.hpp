@@ -23,9 +23,6 @@ class Game {
 		Game();
 		~Game();
 		
-		void SDLinit();
-		void SDLquit();
-		
 		void mainLoop();
 		
 		static bool quit;

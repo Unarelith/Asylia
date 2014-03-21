@@ -22,21 +22,16 @@ bool Game::quit = false;
 Game::Game() {
 	SDLManager::init();
 	
-#ifdef __ANDROID__
-	SDL_DisplayMode current;
-	SDL_GetCurrentDisplayMode(0, &current);
+	GameWindow::main = new GameWindow(APP_NAME);
 	
-	info("Current display: %dx%d", current.w, current.h);
-	
-	GameWindow::main = new GameWindow(APP_NAME, current.w, current.h);
-#else
-	GameWindow::main = new GameWindow(APP_NAME, 640, 480);
-#endif
+	MapManager::init();
 	
 	ActivityManager::init();
 }
 
 Game::~Game() {
+	MapManager::free();
+	
 	delete GameWindow::main;
 	
 	SDLManager::free();

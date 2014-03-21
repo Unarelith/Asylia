@@ -20,7 +20,7 @@
 
 class GameWindow {
 	public:
-		GameWindow(const char *caption, u16 width, u16 height);
+		GameWindow(const char *caption);
 		~GameWindow();
 		
 		void clear();
@@ -41,6 +41,12 @@ class GameWindow {
 		
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
+		
+		s16 viewportX() const { return m_viewportX; }
+		s16 viewportY() const { return m_viewportY; }
+		
+		u16 viewportW() const { return m_viewportW; }
+		u16 viewportH() const { return m_viewportH; }
 		
 		static GameWindow *main;
 		

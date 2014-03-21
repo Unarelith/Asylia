@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.hpp
+ *       Filename:  MenuActivity.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:01:10
+ *        Created:  21/03/2014 18:23:30
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,19 +15,17 @@
  *
  * =====================================================================================
  */
-#ifndef ACTIVITY_HPP_
-#define ACTIVITY_HPP_
+#include "Asylia.hpp"
 
-class Activity {
-	public:
-		Activity() {}
-		~Activity() {}
-		
-		virtual void processInputs() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
-		
-		void pollEvents(bool *quit = NULL);
-};
+void MenuActivity::processInputs() {
+	
+}
 
-#endif // ACTIVITY_HPP_
+void MenuActivity::update() {
+	
+}
+
+void MenuActivity::render() {
+	
+}
+

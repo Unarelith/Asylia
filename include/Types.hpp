@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.hpp
+ *       Filename:  Types.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:01:10
+ *        Created:  21/03/2014 17:33:05
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,19 +15,14 @@
  *
  * =====================================================================================
  */
-#ifndef ACTIVITY_HPP_
-#define ACTIVITY_HPP_
+#ifndef TYPES_HPP_
+#define TYPES_HPP_
 
-class Activity {
-	public:
-		Activity() {}
-		~Activity() {}
-		
-		virtual void processInputs() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
-		
-		void pollEvents(bool *quit = NULL);
-};
+typedef unsigned char u8;
+typedef signed char s8;
+typedef unsigned short u16;
+typedef signed short s16;
+typedef unsigned long u32;
+typedef signed long s32;
 
-#endif // ACTIVITY_HPP_
+#endif // TYPES_HPP_H

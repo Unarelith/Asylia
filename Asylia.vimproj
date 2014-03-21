@@ -5,22 +5,55 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  Notes
  TODO
  README.textile
+ data=data {
+  config=config {
+   maps.xml
+   tilesets.xml
+  }
+  maps=maps {
+   map0-0-0.tmx
+  }
+  tilesets=tilesets {
+   Grassland.tmx
+  }
+ }
+ external=external {
+  tinyxml2.hpp
+  tinyxml2.cpp
+ }
  include=include {
-  Activity.hpp
+  activities {
+   Activity.hpp
+   DialogActivity.hpp
+   GameActivity.hpp
+   MenuActivity.hpp
+   LuaActivity.hpp
+  }
   ActivityManager.hpp
   Asylia.hpp
   Color.hpp
+  Config.hpp
+  Debug.hpp
   Game.hpp
   GameWindow.hpp
   Image.hpp
   Keyboard.hpp
   Map.hpp
+  MapManager.hpp
   SDLManager.hpp
   SDLHeaders.hpp
+  Tileset.hpp
   TimeManager.hpp
+  Types.hpp
  }
  source=source {
-  Activity.cpp
+  activities {
+   Activity.cpp
+   DialogActivity.cpp
+   GameActivity.cpp
+   MenuActivity.cpp
+   LuaActivity.cpp
+  }
   ActivityManager.cpp
   Color.cpp
   main.cpp
@@ -29,6 +62,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Image.cpp
   Keyboard.cpp
   Map.cpp
+  MapManager.cpp
   SDLManager.cpp
   TimeManager.cpp
  }

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.hpp
+ *       Filename:  Tileset.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:01:10
+ *        Created:  21/03/2014 19:12:55
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,19 +15,18 @@
  *
  * =====================================================================================
  */
-#ifndef ACTIVITY_HPP_
-#define ACTIVITY_HPP_
+#ifndef TILESET_HPP_
+#define TILESET_HPP_
 
-class Activity {
-	public:
-		Activity() {}
-		~Activity() {}
-		
-		virtual void processInputs() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
-		
-		void pollEvents(bool *quit = NULL);
+struct Tileset {
+	Tileset() : tileWidth(16), tileHeight(16) {}
+	
+	Image *tiles;
+	
+	u16 tileWidth;
+	u16 tileHeight;
+	
+	u16 *nonPassableLayer;
 };
 
-#endif // ACTIVITY_HPP_
+#endif // TILESET_HPP_

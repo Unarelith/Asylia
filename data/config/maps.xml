@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maps areas="1">
+	<area maps="1">
+		<map layers="3" x="0" y="0" tilesetID="0" events="2"/>
+	</area>
+</maps>

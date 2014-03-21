@@ -27,8 +27,8 @@ LIBDIRS	:=
 #--------------------------------------------------------------------------------
 TARGET		:=  $(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	source
-INCLUDES	:=	source include
+SOURCES		:=	source external
+INCLUDES	:=	source include external
 OTHERLIBS	:= 	
 
 #---------------------------------------------------------------------------------

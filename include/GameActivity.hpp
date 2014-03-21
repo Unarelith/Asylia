@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.hpp
+ *       Filename:  GameActivity.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:01:10
+ *        Created:  21/03/2014 18:19:43
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,19 +15,17 @@
  *
  * =====================================================================================
  */
-#ifndef ACTIVITY_HPP_
-#define ACTIVITY_HPP_
+#ifndef GAMEACTIVITY_HPP_
+#define GAMEACTIVITY_HPP_
 
-class Activity {
+class GameActivity : public Activity {
 	public:
-		Activity() {}
-		~Activity() {}
+		GameActivity();
+		~GameActivity() {}
 		
-		virtual void processInputs() = 0;
-		virtual void update() = 0;
-		virtual void render() = 0;
-		
-		void pollEvents(bool *quit = NULL);
+		void processInputs();
+		void update();
+		void render();
 };
 
-#endif // ACTIVITY_HPP_
+#endif // GAMEACTIVITY_HPP_

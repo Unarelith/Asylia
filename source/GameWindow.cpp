@@ -20,9 +20,19 @@
 
 GameWindow *GameWindow::main = NULL;
 
-GameWindow::GameWindow(const char *caption, u16 width, u16 height) {
-	m_width = width;
-	m_height = height;
+GameWindow::GameWindow(const char *caption) {
+#ifdef __ANDROID__
+	SDL_DisplayMode current;
+	SDL_GetCurrentDisplayMode(0, &current);
+	
+	info("Current display: %dx%d", current.w, current.h);
+	
+	m_width = current.w;
+	m_height = current.h;
+#else
+	m_width = WIN_DEFAULT_WIDTH;
+	m_height = WIN_DEFAULT_HEIGHT;
+#endif
 	
 	m_window = SDL_CreateWindow(caption, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN);
 	if(!m_window) {
