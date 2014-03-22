@@ -50,6 +50,8 @@ class Keyboard {
 		
 		static u32 lastTimePressed[7];
 		
+		static u32 keysCode[7];
+		
 		static const u32 GameUp;
 		static const u32 GameDown;
 		static const u32 GameLeft;

@@ -18,14 +18,17 @@
 #ifndef MENUACTIVITY_HPP_
 #define MENUACTIVITY_HPP_
 
-class MenuActivity : public Activity {
+class MenuActivity : public GameActivity {
 	public:
-		MenuActivity() {}
-		~MenuActivity() {}
+		MenuActivity();
+		~MenuActivity();
 		
 		void processInputs();
 		void update();
 		void render();
+		
+	private:
+		CommandWindow *m_cmdwin;
 };
 
 #endif // MENUACTIVITY_HPP_

@@ -32,9 +32,9 @@ Game::Game() {
 	
 	Interface::init();
 	
-	ActivityManager::init();
-	
 	LuaHandler::bindClasses();
+	
+	ActivityManager::init();
 }
 
 Game::~Game() {

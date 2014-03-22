@@ -41,21 +41,21 @@ void SelectableWindow::updateCursor() {
 void SelectableWindow::update() {
 	Window::update();
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 200)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 150)) {
 		m_pos--;
 		Sound::Effect::play(Sound::Effect::move);
 	}
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameDown, 200)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameDown, 150)) {
 		m_pos++;
 		Sound::Effect::play(Sound::Effect::move);
 	}
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 		
 	}
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 100)) {
 		
 	}
 	

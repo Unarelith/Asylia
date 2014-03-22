@@ -22,23 +22,23 @@ u8 Keyboard::padState[7] = {0, 0, 0, 0, 0, 0, 0};
 s32 Keyboard::padFinger[7] = {-1, -1, -1, -1, -1, -1, -1};
 u32 Keyboard::lastTimePressed[7] = {0, 0, 0, 0, 0, 0, 0};
 
-#ifndef __ANDROID__
-	const u32 Keyboard::GameUp = SDL_SCANCODE_UP;
-	const u32 Keyboard::GameDown = SDL_SCANCODE_DOWN;
-	const u32 Keyboard::GameLeft = SDL_SCANCODE_LEFT;
-	const u32 Keyboard::GameRight = SDL_SCANCODE_RIGHT;
-	const u32 Keyboard::GameAttack = SDL_SCANCODE_S;
-	const u32 Keyboard::GameBack = SDL_SCANCODE_A;
-	const u32 Keyboard::GameMenu = SDL_SCANCODE_RETURN;
-#else
-	const u32 Keyboard::GameUp = PAD_UP;
-	const u32 Keyboard::GameDown = PAD_DOWN;
-	const u32 Keyboard::GameLeft = PAD_LEFT;
-	const u32 Keyboard::GameRight = PAD_RIGHT;
-	const u32 Keyboard::GameAttack = PAD_A;
-	const u32 Keyboard::GameBack = PAD_B;
-	const u32 Keyboard::GameMenu = PAD_MENU;
-#endif
+const u32 Keyboard::GameUp = PAD_UP;
+const u32 Keyboard::GameDown = PAD_DOWN;
+const u32 Keyboard::GameLeft = PAD_LEFT;
+const u32 Keyboard::GameRight = PAD_RIGHT;
+const u32 Keyboard::GameAttack = PAD_A;
+const u32 Keyboard::GameBack = PAD_B;
+const u32 Keyboard::GameMenu = PAD_MENU;
+
+u32 Keyboard::keysCode[7] = {
+	SDL_SCANCODE_UP,
+	SDL_SCANCODE_DOWN,
+	SDL_SCANCODE_LEFT,
+	SDL_SCANCODE_RIGHT,
+	SDL_SCANCODE_RETURN,
+	SDL_SCANCODE_BACKSPACE,
+	SDL_SCANCODE_ESCAPE
+};
 
 const u8 *Keyboard::getState() {
 	return SDL_GetKeyboardState(NULL);
@@ -46,7 +46,7 @@ const u8 *Keyboard::getState() {
 
 bool Keyboard::isKeyPressed(u32 key) {
 #ifndef __ANDROID__
-	if(state[key]) return true;
+	if(state[keysCode[key]]) return true;
 	else		   return false;
 #else
 	if(padState[key]) return true;
@@ -56,7 +56,7 @@ bool Keyboard::isKeyPressed(u32 key) {
 
 bool Keyboard::isKeyPressedWithDelay(u32 key, u16 delay) {
 #ifndef __ANDROID__
-	if(state[key] && SDL_GetTicks() - lastTimePressed[key] > delay) {
+	if(state[keysCode[key]] && SDL_GetTicks() - lastTimePressed[key] > delay) {
 		lastTimePressed[key] = SDL_GetTicks();
 		return true;
 	} else return false;

@@ -17,18 +17,11 @@
  */
 #include "Asylia.hpp"
 
-CommandWindow *win;
-
 GameActivity::GameActivity() {
+	m_type = Type::Game;
+	
 	MapManager::currentMap = MapManager::maps[0][0];
 	MapManager::currentMap->load();
-	
-	std::vector<std::string> choices;
-	
-	choices.push_back("Yes");
-	choices.push_back("No");
-	
-	win = new CommandWindow(20, 20, 300, choices);
 }
 
 GameActivity::~GameActivity() {
@@ -39,13 +32,14 @@ void GameActivity::processInputs() {
 }
 
 void GameActivity::update() {
-	win->update();
+	if(Keyboard::isKeyPressed(Keyboard::GameMenu)) {
+		Sound::Effect::play(Sound::Effect::confirm);
+		ActivityManager::activities.push(new MenuActivity);
+	}
 }
 
 void GameActivity::render() {
 	MapManager::currentMap->render();
 	MapManager::currentMap->renderOverlay();
-	
-	win->draw();
 }
 

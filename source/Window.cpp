@@ -34,7 +34,7 @@ void Window::update() {
 }
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
-	Interface::interface->setAlpha(abs(SDL_GetTicks() / 4 % 255 - 128) + 127);
+	Interface::interface->setAlpha(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
 	
 	Interface::interface->render(x, y, width, height, 129, 64, 30, 32);
 	

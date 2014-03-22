@@ -17,6 +17,13 @@
  */
 #include "Asylia.hpp"
 
+DialogActivity::DialogActivity() {
+	m_type = Type::Dialog;
+}
+
+DialogActivity::~DialogActivity() {
+}
+
 void DialogActivity::processInputs() {
 	
 }

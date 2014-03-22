@@ -20,14 +20,27 @@
 
 class Activity {
 	public:
-		Activity() {}
-		~Activity() {}
+		Activity();
+		~Activity();
 		
 		virtual void processInputs() = 0;
 		virtual void update() = 0;
 		virtual void render() = 0;
 		
 		void pollEvents(bool *quit = NULL);
+		
+		typedef enum {
+			None,
+			Game,
+			Dialog,
+			Menu,
+			Lua
+		} Type;
+		
+		Type type() const { return m_type; }
+		
+	protected:
+		Type m_type;
 };
 
 #endif // ACTIVITY_HPP_

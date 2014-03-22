@@ -17,15 +17,58 @@
  */
 #include "Asylia.hpp"
 
+MenuActivity::MenuActivity() {
+	m_type = Type::Menu;
+	
+	std::vector<std::string> choices;
+	
+	choices.push_back("Items");
+	choices.push_back("Skills");
+	choices.push_back("Equip");
+	choices.push_back("Status");
+	choices.push_back("Save");
+	choices.push_back("Quit");
+	
+	m_cmdwin = new CommandWindow(0, 0, 150, choices);
+}
+
+MenuActivity::~MenuActivity() {
+	delete m_cmdwin;
+}
+
 void MenuActivity::processInputs() {
 	
 }
 
 void MenuActivity::update() {
+	m_cmdwin->update();
 	
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 100)) {
+		Sound::Effect::play(Sound::Effect::confirm);
+		
+		switch(m_cmdwin->pos()) {
+			case 0: break;
+			case 1: break;
+			case 2: break;
+			case 3: break;
+			case 4: break;
+			case 5:
+				SDL_Delay(100);
+				Game::quit = true;
+				break;
+			default: break;
+		}
+	}
+	
+	if(Keyboard::isKeyPressed(Keyboard::GameBack)) {
+		Sound::Effect::play(Sound::Effect::back);
+		ActivityManager::activities.pop();
+	}
 }
 
 void MenuActivity::render() {
+	GameActivity::render();
 	
+	m_cmdwin->draw();
 }
 

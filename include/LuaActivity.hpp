@@ -18,10 +18,10 @@
 #ifndef LUAACTIVITY_HPP_
 #define LUAACTIVITY_HPP_
 
-class LuaActivity : public Activity {
+class LuaActivity : public GameActivity {
 	public:
 		LuaActivity();
-		~LuaActivity() {}
+		~LuaActivity();
 		
 		void processInputs();
 		void update();

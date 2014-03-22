@@ -17,6 +17,13 @@
  */
 #include "Asylia.hpp"
 
+Activity::Activity() {
+	m_type = Type::None;
+}
+
+Activity::~Activity() {
+}
+
 void Activity::pollEvents(bool *quit) {
 	SDL_Event event;
 	while(SDL_PollEvent(&event) != 0) {
@@ -25,16 +32,7 @@ void Activity::pollEvents(bool *quit) {
 				Game::quit = true;
 				if(quit) *quit = true;
 				break;
-#ifndef __ANDROID__
-			case SDL_KEYDOWN:
-				switch(event.key.keysym.sym) {
-					case SDLK_ESCAPE:
-						Game::quit = true;
-						if(quit) *quit = true;
-						break;
-					default: break;
-				}
-#else
+#ifdef __ANDROID__
 			case SDL_FINGERDOWN:
 			case SDL_FINGERMOTION:
 				Keyboard::updatePad(&event);

@@ -20,8 +20,8 @@
 
 class DialogActivity : public GameActivity {
 	public:
-		DialogActivity() {}
-		~DialogActivity() {}
+		DialogActivity();
+		~DialogActivity();
 		
 		void processInputs();
 		void update();

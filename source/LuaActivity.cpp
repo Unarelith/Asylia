@@ -18,7 +18,10 @@
 #include "Asylia.hpp"
 
 LuaActivity::LuaActivity() {
-	
+	m_type = Type::Lua;
+}
+
+LuaActivity::~LuaActivity() {
 }
 
 void LuaActivity::processInputs() {
