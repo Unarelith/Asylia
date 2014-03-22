@@ -72,6 +72,7 @@ using namespace tinyxml2;
 #include "LuaActivity.hpp"
 #include "DialogActivity.hpp"
 #include "MenuActivity.hpp"
+#include "TitleActivity.hpp"
 #include "ActivityManager.hpp"
 
 #endif // ASYLIA_HPP_

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  ActivityManager.cpp
+ *       Filename:  TitleActivity.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:49:08
+ *        Created:  22/03/2014 17:18:32
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,15 +15,21 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef TITLEACTIVITY_HPP_
+#define TITLEACTIVITY_HPP_
 
-std::stack<Activity*> ActivityManager::activities;
+class TitleActivity : public Activity {
+	public:
+		TitleActivity();
+		~TitleActivity();
+		
+		void processInputs();
+		void update();
+		void render();
+		
+	private:
+		Image *m_background;
+		CommandWindow *m_cmdwin;
+};
 
-void ActivityManager::init() {
-#ifdef NO_TITLESCREEN
-	activities.push(new GameActivity);
-#else
-	activities.push(new TitleActivity);
-#endif
-}
-
+#endif // TITLEACTIVITY_HPP_

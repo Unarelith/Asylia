@@ -12,6 +12,7 @@
 /home/linux/NewProjects/Asylia/droid/bin/res/drawable-ldpi/ic_launcher.png \
 /home/linux/NewProjects/Asylia/droid/bin/res/drawable-xxhdpi/ic_launcher.png \
 /home/linux/NewProjects/Asylia/droid/assets/graphics \
+/home/linux/NewProjects/Asylia/droid/assets/audio \
 /home/linux/NewProjects/Asylia/droid/assets/data \
 /home/linux/NewProjects/Asylia/droid/assets/graphics/characters \
 /home/linux/NewProjects/Asylia/droid/assets/graphics/interface \
@@ -23,6 +24,10 @@
 /home/linux/NewProjects/Asylia/droid/assets/graphics/interface/Interface.png \
 /home/linux/NewProjects/Asylia/droid/assets/graphics/interface/DPad.png \
 /home/linux/NewProjects/Asylia/droid/assets/graphics/tilesets/Grassland.png \
+/home/linux/NewProjects/Asylia/droid/assets/audio/effects \
+/home/linux/NewProjects/Asylia/droid/assets/audio/effects/confirm.wav \
+/home/linux/NewProjects/Asylia/droid/assets/audio/effects/back.wav \
+/home/linux/NewProjects/Asylia/droid/assets/audio/effects/move.wav \
 /home/linux/NewProjects/Asylia/droid/assets/data/config \
 /home/linux/NewProjects/Asylia/droid/assets/data/maps \
 /home/linux/NewProjects/Asylia/droid/assets/data/tilesets \

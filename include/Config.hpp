@@ -27,6 +27,8 @@
 
 #define CHARA_SPEED 4
 
+//#define NO_TITLESCREEN
+
 #define COLORED_DEBUG
 
 #endif // CONFIG_HPP_
