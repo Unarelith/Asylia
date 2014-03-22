@@ -59,6 +59,35 @@ void Character::render() {
 	}
 }
 
+void Character::move(std::string moveScript) {
+	if(m_vxCount == 0 && m_vyCount == 0) {
+		LuaHandler::doFile(moveScript.c_str());
+	}
+	
+	if(m_vx > 0) m_direction = DIR_RIGHT;
+	if(m_vx < 0) m_direction = DIR_LEFT;
+	if(m_vy > 0) m_direction = DIR_DOWN;
+	if(m_vy < 0) m_direction = DIR_UP;
+	
+	testCollisions();
+	
+	m_vxCount += abs(m_vx);
+	m_vyCount += abs(m_vy);
+	
+	m_x += m_vx;
+	m_y += m_vy;
+	
+	if(m_vxCount >= 32 || m_vyCount >= 32) {
+		m_vxCount = 0;
+		m_vyCount = 0;
+		
+		m_moving = false;
+		
+		m_vx = 0;
+		m_vy = 0;
+	}
+}
+
 void Character::testCollisions() {
 	mapCollisions();
 }

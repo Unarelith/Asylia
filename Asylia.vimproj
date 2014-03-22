@@ -10,6 +10,12 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    maps.xml
    tilesets.xml
   }
+  events=events {
+   event0=event0 {
+	movement.lua
+    main.lua
+   }
+  }
   maps=maps {
    map0-0-0.tmx
   }
@@ -61,6 +67,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Color.hpp
   Config.hpp
   Debug.hpp
+  Event.hpp
   Font.hpp
   Game.hpp
   GameWindow.hpp
@@ -101,7 +108,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Character.cpp
   CharacterManager.cpp
   Color.cpp
-  main.cpp
+  Event.cpp
   Font.cpp
   Game.cpp
   GameWindow.cpp
@@ -122,5 +129,6 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    SelectableWindow.cpp
    CommandWindow.cpp
   }
+  main.cpp
  }
 }

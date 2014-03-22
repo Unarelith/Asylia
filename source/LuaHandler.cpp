@@ -36,7 +36,12 @@ void LuaHandler::free() {
 
 void LuaHandler::bindClasses() {
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
-									 .set("renderCopy", &Image::renderCopy);
+									 .set("renderCopy", &Image::renderCopy)
+									 .set("render", &Image::render);
+	
+	SLB::Class<Character>("Character", &slbm).constructor<const char*, s16, s16, u8, u16, u16, u16, u16, u16>()
+											 .set("move", &Character::move)
+											 .set("render", &Character::render);
 }
 
 void LuaHandler::doFile(const char *filename) {

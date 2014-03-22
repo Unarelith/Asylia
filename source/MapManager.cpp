@@ -92,17 +92,35 @@ void MapManager::initMaps() {
 		XMLElement *mapElement = areaElement->FirstChildElement("map");
 		for(unsigned int j = 0 ; j < areaSizes[i] ; j++) {
 			std::stringstream mapFilename;
-			u8 layers;
+			u8 layers, events;
 			u16 x, y, tilesetID;
 			
 			layers = mapElement->IntAttribute("layers");
 			x = mapElement->IntAttribute("x");
 			y = mapElement->IntAttribute("y");
 			tilesetID = mapElement->IntAttribute("tilesetID");
+			events = mapElement->IntAttribute("events");
 			
 			mapFilename << "data/maps/map" << i << "-" << x << "-" << y << ".tmx";
 			
-			maps[i][MAP_POS(x, y, i)] = new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID);
+			maps[i][MAP_POS(i, x, y)] = new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID);
+			
+			XMLElement *eventElement = mapElement->FirstChildElement("event");
+			for(unsigned int k = 0 ; k < events ; k++) {
+				std::stringstream eventFilename;
+				std::string eventName;
+				u16 ex, ey;
+				u8 anim;
+				
+				eventName = eventElement->Attribute("name");
+				ex = eventElement->IntAttribute("x");
+				ey = eventElement->IntAttribute("y");
+				anim = eventElement->IntAttribute("anim");
+				
+				eventFilename << "data/events/" << eventName << "/main.lua";
+				
+				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFilename.str(), eventName, ex * 32, ey * 32, anim, i, x, y));
+			}
 			
 			mapElement = mapElement->NextSiblingElement("map");
 		}

@@ -25,7 +25,6 @@ class MapActivity : public Activity {
 		
 		void init();
 		
-		void processInputs();
 		void update();
 		void render();
 };

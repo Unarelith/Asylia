@@ -26,9 +26,9 @@
 class Character : public Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth = 32, u16 frameHeight = 48);
-		virtual ~Character();
+		~Character();
 		
-		virtual void move() = 0;
+		void move(std::string moveScript);
 		void render();
 		
 		void testCollisions();

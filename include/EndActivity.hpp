@@ -23,7 +23,6 @@ class EndActivity : public Activity {
 		EndActivity();
 		~EndActivity();
 		
-		void processInputs();
 		void update();
 		void render();
 		

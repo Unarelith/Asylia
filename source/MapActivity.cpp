@@ -35,10 +35,6 @@ void MapActivity::init() {
 	CharacterManager::init();
 }
 
-void MapActivity::processInputs() {
-	
-}
-
 void MapActivity::update() {
 	if(Keyboard::isKeyPressed(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
@@ -51,12 +47,16 @@ void MapActivity::update() {
 											   CharacterManager::player->y(),
 											   CharacterManager::player->frameWidth(),
 											   CharacterManager::player->frameHeight());
+	
+	MapManager::currentMap->eventsUpdate();
 }
 
 void MapActivity::render() {
 	MapManager::currentMap->render();
 	
 	CharacterManager::player->render();
+	
+	MapManager::currentMap->eventsRender();
 	
 	MapManager::currentMap->renderOverlay();
 }

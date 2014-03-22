@@ -36,11 +36,6 @@ TitleActivity::TitleActivity() {
 }
 
 TitleActivity::~TitleActivity() {
-	
-}
-
-void TitleActivity::processInputs() {
-	
 }
 
 void TitleActivity::update() {

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  LuaActivity.cpp
+ *       Filename:  Event.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:23:52
+ *        Created:  22/03/2014 23:54:51
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,27 +17,26 @@
  */
 #include "Asylia.hpp"
 
-LuaActivity::LuaActivity(std::string filename, std::string table) {
-	m_type = Type::Lua;
+Event::Event(std::string filename, std::string table, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY) {
+	std::stringstream initCall;
 	
 	m_table = table;
 	
 	LuaHandler::doFile(filename.c_str());
-	LuaHandler::doString(table + ".init()");
-}
-
-LuaActivity::~LuaActivity() {
-}
-
-void LuaActivity::update() {
-	MapActivity::update();
 	
+	initCall << m_table << ".init(" << x << "," << y << "," << (int)anim << "," << area << "," << mapX << "," << mapY << ")";
+	
+	LuaHandler::doString(initCall.str());
+}
+
+Event::~Event() {
+}
+
+void Event::update() {
 	LuaHandler::doString(m_table + ".update()");
 }
 
-void LuaActivity::render() {
-	MapActivity::render();
-	
+void Event::render() {
 	LuaHandler::doString(m_table + ".render()");
 }
 

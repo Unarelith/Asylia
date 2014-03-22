@@ -23,7 +23,6 @@ class MenuActivity : public MapActivity {
 		MenuActivity();
 		~MenuActivity();
 		
-		void processInputs();
 		void update();
 		void render();
 		

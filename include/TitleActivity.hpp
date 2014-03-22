@@ -23,7 +23,6 @@ class TitleActivity : public Activity {
 		TitleActivity();
 		~TitleActivity();
 		
-		void processInputs();
 		void update();
 		void render();
 		

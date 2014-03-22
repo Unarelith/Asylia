@@ -33,10 +33,6 @@ EndActivity::~EndActivity() {
 	delete m_cmdwin;
 }
 
-void EndActivity::processInputs() {
-	
-}
-
 void EndActivity::update() {
 	m_cmdwin->update();
 	

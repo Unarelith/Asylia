@@ -36,10 +36,6 @@ MenuActivity::~MenuActivity() {
 	delete m_cmdwin;
 }
 
-void MenuActivity::processInputs() {
-	
-}
-
 void MenuActivity::update() {
 	m_cmdwin->update();
 	

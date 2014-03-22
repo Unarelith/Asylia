@@ -54,8 +54,6 @@ void Game::mainLoop() {
 			
 			Keyboard::update();
 			
-			ActivityManager::activities.top()->processInputs();
-			
 			ActivityManager::activities.top()->update();
 			
 			if(TimeManager::hasEnoughTimeToDraw()) {

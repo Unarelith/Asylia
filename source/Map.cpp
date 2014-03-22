@@ -73,6 +73,22 @@ Map::~Map() {
 	delete[] m_data;
 }
 
+void Map::addEvent(Event *event) {
+	m_events.push_back(event);
+}
+
+void Map::eventsUpdate() {
+	for(u16 i = 0 ; i < m_events.size() ; i++) {
+		m_events[i]->update();
+	}
+}
+
+void Map::eventsRender() {
+	for(u16 i = 0 ; i < m_events.size() ; i++) {
+		m_events[i]->render();
+	}
+}
+
 void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
 	u16 posX = (tileX + m_x * m_width) * m_tileset->tileWidth;
 	u16 posY = (tileY + m_y * m_height) * m_tileset->tileHeight;

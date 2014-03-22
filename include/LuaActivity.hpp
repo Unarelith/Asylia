@@ -20,12 +20,14 @@
 
 class LuaActivity : public MapActivity {
 	public:
-		LuaActivity();
+		LuaActivity(std::string filename, std::string table);
 		~LuaActivity();
 		
-		void processInputs();
 		void update();
 		void render();
+		
+	private:
+		std::string m_table;
 };
 
 #endif // LUAACTIVITY_HPP_

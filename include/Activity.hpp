@@ -23,7 +23,6 @@ class Activity {
 		Activity();
 		~Activity();
 		
-		virtual void processInputs() = 0;
 		virtual void update() = 0;
 		virtual void render() = 0;
 		

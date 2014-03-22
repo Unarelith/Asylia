@@ -72,17 +72,19 @@ using namespace tinyxml2;
 #include "SelectableWindow.hpp"
 #include "CommandWindow.hpp"
 
-#include "Tileset.hpp"
-#include "Map.hpp"
-#include "MapManager.hpp"
+#include "Event.hpp"
 
 #include "Activity.hpp"
 #include "MapActivity.hpp"
-#include "LuaActivity.hpp"
 #include "DialogActivity.hpp"
 #include "MenuActivity.hpp"
+#include "LuaActivity.hpp"
 #include "TitleActivity.hpp"
 #include "EndActivity.hpp"
 #include "ActivityManager.hpp"
+
+#include "Tileset.hpp"
+#include "Map.hpp"
+#include "MapManager.hpp"
 
 #endif // ASYLIA_HPP_

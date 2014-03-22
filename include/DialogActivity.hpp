@@ -23,7 +23,6 @@ class DialogActivity : public MapActivity {
 		DialogActivity();
 		~DialogActivity();
 		
-		void processInputs();
 		void update();
 		void render();
 };

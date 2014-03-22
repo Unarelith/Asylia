@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-Player::Player(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY) : Character(filename, x, y, direction, area, mapX, mapY) {
+Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY) : Character(filename.c_str(), x, y, direction, area, mapX, mapY) {
 	
 }
 
@@ -25,7 +25,7 @@ Player::~Player() {
 }
 
 void Player::move() {
-	if((m_vxCount == 0 && m_vyCount == 0) || (m_vx == 0 && m_vxCount == 8) || (m_vy == 0 && m_vyCount == 8)) {
+	if(m_vxCount == 0 && m_vyCount == 0) {
 		m_moving = false;
 		
 		if(Keyboard::isKeyPressed(Keyboard::GameUp)) {

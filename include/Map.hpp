@@ -23,6 +23,11 @@ class Map {
 		Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID);
 		~Map();
 		
+		void addEvent(Event *event);
+		
+		void eventsUpdate();
+		void eventsRender();
+		
 		void loadTile(u16 tileX, u16 tileY, u8 layer);
 		void load();
 		
@@ -54,6 +59,8 @@ class Map {
 		
 		SDL_Texture **m_layersTex;
 		Uint32 m_pixelFormat;
+		
+		std::vector<Event*> m_events;
 };
 
 #endif // MAP_HPP_
