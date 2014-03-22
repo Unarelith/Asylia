@@ -64,14 +64,17 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   LuaHandler.hpp
   Map.hpp
   MapManager.hpp
+  Rectangle.hpp
   SDLManager.hpp
   SDLHeaders.hpp
+  Sound.hpp
   Tileset.hpp
   TimeManager.hpp
   Types.hpp
   window {
    Window.hpp
    SelectableWindow.hpp
+   CommandWindow.hpp
   }
  }
  source=source {
@@ -95,10 +98,12 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Map.cpp
   MapManager.cpp
   SDLManager.cpp
+  Sound.cpp
   TimeManager.cpp
   window {
    Window.cpp
    SelectableWindow.cpp
+   CommandWindow.cpp
   }
  }
 }

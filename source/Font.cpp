@@ -33,9 +33,10 @@ void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;  break;
-		case FONT_MEDIUM: font = m_fontMedium; break;
-		case FONT_LARGE:  font = m_fontLarge;  break;
+		case FONT_SMALL:  font = m_fontSmall;		break;
+		case FONT_MEDIUM: font = m_fontMedium;		break;
+		case FONT_LARGE:  font = m_fontLarge;		break;
+		default:		  error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b});
@@ -48,9 +49,10 @@ void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, Fo
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;  break;
-		case FONT_MEDIUM: font = m_fontMedium; break;
-		case FONT_LARGE:  font = m_fontLarge;  break;
+		case FONT_SMALL:  font = m_fontSmall;		break;
+		case FONT_MEDIUM: font = m_fontMedium;		break;
+		case FONT_LARGE:  font = m_fontLarge;		break;
+		default:		  error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, str, SDL_Color{color.r, color.g, color.b}, width);

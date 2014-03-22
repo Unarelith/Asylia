@@ -20,17 +20,17 @@
 
 class SelectableWindow : public Window {
 	public:
-		SelectableWindow(s16 x, s16 y, u16 width, u16 height, std::string *choices);
+		SelectableWindow(s16 x, s16 y, u16 width, u16 height);
 		~SelectableWindow();
 		
-		void drawSelectionMarker(u16 width, u16 posX, u16 posY);
-		void draw();
+		void updateCursor();
+		void update();
 		
 	protected:
-		std::string *m_choices;
-		
-		u8 m_rowMax;
+		u8 m_itemMax;
 		u8 m_columnMax;
+		
+		s8 m_pos;
 };
 
 #endif // SELECTABLEWINDOW_HPP_

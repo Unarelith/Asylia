@@ -17,32 +17,56 @@
  */
 #include "Asylia.hpp"
 
-SelectableWindow::SelectableWindow(s16 x, s16 y, u16 width, u16 height, std::string *choices) : Window(x, y, width, height) {
-	m_choices = choices;
-	
-	m_rowMax = 1;
+SelectableWindow::SelectableWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
+	m_itemMax = 1;
 	m_columnMax = 1;
+	
+	m_pos = -1;
 }
 
 SelectableWindow::~SelectableWindow() {
 }
 
-void SelectableWindow::drawSelectionMarker(u16 width, u16 posX, u16 posY) {
+void SelectableWindow::updateCursor() {
+	u16 x, y;
+	u16 row, cursorWidth;
 	
+	cursorWidth = m_width / m_columnMax - 32;
+	x = m_pos % m_columnMax * (cursorWidth + 32);
+	y = m_pos / m_columnMax * 32 - 0;
+	
+	m_cursor = Rectangle(x, y, cursorWidth, 32);
 }
 
-void SelectableWindow::draw() {
-	s16 offx, offy;
+void SelectableWindow::update() {
+	Window::update();
 	
-	offx = GameWindow::main->viewportW();
-	offy = GameWindow::main->viewportH();
-	
-	Window::draw();
-	
-	for(u8 y = 0 ; y < m_rowMax ; y++) {
-		for(u8 x = 0 ; x < m_columnMax ; x++) {
-			Interface::defaultFont->print(m_choices[x + y * m_rowMax].c_str(), m_x + offx + 20, m_y + offy + 22 + 32 * y, FONT_LARGE, Color::white);
-		}
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 200)) {
+		m_pos--;
+		Sound::Effect::play(Sound::Effect::move);
 	}
+	
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameDown, 200)) {
+		m_pos++;
+		Sound::Effect::play(Sound::Effect::move);
+	}
+	
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) {
+		
+	}
+	
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) {
+		
+	}
+	
+	if(m_pos >= m_itemMax) {
+		m_pos = 0;
+	}
+	
+	if(m_pos < 0) {
+		m_pos = m_itemMax - 1;
+	}
+	
+	updateCursor();
 }
 

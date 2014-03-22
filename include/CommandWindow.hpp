@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Window.hpp
+ *       Filename:  CommandWindow.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/03/2014 00:30:53
+ *        Created:  22/03/2014 13:13:37
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,27 +15,19 @@
  *
  * =====================================================================================
  */
-#ifndef WINDOW_HPP_
-#define WINDOW_HPP_
+#ifndef COMMANDWINDOW_HPP_
+#define COMMANDWINDOW_HPP_
 
-class Window {
+class CommandWindow : public SelectableWindow {
 	public:
-		Window(s16 x, s16 y, u16 width, u16 height);
-		~Window();
+		CommandWindow(s16 x, s16 y, u16 width, std::vector<std::string> commands);
+		~CommandWindow();
 		
-		void update();
-		
-		void drawCursor(s16 x, s16 y, u16 width, u16 height);
+		void drawItem(u8 pos);
 		void draw();
 		
-	protected:
-		s16 m_x;
-		s16 m_y;
-		
-		u16 m_width;
-		u16 m_height;
-		
-		Rectangle m_cursor;
+	private:
+		std::vector<std::string> m_commands;
 };
 
-#endif // WINDOW_HPP_
+#endif // COMMANDWINDOW_HPP_

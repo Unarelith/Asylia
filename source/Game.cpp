@@ -26,19 +26,23 @@ Game::Game() {
 	
 	GameWindow::main = new GameWindow(APP_NAME);
 	
+	Sound::init();
+	
 	MapManager::init();
 	
 	Interface::init();
 	
-	LuaHandler::bindClasses();
-	
 	ActivityManager::init();
+	
+	LuaHandler::bindClasses();
 }
 
 Game::~Game() {
 	Interface::free();
 	
 	MapManager::free();
+	
+	Sound::free();
 	
 	delete GameWindow::main;
 	
