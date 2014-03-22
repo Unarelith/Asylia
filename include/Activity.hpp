@@ -31,7 +31,7 @@ class Activity {
 		
 		typedef enum {
 			None,
-			Game,
+			Map,
 			Dialog,
 			Menu,
 			Lua,

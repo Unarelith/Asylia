@@ -18,7 +18,7 @@
 #ifndef LUAACTIVITY_HPP_
 #define LUAACTIVITY_HPP_
 
-class LuaActivity : public GameActivity {
+class LuaActivity : public MapActivity {
 	public:
 		LuaActivity();
 		~LuaActivity();

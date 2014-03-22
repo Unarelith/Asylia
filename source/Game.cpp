@@ -28,8 +28,6 @@ Game::Game() {
 	
 	Sound::init();
 	
-	MapManager::init();
-	
 	Interface::init();
 	
 	LuaHandler::bindClasses();
@@ -39,8 +37,6 @@ Game::Game() {
 
 Game::~Game() {
 	Interface::free();
-	
-	MapManager::free();
 	
 	Sound::free();
 	

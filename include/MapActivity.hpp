@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.hpp
+ *       Filename:  MapActivity.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:08
+ *        Created:  21/03/2014 18:19:43
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,17 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGACTIVITY_HPP_
-#define DIALOGACTIVITY_HPP_
+#ifndef MAPACTIVITY_HPP_
+#define MAPACTIVITY_HPP_
 
-class DialogActivity : public MapActivity {
+class MapActivity : public Activity {
 	public:
-		DialogActivity();
-		~DialogActivity();
+		MapActivity();
+		~MapActivity();
 		
 		void processInputs();
 		void update();
 		void render();
 };
 
-#endif // DIALOGACTIVITY_HPP_
+#endif // MAPACTIVITY_HPP_

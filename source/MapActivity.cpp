@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  GameActivity.cpp
+ *       Filename:  MapActivity.cpp
  *
  *    Description:  
  *
@@ -17,29 +17,45 @@
  */
 #include "Asylia.hpp"
 
-GameActivity::GameActivity() {
-	m_type = Type::Game;
+MapActivity::MapActivity() {
+	m_type = Type::Map;
 	
+	MapManager::init();
 	MapManager::currentMap = MapManager::maps[0][0];
 	MapManager::currentMap->load();
+	
+	CharacterManager::init();
 }
 
-GameActivity::~GameActivity() {
+MapActivity::~MapActivity() {
+	CharacterManager::free();
+	
+	MapManager::free();
 }
 
-void GameActivity::processInputs() {
+void MapActivity::processInputs() {
 	
 }
 
-void GameActivity::update() {
+void MapActivity::update() {
 	if(Keyboard::isKeyPressed(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		ActivityManager::activities.push(new MenuActivity);
 	}
+	
+	CharacterManager::player->move();
+	
+	GameWindow::main->centerViewportWithObject(CharacterManager::player->x(),
+											   CharacterManager::player->y(),
+											   CharacterManager::player->frameWidth(),
+											   CharacterManager::player->frameHeight());
 }
 
-void GameActivity::render() {
+void MapActivity::render() {
 	MapManager::currentMap->render();
+	
+	CharacterManager::player->render();
+	
 	MapManager::currentMap->renderOverlay();
 }
 

@@ -66,11 +66,6 @@ void EndActivity::update() {
 			default: break;
 		}
 	}
-	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameBack, 100)) {
-		Sound::Effect::play(Sound::Effect::back);
-		ActivityManager::activities.pop();
-	}
 }
 
 void EndActivity::render() {

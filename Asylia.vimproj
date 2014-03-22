@@ -45,7 +45,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  include=include {
   activity {
    Activity.hpp
-   GameActivity.hpp
+   MapActivity.hpp
    DialogActivity.hpp
    MenuActivity.hpp
    LuaActivity.hpp
@@ -53,7 +53,11 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EndActivity.hpp
   }
   ActivityManager.hpp
+  Animation.hpp
+  AnimationManager.hpp
   Asylia.hpp
+  Character.hpp
+  CharacterManager.hpp
   Color.hpp
   Config.hpp
   Debug.hpp
@@ -66,11 +70,14 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   LuaHandler.hpp
   Map.hpp
   MapManager.hpp
+  Player.hpp
   Rectangle.hpp
   SDLManager.hpp
   SDLHeaders.hpp
   Sound.hpp
+  Sprite.hpp
   Tileset.hpp
+  Timer.hpp
   TimeManager.hpp
   Types.hpp
   window {
@@ -82,7 +89,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  source=source {
   activity {
    Activity.cpp
-   GameActivity.cpp
+   MapActivity.cpp
    DialogActivity.cpp
    MenuActivity.cpp
    LuaActivity.cpp
@@ -90,6 +97,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EndActivity.cpp
   }
   ActivityManager.cpp
+  AnimationManager.cpp
+  Character.cpp
+  CharacterManager.cpp
   Color.cpp
   main.cpp
   Font.cpp
@@ -101,8 +111,11 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   LuaHandler.cpp
   Map.cpp
   MapManager.cpp
+  Player.cpp
   SDLManager.cpp
   Sound.cpp
+  Sprite.cpp
+  Timer.cpp
   TimeManager.cpp
   window {
    Window.cpp

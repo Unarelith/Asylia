@@ -66,11 +66,6 @@ void GameWindow::clear() {
 }
 
 void GameWindow::update() {
-	/*centerViewportWithObject(CharacterManager::player()->x(),
-							 CharacterManager::player()->y(),
-							 CharacterManager::player()->frameWidth(),
-							 CharacterManager::player()->frameHeight());*/
-	
 	SDL_RenderPresent(m_renderer);
 }
 

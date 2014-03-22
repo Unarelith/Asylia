@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.hpp
+ *       Filename:  CharacterManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:08
+ *        Created:  22/03/2014 20:21:11
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,14 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGACTIVITY_HPP_
-#define DIALOGACTIVITY_HPP_
+#ifndef CHARACTERMANAGER_HPP_
+#define CHARACTERMANAGER_HPP_
 
-class DialogActivity : public MapActivity {
-	public:
-		DialogActivity();
-		~DialogActivity();
-		
-		void processInputs();
-		void update();
-		void render();
-};
+namespace CharacterManager {
+	void init();
+	void free();
+	
+	extern Player *player;
+}
 
-#endif // DIALOGACTIVITY_HPP_
+#endif // CHARACTERMANAGER_HPP_

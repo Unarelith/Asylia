@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  GameActivity.hpp
+ *       Filename:  AnimationManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:43
+ *        Created:  22/03/2014 19:34:26
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,13 @@
  *
  * =====================================================================================
  */
-#ifndef GAMEACTIVITY_HPP_
-#define GAMEACTIVITY_HPP_
+#ifndef ANIMATIONMANAGER_HPP_
+#define ANIMATIONMANAGER_HPP_
 
-class GameActivity : public Activity {
-	public:
-		GameActivity();
-		~GameActivity();
-		
-		void processInputs();
-		void update();
-		void render();
+namespace AnimationManager {
+	extern u16 character[4][4];
+	
+	extern u16 arrow[4];
 };
 
-#endif // GAMEACTIVITY_HPP_
+#endif // ANIMATIONMANAGER_HPP_

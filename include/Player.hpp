@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.hpp
+ *       Filename:  Player.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:08
+ *        Created:  22/03/2014 19:48:20
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,15 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGACTIVITY_HPP_
-#define DIALOGACTIVITY_HPP_
+#ifndef PLAYER_HPP_
+#define PLAYER_HPP_
 
-class DialogActivity : public MapActivity {
+class Player : public Character {
 	public:
-		DialogActivity();
-		~DialogActivity();
+		Player(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY);
+		~Player();
 		
-		void processInputs();
-		void update();
-		void render();
+		void move();
 };
 
-#endif // DIALOGACTIVITY_HPP_
+#endif // PLAYER_HPP_

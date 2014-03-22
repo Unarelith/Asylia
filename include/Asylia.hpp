@@ -57,6 +57,15 @@ using namespace tinyxml2;
 
 #include "Image.hpp"
 
+#include "Timer.hpp"
+#include "Animation.hpp"
+#include "AnimationManager.hpp"
+#include "Sprite.hpp"
+
+#include "Character.hpp"
+#include "Player.hpp"
+#include "CharacterManager.hpp"
+
 #include "Interface.hpp"
 
 #include "Window.hpp"
@@ -68,7 +77,7 @@ using namespace tinyxml2;
 #include "MapManager.hpp"
 
 #include "Activity.hpp"
-#include "GameActivity.hpp"
+#include "MapActivity.hpp"
 #include "LuaActivity.hpp"
 #include "DialogActivity.hpp"
 #include "MenuActivity.hpp"

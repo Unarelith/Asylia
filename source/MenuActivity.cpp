@@ -59,14 +59,14 @@ void MenuActivity::update() {
 		}
 	}
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameBack, 100)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameBack, 500)) {
 		Sound::Effect::play(Sound::Effect::back);
 		ActivityManager::activities.pop();
 	}
 }
 
 void MenuActivity::render() {
-	GameActivity::render();
+	MapActivity::render();
 	
 	m_cmdwin->draw();
 }

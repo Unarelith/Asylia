@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.hpp
+ *       Filename:  AnimationManager.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:08
+ *        Created:  22/03/2014 19:35:16
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,14 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGACTIVITY_HPP_
-#define DIALOGACTIVITY_HPP_
+#include "Asylia.hpp"
 
-class DialogActivity : public MapActivity {
-	public:
-		DialogActivity();
-		~DialogActivity();
-		
-		void processInputs();
-		void update();
-		void render();
+u16 AnimationManager::character[4][4] = {
+	{0, 1, 2, 3},
+	{4, 5, 6, 7},
+	{8, 9, 10, 11},
+	{12, 13, 14, 15}
 };
 
-#endif // DIALOGACTIVITY_HPP_
+u16 AnimationManager::arrow[4] = {58, 59, 70, 71};
+

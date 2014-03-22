@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  MenuActivity.hpp
+ *       Filename:  Timer.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:21:02
+ *        Created:  22/03/2014 19:37:18
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,20 +15,28 @@
  *
  * =====================================================================================
  */
-#ifndef MENUACTIVITY_HPP_
-#define MENUACTIVITY_HPP_
+#ifndef TIMER_HPP_
+#define TIMER_HPP_
 
-class MenuActivity : public MapActivity {
+class Timer {
 	public:
-		MenuActivity();
-		~MenuActivity();
+		Timer();
+		~Timer();
 		
-		void processInputs();
-		void update();
-		void render();
+		void stop();
+		void start();
+		void reset();
+		
+		bool isStarted() const { return m_isStarted; }
+		
+		u16 time() { return (m_isStarted) ? SDL_GetTicks() - m_t : m_tick; }
 		
 	private:
-		CommandWindow *m_cmdwin;
+		u16 m_t;
+		
+		bool m_isStarted;
+		
+		u16 m_tick;
 };
 
-#endif // MENUACTIVITY_HPP_
+#endif // TIMER_HPP_

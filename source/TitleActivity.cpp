@@ -31,6 +31,8 @@ TitleActivity::TitleActivity() {
 	m_cmdwin = new CommandWindow(192, choices);
 	m_cmdwin->x(GameWindow::main->width() / 2 - m_cmdwin->width() / 2);
 	m_cmdwin->y(GameWindow::main->height() / 2 + int(GameWindow::main->height() / 10));
+	
+	GameWindow::main->updateViewportPosition(0, 0);
 }
 
 TitleActivity::~TitleActivity() {
@@ -49,7 +51,7 @@ void TitleActivity::update() {
 		
 		switch(m_cmdwin->pos()) {
 			case 0:
-				ActivityManager::activities.push(new GameActivity);
+				ActivityManager::activities.push(new MapActivity);
 				break;
 			case 1: break;
 			case 2:
