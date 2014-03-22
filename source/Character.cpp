@@ -36,6 +36,12 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area,
 	
 	m_moving = false;
 	
+	m_hitboxX = 0;
+	m_hitboxY = 16;
+	
+	m_hitboxW = 32;
+	m_hitboxH = 32;
+	
 	addAnimation(4, AnimationManager::character[0], 125); // Down
 	addAnimation(4, AnimationManager::character[1], 125); // Right
 	addAnimation(4, AnimationManager::character[2], 125); // Left
@@ -51,5 +57,41 @@ void Character::render() {
 	} else {
 		drawFrame(m_x, m_y, m_animations[m_direction]->tabAnim[0]);
 	}
+}
+
+void Character::testCollisions() {
+	mapCollisions();
+}
+
+void Character::mapCollisions() {
+	if((!passable(m_x + m_hitboxX + m_vx,
+				  m_y + m_hitboxY))
+	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
+				  m_y + m_hitboxY))
+	|| (!passable(m_x + m_hitboxX + m_vx,
+				  m_y + m_hitboxY + m_hitboxH - 1))
+	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
+				  m_y + m_hitboxY + m_hitboxH - 1))) {
+		m_vx = 0;
+		m_vxCount = 32;
+		collisionAction(NULL);
+	}
+	
+	if((!passable(m_x + m_hitboxX,
+				  m_y + m_hitboxY + m_vy))
+	|| (!passable(m_x + m_hitboxX,
+				  m_y + m_hitboxY + m_hitboxH - 1 + m_vy))
+	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1,
+				  m_y + m_hitboxY + m_vy))
+	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1,
+				  m_y + m_hitboxY + m_hitboxH - 1 + m_vy))) {
+		m_vy = 0;
+		m_vyCount = 32;
+		collisionAction(NULL);
+	}
+}
+
+void Character::collisionAction(void *c) {
+	m_moving = false;
 }
 

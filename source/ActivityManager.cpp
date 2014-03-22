@@ -22,6 +22,7 @@ std::stack<Activity*> ActivityManager::activities;
 void ActivityManager::init() {
 #ifdef NO_TITLESCREEN
 	activities.push(new MapActivity);
+	((MapActivity *)activities.top())->init();
 #else
 	activities.push(new TitleActivity);
 #endif

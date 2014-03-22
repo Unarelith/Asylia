@@ -19,18 +19,20 @@
 
 MapActivity::MapActivity() {
 	m_type = Type::Map;
-	
-	MapManager::init();
-	MapManager::currentMap = MapManager::maps[0][0];
-	MapManager::currentMap->load();
-	
-	CharacterManager::init();
 }
 
 MapActivity::~MapActivity() {
 	CharacterManager::free();
 	
 	MapManager::free();
+}
+
+void MapActivity::init() {
+	MapManager::init();
+	MapManager::currentMap = MapManager::maps[0][0];
+	MapManager::currentMap->load();
+	
+	CharacterManager::init();
 }
 
 void MapActivity::processInputs() {

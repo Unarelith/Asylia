@@ -31,6 +31,10 @@ class Character : public Sprite {
 		virtual void move() = 0;
 		void render();
 		
+		void testCollisions();
+		void mapCollisions();
+		void collisionAction(void *c);
+		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
 		
@@ -56,6 +60,12 @@ class Character : public Sprite {
 		u8 m_vyCount;
 		
 		bool m_moving;
+		
+		s16 m_hitboxX;
+		s16 m_hitboxY;
+		
+		u16 m_hitboxW;
+		u16 m_hitboxH;
 };
 
 #endif // CHARACTER_HPP_

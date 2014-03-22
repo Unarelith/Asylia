@@ -63,7 +63,7 @@ move:
 	if(m_vy > 0) m_direction = DIR_DOWN;
 	if(m_vy < 0) m_direction = DIR_UP;
 	
-	//testCollisions();
+	testCollisions();
 	
 	m_vxCount += abs(m_vx);
 	m_vyCount += abs(m_vy);

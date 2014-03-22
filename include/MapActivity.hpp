@@ -23,6 +23,8 @@ class MapActivity : public Activity {
 		MapActivity();
 		~MapActivity();
 		
+		void init();
+		
 		void processInputs();
 		void update();
 		void render();
