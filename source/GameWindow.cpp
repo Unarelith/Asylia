@@ -76,10 +76,10 @@ void GameWindow::update() {
 
 void GameWindow::updateViewportPosition(s16 x, s16 y) {
 	// Check if the viewport is in the map
-	/*if(x < 0) x = 0;
+	if(x < 0) x = 0;
 	if(x + m_width >= MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - m_width - 1;
 	if(y < 0) y = 0;
-	if(y + m_height >= MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - m_height - 1;*/
+	if(y + m_height >= MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - m_height - 1;
 	
 	// Update viewport position
 	m_viewportX = x;

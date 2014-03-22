@@ -33,6 +33,9 @@ class Map {
 		
 		Tileset *tileset() const { return m_tileset; }
 		
+		u16 width() const { return m_width; }
+		u16 height() const { return m_height; }
+		
 		u8 layers() const { return m_layers; }
 		
 	private:

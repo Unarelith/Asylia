@@ -27,7 +27,7 @@
 
 #define CHARA_SPEED 4
 
-//#define NO_TITLESCREEN
+#define NO_TITLESCREEN
 
 #define COLORED_DEBUG
 

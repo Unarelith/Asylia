@@ -1,0 +1,13 @@
+- Character class
+- Player class
+- CharacterManager module
+- Collisions Player/Map
+
+- Android virtual keys
+
+- Event class
+- Events movement in Lua
+- Collisions Player/Event and Event/Player
+- Dialog boxes ( with Attack key, and without ) and Lua management
+
+- Make all menu interfaces
