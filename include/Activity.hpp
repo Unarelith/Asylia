@@ -35,7 +35,8 @@ class Activity {
 			Dialog,
 			Menu,
 			Lua,
-			TitleScreen
+			TitleScreen,
+			GameEnd
 		} Type;
 		
 		Type type() const { return m_type; }

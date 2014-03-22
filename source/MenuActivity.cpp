@@ -29,7 +29,7 @@ MenuActivity::MenuActivity() {
 	choices.push_back("Save");
 	choices.push_back("Quit");
 	
-	m_cmdwin = new CommandWindow(0, 0, 150, choices);
+	m_cmdwin = new CommandWindow(150, choices);
 }
 
 MenuActivity::~MenuActivity() {
@@ -53,14 +53,13 @@ void MenuActivity::update() {
 			case 3: break;
 			case 4: break;
 			case 5:
-				SDL_Delay(100);
-				Game::quit = true;
+				ActivityManager::activities.push(new EndActivity);
 				break;
 			default: break;
 		}
 	}
 	
-	if(Keyboard::isKeyPressed(Keyboard::GameBack)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameBack, 100)) {
 		Sound::Effect::play(Sound::Effect::back);
 		ActivityManager::activities.pop();
 	}

@@ -28,6 +28,12 @@ class Window {
 		void drawCursor(s16 x, s16 y, u16 width, u16 height);
 		void draw();
 		
+		void x(s16 x) { m_x = x; }
+		void y(s16 y) { m_y = y; }
+		
+		u16 width() const { return m_width; }
+		u16 height() const { return m_height; }
+		
 	protected:
 		s16 m_x;
 		s16 m_y;

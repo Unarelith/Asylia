@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-CommandWindow::CommandWindow(s16 x, s16 y, u16 width, std::vector<std::string> commands) : SelectableWindow(x, y, width, commands.size() * 32 + 32) {
+CommandWindow::CommandWindow(u16 width, std::vector<std::string> commands) : SelectableWindow(0, 0, width, commands.size() * 32 + 32) {
 	m_itemMax = commands.size();
 	m_commands = commands;
 	

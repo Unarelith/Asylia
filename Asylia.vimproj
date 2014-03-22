@@ -50,6 +50,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    MenuActivity.hpp
    LuaActivity.hpp
    TitleActivity.hpp
+   EndActivity.hpp
   }
   ActivityManager.hpp
   Asylia.hpp
@@ -86,6 +87,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    MenuActivity.cpp
    LuaActivity.cpp
    TitleActivity.cpp
+   EndActivity.cpp
   }
   ActivityManager.cpp
   Color.cpp

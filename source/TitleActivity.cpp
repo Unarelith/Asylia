@@ -27,7 +27,10 @@ TitleActivity::TitleActivity() {
 	choices.push_back("Quit");
 	
 	m_background = new Image("graphics/interface/TitleScreen.jpg");
-	m_cmdwin = new CommandWindow(320 - 192 / 2, 288, 192, choices);
+	
+	m_cmdwin = new CommandWindow(192, choices);
+	m_cmdwin->x(GameWindow::main->width() / 2 - m_cmdwin->width() / 2);
+	m_cmdwin->y(GameWindow::main->height() / 2 + int(GameWindow::main->height() / 10));
 }
 
 TitleActivity::~TitleActivity() {

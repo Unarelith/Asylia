@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  CommandWindow.hpp
+ *       Filename:  EndActivity.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/03/2014 13:13:37
+ *        Created:  22/03/2014 17:46:04
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,19 +15,20 @@
  *
  * =====================================================================================
  */
-#ifndef COMMANDWINDOW_HPP_
-#define COMMANDWINDOW_HPP_
+#ifndef ENDACTIVITY_HPP_
+#define ENDACTIVITY_HPP_
 
-class CommandWindow : public SelectableWindow {
+class EndActivity : public Activity {
 	public:
-		CommandWindow(u16 width, std::vector<std::string> commands);
-		~CommandWindow();
+		EndActivity();
+		~EndActivity();
 		
-		void drawItem(u8 pos);
-		void draw();
+		void processInputs();
+		void update();
+		void render();
 		
 	private:
-		std::vector<std::string> m_commands;
+		CommandWindow *m_cmdwin;
 };
 
-#endif // COMMANDWINDOW_HPP_
+#endif // ENDACTIVITY_HPP_
