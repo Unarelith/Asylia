@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  GameActivity.hpp
+ *       Filename:  Window.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:43
+ *        Created:  22/03/2014 00:30:53
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,22 @@
  *
  * =====================================================================================
  */
-#ifndef GAMEACTIVITY_HPP_
-#define GAMEACTIVITY_HPP_
+#ifndef WINDOW_HPP_
+#define WINDOW_HPP_
 
-class GameActivity : public Activity {
+class Window {
 	public:
-		GameActivity();
-		~GameActivity();
+		Window(s16 x, s16 y, u16 width, u16 height);
+		~Window();
 		
-		void processInputs();
-		void update();
-		void render();
+		void draw();
+		
+	protected:
+		s16 m_x;
+		s16 m_y;
+		
+		u16 m_width;
+		u16 m_height;
 };
 
-#endif // GAMEACTIVITY_HPP_
+#endif // WINDOW_HPP_

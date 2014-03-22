@@ -28,12 +28,16 @@ Game::Game() {
 	
 	MapManager::init();
 	
+	Interface::init();
+	
 	LuaHandler::bindClasses();
 	
 	ActivityManager::init();
 }
 
 Game::~Game() {
+	Interface::free();
+	
 	MapManager::free();
 	
 	delete GameWindow::main;

@@ -43,7 +43,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   tinyxml2.hpp
  }
  include=include {
-  activities {
+  activity {
    Activity.hpp
    DialogActivity.hpp
    GameActivity.hpp
@@ -55,9 +55,11 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Color.hpp
   Config.hpp
   Debug.hpp
+  Font.hpp
   Game.hpp
   GameWindow.hpp
   Image.hpp
+  Interface.hpp
   Keyboard.hpp
   LuaHandler.hpp
   Map.hpp
@@ -67,9 +69,13 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Tileset.hpp
   TimeManager.hpp
   Types.hpp
+  window {
+   Window.hpp
+   SelectableWindow.hpp
+  }
  }
  source=source {
-  activities {
+  activity {
    Activity.cpp
    DialogActivity.cpp
    GameActivity.cpp
@@ -79,14 +85,20 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   ActivityManager.cpp
   Color.cpp
   main.cpp
+  Font.cpp
   Game.cpp
   GameWindow.cpp
   Image.cpp
+  Interface.cpp
   Keyboard.cpp
   LuaHandler.cpp
   Map.cpp
   MapManager.cpp
   SDLManager.cpp
   TimeManager.cpp
+  window {
+   Window.cpp
+   SelectableWindow.cpp
+  }
  }
 }

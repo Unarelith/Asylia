@@ -43,6 +43,8 @@ using namespace tinyxml2;
 
 #include "Color.hpp"
 
+#include "Font.hpp"
+
 #include "Keyboard.hpp"
 
 #include "Game.hpp"
@@ -51,6 +53,11 @@ using namespace tinyxml2;
 #include "TimeManager.hpp"
 
 #include "Image.hpp"
+
+#include "Interface.hpp"
+
+#include "Window.hpp"
+#include "SelectableWindow.hpp"
 
 #include "Tileset.hpp"
 #include "Map.hpp"

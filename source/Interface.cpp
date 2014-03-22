@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  GameActivity.cpp
+ *       Filename:  Interface.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:23:05
+ *        Created:  22/03/2014 00:35:50
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,24 +17,18 @@
  */
 #include "Asylia.hpp"
 
-GameActivity::GameActivity() {
-	MapManager::currentMap = MapManager::maps[0][0];
-	MapManager::currentMap->load();
-}
+Font *Interface::defaultFont = NULL;
+Image *Interface::interface = NULL;
 
-GameActivity::~GameActivity() {
-}
-
-void GameActivity::processInputs() {
+void Interface::init() {
+	defaultFont = new Font("fonts/arial.ttf");
 	
+	interface = new Image("graphics/interface/Interface.png");
 }
 
-void GameActivity::update() {
+void Interface::free() {
+	delete interface;
 	
-}
-
-void GameActivity::render() {
-	MapManager::currentMap->render();
-	MapManager::currentMap->renderOverlay();
+	delete defaultFont;
 }
 
