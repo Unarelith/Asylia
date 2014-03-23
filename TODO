@@ -1,4 +1,3 @@
-- Font.printTextScaled()
 - Android virtual keys
 - SelectableWindow with pages => ItemWindow
 - Collisions Player/Event and Event/Player to improve ( by 32x32 tile )
