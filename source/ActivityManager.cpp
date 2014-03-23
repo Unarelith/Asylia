@@ -20,7 +20,7 @@
 std::stack<Activity*> ActivityManager::activities;
 
 void ActivityManager::init() {
-#ifdef __ANDROID__
+#ifdef __ANDROID__ // FIXME: Tricky solution for issue #7 but not really good
 	activities.push(new MapActivity);
 	((MapActivity *)activities.top())->init();
 	activities.pop();
