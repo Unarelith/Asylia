@@ -25,9 +25,13 @@ MapActivity::~MapActivity() {
 	CharacterManager::free();
 	
 	MapManager::free();
+	
+	LuaHandler::free();
 }
 
 void MapActivity::init() {
+	LuaHandler::init();
+	
 	MapManager::init();
 	
 	MapManager::currentMap = MapManager::maps[0][0];

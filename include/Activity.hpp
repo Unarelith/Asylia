@@ -26,7 +26,7 @@ class Activity {
 		virtual void update() = 0;
 		virtual void render() = 0;
 		
-		void pollEvents(bool *quit = NULL);
+		void pollEvents();
 		
 		typedef enum {
 			None,

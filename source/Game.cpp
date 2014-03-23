@@ -26,8 +26,6 @@ std::string to_string(int n) {
 #endif
 
 Game::Game() {
-	LuaHandler::init();
-	
 	SDLManager::init();
 	
 	GameWindow::main = new GameWindow(APP_NAME);
@@ -47,8 +45,6 @@ Game::~Game() {
 	delete GameWindow::main;
 	
 	SDLManager::free();
-	
-	LuaHandler::free();
 	
 	exit(EXIT_SUCCESS);
 }

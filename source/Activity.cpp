@@ -24,13 +24,12 @@ Activity::Activity() {
 Activity::~Activity() {
 }
 
-void Activity::pollEvents(bool *quit) {
+void Activity::pollEvents() {
 	SDL_Event event;
 	while(SDL_PollEvent(&event) != 0) {
 		switch(event.type) {
 			case SDL_QUIT:
 				Game::quit = true;
-				if(quit) *quit = true;
 				break;
 #ifdef __ANDROID__
 			case SDL_FINGERDOWN:
@@ -41,6 +40,7 @@ void Activity::pollEvents(bool *quit) {
 				Keyboard::resetPad(&event, true);
 				break;
 			case SDL_APP_WILLENTERBACKGROUND:
+				Game::quit = true;
 				continue;
 #endif
 			default:

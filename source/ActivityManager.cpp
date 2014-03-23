@@ -20,6 +20,12 @@
 std::stack<Activity*> ActivityManager::activities;
 
 void ActivityManager::init() {
+#ifdef __ANDROID__
+	activities.push(new MapActivity);
+	((MapActivity *)activities.top())->init();
+	activities.pop();
+#endif
+
 #ifdef NO_TITLESCREEN
 	activities.push(new MapActivity);
 	((MapActivity *)activities.top())->init();

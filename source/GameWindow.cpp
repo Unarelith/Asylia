@@ -26,8 +26,8 @@ GameWindow::GameWindow(const char *caption) {
 	
 	info("Current display: %dx%d", current.w, current.h);
 	
-	m_width = current.w / 2;
-	m_height = current.h / 2;
+	m_width = current.w / 1.25;
+	m_height = current.h / 1.25;
 #else
 	m_width = WIN_DEFAULT_WIDTH;
 	m_height = WIN_DEFAULT_HEIGHT;
@@ -70,20 +70,19 @@ void GameWindow::update() {
 }
 
 void GameWindow::updateViewportPosition(s16 x, s16 y) {
-	// Check if the viewport is in the map
-	if(x < 0) x = 0;
-	if(x + m_width >= MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - m_width - 1;
-	if(y < 0) y = 0;
-	if(y + m_height >= MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - m_height - 1;
+	if(MapManager::currentMap) {
+		if(x < 0) x = 0;
+		if(x + m_width >= MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - m_width - 1;
+		if(y < 0) y = 0;
+		if(y + m_height >= MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - m_height - 1;
+	}
 	
-	// Update viewport position
 	m_viewportX = x;
 	m_viewportY = y;
 	
 	if(m_viewportX + m_width > m_viewportW) m_viewportW += m_width;
 	if(m_viewportY + m_height > m_viewportH) m_viewportH += m_height;
 	
-	// Set viewport
 	SDL_Rect viewportRect = {-x, y - m_viewportH + m_height, m_viewportW, m_viewportH};
 	SDL_RenderSetViewport(m_renderer, &viewportRect);
 }
