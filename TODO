@@ -1,8 +1,7 @@
 - Android virtual keys
 
-- Event class
 - Events movement in Lua
-- Collisions Player/Event and Event/Player
-- Dialog boxes ( with Attack key, and without ) and Lua management
+- Collisions Player/Event and Event/Player to improve
+- Dialog boxes + StringVector
 
 - Make all menu interfaces

@@ -41,6 +41,7 @@ class Keyboard {
 		static void updatePad(SDL_Event *e);
 		
 		static bool isKeyPressed(u32 key);
+		static bool isKeyPressedOnce(u32 key);
 		static bool isKeyPressedWithDelay(u32 key, u16 delay);
 		
 		static const u8 *state;
@@ -49,6 +50,8 @@ class Keyboard {
 		static s32 padFinger[7];
 		
 		static u32 lastTimePressed[7];
+		
+		static u8 pressed[7];
 		
 		static u32 keysCode[7];
 		

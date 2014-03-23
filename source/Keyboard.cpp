@@ -21,6 +21,7 @@ const u8 *Keyboard::state = NULL;
 u8 Keyboard::padState[7] = {0, 0, 0, 0, 0, 0, 0};
 s32 Keyboard::padFinger[7] = {-1, -1, -1, -1, -1, -1, -1};
 u32 Keyboard::lastTimePressed[7] = {0, 0, 0, 0, 0, 0, 0};
+u8 Keyboard::pressed[7] = {0, 0, 0, 0, 0, 0, 0};
 
 const u32 Keyboard::GameUp = PAD_UP;
 const u32 Keyboard::GameDown = PAD_DOWN;
@@ -46,36 +47,52 @@ const u8 *Keyboard::getState() {
 
 bool Keyboard::isKeyPressed(u32 key) {
 #ifndef __ANDROID__
-	if(state[keysCode[key]]) return true;
-	else		   return false;
+	if(state[keysCode[key]]) {
 #else
-	if(padState[key]) return true;
-	else			  return false;
+	if(padState[key]) {
 #endif
+		return true;
+	} else {
+		return false;
+	}
+}
+
+bool Keyboard::isKeyPressedOnce(u32 key) {
+#ifndef __ANDROID__
+	if(state[keysCode[key]]) {
+#else
+	if(padState[key]) {
+#endif
+		if(!pressed[key]) {
+			pressed[key] = 1;
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		pressed[key] = 0;
+		return false;
+	}
 }
 
 bool Keyboard::isKeyPressedWithDelay(u32 key, u16 delay) {
 #ifndef __ANDROID__
 	if(state[keysCode[key]] && SDL_GetTicks() - lastTimePressed[key] > delay) {
-		lastTimePressed[key] = SDL_GetTicks();
-		return true;
-	} else {
-		if(!state[keysCode[key]]) {
-			lastTimePressed[key] = 0;
-		}
-		return false;
-	}
 #else
 	if(padState[key] && SDL_GetTicks() - lastTimePressed[key] > delay) {
+#endif
 		lastTimePressed[key] = SDL_GetTicks();
 		return true;
 	} else {
-		if(!padState[key] {
+#ifndef __ANDROID__
+		if(!state[keysCode[key]]) {
+#else
+		if(!padState[key]) {
+#endif
 			lastTimePressed[key] = 0;
 		}
 		return false;
 	}
-#endif
 }
 
 void Keyboard::update() {

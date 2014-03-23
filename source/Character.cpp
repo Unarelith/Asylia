@@ -38,6 +38,12 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area,
 	
 	m_moving = false;
 	
+	m_speed = CHARA_SPEED;
+	
+	m_movementTimer.start();
+	m_movementDelay = 4000;
+	m_movementID = 1;
+	
 	m_hitboxX = 0;
 	m_hitboxY = 16;
 	
@@ -61,10 +67,8 @@ void Character::render() {
 	}
 }
 
-void Character::move(std::string moveScript) {
-	if(m_vxCount == 0 && m_vyCount == 0) {
-		LuaHandler::doFile(moveScript.c_str());
-	}
+void Character::move(std::string function) {
+	LuaHandler::doString(function);
 	
 	if(m_vx > 0) m_direction = DIR_RIGHT;
 	if(m_vx < 0) m_direction = DIR_LEFT;
@@ -177,15 +181,30 @@ void Character::eventCollisions() {
 	m_inFrontOf = NULL;
 	
 	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
-		if(canInitiateConversationWith(MapManager::currentMap->events()[i])) {
-			m_inFrontOf = MapManager::currentMap->events()[i];
+		if(MapManager::currentMap->events()[i] != this) {
+			if(canInitiateConversationWith(MapManager::currentMap->events()[i])) {
+				m_inFrontOf = MapManager::currentMap->events()[i];
+			}
+			inCollisionWith(MapManager::currentMap->events()[i]);
 		}
-		inCollisionWith(MapManager::currentMap->events()[i]);
 	}
 }
 
 void Character::collisionAction(Character *c) {
 	m_moving = false;
 	if(c && c->m_type == Type::Event) c->collisionAction();
+}
+
+void Character::doMovement(s8 vx, s8 vy) {
+	if(m_vxCount == 0 && m_vyCount == 0 && m_movementTimer.time() > m_movementDelay) {
+		m_vx = vx;
+		m_vy = vy;
+		m_moving = true;
+		
+		m_movementID++;
+		
+		m_movementTimer.reset();
+		m_movementTimer.start();
+	}
 }
 

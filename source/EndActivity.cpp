@@ -36,7 +36,7 @@ EndActivity::~EndActivity() {
 void EndActivity::update() {
 	m_cmdwin->update();
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 2000)) {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		switch(m_cmdwin->pos()) {
@@ -61,6 +61,11 @@ void EndActivity::update() {
 				break;
 			default: break;
 		}
+	}
+	
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		Sound::Effect::play(Sound::Effect::back);
+		ActivityManager::pop();
 	}
 }
 

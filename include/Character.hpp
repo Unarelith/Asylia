@@ -30,7 +30,7 @@ class Character : public Sprite {
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth = 32, u16 frameHeight = 48);
 		virtual ~Character();
 		
-		void move(std::string moveScript);
+		void move(std::string function);
 		void render();
 		
 		virtual void action() = 0;
@@ -45,6 +45,12 @@ class Character : public Sprite {
 		void eventCollisions();
 		
 		void collisionAction(Character *c);
+		
+		void doMovement(s8 vx, s8 vy);
+		void moveUp() { doMovement(0, -m_speed); }
+		void moveDown() { doMovement(0, m_speed); }
+		void moveLeft() { doMovement(-m_speed, 0); }
+		void moveRight() { doMovement(m_speed, 0); }
 		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
@@ -79,6 +85,12 @@ class Character : public Sprite {
 		u8 m_vyCount;
 		
 		bool m_moving;
+		
+		u8 m_speed;
+		
+		Timer m_movementTimer;
+		u16 m_movementDelay;
+		u16 m_movementID;
 		
 		s16 m_hitboxX;
 		s16 m_hitboxY;

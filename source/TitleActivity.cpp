@@ -41,7 +41,7 @@ TitleActivity::~TitleActivity() {
 void TitleActivity::update() {
 	m_cmdwin->update();
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 100)) {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		switch(m_cmdwin->pos()) {

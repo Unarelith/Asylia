@@ -39,7 +39,7 @@ MenuActivity::~MenuActivity() {
 void MenuActivity::update() {
 	m_cmdwin->update();
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 2000)) {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		switch(m_cmdwin->pos()) {
@@ -55,7 +55,7 @@ void MenuActivity::update() {
 		}
 	}
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameBack, 500)) {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
 		ActivityManager::pop();
 	}

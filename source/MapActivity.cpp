@@ -40,7 +40,7 @@ void MapActivity::init() {
 }
 
 void MapActivity::update() {
-	if(Keyboard::isKeyPressed(Keyboard::GameMenu)) {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		ActivityManager::push(new MenuActivity);
 	}

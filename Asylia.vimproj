@@ -13,7 +13,6 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   }
   events=events {
    event0=event0 {
-	movement.lua
     main.lua
    }
   }

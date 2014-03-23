@@ -43,7 +43,11 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", CharacterManager::player);
 	
-	SLB::Class<Event>("Event", &slbm);
+	SLB::Class<Event>("Event", &slbm).set("moveUp", &Character::moveUp)
+									 .set("moveDown", &Character::moveDown)
+									 .set("moveLeft", &Character::moveLeft)
+									 .set("moveRight", &Character::moveRight)
+									 .set("getTicks", &SDL_GetTicks);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
@@ -51,6 +55,7 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<Keyboard>("Keyboard", &slbm).set("isKeyPressed", &Keyboard::isKeyPressed)
 										   .set("isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay)
+										   .set("isKeyPressedOnce", &Keyboard::isKeyPressedOnce)
 										   .set("GameUp", Keyboard::GameUp)
 										   .set("GameDown", Keyboard::GameDown)
 										   .set("GameLeft", Keyboard::GameLeft)
