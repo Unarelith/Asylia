@@ -30,6 +30,7 @@ class Font {
 		~Font();
 		
 		void print(const char *str, u16 x, u16 y, FontSize size, Color color = Color::black);
+		void printTextScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::black);
 		void printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::black);
 		
 	private:

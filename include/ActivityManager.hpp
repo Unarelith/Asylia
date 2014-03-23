@@ -29,7 +29,7 @@ class ActivityManager {
 		static void push(Activity *activity) { activities.push(activity); }
 		static int size() { return activities.size(); }
 		
-		static void newDialog() { activities.push(new TitleActivity); }
+		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity; activities.push(dialog); return dialog; }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

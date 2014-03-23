@@ -1,0 +1,31 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  TextWindow.cpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  23/03/2014 18:22:52
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Quentin BAZIN, <quent42340@gmail.com>
+ *        Company:  Deloptia
+ *
+ * =====================================================================================
+ */
+#include "Asylia.hpp"
+
+TextWindow::TextWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
+}
+
+TextWindow::~TextWindow() {
+}
+
+void TextWindow::draw(std::string text) {
+	Window::draw();
+	
+	Interface::defaultFont->printTextBox(text.c_str(), m_x + GameWindow::main->viewportX() + 20, m_y + GameWindow::main->viewportY() + 20, m_width - 40, m_height - 40, FONT_LARGE, Color::white);
+}
+

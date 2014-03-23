@@ -89,8 +89,10 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Types.hpp
   window {
    Window.hpp
+   TextWindow.hpp
    SelectableWindow.hpp
    CommandWindow.hpp
+   MessageWindow.hpp
   }
  }
  source=source {
@@ -126,8 +128,10 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   TimeManager.cpp
   window {
    Window.cpp
+   TextWindow.cpp
    SelectableWindow.cpp
    CommandWindow.cpp
+   MessageWindow.cpp
   }
   main.cpp
  }

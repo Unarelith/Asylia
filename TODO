@@ -1,7 +1,9 @@
+- Font.printTextScaled()
 - Android virtual keys
-
-- Events movement in Lua
-- Collisions Player/Event and Event/Player to improve
-- Dialog boxes + StringVector
-
+- SelectableWindow with pages => ItemWindow
+- Collisions Player/Event and Event/Player to improve ( by 32x32 tile )
+- Changing activity has effect on Event timers ( FIXME )
 - Make all menu interfaces
+
+- Issues:
+	* When back to TitleActivity then MapActivity, NPCs won't move nor turn anymore

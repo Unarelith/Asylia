@@ -13,7 +13,12 @@ event0.init = function()
 	
 	event0.action = function()
 		if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-			ActivityManager.newDialog();
+			event0.character:setDirection(3 - CharacterManager.player():getDirection())
+			
+			local dialog = ActivityManager.newDialog()
+			
+			dialog:addMessage("Hello little boy, do you know that you're in a incredible world made of magic and other things you don't even know?")
+			dialog:addMessage("You should prepare yourself before the adventure!")
 		end
 	end
 	

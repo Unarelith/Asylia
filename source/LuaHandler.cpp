@@ -41,12 +41,14 @@ void LuaHandler::bindClasses() {
 														 .set("size", &ActivityManager::size)
 														 .set("newDialog", &ActivityManager::newDialog);
 	
-	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", CharacterManager::player);
+	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
 	
 	SLB::Class<Event>("Event", &slbm).set("moveUp", &Character::moveUp)
 									 .set("moveDown", &Character::moveDown)
 									 .set("moveLeft", &Character::moveLeft)
 									 .set("moveRight", &Character::moveRight)
+									 .set("setDirection", &Character::setDirection)
+									 .set("getDirection", &Character::getDirection)
 									 .set("getTicks", &SDL_GetTicks);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
@@ -70,7 +72,12 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
 	
-	SLB::Class<TitleActivity>("TitleActivity", &slbm).constructor();
+	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
+									   .set("getDirection", &Character::getDirection);
+;
+	
+	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
+													   .set("addMessage", &DialogActivity::addMessage);
 }
 
 void LuaHandler::doFile(const char *filename) {

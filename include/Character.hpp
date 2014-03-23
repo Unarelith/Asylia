@@ -55,6 +55,9 @@ class Character : public Sprite {
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
 		
+		u8 getDirection() const { return m_direction; }
+		void setDirection(u8 direction) { m_direction = direction; }
+		
 		Character *inFrontOf() const { return m_inFrontOf; }
 		
 		enum Direction {

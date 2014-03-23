@@ -22,6 +22,7 @@
 #include <sstream>
 #include <vector>
 #include <stack>
+#include <queue>
 #include <numeric>
 
 #include "AndroidIO.hpp"
@@ -69,8 +70,10 @@ using namespace tinyxml2;
 #include "Interface.hpp"
 
 #include "Window.hpp"
+#include "TextWindow.hpp"
 #include "SelectableWindow.hpp"
 #include "CommandWindow.hpp"
+#include "MessageWindow.hpp"
 
 #include "Event.hpp"
 

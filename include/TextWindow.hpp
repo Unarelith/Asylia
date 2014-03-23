@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.hpp
+ *       Filename:  TextWindow.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  21/03/2014 18:19:08
+ *        Created:  23/03/2014 18:19:48
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,21 +15,15 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGACTIVITY_HPP_
-#define DIALOGACTIVITY_HPP_
+#ifndef TEXTWINDOW_HPP_
+#define TEXTWINDOW_HPP_
 
-class DialogActivity : public MapActivity {
+class TextWindow : public Window {
 	public:
-		DialogActivity();
-		~DialogActivity();
+		TextWindow(s16 x, s16 y, u16 width, u16 height);
+		~TextWindow();
 		
-		void addMessage(std::string msg) { m_msgwin->addMessage(msg); }
-		
-		void update();
-		void render();
-		
-	private:
-		MessageWindow *m_msgwin;
+		void draw(std::string text);
 };
 
-#endif // DIALOGACTIVITY_HPP_
+#endif // TEXTWINDOW_HPP_
