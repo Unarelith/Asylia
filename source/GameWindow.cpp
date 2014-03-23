@@ -26,8 +26,8 @@ GameWindow::GameWindow(const char *caption) {
 	
 	info("Current display: %dx%d", current.w, current.h);
 	
-	m_width = current.w;
-	m_height = current.h;
+	m_width = current.w / 2;
+	m_height = current.h / 2;
 #else
 	m_width = WIN_DEFAULT_WIDTH;
 	m_height = WIN_DEFAULT_HEIGHT;

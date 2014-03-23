@@ -25,7 +25,7 @@ MenuActivity::MenuActivity() {
 	choices.push_back("Items");
 	choices.push_back("Skills");
 	choices.push_back("Equip");
-	choices.push_back("NewInventory");
+	choices.push_back("State");
 	choices.push_back("Save");
 	choices.push_back("Quit");
 	

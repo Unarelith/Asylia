@@ -33,7 +33,7 @@ void CharacterManager::init() {
 	XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
 	XMLElement *mapElement = doc.FirstChildElement("player").FirstChildElement("map").ToElement();
 	
-	player = new Player(std::string("") + "graphics/characters/" + className + ((id < 10)?("0"):("")) + std::to_string(id) + ".png",
+	player = new Player(std::string("") + "graphics/characters/" + className + ((id < 10)?("0"):("")) + to_string(id) + ".png",
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
 						positionElement->IntAttribute("direction"),

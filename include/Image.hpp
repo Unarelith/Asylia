@@ -40,6 +40,8 @@ class Image {
 		
 		SDL_Texture *texture() const { return m_texture; }
 		
+		SDL_Rect posRect() const { return m_posRect; }
+		
 	protected:
 		u16 m_width;
 		u16 m_height;

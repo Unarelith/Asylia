@@ -19,6 +19,12 @@
 
 bool Game::quit = false;
 
+#ifdef __ANDROID__
+std::string to_string(int n) {
+	std::stringstream s; s << n; return s.str();
+}
+#endif
+
 Game::Game() {
 	LuaHandler::init();
 	
@@ -43,6 +49,8 @@ Game::~Game() {
 	SDLManager::free();
 	
 	LuaHandler::free();
+	
+	exit(EXIT_SUCCESS);
 }
 
 void Game::mainLoop() {
@@ -60,6 +68,8 @@ void Game::mainLoop() {
 				GameWindow::main->clear();
 				
 				ActivityManager::top()->render();
+				
+				Interface::renderHUD();
 				
 				GameWindow::main->update();
 				

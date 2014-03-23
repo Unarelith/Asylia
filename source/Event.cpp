@@ -33,7 +33,7 @@ void Event::init() {
 }
 
 void Event::update() {
-	move(m_table + ".movements[" + std::to_string(m_movementID) + " % #" + m_table + ".movements + 1](" + std::to_string(m_speed) + ")");
+	move(m_table + ".movements[" + to_string(m_movementID) + " % #" + m_table + ".movements + 1](" + to_string(m_speed) + ")");
 	
 	LuaHandler::doString(m_table + ".update()");
 	

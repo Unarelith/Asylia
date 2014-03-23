@@ -31,4 +31,8 @@
 
 #define COLORED_DEBUG
 
+#ifdef __ANDROID__
+	#define PAD
+#endif
+
 #endif // CONFIG_HPP_

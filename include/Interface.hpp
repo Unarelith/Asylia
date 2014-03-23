@@ -22,8 +22,16 @@ namespace Interface {
 	void init();
 	void free();
 	
+	void renderPad();
+	void renderHUD();
+	
 	extern Font *defaultFont;
 	extern Image *interface;
+	
+	extern Image *pad;
+	extern Image *buttonA;
+	extern Image *buttonB;
+	extern Image *buttonMenu;
 };
 
 #endif // INTERFACE_HPP_

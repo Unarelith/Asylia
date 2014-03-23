@@ -124,20 +124,20 @@ void Keyboard::resetPad(SDL_Event *e, bool released) {
 }
 
 void Keyboard::updatePad(SDL_Event *e) {
-/*	u16 fx = e->tfinger.x * Window::main->viewportW();
-	u16 fy = e->tfinger.y * Window::main->viewportH();
+	u16 fx = e->tfinger.x * GameWindow::main->width();
+	u16 fy = e->tfinger.y * GameWindow::main->height();
 	
-	u16 px = Interface::pad->posRect().x - Window::main->viewportX();
-	u16 py = Interface::pad->posRect().y - Window::main->viewportY();
+	u16 px = Interface::pad->posRect().x - GameWindow::main->viewportX();
+	u16 py = Interface::pad->posRect().y - GameWindow::main->viewportY();
 	
-	u16 ax = Interface::buttonA->posRect().x - Window::main->viewportX();
-	u16 ay = Interface::buttonA->posRect().y - Window::main->viewportY();
+	u16 ax = Interface::buttonA->posRect().x - GameWindow::main->viewportX();
+	u16 ay = Interface::buttonA->posRect().y - GameWindow::main->viewportY();
 	
-	u16 bx = Interface::buttonB->posRect().x - Window::main->viewportX();
-	u16 by = Interface::buttonB->posRect().y - Window::main->viewportY();
+	u16 bx = Interface::buttonB->posRect().x - GameWindow::main->viewportX();
+	u16 by = Interface::buttonB->posRect().y - GameWindow::main->viewportY();
 	
-	u16 menux = Interface::buttonMenu->posRect().x - Window::main->viewportX();
-	u16 menuy = Interface::buttonMenu->posRect().y - Window::main->viewportY();
+	u16 menux = Interface::buttonMenu->posRect().x - GameWindow::main->viewportX();
+	u16 menuy = Interface::buttonMenu->posRect().y - GameWindow::main->viewportY();
 	
 	resetPad(e);
 	
@@ -178,6 +178,6 @@ void Keyboard::updatePad(SDL_Event *e) {
 	if(fx > menux && fx < menux + 32 && fy > menuy && fy < menuy + 32) {
 		padState[PAD_MENU] = 1;
 		padFinger[PAD_MENU] = e->tfinger.fingerId;
-	}*/
+	}
 }
 

@@ -25,6 +25,12 @@
 #include <queue>
 #include <numeric>
 
+#ifdef __ANDROID__
+	std::string to_string(int n);
+#else
+	#define to_string(n) std::to_string(n)
+#endif
+
 #include "AndroidIO.hpp"
 
 #include "lua.hpp"
