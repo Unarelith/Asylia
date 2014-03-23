@@ -24,6 +24,9 @@ class Player : public Character {
 		~Player();
 		
 		void move();
+		
+		void action() {}
+		void collisionAction() {}
 };
 
 #endif // PLAYER_HPP_

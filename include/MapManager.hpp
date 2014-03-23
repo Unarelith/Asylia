@@ -20,22 +20,23 @@
 
 #define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::areaSizes[area]))
 
-namespace MapManager {
-	void init();
-	void free();
-	
-	void initTilesets();
-	void initMaps();
-	
-	extern Tileset **tilesets;
-	extern Map ***maps;
-	
-	extern u16 nbTilesets;
-	extern u16 nbAreas;
-	extern u16 *areaSizes;
-	
-	extern Map *currentMap;
-}
+class MapManager {
+	public:
+		static void init();
+		static void free();
+		
+		static void initTilesets();
+		static void initMaps();
+		
+		static Tileset **tilesets;
+		static Map ***maps;
+		
+		static u16 nbTilesets;
+		static u16 nbAreas;
+		static u16 *areaSizes;
+		
+		static Map *currentMap;
+};
 
 void getNonPassableTiles(const char *filename, Tileset *tileset);
 bool passable(s16 x, s16 y);

@@ -77,15 +77,18 @@ void Map::addEvent(Event *event) {
 	m_events.push_back(event);
 }
 
+Event *Map::getEvent(std::string name) {
+	for(u16 i = 0 ; i < m_events.size() ; i++) {
+		if(m_events[i]->table() == name) {
+			return m_events[i];
+		}
+	}
+	return NULL;
+}
+
 void Map::eventsUpdate() {
 	for(u16 i = 0 ; i < m_events.size() ; i++) {
 		m_events[i]->update();
-	}
-}
-
-void Map::eventsRender() {
-	for(u16 i = 0 ; i < m_events.size() ; i++) {
-		m_events[i]->render();
 	}
 }
 
@@ -120,6 +123,10 @@ void Map::load() {
 		}
 	}
 	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
+	
+	for(u16 i = 0 ; i < m_events.size() ; i++) {
+		m_events[i]->init();
+	}
 }
 
 void Map::render() {

@@ -21,7 +21,7 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area,
 	m_type = Type::None;
 	
 	m_x = x;
-	m_y = y;
+	m_y = y + 16;
 	
 	m_direction = direction;
 	
@@ -92,6 +92,7 @@ void Character::move(std::string moveScript) {
 
 void Character::testCollisions() {
 	mapCollisions();
+	eventCollisions();
 }
 
 void Character::mapCollisions() {
@@ -144,12 +145,47 @@ void Character::inCollisionWith(Character *c) {
 	}
 }
 
-void Character::eventCollisions() {
+bool Character::canInitiateConversationWith(Character *c) {
+	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
+	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
 	
+	s16 x = (m_x + m_hitboxY) / (MapManager::currentMap->tileset()->tileWidth * 2);
+	s16 y = (m_y + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	
+	if(cx == x) {
+		if(cy == y + 1 && m_direction == DIR_DOWN) {
+			return true;
+		}
+		if(cy == y - 1 && m_direction == DIR_UP) {
+			return true;
+		}
+	}
+	
+	if(cy == y) {
+		if(cx == x + 1 && m_direction == DIR_RIGHT) {
+			return true;
+		}
+		if(cx == x - 1 && m_direction == DIR_LEFT) {
+			return true;
+		}
+	}
+	
+	return false;
+}
+
+void Character::eventCollisions() {
+	m_inFrontOf = NULL;
+	
+	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
+		if(canInitiateConversationWith(MapManager::currentMap->events()[i])) {
+			m_inFrontOf = MapManager::currentMap->events()[i];
+		}
+		inCollisionWith(MapManager::currentMap->events()[i]);
+	}
 }
 
 void Character::collisionAction(Character *c) {
 	m_moving = false;
-	if(c && c->m_type == Type::Event) c->exec();
+	if(c && c->m_type == Type::Event) c->collisionAction();
 }
 

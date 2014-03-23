@@ -36,23 +36,23 @@ EndActivity::~EndActivity() {
 void EndActivity::update() {
 	m_cmdwin->update();
 	
-	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 100)) {
+	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameAttack, 2000)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		switch(m_cmdwin->pos()) {
 			case 0:
-				ActivityManager::activities.pop();
+				ActivityManager::pop();
 				break;
 			case 1:
 #ifndef NO_TITLESCREEN
-				while(ActivityManager::activities.top()->type() != Type::TitleScreen) {
-					ActivityManager::activities.pop();
+				while(ActivityManager::top()->type() != Type::TitleScreen) {
+					ActivityManager::pop();
 				}
 #else
-				while(ActivityManager::activities.size() > 0) {
-					ActivityManager::activities.pop();
+				while(ActivityManager::size() > 0) {
+					ActivityManager::pop();
 				}
-				ActivityManager::activities.push(new TitleActivity);
+				ActivityManager::push(new TitleActivity);
 #endif
 				break;
 			case 2:

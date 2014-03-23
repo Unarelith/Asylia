@@ -24,9 +24,9 @@ class Map {
 		~Map();
 		
 		void addEvent(Event *event);
+		Event *getEvent(std::string name);
 		
 		void eventsUpdate();
-		void eventsRender();
 		
 		void loadTile(u16 tileX, u16 tileY, u8 layer);
 		void load();

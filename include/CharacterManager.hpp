@@ -18,11 +18,12 @@
 #ifndef CHARACTERMANAGER_HPP_
 #define CHARACTERMANAGER_HPP_
 
-namespace CharacterManager {
-	void init();
-	void free();
-	
-	extern Player *player;
-}
+class CharacterManager {
+	public:
+		static void init();
+		static void free();
+		
+		static Player *player;
+};
 
 #endif // CHARACTERMANAGER_HPP_

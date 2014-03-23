@@ -28,22 +28,28 @@ class Event;
 class Character : public Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth = 32, u16 frameHeight = 48);
-		~Character();
+		virtual ~Character();
 		
 		void move(std::string moveScript);
 		void render();
+		
+		virtual void action() = 0;
+		virtual void collisionAction() = 0;
 		
 		void testCollisions();
 		
 		void mapCollisions();
 		
-		void inCollisionWith(Character *e);
+		void inCollisionWith(Character *c);
+		bool canInitiateConversationWith(Character *c);
 		void eventCollisions();
 		
-		void collisionAction(Character *e);
+		void collisionAction(Character *c);
 		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
+		
+		Character *inFrontOf() const { return m_inFrontOf; }
 		
 		enum Direction {
 			Down, Right, Left, Up
@@ -79,6 +85,8 @@ class Character : public Sprite {
 		
 		u16 m_hitboxW;
 		u16 m_hitboxH;
+		
+		Character *m_inFrontOf;
 };
 
 #endif // CHARACTER_HPP_

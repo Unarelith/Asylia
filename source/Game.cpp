@@ -30,8 +30,6 @@ Game::Game() {
 	
 	Interface::init();
 	
-	LuaHandler::bindClasses();
-	
 	ActivityManager::init();
 }
 
@@ -50,18 +48,18 @@ Game::~Game() {
 void Game::mainLoop() {
 	while(!quit) {
 		if(TimeManager::isTimeToUpdate()) {
-			ActivityManager::activities.top()->pollEvents();
+			ActivityManager::top()->pollEvents();
 			
 			Keyboard::update();
 			
-			ActivityManager::activities.top()->update();
+			ActivityManager::top()->update();
 			
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
 				
 				GameWindow::main->clear();
 				
-				ActivityManager::activities.top()->render();
+				ActivityManager::top()->render();
 				
 				GameWindow::main->update();
 				

@@ -59,12 +59,22 @@ bool Keyboard::isKeyPressedWithDelay(u32 key, u16 delay) {
 	if(state[keysCode[key]] && SDL_GetTicks() - lastTimePressed[key] > delay) {
 		lastTimePressed[key] = SDL_GetTicks();
 		return true;
-	} else return false;
+	} else {
+		if(!state[keysCode[key]]) {
+			lastTimePressed[key] = 0;
+		}
+		return false;
+	}
 #else
 	if(padState[key] && SDL_GetTicks() - lastTimePressed[key] > delay) {
 		lastTimePressed[key] = SDL_GetTicks();
 		return true;
-	} else return false;
+	} else {
+		if(!padState[key] {
+			lastTimePressed[key] = 0;
+		}
+		return false;
+	}
 #endif
 }
 

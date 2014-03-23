@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <player>
 	<appearance class="Fighter" id="1"/>
-	<position x="0" y="0" direction="0"/>
+	<position x="2" y="2" direction="0"/>
 	<map area="0" x="0" y="0"/>
 </player>

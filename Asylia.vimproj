@@ -8,6 +8,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  data=data {
   config=config {
    maps.xml
+   player.xml
    tilesets.xml
   }
   events=events {

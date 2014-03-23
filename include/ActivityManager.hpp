@@ -18,10 +18,18 @@
 #ifndef ACTIVITYMANAGER_HPP_
 #define ACTIVITYMANAGER_HPP_
 
-namespace ActivityManager {
-	void init();
-	
-	extern std::stack<Activity*> activities;
+class ActivityManager {
+	public:
+		static void init();
+		
+		static std::stack<Activity*> activities;
+		
+		static Activity *top() { return activities.top(); }
+		static void pop() { activities.pop(); }
+		static void push(Activity *activity) { activities.push(activity); }
+		static int size() { return activities.size(); }
+		
+		static void newDialog() { activities.push(new TitleActivity); }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

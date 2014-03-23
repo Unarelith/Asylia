@@ -29,7 +29,11 @@ MapActivity::~MapActivity() {
 
 void MapActivity::init() {
 	MapManager::init();
+	
 	MapManager::currentMap = MapManager::maps[0][0];
+	
+	LuaHandler::bindClasses();
+	
 	MapManager::currentMap->load();
 	
 	CharacterManager::init();
@@ -38,7 +42,7 @@ void MapActivity::init() {
 void MapActivity::update() {
 	if(Keyboard::isKeyPressed(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
-		ActivityManager::activities.push(new MenuActivity);
+		ActivityManager::push(new MenuActivity);
 	}
 	
 	CharacterManager::player->move();
@@ -54,9 +58,19 @@ void MapActivity::update() {
 void MapActivity::render() {
 	MapManager::currentMap->render();
 	
+	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
+		if(MapManager::currentMap->events()[i]->y() < CharacterManager::player->y()) {
+			MapManager::currentMap->events()[i]->render();
+		}
+	}
+	
 	CharacterManager::player->render();
 	
-	MapManager::currentMap->eventsRender();
+	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
+		if(MapManager::currentMap->events()[i]->y() >= CharacterManager::player->y()) {
+			MapManager::currentMap->events()[i]->render();
+		}
+	}
 	
 	MapManager::currentMap->renderOverlay();
 }

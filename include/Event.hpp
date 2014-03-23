@@ -23,10 +23,15 @@ class Event : public Character {
 		Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY);
 		~Event();
 		
+		void init();
+		
 		void update();
 		void render();
 		
-		void exec();
+		void action();
+		void collisionAction();
+		
+		std::string table() const { return m_table; }
 		
 	private:
 		std::string m_folder;
