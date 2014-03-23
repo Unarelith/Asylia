@@ -43,6 +43,8 @@ class Map {
 		
 		u8 layers() const { return m_layers; }
 		
+		std::vector<Event*> events() const { return m_events; }
+		
 	private:
 		Tileset *m_tileset;
 		

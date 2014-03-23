@@ -20,9 +20,12 @@
 
 class Image {
 	public:
+		Image();
 		Image(const char *filename);
 		Image(SDL_Surface *surface);
 		~Image();
+		
+		void reload(const char *filename);
 		
 		void renderCopy();
 		void render(s16 x, s16 y, u16 w = 0, u16 h = 0, s16 clipX = -1, s16 clipY = -1, u16 clipW = 0, u16 clipH = 0);

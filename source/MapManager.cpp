@@ -107,19 +107,21 @@ void MapManager::initMaps() {
 			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
 			for(unsigned int k = 0 ; k < events ; k++) {
-				std::stringstream eventFilename;
-				std::string eventName;
+				std::stringstream eventFolder, eventAppearance;
+				std::string eventName, appearance;
 				u16 ex, ey;
 				u8 anim;
 				
 				eventName = eventElement->Attribute("name");
+				appearance = eventElement->Attribute("appearance");
 				ex = eventElement->IntAttribute("x");
 				ey = eventElement->IntAttribute("y");
 				anim = eventElement->IntAttribute("anim");
 				
-				eventFilename << "data/events/" << eventName << "/main.lua";
+				eventFolder << "data/events/" << eventName << "/";
+				eventAppearance << "graphics/characters/" << appearance << ".png";
 				
-				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFilename.str(), eventName, ex * 32, ey * 32, anim, i, x, y));
+				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y));
 			}
 			
 			mapElement = mapElement->NextSiblingElement("map");

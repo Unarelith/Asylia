@@ -17,6 +17,9 @@
  */
 #include "Asylia.hpp"
 
+Image::Image() {
+}
+
 Image::Image(const char *filename) {
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
 	m_surface = IMG_Load_RW(image, 1);
@@ -68,6 +71,38 @@ Image::Image(SDL_Surface *surface) {
 Image::~Image() {
 	SDL_FreeSurface(m_surface);
 	SDL_DestroyTexture(m_texture);
+}
+
+void Image::reload(const char *filename) {
+	SDL_FreeSurface(m_surface);
+	SDL_DestroyTexture(m_texture);
+	
+	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
+	m_surface = IMG_Load_RW(image, 1);
+	
+	if(!m_surface) {
+		error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	m_width = m_surface->w;
+	m_height = m_surface->h;
+	
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	if(!m_texture) {
+		error("Failed to create texture from image: %s", SDL_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	m_clipRect.x = 0;
+	m_clipRect.y = 0;
+	m_clipRect.w = m_width;
+	m_clipRect.h = m_height;
+	
+	m_posRect.x = 0;
+	m_posRect.y = 0;
+	m_posRect.w = m_width;
+	m_posRect.h = m_height;
 }
 
 void Image::renderCopy() {

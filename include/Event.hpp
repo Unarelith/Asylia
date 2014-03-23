@@ -18,15 +18,18 @@
 #ifndef EVENT_HPP_
 #define EVENT_HPP_
 
-class Event{
+class Event : public Character {
 	public:
-		Event(std::string filename, std::string table, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY);
+		Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY);
 		~Event();
 		
 		void update();
 		void render();
 		
+		void exec();
+		
 	private:
+		std::string m_folder;
 		std::string m_table;
 };
 

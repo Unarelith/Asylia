@@ -23,6 +23,8 @@
 #define DIR_RIGHT 2
 #define DIR_UP 3
 
+class Event;
+
 class Character : public Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth = 32, u16 frameHeight = 48);
@@ -32,8 +34,13 @@ class Character : public Sprite {
 		void render();
 		
 		void testCollisions();
+		
 		void mapCollisions();
-		void collisionAction(void *c);
+		
+		void inCollisionWith(Character *e);
+		void eventCollisions();
+		
+		void collisionAction(Character *e);
 		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
@@ -42,7 +49,13 @@ class Character : public Sprite {
 			Down, Right, Left, Up
 		};
 		
+		enum Type {
+			None, Player, Event
+		};
+		
 	protected:
+		Type m_type;
+		
 		s16 m_x;
 		s16 m_y;
 		

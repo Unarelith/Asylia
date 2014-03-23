@@ -2,7 +2,7 @@
 <maps areas="1">
 	<area maps="1">
 		<map layers="3" x="0" y="0" tilesetID="0" events="2">
-			<event name="event0" x="5" y="5" anim="0"/>
+			<event name="event0" appearance="Fighter02" x="5" y="5" anim="0"/>
 		</map>
 	</area>
 </maps>

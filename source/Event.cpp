@@ -17,14 +17,17 @@
  */
 #include "Asylia.hpp"
 
-Event::Event(std::string filename, std::string table, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY) {
+Event::Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {
 	std::stringstream initCall;
 	
+	m_type = Type::Event;
+	
+	m_folder = folder;
 	m_table = table;
 	
-	LuaHandler::doFile(filename.c_str());
+	LuaHandler::doFile((folder + "main.lua").c_str());
 	
-	initCall << m_table << ".init(" << x << "," << y << "," << (int)anim << "," << area << "," << mapX << "," << mapY << ")";
+	initCall << m_table << ".init()";
 	
 	LuaHandler::doString(initCall.str());
 }
@@ -33,10 +36,18 @@ Event::~Event() {
 }
 
 void Event::update() {
+	move(m_folder + "movement.lua");
+	
 	LuaHandler::doString(m_table + ".update()");
 }
 
 void Event::render() {
+	Character::render();
+	
 	LuaHandler::doString(m_table + ".render()");
+}
+
+void Event::exec() {
+	LuaHandler::doString(m_table + ".exec()");
 }
 
