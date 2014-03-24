@@ -29,10 +29,12 @@ class SelectableWindow : public Window {
 		s8 pos() const { return m_pos; }
 		
 	protected:
-		u8 m_itemMax;
+		u16 m_itemMax;
 		u8 m_columnMax;
 		
-		s8 m_pos;
+		s16 m_pos;
+		
+		u8 m_scroll;
 };
 
 #endif // SELECTABLEWINDOW_HPP_

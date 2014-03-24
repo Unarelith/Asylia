@@ -57,6 +57,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    LuaActivity.hpp
    TitleActivity.hpp
    EndActivity.hpp
+   ItemActivity.hpp
   }
   ActivityManager.hpp
   Animation.hpp
@@ -93,6 +94,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    SelectableWindow.hpp
    CommandWindow.hpp
    MessageWindow.hpp
+   ItemWindow.hpp
   }
  }
  source=source {
@@ -104,6 +106,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    LuaActivity.cpp
    TitleActivity.cpp
    EndActivity.cpp
+   ItemActivity.cpp
   }
   ActivityManager.cpp
   AnimationManager.cpp
@@ -132,6 +135,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    SelectableWindow.cpp
    CommandWindow.cpp
    MessageWindow.cpp
+   ItemWindow.cpp
   }
   main.cpp
  }

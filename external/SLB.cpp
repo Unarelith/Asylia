@@ -824,10 +824,16 @@ namespace SLB {
         assert("Invalid Stack" && (lua_gettop(_lua_state) == top+1));
         return true;
       }
-      else SLB_DEBUG(6, "HybridBase(%p-%s)::getMethod '%s' (_lua_state = %p) -> *NOT* FOUND",
+      else
+	  {
+		  SLB_DEBUG(6, "HybridBase(%p-%s)::getMethod '%s' (_lua_state = %p) -> *NOT* FOUND",
         this,ci->getName().c_str(), name, _lua_state);
+	  }
     }
-    else SLB_DEBUG(4, "HybridBase(%p-%s) do not have any hybrid methods", this, ci->getName().c_str());
+    else
+	{
+		SLB_DEBUG(4, "HybridBase(%p-%s) do not have any hybrid methods", this, ci->getName().c_str());
+	}
     lua_settop(_lua_state,top);
     return false;
   }

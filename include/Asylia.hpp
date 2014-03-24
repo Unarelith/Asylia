@@ -80,6 +80,7 @@ using namespace tinyxml2;
 #include "SelectableWindow.hpp"
 #include "CommandWindow.hpp"
 #include "MessageWindow.hpp"
+#include "ItemWindow.hpp"
 
 #include "Event.hpp"
 
@@ -90,6 +91,7 @@ using namespace tinyxml2;
 #include "LuaActivity.hpp"
 #include "TitleActivity.hpp"
 #include "EndActivity.hpp"
+#include "ItemActivity.hpp"
 #include "ActivityManager.hpp"
 
 #include "Tileset.hpp"

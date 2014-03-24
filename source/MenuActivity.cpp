@@ -43,7 +43,9 @@ void MenuActivity::update() {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		switch(m_cmdwin->pos()) {
-			case 0: break;
+			case 0:
+				ActivityManager::push(new ItemActivity);
+				break;
 			case 1: break;
 			case 2: break;
 			case 3: break;
