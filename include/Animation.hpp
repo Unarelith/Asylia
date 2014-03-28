@@ -23,8 +23,8 @@ struct Animation {
 		size(_size), tabAnim(_tabAnim), delay(_delay), isPlaying(_isPlaying) {}
 	
 	u16 size;
-	u16 *tabAnim;	// Animation table
-	u16 delay;		// Delay between animations
+	u16 *tabAnim;
+	u16 delay;
 	Timer timer;
 	bool isPlaying;
 };
