@@ -62,9 +62,16 @@ Character::~Character() {
 }
 
 void Character::render() {
-	if(m_moving && ActivityManager::activities.top()->type() == Activity::Type::Map) {
-		playAnimation(m_x, m_y, m_direction);
+	if(ActivityManager::activities.top()->type() == Activity::Type::Map) {
+		if(!m_movementTimer.isStarted()) m_movementTimer.start();
+		
+		if(m_moving) {
+			playAnimation(m_x, m_y, m_direction);
+		} else {
+			drawFrame(m_x, m_y, m_animations[m_direction]->tabAnim[0]);
+		}
 	} else {
+		m_movementTimer.stop();
 		drawFrame(m_x, m_y, m_animations[m_direction]->tabAnim[0]);
 	}
 }
@@ -149,8 +156,6 @@ void Character::inCollisionWith(Character *c) {
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
 			m_vx = 0;
 			
-			debug("Collided (%d;%d) (%d;%d)", m_x + m_vx + m_hitboxX, m_y + m_hitboxY, m_vxCount, m_vyCount);
-			
 			collisionAction(c);
 		}
 	}
@@ -166,14 +171,8 @@ void Character::inCollisionWith(Character *c) {
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
 			m_vy = 0;
 			
-			debug("Collided %d %d", m_vxCount, m_vyCount);
-			
 			collisionAction(c);
 		}
-	}
-	
-	if(m_vx || m_vy) {
-		debug("T:%d | (%d;%d)(%d;%d) | (%d;%d)(%d;%d) || (%d;%d)", (int)m_type, x, y, x2, y2, cx, cy, cx2, cy2, m_vx, m_vy);
 	}
 }
 
