@@ -130,31 +130,11 @@ void Character::mapCollisions() {
 }
 
 void Character::inCollisionWith(Character *c) {
-	if(m_vx != 0
-	&& m_x + m_hitboxX + m_vx < c->m_x + c->m_hitboxX + c->m_hitboxW
-	&& m_x + m_hitboxX + m_vx + m_hitboxW > c->m_x + c->m_hitboxX
-	&& m_y + m_hitboxY < c->m_y + c->m_hitboxY + c->m_hitboxH
-	&& m_y + m_hitboxY + m_hitboxH > c->m_y + c->m_hitboxY) {
-		m_vx = 0;
-		
-		collisionAction(c);
-	}
-	
-	if(m_vy != 0
-	&& m_x + m_hitboxX < c->m_x + c->m_hitboxX + c->m_hitboxW
-	&& m_x + m_hitboxX + m_hitboxW > c->m_x + c->m_hitboxX
-	&& m_y + m_hitboxY + m_vy < c->m_y + c->m_hitboxY + c->m_hitboxH
-	&& m_y + m_hitboxY + m_vy + m_hitboxH > c->m_y + c->m_hitboxY) {
-		m_vy = 0;
-		
-		collisionAction(c);
-	}
-	
-	/*s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
+	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
 	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
 	
-	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW) / (MapManager::currentMap->tileset()->tileWidth * 2);
-	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
+	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 	
 	s16 x, y, x2, y2;
 	
@@ -162,15 +142,15 @@ void Character::inCollisionWith(Character *c) {
 		x = (m_x + m_vx + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
 		y = (m_y + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
-		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y2 = (m_y + m_hitboxY + m_hitboxH) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
+		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
 		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
 			m_vx = 0;
 			
 			debug("Collided (%d;%d) (%d;%d)", m_x + m_vx + m_hitboxX, m_y + m_hitboxY, m_vxCount, m_vyCount);
-		
+			
 			collisionAction(c);
 		}
 	}
@@ -179,8 +159,8 @@ void Character::inCollisionWith(Character *c) {
 		x = (m_x + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
 		y = (m_y + m_vy + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
-		x2 = (m_x + m_hitboxX + m_hitboxW) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
+		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
 		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
@@ -194,7 +174,7 @@ void Character::inCollisionWith(Character *c) {
 	
 	if(m_vx || m_vy) {
 		debug("T:%d | (%d;%d)(%d;%d) | (%d;%d)(%d;%d) || (%d;%d)", (int)m_type, x, y, x2, y2, cx, cy, cx2, cy2, m_vx, m_vy);
-	}*/
+	}
 }
 
 bool Character::canInitiateConversationWith(Character *c) {
