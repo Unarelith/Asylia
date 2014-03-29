@@ -128,7 +128,7 @@ void Keyboard::updatePad(SDL_Event *e) {
 	u16 fy = e->tfinger.y * GameWindow::main->height();
 	
 	u16 px = Interface::pad->posRect().x - GameWindow::main->viewportX();
-	u16 py = Interface::pad->posRect().y - GameWindow::main->viewportY();
+	u16 py = Interface::pad->posRect().y + Interface::pad->posRect().h / 2 - GameWindow::main->viewportY();
 	
 	u16 ax = Interface::buttonA->posRect().x - GameWindow::main->viewportX();
 	u16 ay = Interface::buttonA->posRect().y - GameWindow::main->viewportY();

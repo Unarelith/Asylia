@@ -53,8 +53,6 @@ using namespace tinyxml2;
 
 #include "Sound.hpp"
 
-#include "Font.hpp"
-
 #include "Keyboard.hpp"
 
 #include "Game.hpp"
@@ -63,6 +61,8 @@ using namespace tinyxml2;
 #include "TimeManager.hpp"
 
 #include "Image.hpp"
+
+#include "Font.hpp"
 
 #include "Timer.hpp"
 #include "Animation.hpp"

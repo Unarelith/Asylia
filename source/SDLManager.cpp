@@ -40,7 +40,7 @@ void SDLManager::init() {
 	Mix_AllocateChannels(32);
 	Mix_Volume(1, MIX_MAX_VOLUME / 2);
 	
-	if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1")) {
+	if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2")) {
 		warn("Warning: Linear interpolation not enabled!");
 	}
 	
