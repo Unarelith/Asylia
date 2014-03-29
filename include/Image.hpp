@@ -28,7 +28,7 @@ class Image {
 		void reload(const char *filename);
 		
 		void renderCopy();
-		void render(s16 x, s16 y, u16 w = 0, u16 h = 0, s16 clipX = -1, s16 clipY = -1, u16 clipW = 0, u16 clipH = 0);
+		void render(s16 x = -1, s16 y = -1, u16 w = 0, u16 h = 0, s16 clipX = -1, s16 clipY = -1, s16 clipW = -1, s16 clipH = -1);
 		
 		void setPosRect(s16 x, s16 y, u16 w, u16 h);
 		void setClipRect(s16 x, s16 y, u16 w, u16 h);

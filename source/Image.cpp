@@ -109,16 +109,16 @@ void Image::renderCopy() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 }
 
-void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, u16 clipW, u16 clipH) {
-	m_posRect.x = x;
-	m_posRect.y = y;
+void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {
+	if(x != -1) m_posRect.x = x;
+	if(y != -1) m_posRect.y = y;
 	if(w != 0) m_posRect.w = w;
 	if(h != 0) m_posRect.h = h;
 	
 	if(clipX != -1) m_clipRect.x = clipX;
 	if(clipY != -1) m_clipRect.y = clipY;
-	if(clipW != 0) m_clipRect.w = clipW;
-	if(clipH != 0) m_clipRect.h = clipH;
+	if(clipW > 0) m_clipRect.w = clipW;
+	if(clipH > 0) m_clipRect.h = clipH;
 	
 	renderCopy();
 }

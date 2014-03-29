@@ -65,7 +65,7 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 	textToDisplay.render(x, y, width, height);
 }
 
-void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color) {
+void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
@@ -76,7 +76,12 @@ void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize si
 	}
 	
 	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	
+	if(width > text->w) width = text->w;
+	if(height > text->h) height = text->h;
+	
 	image = new Image(text);
+	image->setPosRect(x, y, width, height);
 }
 
 void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
