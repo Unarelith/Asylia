@@ -44,10 +44,10 @@ void ItemWindow::drawItem(u8 pos) {
 	Image *image = Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE, Color::white);
 	
 	if(y < m_y) {
-		image->render(-1, m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
+		image->render(-1, GameWindow::main->viewportY() + m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
 	}
-	else if(y > m_y + m_height) {
-		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
+	else if(y + height > m_y + m_height) {
+		image->render(-1, GameWindow::main->viewportY() + y, 0, m_y + m_height - y - 4, -1, -1, 0, m_y + m_height - y - 4);
 	} else {
 		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	}
