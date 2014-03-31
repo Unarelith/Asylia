@@ -18,6 +18,8 @@
 #include "Asylia.hpp"
 
 Image::Image() {
+	m_surface = NULL;
+	m_texture = NULL;
 }
 
 Image::Image(const char *filename) {
@@ -69,8 +71,8 @@ Image::Image(SDL_Surface *surface) {
 }
 
 Image::~Image() {
-	SDL_FreeSurface(m_surface);
-	SDL_DestroyTexture(m_texture);
+	if(m_surface) SDL_FreeSurface(m_surface);
+	if(m_texture) SDL_DestroyTexture(m_texture);
 }
 
 void Image::reload(const char *filename) {

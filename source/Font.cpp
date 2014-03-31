@@ -80,6 +80,7 @@ void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 heig
 	if(width > text->w) width = text->w;
 	if(height > text->h) height = text->h;
 	
+	if(image) delete image;
 	image = new Image(text);
 	image->setPosRect(x, y, width, height);
 }
