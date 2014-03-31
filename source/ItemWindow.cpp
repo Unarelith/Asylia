@@ -33,7 +33,7 @@ void ItemWindow::addItem(std::string item) {
 }
 
 void ItemWindow::drawItem(u8 pos) {
-	u16 x, y, width, height;
+	s16 x, y, width, height;
 	
 	width = m_width / m_columnMax - 32;
 	height = 32;
@@ -43,7 +43,21 @@ void ItemWindow::drawItem(u8 pos) {
 	
 	Image *image = Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE, Color::white);
 	
-	image->render(-1, -1, 0, 0, -1, -1, 0, m_y - y);
+	//if(pos == 0) debug("Scroll: %d: %d | %d", m_scroll, m_y, y);
+	// Scroll 0: 0 | 20
+	// Scroll 1: 0 | -12
+	
+	if(pos == 0) debug("Scroll %d: %d, %d", m_scroll, y + 32 - m_y, image->height());
+	// Scroll 0: 52, 25
+	// Scroll 1: 20, 25
+	
+	if(y < m_y) {
+		image->render(-1, m_y, 0, 0, -1, m_y - y, 0, y + 32 - m_y);
+	} else {
+		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
+	}
+	
+	//image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	
 	delete image;
 }
