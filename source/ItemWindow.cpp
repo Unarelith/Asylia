@@ -34,7 +34,6 @@ void ItemWindow::addItem(std::string item) {
 
 void ItemWindow::drawItem(u8 pos) {
 	u16 x, y, width, height;
-	Image *image = new Image();
 	
 	width = m_width / m_columnMax - 32;
 	height = 32;
@@ -42,7 +41,7 @@ void ItemWindow::drawItem(u8 pos) {
 	x = 20 + pos % m_columnMax * (width + 32);
 	y = 20 + pos / m_columnMax * 32 - m_scroll * 32;
 	
-	Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, image, FONT_LARGE, Color::white);
+	Image *image = Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE, Color::white);
 	
 	image->render(-1, -1, 0, 0, -1, -1, 0, m_y - y);
 	
