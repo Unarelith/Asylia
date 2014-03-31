@@ -54,7 +54,7 @@ void ItemWindow::drawItem(u8 pos) {
 	// Image height = 25
 	
 	if(y < m_y) {
-		image->render(-1, m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y, 0, image->height() - (y + 32 - m_y));
+		image->render(-1, m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
 	} else {
 		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	}
