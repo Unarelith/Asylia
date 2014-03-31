@@ -43,23 +43,14 @@ void ItemWindow::drawItem(u8 pos) {
 	
 	Image *image = Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE, Color::white);
 	
-	//if(pos == 0) debug("Scroll: %d: %d | %d", m_scroll, m_y, y);
-	// Scroll 0: 0 | 20
-	// Scroll 1: 0 | -12
-	
-	if(pos == 0) debug("Scroll %d: %d, %d", m_scroll, y + 32 - m_y, image->height() - (y + 32 - m_y));
-	// Scroll 0: 52, -27
-	// Scroll 1: 20, 5
-	
-	// Image height = 25
-	
 	if(y < m_y) {
 		image->render(-1, m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
+	}
+	else if(y > m_y + m_height) {
+		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	} else {
 		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	}
-	
-	//image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	
 	delete image;
 }
