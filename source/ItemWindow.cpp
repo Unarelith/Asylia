@@ -47,12 +47,14 @@ void ItemWindow::drawItem(u8 pos) {
 	// Scroll 0: 0 | 20
 	// Scroll 1: 0 | -12
 	
-	if(pos == 0) debug("Scroll %d: %d, %d", m_scroll, y + 32 - m_y, image->height());
-	// Scroll 0: 52, 25
-	// Scroll 1: 20, 25
+	if(pos == 0) debug("Scroll %d: %d, %d", m_scroll, y + 32 - m_y, image->height() - (y + 32 - m_y));
+	// Scroll 0: 52, -27
+	// Scroll 1: 20, 5
+	
+	// Image height = 25
 	
 	if(y < m_y) {
-		image->render(-1, m_y, 0, 0, -1, m_y - y, 0, y + 32 - m_y);
+		image->render(-1, m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y, 0, image->height() - (y + 32 - m_y));
 	} else {
 		image->render(-1, -1, 0, 0, -1, -1, 0, 0);
 	}
