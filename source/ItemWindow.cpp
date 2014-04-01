@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-ItemWindow::ItemWindow() : SelectableWindow(150, 0, 490, 480) {
+ItemWindow::ItemWindow() : SelectableWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height()) {
 	m_itemMax = 0;
 	m_columnMax = 3;
 	
