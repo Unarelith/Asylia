@@ -42,18 +42,18 @@ void LanguageManager::init(std::string language) {
 		textElement = textElement->NextSiblingElement("text");
 	}
 	
-	XMLElement *npcElement = doc.FirstChildElement("language").FirstChildElement("npc").ToElement();
-	u16 id = npcElement->IntAttribute("id");
+	XMLElement *eventElement = doc.FirstChildElement("language").FirstChildElement("event").ToElement();
+	u16 id = eventElement->IntAttribute("id");
 	u8 counter = 0;
-	while(npcElement) {
-		XMLElement *npcMessageElement = npcElement->FirstChildElement("message");
-		while(npcMessageElement) {
-			text[std::string("NPC") + to_string(id) + "-" + to_string(counter)] = npcMessageElement->Attribute("text");
-			npcMessageElement = npcMessageElement->NextSiblingElement("message");
+	while(eventElement) {
+		XMLElement *eventMessageElement = eventElement->FirstChildElement("message");
+		while(eventMessageElement) {
+			text[std::string("event") + to_string(id) + "-" + to_string(counter)] = eventMessageElement->Attribute("text");
+			eventMessageElement = eventMessageElement->NextSiblingElement("message");
 			counter++;
 		}
 		counter = 0;
-		npcElement = npcElement->NextSiblingElement("npc");
+		eventElement = eventElement->NextSiblingElement("event");
 	}
 }
 

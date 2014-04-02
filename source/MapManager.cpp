@@ -152,6 +152,7 @@ void MapManager::initMaps() {
 			
 			mapElement = mapElement->NextSiblingElement("map");
 		}
+		
 		areaElement = areaElement->NextSiblingElement("area");
 	}
 }

@@ -59,8 +59,7 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
 	
-	m_layersTex = new SDL_Texture*[m_layers];
-	SDL_QueryTexture(m_tileset->tiles->texture(), &m_pixelFormat, NULL, NULL, NULL);
+	m_layersTex = NULL;
 }
 
 Map::~Map() {
@@ -111,6 +110,11 @@ void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
 }
 
 void Map::load() {
+	if(m_layersTex) return;
+	
+	m_layersTex = new SDL_Texture*[m_layers];
+	SDL_QueryTexture(m_tileset->tiles->texture(), &m_pixelFormat, NULL, NULL, NULL);
+	
 	for(u8 i = 0 ; i < m_layers ; i++) {
 		m_layersTex[i] = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
 		SDL_SetTextureBlendMode(m_layersTex[i], SDL_BLENDMODE_BLEND);

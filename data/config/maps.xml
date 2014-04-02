@@ -8,8 +8,8 @@
 				<hitbox x="0" y="0" width="32" height="32"/>
 			</event>
 		</map>
-		<map layers="3" x="1" y="0" tilesetID="0" events="0">
-			<event name="event2" appearance="" x="10" y="13" anim="0">
+		<map layers="3" x="1" y="0" tilesetID="0" events="1">
+			<event name="event2" appearance="" x="10" y="12" anim="0">
 				<framesize width="32" height="32"/>
 				<hitbox x="0" y="0" width="32" height="32"/>
 			</event>

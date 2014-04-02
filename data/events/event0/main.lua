@@ -17,8 +17,8 @@ event0.init = function()
 			
 			local dialog = ActivityManager.newDialog()
 			
-			dialog:addMessage(_t("NPC0-0"))
-			dialog:addMessage(_t("NPC0-1"))
+			dialog:addMessage(_t("event0-0"))
+			dialog:addMessage(_t("event0-1"))
 		end
 	end
 	

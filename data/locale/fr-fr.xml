@@ -12,9 +12,9 @@
 	<text id="NewGame" text="Nouvelle Partie"/>
 	<text id="Continue" text="Continuer"/>
 	
-	<!-- NPC Dialogs -->
-	<npc id="0">
+	<!-- Event messages -->
+	<event id="0">
 		<message text="Salut, est-ce que tu sais que tu es dans un monde incroyable, fait de magie et d'autres choses que tu ne connais pas encore ?"/>
 		<message text="Tu devrais te préparer avant l'aventure !"/>
-	</npc>
+	</event>
 </language>
