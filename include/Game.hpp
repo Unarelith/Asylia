@@ -26,6 +26,7 @@ class Game {
 		void mainLoop();
 		
 		static bool quit;
+		static bool paused;
 };
 
 #endif // GAME_HPP_

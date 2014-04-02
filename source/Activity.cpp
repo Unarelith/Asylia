@@ -31,7 +31,6 @@ void Activity::pollEvents() {
 			case SDL_QUIT:
 				Game::quit = true;
 				break;
-#ifdef __ANDROID__
 			case SDL_FINGERDOWN:
 			case SDL_FINGERMOTION:
 				Keyboard::updatePad(&event);
@@ -40,9 +39,20 @@ void Activity::pollEvents() {
 				Keyboard::resetPad(&event, true);
 				break;
 			case SDL_APP_WILLENTERBACKGROUND:
-				Game::quit = true;
-				continue;
-#endif
+				Game::paused = true;
+				break;
+			case SDL_APP_WILLENTERFOREGROUND:
+				Game::quit = true; // FIXME: See #9
+				Game::paused = false;
+				if(ActivityManager::top()->type() == Type::Map) {
+					ActivityManager::push(new MenuActivity);
+				}
+				break;
+			case SDL_APP_TERMINATING:
+				if(ActivityManager::top()->type() != Type::GameEnd) {
+					ActivityManager::push(new EndActivity);
+				}
+				break;
 			default:
 				break;
 		}

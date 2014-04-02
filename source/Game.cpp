@@ -18,6 +18,7 @@
 #include "Asylia.hpp"
 
 bool Game::quit = false;
+bool Game::paused = false;
 
 #ifdef __ANDROID__
 std::string to_string(int n) {
@@ -55,6 +56,8 @@ void Game::mainLoop() {
 			ActivityManager::top()->pollEvents();
 			
 			Keyboard::update();
+			
+			if(Game::paused == true) continue;
 			
 			ActivityManager::top()->update();
 			
