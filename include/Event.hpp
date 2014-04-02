@@ -20,7 +20,7 @@
 
 class Event : public Character {
 	public:
-		Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY);
+		Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY, bool solid = false);
 		~Event();
 		
 		void init();

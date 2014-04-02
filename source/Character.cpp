@@ -52,6 +52,8 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area,
 	
 	m_inFrontOf = NULL;
 	
+	m_solid = true;
+	
 	addAnimation(4, AnimationManager::character[DIR_DOWN],	125);
 	addAnimation(4, AnimationManager::character[DIR_LEFT],	125);
 	addAnimation(4, AnimationManager::character[DIR_RIGHT],	125);
@@ -104,8 +106,8 @@ void Character::move(std::string function) {
 }
 
 void Character::testCollisions() {
-	mapCollisions();
 	eventCollisions();
+	mapCollisions();
 }
 
 void Character::mapCollisions() {
@@ -154,7 +156,7 @@ void Character::inCollisionWith(Character *c) {
 		
 		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
-			m_vx = 0;
+			if(c->m_solid) m_vx = 0;
 			
 			collisionAction(c);
 		}
@@ -169,7 +171,7 @@ void Character::inCollisionWith(Character *c) {
 		
 		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
 		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
-			m_vy = 0;
+			if(c->m_solid) m_vy = 0;
 			
 			collisionAction(c);
 		}
@@ -222,7 +224,7 @@ void Character::eventCollisions() {
 }
 
 void Character::collisionAction(Character *c) {
-	m_moving = false;
+	if(c && c->m_solid) m_moving = false;
 	if(c && c->m_type == Type::Event) c->collisionAction();
 }
 
@@ -237,5 +239,20 @@ void Character::doMovement(s8 vx, s8 vy) {
 		m_movementTimer.reset();
 		m_movementTimer.start();
 	}
+}
+
+void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction) {
+	MapManager::currentMap = MapManager::maps[area][MAP_POS(area, mapX, mapY)];
+	MapManager::currentMap->load();
+	m_x = x * MapManager::currentMap->tileset()->tileWidth;
+	m_y = y * MapManager::currentMap->tileset()->tileHeight;
+	m_direction = direction;
+}
+
+void Character::setHitbox(s16 x, s16 y, u16 width, u16 height) {
+	m_hitboxX = x;
+	m_hitboxY = y;
+	m_hitboxW = width;
+	m_hitboxH = height;
 }
 

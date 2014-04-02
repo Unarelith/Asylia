@@ -36,6 +36,8 @@ class Sprite : public Image {
 		u16 frameWidth() const { return m_frameWidth; }
 		u16 frameHeight() const { return m_frameHeight; }
 		
+		void setFrameSize(u16 width, u16 height) { m_frameWidth = width; m_frameHeight = height; }
+		
 	protected:
 		u16 m_frameWidth;
 		u16 m_frameHeight;

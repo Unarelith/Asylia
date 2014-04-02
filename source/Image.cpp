@@ -26,20 +26,20 @@ Image::Image(const char *filename) {
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
 	m_surface = IMG_Load_RW(image, 1);
 	
-	if(!m_surface) {
-		if(strcmp(filename, "")) {
-			error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
-			exit(EXIT_FAILURE);
-		} else {
-			m_surface = SDL_CreateRGBSurface(0, 32, 32, 32, 0, 0, 0, 0);
-		}
+	if(strcmp(filename, "") && !m_surface) {
+		error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
+		exit(EXIT_FAILURE);
 	}
 	
-	m_width = m_surface->w;
-	m_height = m_surface->h;
+	if(m_surface) {
+		m_width = m_surface->w;
+		m_height = m_surface->h;
+	} else {
+		m_width = m_height = 32;
+	}
 	
 	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
-	if(!m_texture) {
+	if(strcmp(filename, "") && !m_texture) {
 		error("Failed to create texture from image: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
@@ -80,8 +80,8 @@ Image::~Image() {
 }
 
 void Image::reload(const char *filename) {
-	SDL_FreeSurface(m_surface);
-	SDL_DestroyTexture(m_texture);
+	if(m_surface) SDL_FreeSurface(m_surface);
+	if(m_texture) SDL_DestroyTexture(m_texture);
 	
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
 	m_surface = IMG_Load_RW(image, 1);
@@ -112,7 +112,7 @@ void Image::reload(const char *filename) {
 }
 
 void Image::renderCopy() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
+	if(m_texture) SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 }
 
 void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {

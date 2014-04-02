@@ -72,8 +72,9 @@ void MapManager::initTilesets() {
 
 void MapManager::initMaps() {
 	XMLDocument xml;
-	if(xml.LoadFile("data/config/maps.xml") != 0) {
-		error("Failed to load maps data.");
+	int code = xml.LoadFile("data/config/maps.xml");
+	if(code != 0) {
+		error("Failed to load maps data. (CODE: %d)", code);
 		exit(EXIT_FAILURE);
 	}
 	
@@ -104,7 +105,6 @@ void MapManager::initMaps() {
 			mapFilename << "data/maps/map" << i << "-" << x << "-" << y << ".tmx";
 			
 			maps[i][MAP_POS(i, x, y)] = new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID);
-			debug("New map at (%d;%d) zone %d, place %d, with filename \"%s\"", x, y, i, MAP_POS(i, x, y), mapFilename.str().c_str());
 			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
 			for(unsigned int k = 0 ; k < events ; k++) {
@@ -112,12 +112,14 @@ void MapManager::initMaps() {
 				std::string eventName, appearance;
 				u16 ex, ey;
 				u8 anim;
+				bool solid;
 				
 				eventName = eventElement->Attribute("name");
 				appearance = eventElement->Attribute("appearance");
 				ex = eventElement->IntAttribute("x");
 				ey = eventElement->IntAttribute("y");
 				anim = eventElement->IntAttribute("anim");
+				solid = eventElement->BoolAttribute("solid");
 				
 				eventFolder << "data/events/" << eventName << "/";
 				
@@ -125,7 +127,25 @@ void MapManager::initMaps() {
 					eventAppearance << "graphics/characters/" << appearance << ".png";
 				}
 				
-				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y));
+				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y, solid));
+				
+				XMLElement *framesizeElement = eventElement->FirstChildElement("framesize");
+				if(framesizeElement) {
+					maps[i][MAP_POS(i, x, y)]->events().back()->setFrameSize(
+						framesizeElement->IntAttribute("width"),
+						framesizeElement->IntAttribute("height")
+					);
+				}
+				
+				XMLElement *hitboxElement = eventElement->FirstChildElement("hitbox");
+				if(hitboxElement) {
+					maps[i][MAP_POS(i, x, y)]->events().back()->setHitbox(
+						hitboxElement->IntAttribute("x"),
+						hitboxElement->IntAttribute("y"),
+						hitboxElement->IntAttribute("width"),
+						hitboxElement->IntAttribute("height")
+					);
+				}
 				
 				eventElement = eventElement->NextSiblingElement("event");
 			}

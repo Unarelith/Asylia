@@ -14,7 +14,7 @@ event1.init = function()
 	end
 	
 	event1.collisionAction = function()
-		
+		CharacterManager.player():changeMap(0, 1, 0, 20, 27, 0)
 	end
 	
 	event1.movements = {

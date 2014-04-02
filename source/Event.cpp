@@ -17,11 +17,13 @@
  */
 #include "Asylia.hpp"
 
-Event::Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {
+Event::Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY, bool solid) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {
 	m_type = Type::Event;
 	
 	m_folder = folder;
 	m_table = table;
+	
+	m_solid = solid;
 }
 
 Event::~Event() {

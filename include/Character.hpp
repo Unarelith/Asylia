@@ -52,6 +52,8 @@ class Character : public Sprite {
 		void moveLeft() { doMovement(-m_speed, 0); }
 		void moveRight() { doMovement(m_speed, 0); }
 		
+		void changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction);
+		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
 		
@@ -59,6 +61,8 @@ class Character : public Sprite {
 		void setDirection(u8 direction) { m_direction = direction; }
 		
 		Character *inFrontOf() const { return m_inFrontOf; }
+		
+		void setHitbox(s16 x, s16 y, u16 width, u16 height);
 		
 		enum Direction {
 			Down, Right, Left, Up
@@ -102,6 +106,8 @@ class Character : public Sprite {
 		u16 m_hitboxH;
 		
 		Character *m_inFrontOf;
+		
+		bool m_solid;
 };
 
 #endif // CHARACTER_HPP_

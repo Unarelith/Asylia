@@ -2,16 +2,12 @@
 <maps areas="1">
 	<area maps="2">
 		<map layers="3" x="0" y="0" tilesetID="0" events="2">
-			<event name="event0" appearance="Fighter02" x="5" y="5" anim="0" passable="1">
-				<frame width="32" height="48"\>
-				<hitbox x="0" y="16" width="32" height="32"\>
-			</event>
-			<event name="event1" appearance="" x="4" y="13" anim="0">
-				<frame width="32" height="32"\>
-				<hitbox x="0" y="0" width="32" height="32"\>
+			<event name="event0" appearance="Fighter02" x="5" y="5" anim="0" solid="1"/>
+			<event name="event1" appearance="" x="4" y="11" anim="0">
+				<framesize width="32" height="32"/>
+				<hitbox x="0" y="0" width="32" height="32"/>
 			</event>
 		</map>
-		<map layers="3" x="1" y="0" tilesetID="0" events="0">
-		</map>
+		<map layers="3" x="1" y="0" tilesetID="0" events="0"/>
 	</area>
 </maps>

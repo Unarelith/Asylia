@@ -73,7 +73,8 @@ void LuaHandler::bindClasses() {
 	SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
 	
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
-									   .set("getDirection", &Character::getDirection);
+									   .set("getDirection", &Character::getDirection)
+									   .set("changeMap", &Character::changeMap);
 ;
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
