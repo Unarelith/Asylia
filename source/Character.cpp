@@ -244,9 +244,11 @@ void Character::doMovement(s8 vx, s8 vy) {
 void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction) {
 	MapManager::currentMap = MapManager::maps[area][MAP_POS(area, mapX, mapY)];
 	MapManager::currentMap->load();
+	SDL_Delay(500);
 	m_x = x * MapManager::currentMap->tileset()->tileWidth;
 	m_y = y * MapManager::currentMap->tileset()->tileHeight;
 	m_direction = direction;
+	stop();
 }
 
 void Character::setHitbox(s16 x, s16 y, u16 width, u16 height) {

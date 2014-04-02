@@ -44,6 +44,8 @@ class Character : public Sprite {
 		bool canInitiateConversationWith(Character *c);
 		void eventCollisions();
 		
+		void stop() { m_vx = m_vy = 0; }
+		
 		void collisionAction(Character *c);
 		
 		void doMovement(s8 vx, s8 vy);

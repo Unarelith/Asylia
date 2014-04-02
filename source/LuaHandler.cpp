@@ -74,7 +74,8 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)
-									   .set("changeMap", &Character::changeMap);
+									   .set("changeMap", &Character::changeMap)
+									   .set("stop", &Character::stop);
 ;
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()

@@ -15,7 +15,10 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    event0=event0 {
     main.lua
    }
-   event0=event0 {
+   event1=event1 {
+    main.lua
+   }
+   event2=event2 {
     main.lua
    }
   }
