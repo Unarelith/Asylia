@@ -23,21 +23,45 @@ void LanguageManager::init(std::string language) {
 	if(text.size() > 0) text.clear();
 	
 	XMLDocument xml;
-	if(xml.LoadFile(std::string(std::string("data/locale/") + language + std::string(".xml")).c_str()) != 0) {
-		error("Failed to load locale data: %s", language.c_str());
+	int code = xml.LoadFile(std::string(std::string("data/locale/") + language + std::string(".xml")).c_str());
+	if(code == XML_ERROR_FILE_NOT_FOUND) {
+		warn("Locale \"%s\" not supported. Using \"en-us\" by default.", language.c_str());
+		init("en-us");
+		return;
+	}
+	else if(code != XML_NO_ERROR) {
+		error("Failed to load locale data: %s (CODE: %d)", language.c_str(), code);
 		exit(EXIT_FAILURE);
 	}
 	
 	XMLHandle doc(&xml);
 	
-	XMLElement *wordElement = doc.FirstChildElement("language").FirstChildElement("word").ToElement();
-	while(wordElement) {
-		text[wordElement->Attribute("id")] = wordElement->Attribute("text");
-		wordElement = wordElement->NextSiblingElement("word");
+	XMLElement *textElement = doc.FirstChildElement("language").FirstChildElement("text").ToElement();
+	while(textElement) {
+		text[textElement->Attribute("id")] = textElement->Attribute("text");
+		textElement = textElement->NextSiblingElement("text");
+	}
+	
+	XMLElement *npcElement = doc.FirstChildElement("language").FirstChildElement("npc").ToElement();
+	u16 id = npcElement->IntAttribute("id");
+	u8 counter = 0;
+	while(npcElement) {
+		XMLElement *npcMessageElement = npcElement->FirstChildElement("message");
+		while(npcMessageElement) {
+			text[std::string("NPC") + to_string(id) + "-" + to_string(counter)] = npcMessageElement->Attribute("text");
+			npcMessageElement = npcMessageElement->NextSiblingElement("message");
+			counter++;
+		}
+		counter = 0;
+		npcElement = npcElement->NextSiblingElement("npc");
 	}
 }
 
-std::string _t(std::string str) {
+std::string LanguageManager::translate(std::string str) {
 	return LanguageManager::text[str];
+}
+
+std::string _t(std::string str) {
+	return LanguageManager::translate(str);
 }
 

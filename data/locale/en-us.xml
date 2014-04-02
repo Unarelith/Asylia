@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
-	<word id="Items" text="Items"/>
-	<word id="Skills" text="Skills"/>
-	<word id="Equip" text="Equip"/>
-	<word id="State" text="State"/>
-	<word id="Save" text="Save"/>
-	<word id="Quit" text="Quit"/>
-	<word id="TitleScreen" text="Go to Title"/>
-	<word id="Cancel" text="Cancel"/>
-	<word id="NewGame" text="New Game"/>
-	<word id="Continue" text="Continue"/>
+	<!-- Interface -->
+	<text id="Items" text="Items"/>
+	<text id="Skills" text="Skills"/>
+	<text id="Equip" text="Equip"/>
+	<text id="State" text="State"/>
+	<text id="Save" text="Save"/>
+	<text id="Quit" text="Quit"/>
+	<text id="TitleScreen" text="Go to Title"/>
+	<text id="Cancel" text="Cancel"/>
+	<text id="NewGame" text="New Game"/>
+	<text id="Continue" text="Continue"/>
+	
+	<!-- NPC Dialogs -->
+	<npc id="0">
+		<message text="Hi, do you know that you're in a incredible world made of magic and other things you don't even know?"/>
+		<message text="You should prepare yourself before the adventure!"/>
+	</npc>
 </language>

@@ -17,8 +17,8 @@ event0.init = function()
 			
 			local dialog = ActivityManager.newDialog()
 			
-			dialog:addMessage("Hello little boy, do you know that you're in a incredible world made of magic and other things you don't even know?")
-			dialog:addMessage("You should prepare yourself before the adventure!")
+			dialog:addMessage(_t("NPC0-0"))
+			dialog:addMessage(_t("NPC0-1"))
 		end
 	end
 	

@@ -16,6 +16,10 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
     main.lua
    }
   }
+  locale=locale {
+   en-us.xml
+   fr-fr.xml
+  }
   maps=maps {
    map0-0-0.tmx
   }

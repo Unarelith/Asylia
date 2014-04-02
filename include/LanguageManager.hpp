@@ -18,10 +18,13 @@
 #ifndef LANGUAGEMANAGER_HPP_
 #define LANGUAGEMANAGER_HPP_
 
-namespace LanguageManager {
-	void init(std::string language);
-	
-	extern std::map<std::string, std::string> text;
+class LanguageManager {
+	public:
+		static void init(std::string language);
+		
+		static std::string translate(std::string str);
+		
+		static std::map<std::string, std::string> text;
 };
 
 std::string _t(std::string str);

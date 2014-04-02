@@ -78,6 +78,9 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
 													   .set("addMessage", &DialogActivity::addMessage);
+	
+	SLB::Class<LanguageManager>("LanguageManager", &slbm).set("translate", &LanguageManager::translate);
+	doString("function _t(str) return LanguageManager.translate(str) end");
 }
 
 void LuaHandler::doFile(const char *filename) {

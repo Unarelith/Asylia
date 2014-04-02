@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
-	<word id="Items" text="Objets"/>
-	<word id="Skills" text="Compétences"/>
-	<word id="Equip" text="Équipement"/>
-	<word id="State" text="État"/>
-	<word id="Save" text="Sauvegarder"/>
-	<word id="Quit" text="Quitter"/>
-	<word id="TitleScreen" text="Écran Titre"/>
-	<word id="Cancel" text="Annuler"/>
-	<word id="NewGame" text="Nouvelle Partie"/>
-	<word id="Continue" text="Continuer"/>
+	<!-- Interface -->
+	<text id="Items" text="Objets"/>
+	<text id="Skills" text="Compétences"/>
+	<text id="Equip" text="Équipement"/>
+	<text id="State" text="État"/>
+	<text id="Save" text="Sauvegarder"/>
+	<text id="Quit" text="Quitter"/>
+	<text id="TitleScreen" text="Écran Titre"/>
+	<text id="Cancel" text="Annuler"/>
+	<text id="NewGame" text="Nouvelle Partie"/>
+	<text id="Continue" text="Continuer"/>
+	
+	<!-- NPC Dialogs -->
+	<npc id="0">
+		<message text="Salut, est-ce que tu sais que tu es dans un monde incroyable, fait de magie et d'autres choses que tu ne connais pas encore ?"/>
+		<message text="Tu devrais te préparer avant l'aventure !"/>
+	</npc>
 </language>
