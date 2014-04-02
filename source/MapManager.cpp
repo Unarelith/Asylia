@@ -104,6 +104,7 @@ void MapManager::initMaps() {
 			mapFilename << "data/maps/map" << i << "-" << x << "-" << y << ".tmx";
 			
 			maps[i][MAP_POS(i, x, y)] = new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID);
+			debug("New map at (%d;%d) zone %d, place %d, with filename \"%s\"", x, y, i, MAP_POS(i, x, y), mapFilename.str().c_str());
 			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
 			for(unsigned int k = 0 ; k < events ; k++) {
@@ -119,9 +120,14 @@ void MapManager::initMaps() {
 				anim = eventElement->IntAttribute("anim");
 				
 				eventFolder << "data/events/" << eventName << "/";
-				eventAppearance << "graphics/characters/" << appearance << ".png";
+				
+				if(appearance != "") {
+					eventAppearance << "graphics/characters/" << appearance << ".png";
+				}
 				
 				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y));
+				
+				eventElement = eventElement->NextSiblingElement("event");
 			}
 			
 			mapElement = mapElement->NextSiblingElement("map");

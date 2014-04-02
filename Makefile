@@ -17,7 +17,7 @@ LDFLAGS	:=	-g
 LIBS	:=	-lSDL2_ttf -lSDL2_net -lSDL2_mixer -lSDL2_image -lSDL2
 
 #---------------------------------------------------------------------------------
-# list of directories containing libraries, this must be the top level containing
+# List of directories containing libraries, this must be the top level containing
 # include and lib
 #---------------------------------------------------------------------------------
 LIBDIRS	:=	

@@ -27,8 +27,12 @@ Image::Image(const char *filename) {
 	m_surface = IMG_Load_RW(image, 1);
 	
 	if(!m_surface) {
-		error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
-		exit(EXIT_FAILURE);
+		if(strcmp(filename, "")) {
+			error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
+			exit(EXIT_FAILURE);
+		} else {
+			m_surface = SDL_CreateRGBSurface(0, 32, 32, 32, 0, 0, 0, 0);
+		}
 	}
 	
 	m_width = m_surface->w;

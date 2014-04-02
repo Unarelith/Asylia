@@ -93,8 +93,8 @@ void Map::eventsUpdate() {
 }
 
 void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
-	u16 posX = (tileX + m_x * m_width) * m_tileset->tileWidth;
-	u16 posY = (tileY + m_y * m_height) * m_tileset->tileHeight;
+	u16 posX = tileX * m_tileset->tileWidth;
+	u16 posY = tileY * m_tileset->tileHeight;
 	
 	u16 tileID = getTile(tileX, tileY, layer);
 	if(tileID == 0) return;
