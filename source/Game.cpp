@@ -35,6 +35,8 @@ Game::Game() {
 	
 	Interface::init();
 	
+	LanguageManager::init("en-us");
+	
 	ActivityManager::init();
 }
 

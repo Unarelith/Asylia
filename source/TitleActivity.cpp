@@ -22,9 +22,9 @@ TitleActivity::TitleActivity() {
 	
 	std::vector<std::string> choices;
 	
-	choices.push_back("New Game");
-	choices.push_back("Continue");
-	choices.push_back("Quit");
+	choices.push_back(_t("NewGame"));
+	choices.push_back(_t("Continue"));
+	choices.push_back(_t("Quit"));
 	
 	m_background = new Image("graphics/interface/TitleScreen.jpg");
 	

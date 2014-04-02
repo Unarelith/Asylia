@@ -20,9 +20,9 @@
 EndActivity::EndActivity() {
 	std::vector<std::string> choices;
 	
-	choices.push_back("Cancel");
-	choices.push_back("Go to Title");
-	choices.push_back("Quit");
+	choices.push_back(_t("Cancel"));
+	choices.push_back(_t("TitleScreen"));
+	choices.push_back(_t("Quit"));
 	
 	m_cmdwin = new CommandWindow(192, choices);
 	m_cmdwin->x(GameWindow::main->width() / 2 - m_cmdwin->width() / 2);

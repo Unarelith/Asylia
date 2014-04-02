@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<language>
+	<word id="Items" text="Items"/>
+	<word id="Skills" text="Skills"/>
+	<word id="Equip" text="Equip"/>
+	<word id="State" text="State"/>
+	<word id="Save" text="Save"/>
+	<word id="Quit" text="Quit"/>
+	<word id="TitleScreen" text="Go to Title"/>
+	<word id="Cancel" text="Cancel"/>
+	<word id="NewGame" text="New Game"/>
+	<word id="Continue" text="Continue"/>
+</language>

@@ -22,12 +22,12 @@ MenuActivity::MenuActivity() {
 	
 	std::vector<std::string> choices;
 	
-	choices.push_back("Items");
-	choices.push_back("Skills");
-	choices.push_back("Equip");
-	choices.push_back("State");
-	choices.push_back("Save");
-	choices.push_back("Quit");
+	choices.push_back(_t("Items"));
+	choices.push_back(_t("Skills"));
+	choices.push_back(_t("Equip"));
+	choices.push_back(_t("State"));
+	choices.push_back(_t("Save"));
+	choices.push_back(_t("Quit"));
 	
 	m_cmdwin = new CommandWindow(150, choices);
 }

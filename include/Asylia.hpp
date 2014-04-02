@@ -51,6 +51,8 @@ using namespace tinyxml2;
 #include "Color.hpp"
 #include "Rectangle.hpp"
 
+#include "LanguageManager.hpp"
+
 #include "Sound.hpp"
 
 #include "Keyboard.hpp"

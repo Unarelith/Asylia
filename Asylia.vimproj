@@ -75,6 +75,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Image.hpp
   Interface.hpp
   Keyboard.hpp
+  LanguageManager.hpp
   LuaHandler.hpp
   Map.hpp
   MapManager.hpp
@@ -120,6 +121,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Image.cpp
   Interface.cpp
   Keyboard.cpp
+  LanguageManager.cpp
   LuaHandler.cpp
   Map.cpp
   MapManager.cpp

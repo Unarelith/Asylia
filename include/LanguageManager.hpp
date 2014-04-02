@@ -1,0 +1,29 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  LanguageManager.hpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  02/04/2014 13:49:13
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Quentin BAZIN, <quent42340@gmail.com>
+ *        Company:  Deloptia
+ *
+ * =====================================================================================
+ */
+#ifndef LANGUAGEMANAGER_HPP_
+#define LANGUAGEMANAGER_HPP_
+
+namespace LanguageManager {
+	void init(std::string language);
+	
+	extern std::map<std::string, std::string> text;
+};
+
+std::string _t(std::string str);
+
+#endif // LANGUAGEMANAGER_HPP_
