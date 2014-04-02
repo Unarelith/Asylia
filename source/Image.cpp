@@ -113,6 +113,7 @@ void Image::reload(const char *filename) {
 
 void Image::renderCopy() {
 	if(m_texture) SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
+	else GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color::black);
 }
 
 void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {
