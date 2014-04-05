@@ -35,6 +35,8 @@ class SelectableWindow : public Window {
 		s16 m_pos;
 		
 		u8 m_scroll;
+		
+		InfoWindow *m_infoWindow;
 };
 
 #endif // SELECTABLEWINDOW_HPP_

@@ -24,9 +24,12 @@ SelectableWindow::SelectableWindow(s16 x, s16 y, u16 width, u16 height) : Window
 	m_pos = -1;
 	
 	m_scroll = 0;
+	
+	m_infoWindow = NULL;
 }
 
 SelectableWindow::~SelectableWindow() {
+	if(m_infoWindow) delete m_infoWindow;
 }
 
 void SelectableWindow::updateCursor() {

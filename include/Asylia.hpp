@@ -79,6 +79,7 @@ using namespace tinyxml2;
 
 #include "Window.hpp"
 #include "TextWindow.hpp"
+#include "InfoWindow.hpp"
 #include "SelectableWindow.hpp"
 #include "CommandWindow.hpp"
 #include "MessageWindow.hpp"

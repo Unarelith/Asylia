@@ -105,6 +105,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    SelectableWindow.hpp
    CommandWindow.hpp
    MessageWindow.hpp
+   InfoWindow.hpp
    ItemWindow.hpp
   }
  }
@@ -147,6 +148,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    SelectableWindow.cpp
    CommandWindow.cpp
    MessageWindow.cpp
+   InfoWindow.cpp
    ItemWindow.cpp
   }
   main.cpp

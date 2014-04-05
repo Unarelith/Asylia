@@ -43,6 +43,11 @@ export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir))
 CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
 CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 
+SOURCEFILES	:=	$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c)) \
+				$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.cpp))
+HEADERFILES	:=	$(foreach dir,$(INCLUDES),$(wildcard $(dir)/*.h)) \
+				$(foreach dir,$(INCLUDES),$(wildcard $(dir)/*.hpp))
+
 #---------------------------------------------------------------------------------
 # Use CXX for linking C++ projects, CC for standard C
 #---------------------------------------------------------------------------------
@@ -64,7 +69,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) $(foreach dir,$(OTHERLIBS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean run edit droid install uninstall
+.PHONY: $(BUILD) clean run edit droid tags install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -91,7 +96,12 @@ droid:
 	cp -f bin/$(TARGET)-debug.apk ~/Dropbox/Public/$(TARGET)-debug.apk && \
 	cd ..
 	@echo done.
-
+	
+#---------------------------------------------------------------------------------
+tags:
+	@echo generating tags file ...
+	@ctags $(SOURCEFILES) $(HEADERFILES)
+	
 #---------------------------------------------------------------------------------
 clean:
 	@echo clean ...
