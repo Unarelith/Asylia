@@ -19,12 +19,12 @@
 	</event>
 	
 	<!-- Items -->
-	<item name="Potion"> <description text="Recovers 10 HP."/> </item>
-	<item name="Perfume"> <description text="Recovers 10 MP."/> </item>
-	<item name="Elixir"> <description text="Cancels an effect."/> </item>
-	<item name="Tonic"> <description text="Increases temporarly ATK."/> </item>
+	<item name="Potion" description="Recovers 10 HP."/>
+	<item name="Perfume" description="Recovers 10 MP."/>
+	<item name="Elixir" description="Cancels an effect."/>
+	<item name="Tonic" description="Increases temporarly ATK."/>
 	
-	<item name="Bronze Key"> <description text="Can open some wooden doors."/> </item>
-	<item name="Silver Key"> <description text="Can open some reinforced doors."/> </item>
-	<item name="Gold Key"> <description text="Can open boss room."/> </item>
+	<item name="Bronze Key" description="Can open some wooden doors."/>
+	<item name="Silver Key" description="Can open some reinforced doors."/>
+	<item name="Gold Key" description="Can open boss room."/>
 </language>

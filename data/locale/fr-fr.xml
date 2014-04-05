@@ -19,12 +19,12 @@
 	</event>
 	
 	<!-- Items -->
-	<item name="Potion"> <description text="Restaure 10 PV."/> </item>
-	<item name="Parfum"> <description text="Restaure 10 PM."/> </item>
-	<item name="Élixir"> <description text="Annule un effet."/> </item>
-	<item name="Remontant"> <description text="Augmente l'ATK temporairement."/> </item>
+	<item name="Potion" description ="Restaure 10 PV."/>
+	<item name="Parfum" description ="Restaure 10 PM."/>
+	<item name="Élixir" description ="Annule un effet."/>
+	<item name="Remontant" description ="Augmente l'ATK temporairement."/>
 
-	<item name="Clé en Bronze"> <description text="Ouvre certaines portes en bois."/> </item>
-	<item name="Clé en Argent"> <description text="Ouvre certaines portes blindées."/> </item>
-	<item name="Clé en Or"> <description text="Ouvre la salle du boss."/> </item>
+	<item name="Clé en Bronze" description ="Ouvre certaines portes en bois."/>
+	<item name="Clé en Argent" description ="Ouvre certaines portes blindées."/>
+	<item name="Clé en Or" description ="Ouvre la salle du boss."/>
 </language>

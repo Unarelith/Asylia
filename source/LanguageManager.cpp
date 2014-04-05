@@ -62,19 +62,8 @@ void LanguageManager::init(std::string language) {
 	XMLElement *itemElement = doc.FirstChildElement("language").FirstChildElement("item").ToElement();
 	counter = 0;
 	while(itemElement) {
-		std::string name, description;
-		
-		name = itemElement->Attribute("name");
-		
-		XMLElement *itemDescriptionElement = itemElement->FirstChildElement("description");
-		while(itemDescriptionElement) {
-			description += itemDescriptionElement->Attribute("text");// + std::string("\n");
-			
-			itemDescriptionElement = itemDescriptionElement->NextSiblingElement("description");
-		}
-		
-		text[std::string("Item") + to_string(counter)] = name;
-		text[std::string("Item") + to_string(counter) + "Desc"] = description;
+		text[std::string("Item") + to_string(counter)] = itemElement->Attribute("name");
+		text[std::string("Item") + to_string(counter) + "Desc"] = itemElement->Attribute("description");
 		
 		itemElement = itemElement->NextSiblingElement("item");
 		counter++;
