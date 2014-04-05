@@ -26,5 +26,5 @@
 
 	<item name="Clé en Bronze"> <description text="Ouvre certaines portes en bois."/> </item>
 	<item name="Clé en Argent"> <description text="Ouvre certaines portes blindées."/> </item>
-	<item name="Clé en Or"> <descrpition text="Ouvre la salle du boss."/> </item>
+	<item name="Clé en Or"> <description text="Ouvre la salle du boss."/> </item>
 </language>
