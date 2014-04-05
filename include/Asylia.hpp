@@ -24,6 +24,8 @@
 #include <stack>
 #include <queue>
 #include <numeric>
+#include <list>
+#include <utility>
 
 #ifdef __ANDROID__
 	std::string to_string(int n);
@@ -70,6 +72,11 @@ using namespace tinyxml2;
 #include "Animation.hpp"
 #include "AnimationManager.hpp"
 #include "Sprite.hpp"
+
+#include "Item.hpp"
+#include "ItemManager.hpp"
+
+#include "Inventory.hpp"
 
 #include "Character.hpp"
 #include "Player.hpp"

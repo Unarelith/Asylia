@@ -40,6 +40,8 @@ void MapActivity::init() {
 	
 	MapManager::currentMap->load();
 	
+	ItemManager::init();
+	
 	CharacterManager::init();
 }
 

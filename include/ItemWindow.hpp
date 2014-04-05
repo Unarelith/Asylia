@@ -23,13 +23,8 @@ class ItemWindow : public SelectableWindow {
 		ItemWindow();
 		~ItemWindow();
 		
-		void addItem(std::string item);
-		
 		void drawItem(u8 pos);
 		void draw();
-		
-	private:
-		std::vector<std::string> m_items;
 };
 
 #endif // ITEMWINDOW_HPP_

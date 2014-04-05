@@ -17,4 +17,14 @@
 		<message text="Hi, do you know that you're in a incredible world made of magic and other things you don't even know?"/>
 		<message text="You should prepare yourself before the adventure!"/>
 	</event>
+	
+	<!-- Items -->
+	<item name="Potion"> <description text="Recovers 10 HP."/> </item>
+	<item name="Perfume"> <description text="Recovers 10 MP."/> </item>
+	<item name="Elixir"> <description text="Cancels an effect."/> </item>
+	<item name="Tonic"> <description text="Increases temporarly ATK."/> </item>
+	
+	<item name="Bronze Key"> <description text="Can open some wooden doors."/> </item>
+	<item name="Silver Key"> <description text="Can open some reinforced doors."/> </item>
+	<item name="Gold Key"> <description text="Can open boss room."/> </item>
 </language>

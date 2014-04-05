@@ -19,58 +19,6 @@
 
 ItemActivity::ItemActivity() {
 	m_itemwin = new ItemWindow();
-	
-	m_itemwin->addItem("Potion");
-	m_itemwin->addItem("Potion");
-	m_itemwin->addItem("Potion");
-	m_itemwin->addItem("Potion2");
-	m_itemwin->addItem("Potion2");
-	m_itemwin->addItem("Potion2");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
-	m_itemwin->addItem("Potion3");
 }
 
 ItemActivity::~ItemActivity() {

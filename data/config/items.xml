@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item name="Potion1" level="1"/>
+	<item name="Potion2" level="1"/>
+	<item name="Potion3" level="1"/>
+	<item name="Potion4" level="1"/>
+	
+	<item name="Key1" level="1"/>
+	<item name="Key2" level="1"/>
+	<item name="Key3" level="1"/>
+</items>

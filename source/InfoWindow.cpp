@@ -23,6 +23,12 @@ InfoWindow::InfoWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width
 InfoWindow::~InfoWindow() {
 }
 
+void InfoWindow::drawTextScaled(std::string text) {
+	Window::draw();
+	
+	Interface::defaultFont->printScaled(text.c_str(), m_x + GameWindow::main->viewportX() + 16, m_y + GameWindow::main->viewportY() + 12, m_width - 16, 32, FONT_LARGE);
+}
+
 void InfoWindow::drawTextCentered(std::string text) {
 	Window::draw();
 	

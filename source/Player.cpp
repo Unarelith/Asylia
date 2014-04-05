@@ -21,6 +21,15 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	m_type = Type::Player;
 	
 	m_speed = CHARA_SPEED;
+	
+	m_inventory = new Inventory;
+	m_inventory->addItem(0, 1);
+	m_inventory->addItem(1, 1);
+	m_inventory->addItem(5, 1);
+	m_inventory->addItem(2, 1);
+	m_inventory->addItem(3, 1);
+	m_inventory->addItem(4, 1);
+	m_inventory->addItem(6, 1);
 }
 
 Player::~Player() {

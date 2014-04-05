@@ -36,12 +36,14 @@ void LanguageManager::init(std::string language) {
 	
 	XMLHandle doc(&xml);
 	
+	/* INTERFACE */
 	XMLElement *textElement = doc.FirstChildElement("language").FirstChildElement("text").ToElement();
 	while(textElement) {
 		text[textElement->Attribute("id")] = textElement->Attribute("text");
 		textElement = textElement->NextSiblingElement("text");
 	}
 	
+	/* EVENTS */
 	XMLElement *eventElement = doc.FirstChildElement("language").FirstChildElement("event").ToElement();
 	u16 id = eventElement->IntAttribute("id");
 	u8 counter = 0;
@@ -54,6 +56,28 @@ void LanguageManager::init(std::string language) {
 		}
 		counter = 0;
 		eventElement = eventElement->NextSiblingElement("event");
+	}
+	
+	/* ITEMS */
+	XMLElement *itemElement = doc.FirstChildElement("language").FirstChildElement("item").ToElement();
+	counter = 0;
+	while(itemElement) {
+		std::string name, description;
+		
+		name = itemElement->Attribute("name");
+		
+		XMLElement *itemDescriptionElement = itemElement->FirstChildElement("description");
+		while(itemDescriptionElement) {
+			description += itemDescriptionElement->Attribute("text");// + std::string("\n");
+			
+			itemDescriptionElement = itemDescriptionElement->NextSiblingElement("description");
+		}
+		
+		text[std::string("Item") + to_string(counter)] = name;
+		text[std::string("Item") + to_string(counter) + "Desc"] = description;
+		
+		itemElement = itemElement->NextSiblingElement("item");
+		counter++;
 	}
 }
 

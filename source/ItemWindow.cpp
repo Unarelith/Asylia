@@ -18,8 +18,8 @@
 #include "Asylia.hpp"
 
 ItemWindow::ItemWindow() : SelectableWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52) {
-	m_itemMax = 0;
-	m_columnMax = 3;
+	m_itemMax = CharacterManager::player->inventory()->nbItems();
+	m_columnMax = 2;
 	
 	m_pos = 0;
 	
@@ -27,11 +27,6 @@ ItemWindow::ItemWindow() : SelectableWindow(150, 52, GameWindow::main->width() -
 }
 
 ItemWindow::~ItemWindow() {
-}
-
-void ItemWindow::addItem(std::string item) {
-	m_items.push_back(item);
-	m_itemMax++;
 }
 
 void ItemWindow::drawItem(u8 pos) {
@@ -43,7 +38,9 @@ void ItemWindow::drawItem(u8 pos) {
 	x = 20 + pos % m_columnMax * (width + 32);
 	y = 20 + pos / m_columnMax * 32 - m_scroll * 32;
 	
-	Image *image = Interface::defaultFont->printScaledToImage(m_items[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE);
+	CharacterManager::player->inventory()->getItem(pos)->thumbnail()->render(m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y);
+	
+	Image *image = Interface::defaultFont->printScaledToImage(CharacterManager::player->inventory()->getItem(pos)->name().c_str(), m_x + GameWindow::main->viewportX() + x + 28, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE);
 	
 	if(m_y + y < m_y) {
 		image->render(-1, GameWindow::main->viewportY() + m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
@@ -60,7 +57,7 @@ void ItemWindow::drawItem(u8 pos) {
 void ItemWindow::draw() {
 	SelectableWindow::draw();
 	
-	m_infoWindow->drawTextCentered(m_items[m_pos]);
+	m_infoWindow->drawTextScaled(CharacterManager::player->inventory()->getItem(m_pos)->description());
 	
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
 		drawItem(i);
