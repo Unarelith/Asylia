@@ -18,7 +18,21 @@
 #include "Asylia.hpp"
 
 Event::Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY, bool solid) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {
-	m_type = Type::Event;
+	if(appearance.find("event") != std::string::npos) {
+		m_type = Type::Event;
+	
+		addAnimation(4, AnimationManager::event[DIR_DOWN], 125);
+		addAnimation(4, AnimationManager::event[DIR_LEFT], 125);
+		addAnimation(4, AnimationManager::event[DIR_RIGHT], 125);
+		addAnimation(4, AnimationManager::event[DIR_UP], 125);
+	} else {
+		m_type = Type::NPC;
+		
+		addAnimation(4, AnimationManager::character[DIR_DOWN], 125);
+		addAnimation(4, AnimationManager::character[DIR_LEFT], 125);
+		addAnimation(4, AnimationManager::character[DIR_RIGHT], 125);
+		addAnimation(4, AnimationManager::character[DIR_UP], 125);
+	}
 	
 	m_folder = folder;
 	m_table = table;

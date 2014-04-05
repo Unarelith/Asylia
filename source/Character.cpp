@@ -54,11 +54,6 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area,
 	
 	m_solid = true;
 	
-	addAnimation(4, AnimationManager::character[DIR_DOWN],	125);
-	addAnimation(4, AnimationManager::character[DIR_LEFT],	125);
-	addAnimation(4, AnimationManager::character[DIR_RIGHT],	125);
-	addAnimation(4, AnimationManager::character[DIR_UP],	125);
-	
 	m_inventory = NULL;
 }
 

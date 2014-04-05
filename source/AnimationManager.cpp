@@ -26,3 +26,10 @@ u16 AnimationManager::character[4][4] = {
 
 u16 AnimationManager::arrow[4] = {58, 59, 70, 71};
 
+u16 AnimationManager::event[4][4] = {
+	{0, 4, 8, 12},
+	{1, 5, 9, 13},
+	{2, 6, 10, 14},
+	{3, 7, 11, 15}
+};
+

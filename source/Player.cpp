@@ -22,6 +22,11 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	
 	m_speed = CHARA_SPEED;
 	
+	addAnimation(4, AnimationManager::character[DIR_DOWN], 125);
+	addAnimation(4, AnimationManager::character[DIR_LEFT], 125);
+	addAnimation(4, AnimationManager::character[DIR_RIGHT], 125);
+	addAnimation(4, AnimationManager::character[DIR_UP], 125);
+	
 	m_inventory = new Inventory;
 	m_inventory->addItem(0, 1);
 	m_inventory->addItem(1, 1);

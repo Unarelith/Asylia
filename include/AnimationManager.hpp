@@ -22,6 +22,8 @@ namespace AnimationManager {
 	extern u16 character[4][4];
 	
 	extern u16 arrow[4];
+	
+	extern u16 event[4][4];
 };
 
 #endif // ANIMATIONMANAGER_HPP_
