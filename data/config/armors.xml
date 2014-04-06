@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<armors>
+	<armor name="Shield" level="1" slot="0" defense="2"/>
+	
+	<armor name="Hood" level="1", slot="1" defense="3"/>
+	<armor name="Helmet" level="1", slot="1" defense="5"/>
+	
+	<armor name="Dress" level="1" slot="2" defense="3"/>
+	<armor name="Chestplate" level="1" slot="2" defense="5"/>
+</armors>

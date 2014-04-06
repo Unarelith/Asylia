@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weapons>
+	<weapon name="Sword" level="1" hitRate="0.10" attack="5"/>
+	<weapon name="Spear" level="1", hitRate="0.05" attack="5"/>
+	<weapon name="Axe" level="1", hitRate="0.05" attack="8"/>
+	<weapon name="Dagger" level="1" hitRate="0.03" attack="3"/>
+</weapons>

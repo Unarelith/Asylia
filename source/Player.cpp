@@ -45,29 +45,37 @@ void Player::move() {
 		m_moving = false;
 		
 		if(Keyboard::isKeyPressed(Keyboard::GameUp)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameDown)) m_vy = -m_speed;
-			m_moving = true;
+			if(!Keyboard::isKeyPressed(Keyboard::GameDown)) {
+				m_vy = -m_speed;
+				m_moving = true;
+			}
 			
 			goto move;
 		}
 		
 		if(Keyboard::isKeyPressed(Keyboard::GameDown)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameUp)) m_vy = m_speed;
-			m_moving = true;
+			if(!Keyboard::isKeyPressed(Keyboard::GameUp)) {
+				m_vy = m_speed;
+				m_moving = true;
+			}
 			
 			goto move;
 		}
 		
 		if(Keyboard::isKeyPressed(Keyboard::GameLeft)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameRight)) m_vx = -m_speed;
-			m_moving = true;
+			if(!Keyboard::isKeyPressed(Keyboard::GameRight)) {
+				m_vx = -m_speed;
+				m_moving = true;
+			}
 			
 			goto move;
 		}
 		
 		if(Keyboard::isKeyPressed(Keyboard::GameRight)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameLeft)) m_vx = m_speed;
-			m_moving = true;
+			if(!Keyboard::isKeyPressed(Keyboard::GameLeft)) {
+				m_vx = m_speed;
+				m_moving = true;
+			}
 			
 			goto move;
 		}

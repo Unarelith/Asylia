@@ -28,4 +28,19 @@
 	<item name="Clé en Bronze" description ="Ouvre certaines portes en bois."/>
 	<item name="Clé en Argent" description ="Ouvre certaines portes blindées."/>
 	<item name="Clé en Or" description ="Ouvre la salle du boss."/>
+
+	<!-- Armors -->
+	<armor name="Bouclier" description="Protège des projectiles."/>
+	
+	<armor name="Capuche" description="Capuche des vestes de fermiers."/>
+	<armor name="Casque" description="Casque des gardes de la cité."/>
+
+	<armor name="Robe" description="Robe de guerrier."/>
+	<armor name="Plastron" description="Plastron des gardes de la cité."/>
+
+	<!-- Weapons -->
+	<weapon name="Épée" description="Épée en fer forgé."/>
+	<weapon name="Lance" description="Lance fabriquée dans le coin."/>
+	<weapon name="Hache" description="Une hache puissante."/>
+	<weapon name="Dague" description="La dague des assassins."/>
 </language>

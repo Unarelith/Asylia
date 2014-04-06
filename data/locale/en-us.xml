@@ -28,4 +28,19 @@
 	<item name="Bronze Key" description="Can open some wooden doors."/>
 	<item name="Silver Key" description="Can open some reinforced doors."/>
 	<item name="Gold Key" description="Can open boss room."/>
+
+	<!-- Armors -->
+	<armor name="Shield" description="Protect from projectiles."/>
+
+	<armor name="Hood" description="Hood from farmer's jackets."/>
+	<armor name="Helmet" description="City guards' helmet."/>
+
+	<armor name="Dress" description="Warrior dress."/>
+	<armor name="Chestplate" description="City guards' chestplate."/>
+
+	<!-- Weapons -->
+	<weapon name="Sword" description="Iron sword."/>
+	<weapon name="Spear" description="Spear made in the area."/>
+	<weapon name="Axe" description="A powerful axe."/>
+	<weapon name="Dagger" description="Assassin dagger."/>
 </language>
