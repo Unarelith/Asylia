@@ -26,7 +26,8 @@ Event::Event(std::string folder, std::string table, std::string appearance, u16 
 		addAnimation(4, AnimationManager::event[DIR_RIGHT], 125);
 		addAnimation(4, AnimationManager::event[DIR_UP], 125);
 	} else {
-		m_type = Type::NPC;
+		if(appearance == "") m_type = Type::Event;
+		else m_type = Type::NPC;
 		
 		addAnimation(4, AnimationManager::character[DIR_DOWN], 125);
 		addAnimation(4, AnimationManager::character[DIR_LEFT], 125);

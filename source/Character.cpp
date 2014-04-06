@@ -216,14 +216,14 @@ void Character::eventCollisions() {
 		}
 	}
 	
-	if(m_type == Type::Event) {
+	if(m_type == Type::Event || m_type == Type::NPC) {
 		inCollisionWith(CharacterManager::player);
 	}
 }
 
 void Character::collisionAction(Character *c) {
 	if(c && c->m_solid) m_moving = false;
-	if(c && c->m_type == Type::Event) c->collisionAction();
+	if(c && (c->m_type == Type::Event || c->m_type == Type::NPC)) c->collisionAction();
 }
 
 void Character::doMovement(s8 vx, s8 vy) {
