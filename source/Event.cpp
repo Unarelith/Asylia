@@ -57,8 +57,6 @@ void Event::update() {
 }
 
 void Event::render() {
-	Character::render();
-	
 	LuaHandler::doString(m_table + ".render()");
 }
 

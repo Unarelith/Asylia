@@ -18,12 +18,15 @@
 #ifndef ITEMMANAGER_HPP_
 #define ITEMMANAGER_HPP_
 
-namespace ItemManager {
-	void init();
-	
-	void loadItems();
-	
-	extern std::vector<Item*> items;
+class ItemManager {
+	public:
+		static void init();
+		
+		static void loadItems();
+		
+		static Item *getItem(u16 id) { return items[id]; }
+		
+		static std::vector<Item*> items;
 };
 
 #endif // ITEMMANAGER_HPP_

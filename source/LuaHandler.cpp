@@ -43,17 +43,27 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
 	
-	SLB::Class<Event>("Event", &slbm).set("moveUp", &Character::moveUp)
+	SLB::Class<Event>("Event", &slbm).inherits<Sprite>()
+									 .set("moveUp", &Character::moveUp)
 									 .set("moveDown", &Character::moveDown)
 									 .set("moveLeft", &Character::moveLeft)
 									 .set("moveRight", &Character::moveRight)
 									 .set("setDirection", &Character::setDirection)
 									 .set("getDirection", &Character::getDirection)
-									 .set("getTicks", &SDL_GetTicks);
+									 .set("getTicks", &SDL_GetTicks)
+									 .set("render", &Character::render)
+									 .set("x", &Character::x)
+									 .set("y", &Character::y);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
 									 .set("render", &Image::render);
+	
+	SLB::Class<Inventory>("Inventory", &slbm).set("addItem", &Inventory::addItem);
+	
+	SLB::Class<Item>("Item", &slbm).set("name", &Item::name);
+	
+	SLB::Class<ItemManager>("ItemManager", &slbm).set("getItem", &ItemManager::getItem);
 	
 	SLB::Class<Keyboard>("Keyboard", &slbm).set("isKeyPressed", &Keyboard::isKeyPressed)
 										   .set("isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay)
@@ -75,8 +85,13 @@ void LuaHandler::bindClasses() {
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)
 									   .set("changeMap", &Character::changeMap)
-									   .set("stop", &Character::stop);
-;
+									   .set("stop", &Character::stop)
+									   .set("inventory", &Player::inventory);
+	
+	SLB::Class<Sprite>("Sprite", &slbm).constructor<const char *, u16, u16>()
+									   .set("drawFrame", &Sprite::drawFrame)
+									   .set("playAnimation", &Sprite::playAnimation)
+									   .set("animationAtEnd", &Sprite::animationAtEnd);
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
 													   .set("addMessage", &DialogActivity::addMessage);

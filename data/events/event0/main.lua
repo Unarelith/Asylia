@@ -8,7 +8,7 @@ event0.init = function()
 	end
 	
 	event0.render = function()
-		
+		event0.character:render()
 	end
 	
 	event0.action = function()

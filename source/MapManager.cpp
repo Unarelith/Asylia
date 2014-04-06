@@ -124,7 +124,7 @@ void MapManager::initMaps() {
 				eventFolder << "data/events/" << eventName << "/";
 				
 				if(appearance != "") {
-					eventAppearance << "graphics/characters/" << appearance << ".png";
+					eventAppearance << "graphics/" << appearance << ".png";
 				}
 				
 				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y, solid));
