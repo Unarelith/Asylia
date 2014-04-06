@@ -11,6 +11,7 @@
 	<text id="Cancel" text="Cancel"/>
 	<text id="NewGame" text="New Game"/>
 	<text id="Continue" text="Continue"/>
+	<text id="Obtained" text="Obtained"/>
 	
 	<!-- Event messages -->
 	<event id="0">

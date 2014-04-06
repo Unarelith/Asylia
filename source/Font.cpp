@@ -65,6 +65,23 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 	textToDisplay.render(x, y, width, height);
 }
 
+Image *Font::printToImage(const char *str, u16 x, u16 y, FontSize size, Color color) {
+	TTF_Font *font = NULL;
+	
+	switch(size) {
+		case FONT_SMALL:  font = m_fontSmall;		break;
+		case FONT_MEDIUM: font = m_fontMedium;		break;
+		case FONT_LARGE:  font = m_fontLarge;		break;
+		default:		  error("Bad font size");	return NULL;
+	}
+	
+	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	
+	Image *image = new Image(text);
+	image->setPosRect(x, y, image->width(), image->height());
+	return image;
+}
+
 Image *Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	

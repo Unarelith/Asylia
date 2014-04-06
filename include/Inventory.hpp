@@ -29,6 +29,7 @@ class Inventory {
 		u16 nbItems() { return m_items.size(); }
 		
 		Item *getItem(u16 i) { for(auto& it : m_items) if(it.first == ItemManager::items[i]) return it.first; return NULL; }
+		s16 getCount(u16 i) { for(auto& it : m_items) if(it.first == ItemManager::items[i]) return it.second; return 0; }
 		
 	private:
 		std::list<std::pair<Item*, s16>> m_items;

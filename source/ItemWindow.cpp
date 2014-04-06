@@ -40,7 +40,11 @@ void ItemWindow::drawItem(u8 pos) {
 	
 	CharacterManager::player->inventory()->getItem(pos)->thumbnail()->render(m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y);
 	
-	Image *image = Interface::defaultFont->printScaledToImage(CharacterManager::player->inventory()->getItem(pos)->name().c_str(), m_x + GameWindow::main->viewportX() + x + 28, m_y + GameWindow::main->viewportY() + y, width, height, FONT_LARGE);
+	Image *count = Interface::defaultFont->printToImage(to_string(CharacterManager::player->inventory()->getCount(pos)).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y, FONT_LARGE);
+	
+	count->render(count->posRect().x - count->width());
+	
+	Image *image = Interface::defaultFont->printScaledToImage(CharacterManager::player->inventory()->getItem(pos)->name().c_str(), m_x + GameWindow::main->viewportX() + x + 28, m_y + GameWindow::main->viewportY() + y, width - count->width(), height, FONT_LARGE);
 	
 	if(m_y + y < m_y) {
 		image->render(-1, GameWindow::main->viewportY() + m_y + 4, 0, image->height() - (y + 32 - m_y), -1, m_y - y + 4, 0, image->height() - (y + 32 - m_y));
@@ -52,6 +56,7 @@ void ItemWindow::drawItem(u8 pos) {
 	}
 	
 	delete image;
+	delete count;
 }
 
 void ItemWindow::draw() {

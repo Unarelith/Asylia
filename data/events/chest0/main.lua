@@ -5,9 +5,10 @@ chest0.init = function()
 	chest0.opened = false
 	chest0.chestType = 1
 	chest0.animationAtEnd = false
+	chest0.empty = false
 	
-	chest0.itemID = 1;
-	chest0.itemCount = 2;
+	chest0.itemID = 2;
+	chest0.itemCount = 99;
 	
 	chest0.update = function()
 		
@@ -33,13 +34,15 @@ chest0.init = function()
 			end
 		end
 		
-		if chest0.animationAtEnd then
+		if chest0.animationAtEnd and not chest0.empty then
 			local dialog = ActivityManager.newDialog()
-			local item = ItemManager.getItem(itemID)
+			local item = ItemManager.getItem(chest0.itemID)
 			
-			dialog:addMessage("You got " .. chest0.itemCount .. " " .. item:name())
+			dialog:addMessage(_t("Obtained") .. " " .. chest0.itemCount .. " " .. item:name())
 			
 			CharacterManager.player():inventory():addItem(chest0.itemID, chest0.itemCount)
+			
+			chest0.empty = true
 		end
 	end
 	

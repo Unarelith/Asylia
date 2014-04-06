@@ -27,6 +27,7 @@ void Inventory::addItem(u8 id, u8 count) {
 	for(auto& it : m_items) {
 		if(it.first == ItemManager::items[id]) {
 			it.second += count;
+			if(it.second > 99) it.second = 99;
 			return;
 		}
 	}
