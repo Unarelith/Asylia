@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Item.cpp
+ *       Filename:  Armor.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  05/04/2014 18:01:13
+ *        Created:  06/04/2014 23:54:11
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,21 +17,13 @@
  */
 #include "Asylia.hpp"
 
-u16 Item::count = 0;
+u16 Armor::count = 0;
 
-Item::Item(std::string name, std::string description, u8 level, std::string thumbnail) {
-	m_id = count;
-	count++;
-	
-	m_name = name;
-	m_description = description;
-	
-	m_level = level;
-	
-	m_thumbnail = new Image(thumbnail.c_str());
+Armor::Armor(std::string name, std::string description, u8 level, std::string thumbnail, u8 slot, u16 defense) : Item(name, description, level, thumbnail) {
+	m_slot = slot;
+	m_defense = defense;
 }
 
-Item::~Item() {
-	delete m_thumbnail;
+Armor::~Armor() {
 }
 

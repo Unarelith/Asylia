@@ -47,3 +47,51 @@ void Inventory::removeItem(u8 id, u8 count) {
 	});
 }
 
+void Inventory::addArmor(u8 id, u8 count) {
+	for(auto& it : m_armors) {
+		if(it.first == ItemManager::armors[id]) {
+			it.second += count;
+			if(it.second > 99) it.second = 99;
+			return;
+		}
+	}
+	
+	m_armors.push_back(std::make_pair(ItemManager::armors[id], count));
+}
+
+void Inventory::removeArmor(u8 id, u8 count) {
+	for(auto& it : m_armors) {
+		if(it.first == ItemManager::armors[id]) {
+			it.second -= count;
+		}
+	}
+	
+	m_armors.remove_if([](std::pair<Armor*, s16>& element) {
+		return element.second < 1;
+	});
+}
+
+void Inventory::addWeapon(u8 id, u8 count) {
+	for(auto& it : m_weapons) {
+		if(it.first == ItemManager::weapons[id]) {
+			it.second += count;
+			if(it.second > 99) it.second = 99;
+			return;
+		}
+	}
+	
+	m_weapons.push_back(std::make_pair(ItemManager::weapons[id], count));
+}
+
+void Inventory::removeWeapon(u8 id, u8 count) {
+	for(auto& it : m_weapons) {
+		if(it.first == ItemManager::weapons[id]) {
+			it.second -= count;
+		}
+	}
+	
+	m_weapons.remove_if([](std::pair<Weapon*, s16>& element) {
+		return element.second < 1;
+	});
+}
+

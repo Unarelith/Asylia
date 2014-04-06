@@ -23,10 +23,16 @@ class ItemManager {
 		static void init();
 		
 		static void loadItems();
+		static void loadArmors();
+		static void loadWeapons();
 		
 		static Item *getItem(u16 id) { return items[id]; }
+		static Armor *getArmor(u16 id) { return armors[id]; }
+		static Weapon *getWeapon(u16 id) { return weapons[id]; }
 		
 		static std::vector<Item*> items;
+		static std::vector<Armor*> armors;
+		static std::vector<Weapon*> weapons;
 };
 
 #endif // ITEMMANAGER_HPP_

@@ -72,6 +72,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   ActivityManager.hpp
   Animation.hpp
   AnimationManager.hpp
+  Armor.hpp
   Asylia.hpp
   Character.hpp
   CharacterManager.hpp
@@ -102,6 +103,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Timer.hpp
   TimeManager.hpp
   Types.hpp
+  Weapon.hpp
   window {
    Window.hpp
    TextWindow.hpp
@@ -125,6 +127,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   }
   ActivityManager.cpp
   AnimationManager.cpp
+  Armor.cpp
   Character.cpp
   CharacterManager.cpp
   Color.cpp
@@ -148,6 +151,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Sprite.cpp
   Timer.cpp
   TimeManager.cpp
+  Weapon.cpp
   window {
    Window.cpp
    TextWindow.cpp

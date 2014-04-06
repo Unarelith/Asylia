@@ -74,6 +74,8 @@ using namespace tinyxml2;
 #include "Sprite.hpp"
 
 #include "Item.hpp"
+#include "Armor.hpp"
+#include "Weapon.hpp"
 #include "ItemManager.hpp"
 
 #include "Inventory.hpp"

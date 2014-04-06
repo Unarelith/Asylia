@@ -68,6 +68,28 @@ void LanguageManager::init(std::string language) {
 		itemElement = itemElement->NextSiblingElement("item");
 		counter++;
 	}
+	
+	/* ARMORS */
+	XMLElement *armorElement = doc.FirstChildElement("language").FirstChildElement("armor").ToElement();
+	counter = 0;
+	while(armorElement) {
+		text[std::string("Armor") + to_string(counter)] = armorElement->Attribute("name");
+		text[std::string("Armor") + to_string(counter) + "Desc"] = armorElement->Attribute("description");
+		
+		armorElement = armorElement->NextSiblingElement("armor");
+		counter++;
+	}
+	
+	/* WEAPONS */
+	XMLElement *weaponElement = doc.FirstChildElement("language").FirstChildElement("weapon").ToElement();
+	counter = 0;
+	while(weaponElement) {
+		text[std::string("Weapon") + to_string(counter)] = weaponElement->Attribute("name");
+		text[std::string("Weapon") + to_string(counter) + "Desc"] = weaponElement->Attribute("description");
+		
+		weaponElement = weaponElement->NextSiblingElement("weapon");
+		counter++;
+	}
 }
 
 std::string LanguageManager::translate(std::string str) {

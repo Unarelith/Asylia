@@ -28,10 +28,10 @@ class Item {
 		
 		Image *thumbnail() const { return m_thumbnail; }
 		
-		static u8 count;
+		static u16 count;
 		
 	protected:
-		u8 m_id;
+		u16 m_id;
 		
 		std::string m_name;
 		std::string m_description;

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Item.cpp
+ *       Filename:  Weapon.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  05/04/2014 18:01:13
+ *        Created:  06/04/2014 23:59:34
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,21 +17,13 @@
  */
 #include "Asylia.hpp"
 
-u16 Item::count = 0;
+u16 Weapon::count = 0;
 
-Item::Item(std::string name, std::string description, u8 level, std::string thumbnail) {
-	m_id = count;
-	count++;
-	
-	m_name = name;
-	m_description = description;
-	
-	m_level = level;
-	
-	m_thumbnail = new Image(thumbnail.c_str());
+Weapon::Weapon(std::string name, std::string description, u8 level, std::string thumbnail, u16 damage, double hitRate) : Item(name, description, level, thumbnail) {
+	m_damage = damage;
+	m_hitRate = hitRate;
 }
 
-Item::~Item() {
-	delete m_thumbnail;
+Weapon::~Weapon() {
 }
 
