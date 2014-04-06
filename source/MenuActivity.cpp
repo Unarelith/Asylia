@@ -20,6 +20,14 @@
 MenuActivity::MenuActivity() {
 	m_type = Type::Menu;
 	
+	loadCommandWindow();
+}
+
+MenuActivity::~MenuActivity() {
+	delete m_cmdwin;
+}
+
+void MenuActivity::loadCommandWindow() {
 	std::vector<std::string> choices;
 	
 	choices.push_back(_t("Items"));
@@ -27,13 +35,10 @@ MenuActivity::MenuActivity() {
 	choices.push_back(_t("Equip"));
 	choices.push_back(_t("State"));
 	choices.push_back(_t("Save"));
+	choices.push_back(_t("Language"));
 	choices.push_back(_t("Quit"));
 	
 	m_cmdwin = new CommandWindow(150, choices);
-}
-
-MenuActivity::~MenuActivity() {
-	delete m_cmdwin;
 }
 
 void MenuActivity::update() {
@@ -51,6 +56,13 @@ void MenuActivity::update() {
 			case 3: break;
 			case 4: break;
 			case 5:
+				if(LanguageManager::currentLanguage == "fr-fr") LanguageManager::init("en-us");
+				else LanguageManager::init("fr-fr");
+				delete m_cmdwin;
+				loadCommandWindow();
+				m_cmdwin->pos(5);
+				break;
+			case 6:
 				ActivityManager::push(new EndActivity);
 				break;
 			default: break;

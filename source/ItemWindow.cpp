@@ -40,7 +40,7 @@ void ItemWindow::drawItem(u8 pos) {
 	
 	CharacterManager::player->inventory()->getItem(pos)->thumbnail()->render(m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y);
 	
-	Image *count = Interface::defaultFont->printToImage(to_string(CharacterManager::player->inventory()->getCount(pos)).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y, FONT_LARGE);
+	Image *count = Interface::defaultFont->printToImage(to_string(CharacterManager::player->inventory()->getItemCount(pos)).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y, FONT_LARGE);
 	
 	count->render(count->posRect().x - count->width());
 	

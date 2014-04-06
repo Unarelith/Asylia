@@ -1,6 +1,6 @@
 #ifdef __ANDROID__
 
-#include <stdio.h>
+#include <cstdio>
 #include <errno.h>
 #include <jni.h>
 #include "AndroidIO.hpp"

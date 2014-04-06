@@ -23,6 +23,8 @@ class MenuActivity : public MapActivity {
 		MenuActivity();
 		~MenuActivity();
 		
+		void loadCommandWindow();
+		
 		void update();
 		void render();
 		

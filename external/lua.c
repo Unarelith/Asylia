@@ -25,6 +25,7 @@
   Jose L. Hidalgo (www.pplux.com)
   pplux@pplux.com
 */
+#include <stdio.h>
 #include "AndroidIO.hpp"
 
 #define MAKE_LIB 1

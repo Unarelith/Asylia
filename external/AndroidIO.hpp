@@ -3,8 +3,6 @@
 
 #ifdef __ANDROID__
 
-#include <stdio.h>
-
 #include <android/asset_manager.h>
 #include <android/asset_manager_jni.h>
 

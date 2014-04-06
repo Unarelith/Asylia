@@ -61,7 +61,7 @@
   #define SLB_CRITICAL_ERROR(...) /*nothing*/
   #define SLB_THROW(...) throw __VA_ARGS__
 #else
-  #include <stdlib.h>
+  #include <cstdlib>
   #define SLB_CRITICAL_ERROR(msg) \
     {fprintf(stderr, "SLB Critical Error (%s:%d) -> %s", __FILE__, __LINE__, msg); \
     exit(129);}

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
 	<!-- Interface -->
+	<text id="Language" text="Français"/>
 	<text id="Items" text="Objets"/>
 	<text id="Skills" text="Compétences"/>
 	<text id="Equip" text="Équipement"/>

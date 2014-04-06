@@ -27,6 +27,7 @@ class SelectableWindow : public Window {
 		void update();
 		
 		s8 pos() const { return m_pos; }
+		void pos(u8 pos) { m_pos = pos; }
 		
 	protected:
 		u16 m_itemMax;

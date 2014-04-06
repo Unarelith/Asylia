@@ -25,6 +25,7 @@ class LanguageManager {
 		static std::string translate(std::string str);
 		
 		static std::map<std::string, std::string> text;
+		static std::string currentLanguage;
 };
 
 std::string _t(std::string str);

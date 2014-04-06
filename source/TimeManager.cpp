@@ -23,6 +23,8 @@ u32 TimeManager::frameBegin = 0;
 u32 TimeManager::frameEnd = 0;
 u32 TimeManager::timeToWait = 0;
 std::vector<u32> TimeManager::renderingTimeValues;
+u16 TimeManager::maxFrameskip = 8;
+u16 TimeManager::frameskip = 0;
 
 void TimeManager::beginMeasuringRenderingTime() {
 	tempBeginRendering = SDL_GetTicks();
@@ -50,7 +52,13 @@ bool TimeManager::isTimeToUpdate() {
 
 bool TimeManager::hasEnoughTimeToDraw() {
 	if(SDL_GetTicks() - frameBegin + renderingTimeMean > 33) {
-		return false;
+		frameskip++;
+		if(frameskip > maxFrameskip) {
+			frameskip = 0;
+			return true;
+		} else {
+			return false;
+		}
 	} else {
 		return true;
 	}
