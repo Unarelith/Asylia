@@ -19,7 +19,7 @@
 #define FONT_HPP_
 
 typedef enum {
-	FONT_SMALL = 14,
+	FONT_SMALL = 11,
 	FONT_MEDIUM = 18,
 	FONT_LARGE = 22
 } FontSize;

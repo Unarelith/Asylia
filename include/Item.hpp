@@ -26,6 +26,8 @@ class Item {
 		std::string name() const { return _t(m_name); }
 		std::string description() const { return _t(m_description); }
 		
+		u8 level() const { return m_level; }
+		
 		Image *thumbnail() const { return m_thumbnail; }
 		
 		static u16 count;

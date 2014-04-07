@@ -33,7 +33,8 @@ class Image {
 		void setPosRect(s16 x, s16 y, u16 w, u16 h);
 		void setClipRect(s16 x, s16 y, u16 w, u16 h);
 		
-		void setAlpha(u8 alpha) { SDL_SetTextureAlphaMod(m_texture, alpha); }
+		void setAlphaMod(u8 alpha) { SDL_SetTextureAlphaMod(m_texture, alpha); }
+		void setColorMod(u8 alpha, Color color) { SDL_SetTextureColorMod(m_texture, color.r, color.g, color.b); }
 		
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }

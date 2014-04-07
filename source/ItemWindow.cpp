@@ -40,9 +40,11 @@ void ItemWindow::drawItem(u8 pos) {
 	
 	CharacterManager::player->inventory()->getItem(pos)->thumbnail()->render(m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y);
 	
-	Image *count = Interface::defaultFont->printToImage(to_string(CharacterManager::player->inventory()->getItemCount(pos)).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y, FONT_LARGE);
+	Image *count = Interface::defaultFont->printToImage(to_string(CharacterManager::player->inventory()->getItemCount(pos)).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y - 2, FONT_SMALL);
+	Image *level = Interface::defaultFont->printToImage(std::string(std::string("Lv. ") + to_string(CharacterManager::player->inventory()->getItem(pos)->level())).c_str(), m_x + GameWindow::main->viewportX() + x - 20 + width, m_y + GameWindow::main->viewportY() + y + 12, FONT_SMALL);
 	
 	count->render(count->posRect().x - count->width());
+	level->render(count->posRect().x - count->width());
 	
 	Image *image = Interface::defaultFont->printScaledToImage(CharacterManager::player->inventory()->getItem(pos)->name().c_str(), m_x + GameWindow::main->viewportX() + x + 28, m_y + GameWindow::main->viewportY() + y, width - count->width(), height, FONT_LARGE);
 	
@@ -56,6 +58,7 @@ void ItemWindow::drawItem(u8 pos) {
 	}
 	
 	delete image;
+	delete level;
 	delete count;
 }
 

@@ -34,23 +34,23 @@ void Window::update() {
 }
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
-	Interface::interface->setAlpha(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+	Interface::interface->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
 	
 	Interface::interface->render(x, y, width, height, 129, 64, 30, 32);
 	
 	Interface::interface->render(x, y, 1, height, 128, 64, 1, 32);
 	Interface::interface->render(x + width - 1, y, 1, height, 159, 64, 1, 32);
 	
-	Interface::interface->setAlpha(255);
+	Interface::interface->setAlphaMod(255);
 }
 
 void Window::draw() {
 	s16 x = m_x + GameWindow::main->viewportX();
 	s16 y = m_y + GameWindow::main->viewportY();
 	
-	Interface::interface->setAlpha(225);
+	Interface::interface->setAlphaMod(225);
 	Interface::interface->render(x + 1, y + 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
-	Interface::interface->setAlpha(255);
+	Interface::interface->setAlphaMod(255);
 	
 	Interface::interface->render(x, y, 3, 3, 128, 0, 3, 3);
 	Interface::interface->render(x + m_width - 3, y, 3, 3, 189, 0, 3, 3);
