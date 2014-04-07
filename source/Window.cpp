@@ -49,7 +49,7 @@ void Window::draw() {
 	s16 y = m_y + GameWindow::main->viewportY();
 	
 	Interface::interface->setAlpha(225);
-	Interface::interface->render(x + 3, y + 3, m_width - 6, m_height - 6, 0, 0, 128, 128);
+	Interface::interface->render(x + 1, y + 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
 	Interface::interface->setAlpha(255);
 	
 	Interface::interface->render(x, y, 3, 3, 128, 0, 3, 3);
