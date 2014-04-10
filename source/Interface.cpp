@@ -31,16 +31,16 @@ void Interface::init() {
 	interface = new Image("graphics/interface/Interface.png");
 	
 	pad = new Image("graphics/interface/DPad.png");
-	pad->setAlpha(150);
+	pad->setAlphaMod(150);
 	
 	buttonA = new Image("graphics/interface/ButtonA.png");
-	buttonA->setAlpha(150);
+	buttonA->setAlphaMod(150);
 	
 	buttonB = new Image("graphics/interface/ButtonA.png");
-	buttonB->setAlpha(150);
+	buttonB->setAlphaMod(150);
 	
 	buttonMenu = new Image("graphics/interface/ButtonA.png");
-	buttonMenu->setAlpha(150);
+	buttonMenu->setAlphaMod(150);
 }
 
 void Interface::free() {

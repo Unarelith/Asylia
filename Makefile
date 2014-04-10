@@ -69,7 +69,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) $(foreach dir,$(OTHERLIBS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean run edit droid tags install uninstall
+.PHONY: $(BUILD) clean clear run edit droid tags install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -106,6 +106,11 @@ tags:
 clean:
 	@echo clean ...
 	@rm -fr $(BUILD) $(TARGET)
+	
+#---------------------------------------------------------------------------------
+clear:
+	@echo clear ...
+	@rm *~ */*~
 
 #---------------------------------------------------------------------------------
 install:
