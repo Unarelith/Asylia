@@ -94,6 +94,7 @@ using namespace tinyxml2;
 #include "MessageWindow.hpp"
 #include "ItemWindow.hpp"
 #include "EquipItemWindow.hpp"
+#include "EquipStatsWindow.hpp"
 
 #include "Event.hpp"
 

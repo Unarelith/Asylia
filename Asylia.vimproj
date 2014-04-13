@@ -165,6 +165,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    InfoWindow.cpp
    ItemWindow.cpp
    EquipItemWindow.cpp
+   EquipStatsWindow.cpp
   }
   main.cpp
  }

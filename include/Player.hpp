@@ -27,6 +27,15 @@ class Player : public Character {
 		
 		void action() {}
 		void collisionAction() {}
+		
+		u8 level() const { return m_level; }
+		
+		std::string name() const { return m_name; }
+		
+	private:
+		u8 m_level;
+		
+		std::string m_name;
 };
 
 #endif // PLAYER_HPP_

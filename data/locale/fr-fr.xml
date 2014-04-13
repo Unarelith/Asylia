@@ -13,6 +13,7 @@
 	<text id="NewGame" text="Nouvelle Partie"/>
 	<text id="Continue" text="Continuer"/>
 	<text id="Obtained" text="Vous obtenez"/>
+	<text id="Lv" text="Niv"/>
 	
 	<!-- Event messages -->
 	<event id="0">

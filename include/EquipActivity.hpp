@@ -28,6 +28,7 @@ class EquipActivity : public MenuActivity {
 		
 	private:
 		EquipItemWindow *m_itemwin;
+		EquipStatsWindow *m_statswin;
 };
 
 #endif // EQUIPACTIVITY_HPP_

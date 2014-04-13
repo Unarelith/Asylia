@@ -32,7 +32,7 @@ class Color {
 		
 		static Color white;
 		static Color black;
-		static Color life;
+		static Color system;
 };
 
 #endif // COLOR_HPP_

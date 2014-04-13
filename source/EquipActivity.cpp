@@ -19,9 +19,11 @@
 
 EquipActivity::EquipActivity() {
 	m_itemwin = new EquipItemWindow(1, 1);
+	m_statswin = new EquipStatsWindow();
 }
 
 EquipActivity::~EquipActivity() {
+	delete m_statswin;
 	delete m_itemwin;
 }
 
@@ -45,6 +47,7 @@ void EquipActivity::update() {
 void EquipActivity::render() {
 	MenuActivity::render();
 	
+	m_statswin->draw();
 	m_itemwin->draw();
 }
 

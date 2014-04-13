@@ -19,7 +19,7 @@
 
 Color Color::white(255, 255, 255);
 Color Color::black(0, 0, 0);
-Color Color::life(0, 125, 0);
+Color Color::system(192, 224, 255);
 
 Color::Color(u8 _r, u8 _g, u8 _b, u8 _a) {
 	r = _r;
