@@ -14,6 +14,7 @@
 	<text id="Continue" text="Continue"/>
 	<text id="Obtained" text="Obtained"/>
 	<text id="Lv" text="Lv"/>
+	<text id="ATK" text="ATK"/>
 	
 	<!-- Event messages -->
 	<event id="0">

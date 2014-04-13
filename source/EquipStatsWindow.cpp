@@ -29,8 +29,9 @@ void EquipStatsWindow::draw() {
 	Interface::defaultFont->printScaled(CharacterManager::player->name().c_str(), m_x + GameWindow::main->viewportX() + 20, m_y + GameWindow::main->viewportY() + 20, m_width - 130, 32, FONT_LARGE);
 	Interface::defaultFont->printScaled(_t("Lv").c_str(), m_x + GameWindow::main->viewportX() + m_width - 90, m_y + GameWindow::main->viewportY() + 20, 25, 32, FONT_LARGE, Color::system);
 	Image *level = Interface::defaultFont->printToImage(to_string(CharacterManager::player->level()).c_str(), m_x + GameWindow::main->viewportX() + m_width - 20, m_y + GameWindow::main->viewportY() + 20, FONT_LARGE);
-	
 	level->render(level->posRect().x - level->width());
+	
+	Interface::defaultFont->printScaled(_t("ATK").c_str(), m_x + GameWindow::main->viewportX() + 20, m_y + GameWindow::main->viewportY() + 52, 60, 32, FONT_LARGE, Color::system);
 	
 	delete level;
 }
