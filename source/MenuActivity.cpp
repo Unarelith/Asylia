@@ -52,7 +52,9 @@ void MenuActivity::update() {
 				ActivityManager::push(new ItemActivity);
 				break;
 			case 1: break;
-			case 2: break;
+			case 2:
+				ActivityManager::push(new EquipActivity);
+				break;
 			case 3: break;
 			case 4: break;
 			case 5:

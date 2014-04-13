@@ -21,9 +21,12 @@ Inventory::Inventory() {
 }
 
 Inventory::~Inventory() {
+	m_items.clear();
+	m_armors.clear();
+	m_weapons.clear();
 }
 
-void Inventory::addItem(u8 id, u8 count) {
+void Inventory::addItem(u8 id, s16 count) {
 	for(auto& it : m_items) {
 		if(it.first == ItemManager::items[id]) {
 			it.second += count;
@@ -35,7 +38,7 @@ void Inventory::addItem(u8 id, u8 count) {
 	m_items.push_back(std::make_pair(ItemManager::items[id], count));
 }
 
-void Inventory::removeItem(u8 id, u8 count) {
+void Inventory::removeItem(u8 id, s16 count) {
 	for(auto& it : m_items) {
 		if(it.first == ItemManager::items[id]) {
 			it.second -= count;
@@ -47,7 +50,7 @@ void Inventory::removeItem(u8 id, u8 count) {
 	});
 }
 
-void Inventory::addArmor(u8 id, u8 count) {
+void Inventory::addArmor(u8 id, s16 count) {
 	for(auto& it : m_armors) {
 		if(it.first == ItemManager::armors[id]) {
 			it.second += count;
@@ -59,7 +62,7 @@ void Inventory::addArmor(u8 id, u8 count) {
 	m_armors.push_back(std::make_pair(ItemManager::armors[id], count));
 }
 
-void Inventory::removeArmor(u8 id, u8 count) {
+void Inventory::removeArmor(u8 id, s16 count) {
 	for(auto& it : m_armors) {
 		if(it.first == ItemManager::armors[id]) {
 			it.second -= count;
@@ -71,7 +74,7 @@ void Inventory::removeArmor(u8 id, u8 count) {
 	});
 }
 
-void Inventory::addWeapon(u8 id, u8 count) {
+void Inventory::addWeapon(u8 id, s16 count) {
 	for(auto& it : m_weapons) {
 		if(it.first == ItemManager::weapons[id]) {
 			it.second += count;
@@ -83,7 +86,7 @@ void Inventory::addWeapon(u8 id, u8 count) {
 	m_weapons.push_back(std::make_pair(ItemManager::weapons[id], count));
 }
 
-void Inventory::removeWeapon(u8 id, u8 count) {
+void Inventory::removeWeapon(u8 id, s16 count) {
 	for(auto& it : m_weapons) {
 		if(it.first == ItemManager::weapons[id]) {
 			it.second -= count;

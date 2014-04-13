@@ -93,6 +93,7 @@ using namespace tinyxml2;
 #include "CommandWindow.hpp"
 #include "MessageWindow.hpp"
 #include "ItemWindow.hpp"
+#include "EquipItemWindow.hpp"
 
 #include "Event.hpp"
 
@@ -104,6 +105,7 @@ using namespace tinyxml2;
 #include "TitleActivity.hpp"
 #include "EndActivity.hpp"
 #include "ItemActivity.hpp"
+#include "EquipActivity.hpp"
 #include "ActivityManager.hpp"
 
 #include "Tileset.hpp"

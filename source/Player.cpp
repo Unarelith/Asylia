@@ -28,6 +28,7 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	addAnimation(4, AnimationManager::character[DIR_UP], 125);
 	
 	m_inventory = new Inventory;
+	
 	m_inventory->addItem(0, 1);
 	m_inventory->addItem(1, 1);
 	m_inventory->addItem(5, 1);
@@ -35,6 +36,17 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	m_inventory->addItem(3, 1);
 	m_inventory->addItem(4, 1);
 	m_inventory->addItem(6, 1);
+	
+	m_inventory->addWeapon(0, 1);
+	m_inventory->addWeapon(1, 1);
+	m_inventory->addWeapon(2, 1);
+	m_inventory->addWeapon(3, 1);
+	
+	m_inventory->addArmor(0, 1);
+	m_inventory->addArmor(1, 1);
+	m_inventory->addArmor(2, 1);
+	m_inventory->addArmor(3, 1);
+	m_inventory->addArmor(4, 1);
 }
 
 Player::~Player() {

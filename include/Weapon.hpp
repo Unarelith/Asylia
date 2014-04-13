@@ -26,11 +26,14 @@ class Weapon : public Item {
 		u16 damage() const { return m_damage; }
 		double hitRate() const { return m_hitRate; }
 		
+		u8 equipType() const { return m_equipType; }
+		
 		static u16 count;
 		
 	private:
 		u16 m_damage;
 		double m_hitRate;
+		u8 m_equipType;
 };
 
 #endif // WEAPON_HPP_
