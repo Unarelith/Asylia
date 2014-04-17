@@ -19,8 +19,10 @@
 
 u16 Weapon::count = 0;
 
-Weapon::Weapon(std::string name, std::string description, u8 level, std::string thumbnail, u16 damage, double hitRate) : Item(name, description, level, thumbnail) {
-	m_damage = damage;
+Weapon::Weapon(std::string name, std::string description, u8 level, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, level, thumbnail) {
+	m_type = Type::Weapon;
+	
+	m_atk = atk;
 	m_hitRate = hitRate;
 	
 	// FIXME: Temporary

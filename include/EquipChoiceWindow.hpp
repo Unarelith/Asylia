@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Armor.cpp
+ *       Filename:  EquipChoiceWindow.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  06/04/2014 23:54:11
+ *        Created:  17/04/2014 20:38:44
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,17 +15,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef EQUIPCHOICEWINDOW_HPP_
+#define EQUIPCHOICEWINDOW_HPP_
 
-u16 Armor::count = 0;
+class EquipChoiceWindow : public SelectableWindow {
+	public:
+		EquipChoiceWindow();
+		~EquipChoiceWindow();
+		
+		void draw(bool drawCursor = true);
+};
 
-Armor::Armor(std::string name, std::string description, u8 level, std::string thumbnail, u8 slot, u16 def) : Item(name, description, level, thumbnail) {
-	m_type = Type::Armor;
-	
-	m_slot = slot;
-	m_def = def;
-}
-
-Armor::~Armor() {
-}
-
+#endif // EQUIPCHOICEWINDOW_HPP_

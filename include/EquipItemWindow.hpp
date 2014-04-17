@@ -24,7 +24,11 @@ class EquipItemWindow : public SelectableWindow {
 		~EquipItemWindow();
 		
 		void drawItem(u8 pos);
-		void draw();
+		void draw(bool drawInfoWindow = true, bool drawCursor = true);
+		
+		void changeSet(u8 equipment, u8 equipType);
+		
+		Item *currentItem();
 		
 	private:
 		Inventory m_inventory;

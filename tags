@@ -200,6 +200,8 @@ ENDACTIVITY_HPP_	include/EndActivity.hpp	19;"	d
 ENTITY_RANGE	external/tinyxml2.hpp	/^        ENTITY_RANGE = 64,$/;"	e	enum:tinyxml2::XMLPrinter::__anon30
 EOZ	external/lua.c	2123;"	d	file:
 EQUIPACTIVITY_HPP_	include/EquipActivity.hpp	19;"	d
+EQUIPITEMWINDOW_HPP_	include/EquipItemWindow.hpp	19;"	d
+EQUIPSTATSWINDOW_HPP_	include/EquipStatsWindow.hpp	19;"	d
 ERRFUNC	external/lua.c	17004;"	d	file:
 ERRLIB	external/lua.c	17003;"	d	file:
 ERRORSTACKSIZE	external/lua.c	6625;"	d	file:
@@ -213,8 +215,12 @@ EndActivity	include/EndActivity.hpp	/^class EndActivity : public Activity {$/;"	
 EndActivity	source/EndActivity.cpp	/^EndActivity::EndActivity() {$/;"	f	class:EndActivity
 EnsureCapacity	external/tinyxml2.hpp	/^    void EnsureCapacity( int cap ) {$/;"	f	class:tinyxml2::DynArray
 Entity	external/tinyxml2.cpp	/^struct Entity {$/;"	s	namespace:tinyxml2	file:
-EquipActivity	include/EquipActivity.hpp	/^class EquipActivity : public Activity {$/;"	c
+EquipActivity	include/EquipActivity.hpp	/^class EquipActivity : public MenuActivity {$/;"	c
 EquipActivity	source/EquipActivity.cpp	/^EquipActivity::EquipActivity() {$/;"	f	class:EquipActivity
+EquipItemWindow	include/EquipItemWindow.hpp	/^class EquipItemWindow : public SelectableWindow {$/;"	c
+EquipItemWindow	source/EquipItemWindow.cpp	/^EquipItemWindow::EquipItemWindow(u8 equipment, u8 equipType) : SelectableWindow(150, 52 + (GameWindow::main->height() - 52) \/ 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) \/ 2) {$/;"	f	class:EquipItemWindow
+EquipStatsWindow	include/EquipStatsWindow.hpp	/^class EquipStatsWindow : public Window {$/;"	c
+EquipStatsWindow	source/EquipStatsWindow.cpp	/^EquipStatsWindow::EquipStatsWindow() : Window(150, 52, (GameWindow::main->width() - 150) \/ 2, (GameWindow::main->height() - 52) \/ 2) {$/;"	f	class:EquipStatsWindow
 Error	external/tinyxml2.hpp	/^    bool Error() const {$/;"	f	class:tinyxml2::XMLDocument
 ErrorHandler	external/SLB.hpp	/^    ErrorHandler() {}$/;"	f	class:SLB::ErrorHandler
 ErrorHandler	external/SLB.hpp	/^  class SLB_EXPORT ErrorHandler$/;"	c	namespace:SLB
@@ -2221,17 +2227,17 @@ activities	include/ActivityManager.hpp	/^		static std::stack<Activity*> activiti
 activities	source/ActivityManager.cpp	/^std::stack<Activity*> ActivityManager::activities;$/;"	m	class:ActivityManager	file:
 actvar	external/lua.c	/^  } actvar;$/;"	m	struct:Dyndata	typeref:struct:Dyndata::__anon10	file:
 addAnimation	source/Sprite.cpp	/^void Sprite::addAnimation(u16 size, u16 *tabAnim, u16 delay) {$/;"	f	class:Sprite
-addArmor	source/Inventory.cpp	/^void Inventory::addArmor(u8 id, u8 count) {$/;"	f	class:Inventory
+addArmor	source/Inventory.cpp	/^void Inventory::addArmor(u8 id, s16 count) {$/;"	f	class:Inventory
 addClassConversor	external/SLB.hpp	/^  inline void Manager::addClassConversor( Conversor c )$/;"	f	class:SLB::Manager
 addConversor	external/SLB.hpp	/^  inline void Manager::addConversor()$/;"	f	class:SLB::Manager
 addEvent	source/Map.cpp	/^void Map::addEvent(Event *event) {$/;"	f	class:Map
-addItem	source/Inventory.cpp	/^void Inventory::addItem(u8 id, u8 count) {$/;"	f	class:Inventory
+addItem	source/Inventory.cpp	/^void Inventory::addItem(u8 id, s16 count) {$/;"	f	class:Inventory
 addMessage	include/DialogActivity.hpp	/^		void addMessage(std::string msg) { m_msgwin->addMessage(msg); }$/;"	f	class:DialogActivity
 addMessage	include/MessageWindow.hpp	/^		void addMessage(std::string msg) { m_messages.push(msg); }$/;"	f	class:MessageWindow
 addProperty	external/SLB.hpp	/^    void addProperty(const String &name, BaseProperty *prop)$/;"	f	class:SLB::ClassInfo
 addStaticConversor	external/SLB.hpp	/^  inline void Manager::addStaticConversor()$/;"	f	class:SLB::Manager
 addUserFlags	external/SLB.hpp	/^    void addUserFlags(size_t flags) { _flags = _flags | (flags & I_UserMask); }$/;"	f	class:SLB::InstanceBase
-addWeapon	source/Inventory.cpp	/^void Inventory::addWeapon(u8 id, u8 count) {$/;"	f	class:Inventory
+addWeapon	source/Inventory.cpp	/^void Inventory::addWeapon(u8 id, s16 count) {$/;"	f	class:Inventory
 add_s	external/lua.c	/^static void add_s (MatchState *ms, luaL_Buffer *b, const char *s,$/;"	f	file:
 add_value	external/lua.c	/^static void add_value (MatchState *ms, luaL_Buffer *b, const char *s,$/;"	f	file:
 addbuff	external/lua.c	11420;"	d	file:
@@ -2270,6 +2276,7 @@ api_incr_top	external/lua.c	3296;"	d	file:
 areaSizes	include/MapManager.hpp	/^		static u16 *areaSizes;$/;"	m	class:MapManager
 areaSizes	source/MapManager.cpp	/^u16 *MapManager::areaSizes = NULL;$/;"	m	class:MapManager	file:
 arith_op	external/lua.c	12752;"	d	file:
+armors	include/Inventory.hpp	/^		std::list<std::pair<Armor*, s16>> armors() { return m_armors; }$/;"	f	class:Inventory
 armors	include/ItemManager.hpp	/^		static std::vector<Armor*> armors;$/;"	m	class:ItemManager
 armors	source/ItemManager.cpp	/^std::vector<Armor*> ItemManager::armors;$/;"	m	class:ItemManager	file:
 arr	external/lua.c	/^    Vardesc *arr;$/;"	m	struct:Dyndata::__anon10	file:
@@ -2546,6 +2553,8 @@ donextjump	external/lua.c	12740;"	d	file:
 dooptions	external/lua.c	/^static void dooptions (lua_State *L, int n) {$/;"	f	file:
 dothecall	external/lua.c	/^static void dothecall (lua_State *L, void *ud) {$/;"	f	file:
 draw	source/CommandWindow.cpp	/^void CommandWindow::draw() {$/;"	f	class:CommandWindow
+draw	source/EquipItemWindow.cpp	/^void EquipItemWindow::draw() {$/;"	f	class:EquipItemWindow
+draw	source/EquipStatsWindow.cpp	/^void EquipStatsWindow::draw() {$/;"	f	class:EquipStatsWindow
 draw	source/ItemWindow.cpp	/^void ItemWindow::draw() {$/;"	f	class:ItemWindow
 draw	source/MessageWindow.cpp	/^void MessageWindow::draw() {$/;"	f	class:MessageWindow
 draw	source/TextWindow.cpp	/^void TextWindow::draw(std::string text) {$/;"	f	class:TextWindow
@@ -2554,6 +2563,7 @@ drawCursor	source/Window.cpp	/^void Window::drawCursor(s16 x, s16 y, u16 width, 
 drawFillRect	source/GameWindow.cpp	/^void GameWindow::drawFillRect(s16 x, s16 y, u16 w, u16 h, Color c) {$/;"	f	class:GameWindow
 drawFrame	source/Sprite.cpp	/^void Sprite::drawFrame(s16 x, s16 y, u16 frame) {$/;"	f	class:Sprite
 drawItem	source/CommandWindow.cpp	/^void CommandWindow::drawItem(u8 pos) {$/;"	f	class:CommandWindow
+drawItem	source/EquipItemWindow.cpp	/^void EquipItemWindow::drawItem(u8 pos) {$/;"	f	class:EquipItemWindow
 drawItem	source/ItemWindow.cpp	/^void ItemWindow::drawItem(u8 pos) {$/;"	f	class:ItemWindow
 drawRect	source/GameWindow.cpp	/^void GameWindow::drawRect(s16 x, s16 y, u16 w, u16 h, Color c) {$/;"	f	class:GameWindow
 drawTextCentered	source/InfoWindow.cpp	/^void InfoWindow::drawTextCentered(std::string text) {$/;"	f	class:InfoWindow
@@ -2581,6 +2591,7 @@ envn	external/lua.c	/^  TString *envn;  \/* environment variable name *\/$/;"	m	
 ephemeron	external/lua.c	/^  GCObject *ephemeron;  \/* list of ephemeron tables (weak keys) *\/$/;"	m	struct:global_State	file:
 eqshrstr	external/lua.c	2700;"	d	file:
 equalobj	external/lua.c	3359;"	d	file:
+equipType	include/Weapon.hpp	/^		u8 equipType() const { return m_equipType; }$/;"	f	class:Weapon
 erase	external/SLB.cpp	/^  void Table::erase(const String &name)$/;"	f	class:SLB::Table
 errfile	external/lua.c	/^static int errfile (lua_State *L, const char *what, int fnameindex) {$/;"	f	file:
 errfunc	external/lua.c	/^  ptrdiff_t errfunc;  \/* current error handling function (stack index) *\/$/;"	m	struct:lua_State	file:
@@ -2779,9 +2790,9 @@ getGlobals	external/SLB.hpp	/^    Namespace* getGlobals() { return _global.get()
 getInfo	external/SLB.hpp	/^  inline const String& Object::getInfo() const {return _info;}$/;"	f	class:SLB::Object
 getInstance	external/SLB.cpp	/^  InstanceBase* ClassInfo::getInstance(lua_State *L, int pos) const$/;"	f	class:SLB::ClassInfo
 getInstance	external/SLB.cpp	/^  Manager *Manager::getInstance(lua_State *L)$/;"	f	class:SLB::Manager
-getItem	include/Inventory.hpp	/^		Item *getItem(u16 i) { for(auto& it : m_items) if(it.first == ItemManager::items[i]) return it.first; return NULL; }$/;"	f	class:Inventory
+getItem	include/Inventory.hpp	/^		Item *getItem(u16 i) { u16 j = 0; for(auto& it : m_items) if(j++ == i) return it.first; return NULL; }$/;"	f	class:Inventory
 getItem	include/ItemManager.hpp	/^		static Item *getItem(u16 id) { return items[id]; }$/;"	f	class:ItemManager
-getItemCount	include/Inventory.hpp	/^		s16 getItemCount(u16 i) { for(auto& it : m_items) if(it.first == ItemManager::items[i]) return it.second; return 0; }$/;"	f	class:Inventory
+getItemCount	include/Inventory.hpp	/^		s16 getItemCount(u16 i) { u16 j = 0; for(auto& it : m_items) if(j++ == i) return it.second; return 0; }$/;"	f	class:Inventory
 getLastError	external/SLB.hpp	/^    const char *getLastError() const { return _lastError.c_str(); }$/;"	f	class:SLB::Script
 getLuaState	external/SLB.hpp	/^    virtual lua_State *getLuaState() { return S::getState(); }$/;"	f	class:SLB::StatefulHybrid
 getLuaState	external/SLB.hpp	/^    virtual lua_State* getLuaState() const { return _lua_state; }$/;"	f	class:SLB::HybridBase
@@ -3000,6 +3011,7 @@ isvalid	external/lua.c	3765;"	d	file:
 isvararg	external/lua.c	/^  char isvararg;        \/* (u) *\/$/;"	m	struct:lua_Debug	file:
 isvararg	external/lua.h	/^  char isvararg;        \/* (u) *\/$/;"	m	struct:lua_Debug
 iswhite	external/lua.c	2608;"	d	file:
+items	include/Inventory.hpp	/^		std::list<std::pair<Item*, s16>> items() { return m_items; }$/;"	f	class:Inventory
 items	include/ItemManager.hpp	/^		static std::vector<Item*> items;$/;"	m	class:ItemManager
 items	source/ItemManager.cpp	/^std::vector<Item*> ItemManager::items;$/;"	m	class:ItemManager	file:
 iterator_call	external/SLB.cpp	/^  int Iterator::iterator_call(lua_State *L)$/;"	f	class:SLB::Iterator
@@ -3085,13 +3097,13 @@ len	external/lua.c	/^    size_t len;  \/* number of characters in string *\/$/;"
 length	external/tinyxml2.cpp	/^    int length;$/;"	m	struct:tinyxml2::Entity	file:
 level	external/lua.c	/^  int level;  \/* total number of captures (finished or unfinished) *\/$/;"	m	struct:MatchState	file:
 level	include/Item.hpp	/^		u8 level() const { return m_level; }$/;"	f	class:Item
+level	include/Player.hpp	/^		u8 level() const { return m_level; }$/;"	f	class:Player
 lexerror	external/lua.c	/^static l_noret lexerror (LexState *ls, const char *msg, int token) {$/;"	f	file:
 lfunc_c	external/lua.c	7318;"	d	file:
 lfunc_h	external/lua.c	3314;"	d	file:
 lgc_c	external/lua.c	7478;"	d	file:
 lgc_h	external/lua.c	2527;"	d	file:
 libsize	external/lua.c	/^static int libsize (const luaL_Reg *l) {$/;"	f	file:
-life	include/Color.hpp	/^		static Color life;$/;"	m	class:Color
 line	external/SLB.hpp	/^      int line;$/;"	m	struct:__SLB__cleanstack
 line	external/SLB.hpp	/^      int line;$/;"	m	struct:__SLB__debugcall
 line	external/lua.c	/^  int line;  \/* line where it appeared *\/$/;"	m	struct:Labeldesc	file:
@@ -3787,6 +3799,7 @@ m_data	include/Map.hpp	/^		s16 **m_data;$/;"	m	class:Map
 m_defense	include/Armor.hpp	/^		u16 m_defense;$/;"	m	class:Armor
 m_description	include/Item.hpp	/^		std::string m_description;$/;"	m	class:Item
 m_direction	include/Character.hpp	/^		u8 m_direction;$/;"	m	class:Character
+m_equipType	include/Weapon.hpp	/^		u8 m_equipType;$/;"	m	class:Weapon
 m_events	include/Map.hpp	/^		std::vector<Event*> m_events;$/;"	m	class:Map
 m_folder	include/Event.hpp	/^		std::string m_folder;$/;"	m	class:Event
 m_fontLarge	include/Font.hpp	/^		TTF_Font *m_fontLarge;$/;"	m	class:Font
@@ -3807,14 +3820,16 @@ m_id	include/Item.hpp	/^		u16 m_id;$/;"	m	class:Item
 m_inFrontOf	include/Character.hpp	/^		Character *m_inFrontOf;$/;"	m	class:Character
 m_infoWindow	include/SelectableWindow.hpp	/^		InfoWindow *m_infoWindow;$/;"	m	class:SelectableWindow
 m_inventory	include/Character.hpp	/^		Inventory *m_inventory;$/;"	m	class:Character
+m_inventory	include/EquipItemWindow.hpp	/^		Inventory m_inventory;$/;"	m	class:EquipItemWindow
 m_isStarted	include/Timer.hpp	/^		bool m_isStarted;$/;"	m	class:Timer
 m_itemMax	include/SelectableWindow.hpp	/^		u16 m_itemMax;$/;"	m	class:SelectableWindow
 m_items	include/Inventory.hpp	/^		std::list<std::pair<Item*, s16>> m_items;$/;"	m	class:Inventory
-m_itemwin	include/EquipActivity.hpp	/^		ItemWindow *m_itemwin;$/;"	m	class:EquipActivity
+m_itemwin	include/EquipActivity.hpp	/^		EquipItemWindow *m_itemwin;$/;"	m	class:EquipActivity
 m_itemwin	include/ItemActivity.hpp	/^		ItemWindow *m_itemwin;$/;"	m	class:ItemActivity
 m_layers	include/Map.hpp	/^		u8 m_layers;$/;"	m	class:Map
 m_layersTex	include/Map.hpp	/^		SDL_Texture **m_layersTex;$/;"	m	class:Map
 m_level	include/Item.hpp	/^		u8 m_level;$/;"	m	class:Item
+m_level	include/Player.hpp	/^		u8 m_level;$/;"	m	class:Player
 m_mapX	include/Character.hpp	/^		u16 m_mapX;$/;"	m	class:Character
 m_mapY	include/Character.hpp	/^		u16 m_mapY;$/;"	m	class:Character
 m_messages	include/MessageWindow.hpp	/^		std::queue<std::string> m_messages;$/;"	m	class:MessageWindow
@@ -3824,6 +3839,7 @@ m_movementTimer	include/Character.hpp	/^		Timer m_movementTimer;$/;"	m	class:Cha
 m_moving	include/Character.hpp	/^		bool m_moving;$/;"	m	class:Character
 m_msgwin	include/DialogActivity.hpp	/^		MessageWindow *m_msgwin;$/;"	m	class:DialogActivity
 m_name	include/Item.hpp	/^		std::string m_name;$/;"	m	class:Item
+m_name	include/Player.hpp	/^		std::string m_name;$/;"	m	class:Player
 m_pixelFormat	include/Map.hpp	/^		Uint32 m_pixelFormat;$/;"	m	class:Map
 m_pos	include/SelectableWindow.hpp	/^		s16 m_pos;$/;"	m	class:SelectableWindow
 m_posRect	include/Image.hpp	/^		SDL_Rect m_posRect;$/;"	m	class:Image
@@ -3832,6 +3848,7 @@ m_scroll	include/SelectableWindow.hpp	/^		u8 m_scroll;$/;"	m	class:SelectableWin
 m_slot	include/Armor.hpp	/^		u8 m_slot;$/;"	m	class:Armor
 m_solid	include/Character.hpp	/^		bool m_solid;$/;"	m	class:Character
 m_speed	include/Character.hpp	/^		u8 m_speed;$/;"	m	class:Character
+m_statswin	include/EquipActivity.hpp	/^		EquipStatsWindow *m_statswin;$/;"	m	class:EquipActivity
 m_surface	include/Image.hpp	/^		SDL_Surface *m_surface;$/;"	m	class:Image
 m_t	include/Timer.hpp	/^		u16 m_t;$/;"	m	class:Timer
 m_table	include/Event.hpp	/^		std::string m_table;$/;"	m	class:Event
@@ -3967,6 +3984,7 @@ name	external/lua.c	/^  const char *name;$/;"	m	struct:luaL_Reg	file:
 name	external/lua.c	/^ const char* name;$/;"	m	struct:__anon18	file:
 name	external/lua.h	/^  const char *name;	\/* (n) *\/$/;"	m	struct:lua_Debug
 name	include/Item.hpp	/^		std::string name() const { return _t(m_name); }$/;"	f	class:Item
+name	include/Player.hpp	/^		std::string name() const { return m_name; }$/;"	f	class:Player
 namewhat	external/lua.c	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug	file:
 namewhat	external/lua.h	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug
 nbAreas	include/MapManager.hpp	/^		static u16 nbAreas;$/;"	m	class:MapManager
@@ -4168,6 +4186,7 @@ push	external/SLB.hpp	/^    static void push(lua_State *L,void* obj)$/;"	f	struc
 push	external/SLB.hpp	/^  inline int StdIterator<T>::push(lua_State *L)$/;"	f	class:SLB::StdIterator
 push	external/SLB.hpp	/^inline void push(lua_State *L, T v)$/;"	f	namespace:SLB
 push	include/ActivityManager.hpp	/^		static void push(Activity *activity) { activities.push(activity); }$/;"	f	class:ActivityManager
+pushBackItem	include/Inventory.hpp	/^		void pushBackItem(Item *item, s16 count) { m_items.push_back(std::make_pair(item, count)); }$/;"	f	class:Inventory
 pushImplementation	external/SLB.cpp	/^    void pushImplementation(lua_State *L) {SLB_DEBUG_CALL; lua_pushcfunction(L,_func); }$/;"	f	class:SLB::LuaCFunction
 pushImplementation	external/SLB.cpp	/^  void ClassInfo::pushImplementation(lua_State *L)$/;"	f	class:SLB::ClassInfo
 pushImplementation	external/SLB.cpp	/^  void FuncCall::pushImplementation(lua_State *L)$/;"	f	class:SLB::FuncCall
@@ -4239,9 +4258,9 @@ rehash	external/lua.c	/^static void rehash (lua_State *L, Table *t, const TValue
 release	external/SLB.hpp	/^    inline T* release() { T* tmp=_ptr; if (_ptr) _ptr->unref_nodelete(); _ptr=0; return tmp;}$/;"	f	class:SLB::ref_ptr
 reload	source/Image.cpp	/^void Image::reload(const char *filename) {$/;"	f	class:Image
 remarkupvals	external/lua.c	/^static void remarkupvals (global_State *g) {$/;"	f	file:
-removeArmor	source/Inventory.cpp	/^void Inventory::removeArmor(u8 id, u8 count) {$/;"	f	class:Inventory
-removeItem	source/Inventory.cpp	/^void Inventory::removeItem(u8 id, u8 count) {$/;"	f	class:Inventory
-removeWeapon	source/Inventory.cpp	/^void Inventory::removeWeapon(u8 id, u8 count) {$/;"	f	class:Inventory
+removeArmor	source/Inventory.cpp	/^void Inventory::removeArmor(u8 id, s16 count) {$/;"	f	class:Inventory
+removeItem	source/Inventory.cpp	/^void Inventory::removeItem(u8 id, s16 count) {$/;"	f	class:Inventory
+removeWeapon	source/Inventory.cpp	/^void Inventory::removeWeapon(u8 id, s16 count) {$/;"	f	class:Inventory
 removeentry	external/lua.c	/^static void removeentry (Node *n) {$/;"	f	file:
 removevalues	external/lua.c	/^static void removevalues (FuncState *fs, int list) {$/;"	f	file:
 removevars	external/lua.c	/^static void removevars (FuncState *fs, int tolevel) {$/;"	f	file:
@@ -4492,6 +4511,7 @@ sweepthread	external/lua.c	/^static void sweepthread (lua_State *L, lua_State *L
 sweeptolive	external/lua.c	/^static GCObject **sweeptolive (lua_State *L, GCObject **p, int *n) {$/;"	f	file:
 sweepwholelist	external/lua.c	8161;"	d	file:
 syslib	external/lua.c	/^static const luaL_Reg syslib[] = {$/;"	v	file:
+system	include/Color.hpp	/^		static Color system;$/;"	m	class:Color
 t	external/lua.c	/^      lu_byte t;  \/* table (register or upvalue) *\/$/;"	m	struct:expdesc::__anon8::__anon9	file:
 t	external/lua.c	/^  Token t;  \/* current token *\/$/;"	m	struct:LexState	file:
 t	external/lua.c	/^  expdesc *t;  \/* table descriptor *\/$/;"	m	struct:ConsControl	file:
@@ -4677,6 +4697,7 @@ warn	include/Debug.hpp	31;"	d
 warn	include/Debug.hpp	37;"	d
 warn	include/Debug.hpp	42;"	d
 weak	external/lua.c	/^  GCObject *weak;  \/* list of tables with weak values *\/$/;"	m	struct:global_State	file:
+weapons	include/Inventory.hpp	/^		std::list<std::pair<Weapon*, s16>> weapons() { return m_weapons; }$/;"	f	class:Inventory
 weapons	include/ItemManager.hpp	/^		static std::vector<Weapon*> weapons;$/;"	m	class:ItemManager
 weapons	source/ItemManager.cpp	/^std::vector<Weapon*> ItemManager::weapons;$/;"	m	class:ItemManager	file:
 what	external/SLB.hpp	/^    const char* what() const throw() { return _what.c_str(); }$/;"	f	struct:SLB::InvalidMethod
@@ -4722,6 +4743,8 @@ zgetc	external/lua.c	2127;"	d	file:
 ~DynArray	external/tinyxml2.hpp	/^    ~DynArray() {$/;"	f	class:tinyxml2::DynArray
 ~EndActivity	source/EndActivity.cpp	/^EndActivity::~EndActivity() {$/;"	f	class:EndActivity
 ~EquipActivity	source/EquipActivity.cpp	/^EquipActivity::~EquipActivity() {$/;"	f	class:EquipActivity
+~EquipItemWindow	source/EquipItemWindow.cpp	/^EquipItemWindow::~EquipItemWindow() {$/;"	f	class:EquipItemWindow
+~EquipStatsWindow	source/EquipStatsWindow.cpp	/^EquipStatsWindow::~EquipStatsWindow() {$/;"	f	class:EquipStatsWindow
 ~ErrorHandler	external/SLB.hpp	/^    virtual ~ErrorHandler() {}$/;"	f	class:SLB::ErrorHandler
 ~Event	source/Event.cpp	/^Event::~Event() {$/;"	f	class:Event
 ~Font	source/Font.cpp	/^Font::~Font() {$/;"	f	class:Font

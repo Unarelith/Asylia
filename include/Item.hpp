@@ -32,8 +32,18 @@ class Item {
 		
 		static u16 count;
 		
+		enum Type {
+			BasicItem,
+			Armor,
+			Weapon
+		};
+		
+		Type type() const { return m_type; }
+		
 	protected:
 		u16 m_id;
+		
+		Type m_type;
 		
 		std::string m_name;
 		std::string m_description;

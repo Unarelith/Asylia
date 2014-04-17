@@ -18,6 +18,8 @@
 #include "Asylia.hpp"
 
 Inventory::Inventory() {
+	m_weapon = NULL;
+	m_shield = NULL;
 }
 
 Inventory::~Inventory() {
@@ -96,5 +98,11 @@ void Inventory::removeWeapon(u8 id, s16 count) {
 	m_weapons.remove_if([](std::pair<Weapon*, s16>& element) {
 		return element.second < 1;
 	});
+}
+
+void Inventory::clear() {
+	m_items.clear();
+	m_armors.clear();
+	m_weapons.clear();
 }
 

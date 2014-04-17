@@ -111,6 +111,28 @@ void Image::reload(const char *filename) {
 	m_posRect.h = m_height;
 }
 
+void Image::reload(SDL_Surface *surface) {
+	if(m_surface) SDL_FreeSurface(m_surface);
+	if(m_texture) SDL_DestroyTexture(m_texture);
+	
+	m_surface = surface;
+	
+	m_width = m_surface->w;
+	m_height = m_surface->h;
+	
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	
+	m_clipRect.x = 0;
+	m_clipRect.y = 0;
+	m_clipRect.w = m_width;
+	m_clipRect.h = m_height;
+	
+	m_posRect.x = 0;
+	m_posRect.y = 0;
+	m_posRect.w = m_width;
+	m_posRect.h = m_height;
+}
+
 void Image::renderCopy() {
 	if(m_texture) SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 	else GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color::black);

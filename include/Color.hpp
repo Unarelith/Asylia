@@ -33,6 +33,9 @@ class Color {
 		static Color white;
 		static Color black;
 		static Color system;
+		static Color disabled;
+		static Color red;
+		static Color green;
 };
 
 #endif // COLOR_HPP_

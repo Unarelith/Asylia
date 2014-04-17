@@ -48,9 +48,14 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	m_inventory->addArmor(3, 1);
 	m_inventory->addArmor(4, 1);
 	
-	m_level = 1;
+	m_inventory->shield(m_inventory->getArmor(0));
 	
 	m_name = "Silver";
+	
+	m_level = 1;
+	
+	m_atk = 15;
+	m_def = 8;
 }
 
 Player::~Player() {
@@ -108,5 +113,17 @@ void Player::move() {
 		m_vx = 0;
 		m_vy = 0;
 	}
+}
+
+u16 Player::totalAtk() {
+	u16 atk = m_atk;
+	if(m_inventory->weapon()) atk += m_inventory->weapon()->atk();
+	return atk;
+}
+
+u16 Player::totalDef() {
+	u16 def = m_def;
+	if(m_inventory->shield()) def += m_inventory->shield()->def();
+	return def;
 }
 

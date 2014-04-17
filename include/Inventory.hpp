@@ -32,6 +32,8 @@ class Inventory {
 		void addWeapon(u8 id, s16 count);
 		void removeWeapon(u8 id, s16 count);
 		
+		void clear();
+		
 		u16 nbItems() { return m_items.size(); }
 		u16 nbArmors() { return m_armors.size(); }
 		u16 nbWeapons() { return m_weapons.size(); }
@@ -51,10 +53,19 @@ class Inventory {
 		std::list<std::pair<Armor*, s16>> armors() { return m_armors; }
 		std::list<std::pair<Weapon*, s16>> weapons() { return m_weapons; }
 		
+		Weapon *weapon() const { return m_weapon; }
+		Armor *shield() const { return m_shield; }
+		
+		void weapon(Weapon *weapon) { m_weapon = weapon; }
+		void shield(Armor *shield) { m_shield = shield; }
+		
 	private:
 		std::list<std::pair<Item*, s16>> m_items;
 		std::list<std::pair<Armor*, s16>> m_armors;
 		std::list<std::pair<Weapon*, s16>> m_weapons;
+		
+		Weapon *m_weapon;
+		Armor *m_shield;
 };
 
 #endif // INVENTORY_HPP_

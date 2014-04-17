@@ -115,6 +115,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    ItemWindow.hpp
    EquipItemWindow.hpp
    EquipStatsWindow.hpp
+   EquipChoiceWindow.hpp
   }
  }
  source=source {
@@ -166,6 +167,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    ItemWindow.cpp
    EquipItemWindow.cpp
    EquipStatsWindow.cpp
+   EquipChoiceWindow.cpp
   }
   main.cpp
  }

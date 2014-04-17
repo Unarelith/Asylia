@@ -26,7 +26,7 @@ class Window {
 		void update();
 		
 		void drawCursor(s16 x, s16 y, u16 width, u16 height);
-		void draw();
+		void draw(bool cursor = true);
 		
 		void x(s16 x) { m_x = x; }
 		void y(s16 y) { m_y = y; }

@@ -65,31 +65,30 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 	textToDisplay.render(x, y, width, height);
 }
 
-Image *Font::printToImage(const char *str, u16 x, u16 y, FontSize size, Color color) {
+void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
 		case FONT_SMALL:  font = m_fontSmall;		break;
 		case FONT_MEDIUM: font = m_fontMedium;		break;
 		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return NULL;
+		default:		  error("Bad font size");	return;
 	}
 	
 	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
 	
-	Image *image = new Image(text);
+	image->reload(text);
 	image->setPosRect(x, y, image->width(), image->height());
-	return image;
 }
 
-Image *Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
+void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
 		case FONT_SMALL:  font = m_fontSmall;		break;
 		case FONT_MEDIUM: font = m_fontMedium;		break;
 		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return NULL;
+		default:		  error("Bad font size");	return;
 	}
 	
 	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -97,9 +96,8 @@ Image *Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 he
 	if(width > text->w) width = text->w;
 	if(height > text->h) height = text->h;
 	
-	Image *image = new Image(text);
+	image->reload(text);
 	image->setPosRect(x, y, width, height);
-	return image;
 }
 
 void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
@@ -133,5 +131,18 @@ void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, F
 	
 	textToDisplay.render(x + width / 2 - textToDisplay.width() / 2,
 						 y + height / 2 - textToDisplay.height() / 2);
+}
+
+void Font::setStyle(FontSize size, int style) {
+	TTF_Font *font = NULL;
+	
+	switch(size) {
+		case FONT_SMALL:  font = m_fontSmall;		break;
+		case FONT_MEDIUM: font = m_fontMedium;		break;
+		case FONT_LARGE:  font = m_fontLarge;		break;
+		default:		  error("Bad font size");	return;
+	}
+	
+	TTF_SetFontStyle(font, style);
 }
 

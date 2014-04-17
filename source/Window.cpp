@@ -44,7 +44,7 @@ void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(255);
 }
 
-void Window::draw() {
+void Window::draw(bool cursor) {
 	s16 x = m_x + GameWindow::main->viewportX();
 	s16 y = m_y + GameWindow::main->viewportY();
 	
@@ -62,7 +62,7 @@ void Window::draw() {
 	Interface::interface->render(x + 3, y + m_height - 3, m_width - 6, 3, 132, 61, 58, 3);
 	Interface::interface->render(x + m_width - 3, y + 3, 3, m_height - 6, 189, 3, 3, 58);
 	
-	if(m_cursor.width > 0) {
+	if(m_cursor.width > 0 && cursor) {
 		drawCursor(16 + x + m_cursor.x, 16 + y + m_cursor.y, m_cursor.width, m_cursor.height);
 	}
 }

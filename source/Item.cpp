@@ -23,6 +23,8 @@ Item::Item(std::string name, std::string description, u8 level, std::string thum
 	m_id = count;
 	count++;
 	
+	m_type = Type::BasicItem;
+	
 	m_name = name;
 	m_description = description;
 	

@@ -23,7 +23,7 @@ class EquipStatsWindow : public Window {
 		EquipStatsWindow();
 		~EquipStatsWindow();
 		
-		void draw();
+		void draw(Item *currentItem = NULL);
 };
 
 #endif // EQUIPSTATSWINDOW_HPP_

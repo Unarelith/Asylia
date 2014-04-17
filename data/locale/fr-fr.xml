@@ -13,8 +13,12 @@
 	<text id="NewGame" text="Nouvelle Partie"/>
 	<text id="Continue" text="Continuer"/>
 	<text id="Obtained" text="Vous obtenez"/>
+	<text id="Empty" text="emplacement vide"/>
 	<text id="Lv" text="Niv"/>
 	<text id="ATK" text="ATK"/>
+	<text id="DEF" text="DEF"/>
+	<text id="Weapon" text="Arme"/>
+	<text id="Shield" text="Bouclier"/>
 	
 	<!-- Event messages -->
 	<event id="0">

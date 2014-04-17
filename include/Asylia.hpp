@@ -80,12 +80,6 @@ using namespace tinyxml2;
 
 #include "Inventory.hpp"
 
-#include "Character.hpp"
-#include "Player.hpp"
-#include "CharacterManager.hpp"
-
-#include "Interface.hpp"
-
 #include "Window.hpp"
 #include "TextWindow.hpp"
 #include "InfoWindow.hpp"
@@ -95,6 +89,13 @@ using namespace tinyxml2;
 #include "ItemWindow.hpp"
 #include "EquipItemWindow.hpp"
 #include "EquipStatsWindow.hpp"
+#include "EquipChoiceWindow.hpp"
+
+#include "Character.hpp"
+#include "Player.hpp"
+#include "CharacterManager.hpp"
+
+#include "Interface.hpp"
 
 #include "Event.hpp"
 

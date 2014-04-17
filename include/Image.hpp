@@ -26,6 +26,7 @@ class Image {
 		~Image();
 		
 		void reload(const char *filename);
+		void reload(SDL_Surface *surface);
 		
 		void renderCopy();
 		void render(s16 x = -1, s16 y = -1, u16 w = 0, u16 h = 0, s16 clipX = -1, s16 clipY = -1, s16 clipW = -1, s16 clipH = -1);
