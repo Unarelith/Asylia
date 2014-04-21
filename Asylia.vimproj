@@ -7,9 +7,12 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  README.textile
  data=data {
   config=config {
+   armors.xml
+   items.xml
    maps.xml
    player.xml
    tilesets.xml
+   weapons.xml
   }
   events=events {
    event0=event0 {

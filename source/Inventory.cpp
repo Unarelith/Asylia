@@ -20,6 +20,8 @@
 Inventory::Inventory() {
 	m_weapon = NULL;
 	m_shield = NULL;
+	m_helmet = NULL;
+	m_armor = NULL;
 }
 
 Inventory::~Inventory() {

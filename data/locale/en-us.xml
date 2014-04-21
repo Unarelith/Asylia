@@ -19,6 +19,7 @@
 	<text id="DEF" text="DEF"/>
 	<text id="Weapon" text="Weapon"/>
 	<text id="Shield" text="Shield"/>
+	<text id="Armor" text="Armor"/>
 	
 	<!-- Event messages -->
 	<event id="0">
@@ -39,12 +40,12 @@
 	<!-- Armors -->
 	<armor name="Shield" description="Protect from projectiles."/>
 
-	<armor name="Hood" description="Hood from farmer's jackets."/>
 	<armor name="Helmet" description="City guards' helmet."/>
-
-	<armor name="Dress" description="Warrior dress."/>
+	<armor name="Hood" description="Hood from farmer's jackets."/>
+	
 	<armor name="Chestplate" description="City guards' chestplate."/>
-
+	<armor name="Dress" description="Warrior dress."/>
+	
 	<!-- Weapons -->
 	<weapon name="Sword" description="Iron sword."/>
 	<weapon name="Spear" description="Spear made in the area."/>

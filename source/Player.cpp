@@ -124,6 +124,8 @@ u16 Player::totalAtk() {
 u16 Player::totalDef() {
 	u16 def = m_def;
 	if(m_inventory->shield()) def += m_inventory->shield()->def();
+	if(m_inventory->helmet()) def += m_inventory->helmet()->def();
+	if(m_inventory->armor()) def += m_inventory->armor()->def();
 	return def;
 }
 

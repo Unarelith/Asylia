@@ -52,6 +52,12 @@ void EquipActivity::update() {
 				case 1:
 					CharacterManager::player->inventory()->shield((Armor*)m_itemwin->currentItem());
 					break;
+				case 2:
+					CharacterManager::player->inventory()->helmet((Armor*)m_itemwin->currentItem());
+					break;
+				case 3:
+					CharacterManager::player->inventory()->armor((Armor*)m_itemwin->currentItem());
+					break;
 				default: break;
 			}
 			m_itemMode = false;

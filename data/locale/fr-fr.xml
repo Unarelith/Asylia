@@ -19,6 +19,7 @@
 	<text id="DEF" text="DEF"/>
 	<text id="Weapon" text="Arme"/>
 	<text id="Shield" text="Bouclier"/>
+	<text id="Armor" text="Armure"/>
 	
 	<!-- Event messages -->
 	<event id="0">
@@ -39,12 +40,12 @@
 	<!-- Armors -->
 	<armor name="Bouclier" description="Protège des projectiles."/>
 	
-	<armor name="Capuche" description="Capuche des vestes de fermiers."/>
 	<armor name="Casque" description="Casque des gardes de la cité."/>
-
-	<armor name="Robe" description="Robe de guerrier."/>
+	<armor name="Capuche" description="Capuche des vestes de fermiers."/>
+	
 	<armor name="Plastron" description="Plastron des gardes de la cité."/>
-
+	<armor name="Robe" description="Robe de guerrier."/>
+	
 	<!-- Weapons -->
 	<weapon name="Épée" description="Épée en fer forgé."/>
 	<weapon name="Lance" description="Lance fabriquée dans le coin."/>
