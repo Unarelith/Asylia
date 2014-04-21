@@ -34,7 +34,9 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	if(currentItem && currentItem->type() != Item::Type::BasicItem) {
 		if(currentItem->type() == Item::Type::Armor) {
 			finalAtk = baseAtk;
-			finalDef = CharacterManager::player->def() + ((Armor*)currentItem)->def();
+			Armor *armor = CharacterManager::player->inventory()->armor(((Armor*)currentItem)->slot());
+			if(armor) finalDef = CharacterManager::player->totalDef() - armor->def() + ((Armor*)currentItem)->def();
+			else finalDef = CharacterManager::player->totalDef() + ((Armor*)currentItem)->def();
 			
 			if(finalDef > baseDef) {
 				finalDefColor = Color::green;

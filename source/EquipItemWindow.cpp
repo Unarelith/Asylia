@@ -28,13 +28,13 @@ EquipItemWindow::EquipItemWindow(u8 equipment, u8 equipType) : SelectableWindow(
 	
 	if(equipment == 0) {
 		for(auto& it : CharacterManager::player->inventory()->weapons()) {
-			if(it.first->equipType() == equipType) {
+			if(it.first->equipType() == equipType && it.first != CharacterManager::player->inventory()->weapon()) {
 				m_inventory.pushBackItem((Item*)it.first, it.second);
 			}
 		}
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
-			if(it.first->slot() == equipType) {
+			if(it.first->slot() == equipType && it.first != CharacterManager::player->inventory()->armor(it.first->slot())) {
 				m_inventory.pushBackItem((Item*)it.first, it.second);
 			}
 		}
@@ -89,13 +89,13 @@ void EquipItemWindow::changeSet(u8 equipment, u8 equipType) {
 	
 	if(equipment == 0) {
 		for(auto& it : CharacterManager::player->inventory()->weapons()) {
-			if(it.first->equipType() == equipType) {
+			if(it.first->equipType() == equipType && it.first != CharacterManager::player->inventory()->weapon()) {
 				m_inventory.pushBackItem((Item*)it.first, it.second);
 			}
 		}
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
-			if(it.first->slot() == equipType) {
+			if(it.first->slot() == equipType && it.first != CharacterManager::player->inventory()->armor(it.first->slot())) {
 				m_inventory.pushBackItem((Item*)it.first, it.second);
 			}
 		}

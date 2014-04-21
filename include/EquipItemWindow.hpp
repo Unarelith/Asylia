@@ -28,6 +28,8 @@ class EquipItemWindow : public SelectableWindow {
 		
 		void changeSet(u8 equipment, u8 equipType);
 		
+		bool hasItems() { return m_inventory.items().size(); }
+		
 		Item *currentItem();
 		
 	private:

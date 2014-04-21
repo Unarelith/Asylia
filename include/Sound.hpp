@@ -26,12 +26,13 @@ namespace Sound {
 		void init();
 		void free();
 		
-		void load(const char *filename, Mix_Chunk *se);
+		void load(const char *filename, Mix_Chunk **se);
 		void play(Mix_Chunk *se);
 		
 		extern Mix_Chunk *move;
 		extern Mix_Chunk *confirm;
 		extern Mix_Chunk *back;
+		extern Mix_Chunk *blocked;
 	};
 };
 

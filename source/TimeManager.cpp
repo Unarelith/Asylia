@@ -23,7 +23,7 @@ u32 TimeManager::frameBegin = 0;
 u32 TimeManager::frameEnd = 0;
 u32 TimeManager::timeToWait = 0;
 std::vector<u32> TimeManager::renderingTimeValues;
-u16 TimeManager::maxFrameskip = 8;
+u16 TimeManager::maxFrameskip = 5;
 u16 TimeManager::frameskip = 0;
 
 void TimeManager::beginMeasuringRenderingTime() {

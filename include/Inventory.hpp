@@ -54,14 +54,11 @@ class Inventory {
 		std::list<std::pair<Weapon*, s16>> weapons() { return m_weapons; }
 		
 		Weapon *weapon() const { return m_weapon; }
-		Armor *shield() const { return m_shield; }
-		Armor *helmet() const { return m_helmet; }
-		Armor *armor() const { return m_armor; }
+		std::list<Armor*> armorlist() { return m_armorlist; }
+		Armor *armor(u8 slot) const { for(auto it : m_armorlist) if(it->slot() == slot) return it; return NULL; }
 		
-		void weapon(Weapon *weapon) { m_weapon = weapon; }
-		void shield(Armor *shield) { m_shield = shield; }
-		void helmet(Armor *helmet) { m_helmet = helmet; }
-		void armor(Armor *armor) { m_armor = armor; }
+		void equipWeapon(Weapon *weapon) { m_weapon = weapon; }
+		void equipArmor(Armor *armor);
 		
 	private:
 		std::list<std::pair<Item*, s16>> m_items;
@@ -69,9 +66,7 @@ class Inventory {
 		std::list<std::pair<Weapon*, s16>> m_weapons;
 		
 		Weapon *m_weapon;
-		Armor *m_shield;
-		Armor *m_helmet;
-		Armor *m_armor;
+		std::list<Armor*> m_armorlist;
 };
 
 #endif // INVENTORY_HPP_

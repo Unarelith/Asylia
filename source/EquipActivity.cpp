@@ -42,29 +42,24 @@ void EquipActivity::update() {
 	else m_choicewin->update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-		Sound::Effect::play(Sound::Effect::confirm);
-		
-		if(m_itemMode) {
-			switch(m_choicewin->pos()) {
-				case 0:
-					CharacterManager::player->inventory()->weapon((Weapon*)m_itemwin->currentItem());
-					break;
-				case 1:
-					CharacterManager::player->inventory()->shield((Armor*)m_itemwin->currentItem());
-					break;
-				case 2:
-					CharacterManager::player->inventory()->helmet((Armor*)m_itemwin->currentItem());
-					break;
-				case 3:
-					CharacterManager::player->inventory()->armor((Armor*)m_itemwin->currentItem());
-					break;
-				default: break;
+		if(m_itemwin->hasItems()) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			
+			if(m_itemMode) {
+				if(m_choicewin->pos() == 0) {
+					CharacterManager::player->inventory()->equipWeapon((Weapon*)m_itemwin->currentItem());
+				} else {
+					CharacterManager::player->inventory()->equipArmor((Armor*)m_itemwin->currentItem());
+				}
+				
+				m_itemMode = false;
+				m_itemwin->pos(0);
+				m_itemwin->update();
+			} else {
+				m_itemMode = true;
 			}
-			m_itemMode = false;
-			m_itemwin->pos(0);
-			m_itemwin->update();
 		} else {
-			m_itemMode = true;
+			Sound::Effect::play(Sound::Effect::blocked);
 		}
 	}
 	

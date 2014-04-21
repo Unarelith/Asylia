@@ -19,9 +19,6 @@
 
 Inventory::Inventory() {
 	m_weapon = NULL;
-	m_shield = NULL;
-	m_helmet = NULL;
-	m_armor = NULL;
 }
 
 Inventory::~Inventory() {
@@ -106,5 +103,15 @@ void Inventory::clear() {
 	m_items.clear();
 	m_armors.clear();
 	m_weapons.clear();
+}
+
+void Inventory::equipArmor(Armor *armor) {
+	for(auto it : m_armorlist) {
+		if(it->slot() == armor->slot()) {
+			m_armorlist.remove(it);
+			break;
+		}
+	}
+	m_armorlist.push_back(armor);
 }
 

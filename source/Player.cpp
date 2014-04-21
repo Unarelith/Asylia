@@ -48,7 +48,7 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 m
 	m_inventory->addArmor(3, 1);
 	m_inventory->addArmor(4, 1);
 	
-	m_inventory->shield(m_inventory->getArmor(0));
+	m_inventory->equipArmor(m_inventory->getArmor(0));
 	
 	m_name = "Silver";
 	
@@ -123,9 +123,9 @@ u16 Player::totalAtk() {
 
 u16 Player::totalDef() {
 	u16 def = m_def;
-	if(m_inventory->shield()) def += m_inventory->shield()->def();
-	if(m_inventory->helmet()) def += m_inventory->helmet()->def();
-	if(m_inventory->armor()) def += m_inventory->armor()->def();
+	for(auto it : m_inventory->armorlist()) {
+		def += it->def();
+	}
 	return def;
 }
 
