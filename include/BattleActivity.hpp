@@ -33,7 +33,7 @@ class BattleActivity : public Activity {
 		std::vector<Enemy*> m_enemies;
 		std::vector<Actor*> m_actors;
 		
-		std::vector<ActorStatsWindow*> m_actorsStatswin;
+		ActorStatsWindow m_actorStatswin;
 		
 		Actor *m_currentActor;
 		

@@ -23,8 +23,10 @@ class Battler {
 		Battler();
 		~Battler();
 		
-	protected:
+		Image *image() const { return m_image; }
 		
+	protected:
+		Image *m_image;
 };
 
 #endif // BATTLER_HPP_

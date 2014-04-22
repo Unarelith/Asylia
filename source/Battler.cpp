@@ -18,8 +18,10 @@
 #include "Asylia.hpp"
 
 Battler::Battler() {
+	m_image = new Image("graphics/battlers/Fighter01.png");
 }
 
 Battler::~Battler() {
+	delete m_image;
 }
 

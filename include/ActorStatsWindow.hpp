@@ -23,7 +23,8 @@ class ActorStatsWindow : public Window {
 		ActorStatsWindow();
 		~ActorStatsWindow();
 		
-		void draw(Actor *actor = NULL);
+		void draw(std::vector<Actor*> actors);
+		void drawActor(Actor *actor, u8 pos);
 };
 
 #endif // ACTORSTATSWINDOW_HPP_

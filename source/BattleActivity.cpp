@@ -23,8 +23,9 @@ BattleActivity::BattleActivity() {
 	m_enemies.push_back(new Enemy());
 	
 	m_actors.push_back(new Actor());
-	
-	m_actorsStatswin.push_back(new ActorStatsWindow());
+	m_actors.push_back(new Actor());
+	m_actors.push_back(new Actor());
+	m_actors.push_back(new Actor());
 	
 	m_currentActor = NULL;
 	
@@ -33,8 +34,6 @@ BattleActivity::BattleActivity() {
 
 BattleActivity::~BattleActivity() {
 	delete m_battleback;
-	
-	m_actorsStatswin.clear();
 	
 	m_actors.clear();
 	m_enemies.clear();
@@ -50,6 +49,6 @@ void BattleActivity::update() {
 void BattleActivity::render() {
 	m_battleback->render();
 	
-	m_actorsStatswin[0]->draw(m_actors[0]);
+	m_actorStatswin.draw(m_actors);
 }
 
