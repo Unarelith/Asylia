@@ -33,7 +33,11 @@ class BattleActivity : public Activity {
 		std::vector<Enemy*> m_enemies;
 		std::vector<Actor*> m_actors;
 		
+		std::vector<ActorStatsWindow*> m_actorsStatswin;
+		
 		Actor *m_currentActor;
+		
+		Image *m_battleback;
 };
 
 #endif // BATTLEACTIVITY_HPP_

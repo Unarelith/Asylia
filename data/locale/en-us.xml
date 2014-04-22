@@ -20,6 +20,8 @@
 	<text id="Weapon" text="Weapon"/>
 	<text id="Shield" text="Shield"/>
 	<text id="Armor" text="Armor"/>
+	<text id="HP" text="HP"/>
+	<text id="SP" text="SP"/>
 	
 	<!-- Event messages -->
 	<event id="0">

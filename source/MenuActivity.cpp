@@ -36,6 +36,7 @@ void MenuActivity::loadCommandWindow() {
 	choices.push_back(_t("State"));
 	choices.push_back(_t("Save"));
 	choices.push_back(_t("Language"));
+	choices.push_back("Battle test");
 	choices.push_back(_t("Quit"));
 	
 	m_cmdwin = new CommandWindow(150, choices);
@@ -65,6 +66,9 @@ void MenuActivity::update() {
 				m_cmdwin->pos(5);
 				break;
 			case 6:
+				ActivityManager::push(new BattleActivity);
+				break;
+			case 7:
 				ActivityManager::push(new EndActivity);
 				break;
 			default: break;
