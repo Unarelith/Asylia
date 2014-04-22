@@ -18,6 +18,8 @@
 #include "Asylia.hpp"
 
 ItemActivity::ItemActivity() {
+	m_type = Type::Item;
+	
 	m_itemwin = new ItemWindow();
 }
 

@@ -91,6 +91,10 @@ using namespace tinyxml2;
 #include "EquipStatsWindow.hpp"
 #include "EquipChoiceWindow.hpp"
 
+#include "Battler.hpp"
+#include "Enemy.hpp"
+#include "Actor.hpp"
+
 #include "Character.hpp"
 #include "Player.hpp"
 #include "CharacterManager.hpp"
@@ -108,6 +112,7 @@ using namespace tinyxml2;
 #include "EndActivity.hpp"
 #include "ItemActivity.hpp"
 #include "EquipActivity.hpp"
+#include "BattleActivity.hpp"
 #include "ActivityManager.hpp"
 
 #include "Tileset.hpp"

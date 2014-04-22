@@ -35,7 +35,10 @@ class Activity {
 			Menu,
 			Lua,
 			TitleScreen,
-			GameEnd
+			GameEnd,
+			Item,
+			Equip,
+			Battle
 		} Type;
 		
 		Type type() const { return m_type; }

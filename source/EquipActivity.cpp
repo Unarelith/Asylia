@@ -18,6 +18,8 @@
 #include "Asylia.hpp"
 
 EquipActivity::EquipActivity() {
+	m_type = Type::Equip;
+	
 	m_statswin = new EquipStatsWindow();
 	m_choicewin = new EquipChoiceWindow();
 	m_itemwin = new EquipItemWindow(0, 0);

@@ -72,17 +72,21 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EndActivity.hpp
    ItemActivity.hpp
    EquipActivity.hpp
+   BattleActivity.hpp
   }
   ActivityManager.hpp
+  Actor.hpp
   Animation.hpp
   AnimationManager.hpp
   Armor.hpp
   Asylia.hpp
+  Battler.hpp
   Character.hpp
   CharacterManager.hpp
   Color.hpp
   Config.hpp
   Debug.hpp
+  Enemy.hpp
   Event.hpp
   Font.hpp
   Game.hpp
@@ -132,13 +136,17 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EndActivity.cpp
    ItemActivity.cpp
    EquipActivity.cpp
+   BattleActivity.cpp
   }
   ActivityManager.cpp
+  Actor.cpp
   AnimationManager.cpp
   Armor.cpp
+  Battler.cpp
   Character.cpp
   CharacterManager.cpp
   Color.cpp
+  Enemy.cpp
   Event.cpp
   Font.cpp
   Game.cpp

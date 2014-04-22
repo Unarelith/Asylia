@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  ActivityManager.cpp
+ *       Filename:  Enemy.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:49:08
+ *        Created:  22/04/2014 19:31:35
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,16 +15,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef ENEMY_HPP_
+#define ENEMY_HPP_
 
-std::stack<Activity*> ActivityManager::activities;
+class Enemy : public Battler {
+	public:
+		Enemy();
+		~Enemy();
+};
 
-void ActivityManager::init() {
-#ifdef NO_TITLESCREEN
-	activities.push(new MapActivity);
-	((MapActivity *)activities.top())->init();
-#else
-	activities.push(new TitleActivity);
-#endif
-}
-
+#endif // ENEMY_HPP_

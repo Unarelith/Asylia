@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  ActivityManager.cpp
+ *       Filename:  Battler.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  20/03/2014 21:49:08
+ *        Created:  22/04/2014 19:29:30
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,16 +15,16 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef BATTLER_HPP_
+#define BATTLER_HPP_
 
-std::stack<Activity*> ActivityManager::activities;
+class Battler {
+	public:
+		Battler();
+		~Battler();
+		
+	protected:
+		
+};
 
-void ActivityManager::init() {
-#ifdef NO_TITLESCREEN
-	activities.push(new MapActivity);
-	((MapActivity *)activities.top())->init();
-#else
-	activities.push(new TitleActivity);
-#endif
-}
-
+#endif // BATTLER_HPP_
