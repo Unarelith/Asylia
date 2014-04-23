@@ -38,7 +38,7 @@ class Activity {
 			GameEnd,
 			Item,
 			Equip,
-			Battle
+			BattleAct
 		} Type;
 		
 		Type type() const { return m_type; }

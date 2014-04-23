@@ -18,6 +18,7 @@
 #include "Asylia.hpp"
 
 Enemy::Enemy() : Battler() {
+	m_image = new Image("graphics/battlers/Undead01.png");
 }
 
 Enemy::~Enemy() {

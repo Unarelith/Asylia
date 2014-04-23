@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Actor.cpp
+ *       Filename:  Battle.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/04/2014 19:32:59
+ *        Created:  23/04/2014 18:05:00
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,10 +17,14 @@
  */
 #include "Asylia.hpp"
 
-Actor::Actor() : Battler() {
-	m_image = new Image("graphics/battlers/Fighter01.png");
+Battle::Battle() {
+	m_battleback = new Image("graphics/battlebacks/Grassland.jpg");
 }
 
-Actor::~Actor() {
+Battle::~Battle() {
+	delete m_battleback;
+	
+	m_enemies.clear();
+	m_actors.clear();
 }
 

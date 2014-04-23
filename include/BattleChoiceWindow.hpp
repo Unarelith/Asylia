@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Actor.cpp
+ *       Filename:  BattleChoiceWindow.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/04/2014 19:32:59
+ *        Created:  23/04/2014 18:54:47
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,12 +15,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef BATTLECHOICEWINDOW_HPP_
+#define BATTLECHOICEWINDOW_HPP_
 
-Actor::Actor() : Battler() {
-	m_image = new Image("graphics/battlers/Fighter01.png");
-}
+class BattleChoiceWindow : public CommandWindow {
+	public:
+		BattleChoiceWindow();
+		~BattleChoiceWindow();
+};
 
-Actor::~Actor() {
-}
-
+#endif // BATTLECHOICEWINDOW_HPP_

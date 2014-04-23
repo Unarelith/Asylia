@@ -18,25 +18,24 @@
 #include "Asylia.hpp"
 
 BattleActivity::BattleActivity() {
-	m_type = Type::Battle;
+	m_type = Type::BattleAct;
 	
-	m_enemies.push_back(new Enemy());
+	m_battle = new Battle;
 	
-	m_actors.push_back(new Actor());
-	m_actors.push_back(new Actor());
-	m_actors.push_back(new Actor());
-	m_actors.push_back(new Actor());
+	m_battle->addActor(new Actor());
+	m_battle->addActor(new Actor());
+	m_battle->addActor(new Actor());
+	m_battle->addActor(new Actor());
+	
+	m_battle->addEnemy(new Enemy());
 	
 	m_currentActor = NULL;
 	
-	m_battleback = new Image("graphics/battlebacks/Grassland.jpg");
+	m_mode = Mode::Choice;
 }
 
 BattleActivity::~BattleActivity() {
-	delete m_battleback;
-	
-	m_actors.clear();
-	m_enemies.clear();
+	delete m_battle;
 }
 
 void BattleActivity::update() {
@@ -44,11 +43,19 @@ void BattleActivity::update() {
 		Sound::Effect::play(Sound::Effect::back);
 		ActivityManager::pop();
 	}
+	
+	if(m_mode == Mode::Choice) {
+		m_battleChoicewin.update();
+	}
 }
 
 void BattleActivity::render() {
-	m_battleback->render();
+	m_battle->renderBattleback();
 	
-	m_actorStatswin.draw(m_actors);
+	m_actorStatswin.draw(m_battle->enemies(), m_battle->actors());
+	
+	if(m_mode == Mode::Choice) {
+		m_battleChoicewin.draw();
+	}
 }
 

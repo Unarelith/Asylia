@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Actor.cpp
+ *       Filename:  BattleActionWindow.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/04/2014 19:32:59
+ *        Created:  23/04/2014 18:57:38
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,10 +17,9 @@
  */
 #include "Asylia.hpp"
 
-Actor::Actor() : Battler() {
-	m_image = new Image("graphics/battlers/Fighter01.png");
+BattleActionWindow::BattleActionWindow() : CommandWindow(0, 0, 10, 10) {
 }
 
-Actor::~Actor() {
+BattleActionWindow::~BattleActionWindow() {
 }
 

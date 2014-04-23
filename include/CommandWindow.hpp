@@ -20,14 +20,21 @@
 
 class CommandWindow : public SelectableWindow {
 	public:
+		CommandWindow(s16 x, s16 y, u16 width, u16 height, bool horizontal = false, bool centered = false);
 		CommandWindow(u16 width, std::vector<std::string> commands);
 		~CommandWindow();
 		
+		void addCommand(std::string cmd) { m_commands.push_back(cmd); m_itemMax++; };
+		
 		void drawItem(u8 pos);
+		void drawHorizontalCenteredItem(u8 pos);
 		void draw();
 		
 	private:
 		std::vector<std::string> m_commands;
+		
+		bool m_horizontal;
+		bool m_centered;
 };
 
 #endif // COMMANDWINDOW_HPP_

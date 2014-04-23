@@ -23,21 +23,26 @@ class BattleActivity : public Activity {
 		BattleActivity();
 		~BattleActivity();
 		
-		void addEnemy(Enemy *enemy) { m_enemies.push_back(enemy); }
-		void addActor(Actor *actor) { m_actors.push_back(actor); }
-		
 		void update();
 		void render();
 		
+		enum Mode {
+			Choice,
+			Action,
+			EnemyTurn
+		};
+		
 	private:
-		std::vector<Enemy*> m_enemies;
-		std::vector<Actor*> m_actors;
+		Battle *m_battle;
 		
 		ActorStatsWindow m_actorStatswin;
 		
 		Actor *m_currentActor;
 		
-		Image *m_battleback;
+		Mode m_mode;
+		
+		BattleChoiceWindow m_battleChoicewin;
+		BattleActionWindow m_battleActionwin;
 };
 
 #endif // BATTLEACTIVITY_HPP_

@@ -23,7 +23,8 @@ class ActorStatsWindow : public Window {
 		ActorStatsWindow();
 		~ActorStatsWindow();
 		
-		void draw(std::vector<Actor*> actors);
+		void draw(std::vector<Enemy*> enemies, std::vector<Actor*> actors);
+		void drawEnemy(Enemy *enemy, u8 pos, u8 max);
 		void drawActor(Actor *actor, u8 pos);
 };
 

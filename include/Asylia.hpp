@@ -84,6 +84,8 @@ using namespace tinyxml2;
 #include "Enemy.hpp"
 #include "Actor.hpp"
 
+#include "Battle.hpp"
+
 #include "Window.hpp"
 #include "TextWindow.hpp"
 #include "InfoWindow.hpp"
@@ -95,6 +97,8 @@ using namespace tinyxml2;
 #include "EquipStatsWindow.hpp"
 #include "EquipChoiceWindow.hpp"
 #include "ActorStatsWindow.hpp"
+#include "BattleChoiceWindow.hpp"
+#include "BattleActionWindow.hpp"
 
 #include "Character.hpp"
 #include "Player.hpp"

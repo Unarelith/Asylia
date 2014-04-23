@@ -80,6 +80,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   AnimationManager.hpp
   Armor.hpp
   Asylia.hpp
+  Battle.hpp
   Battler.hpp
   Character.hpp
   CharacterManager.hpp
@@ -124,6 +125,8 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EquipStatsWindow.hpp
    EquipChoiceWindow.hpp
    ActorStatsWindow.hpp
+   BattleChoiceWindow.hpp
+   BattleActionWindow.hpp
   }
  }
  source=source {
@@ -143,6 +146,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Actor.cpp
   AnimationManager.cpp
   Armor.cpp
+  Battle.cpp
   Battler.cpp
   Character.cpp
   CharacterManager.cpp
@@ -181,6 +185,8 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    EquipStatsWindow.cpp
    EquipChoiceWindow.cpp
    ActorStatsWindow.cpp
+   BattleChoiceWindow.cpp
+   BattleActionWindow.cpp
   }
   main.cpp
  }

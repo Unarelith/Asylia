@@ -23,12 +23,20 @@ ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(),
 ActorStatsWindow::~ActorStatsWindow() {
 }
 
-void ActorStatsWindow::draw(std::vector<Actor*> actors) {
+void ActorStatsWindow::draw(std::vector<Enemy*> enemies, std::vector<Actor*> actors) {
 	Window::draw();
+	
+	for(u8 i = 0 ; i < enemies.size() ; i++) {
+		drawEnemy(enemies[i], i, enemies.size());
+	}
 	
 	for(u8 i = 0 ; i < actors.size() ; i++) {
 		drawActor(actors[i], i);
 	}
+}
+
+void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
+	enemy->image()->render(m_width / 2 - enemy->image()->width() / 2, 320 / 2 - enemy->image()->width() + 10);
 }
 
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
