@@ -23,6 +23,8 @@ Mix_Chunk *Sound::Effect::back = NULL;
 Mix_Chunk *Sound::Effect::blocked = NULL;
 
 Mix_Music *Sound::Music::battle = NULL;
+Mix_Music *Sound::Music::theme = NULL;
+Mix_Music *Sound::Music::title = NULL;
 
 void Sound::init() {
 	Effect::init();
@@ -63,9 +65,13 @@ void Sound::Effect::play(Mix_Chunk *se) {
 
 void Sound::Music::init() {
 	load("audio/music/battle.mid", &battle);
+	load("audio/music/theme.mid", &theme);
+	load("audio/music/title.mid", &title);
 }
 
 void Sound::Music::free() {
+	Mix_FreeMusic(title);
+	Mix_FreeMusic(theme);
 	Mix_FreeMusic(battle);
 }
 

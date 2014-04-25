@@ -18,6 +18,7 @@
 #include "Asylia.hpp"
 
 std::stack<Activity*> ActivityManager::activities;
+std::queue<Activity*> ActivityManager::activitiesBin;
 
 void ActivityManager::init() {
 #ifdef NO_TITLESCREEN

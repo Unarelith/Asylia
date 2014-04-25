@@ -58,6 +58,7 @@ void EndActivity::update() {
 			case 2:
 				SDL_Delay(100);
 				Game::quit = true;
+				delete m_cmdwin;
 				break;
 			default: break;
 		}

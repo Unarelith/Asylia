@@ -45,6 +45,8 @@ namespace Sound {
 		void halt();
 		
 		extern Mix_Music *battle;
+		extern Mix_Music *theme;
+		extern Mix_Music *title;
 	};
 };
 

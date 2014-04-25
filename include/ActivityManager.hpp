@@ -23,11 +23,13 @@ class ActivityManager {
 		static void init();
 		
 		static std::stack<Activity*> activities;
+		static std::queue<Activity*> activitiesBin;
 		
 		static Activity *top() { return activities.top(); }
-		static void pop() { delete top(); activities.pop(); }
+		static void pop() { activitiesBin.push(top()); activities.pop(); }
 		static void push(Activity *activity) { activities.push(activity); }
 		static int size() { return activities.size(); }
+		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.front()) { delete activitiesBin.front(); activitiesBin.pop(); } }
 		
 		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity; activities.push(dialog); return dialog; }
 };

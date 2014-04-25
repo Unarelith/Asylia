@@ -20,14 +20,12 @@
 BattleActivity::BattleActivity() {
 	m_type = Type::BattleAct;
 	
-	m_battle = new Battle;
+	m_battle.addActor(new Actor());
+	m_battle.addActor(new Actor());
+	m_battle.addActor(new Actor());
+	m_battle.addActor(new Actor());
 	
-	m_battle->addActor(new Actor());
-	m_battle->addActor(new Actor());
-	m_battle->addActor(new Actor());
-	m_battle->addActor(new Actor());
-	
-	m_battle->addEnemy(new Enemy());
+	m_battle.addEnemy(new Enemy());
 	
 	m_currentActor = NULL;
 	
@@ -37,26 +35,25 @@ BattleActivity::BattleActivity() {
 }
 
 BattleActivity::~BattleActivity() {
-	Sound::Music::halt();
-	
-	delete m_battle;
 }
 
 void BattleActivity::update() {
+	if(m_mode == Mode::Choice) {
+		m_battleChoicewin.update();
+	}
+	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
 		ActivityManager::pop();
-	}
-	
-	if(m_mode == Mode::Choice) {
-		m_battleChoicewin.update();
+		Sound::Music::halt();
+		Sound::Music::play(Sound::Music::theme, -1);
 	}
 }
 
 void BattleActivity::render() {
-	m_battle->renderBattleback();
+	m_battle.renderBattleback();
 	
-	m_actorStatswin.draw(m_battle->enemies(), m_battle->actors());
+	m_actorStatswin.draw(m_battle.enemies(), m_battle.actors());
 	
 	if(m_mode == Mode::Choice) {
 		m_battleChoicewin.draw();

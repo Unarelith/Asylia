@@ -43,6 +43,8 @@ void MapActivity::init() {
 	ItemManager::init();
 	
 	CharacterManager::init();
+	
+	Sound::Music::play(Sound::Music::theme, -1);
 }
 
 void MapActivity::update() {

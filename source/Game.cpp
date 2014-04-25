@@ -61,6 +61,8 @@ void Game::mainLoop() {
 			
 			if(Game::paused == true) continue;
 			
+			ActivityManager::checkActivitiesToDelete();
+			
 			ActivityManager::top()->update();
 			
 			if(TimeManager::hasEnoughTimeToDraw()) {

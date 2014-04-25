@@ -33,9 +33,13 @@ TitleActivity::TitleActivity() {
 	m_cmdwin->y(GameWindow::main->height() / 2 + int(GameWindow::main->height() / 10));
 	
 	GameWindow::main->updateViewportPosition(0, 0);
+	
+	Sound::Music::play(Sound::Music::title, -1);
 }
 
 TitleActivity::~TitleActivity() {
+	delete m_cmdwin;
+	delete m_background;
 }
 
 void TitleActivity::update() {

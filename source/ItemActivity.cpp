@@ -19,21 +19,18 @@
 
 ItemActivity::ItemActivity() {
 	m_type = Type::Item;
-	
-	m_itemwin = new ItemWindow();
 }
 
 ItemActivity::~ItemActivity() {
-	delete m_itemwin;
 }
 
 void ItemActivity::update() {
-	m_itemwin->update();
+	m_itemwin.update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
-		switch(m_itemwin->pos()) {
+		switch(m_itemwin.pos()) {
 			default: break;
 		}
 	}
@@ -47,6 +44,6 @@ void ItemActivity::update() {
 void ItemActivity::render() {
 	MenuActivity::render();
 	
-	m_itemwin->draw();
+	m_itemwin.draw();
 }
 

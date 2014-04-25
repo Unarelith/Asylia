@@ -27,8 +27,8 @@ class EquipActivity : public MenuActivity {
 		void render();
 		
 	private:
-		EquipStatsWindow *m_statswin;
-		EquipChoiceWindow *m_choicewin;
+		EquipStatsWindow m_statswin;
+		EquipChoiceWindow m_choicewin;
 		EquipItemWindow *m_itemwin;
 		
 		bool m_itemMode;
