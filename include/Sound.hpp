@@ -34,6 +34,18 @@ namespace Sound {
 		extern Mix_Chunk *back;
 		extern Mix_Chunk *blocked;
 	};
+	
+	namespace Music {
+		void init();
+		void free();
+		
+		void load(const char *filename, Mix_Music **music);
+		void play(Mix_Music *music, int loops);
+		
+		void halt();
+		
+		extern Mix_Music *battle;
+	};
 };
 
 #endif // SOUND_HPP_

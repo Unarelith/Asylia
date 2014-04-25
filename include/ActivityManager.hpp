@@ -25,7 +25,7 @@ class ActivityManager {
 		static std::stack<Activity*> activities;
 		
 		static Activity *top() { return activities.top(); }
-		static void pop() { activities.pop(); }
+		static void pop() { delete top(); activities.pop(); }
 		static void push(Activity *activity) { activities.push(activity); }
 		static int size() { return activities.size(); }
 		

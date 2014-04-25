@@ -22,23 +22,19 @@ Mix_Chunk *Sound::Effect::confirm = NULL;
 Mix_Chunk *Sound::Effect::back = NULL;
 Mix_Chunk *Sound::Effect::blocked = NULL;
 
+Mix_Music *Sound::Music::battle = NULL;
+
 void Sound::init() {
 	Effect::init();
+	Music::init();
 }
 
 void Sound::free() {
+	Music::free();
 	Effect::free();
 }
 
 void Sound::Effect::init() {
-	/*move = Mix_LoadWAV("audio/effects/move.wav");
-	Mix_VolumeChunk(move, MIX_MAX_VOLUME);
-	
-	confirm = Mix_LoadWAV("audio/effects/confirm.wav");
-	Mix_VolumeChunk(confirm, MIX_MAX_VOLUME);
-	
-	back = Mix_LoadWAV("audio/effects/back.wav");
-	Mix_VolumeChunk(back, MIX_MAX_VOLUME);*/
 	load("audio/effects/move.wav", &move);
 	load("audio/effects/confirm.wav", &confirm);
 	load("audio/effects/back.wav", &back);
@@ -63,5 +59,30 @@ void Sound::Effect::load(const char *filename, Mix_Chunk **se) {
 
 void Sound::Effect::play(Mix_Chunk *se) {
 	Mix_PlayChannel(1, se, 0);
+}
+
+void Sound::Music::init() {
+	load("audio/music/battle.mid", &battle);
+}
+
+void Sound::Music::free() {
+	Mix_FreeMusic(battle);
+}
+
+void Sound::Music::load(const char *filename, Mix_Music **music) {
+	*music = Mix_LoadMUS(filename);
+	if(!*music) {
+		error("Unable to load sound effect: %s", filename);
+		exit(EXIT_FAILURE);
+	}
+}
+
+void Sound::Music::play(Mix_Music *music, int loops) {
+	Mix_VolumeMusic(MIX_MAX_VOLUME);
+	Mix_PlayMusic(music, loops);
+}
+
+void Sound::Music::halt() {
+	Mix_HaltMusic();
 }
 

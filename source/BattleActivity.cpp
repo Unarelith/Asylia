@@ -32,9 +32,13 @@ BattleActivity::BattleActivity() {
 	m_currentActor = NULL;
 	
 	m_mode = Mode::Choice;
+	
+	Sound::Music::play(Sound::Music::battle, -1);
 }
 
 BattleActivity::~BattleActivity() {
+	Sound::Music::halt();
+	
 	delete m_battle;
 }
 
