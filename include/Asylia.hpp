@@ -83,8 +83,10 @@ using namespace tinyxml2;
 #include "Battler.hpp"
 #include "Enemy.hpp"
 #include "Actor.hpp"
+#include "BattlerManager.hpp"
 
 #include "Battle.hpp"
+#include "BattleManager.hpp"
 
 #include "Window.hpp"
 #include "TextWindow.hpp"

@@ -7,7 +7,10 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
  README.textile
  data=data {
   config=config {
+   actors.xml
    armors.xml
+   battles.xml
+   enemies.xml
    items.xml
    maps.xml
    player.xml
@@ -16,6 +19,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   }
   events=events {
    chest0=chest0 {
+    main.lua
    }
    event0=event0 {
     main.lua
@@ -83,7 +87,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Armor.hpp
   Asylia.hpp
   Battle.hpp
+  BattleManager.hpp
   Battler.hpp
+  BattlerManager.hpp
   Character.hpp
   CharacterManager.hpp
   Color.hpp
@@ -149,7 +155,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   AnimationManager.cpp
   Armor.cpp
   Battle.cpp
+  BattleManager.cpp
   Battler.cpp
+  BattlerManager.cpp
   Character.cpp
   CharacterManager.cpp
   Color.cpp

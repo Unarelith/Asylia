@@ -20,20 +20,20 @@
 
 class Battle {
 	public:
-		Battle();
+		Battle(std::string battleback);
 		~Battle();
 		
-		void addEnemy(Enemy *enemy) { m_enemies.push_back(enemy); }
 		void addActor(Actor *actor) { m_actors.push_back(actor); }
+		void addEnemy(Enemy *enemy) { m_enemies.push_back(enemy); }
 		
-		std::vector<Enemy*> enemies() const { return m_enemies; }
 		std::vector<Actor*> actors() const { return m_actors; }
+		std::vector<Enemy*> enemies() const { return m_enemies; }
 		
 		void renderBattleback() { m_battleback->render(); }
 		
 	private:
-		std::vector<Enemy*> m_enemies;
 		std::vector<Actor*> m_actors;
+		std::vector<Enemy*> m_enemies;
 		
 		Image *m_battleback;
 };

@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Enemy.hpp
+ *       Filename:  BattlerManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/04/2014 19:31:35
+ *        Created:  27/04/2014 20:44:27
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,13 +15,18 @@
  *
  * =====================================================================================
  */
-#ifndef ENEMY_HPP_
-#define ENEMY_HPP_
+#ifndef BATTLERMANAGER_HPP_
+#define BATTLERMANAGER_HPP_
 
-class Enemy : public Battler {
-	public:
-		Enemy(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def);
-		~Enemy();
+namespace BattlerManager {
+	void init();
+	void free();
+	
+	void initActors();
+	void initEnemies();
+	
+	extern std::vector<Actor*> actors;
+	extern std::vector<Enemy*> enemies;
 };
 
-#endif // ENEMY_HPP_
+#endif // BATTLERMANAGER_HPP_

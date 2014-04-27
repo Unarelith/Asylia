@@ -56,6 +56,8 @@ class Character : public Sprite {
 		
 		void changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction);
 		
+		void linkBattler(Battler *battler) { m_battler = battler; }
+		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
 		
@@ -67,6 +69,8 @@ class Character : public Sprite {
 		void setHitbox(s16 x, s16 y, u16 width, u16 height);
 		
 		Inventory *inventory() const { return m_inventory; }
+		
+		Battler *battler() { return m_battler; }
 		
 		enum Direction {
 			Down, Right, Left, Up
@@ -114,6 +118,8 @@ class Character : public Sprite {
 		bool m_solid;
 		
 		Inventory *m_inventory;
+		
+		Battler *m_battler;
 };
 
 #endif // CHARACTER_HPP_

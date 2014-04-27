@@ -17,8 +17,7 @@
  */
 #include "Asylia.hpp"
 
-Enemy::Enemy() : Battler() {
-	m_image = new Image("graphics/battlers/Undead01.png");
+Enemy::Enemy(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) : Battler(name, appearance, level, hp, sp, atk, def) {
 }
 
 Enemy::~Enemy() {

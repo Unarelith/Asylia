@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<enemies>
+	<enemy name="Ghost" appearance="Undead01">
+		<stats level="1" hp="60" sp="40" atk="10" def="10"/>
+	</enemy>
+</enemies>

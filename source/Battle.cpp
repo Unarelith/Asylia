@@ -17,8 +17,8 @@
  */
 #include "Asylia.hpp"
 
-Battle::Battle() {
-	m_battleback = new Image("graphics/battlebacks/Grassland.jpg");
+Battle::Battle(std::string battleback) {
+	m_battleback = new Image(battleback.c_str());
 }
 
 Battle::~Battle() {

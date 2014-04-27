@@ -20,12 +20,7 @@
 BattleActivity::BattleActivity() {
 	m_type = Type::BattleAct;
 	
-	m_battle.addActor(new Actor());
-	m_battle.addActor(new Actor());
-	m_battle.addActor(new Actor());
-	m_battle.addActor(new Actor());
-	
-	m_battle.addEnemy(new Enemy());
+	m_battle = BattleManager::battles[0];
 	
 	m_currentActor = NULL;
 	
@@ -51,9 +46,9 @@ void BattleActivity::update() {
 }
 
 void BattleActivity::render() {
-	m_battle.renderBattleback();
+	m_battle->renderBattleback();
 	
-	m_actorStatswin.draw(m_battle.enemies(), m_battle.actors());
+	m_actorStatswin.draw(m_battle->enemies(), m_battle->actors());
 	
 	if(m_mode == Mode::Choice) {
 		m_battleChoicewin.draw();

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<battles>
+	<battle battleback="Grassland">
+		<actor id="0"/>
+		<enemy id="0"/>
+	</battle>
+</battles>

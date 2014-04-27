@@ -33,7 +33,7 @@ class BattleActivity : public Activity {
 		};
 		
 	private:
-		Battle m_battle;
+		Battle *m_battle;
 		
 		ActorStatsWindow m_actorStatswin;
 		

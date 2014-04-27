@@ -22,6 +22,10 @@ MapActivity::MapActivity() {
 }
 
 MapActivity::~MapActivity() {
+	BattleManager::free();
+	
+	BattlerManager::free();
+	
 	CharacterManager::free();
 	
 	MapManager::free();
@@ -43,6 +47,10 @@ void MapActivity::init() {
 	ItemManager::init();
 	
 	CharacterManager::init();
+	
+	BattlerManager::init();
+	
+	BattleManager::init();
 	
 	Sound::Music::play(Sound::Music::theme, -1);
 }
