@@ -17,10 +17,9 @@
  */
 #include "Asylia.hpp"
 
-//BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(GameWindow::main->width() / 2 - 150 / 2, GameWindow::main->height() / 2 - (32 + 2 * 32) / 2, 150, 32 + 32 * 2) {
 BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, GameWindow::main->width(), 64, true, true) {
-	addCommand("Fight");
-	addCommand("Escape");
+	addCommand(_t("Fight"));
+	addCommand(_t("Escape"));
 	
 	m_columnMax = 2;
 }

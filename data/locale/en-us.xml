@@ -22,6 +22,8 @@
 	<text id="Armor" text="Armor"/>
 	<text id="HP" text="HP"/>
 	<text id="SP" text="SP"/>
+	<text id="Fight" text="Fight"/>
+	<text id="Escape" text="Escape"/>
 	
 	<!-- Event messages -->
 	<event id="0">

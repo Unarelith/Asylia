@@ -41,6 +41,8 @@ Game::Game() {
 }
 
 Game::~Game() {
+	ActivityManager::checkActivitiesToDelete();
+	
 	Interface::free();
 	
 	Sound::free();
@@ -60,8 +62,6 @@ void Game::mainLoop() {
 			Keyboard::update();
 			
 			if(Game::paused == true) continue;
-			
-			ActivityManager::checkActivitiesToDelete();
 			
 			ActivityManager::top()->update();
 			
