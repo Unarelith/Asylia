@@ -21,6 +21,7 @@
 class Image {
 	public:
 		Image();
+		Image(const Image &img);
 		Image(const char *filename);
 		Image(SDL_Surface *surface);
 		~Image();
@@ -48,7 +49,6 @@ class Image {
 		u16 m_width;
 		u16 m_height;
 		
-		SDL_Surface *m_surface;
 		SDL_Texture *m_texture;
 		
 		SDL_Rect m_clipRect;

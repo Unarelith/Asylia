@@ -3,4 +3,7 @@
 	<enemy name="Ghost" appearance="Undead01">
 		<stats level="1" hp="60" sp="40" atk="10" def="10"/>
 	</enemy>
+	<enemy name="Demon" appearance="Devil03">
+		<stats level="50" hp="7385" sp="6538" atk="3589" def="4528"/>
+	</enemy>
 </enemies>

@@ -24,7 +24,27 @@ Battle::Battle(std::string battleback) {
 Battle::~Battle() {
 	delete m_battleback;
 	
-	m_enemies.clear();
-	m_actors.clear();
+	while(m_actors.size() != 0) {
+		delete m_actors.back();
+		m_actors.pop_back();
+	}
+	
+	while(m_enemies.size() != 0) {
+		delete m_enemies.back();
+		m_enemies.pop_back();
+	}
+}
+
+void Battle::drawArrow(Battler *battler) {
+	s16 x, y;
+	u16 width, height;
+	
+	width = battler->image()->posRect().w;
+	height = battler->image()->posRect().h;
+	
+	x = battler->image()->posRect().x + width / 2 - 16;
+	y = battler->image()->posRect().y + height / 2;
+	
+	Interface::interface->render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
 

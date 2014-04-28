@@ -18,31 +18,53 @@
 #include "Asylia.hpp"
 
 Image::Image() {
-	m_surface = NULL;
 	m_texture = NULL;
+}
+
+Image::Image(const Image &img) {
+	m_width = img.m_width;
+	m_height = img.m_height;
+	
+	Uint32 format;
+	int access, w, h;
+	
+	SDL_QueryTexture(img.m_texture, &format, &access, &w, &h);
+	
+	m_texture = SDL_CreateTexture(GameWindow::main->renderer(), format, access, w, h);
+	
+	m_clipRect.x = img.m_clipRect.x;
+	m_clipRect.y = img.m_clipRect.y;
+	m_clipRect.w = img.m_clipRect.w;
+	m_clipRect.h = img.m_clipRect.h;
+	
+	m_posRect.x = img.m_posRect.x;
+	m_posRect.y = img.m_posRect.y;
+	m_posRect.w = img.m_posRect.w;
+	m_posRect.h = img.m_posRect.h;
 }
 
 Image::Image(const char *filename) {
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
-	m_surface = IMG_Load_RW(image, 1);
+	SDL_Surface *surface = IMG_Load_RW(image, 1);
 	
-	if(strcmp(filename, "") && !m_surface) {
+	if(strcmp(filename, "") && !surface) {
 		error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
 		exit(EXIT_FAILURE);
 	}
 	
-	if(m_surface) {
-		m_width = m_surface->w;
-		m_height = m_surface->h;
+	if(surface) {
+		m_width = surface->w;
+		m_height = surface->h;
 	} else {
 		m_width = m_height = 32;
 	}
 	
-	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
 	if(strcmp(filename, "") && !m_texture) {
 		error("Failed to create texture from image: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
+	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
 	m_clipRect.y = 0;
@@ -56,12 +78,11 @@ Image::Image(const char *filename) {
 }
 
 Image::Image(SDL_Surface *surface) {
-	m_surface = surface;
+	m_width = surface->w;
+	m_height = surface->h;
 	
-	m_width = m_surface->w;
-	m_height = m_surface->h;
-	
-	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
+	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
 	m_clipRect.y = 0;
@@ -75,30 +96,30 @@ Image::Image(SDL_Surface *surface) {
 }
 
 Image::~Image() {
-	if(m_surface) SDL_FreeSurface(m_surface);
 	if(m_texture) SDL_DestroyTexture(m_texture);
 }
 
 void Image::reload(const char *filename) {
-	if(m_surface) SDL_FreeSurface(m_surface);
 	if(m_texture) SDL_DestroyTexture(m_texture);
 	
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
-	m_surface = IMG_Load_RW(image, 1);
+	SDL_Surface *surface = IMG_Load_RW(image, 1);
 	
-	if(!m_surface) {
+	if(!surface) {
 		error("Failed to load image \"%s\": %s\n", filename, IMG_GetError());
 		exit(EXIT_FAILURE);
 	}
 	
-	m_width = m_surface->w;
-	m_height = m_surface->h;
+	m_width = surface->w;
+	m_height = surface->h;
 	
-	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
 	if(!m_texture) {
 		error("Failed to create texture from image: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
+	
+	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
 	m_clipRect.y = 0;
@@ -112,15 +133,13 @@ void Image::reload(const char *filename) {
 }
 
 void Image::reload(SDL_Surface *surface) {
-	if(m_surface) SDL_FreeSurface(m_surface);
 	if(m_texture) SDL_DestroyTexture(m_texture);
 	
-	m_surface = surface;
+	m_width = surface->w;
+	m_height = surface->h;
 	
-	m_width = m_surface->w;
-	m_height = m_surface->h;
-	
-	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), m_surface);
+	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
+	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
 	m_clipRect.y = 0;

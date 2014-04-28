@@ -17,6 +17,24 @@
  */
 #include "Asylia.hpp"
 
+Battler::Battler(const Battler &battler) {
+	m_name = battler.m_name;
+	
+	m_image = new Image(*battler.m_image);
+	
+	m_inventory = battler.m_inventory;
+	
+	m_level = battler.m_level;
+	
+	m_hp = battler.m_hp;
+	m_sp = battler.m_sp;
+	
+	m_atk = battler.m_atk;
+	m_def = battler.m_def;
+	
+	m_state = battler.m_state;
+}
+
 Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) {
 	m_name = name;
 	

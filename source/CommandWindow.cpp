@@ -27,6 +27,9 @@ CommandWindow::CommandWindow(s16 x, s16 y, u16 width, u16 height, bool horizonta
 }
 
 CommandWindow::CommandWindow(u16 width, std::vector<std::string> commands) : SelectableWindow(0, 0, width, commands.size() * 32 + 32) {
+	m_horizontal = false;
+	m_centered = false;
+	
 	m_itemMax = commands.size();
 	m_commands = commands;
 	

@@ -23,8 +23,10 @@ class Battle {
 		Battle(std::string battleback);
 		~Battle();
 		
-		void addActor(Actor *actor) { m_actors.push_back(actor); }
-		void addEnemy(Enemy *enemy) { m_enemies.push_back(enemy); }
+		void addActor(Actor *actor) { m_actors.push_back(new Actor(*actor)); }
+		void addEnemy(Enemy *enemy, s16 x, s16 y) { m_enemies.push_back(new Enemy(*enemy)); m_enemies.back()->setPosition(x, y); }
+		
+		void drawArrow(Battler *battler);
 		
 		std::vector<Actor*> actors() const { return m_actors; }
 		std::vector<Enemy*> enemies() const { return m_enemies; }

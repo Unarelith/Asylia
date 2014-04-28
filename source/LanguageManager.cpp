@@ -96,7 +96,9 @@ void LanguageManager::init(std::string language) {
 }
 
 std::string LanguageManager::translate(std::string str) {
-	return LanguageManager::text[str];
+	std::string translated = LanguageManager::text[str];
+	if(translated == "") translated = "???";
+	return translated;
 }
 
 std::string _t(std::string str) {

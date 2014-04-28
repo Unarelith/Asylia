@@ -34,8 +34,11 @@ void ActorStatsWindow::drawActors(std::vector<Actor*> actors) {
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	Image hpImg, spImg;
 	
-	actor->image()->setAlphaMod(190);
-	actor->image()->render(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - 25);
+	if(((BattleActivity*)ActivityManager::top())->mode() % 4 == 0) {
+		actor->image()->setAlphaMod(190);
+	}
+	
+	actor->image()->render(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
 	
 	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 40, 32, FONT_LARGE);
 	
@@ -58,6 +61,6 @@ void ActorStatsWindow::drawEnemies(std::vector<Enemy*> enemies) {
 }
 
 void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
-	enemy->image()->render(m_width / 2 - enemy->image()->width() / 2 + pos * enemy->image()->width(), 320 / 2 - enemy->image()->width() + 10);
+	enemy->image()->render();
 }
 

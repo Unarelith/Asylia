@@ -47,7 +47,12 @@ void BattleManager::init() {
 		
 		XMLElement *enemyElement = battleElement->FirstChildElement("enemy");
 		while(enemyElement) {
-			currentBattle->addEnemy(BattlerManager::enemies[enemyElement->IntAttribute("id")]);
+			s16 x, y;
+			
+			x = enemyElement->IntAttribute("x");
+			y = enemyElement->IntAttribute("y");
+			
+			currentBattle->addEnemy(BattlerManager::enemies[enemyElement->IntAttribute("id")], x, y);
 			
 			enemyElement = enemyElement->NextSiblingElement("enemy");
 		}

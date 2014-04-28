@@ -4,4 +4,13 @@
 		<stats level="1" hp="80" sp="50" atk="15" def="10"/>
 		<charalink id="-1"/>
 	</actor>
+	<actor name="Basil" appearance="Lancer01">
+		<stats level="1" hp="100" sp="40" atk="15" def="15"/>
+	</actor>
+	<actor name="Gloria" appearance="Cleric01">
+		<stats level="1" hp="75" sp="50" atk="10" def="10"/>
+	</actor>
+	<actor name="Hilda" appearance="Mage01">
+		<stats level="1" hp="80" sp="100" atk="10" def="15"/>
+	</actor>
 </actors>

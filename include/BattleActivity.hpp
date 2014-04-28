@@ -26,9 +26,13 @@ class BattleActivity : public Activity {
 		void update();
 		void render();
 		
+		u8 mode() const { return (u8)m_mode; }
+		
 		enum Mode {
 			Choice,
 			Action,
+			ChooseActorTarget,
+			ChooseEnemyTarget,
 			EnemyTurn
 		};
 		
@@ -37,13 +41,15 @@ class BattleActivity : public Activity {
 		
 		ActorStatsWindow m_actorStatswin;
 		
-		Actor *m_currentActor;
-		u8 m_currentPos;
+		s8 m_currentPos;
+		s8 m_arrowPos;
 		
-		Mode m_mode;
+		u8 m_mode;
 		
 		BattleChoiceWindow m_battleChoicewin;
 		BattleActionWindow m_battleActionwin;
+		
+		InfoWindow *m_infowin;
 };
 
 #endif // BATTLEACTIVITY_HPP_

@@ -24,11 +24,15 @@
 	<text id="SP" text="PM"/>
 	<text id="Fight" text="Combattre"/>
 	<text id="Escape" text="Fuir"/>
-	<text id="Normal" text="Normal"/>
 	<text id="Attack" text="Attaquer"/>
 	<text id="Skill" text="Compétence"/>
-	<text id="Defend" text="Défendre"/>
+	<text id="Defend" text="Défense"/>
 	<text id="Item" text="Objet"/>
+	
+	<text id="Normal" text="Normal"/>
+	
+	<text id="Ghost" text="Fantôme"/>
+	<text id="Demon" text="Démon"/>
 	
 	<!-- Event messages -->
 	<event id="0">

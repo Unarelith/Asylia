@@ -20,6 +20,7 @@
 
 class Battler {
 	public:
+		Battler(const Battler &battler);
 		Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def);
 		~Battler();
 		
@@ -27,7 +28,7 @@ class Battler {
 		
 		std::string name() const { return m_name; }
 		
-		Image *image() const { return m_image; }
+		Image *image() { return m_image; }
 		
 		u8 level() const { return m_level; }
 		
@@ -38,6 +39,8 @@ class Battler {
 		u16 def() const { return m_def; }
 		
 		u8 state() const { return (u8)m_state; }
+		
+		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }
 		
 		u16 totalAtk();
 		u16 totalDef();

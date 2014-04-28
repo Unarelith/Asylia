@@ -30,7 +30,6 @@ EndActivity::EndActivity() {
 }
 
 EndActivity::~EndActivity() {
-	delete m_cmdwin;
 }
 
 void EndActivity::update() {
@@ -59,6 +58,7 @@ void EndActivity::update() {
 				SDL_Delay(100);
 				Game::quit = true;
 				delete m_cmdwin;
+				m_cmdwin = NULL;
 				break;
 			default: break;
 		}
@@ -71,6 +71,6 @@ void EndActivity::update() {
 }
 
 void EndActivity::render() {
-	m_cmdwin->draw();
+	if(m_cmdwin) m_cmdwin->draw();
 }
 
