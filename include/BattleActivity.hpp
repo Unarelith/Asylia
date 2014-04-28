@@ -38,6 +38,7 @@ class BattleActivity : public Activity {
 		ActorStatsWindow m_actorStatswin;
 		
 		Actor *m_currentActor;
+		u8 m_currentPos;
 		
 		Mode m_mode;
 		

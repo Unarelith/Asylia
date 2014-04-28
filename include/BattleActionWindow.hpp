@@ -22,6 +22,8 @@ class BattleActionWindow : public CommandWindow {
 	public:
 		BattleActionWindow();
 		~BattleActionWindow();
+		
+		void draw(u8 pos);
 };
 
 #endif // BATTLEACTIONWINDOW_HPP_

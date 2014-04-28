@@ -1148,6 +1148,7 @@ Node	external/lua.c	/^typedef struct Node {$/;"	s	file:
 Node	external/lua.c	/^} Node;$/;"	t	typeref:struct:Node	file:
 None	include/Activity.hpp	/^			None,$/;"	e	enum:Activity::__anon21
 None	include/Character.hpp	/^			None, Player, NPC, Event$/;"	e	enum:Character::Type
+Normal	include/Battler.hpp	/^			Normal$/;"	e	enum:Battler::State
 OLDBIT	external/lua.c	2602;"	d	file:
 OPEN	external/tinyxml2.hpp	/^        OPEN,		\/\/ <foo>$/;"	e	enum:tinyxml2::XMLElement::__anon28
 OPR_ADD	external/lua.c	/^  OPR_ADD, OPR_SUB, OPR_MUL, OPR_DIV, OPR_MOD, OPR_POW,$/;"	e	enum:BinOpr	file:
@@ -1726,6 +1727,7 @@ SmartPtrSharedCopy	external/SLB.hpp	/^    struct SmartPtrSharedCopy$/;"	s	namesp
 Sound	include/Sound.hpp	/^namespace Sound {$/;"	n
 Sprite	include/Sprite.hpp	/^class Sprite : public Image {$/;"	c
 Sprite	source/Sprite.cpp	/^Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(filename) {$/;"	f	class:Sprite
+State	include/Battler.hpp	/^		enum State {$/;"	g	class:Battler
 StatefulHybrid	external/SLB.hpp	/^    StatefulHybrid(Manager *m = Manager::defaultManager()) :$/;"	f	class:SLB::StatefulHybrid
 StatefulHybrid	external/SLB.hpp	/^  class StatefulHybrid : public S, public Hybrid< T >$/;"	c	namespace:SLB
 StdConstIteratorTraits	external/SLB.hpp	/^  struct StdConstIteratorTraits$/;"	s	namespace:SLB
@@ -2887,6 +2889,7 @@ getReturnedType	external/SLB.hpp	/^    const TypeInfoWrapper& getReturnedType() 
 getS	external/lua.c	/^static const char *getS (lua_State *L, void *ud, size_t *size) {$/;"	f	file:
 getState	external/SLB.cpp	/^  lua_State* Script::getState()$/;"	f	class:SLB::Script
 getState	source/Keyboard.cpp	/^const u8 *Keyboard::getState() {$/;"	f	class:Keyboard
+getStateString	source/Battler.cpp	/^std::string Battler::getStateString() {$/;"	f	class:Battler
 getTable	external/SLB.cpp	/^  Table::TableFind Table::getTable(const String &key, bool create)$/;"	f	class:SLB::Table
 getTile	source/Map.cpp	/^s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {$/;"	f	class:Map
 getTypeid	external/SLB.hpp	/^    const TypeInfoWrapper &getTypeid() const { return __TIW; }$/;"	f	class:SLB::ClassInfo
@@ -3959,6 +3962,7 @@ m_slot	include/Armor.hpp	/^		u8 m_slot;$/;"	m	class:Armor
 m_solid	include/Character.hpp	/^		bool m_solid;$/;"	m	class:Character
 m_sp	include/Battler.hpp	/^		s16 m_sp;$/;"	m	class:Battler
 m_speed	include/Character.hpp	/^		u8 m_speed;$/;"	m	class:Character
+m_state	include/Battler.hpp	/^		u8 m_state;$/;"	m	class:Battler
 m_statswin	include/EquipActivity.hpp	/^		EquipStatsWindow m_statswin;$/;"	m	class:EquipActivity
 m_surface	include/Image.hpp	/^		SDL_Surface *m_surface;$/;"	m	class:Image
 m_t	include/Timer.hpp	/^		u16 m_t;$/;"	m	class:Timer
@@ -4583,6 +4587,7 @@ start	source/Timer.cpp	/^void Timer::start() {$/;"	f	class:Timer
 startAnimation	source/Sprite.cpp	/^void Sprite::startAnimation(u16 anim) {$/;"	f	class:Sprite
 start_capture	external/lua.c	/^static const char *start_capture (MatchState *ms, const char *s,$/;"	f	file:
 startpc	external/lua.c	/^  int startpc;  \/* first point where variable is active *\/$/;"	m	struct:LocVar	file:
+state	include/Battler.hpp	/^		u8 state() const { return (u8)m_state; }$/;"	f	class:Battler
 state	include/Keyboard.hpp	/^		static const u8 *state;$/;"	m	class:Keyboard
 state	source/Keyboard.cpp	/^const u8 *Keyboard::state = NULL;$/;"	m	class:Keyboard	file:
 statement	external/lua.c	/^static void statement (LexState *ls) {$/;"	f	file:

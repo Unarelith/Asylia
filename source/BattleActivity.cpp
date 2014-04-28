@@ -23,6 +23,7 @@ BattleActivity::BattleActivity() {
 	m_battle = BattleManager::battles[0];
 	
 	m_currentActor = NULL;
+	m_currentPos = 0;
 	
 	m_mode = Mode::Choice;
 	
@@ -35,6 +36,26 @@ BattleActivity::~BattleActivity() {
 void BattleActivity::update() {
 	if(m_mode == Mode::Choice) {
 		m_battleChoicewin.update();
+		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			switch(m_battleChoicewin.pos()) {
+				case 0:
+					m_mode = Mode::Action;
+					break;
+				default: break;
+			}
+		}
+	}
+	else if(m_mode == Mode::Action) {
+		m_battleActionwin.update();
+		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			switch(m_battleActionwin.pos()) {
+				default: break;
+			}
+		}
 	}
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
@@ -48,10 +69,15 @@ void BattleActivity::update() {
 void BattleActivity::render() {
 	m_battle->renderBattleback();
 	
-	m_actorStatswin.draw(m_battle->enemies(), m_battle->actors());
+	m_actorStatswin.drawEnemies(m_battle->enemies());
 	
 	if(m_mode == Mode::Choice) {
 		m_battleChoicewin.draw();
 	}
+	else if(m_mode == Mode::Action) {
+		m_battleActionwin.draw(m_currentPos);
+	}
+	
+	m_actorStatswin.drawActors(m_battle->actors());
 }
 

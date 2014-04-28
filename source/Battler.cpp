@@ -31,6 +31,8 @@ Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16
 	
 	m_atk = atk;
 	m_def = def;
+	
+	m_state = State::Normal;
 }
 
 Battler::~Battler() {
@@ -51,5 +53,18 @@ u16 Battler::totalDef() {
 		}
 	}
 	return def;
+}
+
+std::string Battler::getStateString() {
+	std::string str;
+	
+	switch(m_state) {
+		case State::Normal:
+			str = _t("Normal");
+			break;
+		default: break;
+	}
+	
+	return std::string("[") + str + "]";
 }
 

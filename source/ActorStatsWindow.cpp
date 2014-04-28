@@ -23,41 +23,41 @@ ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(),
 ActorStatsWindow::~ActorStatsWindow() {
 }
 
-void ActorStatsWindow::draw(std::vector<Enemy*> enemies, std::vector<Actor*> actors) {
+void ActorStatsWindow::drawActors(std::vector<Actor*> actors) {
 	Window::draw();
-	
-	for(u8 i = 0 ; i < enemies.size() ; i++) {
-		drawEnemy(enemies[i], i, enemies.size());
-	}
 	
 	for(u8 i = 0 ; i < actors.size() ; i++) {
 		drawActor(actors[i], i);
 	}
 }
 
-void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
-	enemy->image()->render(m_width / 2 - enemy->image()->width() / 2 + pos * enemy->image()->width(), 320 / 2 - enemy->image()->width() + 10);
-}
-
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
-	Image level, hpImg, spImg;
+	Image hpImg, spImg;
 	
 	actor->image()->setAlphaMod(190);
 	actor->image()->render(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - 25);
 	
-	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 20, 32, FONT_LARGE);
+	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 40, 32, FONT_LARGE);
 	
-	Interface::defaultFont->printScaled(_t("Lv").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 52, 25, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(actor->level()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 52, &level, FONT_LARGE);
-	level.render(level.posRect().x - level.width());
+	Interface::defaultFont->printScaled(_t("HP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 52, 60, 32, FONT_LARGE, Color::system);
+	Interface::defaultFont->printToImage(to_string(actor->hp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 52, &hpImg, FONT_LARGE);
 	
-	Interface::defaultFont->printScaled(_t("HP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 84, 60, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(actor->hp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 84, &hpImg, FONT_LARGE);
-	
-	Interface::defaultFont->printScaled(_t("SP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 116, 60, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(actor->sp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 116, &spImg, FONT_LARGE);
+	Interface::defaultFont->printScaled(_t("SP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 84, 60, 32, FONT_LARGE, Color::system);
+	Interface::defaultFont->printToImage(to_string(actor->sp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 84, &spImg, FONT_LARGE);
 	
 	hpImg.render(hpImg.posRect().x - hpImg.width());
 	spImg.render(spImg.posRect().x - spImg.width());
+	
+	Interface::defaultFont->printScaled(actor->getStateString().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 116, m_width - 40, 32, FONT_LARGE);
+}
+
+void ActorStatsWindow::drawEnemies(std::vector<Enemy*> enemies) {
+	for(u8 i = 0 ; i < enemies.size() ; i++) {
+		drawEnemy(enemies[i], i, enemies.size());
+	}
+}
+
+void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
+	enemy->image()->render(m_width / 2 - enemy->image()->width() / 2 + pos * enemy->image()->width(), 320 / 2 - enemy->image()->width() + 10);
 }
 

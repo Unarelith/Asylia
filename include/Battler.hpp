@@ -37,8 +37,16 @@ class Battler {
 		u16 atk() const { return m_atk; }
 		u16 def() const { return m_def; }
 		
+		u8 state() const { return (u8)m_state; }
+		
 		u16 totalAtk();
 		u16 totalDef();
+		
+		std::string getStateString();
+		
+		enum State {
+			Normal
+		};
 		
 	protected:
 		std::string m_name;
@@ -54,6 +62,8 @@ class Battler {
 		
 		u16 m_atk;
 		u16 m_def;
+		
+		u8 m_state;
 };
 
 #endif // BATTLER_HPP_
