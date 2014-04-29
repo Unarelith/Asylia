@@ -4,4 +4,5 @@
 		<position x="20", y="30" direction="0"/>
 		<map area="0" x="1" y="0"/>
 	</player>
+	<actor/>
 </save>
