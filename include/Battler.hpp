@@ -47,6 +47,8 @@ class Battler {
 		
 		std::string getStateString();
 		
+		u16 attack(Battler *battler);
+		
 		enum State {
 			Normal
 		};
