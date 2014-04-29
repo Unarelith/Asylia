@@ -86,13 +86,3 @@ std::string Battler::getStateString() {
 	return std::string("[") + str + "]";
 }
 
-u16 Battler::attack(Battler *battler) {
-	u16 damage = 0;
-	
-	damage = totalAtk() - battler->totalDef() / 2;
-	
-	battler->m_hp -= damage;
-	
-	return damage;
-}
-

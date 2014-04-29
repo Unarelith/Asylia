@@ -38,6 +38,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   maps=maps {
    map0-0-0.tmx
   }
+  saves=saves {
+   0.xml
+  }
   tilesets=tilesets {
    Grassland.tmx
   }
