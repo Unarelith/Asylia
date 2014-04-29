@@ -26,6 +26,6 @@ TextWindow::~TextWindow() {
 void TextWindow::draw(std::string text) {
 	Window::draw();
 	
-	Interface::defaultFont->printTextBox(text.c_str(), m_x + GameWindow::main->viewportX() + 20, m_y + GameWindow::main->viewportY() + 20, m_width - 40, m_height - 40, FONT_LARGE);
+	Interface::defaultFont->printTextBox(text.c_str(), m_x + GameWindow::main->viewportX() + 22, m_y + GameWindow::main->viewportY() + 21, m_width - 40, m_height - 40, FONT_LARGE);
 }
 
