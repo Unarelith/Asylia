@@ -30,7 +30,12 @@ Image::Image(const Image &img) {
 	
 	SDL_QueryTexture(img.m_texture, &format, &access, &w, &h);
 	
-	m_texture = SDL_CreateTexture(GameWindow::main->renderer(), format, access, w, h);
+	m_texture = SDL_CreateTexture(GameWindow::main->renderer(), format, SDL_TEXTUREACCESS_TARGET, w, h);
+	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
+	
+	SDL_SetRenderTarget(GameWindow::main->renderer(), m_texture);
+	SDL_RenderCopy(GameWindow::main->renderer(), img.m_texture, NULL, NULL);
+	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
 	
 	m_clipRect.x = img.m_clipRect.x;
 	m_clipRect.y = img.m_clipRect.y;
@@ -154,7 +159,7 @@ void Image::reload(SDL_Surface *surface) {
 
 void Image::renderCopy() {
 	if(m_texture) SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
-	else GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color::black);
+	else GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color(255, 255, SDL_GetTicks() % 256));
 }
 
 void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {
