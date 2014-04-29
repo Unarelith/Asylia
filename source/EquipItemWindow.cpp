@@ -53,8 +53,8 @@ void EquipItemWindow::drawItem(u8 pos) {
 	width = m_width / m_columnMax - 32;
 	height = 32;
 	
-	x = 20 + pos % m_columnMax * (width + 32);
-	y = 20 + pos / m_columnMax * 32 - m_scroll * 32;
+	x = 22 + pos % m_columnMax * (width + 32);
+	y = 21 + pos / m_columnMax * 32 - m_scroll * 32;
 	
 	m_inventory.getItem(pos)->thumbnail()->render(m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y);
 	

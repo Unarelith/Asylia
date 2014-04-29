@@ -20,8 +20,8 @@
 
 typedef enum {
 	FONT_SMALL = 11,
-	FONT_MEDIUM = 18,
-	FONT_LARGE = 22
+	FONT_MEDIUM = 16,
+	FONT_LARGE = 18
 } FontSize;
 
 class Font {
