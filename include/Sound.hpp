@@ -48,6 +48,8 @@ namespace Sound {
 		extern Mix_Music *theme;
 		extern Mix_Music *title;
 	};
+	
+	extern bool mute;
 };
 
 #endif // SOUND_HPP_

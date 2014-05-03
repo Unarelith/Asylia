@@ -28,6 +28,8 @@ class MenuActivity : public MapActivity {
 		void update();
 		void render();
 		
+		CommandWindow *cmdwin() { return m_cmdwin; }
+		
 	private:
 		CommandWindow *m_cmdwin;
 };

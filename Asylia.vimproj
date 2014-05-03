@@ -82,6 +82,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    ItemActivity.hpp
    EquipActivity.hpp
    BattleActivity.hpp
+   SettingsActivity.hpp
   }
   ActivityManager.hpp
   Actor.hpp
@@ -152,6 +153,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    ItemActivity.cpp
    EquipActivity.cpp
    BattleActivity.cpp
+   SettingsActivity.cpp
   }
   ActivityManager.cpp
   Actor.cpp

@@ -53,8 +53,8 @@ void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
 	Interface::defaultFont->printCentered(m_commands[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, 32, FONT_LARGE);
 }
 
-void CommandWindow::draw() {
-	SelectableWindow::draw();
+void CommandWindow::draw(bool cursor) {
+	SelectableWindow::draw(cursor);
 	
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
 		if(!m_horizontal && !m_centered) {

@@ -26,6 +26,8 @@ Mix_Music *Sound::Music::battle = NULL;
 Mix_Music *Sound::Music::theme = NULL;
 Mix_Music *Sound::Music::title = NULL;
 
+bool Sound::mute = true;
+
 void Sound::init() {
 	Effect::init();
 	Music::init();
@@ -60,9 +62,9 @@ void Sound::Effect::load(const char *filename, Mix_Chunk **se) {
 }
 
 void Sound::Effect::play(Mix_Chunk *se) {
-#ifndef SOUND_MUTE
-	Mix_PlayChannel(1, se, 0);
-#endif
+	if(!mute) {
+		Mix_PlayChannel(1, se, 0);
+	}
 }
 
 void Sound::Music::init() {
@@ -86,10 +88,10 @@ void Sound::Music::load(const char *filename, Mix_Music **music) {
 }
 
 void Sound::Music::play(Mix_Music *music, int loops) {
-#ifndef SOUND_MUTE
-	Mix_VolumeMusic(MIX_MAX_VOLUME);
-	Mix_PlayMusic(music, loops);
-#endif
+	if(!mute) {
+		Mix_VolumeMusic(MIX_MAX_VOLUME);
+		Mix_PlayMusic(music, loops);
+	}
 }
 
 void Sound::Music::halt() {

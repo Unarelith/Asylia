@@ -120,6 +120,7 @@ using namespace tinyxml2;
 #include "ItemActivity.hpp"
 #include "EquipActivity.hpp"
 #include "BattleActivity.hpp"
+#include "SettingsActivity.hpp"
 #include "ActivityManager.hpp"
 
 #include "Tileset.hpp"

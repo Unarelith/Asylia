@@ -31,8 +31,6 @@
 
 #define COLORED_DEBUG
 
-#define SOUND_MUTE
-
 #ifdef __ANDROID__
 	#define PAD
 #endif

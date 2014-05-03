@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language>
 	<!-- Interface -->
-	<text id="Language" text="English"/>
+	<text id="CurrentLanguage" text="English"/>
 	<text id="Items" text="Items"/>
 	<text id="Skills" text="Skills"/>
 	<text id="Equip" text="Equip"/>
@@ -28,6 +28,11 @@
 	<text id="Skill" text="Skill"/>
 	<text id="Defend" text="Defend"/>
 	<text id="Item" text="Item"/>
+	<text id="Settings" text="Settings"/>
+	<text id="Language" text="Language"/>
+	<text id="Sound" text="Sound"/>
+	<text id="ON" text="ON"/>
+	<text id="OFF" text="OFF"/>
 	
 	<text id="Normal" text="Normal"/>
 	
