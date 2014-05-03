@@ -127,4 +127,6 @@ using namespace tinyxml2;
 #include "Map.hpp"
 #include "MapManager.hpp"
 
+#include "SaveManager.hpp"
+
 #endif // ASYLIA_HPP_
