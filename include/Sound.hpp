@@ -29,6 +29,8 @@ namespace Sound {
 		void load(const char *filename, Mix_Chunk **se);
 		void play(Mix_Chunk *se);
 		
+		extern bool mute;
+		
 		extern Mix_Chunk *move;
 		extern Mix_Chunk *confirm;
 		extern Mix_Chunk *back;
@@ -44,12 +46,15 @@ namespace Sound {
 		
 		void halt();
 		
+		void mute();
+		void unmute();
+		
 		extern Mix_Music *battle;
 		extern Mix_Music *theme;
 		extern Mix_Music *title;
+		
+		extern Mix_Music *current;
 	};
-	
-	extern bool mute;
 };
 
 #endif // SOUND_HPP_

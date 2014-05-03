@@ -36,7 +36,6 @@ void MenuActivity::loadCommandWindow() {
 	choices.push_back(_t("State"));
 	choices.push_back(_t("Save"));
 	choices.push_back(_t("Settings"));
-	choices.push_back(_t("CurrentLanguage"));
 	choices.push_back("Battle test");
 	choices.push_back(_t("Quit"));
 	
@@ -63,16 +62,9 @@ void MenuActivity::update() {
 				ActivityManager::push(new SettingsActivity);
 				break;
 			case 6:
-				if(LanguageManager::currentLanguage == "fr-fr") LanguageManager::init("en-us");
-				else LanguageManager::init("fr-fr");
-				delete m_cmdwin;
-				loadCommandWindow();
-				m_cmdwin->pos(6);
-				break;
-			case 7:
 				ActivityManager::push(new BattleActivity);
 				break;
-			case 8:
+			case 7:
 				ActivityManager::push(new EndActivity);
 				break;
 			default: break;

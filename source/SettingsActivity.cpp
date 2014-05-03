@@ -68,13 +68,15 @@ void SettingsActivity::update() {
 		m_sound->update();
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			Sound::Effect::play(Sound::Effect::confirm);
 			switch(m_sound->pos()) {
 				case 0:
-					Sound::mute = false;
+					Sound::Effect::mute = false;
+					Sound::Music::unmute();
+					Sound::Effect::play(Sound::Effect::confirm);
 					break;
 				case 1:
-					Sound::mute = true;
+					Sound::Effect::mute = true;
+					Sound::Music::mute();
 					break;
 				default: break;
 			}
@@ -108,7 +110,7 @@ void SettingsActivity::update() {
 					((MenuActivity*)ActivityManager::top())->cmdwin()->pos(5);
 					ActivityManager::push(new SettingsActivity);
 					((SettingsActivity*)ActivityManager::top())->mode(Mode::Language);
-					m_language->pos(1);
+					((SettingsActivity*)ActivityManager::top())->m_language->pos(1);
 					break;
 				default: break;
 			}

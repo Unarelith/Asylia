@@ -22,15 +22,19 @@ Mix_Chunk *Sound::Effect::confirm = NULL;
 Mix_Chunk *Sound::Effect::back = NULL;
 Mix_Chunk *Sound::Effect::blocked = NULL;
 
+bool Sound::Effect::mute = true;
+
 Mix_Music *Sound::Music::battle = NULL;
 Mix_Music *Sound::Music::theme = NULL;
 Mix_Music *Sound::Music::title = NULL;
 
-bool Sound::mute = true;
+Mix_Music *Sound::Music::current = NULL;
 
 void Sound::init() {
 	Effect::init();
 	Music::init();
+	
+	Music::mute();
 }
 
 void Sound::free() {
@@ -88,13 +92,20 @@ void Sound::Music::load(const char *filename, Mix_Music **music) {
 }
 
 void Sound::Music::play(Mix_Music *music, int loops) {
-	if(!mute) {
-		Mix_VolumeMusic(MIX_MAX_VOLUME);
-		Mix_PlayMusic(music, loops);
-	}
+	current = music;
+	Mix_PlayMusic(music, loops);
 }
 
 void Sound::Music::halt() {
+	current = NULL;
 	Mix_HaltMusic();
+}
+
+void Sound::Music::mute() {
+	Mix_VolumeMusic(0);
+}
+
+void Sound::Music::unmute() {
+	Mix_VolumeMusic(MIX_MAX_VOLUME);
 }
 
