@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Weapon.hpp
+ *       Filename:  Skill.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  06/04/2014 23:56:20
+ *        Created:  04/05/2014 17:55:20
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,23 +15,22 @@
  *
  * =====================================================================================
  */
-#ifndef WEAPON_HPP_
-#define WEAPON_HPP_
+#ifndef SKILL_HPP_
+#define SKILL_HPP_
 
-class Weapon : public Item {
+class Skill : public Item {
 	public:
-		Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate);
-		~Weapon();
+		Skill(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate);
+		~Skill();
 		
 		u16 atk() const { return m_atk; }
 		double hitRate() const { return m_hitRate; }
 		
-		u8 equipType() const { return m_equipType; }
+		static u16 count;
 		
 	private:
 		u16 m_atk;
 		double m_hitRate;
-		u8 m_equipType;
 };
 
-#endif // WEAPON_HPP_
+#endif // SKILL_HPP_

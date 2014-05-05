@@ -93,6 +93,17 @@ void LanguageManager::init(std::string language) {
 		weaponElement = weaponElement->NextSiblingElement("weapon");
 		counter++;
 	}
+	
+	/* SKILLS */
+	XMLElement *skillElement = doc.FirstChildElement("language").FirstChildElement("skill").ToElement();
+	counter = 0;
+	while(skillElement) {
+		text[std::string("Skill") + to_string(counter)] = skillElement->Attribute("name");
+		text[std::string("Skill") + to_string(counter) + "Desc"] = skillElement->Attribute("description");
+		
+		skillElement = skillElement->NextSiblingElement("skill");
+		counter++;
+	}
 }
 
 std::string LanguageManager::translate(std::string str) {

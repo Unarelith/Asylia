@@ -20,7 +20,7 @@
 
 class Item {
 	public:
-		Item(std::string name, std::string description, u8 level, std::string thumbnail);
+		Item(std::string name, std::string description, std::string thumbnail);
 		~Item();
 		
 		std::string name() const { return _t(m_name); }
@@ -35,7 +35,8 @@ class Item {
 		enum Type {
 			BasicItem,
 			Armor,
-			Weapon
+			Weapon,
+			Skill
 		};
 		
 		Type type() const { return m_type; }

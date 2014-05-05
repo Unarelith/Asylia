@@ -20,5 +20,5 @@
 void SaveManager::save() {
 	XMLDocument xml;
 	
-	XMLHandler doc(&xml);
+	XMLHandle doc(&xml);
 }

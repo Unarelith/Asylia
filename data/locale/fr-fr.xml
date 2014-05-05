@@ -69,4 +69,8 @@
 	<weapon name="Lance" description="Lance fabriquée dans le coin."/>
 	<weapon name="Hache" description="Une hache puissante."/>
 	<weapon name="Dague" description="La dague des assassins."/>
+
+	<!-- Skills -->
+	<skill name="BaseAttack" description="Pas de description."/>
+	<skill name="Boule de feu" description="Une boule de feu très chaude."/>
 </language>

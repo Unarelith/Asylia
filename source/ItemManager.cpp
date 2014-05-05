@@ -20,11 +20,13 @@
 std::vector<Item*> ItemManager::items;
 std::vector<Armor*> ItemManager::armors;
 std::vector<Weapon*> ItemManager::weapons;
+std::vector<Skill*> ItemManager::skills;
 
 void ItemManager::init() {
 	loadItems();
 	loadArmors();
 	loadWeapons();
+	loadSkills();
 }
 
 void ItemManager::loadItems() {
@@ -43,7 +45,6 @@ void ItemManager::loadItems() {
 		items.push_back(new Item(
 			std::string("Item") + to_string(id),
 			std::string("Item") + to_string(id) + "Desc",
-			itemElement->IntAttribute("level"),
 			std::string("graphics/items/") + to_string(id) + ".png"
 		));
 		
@@ -68,7 +69,6 @@ void ItemManager::loadArmors() {
 		armors.push_back(new Armor(
 			std::string("Armor") + to_string(id),
 			std::string("Armor") + to_string(id) + "Desc",
-			armorElement->IntAttribute("level"),
 			std::string("graphics/armors/") + to_string(id) + ".png",
 			armorElement->IntAttribute("slot"),
 			armorElement->IntAttribute("defense")
@@ -95,13 +95,38 @@ void ItemManager::loadWeapons() {
 		weapons.push_back(new Weapon(
 			std::string("Weapon") + to_string(id),
 			std::string("Weapon") + to_string(id) + "Desc",
-			weaponElement->IntAttribute("level"),
 			std::string("graphics/weapons/") + to_string(id) + ".png",
 			weaponElement->IntAttribute("damage"),
 			weaponElement->DoubleAttribute("hitRate")
 		));
 		
 		weaponElement = weaponElement->NextSiblingElement("weapon");
+		id++;
+	}
+}
+
+void ItemManager::loadSkills() {
+	XMLDocument xml;
+	int code = xml.LoadFile("data/config/skills.xml");
+	if(code != 0) {
+		error("Failed to load skills data. (CODE: %d)", code);
+		exit(EXIT_FAILURE);
+	}
+	
+	XMLHandle doc(&xml);
+	
+	XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
+	u8 id = 0;
+	while(skillElement) {
+		skills.push_back(new Skill(
+			std::string("Skill") + to_string(id),
+			std::string("Skill") + to_string(id) + "Desc",
+			std::string("graphics/skills/") + to_string(id) + ".png",
+			skillElement->IntAttribute("damage"),
+			skillElement->DoubleAttribute("hitRate")
+		));
+		
+		skillElement = skillElement->NextSiblingElement("skill");
 		id++;
 	}
 }

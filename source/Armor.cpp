@@ -17,9 +17,7 @@
  */
 #include "Asylia.hpp"
 
-u16 Armor::count = 0;
-
-Armor::Armor(std::string name, std::string description, u8 level, std::string thumbnail, u8 slot, u16 def) : Item(name, description, level, thumbnail) {
+Armor::Armor(std::string name, std::string description, std::string thumbnail, u8 slot, u16 def) : Item(name, description, thumbnail) {
 	m_type = Type::Armor;
 	
 	m_slot = slot;

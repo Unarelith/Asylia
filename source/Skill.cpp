@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Weapon.cpp
+ *       Filename:  Skill.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  06/04/2014 23:59:34
+ *        Created:  04/05/2014 17:58:52
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -17,16 +17,13 @@
  */
 #include "Asylia.hpp"
 
-Weapon::Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
-	m_type = Type::Weapon;
+Skill::Skill(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
+	m_type = Type::Skill;
 	
 	m_atk = atk;
 	m_hitRate = hitRate;
-	
-	// FIXME: Temporary
-	m_equipType = 0;
 }
 
-Weapon::~Weapon() {
+Skill::~Skill() {
 }
 

@@ -76,6 +76,7 @@ using namespace tinyxml2;
 #include "Item.hpp"
 #include "Armor.hpp"
 #include "Weapon.hpp"
+#include "Skill.hpp"
 #include "ItemManager.hpp"
 
 #include "Inventory.hpp"

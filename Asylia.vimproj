@@ -14,6 +14,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    items.xml
    maps.xml
    player.xml
+   skills.xml
    tilesets.xml
    weapons.xml
   }
@@ -119,6 +120,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   SaveManager.hpp
   SDLManager.hpp
   SDLHeaders.hpp
+  Skill.hpp
   Sound.hpp
   Sprite.hpp
   Tileset.hpp
@@ -185,6 +187,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Player.cpp
   SaveManager.cpp
   SDLManager.cpp
+  Skill.cpp
   Sound.cpp
   Sprite.cpp
   Timer.cpp

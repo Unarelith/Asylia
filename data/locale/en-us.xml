@@ -69,4 +69,8 @@
 	<weapon name="Spear" description="Spear made in the area."/>
 	<weapon name="Axe" description="A powerful axe."/>
 	<weapon name="Dagger" description="Assassin dagger."/>
+
+	<!-- Skills -->
+	<skill name="BaseAttack" description="No description."/>
+	<skill name="Fireball" description="A very hot fireball."/>
 </language>
