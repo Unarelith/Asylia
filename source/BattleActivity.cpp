@@ -60,7 +60,7 @@ void BattleActivity::update() {
 	else if(m_mode == Mode::Action) {
 		m_battleActionwin.update();
 		
-		m_battle->actors()[m_currentPos]->image()->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+		m_battle->actors()[m_currentPos]->blink();
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
@@ -79,6 +79,8 @@ void BattleActivity::update() {
 		}
 	}
 	else if(m_mode == Mode::ChooseActorTarget) {
+		m_battle->actors()[m_currentPos]->blink();
+		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			m_arrowPos--;
@@ -96,6 +98,8 @@ void BattleActivity::update() {
 		}
 	}
 	else if(m_mode == Mode::ChooseEnemyTarget) {
+		m_battle->actors()[m_currentPos]->blink();
+		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			m_arrowPos--;

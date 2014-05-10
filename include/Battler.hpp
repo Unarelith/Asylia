@@ -24,6 +24,8 @@ class Battler {
 		Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def);
 		~Battler();
 		
+		void blink();
+		
 		void linkInventory(Inventory *inventory) { m_inventory = inventory; }
 		
 		std::string name() const { return m_name; }

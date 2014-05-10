@@ -57,6 +57,10 @@ Battler::~Battler() {
 	if(m_image) delete m_image;
 }
 
+void Battler::blink() {
+	m_image->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+}
+
 u16 Battler::totalAtk() {
 	u16 atk = m_atk;
 	if(m_inventory && m_inventory->weapon()) atk += m_inventory->weapon()->atk();
@@ -77,9 +81,7 @@ std::string Battler::getStateString() {
 	std::string str;
 	
 	switch(m_state) {
-		case State::Normal:
-			str = _t("Normal");
-			break;
+		case State::Normal: str = _t("Normal"); break;
 		default: break;
 	}
 	
