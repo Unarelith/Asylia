@@ -86,6 +86,7 @@ using namespace tinyxml2;
 #include "Actor.hpp"
 #include "BattlerManager.hpp"
 
+#include "BattleAction.hpp"
 #include "Battle.hpp"
 #include "BattleManager.hpp"
 

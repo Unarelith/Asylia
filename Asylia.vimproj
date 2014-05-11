@@ -92,6 +92,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   Armor.hpp
   Asylia.hpp
   Battle.hpp
+  BattleAction.hpp
   BattleManager.hpp
   Battler.hpp
   BattlerManager.hpp
@@ -163,6 +164,7 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
   AnimationManager.cpp
   Armor.cpp
   Battle.cpp
+  BattleAction.cpp
   BattleManager.cpp
   Battler.cpp
   BattlerManager.cpp

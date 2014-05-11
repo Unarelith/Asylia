@@ -28,6 +28,16 @@ class Battle {
 		
 		void drawArrow(Battler *battler);
 		
+		void enemyTurn();
+		
+		void pushAction(Battler *actor, Battler *receiver, Item *item);
+		void processAction();
+		bool drawAction() { return m_actionStack.top()->drawDamages(); }
+		void popAction() { m_actionStack.pop(); }
+		bool actionStackEmpty() { return (m_actionStack.size() == 0); }
+		
+		void checkDead();
+		
 		std::vector<Actor*> actors() const { return m_actors; }
 		std::vector<Enemy*> enemies() const { return m_enemies; }
 		
@@ -38,6 +48,8 @@ class Battle {
 		std::vector<Enemy*> m_enemies;
 		
 		Image *m_battleback;
+		
+		std::stack<BattleAction*> m_actionStack;
 };
 
 #endif // BATTLE_HPP_

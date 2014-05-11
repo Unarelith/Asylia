@@ -36,6 +36,8 @@ class Font {
 		void printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::white);
 		void printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::white);
 		
+		void printDamages(u16 damages, u16 x, u16 y, Color color);
+		
 		void setStyle(FontSize size, int style);
 		
 	private:

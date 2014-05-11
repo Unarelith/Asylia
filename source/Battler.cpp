@@ -88,3 +88,11 @@ std::string Battler::getStateString() {
 	return std::string("[") + str + "]";
 }
 
+void Battler::attack(Battler *battler, Skill *skill) {
+	battler->hurt(m_atk + skill->atk());
+}
+
+void Battler::kill() {
+	m_image->setColorMod(Color::red);
+}
+

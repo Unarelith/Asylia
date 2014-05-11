@@ -47,13 +47,14 @@ Animation	include/Animation.hpp	/^typedef Animation Animation;$/;"	t
 AnimationManager	include/AnimationManager.hpp	/^namespace AnimationManager {$/;"	n
 Armor	include/Armor.hpp	/^class Armor : public Item {$/;"	c
 Armor	include/Item.hpp	/^			Armor,$/;"	e	enum:Item::Type
-Armor	source/Armor.cpp	/^Armor::Armor(std::string name, std::string description, u8 level, std::string thumbnail, u8 slot, u16 def) : Item(name, description, level, thumbnail) {$/;"	f	class:Armor
+Armor	source/Armor.cpp	/^Armor::Armor(std::string name, std::string description, std::string thumbnail, u8 slot, u16 def) : Item(name, description, thumbnail) {$/;"	f	class:Armor
 Attribute	external/tinyxml2.cpp	/^const char* XMLElement::Attribute( const char* name, const char* value ) const$/;"	f	class:tinyxml2::XMLElement
 AutoDeleteValue	external/SLB.hpp	/^  class AutoDeleteValue : public Object {$/;"	c	namespace:SLB
 AutoDeleteValue	external/SLB.hpp	/^  inline AutoDeleteValue<T>::AutoDeleteValue( T *obj ) : _obj(obj)$/;"	f	class:SLB::AutoDeleteValue
 BASIC_STACK_SIZE	external/lua.c	2341;"	d	file:
 BATTLEACTIONWINDOW_HPP_	include/BattleActionWindow.hpp	19;"	d
-BATTLEACTIVITY_HPP	include/BattleActivity.hpp	19;"	d
+BATTLEACTION_HPP_	include/BattleAction.hpp	19;"	d
+BATTLEACTIVITY_HPP_	include/BattleActivity.hpp	19;"	d
 BATTLECHOICEWINDOW_HPP_	include/BattleChoiceWindow.hpp	19;"	d
 BATTLEMANAGER_HPP_	include/BattleManager.hpp	19;"	d
 BATTLERMANAGER_HPP_	include/BattlerManager.hpp	19;"	d
@@ -73,14 +74,17 @@ BasicItem	include/Item.hpp	/^			BasicItem,$/;"	e	enum:Item::Type
 Battle	include/Battle.hpp	/^class Battle {$/;"	c
 Battle	source/Battle.cpp	/^Battle::Battle(std::string battleback) {$/;"	f	class:Battle
 BattleAct	include/Activity.hpp	/^			BattleAct$/;"	e	enum:Activity::__anon21
+BattleAction	include/BattleAction.hpp	/^class BattleAction {$/;"	c
+BattleAction	source/BattleAction.cpp	/^BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {$/;"	f	class:BattleAction
 BattleActionWindow	include/BattleActionWindow.hpp	/^class BattleActionWindow : public CommandWindow {$/;"	c
-BattleActionWindow	source/BattleActionWindow.cpp	/^BattleActionWindow::BattleActionWindow() : CommandWindow(0, 0, 10, 10) {$/;"	f	class:BattleActionWindow
+BattleActionWindow	source/BattleActionWindow.cpp	/^BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, GameWindow::main->width() \/ 4, 160) {$/;"	f	class:BattleActionWindow
 BattleActivity	include/BattleActivity.hpp	/^class BattleActivity : public Activity {$/;"	c
 BattleActivity	source/BattleActivity.cpp	/^BattleActivity::BattleActivity() {$/;"	f	class:BattleActivity
 BattleChoiceWindow	include/BattleChoiceWindow.hpp	/^class BattleChoiceWindow : public CommandWindow {$/;"	c
 BattleChoiceWindow	source/BattleChoiceWindow.cpp	/^BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, GameWindow::main->width(), 64, true, true) {$/;"	f	class:BattleChoiceWindow
 BattleManager	include/BattleManager.hpp	/^namespace BattleManager {$/;"	n
 Battler	include/Battler.hpp	/^class Battler {$/;"	c
+Battler	source/Battler.cpp	/^Battler::Battler(const Battler &battler) {$/;"	f	class:Battler
 Battler	source/Battler.cpp	/^Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) {$/;"	f	class:Battler
 BattlerManager	include/BattlerManager.hpp	/^namespace BattlerManager {$/;"	n
 BinOpr	external/lua.c	/^typedef enum BinOpr {$/;"	g	file:
@@ -132,6 +136,8 @@ Character	include/Character.hpp	/^class Character : public Sprite {$/;"	c
 Character	source/Character.cpp	/^Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {$/;"	f	class:Character
 CharacterManager	include/CharacterManager.hpp	/^class CharacterManager {$/;"	c
 Choice	include/BattleActivity.hpp	/^			Choice,$/;"	e	enum:BattleActivity::Mode
+ChooseActorTarget	include/BattleActivity.hpp	/^			ChooseActorTarget,$/;"	e	enum:BattleActivity::Mode
+ChooseEnemyTarget	include/BattleActivity.hpp	/^			ChooseEnemyTarget,$/;"	e	enum:BattleActivity::Mode
 Chunk	external/tinyxml2.hpp	/^    union Chunk {$/;"	u	class:tinyxml2::MemPoolT
 Class	external/SLB.hpp	/^  class Class : public ClassBase {$/;"	c	namespace:SLB
 Class	external/SLB.hpp	/^  inline Class<T,W>::Class(const Class &c)$/;"	f	class:SLB::Class
@@ -248,7 +254,7 @@ EndActivity	include/EndActivity.hpp	/^class EndActivity : public Activity {$/;"	
 EndActivity	source/EndActivity.cpp	/^EndActivity::EndActivity() {$/;"	f	class:EndActivity
 Enemy	include/Enemy.hpp	/^class Enemy : public Battler {$/;"	c
 Enemy	source/Enemy.cpp	/^Enemy::Enemy(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) : Battler(name, appearance, level, hp, sp, atk, def) {$/;"	f	class:Enemy
-EnemyTurn	include/BattleActivity.hpp	/^			EnemyTurn$/;"	e	enum:BattleActivity::Mode
+EnemyTurn	include/BattleActivity.hpp	/^			EnemyTurn,$/;"	e	enum:BattleActivity::Mode
 EnsureCapacity	external/tinyxml2.hpp	/^    void EnsureCapacity( int cap ) {$/;"	f	class:tinyxml2::DynArray
 Entity	external/tinyxml2.cpp	/^struct Entity {$/;"	s	namespace:tinyxml2	file:
 Equip	include/Activity.hpp	/^			Equip,$/;"	e	enum:Activity::__anon21
@@ -274,8 +280,8 @@ FIRST_RESERVED	external/lua.c	2760;"	d	file:
 FIXEDBIT	external/lua.c	2601;"	d	file:
 FLAGS	external/lua.c	18727;"	d	file:
 FONT_HPP_	include/Font.hpp	19;"	d
-FONT_LARGE	include/Font.hpp	/^	FONT_LARGE = 22$/;"	e	enum:__anon22
-FONT_MEDIUM	include/Font.hpp	/^	FONT_MEDIUM = 18,$/;"	e	enum:__anon22
+FONT_LARGE	include/Font.hpp	/^	FONT_LARGE = 18$/;"	e	enum:__anon22
+FONT_MEDIUM	include/Font.hpp	/^	FONT_MEDIUM = 16,$/;"	e	enum:__anon22
 FONT_SMALL	include/Font.hpp	/^	FONT_SMALL = 11,$/;"	e	enum:__anon22
 FORMAT	external/lua.c	12158;"	d	file:
 FindAttribute	external/tinyxml2.cpp	/^XMLAttribute* XMLElement::FindAttribute( const char* name )$/;"	f	class:tinyxml2::XMLElement
@@ -442,6 +448,7 @@ Identify	external/tinyxml2.cpp	/^char* XMLDocument::Identify( char* p, XMLNode**
 Image	include/Image.hpp	/^class Image {$/;"	c
 Image	source/Image.cpp	/^Image::Image() {$/;"	f	class:Image
 Image	source/Image.cpp	/^Image::Image(SDL_Surface *surface) {$/;"	f	class:Image
+Image	source/Image.cpp	/^Image::Image(const Image &img) {$/;"	f	class:Image
 Image	source/Image.cpp	/^Image::Image(const char *filename) {$/;"	f	class:Image
 Implementation	external/SLB.hpp	/^        Implementation(ClassInfo *ci, T &ref ) : InstanceBase( I_Reference, ci ), _ptr( &ref )$/;"	f	class:SLB::Instance::Default::Implementation
 Implementation	external/SLB.hpp	/^        Implementation(ClassInfo *ci, T &ref ) : InstanceBase( I_Reference, ci ), _ptr( &ref )$/;"	f	class:SLB::Instance::NoCopy::Implementation
@@ -498,15 +505,15 @@ IsNameChar	external/tinyxml2.hpp	/^    inline static bool IsNameChar( unsigned c
 IsNameStartChar	external/tinyxml2.hpp	/^    inline static bool IsNameStartChar( unsigned char ch ) {$/;"	f	class:tinyxml2::XMLUtil
 IsUTF8Continuation	external/tinyxml2.hpp	/^    inline static int IsUTF8Continuation( const char p ) {$/;"	f	class:tinyxml2::XMLUtil
 IsWhiteSpace	external/tinyxml2.hpp	/^    static bool IsWhiteSpace( char p )					{$/;"	f	class:tinyxml2::XMLUtil
-Item	include/Activity.hpp	/^			Item,$/;"	e	enum:Activity::__anon21
 Item	include/Item.hpp	/^class Item {$/;"	c
-Item	source/Item.cpp	/^Item::Item(std::string name, std::string description, u8 level, std::string thumbnail) {$/;"	f	class:Item
+Item	source/Item.cpp	/^Item::Item(std::string name, std::string description, std::string thumbnail) {$/;"	f	class:Item
 ItemActivity	include/ItemActivity.hpp	/^class ItemActivity : public MenuActivity {$/;"	c
 ItemActivity	source/ItemActivity.cpp	/^ItemActivity::ItemActivity() {$/;"	f	class:ItemActivity
 ItemManager	include/ItemManager.hpp	/^class ItemManager {$/;"	c
 ItemSize	external/tinyxml2.hpp	/^    virtual int ItemSize() const	{$/;"	f	class:tinyxml2::MemPoolT
 ItemWindow	include/ItemWindow.hpp	/^class ItemWindow : public SelectableWindow {$/;"	c
 ItemWindow	source/ItemWindow.cpp	/^ItemWindow::ItemWindow() : SelectableWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52) {$/;"	f	class:ItemWindow
+Items	include/Activity.hpp	/^			Items,$/;"	e	enum:Activity::__anon21
 Iterator	external/SLB.cpp	/^  Iterator::Iterator(IteratorBase *b) : _iterator(b)$/;"	f	class:SLB::Iterator
 Iterator	external/SLB.hpp	/^    typedef T_iterator Iterator;$/;"	t	struct:SLB::StdConstIteratorTraits
 Iterator	external/SLB.hpp	/^    typedef T_iterator Iterator;$/;"	t	struct:SLB::StdIteratorTraits
@@ -976,6 +983,7 @@ Labeldesc	external/lua.c	/^typedef struct Labeldesc {$/;"	s	file:
 Labeldesc	external/lua.c	/^} Labeldesc;$/;"	t	typeref:struct:Labeldesc	file:
 Labellist	external/lua.c	/^typedef struct Labellist {$/;"	s	file:
 Labellist	external/lua.c	/^} Labellist;$/;"	t	typeref:struct:Labellist	file:
+Language	include/SettingsActivity.hpp	/^			Language,$/;"	e	enum:SettingsActivity::Mode
 LanguageManager	include/LanguageManager.hpp	/^class LanguageManager {$/;"	c
 LastChild	external/tinyxml2.hpp	/^    XMLHandle LastChild()													{$/;"	f	class:tinyxml2::XMLHandle
 LastChild	external/tinyxml2.hpp	/^    XMLNode*		LastChild()								{$/;"	f	class:tinyxml2::XMLNode
@@ -1093,6 +1101,7 @@ MessageWindow	include/MessageWindow.hpp	/^class MessageWindow : public TextWindo
 MessageWindow	source/MessageWindow.cpp	/^MessageWindow::MessageWindow() : TextWindow(40, 0, 0, 0) { $/;"	f	class:MessageWindow
 MethodMap	external/SLB.hpp	/^    typedef SLB_Map(String, LuaCallBase *) MethodMap;$/;"	t	class:SLB::HybridBase
 Mode	include/BattleActivity.hpp	/^		enum Mode {$/;"	g	class:BattleActivity
+Mode	include/SettingsActivity.hpp	/^		enum Mode {$/;"	g	class:SettingsActivity
 Music	include/Sound.hpp	/^	namespace Music {$/;"	n	namespace:Sound
 Mutex	external/SLB.hpp	/^  inline Mutex::Mutex() {}$/;"	f	class:SLB::Mutex
 Mutex	external/SLB.hpp	/^  inline Mutex::Mutex()$/;"	f	class:SLB::Mutex
@@ -1223,7 +1232,7 @@ OpCode	external/lua.c	/^} OpCode;$/;"	t	typeref:enum:__anon15	file:
 OpMode	external/lua.c	/^enum OpMode {iABC, iABx, iAsBx, iAx};  \/* basic instruction format *\/$/;"	g	file:
 OpenElement	external/tinyxml2.cpp	/^void XMLPrinter::OpenElement( const char* name, bool compactMode )$/;"	f	class:tinyxml2::XMLPrinter
 Operator	external/SLB.hpp	/^  struct Operator$/;"	s	namespace:SLB
-PAD	include/Config.hpp	37;"	d
+PAD	include/Config.hpp	35;"	d
 PAD	include/Debug.hpp	27;"	d
 PAD_A	include/Keyboard.hpp	/^	PAD_A,$/;"	e	enum:__anon23
 PAD_B	include/Keyboard.hpp	/^	PAD_B,$/;"	e	enum:__anon23
@@ -1283,6 +1292,7 @@ PrintHook	external/SLB.cpp	/^  int Script::PrintHook(lua_State *L) {$/;"	f	class
 PrintSpace	external/tinyxml2.cpp	/^void XMLPrinter::PrintSpace( int depth )$/;"	f	class:tinyxml2::XMLPrinter
 PrintString	external/tinyxml2.cpp	/^void XMLPrinter::PrintString( const char* p, bool restricted )$/;"	f	class:tinyxml2::XMLPrinter
 Private	external/SLB.hpp	/^namespace Private {$/;"	n	namespace:SLB
+ProcessAttacks	include/BattleActivity.hpp	/^			ProcessAttacks$/;"	e	enum:BattleActivity::Mode
 ProcessEntities	external/tinyxml2.hpp	/^    bool ProcessEntities() const		{$/;"	f	class:tinyxml2::XMLDocument
 Property	external/SLB.hpp	/^    Property( MemberPtr m) : _m(m) $/;"	f	class:SLB::Property
 Property	external/SLB.hpp	/^  class Property: public virtual BaseProperty$/;"	c	namespace:SLB
@@ -1351,6 +1361,7 @@ Reset	external/tinyxml2.cpp	/^void StrPair::Reset()$/;"	f	class:tinyxml2::StrPai
 Right	include/Character.hpp	/^			Down, Right, Left, Up$/;"	e	enum:Character::Direction
 RootElement	external/tinyxml2.hpp	/^    XMLElement* RootElement()				{$/;"	f	class:tinyxml2::XMLDocument
 RootElement	external/tinyxml2.hpp	/^    const XMLElement* RootElement() const	{$/;"	f	class:tinyxml2::XMLDocument
+SAVEMANAGER_HPP_	include/SaveManager.hpp	19;"	d
 SDLHEADERS_HPP_	include/SDLHeaders.hpp	19;"	d
 SDLMANAGER_HPP_	include/SDLManager.hpp	19;"	d
 SDLManager	include/SDLManager.hpp	/^namespace SDLManager {$/;"	n
@@ -1362,6 +1373,7 @@ SETARG_B	external/lua.c	2925;"	d	file:
 SETARG_Bx	external/lua.c	2931;"	d	file:
 SETARG_C	external/lua.c	2928;"	d	file:
 SETARG_sBx	external/lua.c	2937;"	d	file:
+SETTINGSACTIVITY_HPP_	include/SettingsActivity.hpp	19;"	d
 SET_OPCODE	external/lua.c	2914;"	d	file:
 SE_currentLine	external/SLB.cpp	/^int ErrorHandler::SE_currentLine()$/;"	f	class:SLB::ErrorHandler
 SE_lastLineDefined	external/SLB.cpp	/^int ErrorHandler::SE_lastLineDefined()$/;"	f	class:SLB::ErrorHandler
@@ -1379,6 +1391,7 @@ SIZE_B	external/lua.c	2863;"	d	file:
 SIZE_Bx	external/lua.c	2864;"	d	file:
 SIZE_C	external/lua.c	2862;"	d	file:
 SIZE_OP	external/lua.c	2868;"	d	file:
+SKILL_HPP_	include/Skill.hpp	19;"	d
 SLB	external/SLB.cpp	/^namespace SLB {$/;"	n	file:
 SLB	external/SLB.cpp	/^namespace SLB$/;"	n	file:
 SLB	external/SLB.hpp	/^  namespace SLB { struct MutexData {}; }$/;"	n
@@ -1471,7 +1484,6 @@ SLB_type	external/SLB.cpp	/^  int SLB_type(lua_State *L)$/;"	f	namespace:SLB
 SLB_using	external/SLB.cpp	/^  int SLB_using(lua_State *L)$/;"	f	namespace:SLB
 SLB_using_index	external/SLB.cpp	/^  int SLB_using_index(lua_State *L)$/;"	f	namespace:SLB
 SOUND_HPP_	include/Sound.hpp	19;"	d
-SOUND_MUTE	include/Config.hpp	34;"	d
 SPACEBIT	external/lua.c	3666;"	d	file:
 SPACECHARS	external/lua.c	14786;"	d	file:
 SPECIALS	external/lua.c	18160;"	d	file:
@@ -1670,6 +1682,7 @@ STEPMULADJ	external/lua.c	7513;"	d	file:
 SUPUNSIGNED	external/lua.c	1287;"	d	file:
 SaveFile	external/tinyxml2.cpp	/^XMLError XMLDocument::SaveFile( FILE* fp, bool compact )$/;"	f	class:tinyxml2::XMLDocument
 SaveFile	external/tinyxml2.cpp	/^XMLError XMLDocument::SaveFile( const char* filename, bool compact )$/;"	f	class:tinyxml2::XMLDocument
+SaveManager	include/SaveManager.hpp	/^namespace SaveManager {$/;"	n
 Script	external/SLB.cpp	/^  Script::Script(Manager *m) :$/;"	f	class:SLB::Script
 Script	external/SLB.hpp	/^  class SLB_EXPORT Script$/;"	c	namespace:SLB
 ScriptHook	external/SLB.cpp	/^  void ScriptHook(lua_State *L, lua_Debug *ar)$/;"	f	namespace:SLB
@@ -1706,6 +1719,9 @@ SetText	external/tinyxml2.cpp	/^void XMLElement::SetText( int v ) $/;"	f	class:t
 SetText	external/tinyxml2.cpp	/^void XMLElement::SetText( unsigned v ) $/;"	f	class:tinyxml2::XMLElement
 SetTracked	external/tinyxml2.hpp	/^    void SetTracked() {$/;"	f	class:tinyxml2::MemPoolT
 SetValue	external/tinyxml2.cpp	/^void XMLNode::SetValue( const char* str, bool staticMem )$/;"	f	class:tinyxml2::XMLNode
+Settings	include/SettingsActivity.hpp	/^			Settings,$/;"	e	enum:SettingsActivity::Mode
+SettingsActivity	include/SettingsActivity.hpp	/^class SettingsActivity : public MenuActivity {$/;"	c
+SettingsActivity	source/SettingsActivity.cpp	/^SettingsActivity::SettingsActivity() {$/;"	f	class:SettingsActivity
 ShallowClone	external/tinyxml2.cpp	/^XMLNode* XMLComment::ShallowClone( XMLDocument* doc ) const$/;"	f	class:tinyxml2::XMLComment
 ShallowClone	external/tinyxml2.cpp	/^XMLNode* XMLDeclaration::ShallowClone( XMLDocument* doc ) const$/;"	f	class:tinyxml2::XMLDeclaration
 ShallowClone	external/tinyxml2.cpp	/^XMLNode* XMLElement::ShallowClone( XMLDocument* doc ) const$/;"	f	class:tinyxml2::XMLElement
@@ -1719,11 +1735,15 @@ ShallowEqual	external/tinyxml2.cpp	/^bool XMLText::ShallowEqual( const XMLNode* 
 ShallowEqual	external/tinyxml2.cpp	/^bool XMLUnknown::ShallowEqual( const XMLNode* compare ) const$/;"	f	class:tinyxml2::XMLUnknown
 ShallowEqual	external/tinyxml2.hpp	/^    virtual bool ShallowEqual( const XMLNode* \/*compare*\/ ) const	{$/;"	f	class:tinyxml2::XMLDocument
 Size	external/tinyxml2.hpp	/^    int Size() const					{$/;"	f	class:tinyxml2::DynArray
+Skill	include/Item.hpp	/^			Skill$/;"	e	enum:Item::Type
+Skill	include/Skill.hpp	/^class Skill : public Item {$/;"	c
+Skill	source/Skill.cpp	/^Skill::Skill(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {$/;"	f	class:Skill
 SkipWhiteSpace	external/tinyxml2.hpp	/^    static char* SkipWhiteSpace( char* p )				{$/;"	f	class:tinyxml2::XMLUtil
 SkipWhiteSpace	external/tinyxml2.hpp	/^    static const char* SkipWhiteSpace( const char* p )	{$/;"	f	class:tinyxml2::XMLUtil
 SmartPtr	external/SLB.hpp	/^    struct SmartPtr $/;"	s	namespace:SLB::Instance
 SmartPtrNoCopy	external/SLB.hpp	/^    struct SmartPtrNoCopy$/;"	s	namespace:SLB::Instance
 SmartPtrSharedCopy	external/SLB.hpp	/^    struct SmartPtrSharedCopy$/;"	s	namespace:SLB::Instance
+Sound	include/SettingsActivity.hpp	/^			Sound$/;"	e	enum:SettingsActivity::Mode
 Sound	include/Sound.hpp	/^namespace Sound {$/;"	n
 Sprite	include/Sprite.hpp	/^class Sprite : public Image {$/;"	c
 Sprite	source/Sprite.cpp	/^Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(filename) {$/;"	f	class:Sprite
@@ -2013,9 +2033,9 @@ WHITEBITS	external/lua.c	2605;"	d	file:
 WINDOW_HPP_	include/Window.hpp	19;"	d
 WIN_DEFAULT_HEIGHT	include/Config.hpp	24;"	d
 WIN_DEFAULT_WIDTH	include/Config.hpp	23;"	d
-Weapon	include/Item.hpp	/^			Weapon$/;"	e	enum:Item::Type
+Weapon	include/Item.hpp	/^			Weapon,$/;"	e	enum:Item::Type
 Weapon	include/Weapon.hpp	/^class Weapon : public Item {$/;"	c
-Weapon	source/Weapon.cpp	/^Weapon::Weapon(std::string name, std::string description, u8 level, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, level, thumbnail) {$/;"	f	class:Weapon
+Weapon	source/Weapon.cpp	/^Weapon::Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {$/;"	f	class:Weapon
 Whitespace	external/tinyxml2.hpp	/^enum Whitespace {$/;"	g	namespace:tinyxml2
 WhitespaceMode	external/tinyxml2.hpp	/^    Whitespace WhitespaceMode() const	{$/;"	f	class:tinyxml2::XMLDocument
 Window	include/Window.hpp	/^class Window {$/;"	c
@@ -2277,13 +2297,13 @@ activitiesBin	source/ActivityManager.cpp	/^std::queue<Activity*> ActivityManager
 actors	include/Battle.hpp	/^		std::vector<Actor*> actors() const { return m_actors; }$/;"	f	class:Battle
 actors	source/BattlerManager.cpp	/^std::vector<Actor*> BattlerManager::actors;$/;"	m	class:BattlerManager	file:
 actvar	external/lua.c	/^  } actvar;$/;"	m	struct:Dyndata	typeref:struct:Dyndata::__anon10	file:
-addActor	include/Battle.hpp	/^		void addActor(Actor *actor) { m_actors.push_back(actor); }$/;"	f	class:Battle
+addActor	include/Battle.hpp	/^		void addActor(Actor *actor) { m_actors.push_back(new Actor(*actor)); }$/;"	f	class:Battle
 addAnimation	source/Sprite.cpp	/^void Sprite::addAnimation(u16 size, u16 *tabAnim, u16 delay) {$/;"	f	class:Sprite
 addArmor	source/Inventory.cpp	/^void Inventory::addArmor(u8 id, s16 count) {$/;"	f	class:Inventory
 addClassConversor	external/SLB.hpp	/^  inline void Manager::addClassConversor( Conversor c )$/;"	f	class:SLB::Manager
 addCommand	include/CommandWindow.hpp	/^		void addCommand(std::string cmd) { m_commands.push_back(cmd); m_itemMax++; };$/;"	f	class:CommandWindow
 addConversor	external/SLB.hpp	/^  inline void Manager::addConversor()$/;"	f	class:SLB::Manager
-addEnemy	include/Battle.hpp	/^		void addEnemy(Enemy *enemy) { m_enemies.push_back(enemy); }$/;"	f	class:Battle
+addEnemy	include/Battle.hpp	/^		void addEnemy(Enemy *enemy, s16 x, s16 y) { m_enemies.push_back(new Enemy(*enemy)); m_enemies.back()->setPosition(x, y); }$/;"	f	class:Battle
 addEvent	source/Map.cpp	/^void Map::addEvent(Event *event) {$/;"	f	class:Map
 addItem	source/Inventory.cpp	/^void Inventory::addItem(u8 id, s16 count) {$/;"	f	class:Inventory
 addMessage	include/DialogActivity.hpp	/^		void addMessage(std::string msg) { m_msgwin->addMessage(msg); }$/;"	f	class:DialogActivity
@@ -2342,9 +2362,11 @@ arrayindex	external/lua.c	/^static int arrayindex (const TValue *key) {$/;"	f	fi
 arrow	source/AnimationManager.cpp	/^u16 AnimationManager::arrow[4] = {58, 59, 70, 71};$/;"	m	class:AnimationManager	file:
 assignment	external/lua.c	/^static void assignment (LexState *ls, struct LHS_assign *lh, int nvars) {$/;"	f	file:
 atk	include/Battler.hpp	/^		u16 atk() const { return m_atk; }$/;"	f	class:Battler
+atk	include/Skill.hpp	/^		u16 atk() const { return m_atk; }$/;"	f	class:Skill
 atk	include/Weapon.hpp	/^		u16 atk() const { return m_atk; }$/;"	f	class:Weapon
 atomic	external/lua.c	/^static l_mem atomic (lua_State *L) {$/;"	f	file:
 attach	external/SLB.cpp	/^  void HybridBase::attach(lua_State *L)$/;"	f	class:SLB::HybridBase
+attack	source/Battler.cpp	/^void Battler::attack(Battler *battler, Skill *skill) {$/;"	f	class:Battler
 autoDelete	external/SLB.hpp	/^    template<class T> inline Object* autoDelete( T *obj )$/;"	f	namespace:SLB::Value
 aux_close	external/lua.c	/^static int aux_close (lua_State *L) {$/;"	f	file:
 aux_getn	external/lua.c	18940;"	d	file:
@@ -2393,6 +2415,7 @@ bitmask	external/lua.c	2588;"	d	file:
 bl	external/lua.c	/^  struct BlockCnt *bl;  \/* chain of current blocks *\/$/;"	m	struct:FuncState	typeref:struct:FuncState::BlockCnt	file:
 black	include/Color.hpp	/^		static Color black;$/;"	m	class:Color
 black2gray	external/lua.c	7541;"	d	file:
+blink	source/Battler.cpp	/^void Battler::blink() {$/;"	f	class:Battler
 block	external/lua.c	/^static void block (LexState *ls) {$/;"	f	file:
 block_follow	external/lua.c	/^static int block_follow (LexState *ls, int withuntil) {$/;"	f	file:
 blocked	source/Sound.cpp	/^Mix_Chunk *Sound::Effect::blocked = NULL;$/;"	m	class:Sound::Effect	file:
@@ -2494,6 +2517,7 @@ closef	external/lua.c	/^  lua_CFunction closef;  \/* to close stream (NULL for c
 closegoto	external/lua.c	/^static void closegoto (LexState *ls, int g, Labeldesc *label) {$/;"	f	file:
 closelistfield	external/lua.c	/^static void closelistfield (FuncState *fs, struct ConsControl *cc) {$/;"	f	file:
 clvalue	external/lua.c	1496;"	d	file:
+cmdwin	include/MenuActivity.hpp	/^		CommandWindow *cmdwin() { return m_cmdwin; }$/;"	f	class:MenuActivity
 co_funcs	external/lua.c	/^static const luaL_Reg co_funcs[] = {$/;"	v	file:
 code	external/lua.c	/^  Instruction *code;$/;"	m	struct:Proto	file:
 code_label	external/lua.c	/^static int code_label (FuncState *fs, int A, int b, int jump) {$/;"	f	file:
@@ -2532,12 +2556,9 @@ copy	external/SLB.cpp	/^  bool Manager::copy(lua_State *from, int pos, lua_State
 copy	external/SLB.hpp	/^    template<class T> inline Object* copy( const T &obj)$/;"	f	namespace:SLB::Value
 copy	external/SLB.hpp	/^  inline bool copy(lua_State *from, int pos, lua_State *to)$/;"	f	namespace:SLB
 correctstack	external/lua.c	/^static void correctstack (lua_State *L, TValue *oldstack) {$/;"	f	file:
-count	include/Armor.hpp	/^		static u16 count;$/;"	m	class:Armor
 count	include/Item.hpp	/^		static u16 count;$/;"	m	class:Item
-count	include/Weapon.hpp	/^		static u16 count;$/;"	m	class:Weapon
-count	source/Armor.cpp	/^u16 Armor::count = 0;$/;"	m	class:Armor	file:
+count	include/Skill.hpp	/^		static u16 count;$/;"	m	class:Skill
 count	source/Item.cpp	/^u16 Item::count = 0;$/;"	m	class:Item	file:
-count	source/Weapon.cpp	/^u16 Weapon::count = 0;$/;"	m	class:Weapon	file:
 countint	external/lua.c	/^static int countint (const TValue *key, int *nums) {$/;"	f	file:
 countlevels	external/lua.c	/^static int countlevels (lua_State *L) {$/;"	f	file:
 create	external/SLB.cpp	/^  FuncCall* FuncCall::create(lua_CFunction f)$/;"	f	class:SLB::FuncCall
@@ -2555,6 +2576,7 @@ ctb	external/lua.c	1400;"	d	file:
 ctx	external/lua.c	/^      int ctx;  \/* context info. in case of yields *\/$/;"	m	struct:CallInfo::__anon11::__anon13	file:
 currIsNewline	external/lua.c	8706;"	d	file:
 current	external/lua.c	/^  int current;  \/* current character (charint) *\/$/;"	m	struct:LexState	file:
+current	source/Sound.cpp	/^Mix_Music *Sound::Music::current = NULL;$/;"	m	class:Sound::Music	file:
 currentItem	source/EquipItemWindow.cpp	/^Item *EquipItemWindow::currentItem() {$/;"	f	class:EquipItemWindow
 currentLanguage	include/LanguageManager.hpp	/^		static std::string currentLanguage;$/;"	m	class:LanguageManager
 currentLanguage	source/LanguageManager.cpp	/^std::string LanguageManager::currentLanguage;$/;"	m	class:LanguageManager	file:
@@ -2619,8 +2641,8 @@ dojump	external/lua.c	12734;"	d	file:
 donextjump	external/lua.c	12740;"	d	file:
 dooptions	external/lua.c	/^static void dooptions (lua_State *L, int n) {$/;"	f	file:
 dothecall	external/lua.c	/^static void dothecall (lua_State *L, void *ud) {$/;"	f	file:
-draw	source/ActorStatsWindow.cpp	/^void ActorStatsWindow::draw(std::vector<Enemy*> enemies, std::vector<Actor*> actors) {$/;"	f	class:ActorStatsWindow
-draw	source/CommandWindow.cpp	/^void CommandWindow::draw() {$/;"	f	class:CommandWindow
+draw	source/BattleActionWindow.cpp	/^void BattleActionWindow::draw(u8 pos) {$/;"	f	class:BattleActionWindow
+draw	source/CommandWindow.cpp	/^void CommandWindow::draw(bool cursor) {$/;"	f	class:CommandWindow
 draw	source/EquipChoiceWindow.cpp	/^void EquipChoiceWindow::draw(bool drawCursor) {$/;"	f	class:EquipChoiceWindow
 draw	source/EquipItemWindow.cpp	/^void EquipItemWindow::draw(bool drawInfoWindow, bool drawCursor) {$/;"	f	class:EquipItemWindow
 draw	source/EquipStatsWindow.cpp	/^void EquipStatsWindow::draw(Item *currentItem) {$/;"	f	class:EquipStatsWindow
@@ -2629,7 +2651,10 @@ draw	source/MessageWindow.cpp	/^void MessageWindow::draw() {$/;"	f	class:Message
 draw	source/TextWindow.cpp	/^void TextWindow::draw(std::string text) {$/;"	f	class:TextWindow
 draw	source/Window.cpp	/^void Window::draw(bool cursor) {$/;"	f	class:Window
 drawActor	source/ActorStatsWindow.cpp	/^void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {$/;"	f	class:ActorStatsWindow
+drawActors	source/ActorStatsWindow.cpp	/^void ActorStatsWindow::drawActors(std::vector<Actor*> actors) {$/;"	f	class:ActorStatsWindow
+drawArrow	source/Battle.cpp	/^void Battle::drawArrow(Battler *battler) {$/;"	f	class:Battle
 drawCursor	source/Window.cpp	/^void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {$/;"	f	class:Window
+drawEnemies	source/ActorStatsWindow.cpp	/^void ActorStatsWindow::drawEnemies(std::vector<Enemy*> enemies) {$/;"	f	class:ActorStatsWindow
 drawEnemy	source/ActorStatsWindow.cpp	/^void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {$/;"	f	class:ActorStatsWindow
 drawFillRect	source/GameWindow.cpp	/^void GameWindow::drawFillRect(s16 x, s16 y, u16 w, u16 h, Color c) {$/;"	f	class:GameWindow
 drawFrame	source/Sprite.cpp	/^void Sprite::drawFrame(s16 x, s16 y, u16 frame) {$/;"	f	class:Sprite
@@ -2887,6 +2912,7 @@ getPlayer	include/CharacterManager.hpp	/^		static Player *getPlayer() { return p
 getProperty	external/SLB.cpp	/^  BaseProperty* ClassInfo::getProperty(const String &key)$/;"	f	class:SLB::ClassInfo
 getReturnedType	external/SLB.hpp	/^    const TypeInfoWrapper& getReturnedType() const { return _Treturn; }$/;"	f	class:SLB::FuncCall
 getS	external/lua.c	/^static const char *getS (lua_State *L, void *ud, size_t *size) {$/;"	f	file:
+getSkill	include/ItemManager.hpp	/^		static Skill *getSkill(u16 id) { return skills[id]; }$/;"	f	class:ItemManager
 getState	external/SLB.cpp	/^  lua_State* Script::getState()$/;"	f	class:SLB::Script
 getState	source/Keyboard.cpp	/^const u8 *Keyboard::getState() {$/;"	f	class:Keyboard
 getStateString	source/Battler.cpp	/^std::string Battler::getStateString() {$/;"	f	class:Battler
@@ -2977,12 +3003,14 @@ height	include/Image.hpp	/^		u16 height() const { return m_height; }$/;"	f	class
 height	include/Map.hpp	/^		u16 height() const { return m_height; }$/;"	f	class:Map
 height	include/Rectangle.hpp	/^	u16 height;$/;"	m	struct:Rectangle
 height	include/Window.hpp	/^		u16 height() const { return m_height; }$/;"	f	class:Window
+hitRate	include/Skill.hpp	/^		double hitRate() const { return m_hitRate; }$/;"	f	class:Skill
 hitRate	include/Weapon.hpp	/^		double hitRate() const { return m_hitRate; }$/;"	f	class:Weapon
 hook	external/lua.c	/^  lua_Hook hook;$/;"	m	struct:lua_State	file:
 hookcount	external/lua.c	/^  int hookcount;$/;"	m	struct:lua_State	file:
 hookf	external/lua.c	/^static void hookf (lua_State *L, lua_Debug *ar) {$/;"	f	file:
 hookmask	external/lua.c	/^  lu_byte hookmask;$/;"	m	struct:lua_State	file:
 hp	include/Battler.hpp	/^		s16 hp() const { return m_hp; }$/;"	f	class:Battler
+hurt	include/Battler.hpp	/^		void hurt(u16 damages) { m_hp -= damages; }$/;"	f	class:Battler
 hvalue	external/lua.c	1500;"	d	file:
 hybrid	external/SLB.hpp	/^    __Self &hybrid()$/;"	f	class:SLB::Class
 iABC	external/lua.c	/^enum OpMode {iABC, iABx, iAsBx, iAx};  \/* basic instruction format *\/$/;"	e	enum:OpMode	file:
@@ -2997,7 +3025,7 @@ idx	external/lua.c	/^      short idx;  \/* index (R\/K) *\/$/;"	m	struct:expdesc
 idx	external/lua.c	/^  lu_byte idx;  \/* index of upvalue (in stack or in outer function's list) *\/$/;"	m	struct:Upvaldesc	file:
 idx	external/lua.c	/^  short idx;  \/* variable index in stack *\/$/;"	m	struct:Vardesc	file:
 ifstat	external/lua.c	/^static void ifstat (LexState *ls, int line) {$/;"	f	file:
-image	include/Battler.hpp	/^		Image *image() const { return m_image; }$/;"	f	class:Battler
+image	include/Battler.hpp	/^		Image *image() { return m_image; }$/;"	f	class:Battler
 inCollisionWith	source/Character.cpp	/^void Character::inCollisionWith(Character *c) {$/;"	f	class:Character
 inFrontOf	include/Character.hpp	/^		Character *inFrontOf() const { return m_inFrontOf; }$/;"	f	class:Character
 inclinenumber	external/lua.c	/^static void inclinenumber (LexState *ls) {$/;"	f	file:
@@ -3248,6 +3276,7 @@ loadArmors	source/ItemManager.cpp	/^void ItemManager::loadArmors() {$/;"	f	class
 loadCommandWindow	source/MenuActivity.cpp	/^void MenuActivity::loadCommandWindow() {$/;"	f	class:MenuActivity
 loadDefaultLibs	external/SLB.hpp	/^    void loadDefaultLibs(bool b) { _loadDefaultLibs = b; }$/;"	f	class:SLB::Script
 loadItems	source/ItemManager.cpp	/^void ItemManager::loadItems() {$/;"	f	class:ItemManager
+loadSkills	source/ItemManager.cpp	/^void ItemManager::loadSkills() {$/;"	f	class:ItemManager
 loadTile	source/Map.cpp	/^void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {$/;"	f	class:Map
 loadWeapons	source/ItemManager.cpp	/^void ItemManager::loadWeapons() {$/;"	f	class:ItemManager
 load_aux	external/lua.c	/^static int load_aux (lua_State *L, int status) {$/;"	f	file:
@@ -3875,6 +3904,8 @@ lvm_c	external/lua.c	12243;"	d	file:
 lvm_h	external/lua.c	3347;"	d	file:
 lzio_c	external/lua.c	13109;"	d	file:
 lzio_h	external/lua.c	2116;"	d	file:
+m_actionStack	include/Battle.hpp	/^		std::stack<BattleAction*> m_actionStack;$/;"	m	class:Battle
+m_actor	include/BattleAction.hpp	/^		Battler *m_actor;$/;"	m	class:BattleAction
 m_actorStatswin	include/BattleActivity.hpp	/^		ActorStatsWindow m_actorStatswin;$/;"	m	class:BattleActivity
 m_actors	include/Battle.hpp	/^		std::vector<Actor*> m_actors;$/;"	m	class:Battle
 m_animations	include/Sprite.hpp	/^		std::vector<Animation*> m_animations;$/;"	m	class:Sprite
@@ -3882,7 +3913,9 @@ m_area	include/Character.hpp	/^		u16 m_area;$/;"	m	class:Character
 m_area	include/Map.hpp	/^		u16 m_area;$/;"	m	class:Map
 m_armorlist	include/Inventory.hpp	/^		std::list<Armor*> m_armorlist;$/;"	m	class:Inventory
 m_armors	include/Inventory.hpp	/^		std::list<std::pair<Armor*, s16>> m_armors;$/;"	m	class:Inventory
+m_arrowPos	include/BattleActivity.hpp	/^		s8 m_arrowPos;$/;"	m	class:BattleActivity
 m_atk	include/Battler.hpp	/^		u16 m_atk;$/;"	m	class:Battler
+m_atk	include/Skill.hpp	/^		u16 m_atk;$/;"	m	class:Skill
 m_atk	include/Weapon.hpp	/^		u16 m_atk;$/;"	m	class:Weapon
 m_background	include/TitleActivity.hpp	/^		Image *m_background;$/;"	m	class:TitleActivity
 m_battle	include/BattleActivity.hpp	/^		Battle *m_battle;$/;"	m	class:BattleActivity
@@ -3898,7 +3931,8 @@ m_cmdwin	include/MenuActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:MenuA
 m_cmdwin	include/TitleActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:TitleActivity
 m_columnMax	include/SelectableWindow.hpp	/^		u8 m_columnMax;$/;"	m	class:SelectableWindow
 m_commands	include/CommandWindow.hpp	/^		std::vector<std::string> m_commands;$/;"	m	class:CommandWindow
-m_currentActor	include/BattleActivity.hpp	/^		Actor *m_currentActor;$/;"	m	class:BattleActivity
+m_currentItem	include/BattleActivity.hpp	/^		Item *m_currentItem;$/;"	m	class:BattleActivity
+m_currentPos	include/BattleActivity.hpp	/^		s8 m_currentPos;$/;"	m	class:BattleActivity
 m_cursor	include/Window.hpp	/^		Rectangle m_cursor;$/;"	m	class:Window
 m_data	include/Map.hpp	/^		s16 **m_data;$/;"	m	class:Map
 m_def	include/Armor.hpp	/^		u16 m_def;$/;"	m	class:Armor
@@ -3918,6 +3952,7 @@ m_height	include/GameWindow.hpp	/^		u16 m_height;$/;"	m	class:GameWindow
 m_height	include/Image.hpp	/^		u16 m_height;$/;"	m	class:Image
 m_height	include/Map.hpp	/^		u16 m_height;$/;"	m	class:Map
 m_height	include/Window.hpp	/^		u16 m_height;$/;"	m	class:Window
+m_hitRate	include/Skill.hpp	/^		double m_hitRate;$/;"	m	class:Skill
 m_hitRate	include/Weapon.hpp	/^		double m_hitRate;$/;"	m	class:Weapon
 m_hitboxH	include/Character.hpp	/^		u16 m_hitboxH;$/;"	m	class:Character
 m_hitboxW	include/Character.hpp	/^		u16 m_hitboxW;$/;"	m	class:Character
@@ -3929,15 +3964,18 @@ m_id	include/Item.hpp	/^		u16 m_id;$/;"	m	class:Item
 m_image	include/Battler.hpp	/^		Image *m_image;$/;"	m	class:Battler
 m_inFrontOf	include/Character.hpp	/^		Character *m_inFrontOf;$/;"	m	class:Character
 m_infoWindow	include/SelectableWindow.hpp	/^		InfoWindow *m_infoWindow;$/;"	m	class:SelectableWindow
+m_infowin	include/BattleActivity.hpp	/^		InfoWindow *m_infowin;$/;"	m	class:BattleActivity
 m_inventory	include/Battler.hpp	/^		Inventory *m_inventory;$/;"	m	class:Battler
 m_inventory	include/Character.hpp	/^		Inventory *m_inventory;$/;"	m	class:Character
 m_inventory	include/EquipItemWindow.hpp	/^		Inventory m_inventory;$/;"	m	class:EquipItemWindow
 m_isStarted	include/Timer.hpp	/^		bool m_isStarted;$/;"	m	class:Timer
+m_item	include/BattleAction.hpp	/^		Item *m_item;$/;"	m	class:BattleAction
 m_itemMax	include/SelectableWindow.hpp	/^		u16 m_itemMax;$/;"	m	class:SelectableWindow
 m_itemMode	include/EquipActivity.hpp	/^		bool m_itemMode;$/;"	m	class:EquipActivity
 m_items	include/Inventory.hpp	/^		std::list<std::pair<Item*, s16>> m_items;$/;"	m	class:Inventory
 m_itemwin	include/EquipActivity.hpp	/^		EquipItemWindow *m_itemwin;$/;"	m	class:EquipActivity
 m_itemwin	include/ItemActivity.hpp	/^		ItemWindow m_itemwin;$/;"	m	class:ItemActivity
+m_language	include/SettingsActivity.hpp	/^		CommandWindow *m_language;$/;"	m	class:SettingsActivity
 m_layers	include/Map.hpp	/^		u8 m_layers;$/;"	m	class:Map
 m_layersTex	include/Map.hpp	/^		SDL_Texture **m_layersTex;$/;"	m	class:Map
 m_level	include/Battler.hpp	/^		u8 m_level;$/;"	m	class:Battler
@@ -3945,7 +3983,8 @@ m_level	include/Item.hpp	/^		u8 m_level;$/;"	m	class:Item
 m_mapX	include/Character.hpp	/^		u16 m_mapX;$/;"	m	class:Character
 m_mapY	include/Character.hpp	/^		u16 m_mapY;$/;"	m	class:Character
 m_messages	include/MessageWindow.hpp	/^		std::queue<std::string> m_messages;$/;"	m	class:MessageWindow
-m_mode	include/BattleActivity.hpp	/^		Mode m_mode;$/;"	m	class:BattleActivity
+m_mode	include/BattleActivity.hpp	/^		u8 m_mode;$/;"	m	class:BattleActivity
+m_mode	include/SettingsActivity.hpp	/^		Mode m_mode;$/;"	m	class:SettingsActivity
 m_movementDelay	include/Character.hpp	/^		u16 m_movementDelay;$/;"	m	class:Character
 m_movementID	include/Character.hpp	/^		u16 m_movementID;$/;"	m	class:Character
 m_movementTimer	include/Character.hpp	/^		Timer m_movementTimer;$/;"	m	class:Character
@@ -3956,15 +3995,17 @@ m_name	include/Item.hpp	/^		std::string m_name;$/;"	m	class:Item
 m_pixelFormat	include/Map.hpp	/^		Uint32 m_pixelFormat;$/;"	m	class:Map
 m_pos	include/SelectableWindow.hpp	/^		s16 m_pos;$/;"	m	class:SelectableWindow
 m_posRect	include/Image.hpp	/^		SDL_Rect m_posRect;$/;"	m	class:Image
+m_receiver	include/BattleAction.hpp	/^		Battler *m_receiver;$/;"	m	class:BattleAction
 m_renderer	include/GameWindow.hpp	/^		SDL_Renderer *m_renderer;$/;"	m	class:GameWindow
 m_scroll	include/SelectableWindow.hpp	/^		u8 m_scroll;$/;"	m	class:SelectableWindow
+m_settings	include/SettingsActivity.hpp	/^		CommandWindow *m_settings;$/;"	m	class:SettingsActivity
 m_slot	include/Armor.hpp	/^		u8 m_slot;$/;"	m	class:Armor
 m_solid	include/Character.hpp	/^		bool m_solid;$/;"	m	class:Character
+m_sound	include/SettingsActivity.hpp	/^		CommandWindow *m_sound;$/;"	m	class:SettingsActivity
 m_sp	include/Battler.hpp	/^		s16 m_sp;$/;"	m	class:Battler
 m_speed	include/Character.hpp	/^		u8 m_speed;$/;"	m	class:Character
 m_state	include/Battler.hpp	/^		u8 m_state;$/;"	m	class:Battler
 m_statswin	include/EquipActivity.hpp	/^		EquipStatsWindow m_statswin;$/;"	m	class:EquipActivity
-m_surface	include/Image.hpp	/^		SDL_Surface *m_surface;$/;"	m	class:Image
 m_t	include/Timer.hpp	/^		u16 m_t;$/;"	m	class:Timer
 m_table	include/Event.hpp	/^		std::string m_table;$/;"	m	class:Event
 m_table	include/LuaActivity.hpp	/^		std::string m_table;$/;"	m	class:LuaActivity
@@ -4066,6 +4107,8 @@ metatable	external/lua.c	/^    struct Table *metatable;$/;"	m	struct:Udata::__an
 metatable	external/lua.c	/^  struct Table *metatable;$/;"	m	struct:Table	typeref:struct:Table::Table	file:
 min_expand	external/lua.c	/^static const char *min_expand (MatchState *ms, const char *s,$/;"	f	file:
 mode	external/lua.c	/^  const char *mode;$/;"	m	struct:SParser	file:
+mode	include/BattleActivity.hpp	/^		u8 mode() const { return (u8)m_mode; }$/;"	f	class:BattleActivity
+mode	include/SettingsActivity.hpp	/^		void mode(Mode mode) { m_mode = mode; }$/;"	f	class:SettingsActivity
 modinit	external/lua.c	/^static void modinit (lua_State *L, const char *modname) {$/;"	f	file:
 move	source/Character.cpp	/^void Character::move(std::string function) {$/;"	f	class:Character
 move	source/Player.cpp	/^void Player::move() {$/;"	f	class:Player
@@ -4078,6 +4121,8 @@ movegotosout	external/lua.c	/^static void movegotosout (FuncState *fs, BlockCnt 
 moveto	external/lua.c	/^static void moveto (lua_State *L, TValue *fr, int idx) {$/;"	f	file:
 mt	external/lua.c	/^  struct Table *mt[LUA_NUMTAGS];  \/* metatables for basic types *\/$/;"	m	struct:global_State	typeref:struct:global_State::Table	file:
 mustFreeMem	external/SLB.hpp	/^    bool mustFreeMem() const { return (_flags & I_MustFreeMem) != 0; }$/;"	f	class:SLB::InstanceBase
+mute	source/Sound.cpp	/^bool Sound::Effect::mute = true;$/;"	m	class:Sound::Effect	file:
+mute	source/Sound.cpp	/^void Sound::Music::mute() {$/;"	f	class:Sound::Music
 n	external/lauxlib.h	/^  size_t n;  \/* number of characters in buffer *\/$/;"	m	struct:luaL_Buffer
 n	external/lua.c	/^    int n;$/;"	m	struct:Dyndata::__anon10	file:
 n	external/lua.c	/^  int n;  \/* number of entries in use *\/$/;"	m	struct:Labellist	file:
@@ -4101,6 +4146,7 @@ name	external/lua.c	/^  const char *name;$/;"	m	struct:luaL_Reg	file:
 name	external/lua.c	/^ const char* name;$/;"	m	struct:__anon18	file:
 name	external/lua.h	/^  const char *name;	\/* (n) *\/$/;"	m	struct:lua_Debug
 name	include/Battler.hpp	/^		std::string name() const { return m_name; }$/;"	f	class:Battler
+name	include/Enemy.hpp	/^		std::string name() const { return _t(m_name); }$/;"	f	class:Enemy
 name	include/Item.hpp	/^		std::string name() const { return _t(m_name); }$/;"	f	class:Item
 namewhat	external/lua.c	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug	file:
 namewhat	external/lua.h	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug
@@ -4254,6 +4300,7 @@ player	source/CharacterManager.cpp	/^Player *CharacterManager::player = NULL;$/;
 pointer	external/SLB.hpp	/^    typedef T * pointer;$/;"	t	class:SLB::Allocator
 pollEvents	source/Activity.cpp	/^void Activity::pollEvents() {$/;"	f	class:Activity
 pop	include/ActivityManager.hpp	/^		static void pop() { activitiesBin.push(top()); activities.pop(); }$/;"	f	class:ActivityManager
+popAction	include/Battle.hpp	/^		void popAction() { m_actionStack.pop(); }$/;"	f	class:Battle
 pos	include/SelectableWindow.hpp	/^		s8 pos() const { return m_pos; }$/;"	f	class:SelectableWindow
 pos	include/SelectableWindow.hpp	/^		void pos(u8 pos) { m_pos = pos; }$/;"	f	class:SelectableWindow
 posRect	include/Image.hpp	/^		SDL_Rect posRect() const { return m_posRect; }$/;"	f	class:Image
@@ -4271,12 +4318,14 @@ previous	external/lua.c	/^  struct lua_longjmp *previous;$/;"	m	struct:lua_longj
 primaryexp	external/lua.c	/^static void primaryexp (LexState *ls, expdesc *v) {$/;"	f	file:
 print	source/Font.cpp	/^void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {$/;"	f	class:Font
 printCentered	source/Font.cpp	/^void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {$/;"	f	class:Font
+printDamages	source/Font.cpp	/^void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {$/;"	f	class:Font
 printScaled	source/Font.cpp	/^void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {$/;"	f	class:Font
 printScaledToImage	source/Font.cpp	/^void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color) {$/;"	f	class:Font
 printTextBox	source/Font.cpp	/^void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {$/;"	f	class:Font
 printToImage	source/Font.cpp	/^void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color) {$/;"	f	class:Font
 priority	external/lua.c	/^} priority[] = {  \/* ORDER OPR *\/$/;"	v	typeref:struct:__anon17	file:
 process	external/SLB.cpp	/^void ErrorHandler::process(lua_State *L)$/;"	f	class:SLB::ErrorHandler
+process	source/BattleAction.cpp	/^void BattleAction::process() {$/;"	f	class:BattleAction
 propagateall	external/lua.c	/^static void propagateall (global_State *g) {$/;"	f	file:
 propagatelist	external/lua.c	/^static void propagatelist (global_State *g, GCObject *l) {$/;"	f	file:
 propagatemark	external/lua.c	/^static void propagatemark (global_State *g) {$/;"	f	file:
@@ -4304,6 +4353,7 @@ push	external/SLB.hpp	/^    static void push(lua_State *L,void* obj)$/;"	f	struc
 push	external/SLB.hpp	/^  inline int StdIterator<T>::push(lua_State *L)$/;"	f	class:SLB::StdIterator
 push	external/SLB.hpp	/^inline void push(lua_State *L, T v)$/;"	f	namespace:SLB
 push	include/ActivityManager.hpp	/^		static void push(Activity *activity) { activities.push(activity); }$/;"	f	class:ActivityManager
+pushAction	source/Battle.cpp	/^void Battle::pushAction(Battler *actor, Battler *receiver, Item *item) {$/;"	f	class:Battle
 pushBackItem	include/Inventory.hpp	/^		void pushBackItem(Item *item, s16 count) { m_items.push_back(std::make_pair(item, count)); }$/;"	f	class:Inventory
 pushImplementation	external/SLB.cpp	/^    void pushImplementation(lua_State *L) {SLB_DEBUG_CALL; lua_pushcfunction(L,_func); }$/;"	f	class:SLB::LuaCFunction
 pushImplementation	external/SLB.cpp	/^  void ClassInfo::pushImplementation(lua_State *L)$/;"	f	class:SLB::ClassInfo
@@ -4397,6 +4447,7 @@ render	source/LuaActivity.cpp	/^void LuaActivity::render() {$/;"	f	class:LuaActi
 render	source/Map.cpp	/^void Map::render() {$/;"	f	class:Map
 render	source/MapActivity.cpp	/^void MapActivity::render() {$/;"	f	class:MapActivity
 render	source/MenuActivity.cpp	/^void MenuActivity::render() {$/;"	f	class:MenuActivity
+render	source/SettingsActivity.cpp	/^void SettingsActivity::render() {$/;"	f	class:SettingsActivity
 render	source/TitleActivity.cpp	/^void TitleActivity::render() {$/;"	f	class:TitleActivity
 renderBattleback	include/Battle.hpp	/^		void renderBattleback() { m_battleback->render(); }$/;"	f	class:Battle
 renderCopy	source/Image.cpp	/^void Image::renderCopy() {$/;"	f	class:Image
@@ -4434,6 +4485,7 @@ s_mallocFn	external/SLB.cpp	/^  static SLB::MallocFn s_mallocFn = NULL;$/;"	m	na
 safeDoFile	external/SLB.cpp	/^  bool Script::safeDoFile(const char *filename)$/;"	f	class:SLB::Script
 safeDoString	external/SLB.cpp	/^  bool Script::safeDoString(const char *o_code, const char *hint)$/;"	f	class:SLB::Script
 save	external/lua.c	/^static void save (LexState *ls, int c) {$/;"	f	file:
+save	source/SaveManager.cpp	/^void SaveManager::save() {$/;"	f	class:SaveManager
 save_and_next	external/lua.c	8720;"	d	file:
 savedpc	external/lua.c	/^      const Instruction *savedpc;$/;"	m	struct:CallInfo::__anon11::__anon12	file:
 savestack	external/lua.c	3217;"	d	file:
@@ -4480,6 +4532,7 @@ setName	external/SLB.cpp	/^  void ClassInfo::setName(const String& name)$/;"	f	c
 setObject__index	external/SLB.cpp	/^  void ClassInfo::setObject__index( FuncCall *func )$/;"	f	class:SLB::ClassInfo
 setObject__newindex	external/SLB.cpp	/^  void ClassInfo::setObject__newindex( FuncCall *func )$/;"	f	class:SLB::ClassInfo
 setPosRect	source/Image.cpp	/^void Image::setPosRect(s16 x, s16 y, u16 w, u16 h) {$/;"	f	class:Image
+setPosition	include/Battler.hpp	/^		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }$/;"	f	class:Battler
 setRendererColor	source/GameWindow.cpp	/^void GameWindow::setRendererColor(Color color) {$/;"	f	class:GameWindow
 setStyle	source/Font.cpp	/^void Font::setStyle(FontSize size, int style) {$/;"	f	class:Font
 setUSerFlags	external/SLB.hpp	/^    void setUSerFlags(size_t flags) { _flags = (flags & I_UserMask); }$/;"	f	class:SLB::InstanceBase
@@ -4559,6 +4612,8 @@ sizep	external/lua.c	/^  int sizep;  \/* size of `p' *\/$/;"	m	struct:Proto	file
 sizestring	external/lua.c	2681;"	d	file:
 sizeudata	external/lua.c	2683;"	d	file:
 sizeupvalues	external/lua.c	/^  int sizeupvalues;  \/* size of 'upvalues' *\/$/;"	m	struct:Proto	file:
+skills	include/ItemManager.hpp	/^		static std::vector<Skill*> skills;$/;"	m	class:ItemManager
+skills	source/ItemManager.cpp	/^std::vector<Skill*> ItemManager::skills;$/;"	m	class:ItemManager	file:
 skipBOM	external/lua.c	/^static int skipBOM (LoadF *lf) {$/;"	f	file:
 skip_sep	external/lua.c	/^static int skip_sep (LexState *ls) {$/;"	f	file:
 skipcomment	external/lua.c	/^static int skipcomment (LoadF *lf, int *cp) {$/;"	f	file:
@@ -4766,6 +4821,7 @@ unlinkupval	external/lua.c	/^static void unlinkupval (UpVal *uv) {$/;"	f	file:
 unlock	external/SLB.hpp	/^  inline void Mutex::unlock() {}$/;"	f	class:SLB::Mutex
 unlock	external/SLB.hpp	/^  inline void Mutex::unlock()$/;"	f	class:SLB::Mutex
 unmakemask	external/lua.c	/^static char *unmakemask (int mask, char *smask) {$/;"	f	file:
+unmute	source/Sound.cpp	/^void Sound::Music::unmute() {$/;"	f	class:Sound::Music
 unpack	external/lua.c	/^static int unpack (lua_State *L) {$/;"	f	file:
 unref	external/SLB.hpp	/^    static const typename Iterator::value_type unref(const Iterator& i) { return *i; }$/;"	f	struct:SLB::StdConstIteratorTraits
 unref	external/SLB.hpp	/^    static typename Iterator::value_type unref(Iterator& i) { return *i; }$/;"	f	struct:SLB::StdIteratorTraits
@@ -4784,6 +4840,7 @@ update	source/MapActivity.cpp	/^void MapActivity::update() {$/;"	f	class:MapActi
 update	source/MenuActivity.cpp	/^void MenuActivity::update() {$/;"	f	class:MenuActivity
 update	source/MessageWindow.cpp	/^void MessageWindow::update() {$/;"	f	class:MessageWindow
 update	source/SelectableWindow.cpp	/^void SelectableWindow::update() {$/;"	f	class:SelectableWindow
+update	source/SettingsActivity.cpp	/^void SettingsActivity::update() {$/;"	f	class:SettingsActivity
 update	source/TitleActivity.cpp	/^void TitleActivity::update() {$/;"	f	class:TitleActivity
 update	source/Window.cpp	/^void Window::update() {$/;"	f	class:Window
 updateCursor	source/SelectableWindow.cpp	/^void SelectableWindow::updateCursor() {$/;"	f	class:SelectableWindow
@@ -4865,6 +4922,7 @@ zgetc	external/lua.c	2127;"	d	file:
 ~AutoDeleteValue	external/SLB.hpp	/^  inline AutoDeleteValue<T>::~AutoDeleteValue()$/;"	f	class:SLB::AutoDeleteValue
 ~BaseProperty	external/SLB.cpp	/^BaseProperty::~BaseProperty()$/;"	f	class:SLB::BaseProperty
 ~Battle	source/Battle.cpp	/^Battle::~Battle() {$/;"	f	class:Battle
+~BattleAction	source/BattleAction.cpp	/^BattleAction::~BattleAction() {$/;"	f	class:BattleAction
 ~BattleActionWindow	source/BattleActionWindow.cpp	/^BattleActionWindow::~BattleActionWindow() {$/;"	f	class:BattleActionWindow
 ~BattleActivity	source/BattleActivity.cpp	/^BattleActivity::~BattleActivity() {$/;"	f	class:BattleActivity
 ~BattleChoiceWindow	source/BattleChoiceWindow.cpp	/^BattleChoiceWindow::~BattleChoiceWindow() {$/;"	f	class:BattleChoiceWindow
@@ -4931,6 +4989,8 @@ zgetc	external/lua.c	2127;"	d	file:
 ~RefValue	external/SLB.hpp	/^    virtual ~RefValue() {}$/;"	f	class:SLB::RefValue
 ~Script	external/SLB.cpp	/^  Script::~Script()$/;"	f	class:SLB::Script
 ~SelectableWindow	source/SelectableWindow.cpp	/^SelectableWindow::~SelectableWindow() {$/;"	f	class:SelectableWindow
+~SettingsActivity	source/SettingsActivity.cpp	/^SettingsActivity::~SettingsActivity() {$/;"	f	class:SettingsActivity
+~Skill	source/Skill.cpp	/^Skill::~Skill() {$/;"	f	class:Skill
 ~Sprite	source/Sprite.cpp	/^Sprite::~Sprite() {$/;"	f	class:Sprite
 ~StatefulHybrid	external/SLB.hpp	/^    virtual ~StatefulHybrid() { S::close(); }$/;"	f	class:SLB::StatefulHybrid
 ~StrPair	external/tinyxml2.cpp	/^StrPair::~StrPair()$/;"	f	class:tinyxml2::StrPair

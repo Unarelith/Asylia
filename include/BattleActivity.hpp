@@ -16,7 +16,7 @@
  * =====================================================================================
  */
 #ifndef BATTLEACTIVITY_HPP_
-#define BATTLEACTIVITY_HPP
+#define BATTLEACTIVITY_HPP_
 
 class BattleActivity : public Activity {
 	public:
@@ -33,7 +33,8 @@ class BattleActivity : public Activity {
 			Action,
 			ChooseActorTarget,
 			ChooseEnemyTarget,
-			EnemyTurn
+			EnemyTurn,
+			ProcessActions
 		};
 		
 	private:
@@ -50,6 +51,10 @@ class BattleActivity : public Activity {
 		BattleActionWindow m_battleActionwin;
 		
 		InfoWindow *m_infowin;
+		
+		Item *m_currentItem;
+		
+		bool m_processingAction;
 };
 
 #endif // BATTLEACTIVITY_HPP_

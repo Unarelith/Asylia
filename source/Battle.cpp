@@ -48,3 +48,23 @@ void Battle::drawArrow(Battler *battler) {
 	Interface::interface->render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
 
+void Battle::enemyTurn() {
+	for(auto *it : m_enemies) {
+		pushAction(it, m_actors[rand() % m_actors.size()], ItemManager::skills[0]);
+	}
+}
+
+void Battle::pushAction(Battler *actor, Battler *receiver, Item *item) {
+	m_actionStack.push(new BattleAction(actor, receiver, item));
+}
+
+void Battle::processAction() {
+	m_actionStack.top()->process();
+}
+
+void Battle::checkDead() {
+	if(m_actionStack.top()->receiver()->hp() == 0) {
+		m_actionStack.top()->receiver()->kill();
+	}
+}
+

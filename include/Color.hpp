@@ -25,6 +25,8 @@ class Color {
 		
 		void invert() { r=255-r; g=255-g; b=255-b; }
 		
+		Color operator+(Color c) { return Color(r + c.r, g + c.g, b + c.b, a + c.a); }
+		
 		u8 r;
 		u8 g;
 		u8 b;

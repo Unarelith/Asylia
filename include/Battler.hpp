@@ -26,6 +26,8 @@ class Battler {
 		
 		void blink();
 		
+		void kill();
+		
 		void linkInventory(Inventory *inventory) { m_inventory = inventory; }
 		
 		std::string name() const { return m_name; }
@@ -44,10 +46,14 @@ class Battler {
 		
 		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }
 		
+		void hurt(u16 damages) { m_hp -= damages; if(m_hp < 0) m_hp = 0; }
+		
 		u16 totalAtk();
 		u16 totalDef();
 		
 		std::string getStateString();
+		
+		void attack(Battler *battler, Skill *skill);
 		
 		enum State {
 			Normal

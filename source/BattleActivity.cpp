@@ -29,6 +29,10 @@ BattleActivity::BattleActivity() {
 	
 	m_infowin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 	
+	m_currentItem = NULL;
+	
+	m_processingAction = false;
+	
 	Sound::Music::play(Sound::Music::battle, -1);
 }
 
@@ -46,15 +50,14 @@ void BattleActivity::update() {
 				case 0:
 					m_mode = Mode::Action;
 					break;
+				case 1:
+					Sound::Effect::play(Sound::Effect::back);
+					ActivityManager::pop();
+					Sound::Music::halt();
+					Sound::Music::play(Sound::Music::theme, -1);
+					break;
 				default: break;
 			}
-		}
-		
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
-			ActivityManager::pop();
-			Sound::Music::halt();
-			Sound::Music::play(Sound::Music::theme, -1);
 		}
 	}
 	else if(m_mode == Mode::Action) {
@@ -75,7 +78,12 @@ void BattleActivity::update() {
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
-			m_mode = Mode::Choice;
+			if(m_currentPos == 0) {
+				m_mode = Mode::Choice;
+			} else {
+				m_currentPos--;
+				m_battle->popAction();
+			}
 		}
 	}
 	else if(m_mode == Mode::ChooseActorTarget) {
@@ -111,6 +119,41 @@ void BattleActivity::update() {
 			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = 0;
 		}
 		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			
+			m_battle->pushAction(m_battle->actors()[m_currentPos], m_battle->enemies()[m_arrowPos], ItemManager::skills[0]);
+			m_arrowPos = 0;
+			m_currentPos++;
+			if(m_currentPos >= (s8)m_battle->actors().size()) {
+				m_currentPos = 0;
+				m_mode = Mode::EnemyTurn;
+			} else {
+				m_mode = Mode::Action;
+			}
+		}
+		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+			Sound::Effect::play(Sound::Effect::back);
+			m_mode = Mode::Action;
+		}
+	}
+	else if(m_mode == Mode::EnemyTurn) {
+		m_battle->enemyTurn();
+		m_mode = Mode::ProcessActions;
+	}
+	else if(m_mode == Mode::ProcessActions) {
+		if(m_battle->actionStackEmpty()) {
+			m_mode = Mode::Choice;
+			return;
+		}
+		
+		if(!m_processingAction) {
+			m_battle->processAction();
+			m_battle->checkDead();
+			m_processingAction = true;
+		}
+		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			m_mode = Mode::Action;
@@ -138,5 +181,14 @@ void BattleActivity::render() {
 	}
 	
 	m_actorStatswin.drawActors(m_battle->actors());
+	
+	if(m_mode == Mode::ProcessActions) {
+		if(m_processingAction) {
+			if(m_battle->drawAction()) {
+				m_processingAction = false;
+				m_battle->popAction();
+			}
+		}
+	}
 }
 

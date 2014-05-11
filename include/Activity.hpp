@@ -36,7 +36,7 @@ class Activity {
 			Lua,
 			TitleScreen,
 			GameEnd,
-			Item,
+			Items,
 			Equip,
 			BattleAct
 		} Type;
