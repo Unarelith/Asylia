@@ -4,6 +4,6 @@
 		<stats level="1" hp="60" sp="40" atk="10" def="10"/>
 	</enemy>
 	<enemy name="Demon" appearance="Devil03">
-		<stats level="50" hp="7385" sp="6538" atk="3589" def="4528"/>
+		<stats level="1" hp="100" sp="50" atk="15" def="9"/>
 	</enemy>
 </enemies>

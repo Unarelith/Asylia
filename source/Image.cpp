@@ -19,6 +19,8 @@
 
 Image::Image() {
 	m_texture = NULL;
+	
+	m_hidden = false;
 }
 
 Image::Image(const Image &img) {
@@ -46,6 +48,8 @@ Image::Image(const Image &img) {
 	m_posRect.y = img.m_posRect.y;
 	m_posRect.w = img.m_posRect.w;
 	m_posRect.h = img.m_posRect.h;
+	
+	m_hidden = false;
 }
 
 Image::Image(const char *filename) {
@@ -80,6 +84,8 @@ Image::Image(const char *filename) {
 	m_posRect.y = 0;
 	m_posRect.w = m_width;
 	m_posRect.h = m_height;
+	
+	m_hidden = false;
 }
 
 Image::Image(SDL_Surface *surface) {
@@ -98,6 +104,8 @@ Image::Image(SDL_Surface *surface) {
 	m_posRect.y = 0;
 	m_posRect.w = m_width;
 	m_posRect.h = m_height;
+	
+	m_hidden = false;
 }
 
 Image::~Image() {
@@ -135,6 +143,8 @@ void Image::reload(const char *filename) {
 	m_posRect.y = 0;
 	m_posRect.w = m_width;
 	m_posRect.h = m_height;
+	
+	m_hidden = false;
 }
 
 void Image::reload(SDL_Surface *surface) {
@@ -155,11 +165,18 @@ void Image::reload(SDL_Surface *surface) {
 	m_posRect.y = 0;
 	m_posRect.w = m_width;
 	m_posRect.h = m_height;
+	
+	m_hidden = false;
 }
 
 void Image::renderCopy() {
-	if(m_texture) SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
-	else GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color(255, 255, SDL_GetTicks() % 256));
+	if(m_texture) {
+		if(!m_hidden) {
+			SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
+		}
+	} else {
+		GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color(255, 255, SDL_GetTicks() % 256));
+	}
 }
 
 void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {

@@ -60,7 +60,16 @@ void BattleActivity::update() {
 			}
 		}
 	}
-	else if(m_mode == Mode::Action) {
+	
+	if(m_mode == Mode::Action) {
+		while(m_battle->actors()[m_currentPos++]->hp() == 0) {
+			if(m_currentPos >= (s8)m_battle->actors().size()) {
+				m_mode = Mode::EnemyTurn;
+				break;
+			}
+		}
+		m_currentPos--;
+		
 		m_battleActionwin.update();
 		
 		m_battle->actors()[m_currentPos]->blink();
@@ -81,22 +90,37 @@ void BattleActivity::update() {
 			if(m_currentPos == 0) {
 				m_mode = Mode::Choice;
 			} else {
-				m_currentPos--;
+				while(m_battle->actors()[m_currentPos--]->hp() == 0) {
+					if(m_currentPos < 0) {
+						m_mode = Mode::Choice;
+						break;
+					}
+				}
+				
 				m_battle->popAction();
 			}
 		}
 	}
-	else if(m_mode == Mode::ChooseActorTarget) {
+	
+	if(m_mode == Mode::ChooseActorTarget) {
 		m_battle->actors()[m_currentPos]->blink();
 		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
-			m_arrowPos--;
+			
+			while(m_battle->actors()[m_arrowPos--]->hp() == 0) {
+				if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
+			}
+			
 			if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
 		}
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
-			m_arrowPos++;
+			
+			while(m_battle->actors()[m_arrowPos++]->hp() == 0) {
+				if(m_arrowPos > (s8)m_battle->actors().size()) m_arrowPos = 0;
+			}
+			
 			if(m_arrowPos >= (s16)m_battle->actors().size()) m_arrowPos = 0;
 		}
 		
@@ -105,17 +129,26 @@ void BattleActivity::update() {
 			m_mode = Mode::Action;
 		}
 	}
-	else if(m_mode == Mode::ChooseEnemyTarget) {
+	
+	if(m_mode == Mode::ChooseEnemyTarget) {
 		m_battle->actors()[m_currentPos]->blink();
 		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
-			m_arrowPos--;
+			
+			while(m_battle->enemies()[m_arrowPos--]->hp() == 0) {
+				if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
+			}
+			
 			if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
 		}
-		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
+		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
-			m_arrowPos++;
+			
+			while(m_battle->enemies()[m_arrowPos++]->hp() == 0) {
+				if(m_arrowPos >= (s8)m_battle->enemies().size()) m_arrowPos = 0;
+			}
+			
 			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = 0;
 		}
 		
@@ -138,11 +171,13 @@ void BattleActivity::update() {
 			m_mode = Mode::Action;
 		}
 	}
-	else if(m_mode == Mode::EnemyTurn) {
+	
+	if(m_mode == Mode::EnemyTurn) {
 		m_battle->enemyTurn();
 		m_mode = Mode::ProcessActions;
 	}
-	else if(m_mode == Mode::ProcessActions) {
+	
+	if(m_mode == Mode::ProcessActions) {
 		if(m_battle->actionStackEmpty()) {
 			m_mode = Mode::Choice;
 			return;
@@ -150,13 +185,9 @@ void BattleActivity::update() {
 		
 		if(!m_processingAction) {
 			m_battle->processAction();
-			m_battle->checkDead();
 			m_processingAction = true;
-		}
-		
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
-			m_mode = Mode::Action;
+		} else {
+			m_battle->checkDead();
 		}
 	}
 }

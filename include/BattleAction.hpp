@@ -37,6 +37,8 @@ class BattleAction {
 		Item *m_item;
 		
 		s32 m_damages;
+		
+		double m_variance;
 };
 
 #endif // BATTLEACTION_HPP_

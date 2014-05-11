@@ -24,6 +24,8 @@ BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
 	m_item = item;
 	
 	m_damages = -1;
+	
+	m_variance = 0.20;
 }
 
 BattleAction::~BattleAction() {
@@ -31,8 +33,10 @@ BattleAction::~BattleAction() {
 
 void BattleAction::process() {
 	if(m_item->type() == Item::Type::Skill) {
-		m_damages = m_actor->atk() + ((Skill*)(m_item))->atk() - m_receiver->def();
-		if(m_damages < 0) m_damages = 0;
+		m_damages = (m_actor->totalAtk() + ((Skill*)(m_item))->atk()) * 4 - m_receiver->def() * 2;
+		if(m_damages <= 0) m_damages = 1;
+		m_damages += (rand() % (int)ceil(m_variance * m_damages * 2)) - m_variance * m_damages;
+		if(m_damages <= 0) m_damages = 0;
 		m_receiver->hurt(m_damages);
 	}
 }

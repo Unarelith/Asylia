@@ -45,6 +45,8 @@ class Image {
 		
 		SDL_Rect posRect() const { return m_posRect; }
 		
+		void hidden(bool hidden) { m_hidden = hidden; }
+		
 	protected:
 		u16 m_width;
 		u16 m_height;
@@ -53,6 +55,8 @@ class Image {
 		
 		SDL_Rect m_clipRect;
 		SDL_Rect m_posRect;
+		
+		bool m_hidden;
 };
 
 #endif // IMAGE_HPP_

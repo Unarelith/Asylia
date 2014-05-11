@@ -92,7 +92,23 @@ void Battler::attack(Battler *battler, Skill *skill) {
 	battler->hurt(m_atk + skill->atk());
 }
 
+u8 r = 0;
+u8 a = 255;
 void Battler::kill() {
-	m_image->setColorMod(Color::red);
+	if(r < 248) {
+		r += 7;
+		m_image->setColorMod(Color(r, 255, 255));
+	}
+	
+	if(a > 10) {
+		a -= 10;
+		m_image->setAlphaMod(a);
+	}
+	
+	if(a <= 10) {
+		m_image->hidden(true);
+		a = 255;
+		r = 0;
+	}
 }
 

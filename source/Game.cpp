@@ -27,6 +27,8 @@ std::string to_string(int n) {
 #endif
 
 Game::Game() {
+	srand(time(NULL));
+	
 	SDLManager::init();
 	
 	GameWindow::main = new GameWindow(APP_NAME);
