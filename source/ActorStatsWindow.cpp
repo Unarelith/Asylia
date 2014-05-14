@@ -34,7 +34,8 @@ void ActorStatsWindow::drawActors(std::vector<std::pair<u8, Actor*>> actors) {
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	Image hpImg, spImg;
 	
-	if(((BattleActivity*)ActivityManager::top())->mode() % 4 == 0) {
+	u8 mode = ((BattleActivity*)ActivityManager::top())->mode();
+	if(mode == BattleActivity::Mode::Choice || mode == BattleActivity::Mode::EnemyTurn || mode == BattleActivity::Mode::ProcessActions || mode == BattleActivity::Mode::Victory) {
 		actor->image()->setAlphaMod(190);
 	}
 	

@@ -34,7 +34,8 @@ class BattleActivity : public Activity {
 			ChooseActorTarget,
 			ChooseEnemyTarget,
 			EnemyTurn,
-			ProcessActions
+			ProcessActions,
+			Victory
 		};
 		
 	private:

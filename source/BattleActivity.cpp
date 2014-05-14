@@ -72,7 +72,7 @@ void BattleActivity::update() {
 			switch(m_battleActionwin.pos()) {
 				case 0:
 					m_mode = Mode::ChooseEnemyTarget;
-					m_arrowPos = 0;
+					m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
 					break;
 				default: break;
 			}
@@ -99,18 +99,14 @@ void BattleActivity::update() {
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->getActor(m_arrowPos--)->hp() == 0) {
-				if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
-			}
+			m_arrowPos = m_battle->getNextActorPair(-1, m_arrowPos).first;
 			
 			if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
 		}
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->getActor(m_arrowPos++)->hp() == 0) {
-				if(m_arrowPos >= (s8)m_battle->actors().size()) m_arrowPos = 0;
-			}
+			m_arrowPos = m_battle->getNextActorPair(1, m_arrowPos).first;
 			
 			if(m_arrowPos >= (s16)m_battle->actors().size()) m_arrowPos = 0;
 		}
@@ -127,18 +123,14 @@ void BattleActivity::update() {
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->getEnemy(m_arrowPos--)->hp() == 0) {
-				if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
-			}
+			m_arrowPos = m_battle->getNextEnemyPair(-1, m_arrowPos).first;
 			
 			if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
 		}
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->getEnemy(m_arrowPos++)->hp() == 0) {
-				if(m_arrowPos >= (s8)m_battle->enemies().size()) m_arrowPos = 0;
-			}
+			m_arrowPos = m_battle->getNextEnemyPair(1, m_arrowPos).first;
 			
 			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = 0;
 		}

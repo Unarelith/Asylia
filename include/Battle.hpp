@@ -45,6 +45,7 @@ class Battle {
 		u8 getEnemyPos(u8 id) { return m_enemies[id].first; }
 		
 		std::pair<u8, Actor*> getNextActorPair(s8 v, s8 current);
+		std::pair<u8, Enemy*> getNextEnemyPair(s8 v, s8 current);
 		
 		std::vector<std::pair<u8, Actor*>> actors() { return m_actors; }
 		std::vector<std::pair<u8, Enemy*>> enemies() { return m_enemies; }

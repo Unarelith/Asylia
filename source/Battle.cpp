@@ -76,11 +76,22 @@ void Battle::checkDead() {
 std::pair<u8, Actor*> Battle::getNextActorPair(s8 v, s8 current) {
 	do {
 		current += v;
-		if(current >= (s8)actors().size() || current < 0) {
+		if(current >= (s8)m_actors.size() || current < 0) {
 			return std::make_pair(current, (Actor*)NULL);
 		}
 	} while(getActor(current)->hp() == 0);
 	
 	return m_actors[current];
+}
+
+std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
+	do {
+		current += v;
+		if(current >= (s8)m_enemies.size() || current < 0) {
+			return std::make_pair(current, (Enemy*)NULL);
+		}
+	} while(getEnemy(current)->hp() == 0);
+	
+	return m_enemies[current];
 }
 
