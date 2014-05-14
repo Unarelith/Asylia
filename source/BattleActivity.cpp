@@ -49,6 +49,7 @@ void BattleActivity::update() {
 			switch(m_battleChoicewin.pos()) {
 				case 0:
 					m_mode = Mode::Action;
+					m_currentPos = m_battle->getNextActorPair(1, -1).first;
 					break;
 				case 1:
 					Sound::Effect::play(Sound::Effect::back);
@@ -62,17 +63,9 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::Action) {
-		while(m_battle->actors()[m_currentPos++]->hp() == 0) {
-			if(m_currentPos >= (s8)m_battle->actors().size()) {
-				m_mode = Mode::EnemyTurn;
-				break;
-			}
-		}
-		m_currentPos--;
-		
 		m_battleActionwin.update();
 		
-		m_battle->actors()[m_currentPos]->blink();
+		m_battle->getActor(m_currentPos)->blink();
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
@@ -90,11 +83,9 @@ void BattleActivity::update() {
 			if(m_currentPos == 0) {
 				m_mode = Mode::Choice;
 			} else {
-				while(m_battle->actors()[m_currentPos--]->hp() == 0) {
-					if(m_currentPos < 0) {
-						m_mode = Mode::Choice;
-						break;
-					}
+				if(m_battle->getNextActorPair(-1, m_currentPos).second == NULL) {
+					m_currentPos = 0;
+					m_mode = Mode::Choice;
 				}
 				
 				m_battle->popAction();
@@ -103,12 +94,12 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::ChooseActorTarget) {
-		m_battle->actors()[m_currentPos]->blink();
+		m_battle->getActor(m_currentPos)->blink();
 		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->actors()[m_arrowPos--]->hp() == 0) {
+			while(m_battle->getActor(m_arrowPos--)->hp() == 0) {
 				if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
 			}
 			
@@ -117,8 +108,8 @@ void BattleActivity::update() {
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->actors()[m_arrowPos++]->hp() == 0) {
-				if(m_arrowPos > (s8)m_battle->actors().size()) m_arrowPos = 0;
+			while(m_battle->getActor(m_arrowPos++)->hp() == 0) {
+				if(m_arrowPos >= (s8)m_battle->actors().size()) m_arrowPos = 0;
 			}
 			
 			if(m_arrowPos >= (s16)m_battle->actors().size()) m_arrowPos = 0;
@@ -131,12 +122,12 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::ChooseEnemyTarget) {
-		m_battle->actors()[m_currentPos]->blink();
+		m_battle->getActor(m_currentPos)->blink();
 		
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->enemies()[m_arrowPos--]->hp() == 0) {
+			while(m_battle->getEnemy(m_arrowPos--)->hp() == 0) {
 				if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
 			}
 			
@@ -145,7 +136,7 @@ void BattleActivity::update() {
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			while(m_battle->enemies()[m_arrowPos++]->hp() == 0) {
+			while(m_battle->getEnemy(m_arrowPos++)->hp() == 0) {
 				if(m_arrowPos >= (s8)m_battle->enemies().size()) m_arrowPos = 0;
 			}
 			
@@ -155,9 +146,9 @@ void BattleActivity::update() {
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			
-			m_battle->pushAction(m_battle->actors()[m_currentPos], m_battle->enemies()[m_arrowPos], ItemManager::skills[0]);
+			m_battle->pushAction(m_battle->getActor(m_currentPos), m_battle->getEnemy(m_arrowPos), ItemManager::skills[0]);
 			m_arrowPos = 0;
-			m_currentPos++;
+			m_currentPos = m_battle->getNextActorPair(1, m_currentPos).first;
 			if(m_currentPos >= (s8)m_battle->actors().size()) {
 				m_currentPos = 0;
 				m_mode = Mode::EnemyTurn;
@@ -204,11 +195,11 @@ void BattleActivity::render() {
 		m_battleActionwin.draw(m_currentPos);
 	}
 	else if(m_mode == Mode::ChooseActorTarget) {
-		m_battle->drawArrow(m_battle->actors()[m_arrowPos]);
+		m_battle->drawArrow(m_battle->getActor(m_arrowPos));
 	}
 	else if(m_mode == Mode::ChooseEnemyTarget) {
-		m_battle->drawArrow(m_battle->enemies()[m_arrowPos]);
-		m_infowin->drawTextCentered(m_battle->enemies()[m_arrowPos]->name());
+		m_battle->drawArrow(m_battle->getEnemy(m_arrowPos));
+		m_infowin->drawTextCentered(m_battle->getEnemy(m_arrowPos)->name());
 	}
 	
 	m_actorStatswin.drawActors(m_battle->actors());

@@ -23,11 +23,11 @@ ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(),
 ActorStatsWindow::~ActorStatsWindow() {
 }
 
-void ActorStatsWindow::drawActors(std::vector<Actor*> actors) {
+void ActorStatsWindow::drawActors(std::vector<std::pair<u8, Actor*>> actors) {
 	Window::draw();
 	
 	for(u8 i = 0 ; i < actors.size() ; i++) {
-		drawActor(actors[i], i);
+		drawActor(actors[i].second, i);
 	}
 }
 
@@ -54,9 +54,9 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	Interface::defaultFont->printScaled(actor->getStateString().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 116, m_width - 40, 32, FONT_LARGE);
 }
 
-void ActorStatsWindow::drawEnemies(std::vector<Enemy*> enemies) {
+void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {
 	for(u8 i = 0 ; i < enemies.size() ; i++) {
-		drawEnemy(enemies[i], i, enemies.size());
+		drawEnemy(enemies[i].second, i, enemies.size());
 	}
 }
 
