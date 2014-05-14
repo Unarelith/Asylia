@@ -39,6 +39,9 @@ class Battler {
 		s16 hp() const { return m_hp; }
 		s16 sp() const { return m_sp; }
 		
+		u16 basehp() const { return m_basehp; }
+		u16 basesp() const { return m_basesp; }
+		
 		u16 atk() const { return m_atk; }
 		u16 def() const { return m_def; }
 		
@@ -78,6 +81,9 @@ class Battler {
 		
 		s16 m_hp;
 		s16 m_sp;
+		
+		u16 m_basehp;
+		u16 m_basesp;
 		
 		u16 m_atk;
 		u16 m_def;

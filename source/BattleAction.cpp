@@ -32,6 +32,8 @@ BattleAction::~BattleAction() {
 }
 
 void BattleAction::process() {
+	if(!m_receiver) return;
+	
 	if(m_item->type() == Item::Type::Skill) {
 		m_damages = (m_actor->totalAtk() + ((Skill*)(m_item))->atk()) * 4 - m_receiver->def() * 2;
 		if(m_damages <= 0) m_damages = 1;
@@ -48,6 +50,7 @@ s8 dmgvy = 0;
 u16 dmgmvcount = 0;
 bool BattleAction::drawDamages() {
 	if(m_actor->hp() == 0) return true;
+	if(!m_receiver) return true;
 	
 	if(dmgx == -1 && dmgy == -1) {
 		dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - 12;

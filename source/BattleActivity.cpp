@@ -73,6 +73,10 @@ void BattleActivity::update() {
 				case 0:
 					m_mode = Mode::ChooseEnemyTarget;
 					m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
+					if(m_arrowPos >= (s8)m_battle->enemies().size()) {
+						m_arrowPos = 0;
+					}
+					debug("m_arrowPos from Action: %d", m_arrowPos);
 					break;
 				default: break;
 			}
@@ -126,6 +130,7 @@ void BattleActivity::update() {
 			m_arrowPos = m_battle->getNextEnemyPair(-1, m_arrowPos).first;
 			
 			if(m_arrowPos < 0) m_arrowPos = m_battle->getNextEnemyPair(-1, m_battle->enemies().size()).first;
+			debug("m_arrowPos from Left: %d", m_arrowPos);
 		}
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
@@ -133,6 +138,7 @@ void BattleActivity::update() {
 			m_arrowPos = m_battle->getNextEnemyPair(1, m_arrowPos).first;
 			
 			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
+			debug("m_arrowPos from Right: %d", m_arrowPos);
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
@@ -172,6 +178,14 @@ void BattleActivity::update() {
 		} else {
 			m_battle->checkDead();
 		}
+		
+		u8 i = 0;
+		for(auto &it : m_battle->actors()) {
+			if(it.second->hp() == 0) i++;
+		}
+		if(i == m_battle->actors().size()) {
+			ActivityManager::push(new EndActivity);
+		}
 	}
 }
 
@@ -190,8 +204,10 @@ void BattleActivity::render() {
 		m_battle->drawArrow(m_battle->getActor(m_arrowPos));
 	}
 	else if(m_mode == Mode::ChooseEnemyTarget) {
-		m_battle->drawArrow(m_battle->getEnemy(m_arrowPos));
-		m_infowin->drawTextCentered(m_battle->getEnemy(m_arrowPos)->name());
+		debug("m_arrowPos before drawArrow: %d", m_arrowPos);
+		Enemy *enemy = m_battle->getEnemy(m_arrowPos);
+		m_battle->drawArrow(enemy);
+		m_infowin->drawTextCentered(enemy->name() + " [HP: " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");
 	}
 	
 	m_actorStatswin.drawActors(m_battle->actors());

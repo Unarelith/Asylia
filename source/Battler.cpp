@@ -29,6 +29,9 @@ Battler::Battler(const Battler &battler) {
 	m_hp = battler.m_hp;
 	m_sp = battler.m_sp;
 	
+	m_basehp = battler.m_basehp;
+	m_basesp = battler.m_basesp;
+	
 	m_atk = battler.m_atk;
 	m_def = battler.m_def;
 	
@@ -48,6 +51,9 @@ Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16
 	
 	m_hp = hp;
 	m_sp = sp;
+	
+	m_basehp = hp;
+	m_basesp = sp;
 	
 	m_atk = atk;
 	m_def = def;

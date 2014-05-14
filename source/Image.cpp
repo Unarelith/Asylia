@@ -195,6 +195,7 @@ void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, 
 
 void Image::renderInViewport(s16 x, s16 y) {
 	render(GameWindow::main->viewportX() + x, GameWindow::main->viewportY() + y);
+	
 	m_posRect.x = x;
 	m_posRect.y = y;
 }

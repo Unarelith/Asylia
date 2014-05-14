@@ -93,11 +93,14 @@ std::pair<u8, Actor*> Battle::getNextActorPair(s8 v, s8 current) {
 std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 	do {
 		current += v;
+		debug("Battle.cpp:96 Battle::getNextEnemyPair(%d, %d)", v, current);
 		if(current >= (s8)m_enemies.size() || current < 0) {
+			debug("Battle.cpp:98 Battle::getNextEnemyPair = (%d, %p)", current, (void*)getEnemy(current));
 			return std::make_pair(current, (Enemy*)NULL);
 		}
 	} while(getEnemy(current)->hp() == 0);
 	
+	debug("Battle.cpp:102 Battle::getNextEnemyPair = (%d, %p)", current, (void*)getEnemy(current));
 	return m_enemies[current];
 }
 
