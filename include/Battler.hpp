@@ -59,6 +59,14 @@ class Battler {
 			Normal
 		};
 		
+		u8 type() const { return m_type; }
+		
+		enum Type {
+			TypeNone,
+			TypeActor,
+			TypeEnemy
+		};
+		
 	protected:
 		std::string m_name;
 		
@@ -75,6 +83,8 @@ class Battler {
 		u16 m_def;
 		
 		u8 m_state;
+		
+		u8 m_type;
 };
 
 #endif // BATTLER_HPP_

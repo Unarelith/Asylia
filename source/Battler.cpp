@@ -33,6 +33,8 @@ Battler::Battler(const Battler &battler) {
 	m_def = battler.m_def;
 	
 	m_state = battler.m_state;
+	
+	m_type = battler.m_type;
 }
 
 Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) {
@@ -51,6 +53,8 @@ Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16
 	m_def = def;
 	
 	m_state = State::Normal;
+	
+	m_type = Type::TypeNone;
 }
 
 Battler::~Battler() {

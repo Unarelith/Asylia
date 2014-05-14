@@ -30,6 +30,8 @@ class BattleAction {
 		Battler *actor() { return m_actor; }
 		Battler *receiver() { return m_receiver; }
 		
+		void setReceiver(Battler *receiver) { m_receiver = receiver; }
+		
 	private:
 		Battler *m_actor;
 		Battler *m_receiver;

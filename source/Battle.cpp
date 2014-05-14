@@ -62,9 +62,15 @@ void Battle::pushAction(Battler *actor, Battler *receiver, Item *item) {
 }
 
 void Battle::processAction() {
-	if(m_actionStack.top()->actor()->hp() != 0 && m_actionStack.top()->receiver()->hp() != 0) {
-		m_actionStack.top()->process();
+	if(m_actionStack.top()->receiver()->hp() == 0) {
+		if(m_actionStack.top()->receiver()->type() == Battler::Type::TypeEnemy) {
+			m_actionStack.top()->setReceiver(getNextEnemyPair(1, -1).second);
+		} else {
+			m_actionStack.top()->setReceiver(getNextEnemyPair(1, -1).second);
+		}
 	}
+	
+	m_actionStack.top()->process();
 }
 
 void Battle::checkDead() {

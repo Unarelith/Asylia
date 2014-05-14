@@ -101,14 +101,14 @@ void BattleActivity::update() {
 			
 			m_arrowPos = m_battle->getNextActorPair(-1, m_arrowPos).first;
 			
-			if(m_arrowPos < 0) m_arrowPos = m_battle->actors().size() - 1;
+			if(m_arrowPos < 0) m_arrowPos = m_battle->getNextActorPair(-1, m_battle->actors().size()).first;
 		}
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
 			m_arrowPos = m_battle->getNextActorPair(1, m_arrowPos).first;
 			
-			if(m_arrowPos >= (s16)m_battle->actors().size()) m_arrowPos = 0;
+			if(m_arrowPos >= (s16)m_battle->actors().size()) m_arrowPos = m_battle->getNextActorPair(1, -1).first;
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
@@ -125,14 +125,14 @@ void BattleActivity::update() {
 			
 			m_arrowPos = m_battle->getNextEnemyPair(-1, m_arrowPos).first;
 			
-			if(m_arrowPos < 0) m_arrowPos = m_battle->enemies().size() - 1;
+			if(m_arrowPos < 0) m_arrowPos = m_battle->getNextEnemyPair(-1, m_battle->enemies().size()).first;
 		}
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
 			m_arrowPos = m_battle->getNextEnemyPair(1, m_arrowPos).first;
 			
-			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = 0;
+			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {

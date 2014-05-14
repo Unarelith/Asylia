@@ -47,6 +47,8 @@ s8 dmgvx = 0;
 s8 dmgvy = 0;
 u16 dmgmvcount = 0;
 bool BattleAction::drawDamages() {
+	if(m_actor->hp() == 0) return true;
+	
 	if(dmgx == -1 && dmgy == -1) {
 		dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - 12;
 		dmgy = m_receiver->image()->posRect().y + m_receiver->image()->posRect().h / 2 - 12;
