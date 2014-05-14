@@ -9,3 +9,4 @@
 /home/linux/NewProjects/Asylia/droid/libs/armeabi/libgnustl_shared.so \
 /home/linux/NewProjects/Asylia/droid/libs/armeabi/libSDL2_net.so \
 /home/linux/NewProjects/Asylia/droid/libs/armeabi/libmain.so \
+/home/linux/NewProjects/Asylia/droid/libs/armeabi/libnative_midi.so \

@@ -86,7 +86,7 @@ void Sound::Music::free() {
 void Sound::Music::load(const char *filename, Mix_Music **music) {
 	*music = Mix_LoadMUS(filename);
 	if(!*music) {
-		error("Unable to load sound effect: %s", filename);
+		error("Unable to load music: %s (ERROR: %s)", filename, Mix_GetError());
 		exit(EXIT_FAILURE);
 	}
 }

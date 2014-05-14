@@ -38,7 +38,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 		actor->image()->setAlphaMod(190);
 	}
 	
-	actor->image()->render(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
+	actor->image()->render(GameWindow::main->viewportX() + m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, GameWindow::main->viewportY() + m_y - actor->image()->height() / 6);
 	
 	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 40, 32, FONT_LARGE);
 	

@@ -2,3 +2,7 @@ Some issues:
 	- When a battler is dead:
 		~ Don't display action window and arrow
 		~ Transfer damages to another battler of the same list
+	- Some battle interface doesn't work with viewport
+	- Sometimes there's 65535 damages
+	
+=> Solution: Rewrite battle system

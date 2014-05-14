@@ -40,9 +40,13 @@
 	<text id="Demon" text="Démon"/>
 	
 	<!-- Event messages -->
-	<event id="0">
+	<event name="event0">
 		<message text="Salut, est-ce que tu sais que tu es dans un monde incroyable, fait de magie et d'autres choses que tu ne connais pas encore ?"/>
 		<message text="Tu devrais te préparer avant l'aventure !"/>
+	</event>
+	
+	<event name="event3c">
+		<message text="Eh mince ! J'ai encore loupé mon bus..."/>
 	</event>
 	
 	<!-- Items -->

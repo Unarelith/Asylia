@@ -31,6 +31,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    event2=event2 {
     main.lua
    }
+   event3c=event3c {
+    main.lua
+   }
   }
   locale=locale {
    en-us.xml

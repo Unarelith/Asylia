@@ -48,12 +48,13 @@ void LanguageManager::init(std::string language) {
 	
 	/* EVENTS */
 	XMLElement *eventElement = doc.FirstChildElement("language").FirstChildElement("event").ToElement();
-	u16 id = eventElement->IntAttribute("id");
+	std::string name;
 	u8 counter = 0;
 	while(eventElement) {
+		name = eventElement->Attribute("name");
 		XMLElement *eventMessageElement = eventElement->FirstChildElement("message");
 		while(eventMessageElement) {
-			text[std::string("event") + to_string(id) + "-" + to_string(counter)] = eventMessageElement->Attribute("text");
+			text[name + "-" + to_string(counter)] = eventMessageElement->Attribute("text");
 			eventMessageElement = eventMessageElement->NextSiblingElement("message");
 			counter++;
 		}
