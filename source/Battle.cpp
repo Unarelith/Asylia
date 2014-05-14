@@ -45,8 +45,8 @@ void Battle::drawArrow(Battler *battler) {
 	width = battler->image()->posRect().w;
 	height = battler->image()->posRect().h;
 	
-	x = battler->image()->posRect().x + width / 2 - 16;
-	y = battler->image()->posRect().y + height / 2;
+	x = GameWindow::main->viewportX() + battler->image()->posRect().x + width / 2 - 16;
+	y = GameWindow::main->viewportY() + battler->image()->posRect().y + height / 2;
 	
 	Interface::interface->render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
@@ -99,5 +99,9 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 	} while(getEnemy(current)->hp() == 0);
 	
 	return m_enemies[current];
+}
+
+void Battle::renderBattleback() {
+	m_battleback->render(GameWindow::main->viewportX(), GameWindow::main->viewportY());
 }
 

@@ -39,7 +39,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 		actor->image()->setAlphaMod(190);
 	}
 	
-	actor->image()->render(GameWindow::main->viewportX() + m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, GameWindow::main->viewportY() + m_y - actor->image()->height() / 6);
+	actor->image()->renderInViewport(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
 	
 	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 40, 32, FONT_LARGE);
 	
@@ -62,6 +62,6 @@ void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {
 }
 
 void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
-	enemy->image()->render();
+	enemy->image()->renderInViewport(enemy->image()->posRect().x, enemy->image()->posRect().y);
 }
 
