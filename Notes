@@ -1,0 +1,9 @@
+- Let ItemWindows get data they'll display
+- Delete EquipItemWindow and remplace it by a simple ItemWindow
+- Manage usable Items and their function through a lua script by object
+- Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
+	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
+- Create a new class SkillWindow
+	* Add it in the menu
+	* Add it in the battles
+- Maybe create Activity child classes instead of modes for BattleActivity

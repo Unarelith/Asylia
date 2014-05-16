@@ -20,7 +20,7 @@
 
 class ItemWindow : public SelectableWindow {
 	public:
-		ItemWindow();
+		ItemWindow(s16 x, s16 y, u16 width, u16 height);
 		~ItemWindow();
 		
 		void drawItem(u8 pos);

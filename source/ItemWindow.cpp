@@ -17,13 +17,13 @@
  */
 #include "Asylia.hpp"
 
-ItemWindow::ItemWindow() : SelectableWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52) {
+ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height) : SelectableWindow(x, y + 52, width, height) {
 	m_itemMax = CharacterManager::player->inventory()->nbItems();
 	m_columnMax = 2;
 	
 	m_pos = 0;
 	
-	m_infoWindow = new InfoWindow(150, 0, GameWindow::main->width() - 150, 52);
+	m_infoWindow = new InfoWindow(x, y, width, 52);
 }
 
 ItemWindow::~ItemWindow() {

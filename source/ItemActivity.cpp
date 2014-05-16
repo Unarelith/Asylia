@@ -19,20 +19,19 @@
 
 ItemActivity::ItemActivity() {
 	m_type = Type::Items;
+	
+	m_itemwin = new ItemWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height() - 52);
 }
 
 ItemActivity::~ItemActivity() {
+	delete m_itemwin;
 }
 
 void ItemActivity::update() {
-	m_itemwin.update();
+	m_itemwin->update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
-		
-		switch(m_itemwin.pos()) {
-			default: break;
-		}
 	}
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
@@ -44,6 +43,6 @@ void ItemActivity::update() {
 void ItemActivity::render() {
 	MenuActivity::render();
 	
-	m_itemwin.draw();
+	m_itemwin->draw();
 }
 

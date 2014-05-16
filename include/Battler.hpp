@@ -34,6 +34,8 @@ class Battler {
 		
 		Image *image() { return m_image; }
 		
+		Inventory *inventory() { return m_inventory; }
+		
 		u8 level() const { return m_level; }
 		
 		s16 hp() const { return m_hp; }

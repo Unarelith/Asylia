@@ -31,12 +31,13 @@ class BattleActivity : public Activity {
 		enum Mode {
 			Choice,
 			Action,
+			ItemWin,
 			ChooseActorTarget,
 			ChooseEnemyTarget,
 			EnemyTurn,
 			ProcessActions,
 			GameOver,
-			Victory
+			Victory,
 		};
 		
 	private:
@@ -51,6 +52,8 @@ class BattleActivity : public Activity {
 		
 		BattleChoiceWindow m_battleChoicewin;
 		BattleActionWindow m_battleActionwin;
+		
+		ItemWindow *m_itemwin;
 		
 		InfoWindow *m_infowin;
 		

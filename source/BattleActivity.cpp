@@ -27,6 +27,8 @@ BattleActivity::BattleActivity() {
 	
 	m_mode = Mode::Choice;
 	
+	m_itemwin = new ItemWindow(0, 0, GameWindow::main->width(), 320 - 52);
+	
 	m_infowin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 	
 	m_currentItem = NULL;
@@ -43,6 +45,8 @@ BattleActivity::BattleActivity() {
 
 BattleActivity::~BattleActivity() {
 	delete m_infowin;
+	
+	delete m_itemwin;
 	
 	delete m_battle;
 }
@@ -84,6 +88,10 @@ void BattleActivity::update() {
 						m_arrowPos = 0;
 					}
 					break;
+				case 3:
+					m_mode = Mode::ItemWin;
+					m_itemwin->pos(0);
+					break;
 				default: break;
 			}
 		}
@@ -96,10 +104,26 @@ void BattleActivity::update() {
 				if(m_battle->getNextActorPair(-1, m_currentPos).second == NULL) {
 					m_currentPos = 0;
 					m_mode = Mode::Choice;
+				} else {
+					m_currentPos--;
 				}
 				
 				m_battle->popAction();
 			}
+		}
+	}
+	
+	if(m_mode == Mode::ItemWin) {
+		m_itemwin->update();
+		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			m_currentItem = m_battle->getActor(m_currentPos)->inventory()->getItem(m_itemwin->pos());
+		}
+		
+		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+			Sound::Effect::play(Sound::Effect::back);
+			m_mode = Mode::Action;
 		}
 	}
 	
@@ -235,13 +259,20 @@ void BattleActivity::render() {
 		if(m_mode == Mode::Choice) {
 			m_battleChoicewin.draw();
 		}
-		else if(m_mode == Mode::Action) {
+		
+		if(m_mode == Mode::Action) {
 			m_battleActionwin.draw(m_currentPos);
 		}
-		else if(m_mode == Mode::ChooseActorTarget) {
+		
+		if(m_mode == Mode::ItemWin) {
+			m_itemwin->draw();
+		}
+		
+		if(m_mode == Mode::ChooseActorTarget) {
 			m_battle->drawArrow(m_battle->getActor(m_arrowPos));
 		}
-		else if(m_mode == Mode::ChooseEnemyTarget) {
+		
+		if(m_mode == Mode::ChooseEnemyTarget) {
 			Enemy *enemy = m_battle->getEnemy(m_arrowPos);
 			m_battle->drawArrow(enemy);
 			m_infowin->drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");

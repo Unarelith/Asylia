@@ -27,7 +27,7 @@ class ItemActivity : public MenuActivity {
 		void render();
 		
 	private:
-		ItemWindow m_itemwin;
+		ItemWindow *m_itemwin;
 };
 
 #endif // ITEMACTIVITY_HPP_
