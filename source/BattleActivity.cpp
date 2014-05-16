@@ -213,7 +213,6 @@ void BattleActivity::update() {
 	
 	if(m_mode == Mode::GameOver) {
 		m_gameoverAlpha += 2;
-		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
 		if(m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
 			ActivityManager::push(new EndActivity(true));
 		}
@@ -259,6 +258,7 @@ void BattleActivity::render() {
 			}
 		}
 	} else {
+		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
 		m_gameover->render();
 		if(m_gameoverAlpha > 400) {
 			Interface::defaultFont->print("Press A to continue", 3, 3, FONT_LARGE);
