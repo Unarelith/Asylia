@@ -32,6 +32,7 @@ BattleAction::~BattleAction() {
 }
 
 void BattleAction::process() {
+	if(m_actor->hp() == 0) return;
 	if(!m_receiver) return;
 	
 	if(m_item->type() == Item::Type::Skill) {
@@ -39,6 +40,7 @@ void BattleAction::process() {
 		if(m_damages <= 0) m_damages = 1;
 		m_damages += (rand() % (int)ceil(m_variance * m_damages * 2)) - m_variance * m_damages;
 		if(m_damages <= 0) m_damages = 0;
+		debug("BattleAction.cpp:43 %s(%d) attacks %s(%d) => -%d HP", m_actor->name().c_str(), m_actor->hp(), m_receiver->name().c_str(), m_receiver->hp(), (int)m_damages);
 		m_receiver->hurt(m_damages);
 	}
 }

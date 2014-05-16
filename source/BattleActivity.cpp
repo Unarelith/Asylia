@@ -72,6 +72,7 @@ void BattleActivity::update() {
 			switch(m_battleActionwin.pos()) {
 				case 0:
 					m_mode = Mode::ChooseEnemyTarget;
+					debug("BattleActivity:75: Call to getNextEnemyPair(1, -1)");
 					m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
 					if(m_arrowPos >= (s8)m_battle->enemies().size()) {
 						m_arrowPos = 0;
@@ -124,20 +125,30 @@ void BattleActivity::update() {
 	if(m_mode == Mode::ChooseEnemyTarget) {
 		m_battle->getActor(m_currentPos)->blink();
 		
-		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
+		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
+			debug("BattleActivity:131: Call to getNextEnemyPair(-1, %d)", m_arrowPos);
 			m_arrowPos = m_battle->getNextEnemyPair(-1, m_arrowPos).first;
 			
-			if(m_arrowPos < 0) m_arrowPos = m_battle->getNextEnemyPair(-1, m_battle->enemies().size()).first;
+			if(m_arrowPos < 0) {
+				debug("BattleActivity:135: Call to getNextEnemyPair(-1, %d)", (int)m_battle->enemies().size());
+				m_arrowPos = m_battle->getNextEnemyPair(-1, m_battle->enemies().size()).first;
+			}
+			
 			debug("m_arrowPos from Left: %d", m_arrowPos);
 		}
-		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
+		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
+			debug("BattleActivity:144: Call to getNextEnemyPair(1, %d)", m_arrowPos);
 			m_arrowPos = m_battle->getNextEnemyPair(1, m_arrowPos).first;
 			
-			if(m_arrowPos >= (s16)m_battle->enemies().size()) m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
+			if(m_arrowPos >= (s16)m_battle->enemies().size()) {
+				debug("BattleActivity:148: Call to getNextEnemyPair(1, -1)");
+				m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
+			}
+			
 			debug("m_arrowPos from Right: %d", m_arrowPos);
 		}
 		
