@@ -72,12 +72,10 @@ void BattleActivity::update() {
 			switch(m_battleActionwin.pos()) {
 				case 0:
 					m_mode = Mode::ChooseEnemyTarget;
-					debug("BattleActivity:75: Call to getNextEnemyPair(1, -1)");
 					m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
 					if(m_arrowPos >= (s8)m_battle->enemies().size()) {
 						m_arrowPos = 0;
 					}
-					debug("m_arrowPos from Action: %d", m_arrowPos);
 					break;
 				default: break;
 			}
@@ -128,28 +126,20 @@ void BattleActivity::update() {
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			debug("BattleActivity:131: Call to getNextEnemyPair(-1, %d)", m_arrowPos);
 			m_arrowPos = m_battle->getNextEnemyPair(-1, m_arrowPos).first;
 			
 			if(m_arrowPos < 0) {
-				debug("BattleActivity:135: Call to getNextEnemyPair(-1, %d)", (int)m_battle->enemies().size());
 				m_arrowPos = m_battle->getNextEnemyPair(-1, m_battle->enemies().size()).first;
 			}
-			
-			debug("m_arrowPos from Left: %d", m_arrowPos);
 		}
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) {
 			Sound::Effect::play(Sound::Effect::move);
 			
-			debug("BattleActivity:144: Call to getNextEnemyPair(1, %d)", m_arrowPos);
 			m_arrowPos = m_battle->getNextEnemyPair(1, m_arrowPos).first;
 			
 			if(m_arrowPos >= (s16)m_battle->enemies().size()) {
-				debug("BattleActivity:148: Call to getNextEnemyPair(1, -1)");
 				m_arrowPos = m_battle->getNextEnemyPair(1, -1).first;
 			}
-			
-			debug("m_arrowPos from Right: %d", m_arrowPos);
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
@@ -215,7 +205,6 @@ void BattleActivity::render() {
 		m_battle->drawArrow(m_battle->getActor(m_arrowPos));
 	}
 	else if(m_mode == Mode::ChooseEnemyTarget) {
-		debug("m_arrowPos before drawArrow: %d", m_arrowPos);
 		Enemy *enemy = m_battle->getEnemy(m_arrowPos);
 		m_battle->drawArrow(enemy);
 		m_infowin->drawTextCentered(enemy->name() + " [HP: " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");

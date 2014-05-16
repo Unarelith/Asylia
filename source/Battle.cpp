@@ -75,7 +75,6 @@ void Battle::processAction() {
 
 void Battle::checkDead() {
 	if(m_actionStack.top()->receiver()->hp() == 0) {
-		debug("Battle.cpp:78 %s(%d) killed %s(%d)!", m_actionStack.top()->actor()->name().c_str(), m_actionStack.top()->actor()->hp(), m_actionStack.top()->receiver()->name().c_str(), m_actionStack.top()->receiver()->hp());
 		m_actionStack.top()->receiver()->kill();
 	}
 }
@@ -95,15 +94,11 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 	do {
 		current += v;
 		if(current >= (s8)m_enemies.size() || current < 0) {
-			debug("Battle.cpp:98 Battle::getNextEnemyPair = (%d, %p)", current, (void*)getEnemy(current));
 			return std::make_pair(current, (Enemy*)NULL);
 		} else {
-			debug("Battle.cpp:96 Battle::getNextEnemyPair(%d, %d)", v, current);
 		}
-		debug("Battle.cpp: while(%s[%d] == 0)", getEnemy(current)->name().c_str(), getEnemy(current)->hp());
 	} while(getEnemy(current)->hp() == 0);
 	
-	debug("Battle.cpp:102 Battle::getNextEnemyPair = (%d, %p)", current, (void*)getEnemy(current));
 	return m_enemies[current];
 }
 
