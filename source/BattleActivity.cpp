@@ -34,7 +34,7 @@ BattleActivity::BattleActivity() {
 	m_processingAction = false;
 	
 	m_gameover = new Image("graphics/interface/Gameover.jpg");
-	m_gameoverAlpha = 0;
+	m_gameoverAlpha = 1;
 	
 	//m_victoryWindow = new InfoWindow(GameWindow::main->width() / 2 - 128, GameWindow::main->height() / 2 - 96, 256, 192);
 	
@@ -198,7 +198,7 @@ void BattleActivity::update() {
 			
 			if(j == m_battle->enemies().size()) {
 				m_mode = Mode::Victory;
-				DialogActivity *dialog = ActivityManager::newDialog(this);
+				DialogActivity *dialog = ActivityManager::newDialogWithParent(this);
 				dialog->addMessage("You win! 999999 exp 999ø");
 				return;
 			}
@@ -215,13 +215,11 @@ void BattleActivity::update() {
 		m_gameoverAlpha += 2;
 		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
 		if(m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
-			m_battle->healEverybody();
 			ActivityManager::push(new EndActivity(true));
 		}
 	}
 	
 	if(m_mode == Mode::Victory) {
-		m_battle->healEverybody();
 		ActivityManager::pop();
 	}
 }

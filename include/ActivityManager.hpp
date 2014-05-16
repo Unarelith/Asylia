@@ -31,7 +31,8 @@ class ActivityManager {
 		static int size() { return activities.size(); }
 		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.front()) { delete activitiesBin.front(); activitiesBin.pop(); } }
 		
-		static DialogActivity *newDialog(Activity *parent = NULL) { DialogActivity *dialog = new DialogActivity(parent); activities.push(dialog); return dialog; }
+		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity(); activities.push(dialog); return dialog; }
+		static DialogActivity *newDialogWithParent(Activity *parent) { DialogActivity *dialog = new DialogActivity(parent); activities.push(dialog); return dialog; }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

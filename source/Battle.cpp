@@ -121,13 +121,3 @@ void Battle::renderBattleback() {
 	m_battleback->render(GameWindow::main->viewportX(), GameWindow::main->viewportY());
 }
 
-void Battle::healEverybody() {
-	for(auto &it : m_actors) {
-		it.second->heal();
-	}
-	
-	for(auto &it : m_enemies) {
-		it.second->heal();
-	}
-}
-

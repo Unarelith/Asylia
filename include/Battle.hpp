@@ -53,8 +53,6 @@ class Battle {
 		
 		void renderBattleback();
 		
-		void healEverybody();
-		
 	private:
 		std::vector<std::pair<u8, Actor*>> m_actors;
 		std::vector<std::pair<u8, Enemy*>> m_enemies;
