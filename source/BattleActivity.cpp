@@ -20,7 +20,7 @@
 BattleActivity::BattleActivity() {
 	m_type = Type::BattleAct;
 	
-	m_battle = BattleManager::battles[0];
+	m_battle = new Battle(*BattleManager::battles[0]);
 	
 	m_currentPos = 0;
 	m_arrowPos = 0;
@@ -43,6 +43,8 @@ BattleActivity::BattleActivity() {
 
 BattleActivity::~BattleActivity() {
 	delete m_infowin;
+	
+	delete m_battle;
 }
 
 void BattleActivity::update() {
@@ -213,11 +215,13 @@ void BattleActivity::update() {
 		m_gameoverAlpha += 2;
 		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
 		if(m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
+			m_battle->healEverybody();
 			ActivityManager::push(new EndActivity(true));
 		}
 	}
 	
 	if(m_mode == Mode::Victory) {
+		m_battle->healEverybody();
 		ActivityManager::pop();
 	}
 }

@@ -19,7 +19,8 @@
 #define BATTLE_HPP_
 
 class Battle {
-	public:;
+	public:
+		Battle(const Battle &battle);
 		Battle(std::string battleback);
 		~Battle();
 		
@@ -51,6 +52,8 @@ class Battle {
 		std::vector<std::pair<u8, Enemy*>> enemies() { return m_enemies; }
 		
 		void renderBattleback();
+		
+		void healEverybody();
 		
 	private:
 		std::vector<std::pair<u8, Actor*>> m_actors;

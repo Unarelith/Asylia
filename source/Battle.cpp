@@ -17,6 +17,21 @@
  */
 #include "Asylia.hpp"
 
+Battle::Battle(const Battle &battle) {
+	for(auto &it : battle.m_actors) {
+		m_actors.push_back(std::make_pair(it.first, new Actor(*it.second)));
+	}
+	
+	for(auto &it : battle.m_enemies) {
+		m_enemies.push_back(std::make_pair(it.first, new Enemy(*it.second)));
+	}
+	
+	m_actorsCount = battle.m_actorsCount;
+	m_enemiesCount = battle.m_enemiesCount;
+	
+	m_battleback = new Image(*battle.m_battleback);
+}
+
 Battle::Battle(std::string battleback) {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
@@ -104,5 +119,15 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 
 void Battle::renderBattleback() {
 	m_battleback->render(GameWindow::main->viewportX(), GameWindow::main->viewportY());
+}
+
+void Battle::healEverybody() {
+	for(auto &it : m_actors) {
+		it.second->heal();
+	}
+	
+	for(auto &it : m_enemies) {
+		it.second->heal();
+	}
 }
 
