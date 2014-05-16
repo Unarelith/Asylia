@@ -179,38 +179,40 @@ void BattleActivity::update() {
 		}
 		
 		if(!m_processingAction) {
+			u8 i = 0;
+			for(auto &it : m_battle->actors()) {
+				if(it.second->hp() == 0) i++;
+			}
+			
+			u8 j = 0;
+			for(auto &it : m_battle->enemies()) {
+				if(it.second->hp() == 0) j++;
+			}
+			
+			if(i == m_battle->actors().size()) {
+				m_mode = Mode::GameOver;
+				return;
+			}
+			
+			if(j == m_battle->enemies().size()) {
+				m_mode = Mode::Victory;
+				DialogActivity *dialog = ActivityManager::newDialog(this);
+				dialog->addMessage("You win! 999999 exp 999ø");
+				return;
+			}
+			
 			m_battle->processAction();
+			
 			m_processingAction = true;
 		} else {
 			m_battle->checkDead();
-		}
-		
-		u8 i = 0;
-		for(auto &it : m_battle->actors()) {
-			if(it.second->hp() == 0) i++;
-		}
-		
-		u8 j = 0;
-		for(auto &it : m_battle->enemies()) {
-			if(it.second->hp() == 0) j++;
-		}
-		
-		if(i == m_battle->actors().size()) {
-			m_mode = Mode::GameOver;
-		}
-		
-		if(j == m_battle->enemies().size()) {
-			m_mode = Mode::Victory;
-			DialogActivity *dialog = ActivityManager::newDialog(this);
-			dialog->addMessage("You win! 999999 exp 999ø");
-			return;
 		}
 	}
 	
 	if(m_mode == Mode::GameOver) {
 		m_gameoverAlpha += 2;
 		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
-		if(m_gameoverAlpha > 400 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
+		if(m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
 			ActivityManager::push(new EndActivity(true));
 		}
 	}
