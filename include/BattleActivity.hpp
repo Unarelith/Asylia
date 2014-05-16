@@ -35,6 +35,7 @@ class BattleActivity : public Activity {
 			ChooseEnemyTarget,
 			EnemyTurn,
 			ProcessActions,
+			GameOver,
 			Victory
 		};
 		
@@ -56,6 +57,9 @@ class BattleActivity : public Activity {
 		Item *m_currentItem;
 		
 		bool m_processingAction;
+		
+		Image *m_gameover;
+		u16 m_gameoverAlpha;
 };
 
 #endif // BATTLEACTIVITY_HPP_

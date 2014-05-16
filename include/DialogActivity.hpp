@@ -18,9 +18,9 @@
 #ifndef DIALOGACTIVITY_HPP_
 #define DIALOGACTIVITY_HPP_
 
-class DialogActivity : public MapActivity {
+class DialogActivity : public Activity {
 	public:
-		DialogActivity();
+		DialogActivity(Activity *parent = NULL);
 		~DialogActivity();
 		
 		void addMessage(std::string msg) { m_msgwin->addMessage(msg); }
@@ -29,6 +29,8 @@ class DialogActivity : public MapActivity {
 		void render();
 		
 	private:
+		Activity *m_parent;
+		
 		MessageWindow *m_msgwin;
 };
 

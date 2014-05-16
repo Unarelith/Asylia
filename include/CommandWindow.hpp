@@ -30,6 +30,8 @@ class CommandWindow : public SelectableWindow {
 		void drawHorizontalCenteredItem(u8 pos);
 		void draw(bool cursor = true);
 		
+		std::vector<std::string> commands() { return m_commands; }
+		
 	private:
 		std::vector<std::string> m_commands;
 		

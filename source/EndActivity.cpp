@@ -17,10 +17,10 @@
  */
 #include "Asylia.hpp"
 
-EndActivity::EndActivity() {
+EndActivity::EndActivity(bool disableCancel) {
 	std::vector<std::string> choices;
 	
-	choices.push_back(_t("Cancel"));
+	if(!disableCancel) choices.push_back(_t("Cancel"));
 	choices.push_back(_t("TitleScreen"));
 	choices.push_back(_t("Quit"));
 	
@@ -38,7 +38,12 @@ void EndActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
-		switch(m_cmdwin->pos()) {
+		u8 n = m_cmdwin->pos();
+		if(m_cmdwin->commands().size() == 2) {
+			n++;
+		}
+		
+		switch(n) {
 			case 0:
 				ActivityManager::pop();
 				break;

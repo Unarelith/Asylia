@@ -33,6 +33,11 @@ BattleActivity::BattleActivity() {
 	
 	m_processingAction = false;
 	
+	m_gameover = new Image("graphics/interface/Gameover.jpg");
+	m_gameoverAlpha = 0;
+	
+	//m_victoryWindow = new InfoWindow(GameWindow::main->width() / 2 - 128, GameWindow::main->height() / 2 - 96, 256, 192);
+	
 	Sound::Music::play(Sound::Music::battle, -1);
 }
 
@@ -184,40 +189,72 @@ void BattleActivity::update() {
 		for(auto &it : m_battle->actors()) {
 			if(it.second->hp() == 0) i++;
 		}
-		if(i == m_battle->actors().size()) {
-			ActivityManager::push(new EndActivity);
+		
+		u8 j = 0;
+		for(auto &it : m_battle->enemies()) {
+			if(it.second->hp() == 0) j++;
 		}
+		
+		if(i == m_battle->actors().size()) {
+			m_mode = Mode::GameOver;
+		}
+		
+		if(j == m_battle->enemies().size()) {
+			m_mode = Mode::Victory;
+			DialogActivity *dialog = ActivityManager::newDialog(this);
+			dialog->addMessage("You win! 999999 exp 999ø");
+			return;
+		}
+	}
+	
+	if(m_mode == Mode::GameOver) {
+		m_gameoverAlpha += 2;
+		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
+		if(m_gameoverAlpha > 400 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
+			ActivityManager::push(new EndActivity(true));
+		}
+	}
+	
+	if(m_mode == Mode::Victory) {
+		ActivityManager::pop();
 	}
 }
 
 void BattleActivity::render() {
-	m_battle->renderBattleback();
-	
-	m_actorStatswin.drawEnemies(m_battle->enemies());
-	
-	if(m_mode == Mode::Choice) {
-		m_battleChoicewin.draw();
-	}
-	else if(m_mode == Mode::Action) {
-		m_battleActionwin.draw(m_currentPos);
-	}
-	else if(m_mode == Mode::ChooseActorTarget) {
-		m_battle->drawArrow(m_battle->getActor(m_arrowPos));
-	}
-	else if(m_mode == Mode::ChooseEnemyTarget) {
-		Enemy *enemy = m_battle->getEnemy(m_arrowPos);
-		m_battle->drawArrow(enemy);
-		m_infowin->drawTextCentered(enemy->name() + " [HP: " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");
-	}
-	
-	m_actorStatswin.drawActors(m_battle->actors());
-	
-	if(m_mode == Mode::ProcessActions) {
-		if(m_processingAction) {
-			if(m_battle->drawAction()) {
-				m_processingAction = false;
-				m_battle->popAction();
+	if(m_mode != Mode::GameOver) {
+		m_battle->renderBattleback();
+		
+		m_actorStatswin.drawEnemies(m_battle->enemies());
+		
+		if(m_mode == Mode::Choice) {
+			m_battleChoicewin.draw();
+		}
+		else if(m_mode == Mode::Action) {
+			m_battleActionwin.draw(m_currentPos);
+		}
+		else if(m_mode == Mode::ChooseActorTarget) {
+			m_battle->drawArrow(m_battle->getActor(m_arrowPos));
+		}
+		else if(m_mode == Mode::ChooseEnemyTarget) {
+			Enemy *enemy = m_battle->getEnemy(m_arrowPos);
+			m_battle->drawArrow(enemy);
+			m_infowin->drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");
+		}
+		
+		m_actorStatswin.drawActors(m_battle->actors());
+		
+		if(m_mode == Mode::ProcessActions) {
+			if(m_processingAction) {
+				if(m_battle->drawAction()) {
+					m_processingAction = false;
+					m_battle->popAction();
+				}
 			}
+		}
+	} else {
+		m_gameover->render();
+		if(m_gameoverAlpha > 400) {
+			Interface::defaultFont->print("Press A to continue", 3, 3, FONT_LARGE);
 		}
 	}
 }

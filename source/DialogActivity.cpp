@@ -17,8 +17,13 @@
  */
 #include "Asylia.hpp"
 
-DialogActivity::DialogActivity() {
+DialogActivity::DialogActivity(Activity *parent) {
 	m_type = Type::Dialog;
+	
+	m_parent = parent;
+	if(m_parent == NULL) {
+		m_parent = ActivityManager::top();
+	}
 	
 	m_msgwin = new MessageWindow();
 }
@@ -36,7 +41,7 @@ void DialogActivity::update() {
 }
 
 void DialogActivity::render() {
-	MapActivity::render();
+	m_parent->render();
 	
 	m_msgwin->draw();
 }

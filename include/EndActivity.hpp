@@ -20,7 +20,7 @@
 
 class EndActivity : public Activity {
 	public:
-		EndActivity();
+		EndActivity(bool disableCancel = false);
 		~EndActivity();
 		
 		void update();
