@@ -83,7 +83,8 @@ void GameWindow::updateViewportPosition(s16 x, s16 y) {
 	if(m_viewportX + m_width > m_viewportW) m_viewportW += m_width;
 	if(m_viewportY + m_height > m_viewportH) m_viewportH += m_height;
 	
-	SDL_Rect viewportRect = {-x, y - m_viewportH + m_height, m_viewportW, m_viewportH};
+	//SDL_Rect viewportRect = {-x, y - m_viewportH + m_height, m_viewportW, m_viewportH};
+	SDL_Rect viewportRect = {-x, -y, m_viewportW, m_viewportH};
 	SDL_RenderSetViewport(m_renderer, &viewportRect);
 }
 

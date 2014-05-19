@@ -7,3 +7,7 @@
 	* Add it in the menu
 	* Add it in the battles
 - Maybe create Activity child classes instead of modes for BattleActivity
+- Add new stats for battlers and weapons
+	=> Damage formula improvement needed
+	=> Sort BattleAction by battlers' speed
+- Animations in battles

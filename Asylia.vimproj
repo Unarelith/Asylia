@@ -1,4 +1,4 @@
-Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHORS ChangeLog COPYING Makefile Notes TODO *.textile *.mk *.xml *.tmx *.lua" {
+Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHORS ChangeLog COPYING Makefile Notes TODO *.textile *.mk *.xml *.tmx *.lua" {
  .gitignore
  AUTHORS
  Makefile
@@ -34,6 +34,9 @@ Asylia=~/NewProjects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AU
    event3c=event3c {
     main.lua
    }
+  }
+  lualibs=lualibs {
+   CharacterEvent.lua
   }
   locale=locale {
    en-us.xml
