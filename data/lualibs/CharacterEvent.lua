@@ -12,7 +12,7 @@ CharacterEvent = {
 				
 				local dialog = ActivityManager.newDialog()
 				
-				for i = 0, nbOfMessages do
+				for i = 0, nbOfMessages - 1 do
 					dialog:addMessage(_t(eventName .. "-" .. tostring(i)))
 				end
 			end
