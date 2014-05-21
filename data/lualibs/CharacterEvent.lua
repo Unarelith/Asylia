@@ -4,17 +4,17 @@ CharacterEvent = {}
 
 CharacterEvent.new = function(eventName, nbOfMessages)
 	local initCharacter = function(self)
-		local character = MapManager.currentMap:getEvent(eventName)
+		self.character = MapManager.currentMap:getEvent(eventName)
 		
-		local update = function() end
+		self.update = function() end
 		
-		local render = function()
-			character:render()
+		self.render = function()
+			self.character:render()
 		end
 		
-		local action = function()
+		self.action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-				character:setDirection(3 - CharacterManager.player():getDirection())
+				self.character:setDirection(3 - CharacterManager.player():getDirection())
 				
 				local dialog = ActivityManager.newDialog()
 				
@@ -24,21 +24,11 @@ CharacterEvent.new = function(eventName, nbOfMessages)
 			end
 		end
 		
-		local collisionAction = function() end
+		self.collisionAction = function() end
 		
-		return character, table_concat(self, {
-			update = update,
-			render = render,
-			action = action,
-			collisionAction = collisionAction,
-		})
+		return self
 	end
 	
-	return {
-		initCharacter = initCharacter,
-		
-		eventName = eventName,
-		nbOfMessages = nbOfMessages
-	}
+	return {initCharacter = initCharacter}
 end
 

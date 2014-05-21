@@ -1,6 +1,6 @@
 - Improve CharacterEvent 
 - Improve CharacterEvent inclusion with a require or a dofile in the C++ loading of events
-- Permit to omit useless functions in events ( like update or collisionAction for event3c )
+- Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
 - Let ItemWindows get data they'll display
 - Delete EquipItemWindow and remplace it by a simple ItemWindow
