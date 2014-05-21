@@ -1,14 +1,20 @@
-CharacterEvent = {
-	new = function(eventName, nbOfMessages)
+dofile("data/lualibs/Utilities.lua")
+
+CharacterEvent = {}
+
+CharacterEvent.new = function(eventName, nbOfMessages)
+	local initCharacter = function(self)
 		local character = MapManager.currentMap:getEvent(eventName)
 		
-		local render = function(self)
-			self.character:render()
+		local update = function() end
+		
+		local render = function()
+			character:render()
 		end
 		
-		local action = function(self)
+		local action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-				self.character:setDirection(3 - CharacterManager.player():getDirection())
+				character:setDirection(3 - CharacterManager.player():getDirection())
 				
 				local dialog = ActivityManager.newDialog()
 				
@@ -18,13 +24,21 @@ CharacterEvent = {
 			end
 		end
 		
-		return {
-			character = character,
+		local collisionAction = function() end
+		
+		return character, table_concat(self, {
+			update = update,
 			render = render,
 			action = action,
-			movements = movements,
-			addMovement = addMovement
-		}
+			collisionAction = collisionAction,
+		})
 	end
-}
+	
+	return {
+		initCharacter = initCharacter,
+		
+		eventName = eventName,
+		nbOfMessages = nbOfMessages
+	}
+end
 

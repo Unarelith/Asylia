@@ -1,4 +1,5 @@
-- Improve CharacterEvent inclusion with an include or a dofile in the C++ loading of events
+- Improve CharacterEvent 
+- Improve CharacterEvent inclusion with a require or a dofile in the C++ loading of events
 - Permit to omit useless functions in events ( like update or collisionAction for event3c )
 
 - Let ItemWindows get data they'll display
