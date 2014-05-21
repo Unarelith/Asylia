@@ -134,6 +134,8 @@ void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, F
 }
 
 void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
+	TTF_SetFontKerning(m_fontLarge, 0);
+	
 	x += GameWindow::main->viewportX();
 	y += GameWindow::main->viewportY();
 	
@@ -148,6 +150,8 @@ void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
 	TTF_SetFontOutline(m_fontLarge, 0);
 	
 	print(to_string(damages).c_str(), x, y, FONT_LARGE, color);
+	
+	TTF_SetFontKerning(m_fontLarge, 1);
 }
 
 void Font::setStyle(FontSize size, int style) {
