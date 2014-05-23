@@ -3,12 +3,20 @@
 
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", etc...
 
+- Add a lot of functions to Window class
+	* Like "printActorHP(actor, x, y, width, height)" which will display something like "HP:	320"
+	=> It might be helpful in the near future
+
 - Fix issues:
 	* #14 - Improve some code parts
 	* #16 - Work on transitions between maps
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
 	* #29 - Improve victory window
+
+- Improve battler death color fading
+
+- Manage disabled items in SelectableWindow ( maybe use a std::vector<std::pair<std::string, bool>>> for commands container )
 
 - Let ItemWindows get data they'll display
 - Adapt ItemWindow to in-battle display
@@ -29,7 +37,7 @@
 	=> Sort BattleAction by battlers' speed
 
 - Rename "Animation" struct to "SpriteAnimation"
-- Create a class "Animation" in order to handle things like animations in battles
+- Create a class "Animation", child class of Sprite, in order to handle things like animations in battles
 
 - Lua scripts for dungeons:
 	* File tree like that:
