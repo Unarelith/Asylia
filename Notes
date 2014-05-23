@@ -35,9 +35,15 @@
 - ISSUE #30 Add new stats for battlers and weapons
 	=> Damage formula improvement needed
 	=> Sort BattleAction by battlers' speed
+	=> Add stats growth functions
 
 - Rename "Animation" struct to "SpriteAnimation"
 - Create a class "Animation", child class of Sprite, in order to handle things like animations in battles
+
+- Make shop interface, callable from an event ( like a ShopActivity )
+	* ShopChoiceWindow
+
+- Make a DebugWindow which will help to test a lot of things
 
 - Lua scripts for dungeons:
 	* File tree like that:
