@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actors>
 	<actor name="Arshes" appearance="Fighter01">
-		<stats level="1" hp="80" sp="50" atk="15" def="10"/>
+		<stats level="56" hp="4589" sp="4268" atk="1239" def="952"/>
+		<!-- <stats level="1" hp="80" sp="50" atk="15" def="10"/> !-->
 		<charalink id="-1"/>
 	</actor>
 	<actor name="Basil" appearance="Lancer01">

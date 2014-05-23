@@ -199,20 +199,10 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::ProcessActions) {
-		if(m_battle->actionStackEmpty()) {
-			m_mode = Mode::Choice;
-			return;
-		}
-		
 		if(!m_processingAction) {
 			u8 i = 0;
 			for(auto &it : m_battle->actors()) {
 				if(it.second->hp() == 0) i++;
-			}
-			
-			u8 j = 0;
-			for(auto &it : m_battle->enemies()) {
-				if(it.second->hp() == 0) j++;
 			}
 			
 			if(i == m_battle->actors().size()) {
@@ -220,10 +210,20 @@ void BattleActivity::update() {
 				return;
 			}
 			
+			u8 j = 0;
+			for(auto &it : m_battle->enemies()) {
+				if(it.second->hp() == 0) j++;
+			}
+			
 			if(j == m_battle->enemies().size()) {
 				m_mode = Mode::Victory;
 				DialogActivity *dialog = ActivityManager::newDialogWithParent(this);
 				dialog->addMessage("You win! 999999 exp 999ø");
+				return;
+			}
+			
+			if(m_battle->actionStackEmpty()) {
+				m_mode = Mode::Choice;
 				return;
 			}
 			

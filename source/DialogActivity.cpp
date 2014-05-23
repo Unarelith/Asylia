@@ -37,6 +37,7 @@ void DialogActivity::update() {
 	
 	if(m_msgwin->messages().size() == 0) {
 		ActivityManager::pop();
+		ActivityManager::top()->update();
 	}
 }
 

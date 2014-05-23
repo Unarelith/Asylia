@@ -4,12 +4,11 @@
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", etc...
 
 - Fix issues:
-	* #32 - Sometimes, when the actors win the battle, there's another turn, then a segfault
-	* #29 - Improve victory window
-	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
-	* #17 - Up and Down keys have an higher priority than Left and Right ones
-	* #16 - Work on transitions between maps
 	* #14 - Improve some code parts
+	* #16 - Work on transitions between maps
+	* #17 - Up and Down keys have an higher priority than Left and Right ones
+	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
+	* #29 - Improve victory window
 
 - Let ItemWindows get data they'll display
 - Adapt ItemWindow to in-battle display

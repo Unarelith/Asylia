@@ -107,7 +107,7 @@ u8 a = 255;
 void Battler::kill() {
 	if(r < 248) {
 		r += 7;
-		m_image->setColorMod(Color(r, 255, 255));
+		m_image->setColorMod(Color(r, 128, 128));
 	}
 	
 	if(a > 10) {
