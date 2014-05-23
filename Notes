@@ -1,27 +1,38 @@
-- Improve CharacterEvent 
 - Improve CharacterEvent inclusion with a require or a dofile in the C++ loading of events
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
+- Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", etc...
+
+- Fix issues:
+	* #32 - Sometimes, when the actors win the battle, there's another turn, then a segfault
+	* #29 - Improve victory window
+	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
+	* #17 - Up and Down keys have an higher priority than Left and Right ones
+	* #16 - Work on transitions between maps
+	* #14 - Improve some code parts
+
 - Let ItemWindows get data they'll display
-- Delete EquipItemWindow and remplace it by a simple ItemWindow
+- Adapt ItemWindow to in-battle display
+- EquipItemWindow should be a child ItemWindow
+	* Solve that problem: ItemWindow::getItem()
 - Manage usable Items and their function through a lua script by object
 - Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
 	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
 
-- Create a new class SkillWindow
+- Create a new class SkillWindow, child of ItemWindow
 	* Add it in the menu
 	* Add it in the battles
 
 - Maybe create Activity child classes instead of modes for BattleActivity
 
-- Add new stats for battlers and weapons
+- ISSUE #30 Add new stats for battlers and weapons
 	=> Damage formula improvement needed
 	=> Sort BattleAction by battlers' speed
 
 - Rename "Animation" struct to "SpriteAnimation"
 - Create a class "Animation" in order to handle things like animations in battles
 
-- Lua scripts for dungeons: MAKE AN AWESOME DUNGEON SCRIPTING ENGINE ( MAADSE )
+- Lua scripts for dungeons:
 	* File tree like that:
 		dungeons/
 		---- dungeon1/
@@ -29,3 +40,9 @@
 		---- ---- ---- main.lua
 		---- dungeon 2/
 	* etc..
+
+- Check bugs
+
+- Test porting to Android, Windows and Mac OS X
+
+- Engine finished!
