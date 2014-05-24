@@ -1,21 +1,5 @@
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
-- Create base Events lua pseudo-classes in C++, and get them by xml, like:
-		<events>
-			<event type="Character" x="15" y="12" name="Boy"/>
-			<event type="Custom" name="event0"/>
-		</events>
-	* In maps.xml events should be represented like that:
-		<maps>
-			<map ...>
-				<event name="Boy"/>
-				<event name="event0"/>
-			</map>
-		</maps>
-	* Obviously, there is always Lua events for Custom event type
-	* solid="1" by default
-	* for chests, anim is replaced by "type" and for characters by "direction"
-
 - Add a class "LuaMod" or "ModScript" or "Mod"
 
 - Add an XML overlay, in order to follow the DRY concept
@@ -75,7 +59,27 @@
 
 - Improve EquipWindow performances on Android
 
+- Manage an equip of characters
+
+- Create StateWindow class
+
+- Make a save engine
+	=> XML encrypted
+	* Save events state ( Character position, chest open state, etc... )
+	* Save player state
+	* Save actors state
+
+- Improve TitleScreen
+
+- Add conditions in messages for CharacterEvents
+
+- Add choices in DialogWindow
+
 - Add colors in text
+
+- Improve all interfaces
+
+- Change graphics and font
 
 - Check bugs
 

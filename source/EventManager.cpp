@@ -82,13 +82,25 @@ void EventManager::loadCharacterEvent(XMLElement *characterElement) {
 	}
 	
 	events[name] = new Event(
-		name,
-		std::string("graphics/characters/") + appearance + ".png",
+		name, std::string("graphics/characters/") + appearance + ".png",
 		x * 32, y * 32, direction, solid
 	);
 }
 
 void EventManager::loadChestEvent(XMLElement *chestElement) {
+	std::string name;
+	u16 x, y, chestType;
 	
+	name = chestElement->Attribute("name");
+	
+	x = chestElement->IntAttribute("x");
+	y = chestElement->IntAttribute("y");
+	
+	chestType = chestElement->IntAttribute("chestType");
+	
+	events[name] = new Event(
+		name, "graphics/events/Chest01.png",
+		x * 32, y * 32, chestType, true
+	);
 }
 
