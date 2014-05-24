@@ -68,6 +68,7 @@ Battler::~Battler() {
 }
 
 void Battler::blink() {
+	m_image->setColorMod(Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
 	m_image->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
 }
 

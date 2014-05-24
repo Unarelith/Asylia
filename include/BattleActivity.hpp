@@ -26,6 +26,10 @@ class BattleActivity : public Activity {
 		void update();
 		void render();
 		
+		Battle *battle() { return m_battle; }
+		
+		s8 currentPos() const { return m_currentPos; }
+		
 		u8 mode() const { return (u8)m_mode; }
 		
 		enum Mode {
