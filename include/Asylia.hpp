@@ -50,6 +50,8 @@ using namespace tinyxml2;
 #include "Config.hpp"
 #include "Debug.hpp"
 
+#include "XMLFile.hpp"
+
 #include "Color.hpp"
 #include "Rectangle.hpp"
 

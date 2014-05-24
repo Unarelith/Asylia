@@ -38,14 +38,7 @@ void EventManager::loadLibs() {
 }
 
 void EventManager::initEvents() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/events.xml");
-	if(code != 0) {
-		error("Failed to load events data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/events.xml");
 	
 	XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
 	while(eventElement) {

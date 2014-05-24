@@ -52,14 +52,7 @@ void ItemManager::free() {
 }
 
 void ItemManager::loadItems() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/items.xml");
-	if(code != 0) {
-		error("Failed to load items data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/items.xml");
 	
 	XMLElement *itemElement = doc.FirstChildElement("items").FirstChildElement("item").ToElement();
 	u8 id = 0;
@@ -76,14 +69,7 @@ void ItemManager::loadItems() {
 }
 
 void ItemManager::loadArmors() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/armors.xml");
-	if(code != 0) {
-		error("Failed to load armors data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/armors.xml");
 	
 	XMLElement *armorElement = doc.FirstChildElement("armors").FirstChildElement("armor").ToElement();
 	u8 id = 0;
@@ -102,14 +88,7 @@ void ItemManager::loadArmors() {
 }
 
 void ItemManager::loadWeapons() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/weapons.xml");
-	if(code != 0) {
-		error("Failed to load weapons data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/weapons.xml");
 	
 	XMLElement *weaponElement = doc.FirstChildElement("weapons").FirstChildElement("weapon").ToElement();
 	u8 id = 0;
@@ -128,14 +107,7 @@ void ItemManager::loadWeapons() {
 }
 
 void ItemManager::loadSkills() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/skills.xml");
-	if(code != 0) {
-		error("Failed to load skills data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/skills.xml");
 	
 	XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
 	u8 id = 0;

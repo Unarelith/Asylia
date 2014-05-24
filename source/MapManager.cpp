@@ -42,13 +42,7 @@ void MapManager::free() {
 }
 
 void MapManager::initTilesets() {
-	XMLDocument xml;
-	if(xml.LoadFile("data/config/tilesets.xml") != 0) {
-		error("Failed to load tilesets data.");
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/tilesets.xml");
 	
 	XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
 	while(tilesetElement) {
@@ -67,14 +61,7 @@ void MapManager::initTilesets() {
 }
 
 void MapManager::initMaps() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/maps.xml");
-	if(code != 0) {
-		error("Failed to load maps data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/maps.xml");
 	
 	XMLElement *areaElement = doc.FirstChildElement("maps").FirstChildElement("area").ToElement();
 	u16 areaID = 0;
@@ -114,13 +101,7 @@ void MapManager::initMaps() {
 }
 
 void getNonPassableTiles(const char *filename, Tileset *tileset) {
-	XMLDocument xml;
-	if(xml.LoadFile(filename) != 0) {
-		error("Failed to load tileset info: %s", filename);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc(filename);
 	
 	XMLElement *nonPassableTilesElement = doc.FirstChildElement("map").FirstChildElement("layer").NextSiblingElement().ToElement();
 	if(!nonPassableTilesElement) return;

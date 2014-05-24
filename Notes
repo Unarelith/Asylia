@@ -2,8 +2,6 @@
 
 - Add a class "LuaMod" or "ModScript" or "Mod"
 
-- Add an XML overlay, in order to follow the DRY concept
-
 - Add a Switch class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
@@ -16,6 +14,8 @@
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
 	* #29 - Improve victory window
+
+- Add parameters to events, like speed for characters and all params for the chests
 
 - Improve battler death color fading
 
@@ -40,6 +40,8 @@
 	=> Add stats growth functions
 
 - Rename "Animation" struct to "SpriteAnimation"
+- Rename "AnimationManager" to "SpriteAnimationManager"
+	* Improve it with xml!!!
 - Create a class "Animation", child class of Sprite, in order to handle things like animations in battles
 
 - Make shop interface, callable from an event ( like a ShopActivity )

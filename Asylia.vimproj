@@ -153,6 +153,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    BattleChoiceWindow.hpp
    BattleActionWindow.hpp
   }
+  XMLFile.hpp
  }
  source=source {
   activity {
@@ -220,6 +221,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    BattleChoiceWindow.cpp
    BattleActionWindow.cpp
   }
+  XMLFile.cpp
   main.cpp
  }
 }

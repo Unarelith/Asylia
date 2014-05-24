@@ -20,13 +20,7 @@
 Player *CharacterManager::player = NULL;
 
 void CharacterManager::init() {
-	XMLDocument xml;
-	if(xml.LoadFile("data/config/player.xml") != 0) {
-		error("Failed to load player data");
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/player.xml");
 	
 	const char *className = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->Attribute("class");
 	u16 id = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->IntAttribute("id");

@@ -18,13 +18,7 @@
 #include "Asylia.hpp"
 
 Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID) {
-	XMLDocument xml;
-	if(xml.LoadFile(filename) != 0) {
-		error("Failed to load map: %s", filename);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc(filename);
 	
 	m_width = doc.FirstChildElement("map").ToElement()->IntAttribute("width");
 	m_height = doc.FirstChildElement("map").ToElement()->IntAttribute("height");

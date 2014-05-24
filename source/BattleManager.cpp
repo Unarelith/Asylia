@@ -20,14 +20,7 @@
 std::vector<Battle*> BattleManager::battles;
 
 void BattleManager::init() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/battles.xml");
-	if(code != 0) {
-		error("Failed to load battles data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/battles.xml");
 	
 	XMLElement *battleElement = doc.FirstChildElement("battles").FirstChildElement("battle").ToElement();
 	while(battleElement) {

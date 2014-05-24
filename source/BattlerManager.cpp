@@ -26,14 +26,7 @@ void BattlerManager::init() {
 }
 
 void BattlerManager::initActors() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/actors.xml");
-	if(code != 0) {
-		error("Failed to load actors data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/actors.xml");
 	
 	XMLElement *actorElement = doc.FirstChildElement("actors").FirstChildElement("actor").ToElement();
 	while(actorElement) {
@@ -70,14 +63,7 @@ void BattlerManager::initActors() {
 }
 
 void BattlerManager::initEnemies() {
-	XMLDocument xml;
-	int code = xml.LoadFile("data/config/enemies.xml");
-	if(code != 0) {
-		error("Failed to load enemies data. (CODE: %d)", code);
-		exit(EXIT_FAILURE);
-	}
-	
-	XMLHandle doc(&xml);
+	XMLFile doc("data/config/enemies.xml");
 	
 	XMLElement *enemyElement = doc.FirstChildElement("enemies").FirstChildElement("enemy").ToElement();
 	while(enemyElement) {
