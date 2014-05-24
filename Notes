@@ -15,9 +15,17 @@
 
 - Fix issues:
 	* #16 - Work on transitions between maps
+		=> Add a line like <border pos="Left" area="" mapX="" mapY=""/>
+			* Scroll like in Radonia
+			* While scrolling, render a scaled version of the two maps, to improve performances
+		=> Add a Transition class, child of Sprite, to handle map transitions
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
+		=> Make a key stack, and then search for the last directional key pressed
+		=> Function u32 Keyboard::lastDirectionKeyPressed();
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
+		=> Render copy once in a texture in a push_back, then push the texture too
 	* #29 - Improve victory window
+		=> Make a VictoryWindow
 	* #30 - Add other stats and sort BattleActions in stack
 		=> Damage formula improvement needed
 		=> Sort BattleAction by battlers' speed
