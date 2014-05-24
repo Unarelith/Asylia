@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<maps areas="1">
-	<area maps="2">
-		<map layers="3" x="0" y="0" tilesetID="0" events="4">
-			<event name="event0" appearance="characters/Fighter02" x="5" y="5" anim="0" solid="1"/>
-			<event name="event1" appearance="" x="4" y="11" anim="0">
-				<framesize width="32" height="32"/>
-				<hitbox x="0" y="0" width="32" height="32"/>
-			</event>
-			<event name="chest0" appearance="events/Chest01" x="2" y="0" anim="1" solid="1"/>
-			<event name="event3c" appearance="characters/Fighter02" x="10" y="10" anim="1" solid="1"/>
+<maps>
+	<area>
+		<map layers="3" x="0" y="0" tilesetID="0">
+			<event name="event0"/>
+			<event name="chest0"/>
+			<event name="event3c"/>
 		</map>
-		<map layers="3" x="1" y="0" tilesetID="0" events="1">
-			<event name="event2" appearance="" x="10" y="12" anim="0">
-				<framesize width="32" height="32"/>
-				<hitbox x="0" y="0" width="32" height="32"/>
-			</event>
-		</map>
+		<map layers="3" x="1" y="0" tilesetID="0"/>
 	</area>
 </maps>

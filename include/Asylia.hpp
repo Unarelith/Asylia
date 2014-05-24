@@ -111,6 +111,7 @@ using namespace tinyxml2;
 #include "Interface.hpp"
 
 #include "Event.hpp"
+#include "EventManager.hpp"
 
 #include "Activity.hpp"
 #include "MapActivity.hpp"

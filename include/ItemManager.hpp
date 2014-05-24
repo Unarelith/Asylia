@@ -21,6 +21,7 @@
 class ItemManager {
 	public:
 		static void init();
+		static void free();
 		
 		static void loadItems();
 		static void loadArmors();

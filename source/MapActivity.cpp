@@ -28,6 +28,8 @@ MapActivity::~MapActivity() {
 	
 	CharacterManager::free();
 	
+	ItemManager::free();
+	
 	MapManager::free();
 	
 	LuaHandler::free();

@@ -28,12 +28,8 @@ class MapManager {
 		static void initTilesets();
 		static void initMaps();
 		
-		static Tileset **tilesets;
-		static Map ***maps;
-		
-		static u16 nbTilesets;
-		static u16 nbAreas;
-		static u16 *areaSizes;
+		static std::vector<Tileset*> tilesets;
+		static std::vector<std::vector<Map*>> maps;
 		
 		static Map *currentMap;
 };

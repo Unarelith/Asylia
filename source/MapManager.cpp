@@ -19,9 +19,6 @@
 
 Tileset **MapManager::tilesets = NULL;
 Map ***MapManager::maps = NULL;
-u16 MapManager::nbTilesets = 0;
-u16 MapManager::nbAreas = 0;
-u16 *MapManager::areaSizes = NULL;
 Map *MapManager::currentMap = NULL;
 
 void MapManager::init() {
@@ -30,15 +27,18 @@ void MapManager::init() {
 }
 
 void MapManager::free() {
-	for(u16 i = 0 ; i < nbAreas ; i++) {
-		delete[] maps[i];
+	while(maps.size() != 0) {
+		while(maps.back().size() != 0) {
+			delete maps.back().back();
+			maps.back().pop_back();
+		}
+		maps.pop_back();
 	}
-	delete[] maps;
 	
-	for(u16 i = 0 ; i < nbTilesets ; i++) {
-		delete[] tilesets[i]->nonPassableLayer;
+	while(tilesets.size() != 0) {
+		delete tilesets.back();
+		tilesets.pop_back();
 	}
-	delete[] tilesets;
 }
 
 void MapManager::initTilesets() {
@@ -50,21 +50,17 @@ void MapManager::initTilesets() {
 	
 	XMLHandle doc(&xml);
 	
-	nbTilesets = doc.FirstChildElement("tilesets").ToElement()->IntAttribute("nb");
-	
-	tilesets = new Tileset*[nbTilesets];
-	
 	XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
-	for(unsigned int i = 0 ; i < nbTilesets ; i++) {
+	while(tilesetElement) {
 		std::stringstream tilesetFilename;
 		std::stringstream tilesetInfoFilename;
 		
 		tilesetFilename << "graphics/tilesets/" << tilesetElement->Attribute("name") << ".png";
 		tilesetInfoFilename << "data/tilesets/" << tilesetElement->Attribute("name") << ".tmx";
 		
-		tilesets[i] = new Tileset;
-		tilesets[i]->tiles = new Image(tilesetFilename.str().c_str());
-		getNonPassableTiles(tilesetInfoFilename.str().c_str(), tilesets[i]);
+		tilesets.push_back(new Tileset)
+		tilesets.back()->tiles = new Image(tilesetFilename.str().c_str());
+		getNonPassableTiles(tilesetInfoFilename.str().c_str(), tilesets.back());
 		
 		tilesetElement = tilesetElement->NextSiblingElement("tileset");
 	}
@@ -80,18 +76,13 @@ void MapManager::initMaps() {
 	
 	XMLHandle doc(&xml);
 	
-	nbAreas = doc.FirstChildElement("maps").ToElement()->IntAttribute("areas");
-	
-	maps = new Map**[nbAreas];
-	areaSizes = new u16[nbAreas];
+	maps.push_back()
 	
 	XMLElement *areaElement = doc.FirstChildElement("maps").FirstChildElement("area").ToElement();
-	for(unsigned int i = 0 ; i < nbAreas ; i++) {
-		areaSizes[i] = areaElement->IntAttribute("maps");
-		maps[i] = new Map*[areaSizes[i]];
-		
+	while(areaElement) {
 		XMLElement *mapElement = areaElement->FirstChildElement("map");
-		for(unsigned int j = 0 ; j < areaSizes[i] ; j++) {
+		std::vector<Map*> currentArea;
+		while(mapElement) {
 			std::stringstream mapFilename;
 			u8 layers, events;
 			u16 x, y, tilesetID;
@@ -100,58 +91,22 @@ void MapManager::initMaps() {
 			x = mapElement->IntAttribute("x");
 			y = mapElement->IntAttribute("y");
 			tilesetID = mapElement->IntAttribute("tilesetID");
-			events = mapElement->IntAttribute("events");
 			
 			mapFilename << "data/maps/map" << i << "-" << x << "-" << y << ".tmx";
 			
-			maps[i][MAP_POS(i, x, y)] = new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID);
+			currentArea.push_back(new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID));
 			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
-			for(unsigned int k = 0 ; k < events ; k++) {
-				std::stringstream eventFolder, eventAppearance;
-				std::string eventName, appearance;
-				u16 ex, ey;
-				u8 anim;
-				bool solid;
-				
-				eventName = eventElement->Attribute("name");
-				appearance = eventElement->Attribute("appearance");
-				ex = eventElement->IntAttribute("x");
-				ey = eventElement->IntAttribute("y");
-				anim = eventElement->IntAttribute("anim");
-				solid = eventElement->BoolAttribute("solid");
-				
-				eventFolder << "data/events/" << eventName << "/";
-				
-				if(appearance != "") {
-					eventAppearance << "graphics/" << appearance << ".png";
-				}
-				
-				maps[i][MAP_POS(i, x, y)]->addEvent(new Event(eventFolder.str(), eventName, eventAppearance.str(), ex * 32, ey * 32, anim, i, x, y, solid));
-				
-				XMLElement *framesizeElement = eventElement->FirstChildElement("framesize");
-				if(framesizeElement) {
-					maps[i][MAP_POS(i, x, y)]->events().back()->setFrameSize(
-						framesizeElement->IntAttribute("width"),
-						framesizeElement->IntAttribute("height")
-					);
-				}
-				
-				XMLElement *hitboxElement = eventElement->FirstChildElement("hitbox");
-				if(hitboxElement) {
-					maps[i][MAP_POS(i, x, y)]->events().back()->setHitbox(
-						hitboxElement->IntAttribute("x"),
-						hitboxElement->IntAttribute("y"),
-						hitboxElement->IntAttribute("width"),
-						hitboxElement->IntAttribute("height")
-					);
-				}
+			while(eventElement) {
+				currentArea.back()->addEvent(EventManager::getEventByName(eventElement->Attribute("name")));
 				
 				eventElement = eventElement->NextSiblingElement("event");
 			}
 			
 			mapElement = mapElement->NextSiblingElement("map");
 		}
+		
+		map.push_back(currentArea);
 		
 		areaElement = areaElement->NextSiblingElement("area");
 	}

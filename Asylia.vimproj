@@ -110,6 +110,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   Debug.hpp
   Enemy.hpp
   Event.hpp
+  EventManager.hpp
   Font.hpp
   Game.hpp
   GameWindow.hpp
@@ -180,6 +181,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   Color.cpp
   Enemy.cpp
   Event.cpp
+  EventManager.cpp
   Font.cpp
   Game.cpp
   GameWindow.cpp

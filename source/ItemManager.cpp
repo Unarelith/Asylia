@@ -29,6 +29,28 @@ void ItemManager::init() {
 	loadSkills();
 }
 
+void ItemManager::free() {
+	while(items.size() != 0) {
+		delete items.back();
+		items.pop_back();
+	}
+	
+	while(armors.size() != 0) {
+		delete armors.back();
+		armors.pop_back();
+	}
+	
+	while(weapons.size() != 0) {
+		delete weapons.back();
+		weapons.pop_back();
+	}
+	
+	while(skills.size() != 0) {
+		delete skills.back();
+		skills.pop_back();
+	}
+}
+
 void ItemManager::loadItems() {
 	XMLDocument xml;
 	int code = xml.LoadFile("data/config/items.xml");

@@ -5,7 +5,18 @@
 			<event type="Character" x="15" y="12" name="Boy"/>
 			<event type="Custom" name="event0"/>
 		</events>
+	* In maps.xml events should be represented like that:
+		<maps>
+			<map ...>
+				<event name="Boy"/>
+				<event name="event0"/>
+			</map>
+		</maps>
 	* Obviously, there is always Lua events for Custom event type
+	* solid="1" by default
+	* for chests, anim is replaced by "type" and for characters by "direction"
+
+- Add a class "LuaMod" or "ModScript" or "Mod"
 
 - Add a Switch class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
