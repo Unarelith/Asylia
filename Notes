@@ -12,7 +12,6 @@
 	=> It might be helpful in the near future
 
 - Fix issues:
-	* #14 - Improve some code parts
 	* #16 - Work on transitions between maps
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
