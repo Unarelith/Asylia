@@ -71,9 +71,10 @@ using namespace tinyxml2;
 #include "Font.hpp"
 
 #include "Timer.hpp"
-#include "Animation.hpp"
 #include "AnimationManager.hpp"
+#include "SpriteAnimation.hpp"
 #include "Sprite.hpp"
+#include "Animation.hpp"
 
 #include "Item.hpp"
 #include "Armor.hpp"

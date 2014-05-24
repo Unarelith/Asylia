@@ -33,35 +33,34 @@ void Sprite::drawFrame(s16 x, s16 y, u16 frame) {
 }
 
 void Sprite::addAnimation(u16 size, u16 *tabAnim, u16 delay) {
-	Animation* tmp = new Animation(size, tabAnim, delay);
-	m_animations.push_back(tmp);
+	m_animations.push_back(SpriteAnimation(size, tabAnim, delay));
 }
 
 void Sprite::resetAnimation(u16 anim) {
-	m_animations[anim]->timer.reset();
+	m_animations[anim].timer.reset();
 }
 
 void Sprite::startAnimation(u16 anim) {
-	m_animations[anim]->timer.start();
+	m_animations[anim].timer.start();
 }
 
 void Sprite::stopAnimation(u16 anim) {
-	m_animations[anim]->timer.stop();
+	m_animations[anim].timer.stop();
 }
 
 bool Sprite::animationAtEnd(u16 anim) {
-	return m_animations[anim]->timer.time() / m_animations[anim]->delay >= m_animations[anim]->size;
+	return m_animations[anim].timer.time() / m_animations[anim].delay >= m_animations[anim].size;
 }
 
 bool Sprite::animationAtFrame(u16 anim, u16 frame) {
-	return (u16)(m_animations[anim]->timer.time() / m_animations[anim]->delay) == frame;
+	return (u16)(m_animations[anim].timer.time() / m_animations[anim].delay) == frame;
 }
 
 void Sprite::playAnimation(s16 x, s16 y, u16 anim) {
-	if(!m_animations[anim]->isPlaying) {
+	if(!m_animations[anim].isPlaying) {
 		resetAnimation(anim);
 		startAnimation(anim);
-		m_animations[anim]->isPlaying = true;
+		m_animations[anim].isPlaying = true;
 	}
 	
 	if(animationAtEnd(anim)) {
@@ -69,7 +68,7 @@ void Sprite::playAnimation(s16 x, s16 y, u16 anim) {
 		startAnimation(anim);
 	}
 	
-	u16 animToDraw = m_animations[anim]->tabAnim[(u16)(m_animations[anim]->timer.time() / m_animations[anim]->delay)];
+	u16 animToDraw = m_animations[anim].tabAnim[(u16)(m_animations[anim].timer.time() / m_animations[anim].delay)];
 	drawFrame(x, y, animToDraw);
 }
 

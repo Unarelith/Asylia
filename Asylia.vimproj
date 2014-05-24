@@ -133,6 +133,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   Skill.hpp
   Sound.hpp
   Sprite.hpp
+  SpriteAnimation.hpp
   Tileset.hpp
   Timer.hpp
   TimeManager.hpp
@@ -171,6 +172,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
   ActivityManager.cpp
   Actor.cpp
+  Animation.cpp
   AnimationManager.cpp
   Armor.cpp
   Battle.cpp

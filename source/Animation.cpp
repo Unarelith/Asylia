@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Animation.hpp
+ *       Filename:  Animation.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  24/05/2014 15:49:52
+ *        Created:  24/05/2014 15:51:10
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,14 +15,8 @@
  *
  * =====================================================================================
  */
-#ifndef ANIMATION_HPP_
-#define ANIMATION_HPP_
+#include "Asylia.hpp"
 
-class Animation : public Sprite {
-	Animation(const char *filename, u16 frameWidth, u16 frameHeight);
-	~Animation();
+Animation::Animation(const char *filename, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	
-	void play();
-};
-
-#endif // ANIMATION_HPP_
+}

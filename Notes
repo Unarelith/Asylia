@@ -1,19 +1,27 @@
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
 - Add a class "LuaMod" or "ModScript" or "Mod"
+~ Create a class "ModLibrary" which will provide through static functions
+   all that is required to mod the game correctly, like easy functions
 
-- Add a Switch class
+- Add a "Switch" class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
 - Add a lot of functions to Window class
-	* Like "printActorHP(actor, x, y, width, height)" which will display something like "HP:	320"
 	=> It might be helpful in the near future
+	* Example: "printActorHP(actor, x, y, width)" which will display something like "HP:	320"
+	* Maybe create a global function "printStat(x, y, name, value, nameWidth, width)"
+	* Improve windows by using these functions
 
 - Fix issues:
 	* #16 - Work on transitions between maps
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
 	* #29 - Improve victory window
+	* #30 - Add other stats and sort BattleActions in stack
+		=> Damage formula improvement needed
+		=> Sort BattleAction by battlers' speed
+		=> Add stats growth functions
 
 - Add parameters to events, like speed for characters and all params for the chests
 
@@ -34,15 +42,11 @@
 
 - Maybe create Activity child classes instead of modes for BattleActivity
 
-- ISSUE #30 Add new stats for battlers and weapons
-	=> Damage formula improvement needed
-	=> Sort BattleAction by battlers' speed
-	=> Add stats growth functions
-
-- Rename "Animation" struct to "SpriteAnimation"
-- Rename "AnimationManager" to "SpriteAnimationManager"
-	* Improve it with xml!!!
 - Create a class "Animation", child class of Sprite, in order to handle things like animations in battles
+	* Add movements
+	* Add actions ( like blinking the player of play a sound effect )
+
+- Improve AnimationManager using XML
 
 - Make shop interface, callable from an event ( like a ShopActivity )
 	* ShopChoiceWindow

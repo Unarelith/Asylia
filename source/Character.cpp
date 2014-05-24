@@ -63,11 +63,11 @@ void Character::render() {
 		if(m_moving) {
 			playAnimation(m_x, m_y, m_direction);
 		} else {
-			drawFrame(m_x, m_y, m_animations[m_direction]->tabAnim[0]);
+			drawFrame(m_x, m_y, m_animations[m_direction].tabAnim[0]);
 		}
 	} else {
 		m_movementTimer.stop();
-		drawFrame(m_x, m_y, m_animations[m_direction]->tabAnim[0]);
+		drawFrame(m_x, m_y, m_animations[m_direction].tabAnim[0]);
 	}
 }
 
