@@ -1,5 +1,3 @@
-dofile("data/lualibs/Utilities.lua")
-
 ChestEvent = {}
 
 ChestEvent.new = function(eventName, itemID, itemCount)
@@ -50,6 +48,10 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 		self.collisionAction = function()
 			
 		end	
+		
+		self.movements = {
+			function() end
+		}
 		
 		return self
 	end

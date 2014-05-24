@@ -1,5 +1,3 @@
-dofile("data/lualibs/CharacterEvent.lua")
-
 event0 = CharacterEvent.new("event0", 2)
 
 event0.init = function()

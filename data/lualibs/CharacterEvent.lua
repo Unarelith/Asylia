@@ -1,5 +1,3 @@
-dofile("data/lualibs/Utilities.lua")
-
 CharacterEvent = {}
 
 CharacterEvent.new = function(eventName, nbOfMessages)

@@ -27,6 +27,8 @@ namespace LuaHandler {
 	void doFile(const char *filename);
 	void doString(std::string str);
 	
+	void loadEventLibs();
+	
 	extern lua_State *L;
 	extern SLB::Manager slbm;
 };

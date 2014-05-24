@@ -1,7 +1,14 @@
-- Improve CharacterEvent inclusion with a require or a dofile in the C++ loading of events
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
-- Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", etc...
+- Create base Events lua pseudo-classes in C++, and get them by xml, like:
+		<events>
+			<event type="Character" x="15" y="12" name="Boy"/>
+			<event type="Custom" name="event0"/>
+		</events>
+	* Obviously, there is always Lua events for Custom event type
+
+- Add a Switch class
+- Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
 - Add a lot of functions to Window class
 	* Like "printActorHP(actor, x, y, width, height)" which will display something like "HP:	320"
@@ -19,14 +26,13 @@
 - Manage disabled items in SelectableWindow ( maybe use a std::vector<std::pair<std::string, bool>>> for commands container )
 
 - Let ItemWindows get data they'll display
-- Adapt ItemWindow to in-battle display
-- EquipItemWindow should be a child ItemWindow
+- EquipItemWindow should be removed
 	* Solve that problem: ItemWindow::getItem()
 - Manage usable Items and their function through a lua script by object
 - Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
 	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
 
-- Create a new class SkillWindow, child of ItemWindow
+- Create a new class SkillActivity, child of ItemActivity
 	* Add it in the menu
 	* Add it in the battles
 
@@ -53,6 +59,10 @@
 		---- ---- ---- main.lua
 		---- dungeon 2/
 	* etc..
+
+- Improve EquipWindow performances on Android
+
+- Add colors in text
 
 - Check bugs
 
