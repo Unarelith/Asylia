@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-Player::Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY) : Character(filename.c_str(), x, y, direction, area, mapX, mapY) {
+Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
 	m_type = Type::Player;
 	
 	m_speed = CHARA_SPEED;

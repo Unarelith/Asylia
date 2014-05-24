@@ -18,6 +18,8 @@
 
 - Add a class "LuaMod" or "ModScript" or "Mod"
 
+- Add an XML overlay, in order to follow the DRY concept
+
 - Add a Switch class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 

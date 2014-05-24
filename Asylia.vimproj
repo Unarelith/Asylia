@@ -11,6 +11,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    armors.xml
    battles.xml
    enemies.xml
+   events.xml
    items.xml
    maps.xml
    player.xml

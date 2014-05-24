@@ -245,6 +245,7 @@ EQUIPSTATSWINDOW_HPP_	include/EquipStatsWindow.hpp	19;"	d
 ERRFUNC	external/lua.c	17004;"	d	file:
 ERRLIB	external/lua.c	17003;"	d	file:
 ERRORSTACKSIZE	external/lua.c	6625;"	d	file:
+EVENTMANAGER_HPP_	include/EventManager.hpp	19;"	d
 EVENT_HPP_	include/Event.hpp	19;"	d
 EXTRA_STACK	external/lua.c	2338;"	d	file:
 Effect	include/Sound.hpp	/^	namespace Effect {$/;"	n	namespace:Sound
@@ -273,7 +274,8 @@ ErrorHandler	external/SLB.hpp	/^  class SLB_EXPORT ErrorHandler$/;"	c	namespace:
 ErrorID	external/tinyxml2.hpp	/^    XMLError  ErrorID() const {$/;"	f	class:tinyxml2::XMLDocument
 Event	include/Character.hpp	/^			None, Player, NPC, Event$/;"	e	enum:Character::Type
 Event	include/Event.hpp	/^class Event : public Character {$/;"	c
-Event	source/Event.cpp	/^Event::Event(std::string folder, std::string table, std::string appearance, u16 x, u16 y, u8 anim, u16 area, u16 mapX, u16 mapY, bool solid) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {$/;"	f	class:Event
+Event	source/Event.cpp	/^Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid) : Character(appearance.c_str(), x, y, anim, area, mapX, mapY) {$/;"	f	class:Event
+EventManager	include/EventManager.hpp	/^class EventManager {$/;"	c
 FC_DefaultClassConstructor	external/SLB.hpp	/^    FC_DefaultClassConstructor() {}$/;"	f	struct:SLB::Private::FC_DefaultClassConstructor
 FC_DefaultClassConstructor	external/SLB.hpp	/^  struct FC_DefaultClassConstructor<C()> : public FuncCall$/;"	s	namespace:SLB::Private
 FINALIZEDBIT	external/lua.c	2599;"	d	file:
@@ -2358,8 +2360,6 @@ api_check	external/lua.c	1111;"	d	file:
 api_checknelems	external/lua.c	3302;"	d	file:
 api_checkvalidindex	external/lua.c	3767;"	d	file:
 api_incr_top	external/lua.c	3296;"	d	file:
-areaSizes	include/MapManager.hpp	/^		static u16 *areaSizes;$/;"	m	class:MapManager
-areaSizes	source/MapManager.cpp	/^u16 *MapManager::areaSizes = NULL;$/;"	m	class:MapManager	file:
 arith_op	external/lua.c	12752;"	d	file:
 armor	include/Inventory.hpp	/^		Armor *armor(u8 slot) const { for(auto it : m_armorlist) if(it->slot() == slot) return it; return NULL; }$/;"	f	class:Inventory
 armorlist	include/Inventory.hpp	/^		std::list<Armor*> armorlist() { return m_armorlist; }$/;"	f	class:Inventory
@@ -2732,7 +2732,9 @@ event	external/lua.c	/^  int event;$/;"	m	struct:lua_Debug	file:
 event	external/lua.h	/^  int event;$/;"	m	struct:lua_Debug
 event	source/AnimationManager.cpp	/^u16 AnimationManager::event[4][4] = {$/;"	m	class:AnimationManager	file:
 eventCollisions	source/Character.cpp	/^void Character::eventCollisions() {$/;"	f	class:Character
+events	include/EventManager.hpp	/^		static std::map<std::string, Event*> events;$/;"	m	class:EventManager
 events	include/Map.hpp	/^		std::vector<Event*> events() const { return m_events; }$/;"	f	class:Map
+events	source/EventManager.cpp	/^std::map<std::string, Event*> EventManager::events;$/;"	m	class:EventManager	file:
 eventsUpdate	source/Map.cpp	/^void Map::eventsUpdate() {$/;"	f	class:Map
 execute	external/SLB.cpp	/^  void LuaCallBase::execute(int numArgs, int numOutput, int )$/;"	f	class:SLB::LuaCallBase
 exp1	external/lua.c	/^static int exp1 (LexState *ls) {$/;"	f	file:
@@ -2802,7 +2804,9 @@ frealloc	external/lua.c	/^  lua_Alloc frealloc;  \/* function to reallocate memo
 free	source/BattleManager.cpp	/^void BattleManager::free() {$/;"	f	class:BattleManager
 free	source/BattlerManager.cpp	/^void BattlerManager::free() {$/;"	f	class:BattlerManager
 free	source/CharacterManager.cpp	/^void CharacterManager::free() {$/;"	f	class:CharacterManager
+free	source/EventManager.cpp	/^void EventManager::free() {$/;"	f	class:EventManager
 free	source/Interface.cpp	/^void Interface::free() {$/;"	f	class:Interface
+free	source/ItemManager.cpp	/^void ItemManager::free() {$/;"	f	class:ItemManager
 free	source/LuaHandler.cpp	/^void LuaHandler::free() {$/;"	f	class:LuaHandler
 free	source/MapManager.cpp	/^void MapManager::free() {$/;"	f	class:MapManager
 free	source/SDLManager.cpp	/^void SDLManager::free() {$/;"	f	class:SDLManager
@@ -2913,6 +2917,7 @@ getElementsMap	external/SLB.hpp	/^    const Elements& getElementsMap() const { r
 getEnemy	include/Battle.hpp	/^		Enemy *getEnemy(u8 id) { return m_enemies[id].second; }$/;"	f	class:Battle
 getEnemyPos	include/Battle.hpp	/^		u8 getEnemyPos(u8 id) { return m_enemies[id].first; }$/;"	f	class:Battle
 getEvent	source/Map.cpp	/^Event *Map::getEvent(std::string name) {$/;"	f	class:Map
+getEventByName	include/EventManager.hpp	/^		static Event *getEventByName(std::string name) { return events[name]; }$/;"	f	class:EventManager
 getF	external/lua.c	/^static const char *getF (lua_State *L, void *ud, size_t *size) {$/;"	f	file:
 getFlags	external/SLB.hpp	/^    size_t getFlags() const { return _flags; }$/;"	f	class:SLB::InstanceBase
 getFunc	external/SLB.cpp	/^  void LuaCallBase::getFunc(int index)$/;"	f	class:SLB::LuaCallBase
@@ -3076,6 +3081,7 @@ init	source/BattleManager.cpp	/^void BattleManager::init() {$/;"	f	class:BattleM
 init	source/BattlerManager.cpp	/^void BattlerManager::init() {$/;"	f	class:BattlerManager
 init	source/CharacterManager.cpp	/^void CharacterManager::init() {$/;"	f	class:CharacterManager
 init	source/Event.cpp	/^void Event::init() {$/;"	f	class:Event
+init	source/EventManager.cpp	/^void EventManager::init() {$/;"	f	class:EventManager
 init	source/Interface.cpp	/^void Interface::init() {$/;"	f	class:Interface
 init	source/ItemManager.cpp	/^void ItemManager::init() {$/;"	f	class:ItemManager
 init	source/LanguageManager.cpp	/^void LanguageManager::init(std::string language) {$/;"	f	class:LanguageManager
@@ -3088,6 +3094,7 @@ init	source/Sound.cpp	/^void Sound::Music::init() {$/;"	f	class:Sound::Music
 init	source/Sound.cpp	/^void Sound::init() {$/;"	f	class:Sound
 initActors	source/BattlerManager.cpp	/^void BattlerManager::initActors() {$/;"	f	class:BattlerManager
 initEnemies	source/BattlerManager.cpp	/^void BattlerManager::initEnemies() {$/;"	f	class:BattlerManager
+initEvents	source/EventManager.cpp	/^void EventManager::initEvents() {$/;"	f	class:EventManager
 initMaps	source/MapManager.cpp	/^void MapManager::initMaps() {$/;"	f	class:MapManager
 initTilesets	source/MapManager.cpp	/^void MapManager::initTilesets() {$/;"	f	class:MapManager
 init_exp	external/lua.c	/^static void init_exp (expdesc *e, expkind k, int i) {$/;"	f	file:
@@ -3307,9 +3314,12 @@ load	source/Map.cpp	/^void Map::load() {$/;"	f	class:Map
 load	source/Sound.cpp	/^void Sound::Effect::load(const char *filename, Mix_Chunk **se) {$/;"	f	class:Sound::Effect
 load	source/Sound.cpp	/^void Sound::Music::load(const char *filename, Mix_Music **music) {$/;"	f	class:Sound::Music
 loadArmors	source/ItemManager.cpp	/^void ItemManager::loadArmors() {$/;"	f	class:ItemManager
+loadCharacterEvent	source/EventManager.cpp	/^void EventManager::loadCharacterEvent(XMLElement *characterElement) {$/;"	f	class:EventManager
+loadChestEvent	source/EventManager.cpp	/^void EventManager::loadChestEvent(XMLElement *chestElement) {$/;"	f	class:EventManager
 loadCommandWindow	source/MenuActivity.cpp	/^void MenuActivity::loadCommandWindow() {$/;"	f	class:MenuActivity
 loadDefaultLibs	external/SLB.hpp	/^    void loadDefaultLibs(bool b) { _loadDefaultLibs = b; }$/;"	f	class:SLB::Script
 loadItems	source/ItemManager.cpp	/^void ItemManager::loadItems() {$/;"	f	class:ItemManager
+loadLibs	source/EventManager.cpp	/^void EventManager::loadLibs() {$/;"	f	class:EventManager
 loadSkills	source/ItemManager.cpp	/^void ItemManager::loadSkills() {$/;"	f	class:ItemManager
 loadTile	source/Map.cpp	/^void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {$/;"	f	class:Map
 loadWeapons	source/ItemManager.cpp	/^void ItemManager::loadWeapons() {$/;"	f	class:ItemManager
@@ -4034,6 +4044,7 @@ m_movementTimer	include/Character.hpp	/^		Timer m_movementTimer;$/;"	m	class:Cha
 m_moving	include/Character.hpp	/^		bool m_moving;$/;"	m	class:Character
 m_msgwin	include/DialogActivity.hpp	/^		MessageWindow *m_msgwin;$/;"	m	class:DialogActivity
 m_name	include/Battler.hpp	/^		std::string m_name;$/;"	m	class:Battler
+m_name	include/Event.hpp	/^		std::string m_name;$/;"	m	class:Event
 m_name	include/Item.hpp	/^		std::string m_name;$/;"	m	class:Item
 m_parent	include/DialogActivity.hpp	/^		Activity *m_parent;$/;"	m	class:DialogActivity
 m_pixelFormat	include/Map.hpp	/^		Uint32 m_pixelFormat;$/;"	m	class:Map
@@ -4052,7 +4063,6 @@ m_speed	include/Character.hpp	/^		u8 m_speed;$/;"	m	class:Character
 m_state	include/Battler.hpp	/^		u8 m_state;$/;"	m	class:Battler
 m_statswin	include/EquipActivity.hpp	/^		EquipStatsWindow m_statswin;$/;"	m	class:EquipActivity
 m_t	include/Timer.hpp	/^		u16 m_t;$/;"	m	class:Timer
-m_table	include/Event.hpp	/^		std::string m_table;$/;"	m	class:Event
 m_table	include/LuaActivity.hpp	/^		std::string m_table;$/;"	m	class:LuaActivity
 m_texture	include/Image.hpp	/^		SDL_Texture *m_texture;$/;"	m	class:Image
 m_thumbnail	include/Item.hpp	/^		Image *m_thumbnail;$/;"	m	class:Item
@@ -4096,8 +4106,8 @@ makeseed	external/lua.c	/^static unsigned int makeseed (lua_State *L) {$/;"	f	fi
 makewhite	external/lua.c	7537;"	d	file:
 managerMutex	external/SLB.cpp	/^  Mutex managerMutex;$/;"	m	namespace:SLB	file:
 mapCollisions	source/Character.cpp	/^void Character::mapCollisions() {$/;"	f	class:Character
-maps	include/MapManager.hpp	/^		static Map ***maps;$/;"	m	class:MapManager
-maps	source/MapManager.cpp	/^Map ***MapManager::maps = NULL;$/;"	m	class:MapManager	file:
+maps	include/MapManager.hpp	/^		static std::vector<std::vector<Map*>> maps;$/;"	m	class:MapManager
+maps	source/MapManager.cpp	/^std::vector<std::vector<Map*>> MapManager::maps;$/;"	m	class:MapManager	file:
 markbeingfnz	external/lua.c	/^static void markbeingfnz (global_State *g) {$/;"	f	file:
 markmt	external/lua.c	/^static void markmt (global_State *g) {$/;"	f	file:
 markobject	external/lua.c	7556;"	d	file:
@@ -4194,15 +4204,12 @@ name	external/lua.c	/^ const char* name;$/;"	m	struct:__anon18	file:
 name	external/lua.h	/^  const char *name;	\/* (n) *\/$/;"	m	struct:lua_Debug
 name	include/Battler.hpp	/^		std::string name() const { return m_name; }$/;"	f	class:Battler
 name	include/Enemy.hpp	/^		std::string name() const { return _t(m_name); }$/;"	f	class:Enemy
+name	include/Event.hpp	/^		std::string name() const { return m_name; }$/;"	f	class:Event
 name	include/Item.hpp	/^		std::string name() const { return _t(m_name); }$/;"	f	class:Item
 namewhat	external/lua.c	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug	file:
 namewhat	external/lua.h	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug
-nbAreas	include/MapManager.hpp	/^		static u16 nbAreas;$/;"	m	class:MapManager
-nbAreas	source/MapManager.cpp	/^u16 MapManager::nbAreas = 0;$/;"	m	class:MapManager	file:
 nbArmors	include/Inventory.hpp	/^		u16 nbArmors() { return m_armors.size(); }$/;"	f	class:Inventory
 nbItems	include/Inventory.hpp	/^		u16 nbItems() { return m_items.size(); }$/;"	f	class:Inventory
-nbTilesets	include/MapManager.hpp	/^		static u16 nbTilesets;$/;"	m	class:MapManager
-nbTilesets	source/MapManager.cpp	/^u16 MapManager::nbTilesets = 0;$/;"	m	class:MapManager	file:
 nbWeapons	include/Inventory.hpp	/^		u16 nbWeapons() { return m_weapons.size(); }$/;"	f	class:Inventory
 need_value	external/lua.c	/^static int need_value (FuncState *fs, int list) {$/;"	f	file:
 newDialog	include/ActivityManager.hpp	/^		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity(); activities.push(dialog); return dialog; }$/;"	f	class:ActivityManager
@@ -4752,7 +4759,6 @@ t	external/lua.c	/^  expdesc *t;  \/* table descriptor *\/$/;"	m	struct:ConsCont
 t	external/lua.c	/^  int t;  \/* patch list of `exit when true' *\/$/;"	m	struct:expdesc	file:
 tabAnim	include/Animation.hpp	/^	u16 *tabAnim;$/;"	m	struct:Animation
 tab_funcs	external/lua.c	/^static const luaL_Reg tab_funcs[] = {$/;"	v	file:
-table	include/Event.hpp	/^		std::string table() const { return m_table; }$/;"	f	class:Event
 tag2tt	external/lua.c	1678;"	d	file:
 tag_error	external/lua.c	/^static void tag_error (lua_State *L, int narg, int tag) {$/;"	f	file:
 tconcat	external/lua.c	/^static int tconcat (lua_State *L) {$/;"	f	file:
@@ -4777,8 +4783,8 @@ tileHeight	include/Tileset.hpp	/^	u16 tileHeight;$/;"	m	struct:Tileset
 tileWidth	include/Tileset.hpp	/^	u16 tileWidth;$/;"	m	struct:Tileset
 tiles	include/Tileset.hpp	/^	Image *tiles;$/;"	m	struct:Tileset
 tileset	include/Map.hpp	/^		Tileset *tileset() const { return m_tileset; }$/;"	f	class:Map
-tilesets	include/MapManager.hpp	/^		static Tileset **tilesets;$/;"	m	class:MapManager
-tilesets	source/MapManager.cpp	/^Tileset **MapManager::tilesets = NULL;$/;"	m	class:MapManager	file:
+tilesets	include/MapManager.hpp	/^		static std::vector<Tileset*> tilesets;$/;"	m	class:MapManager
+tilesets	source/MapManager.cpp	/^std::vector<Tileset*> MapManager::tilesets;$/;"	m	class:MapManager	file:
 time	include/Timer.hpp	/^		u16 time() { return (m_isStarted) ? SDL_GetTicks() - m_t : m_tick; }$/;"	f	class:Timer
 timeToWait	source/TimeManager.cpp	/^u32 TimeManager::timeToWait = 0;$/;"	m	class:TimeManager	file:
 timer	include/Animation.hpp	/^	Timer timer;$/;"	m	struct:Animation
@@ -4936,9 +4942,9 @@ vmcasenb	external/lua.c	12764;"	d	file:
 vmdispatch	external/lua.c	12762;"	d	file:
 vt	external/lua.c	/^      lu_byte vt;  \/* whether 't' is register (VLOCAL) or upvalue (VUPVAL) *\/$/;"	m	struct:expdesc::__anon8::__anon9	file:
 waitUntilItsTime	source/TimeManager.cpp	/^void TimeManager::waitUntilItsTime() {$/;"	f	class:TimeManager
-warn	include/Debug.hpp	31;"	d
-warn	include/Debug.hpp	37;"	d
-warn	include/Debug.hpp	42;"	d
+warning	include/Debug.hpp	31;"	d
+warning	include/Debug.hpp	37;"	d
+warning	include/Debug.hpp	42;"	d
 weak	external/lua.c	/^  GCObject *weak;  \/* list of tables with weak values *\/$/;"	m	struct:global_State	file:
 weapon	include/Inventory.hpp	/^		Weapon *weapon() const { return m_weapon; }$/;"	f	class:Inventory
 weapons	include/Inventory.hpp	/^		std::list<std::pair<Weapon*, s16>> weapons() { return m_weapons; }$/;"	f	class:Inventory

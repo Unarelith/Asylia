@@ -31,15 +31,11 @@ void CharacterManager::init() {
 	const char *className = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->Attribute("class");
 	u16 id = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->IntAttribute("id");
 	XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
-	XMLElement *mapElement = doc.FirstChildElement("player").FirstChildElement("map").ToElement();
 	
 	player = new Player(std::string("") + "graphics/characters/" + className + ((id < 10)?("0"):("")) + to_string(id) + ".png",
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
-						positionElement->IntAttribute("direction"),
-						mapElement->IntAttribute("area"),
-						mapElement->IntAttribute("x"),
-						mapElement->IntAttribute("y"));
+						positionElement->IntAttribute("direction"));
 }
 
 void CharacterManager::free() {

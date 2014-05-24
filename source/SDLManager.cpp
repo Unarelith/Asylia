@@ -41,11 +41,11 @@ void SDLManager::init() {
 	Mix_Volume(1, MIX_MAX_VOLUME / 2);
 	
 	if(!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2")) {
-		warn("Warning: Linear interpolation not enabled!");
+		warning("Warning: Linear interpolation not enabled!");
 	}
 	
 	if(!SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1")) {
-		warn("Warning: VSync not enabled!");
+		warning("Warning: VSync not enabled!");
 	}
 }
 

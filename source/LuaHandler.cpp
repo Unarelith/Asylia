@@ -28,8 +28,6 @@ void LuaHandler::init() {
 	slbm.registerSLB(L);
 	
 	doString("SLB.using(SLB)");
-	
-	loadEventLibs();
 }
 
 void LuaHandler::free() {
@@ -115,10 +113,5 @@ void LuaHandler::doString(std::string str) {
 		error("%s", lua_tostring(L, -1));
 		Game::quit = true;
 	}
-}
-
-void LuaHandler::loadEventLibs() {
-	doFile("data/lualibs/CharacterEvent.lua");
-	doFile("data/lualibs/ChestEvent.lua");
 }
 

@@ -2,5 +2,4 @@
 <player>
 	<appearance class="Fighter" id="1"/>
 	<position x="2" y="2" direction="0"/>
-	<map area="0" x="0" y="0"/>
 </player>

@@ -17,8 +17,8 @@
  */
 #include "Asylia.hpp"
 
-Tileset **MapManager::tilesets = NULL;
-Map ***MapManager::maps = NULL;
+std::vector<Tileset*> MapManager::tilesets;
+std::vector<std::vector<Map*>> MapManager::maps;
 Map *MapManager::currentMap = NULL;
 
 void MapManager::init() {
@@ -58,7 +58,7 @@ void MapManager::initTilesets() {
 		tilesetFilename << "graphics/tilesets/" << tilesetElement->Attribute("name") << ".png";
 		tilesetInfoFilename << "data/tilesets/" << tilesetElement->Attribute("name") << ".tmx";
 		
-		tilesets.push_back(new Tileset)
+		tilesets.push_back(new Tileset);
 		tilesets.back()->tiles = new Image(tilesetFilename.str().c_str());
 		getNonPassableTiles(tilesetInfoFilename.str().c_str(), tilesets.back());
 		
@@ -76,15 +76,14 @@ void MapManager::initMaps() {
 	
 	XMLHandle doc(&xml);
 	
-	maps.push_back()
-	
 	XMLElement *areaElement = doc.FirstChildElement("maps").FirstChildElement("area").ToElement();
+	u16 areaID = 0;
 	while(areaElement) {
 		XMLElement *mapElement = areaElement->FirstChildElement("map");
 		std::vector<Map*> currentArea;
 		while(mapElement) {
 			std::stringstream mapFilename;
-			u8 layers, events;
+			u8 layers;
 			u16 x, y, tilesetID;
 			
 			layers = mapElement->IntAttribute("layers");
@@ -92,9 +91,9 @@ void MapManager::initMaps() {
 			y = mapElement->IntAttribute("y");
 			tilesetID = mapElement->IntAttribute("tilesetID");
 			
-			mapFilename << "data/maps/map" << i << "-" << x << "-" << y << ".tmx";
+			mapFilename << "data/maps/map" << areaID << "-" << x << "-" << y << ".tmx";
 			
-			currentArea.push_back(new Map(mapFilename.str().c_str(), x, y, i, layers, tilesetID));
+			currentArea.push_back(new Map(mapFilename.str().c_str(), x, y, areaID, layers, tilesetID));
 			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
 			while(eventElement) {
@@ -106,7 +105,9 @@ void MapManager::initMaps() {
 			mapElement = mapElement->NextSiblingElement("map");
 		}
 		
-		map.push_back(currentArea);
+		maps.push_back(currentArea);
+		
+		areaID++;
 		
 		areaElement = areaElement->NextSiblingElement("area");
 	}

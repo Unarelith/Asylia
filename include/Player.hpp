@@ -20,7 +20,7 @@
 
 class Player : public Character {
 	public:
-		Player(std::string filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY);
+		Player(std::string filename, s16 x, s16 y, u8 direction);
 		~Player();
 		
 		void move();

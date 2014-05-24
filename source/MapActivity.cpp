@@ -32,11 +32,15 @@ MapActivity::~MapActivity() {
 	
 	MapManager::free();
 	
+	EventManager::free();
+	
 	LuaHandler::free();
 }
 
 void MapActivity::init() {
 	LuaHandler::init();
+	
+	EventManager::init();
 	
 	MapManager::init();
 	

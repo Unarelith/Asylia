@@ -17,18 +17,13 @@
  */
 #include "Asylia.hpp"
 
-Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
+Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_type = Type::None;
 	
 	m_x = x;
 	m_y = y + 16;
 	
 	m_direction = direction;
-	
-	m_area = area;
-	
-	m_mapX = mapX;
-	m_mapY = mapY;
 	
 	m_vx = 0;
 	m_vy = 0;

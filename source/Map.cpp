@@ -78,7 +78,7 @@ void Map::addEvent(Event *event) {
 
 Event *Map::getEvent(std::string name) {
 	for(u16 i = 0 ; i < m_events.size() ; i++) {
-		if(m_events[i]->table() == name) {
+		if(m_events[i]->name() == name) {
 			return m_events[i];
 		}
 	}
@@ -165,7 +165,7 @@ s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {
 	if(tileX + tileY * m_width < m_width * m_height) {
 		return m_data[layer][tileX + tileY * m_width];
 	} else {
-		warn("Tile out of range: (%d;%d) at layer %d", tileX, tileY, layer);
+		warning("Tile out of range: (%d;%d) at layer %d", tileX, tileY, layer);
 		return -1; // The tile is out of range
 	}
 }

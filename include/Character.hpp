@@ -27,7 +27,7 @@ class Event;
 
 class Character : public Sprite {
 	public:
-		Character(const char *filename, s16 x, s16 y, u8 direction, u16 area, u16 mapX, u16 mapY, u16 frameWidth = 32, u16 frameHeight = 48);
+		Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth = 32, u16 frameHeight = 48);
 		virtual ~Character();
 		
 		void move(std::string function);
@@ -87,11 +87,6 @@ class Character : public Sprite {
 		s16 m_y;
 		
 		u8 m_direction;
-		
-		u16 m_area;
-		
-		u16 m_mapX;
-		u16 m_mapY;
 		
 		s8 m_vx;
 		s8 m_vy;
