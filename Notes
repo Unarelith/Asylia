@@ -11,11 +11,9 @@
 - Add a "Switch" class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
-- Add a lot of functions to Window class
-	=> It might be helpful in the near future
-	* Example: "printActorHP(actor, x, y, width)" which will display something like "HP:	320"
-	* Maybe create a global function "printStat(x, y, name, value, nameWidth, width)"
+- Add a lot of stats display help functions to Window class
 	* Improve windows by using these functions
+	* Find a way to improve EquipStatsWindow
 
 - Fix issues:
 	* #16 - Work on transitions between maps

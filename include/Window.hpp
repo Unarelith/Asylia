@@ -37,6 +37,7 @@ class Window {
 		void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width);
 		void printName(Battler *battler, s16 x, s16 y, u16 width);
 		void printState(Battler *battler, s16 x, s16 y, u16 width);
+		void printLevel(Battler *battler, s16 x, s16 y, s16 x2);
 		void printHP(Battler *battler, s16 x, s16 y, s16 x2);
 		void printSP(Battler *battler, s16 x, s16 y, s16 x2);
 		void drawBattler(Battler *battler, s16 x, s16 y);

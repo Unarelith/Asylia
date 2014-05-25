@@ -26,7 +26,7 @@ EquipStatsWindow::~EquipStatsWindow() {
 void EquipStatsWindow::draw(Item *currentItem) {
 	u16 baseAtk, finalAtk, baseDef, finalDef;
 	Color finalAtkColor(Color::white), finalDefColor(Color::white);
-	Image level, arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
+	Image arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
 	
 	baseAtk = CharacterManager::player->battler()->totalAtk();
 	baseDef = CharacterManager::player->battler()->totalDef();
@@ -62,11 +62,8 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	
 	Window::draw();
 	
-	Interface::defaultFont->printScaled(CharacterManager::player->battler()->name().c_str(), m_x + GameWindow::main->viewportX() + 20, m_y + GameWindow::main->viewportY() + 20, m_width - 130, 32, FONT_LARGE);
-	
-	Interface::defaultFont->printScaled(_t("Lv").c_str(), m_x + GameWindow::main->viewportX() + m_width - 90, m_y + GameWindow::main->viewportY() + 20, 25, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(CharacterManager::player->battler()->level()).c_str(), m_x + GameWindow::main->viewportX() + m_width - 20, m_y + GameWindow::main->viewportY() + 20, &level, FONT_LARGE);
-	level.render(level.posRect().x - level.width());
+	printName(CharacterManager::player->battler(), m_x + 20, m_y + 20, m_width - 130);
+	printLevel(CharacterManager::player->battler(), m_x + m_width - 90, m_y + 20, m_x + m_width - 20);
 	
 	Interface::defaultFont->printToImage("->", GameWindow::main->viewportX(), m_y + GameWindow::main->viewportY() + 52, &arrow, FONT_LARGE, Color::system);
 	

@@ -84,12 +84,16 @@ void Window::printState(Battler *battler, s16 x, s16 y, u16 width) {
 	Interface::defaultFont->printScaled(battler->getStateString().c_str(), x + GameWindow::main->viewportX(), y + GameWindow::main->viewportY(), width, 28, FONT_LARGE);
 }
 
+void Window::printLevel(Battler *battler, s16 x, s16 y, s16 x2) {
+	printStat(x, y, _t("Lv"), battler->level(), 25, x2);
+}
+
 void Window::printHP(Battler *battler, s16 x, s16 y, s16 x2) {
 	printStat(x, y, _t("HP"), battler->hp(), 60, x2);
 }
 
 void Window::printSP(Battler *battler, s16 x, s16 y, s16 x2) {
-	printStat(x, y, _t("HP"), battler->sp(), 60, x2);
+	printStat(x, y, _t("SP"), battler->sp(), 60, x2);
 }
 
 void Window::drawBattler(Battler *battler, s16 x, s16 y) {

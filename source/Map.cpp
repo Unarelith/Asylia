@@ -58,7 +58,7 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 
 Map::~Map() {
 	for(u8 i = 0 ; i < m_layers ; i++) {
-		SDL_DestroyTexture(m_layersTex[i]);
+		if(m_layersTex && m_layersTex[i]) SDL_DestroyTexture(m_layersTex[i]);
 		delete[] m_data[i];
 	}
 	
