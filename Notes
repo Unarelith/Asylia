@@ -1,5 +1,9 @@
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 
+- Remove viewport by adding static vars to Map
+	=> Like Map::scrollX and Map::scrollY
+	=> Or find a better way for map scrolling
+
 - Add a class "LuaMod" or "ModScript" or "Mod"
 ~ Create a class "ModLibrary" which will provide through static functions
    all that is required to mod the game correctly, like easy functions
@@ -34,6 +38,8 @@
 - Add parameters to events, like speed for characters and all params for the chests
 
 - Improve battler death color fading
+- Improve Font::printDamages color
+- Improve Font::printDamages movement
 
 - Manage disabled items in SelectableWindow ( maybe use a std::vector<std::pair<std::string, bool>>> for commands container )
 
@@ -70,9 +76,9 @@
 		---- dungeon 2/
 	* etc..
 
-- Improve EquipWindow performances on Android
+- Improve EquipActivity performances on Android
 
-- Manage an equip of characters
+- Manage a team of characters
 
 - Create StateWindow class
 

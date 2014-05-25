@@ -17,6 +17,14 @@
  */
 #include "Asylia.hpp"
 
+u16 defaultAnimation[5] = {0, 1, 2, 3, 4};
 Animation::Animation(const char *filename, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
-	
+	addAnimation(5, defaultAnimation, 150);
 }
+
+Animation::~Animation() {
+}
+
+void Animation::play() {
+}
+

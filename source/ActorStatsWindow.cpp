@@ -32,8 +32,6 @@ void ActorStatsWindow::drawActors(std::vector<std::pair<u8, Actor*>> actors) {
 }
 
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
-	Image hpImg, spImg;
-	
 	BattleActivity *battleActivity = ((BattleActivity*)ActivityManager::top());
 	u8 mode = battleActivity->mode();
 	if((mode == BattleActivity::Mode::Choice || mode == BattleActivity::Mode::EnemyTurn || mode == BattleActivity::Mode::ProcessActions || mode == BattleActivity::Mode::Victory)
@@ -42,20 +40,12 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 		actor->image()->setAlphaMod(190);
 	}
 	
-	actor->image()->renderInViewport(m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
+	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
 	
-	Interface::defaultFont->printScaled(actor->name().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 20, m_width - 40, 32, FONT_LARGE);
-	
-	Interface::defaultFont->printScaled(_t("HP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 52, 60, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(actor->hp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 52, &hpImg, FONT_LARGE);
-	
-	Interface::defaultFont->printScaled(_t("SP").c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 84, 60, 32, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(actor->sp()).c_str(), m_x + GameWindow::main->viewportX() + m_width / 4 * (pos + 1) - 20, m_y + GameWindow::main->viewportY() + 84, &spImg, FONT_LARGE);
-	
-	hpImg.render(hpImg.posRect().x - hpImg.width());
-	spImg.render(spImg.posRect().x - spImg.width());
-	
-	Interface::defaultFont->printScaled(actor->getStateString().c_str(), m_x + GameWindow::main->viewportX() + 20 + m_width / 4 * pos, m_y + GameWindow::main->viewportY() + 116, m_width - 40, 32, FONT_LARGE);
+	printName(actor, m_x + 20 + m_width / 4 * pos, m_y + 20, m_width - 40);
+	printHP(actor, m_x + 20 + m_width / 4 * pos, m_y + 52, m_x + m_width / 4 * (pos + 1) - 20);
+	printSP(actor, m_x + 20 + m_width / 4 * pos, m_y + 84, m_x + m_width / 4 * (pos + 1) - 20);
+	printState(actor, m_x + 20 + m_width / 4 * pos, m_y + 116, m_width - 40);
 }
 
 void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {
@@ -65,6 +55,6 @@ void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {
 }
 
 void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
-	enemy->image()->renderInViewport(enemy->image()->posRect().x, enemy->image()->posRect().y);
+	drawBattler(enemy, enemy->image()->posRect().x, enemy->image()->posRect().y);
 }
 

@@ -67,3 +67,32 @@ void Window::draw(bool cursor) {
 	}
 }
 
+void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2) {
+	Image statImg;
+	
+	Interface::defaultFont->printScaled(statName.c_str(), x + GameWindow::main->viewportX(), y + GameWindow::main->viewportY(), nameWidth, 28, FONT_LARGE, Color::system);
+	Interface::defaultFont->printToImage(to_string(statValue).c_str(), x2 + GameWindow::main->viewportX(), y + GameWindow::main->viewportY(), &statImg, FONT_LARGE);
+	
+	statImg.render(statImg.posRect().x - statImg.width());
+}
+
+void Window::printName(Battler *battler, s16 x, s16 y, u16 width) {
+	Interface::defaultFont->printScaled(battler->name().c_str(), x + GameWindow::main->viewportX(), y + GameWindow::main->viewportY(), width, 28, FONT_LARGE);
+}
+
+void Window::printState(Battler *battler, s16 x, s16 y, u16 width) {
+	Interface::defaultFont->printScaled(battler->getStateString().c_str(), x + GameWindow::main->viewportX(), y + GameWindow::main->viewportY(), width, 28, FONT_LARGE);
+}
+
+void Window::printHP(Battler *battler, s16 x, s16 y, s16 x2) {
+	printStat(x, y, _t("HP"), battler->hp(), 60, x2);
+}
+
+void Window::printSP(Battler *battler, s16 x, s16 y, s16 x2) {
+	printStat(x, y, _t("HP"), battler->sp(), 60, x2);
+}
+
+void Window::drawBattler(Battler *battler, s16 x, s16 y) {
+	battler->image()->renderInViewport(x, y);
+}
+

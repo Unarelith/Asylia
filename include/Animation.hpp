@@ -19,10 +19,11 @@
 #define ANIMATION_HPP_
 
 class Animation : public Sprite {
-	Animation(const char *filename, u16 frameWidth, u16 frameHeight);
-	~Animation();
-	
-	void play();
+	public:
+		Animation(const char *filename, u16 frameWidth, u16 frameHeight);
+		~Animation();
+		
+		void play();
 };
 
 #endif // ANIMATION_HPP_
