@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<maps>
+<maps startarea="0" startx="0" starty="0">
 	<area>
 		<map layers="3" x="0" y="0" tilesetID="0">
 			<event name="event0"/>

@@ -63,7 +63,8 @@ void MapManager::initTilesets() {
 void MapManager::initMaps() {
 	XMLFile doc("data/config/maps.xml");
 	
-	XMLElement *areaElement = doc.FirstChildElement("maps").FirstChildElement("area").ToElement();
+	XMLElement *areasElement = doc.FirstChildElement("maps").ToElement();
+	XMLElement *areaElement = areasElement->FirstChildElement("area");
 	u16 areaID = 0;
 	while(areaElement) {
 		XMLElement *mapElement = areaElement->FirstChildElement("map");
@@ -98,6 +99,12 @@ void MapManager::initMaps() {
 		
 		areaElement = areaElement->NextSiblingElement("area");
 	}
+	
+	u16 startarea = areasElement->IntAttribute("startarea");
+	u16 startx = areasElement->IntAttribute("startx");
+	u16 starty = areasElement->IntAttribute("starty");
+	
+	currentMap = maps[startarea][MAP_POS(startarea, startx, starty)];
 }
 
 void getNonPassableTiles(const char *filename, Tileset *tileset) {

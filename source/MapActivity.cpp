@@ -52,8 +52,6 @@ void MapActivity::init() {
 	
 	MapManager::init();
 	
-	MapManager::currentMap = MapManager::maps[0][0];
-	
 	LuaHandler::bindClasses();
 	
 	MapManager::currentMap->load();
