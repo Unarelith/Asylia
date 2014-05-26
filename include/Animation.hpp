@@ -18,12 +18,14 @@
 #ifndef ANIMATION_HPP_
 #define ANIMATION_HPP_
 
+class Battler;
+
 class Animation : public Sprite {
 	public:
-		Animation(const char *filename, u16 frameWidth, u16 frameHeight);
+		Animation(const char *filename, u16 frameWidth = 192, u16 frameHeight = 192);
 		~Animation();
 		
-		void play();
+		void play(Battler *target);
 };
 
 #endif // ANIMATION_HPP_

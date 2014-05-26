@@ -19,12 +19,15 @@
 
 u16 defaultAnimation[5] = {0, 1, 2, 3, 4};
 Animation::Animation(const char *filename, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
-	addAnimation(5, defaultAnimation, 150);
+	addAnimation(5, defaultAnimation, 75);
 }
 
 Animation::~Animation() {
 }
 
-void Animation::play() {
+void Animation::play(Battler *target) {
+	s16 tgx = target->image()->posRect().x + target->image()->width() / 2 - m_frameWidth / 2;
+	s16 tgy = target->image()->posRect().y + target->image()->height() / 2 - m_frameHeight / 2;
+	playAnimation(tgx, tgy, 0);
 }
 

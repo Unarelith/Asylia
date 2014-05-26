@@ -27,7 +27,7 @@ class ActivityManager {
 		
 		static Activity *top() { return activities.top(); }
 		static void pop() { activitiesBin.push(top()); activities.pop(); }
-		static void push(Activity *activity) { activities.push(activity); }
+		static void push(Activity *activity);
 		static int size() { return activities.size(); }
 		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.front()) { delete activitiesBin.front(); activitiesBin.pop(); } }
 		

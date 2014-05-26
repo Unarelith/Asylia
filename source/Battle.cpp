@@ -90,7 +90,7 @@ void Battle::processAction() {
 
 void Battle::checkDead() {
 	if(m_actionStack.top()->receiver()->hp() == 0) {
-		m_actionStack.top()->receiver()->kill();
+		if(m_actionStack.top()->animationAtEnd()) m_actionStack.top()->receiver()->kill();
 	}
 }
 

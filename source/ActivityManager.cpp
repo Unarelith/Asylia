@@ -29,3 +29,8 @@ void ActivityManager::init() {
 #endif
 }
 
+void ActivityManager::push(Activity *activity) {
+	activities.push(activity);
+	top()->update();
+}
+

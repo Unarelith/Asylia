@@ -30,6 +30,8 @@ class BattleAction {
 		Battler *actor() { return m_actor; }
 		Battler *receiver() { return m_receiver; }
 		
+		bool animationAtEnd() const { return m_animationAtEnd; }
+		
 		void setReceiver(Battler *receiver) { m_receiver = receiver; }
 		
 	private:
@@ -41,6 +43,9 @@ class BattleAction {
 		s32 m_damages;
 		
 		double m_variance;
+		
+		Animation *m_animation;
+		bool m_animationAtEnd;
 };
 
 #endif // BATTLEACTION_HPP_
