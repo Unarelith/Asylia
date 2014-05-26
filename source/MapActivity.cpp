@@ -75,10 +75,10 @@ void MapActivity::update() {
 	
 	CharacterManager::player->move();
 	
-	GameWindow::main->centerViewportWithObject(CharacterManager::player->x(),
-											   CharacterManager::player->y(),
-											   CharacterManager::player->frameWidth(),
-											   CharacterManager::player->frameHeight());
+	Map::centerMapWithObject(CharacterManager::player->x(),
+							 CharacterManager::player->y(),
+							 CharacterManager::player->frameWidth(),
+							 CharacterManager::player->frameHeight());
 	
 	MapManager::currentMap->eventsUpdate();
 }

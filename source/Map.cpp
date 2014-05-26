@@ -137,8 +137,8 @@ void Map::render() {
 		clip.y = scrollY;
 		clip.w = GameWindow::main->width();
 		clip.h = GameWindow::main->height();
-		pos.x =	scrollX;
-		pos.y = scrollY;
+		pos.x =	0;
+		pos.y = 0;
 		pos.w = GameWindow::main->width();
 		pos.h = GameWindow::main->height();
 		SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[i], &clip, &pos);
@@ -151,8 +151,8 @@ void Map::renderOverlay() {
 	clip.y = scrollY;
 	clip.w = GameWindow::main->width();
 	clip.h = GameWindow::main->height();
-	pos.x = scrollX;
-	pos.y = scrollY;
+	pos.x = 0;
+	pos.y = 0;
 	pos.w = GameWindow::main->width();
 	pos.h = GameWindow::main->height();
 	SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[m_layers - 1], &clip, &pos);
@@ -165,5 +165,15 @@ s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {
 		warning("Tile out of range: (%d;%d) at layer %d", tileX, tileY, layer);
 		return -1; // The tile is out of range
 	}
+}
+
+void Map::centerMapWithObject(s16 x, s16 y, u16 w, u16 h) {
+	scrollX = x - GameWindow::main->width() / 2 + w / 2;
+	scrollY = y - GameWindow::main->height() / 2 + h / 2;
+	
+	if(scrollX < 0) scrollX = 0;
+	if(scrollY < 0) scrollY = 0;
+	if(scrollX + GameWindow::main->width() > MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - GameWindow::main->width() - 1;
+	if(scrollY + GameWindow::main->height() > MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - GameWindow::main->height() - 1;
 }
 
