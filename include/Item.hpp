@@ -20,7 +20,7 @@
 
 class Item {
 	public:
-		Item(std::string name, std::string description, std::string thumbnail);
+		Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation = NULL);
 		~Item();
 		
 		std::string name() const { return _t(m_name); }
@@ -41,6 +41,8 @@ class Item {
 		
 		Type type() const { return m_type; }
 		
+		Animation *battleAnimation() const { return m_battleAnimation; }
+		
 	protected:
 		u16 m_id;
 		
@@ -52,6 +54,8 @@ class Item {
 		u8 m_level;
 		
 		Image *m_thumbnail;
+		
+		Animation *m_battleAnimation;
 };
 
 #endif // ITEM_HPP_

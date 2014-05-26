@@ -38,14 +38,17 @@ void Sprite::addAnimation(u16 size, u16 *tabAnim, u16 delay) {
 
 void Sprite::resetAnimation(u16 anim) {
 	m_animations[anim].timer.reset();
+	m_animations[anim].isPlaying = false;
 }
 
 void Sprite::startAnimation(u16 anim) {
 	m_animations[anim].timer.start();
+	m_animations[anim].isPlaying = true;
 }
 
 void Sprite::stopAnimation(u16 anim) {
 	m_animations[anim].timer.stop();
+	m_animations[anim].isPlaying = false;
 }
 
 bool Sprite::animationAtEnd(u16 anim) {

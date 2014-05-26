@@ -18,11 +18,19 @@
 #include "Asylia.hpp"
 
 u16 defaultAnimation[5] = {0, 1, 2, 3, 4};
-Animation::Animation(const char *filename, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
-	addAnimation(5, defaultAnimation, 75);
+Animation::Animation(const char *filename, std::string name, u16 delay, std::vector<u16> frames, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
+	m_name = name;
+	
+	m_frames = new u16[frames.size()];
+	for(u8 i = 0 ; i < frames.size() ; i++) {
+		m_frames[i] = frames[i];
+	}
+	
+	addAnimation(frames.size(), m_frames, delay);
 }
 
 Animation::~Animation() {
+	delete m_frames;
 }
 
 void Animation::play(Battler *target) {

@@ -60,7 +60,8 @@ void ItemManager::loadItems() {
 		items.push_back(new Item(
 			std::string("Item") + to_string(id),
 			std::string("Item") + to_string(id) + "Desc",
-			std::string("graphics/items/") + to_string(id) + ".png"
+			std::string("graphics/items/") + to_string(id) + ".png",
+			AnimationManager::getAnimationByName(itemElement->Attribute("animation"))
 		));
 		
 		itemElement = itemElement->NextSiblingElement("item");
@@ -116,6 +117,7 @@ void ItemManager::loadSkills() {
 			std::string("Skill") + to_string(id),
 			std::string("Skill") + to_string(id) + "Desc",
 			std::string("graphics/skills/") + to_string(id) + ".png",
+			AnimationManager::getAnimationByName(skillElement->Attribute("animation")),
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		));

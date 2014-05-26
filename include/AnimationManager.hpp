@@ -19,6 +19,13 @@
 #define ANIMATIONMANAGER_HPP_
 
 namespace AnimationManager {
+	void init();
+	void free();
+	
+	Animation *getAnimationByName(std::string name);
+	
+	extern std::vector<Animation*> animations;
+	
 	extern u16 character[4][4];
 	
 	extern u16 arrow[4];

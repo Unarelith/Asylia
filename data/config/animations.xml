@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animations>
+	<animation name="BaseAttack" filename="Attack01" delay="75">
+		<frame id="0"/>
+		<frame id="1"/>
+		<frame id="2"/>
+		<frame id="3"/>
+		<frame id="4"/>
+	</animation>
+</animations>

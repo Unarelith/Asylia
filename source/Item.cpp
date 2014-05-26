@@ -19,7 +19,7 @@
 
 u16 Item::count = 0;
 
-Item::Item(std::string name, std::string description, std::string thumbnail) {
+Item::Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation) {
 	m_id = count;
 	count++;
 	
@@ -31,6 +31,8 @@ Item::Item(std::string name, std::string description, std::string thumbnail) {
 	m_level = 1;
 	
 	m_thumbnail = new Image(thumbnail.c_str());
+	
+	m_battleAnimation = battleAnimation;
 }
 
 Item::~Item() {

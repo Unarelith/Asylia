@@ -22,10 +22,17 @@ class Battler;
 
 class Animation : public Sprite {
 	public:
-		Animation(const char *filename, u16 frameWidth = 192, u16 frameHeight = 192);
+		Animation(const char *filename, std::string name, u16 delay, std::vector<u16> frames, u16 frameWidth = 192, u16 frameHeight = 192);
 		~Animation();
 		
 		void play(Battler *target);
+		
+		std::string name() const { return m_name; }
+		
+	private:
+		std::string m_name;
+		
+		u16 *m_frames;
 };
 
 #endif // ANIMATION_HPP_

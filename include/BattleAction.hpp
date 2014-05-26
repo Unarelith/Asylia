@@ -44,7 +44,6 @@ class BattleAction {
 		
 		double m_variance;
 		
-		Animation *m_animation;
 		bool m_animationAtEnd;
 };
 

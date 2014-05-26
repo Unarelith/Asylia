@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-Skill::Skill(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
+Skill::Skill(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation, u16 atk, double hitRate) : Item(name, description, thumbnail, battleAnimation) {
 	m_type = Type::Skill;
 	
 	m_atk = atk;
