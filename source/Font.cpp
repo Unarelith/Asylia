@@ -137,9 +137,6 @@ void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
 	TTF_SetFontKerning(m_fontLarge, 0);
 	TTF_SetFontHinting(m_fontLarge, TTF_HINTING_NONE);
 	
-	x += GameWindow::main->viewportX();
-	y += GameWindow::main->viewportY();
-	
 	TTF_SetFontOutline(m_fontLarge, 3);
 	
 	print(to_string(damages).c_str(), x - 3, y - 3, FONT_LARGE, Color::black);

@@ -27,10 +27,6 @@ class GameWindow {
 		
 		void update();
 		
-		void updateViewportPosition(s16 x, s16 y);
-		
-		void centerViewportWithObject(s16 x, s16 y, u16 w, u16 h);
-		
 		void setRendererColor(Color color);
 		
 		void drawRect(s16 x, s16 y, u16 w, u16 h, Color c);
@@ -42,12 +38,6 @@ class GameWindow {
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
 		
-		s16 viewportX() const { return m_viewportX; }
-		s16 viewportY() const { return m_viewportY; }
-		
-		u16 viewportW() const { return m_viewportW; }
-		u16 viewportH() const { return m_viewportH; }
-		
 		static GameWindow *main;
 		
 	private:
@@ -56,12 +46,6 @@ class GameWindow {
 		
 		u16 m_width;
 		u16 m_height;
-		
-		s16 m_viewportX;
-		s16 m_viewportY;
-		
-		u16 m_viewportW;
-		u16 m_viewportH;
 };
 
 #endif // GAMEWINDOW_HPP_

@@ -45,6 +45,9 @@ class Map {
 		
 		std::vector<Event*> events() const { return m_events; }
 		
+		static s32 scrollX;
+		static s32 scrollY;
+		
 	private:
 		Tileset *m_tileset;
 		

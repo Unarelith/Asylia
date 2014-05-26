@@ -17,6 +17,9 @@
  */
 #include "Asylia.hpp"
 
+s32 Map::scrollX = 0;
+s32 Map::scrollY = 0;
+
 Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID) {
 	XMLFile doc(filename);
 	
@@ -130,12 +133,12 @@ void Map::load() {
 void Map::render() {
 	for(u8 i = 0 ; i < m_layers - 1 ; i++) {
 		SDL_Rect clip, pos;
-		clip.x = GameWindow::main->viewportX();
-		clip.y = GameWindow::main->viewportY();
+		clip.x = scrollX;
+		clip.y = scrollY;
 		clip.w = GameWindow::main->width();
 		clip.h = GameWindow::main->height();
-		pos.x = GameWindow::main->viewportX();
-		pos.y = GameWindow::main->viewportY();
+		pos.x =	scrollX;
+		pos.y = scrollY;
 		pos.w = GameWindow::main->width();
 		pos.h = GameWindow::main->height();
 		SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[i], &clip, &pos);
@@ -144,12 +147,12 @@ void Map::render() {
 
 void Map::renderOverlay() {
 	SDL_Rect clip, pos;
-	clip.x = GameWindow::main->viewportX();
-	clip.y = GameWindow::main->viewportY();
+	clip.x = scrollX;
+	clip.y = scrollY;
 	clip.w = GameWindow::main->width();
 	clip.h = GameWindow::main->height();
-	pos.x = GameWindow::main->viewportX();
-	pos.y = GameWindow::main->viewportY();
+	pos.x = scrollX;
+	pos.y = scrollY;
 	pos.w = GameWindow::main->width();
 	pos.h = GameWindow::main->height();
 	SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[m_layers - 1], &clip, &pos);

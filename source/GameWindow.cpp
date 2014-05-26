@@ -45,12 +45,6 @@ GameWindow::GameWindow(const char *caption) {
 		exit(EXIT_FAILURE);
 	}
 	
-	m_viewportX = 0;
-	m_viewportY = 0;
-	
-	m_viewportW = m_width;
-	m_viewportH = m_height;
-	
 #ifdef __ANDROID__
 	SDL_RenderSetLogicalSize(m_renderer, m_width, m_height);
 #endif
@@ -67,29 +61,6 @@ void GameWindow::clear() {
 
 void GameWindow::update() {
 	SDL_RenderPresent(m_renderer);
-}
-
-void GameWindow::updateViewportPosition(s16 x, s16 y) {
-	if(MapManager::currentMap) {
-		if(x < 0) x = 0;
-		if(x + m_width >= MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - m_width - 1;
-		if(y < 0) y = 0;
-		if(y + m_height >= MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - m_height - 1;
-	}
-	
-	m_viewportX = x;
-	m_viewportY = y;
-	
-	if(m_viewportX + m_width > m_viewportW) m_viewportW += m_width;
-	if(m_viewportY + m_height > m_viewportH) m_viewportH += m_height;
-	
-	//SDL_Rect viewportRect = {-x, y - m_viewportH + m_height, m_viewportW, m_viewportH};
-	SDL_Rect viewportRect = {-x, -y, m_viewportW, m_viewportH};
-	SDL_RenderSetViewport(m_renderer, &viewportRect);
-}
-
-void GameWindow::centerViewportWithObject(s16 x, s16 y, u16 w, u16 h) {
-	updateViewportPosition(x - (m_width - w) / 2, y - (m_height - h) / 2);
 }
 
 void GameWindow::setRendererColor(Color color) {

@@ -127,17 +127,17 @@ void Keyboard::updatePad(SDL_Event *e) {
 	u16 fx = e->tfinger.x * GameWindow::main->width();
 	u16 fy = e->tfinger.y * GameWindow::main->height();
 	
-	u16 px = Interface::pad->posRect().x - GameWindow::main->viewportX();
-	u16 py = Interface::pad->posRect().y + Interface::pad->posRect().h / 2 - GameWindow::main->viewportY();
+	u16 px = Interface::pad->posRect().x;
+	u16 py = Interface::pad->posRect().y + Interface::pad->posRect().h / 2;
 	
-	u16 ax = Interface::buttonA->posRect().x - GameWindow::main->viewportX();
-	u16 ay = Interface::buttonA->posRect().y - GameWindow::main->viewportY();
+	u16 ax = Interface::buttonA->posRect().x;
+	u16 ay = Interface::buttonA->posRect().y;
 	
-	u16 bx = Interface::buttonB->posRect().x - GameWindow::main->viewportX();
-	u16 by = Interface::buttonB->posRect().y - GameWindow::main->viewportY();
+	u16 bx = Interface::buttonB->posRect().x;
+	u16 by = Interface::buttonB->posRect().y;
 	
-	u16 menux = Interface::buttonMenu->posRect().x - GameWindow::main->viewportX();
-	u16 menuy = Interface::buttonMenu->posRect().y - GameWindow::main->viewportY();
+	u16 menux = Interface::buttonMenu->posRect().x;
+	u16 menuy = Interface::buttonMenu->posRect().y;
 	
 	resetPad(e);
 	

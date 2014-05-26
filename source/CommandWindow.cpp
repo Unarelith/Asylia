@@ -40,7 +40,7 @@ CommandWindow::~CommandWindow() {
 }
 
 void CommandWindow::drawItem(u8 pos) {
-	Interface::defaultFont->printScaled(m_commands[pos].c_str(), m_x + GameWindow::main->viewportX() + 22, m_y + GameWindow::main->viewportY() + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE);
+	Interface::defaultFont->printScaled(m_commands[pos].c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE);
 }
 
 void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
@@ -50,7 +50,7 @@ void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
 	x = pos % m_columnMax * (width + 32) + 16;
 	y = pos / m_columnMax * 32 + 16;
 	
-	Interface::defaultFont->printCentered(m_commands[pos].c_str(), m_x + GameWindow::main->viewportX() + x, m_y + GameWindow::main->viewportY() + y, width, 32, FONT_LARGE);
+	Interface::defaultFont->printCentered(m_commands[pos].c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE);
 }
 
 void CommandWindow::draw(bool cursor) {
