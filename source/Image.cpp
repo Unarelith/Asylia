@@ -33,7 +33,6 @@ Image::Image(const Image &img) {
 	SDL_QueryTexture(img.m_texture, &format, &access, &w, &h);
 	
 	m_texture = SDL_CreateTexture(GameWindow::main->renderer(), format, SDL_TEXTUREACCESS_TARGET, w, h);
-	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
 	
 	SDL_SetRenderTarget(GameWindow::main->renderer(), m_texture);
 	SDL_RenderCopy(GameWindow::main->renderer(), img.m_texture, NULL, NULL);
@@ -73,7 +72,6 @@ Image::Image(const char *filename) {
 		error("Failed to create texture from image: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
-	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
 	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
@@ -94,7 +92,6 @@ Image::Image(SDL_Surface *surface) {
 	m_height = surface->h;
 	
 	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
-	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
 	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
@@ -133,7 +130,6 @@ void Image::reload(const char *filename) {
 		error("Failed to create texture from image: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
-	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
 	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;
@@ -156,7 +152,6 @@ void Image::reload(SDL_Surface *surface) {
 	m_height = surface->h;
 	
 	m_texture = SDL_CreateTextureFromSurface(GameWindow::main->renderer(), surface);
-	SDL_SetTextureBlendMode(m_texture, SDL_BLENDMODE_BLEND);
 	SDL_FreeSurface(surface);
 	
 	m_clipRect.x = 0;

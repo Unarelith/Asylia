@@ -33,7 +33,6 @@
 /home/quentin/Projects/Asylia/droid/assets/data/config \
 /home/quentin/Projects/Asylia/droid/assets/data/locale \
 /home/quentin/Projects/Asylia/droid/assets/data/lualibs/ChestEvent.lua \
-/home/quentin/Projects/Asylia/droid/assets/data/lualibs/Utilities.lua \
 /home/quentin/Projects/Asylia/droid/assets/data/lualibs/CharacterEvent.lua \
 /home/quentin/Projects/Asylia/droid/assets/data/saves/0.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/events/event0 \
@@ -53,6 +52,7 @@
 /home/quentin/Projects/Asylia/droid/assets/data/config/items.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/enemies.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/armors.xml \
+/home/quentin/Projects/Asylia/droid/assets/data/config/events.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/skills.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/weapons.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/maps.xml \
@@ -70,6 +70,7 @@
 /home/quentin/Projects/Asylia/droid/assets/graphics/battlers \
 /home/quentin/Projects/Asylia/droid/assets/graphics/weapons \
 /home/quentin/Projects/Asylia/droid/assets/graphics/battlebacks \
+/home/quentin/Projects/Asylia/droid/assets/graphics/animations \
 /home/quentin/Projects/Asylia/droid/assets/graphics/items \
 /home/quentin/Projects/Asylia/droid/assets/graphics/interface/Gameover.jpg \
 /home/quentin/Projects/Asylia/droid/assets/graphics/interface/DPad.png \
@@ -108,6 +109,7 @@
 /home/quentin/Projects/Asylia/droid/assets/graphics/weapons/6.png \
 /home/quentin/Projects/Asylia/droid/assets/graphics/weapons/3.png \
 /home/quentin/Projects/Asylia/droid/assets/graphics/battlebacks/Grassland.jpg \
+/home/quentin/Projects/Asylia/droid/assets/graphics/animations/Attack01.png \
 /home/quentin/Projects/Asylia/droid/assets/graphics/items/0.png \
 /home/quentin/Projects/Asylia/droid/assets/graphics/items/1.png \
 /home/quentin/Projects/Asylia/droid/assets/graphics/items/4.png \
