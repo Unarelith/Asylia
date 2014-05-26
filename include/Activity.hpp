@@ -20,7 +20,7 @@
 
 class Activity {
 	public:
-		Activity();
+		Activity(Activity *parent = NULL);
 		virtual ~Activity() = 0;
 		
 		virtual void update() = 0;
@@ -45,6 +45,8 @@ class Activity {
 		
 	protected:
 		Type m_type;
+		
+		Activity *m_parent;
 };
 
 #endif // ACTIVITY_HPP_

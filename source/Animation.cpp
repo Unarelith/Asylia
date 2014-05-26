@@ -24,7 +24,6 @@ Animation::Animation(const char *filename, std::string name, u16 delay, std::vec
 }
 
 Animation::~Animation() {
-	delete m_frames;
 }
 
 void Animation::play(Battler *target) {

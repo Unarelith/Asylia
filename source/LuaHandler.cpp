@@ -76,7 +76,9 @@ void LuaHandler::bindClasses() {
 										   .set("GameBack", Keyboard::GameBack)
 										   .set("GameMenu", Keyboard::GameMenu);
 	
-	SLB::Class<Map>("Map", &slbm).set("getEvent", &Map::getEvent);
+	SLB::Class<Map>("Map", &slbm).set("getEvent", &Map::getEvent)
+								 .set("scrollX", &Map::getScrollX)
+								 .set("scrollY", &Map::getScrollY);
 	
 	SLB::Class<MapActivity>("MapActivity", &slbm);
 	

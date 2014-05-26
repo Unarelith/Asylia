@@ -173,7 +173,7 @@ void Map::centerMapWithObject(s16 x, s16 y, u16 w, u16 h) {
 	
 	if(scrollX < 0) scrollX = 0;
 	if(scrollY < 0) scrollY = 0;
-	if(scrollX + GameWindow::main->width() > MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) x = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - GameWindow::main->width() - 1;
-	if(scrollY + GameWindow::main->height() > MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) y = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - GameWindow::main->height() - 1;
+	if(scrollX + GameWindow::main->width() > MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) scrollX = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - GameWindow::main->width() - 1;
+	if(scrollY + GameWindow::main->height() > MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) scrollY = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - GameWindow::main->height() - 1;
 }
 

@@ -39,11 +39,15 @@ Game::Game() {
 	
 	LanguageManager::init("en-us");
 	
+	LuaHandler::init();
+	
 	ActivityManager::init();
 }
 
 Game::~Game() {
 	ActivityManager::checkActivitiesToDelete();
+	
+	LuaHandler::free();
 	
 	Interface::free();
 	

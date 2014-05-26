@@ -18,7 +18,7 @@
 #ifndef LUAACTIVITY_HPP_
 #define LUAACTIVITY_HPP_
 
-class LuaActivity : public MapActivity {
+class LuaActivity : public Activity {
 	public:
 		LuaActivity(std::string filename, std::string table);
 		~LuaActivity();

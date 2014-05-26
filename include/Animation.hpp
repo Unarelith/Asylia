@@ -31,8 +31,6 @@ class Animation : public Sprite {
 		
 	private:
 		std::string m_name;
-		
-		u16 *m_frames;
 };
 
 #endif // ANIMATION_HPP_

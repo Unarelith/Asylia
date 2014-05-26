@@ -61,13 +61,13 @@ void Character::render() {
 		if(!m_movementTimer.isStarted()) m_movementTimer.start();
 		
 		if(m_moving) {
-			playAnimation(m_x + Map::scrollX, m_y + Map::scrollY, m_direction);
+			playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
 		} else {
-			drawFrame(m_x + Map::scrollX, m_y + Map::scrollY, m_animations[m_direction].tabAnim[0]);
+			drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
 		}
 	} else {
 		m_movementTimer.stop();
-		drawFrame(m_x + Map::scrollX, m_y + Map::scrollY, m_animations[m_direction].tabAnim[0]);
+		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
 	}
 }
 

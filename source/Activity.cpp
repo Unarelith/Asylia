@@ -17,8 +17,10 @@
  */
 #include "Asylia.hpp"
 
-Activity::Activity() {
+Activity::Activity(Activity *parent) {
 	m_type = Type::None;
+	
+	m_parent = parent;
 }
 
 Activity::~Activity() {

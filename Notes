@@ -1,6 +1,4 @@
-- Remove viewport by adding static vars to Map
-	=> Like Map::scrollX and Map::scrollY
-	=> Or find a better way for map scrolling
+- Replace all MenuActivity::render() by m_parent->render();
 
 - Let ItemWindows get data they'll display
 - EquipItemWindow should be removed

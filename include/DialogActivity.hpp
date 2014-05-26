@@ -29,8 +29,6 @@ class DialogActivity : public Activity {
 		void render();
 		
 	private:
-		Activity *m_parent;
-		
 		MessageWindow *m_msgwin;
 };
 

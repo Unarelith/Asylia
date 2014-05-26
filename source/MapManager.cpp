@@ -24,6 +24,9 @@ Map *MapManager::currentMap = NULL;
 void MapManager::init() {
 	initTilesets();
 	initMaps();
+	
+	Map::scrollX = 0;
+	Map::scrollY = 0;
 }
 
 void MapManager::free() {

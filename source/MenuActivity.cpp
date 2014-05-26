@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-MenuActivity::MenuActivity() {
+MenuActivity::MenuActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Menu;
 	
 	loadCommandWindow();
@@ -78,7 +78,7 @@ void MenuActivity::update() {
 }
 
 void MenuActivity::render() {
-	MapActivity::render();
+	if(m_parent) m_parent->render();
 	
 	m_cmdwin->draw();
 }

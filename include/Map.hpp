@@ -48,6 +48,9 @@ class Map {
 		static s32 scrollX;
 		static s32 scrollY;
 		
+		static s32 getScrollX() { return scrollX; }
+		static s32 getScrollY() { return scrollY; }
+		
 		static void centerMapWithObject(s16 x, s16 y, u16 w, u16 h);
 		
 	private:

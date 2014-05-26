@@ -18,9 +18,9 @@
 #ifndef MENUACTIVITY_HPP_
 #define MENUACTIVITY_HPP_
 
-class MenuActivity : public MapActivity {
+class MenuActivity : public Activity {
 	public:
-		MenuActivity();
+		MenuActivity(Activity *parent = NULL);
 		~MenuActivity();
 		
 		void loadCommandWindow();

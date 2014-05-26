@@ -16,13 +16,13 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 		self.render = function()
 			if self.opened then
 				if not self.character:animationAtEnd(self.chestType) then
-					self.character:playAnimation(self.character:x(), self.character:y(), self.chestType)
+					self.character:playAnimation(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType)
 				else
 					self.animationAtEnd = true
-					self.character:drawFrame(self.character:x(), self.character:y(), self.chestType + 3 * 4)
+					self.character:drawFrame(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType + 3 * 4)
 				end
 			else
-				self.character:drawFrame(self.character:x(), self.character:y(), self.chestType)
+				self.character:drawFrame(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType)
 			end
 		end
 		
