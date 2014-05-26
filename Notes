@@ -1,14 +1,20 @@
+- Remove viewport by adding static vars to Map
+	=> Like Map::scrollX and Map::scrollY
+	=> Or find a better way for map scrolling
+
+- Let ItemWindows get data they'll display
+- EquipItemWindow should be removed
+	* Solve that problem: ItemWindow::getItem()
+- Manage usable Items and their function through a lua script by object
+- Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
+	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
+
+- Add animations
 - Improve Animation classes
 	* Animation:
 		=> Add position ( up, centered, down )
 		=> Add movement ( for arrows )
 		=> Add actions ( like blinking the player of play a sound effect )
-
-- Add animations
-
-- Remove viewport by adding static vars to Map
-	=> Like Map::scrollX and Map::scrollY
-	=> Or find a better way for map scrolling
 
 - Add a class "LuaMod" or "ModScript" or "Mod"
 ~ Create a class "ModLibrary" which will provide through static functions
@@ -18,7 +24,7 @@
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
 - Add a lot of stats display help functions to Window class
-	* Improve windows by using these functions
+	* Improve windows by using these functions ( drawItem remaining )
 	* Find a way to improve EquipStatsWindow
 
 - Fix issues:
@@ -47,13 +53,6 @@
 - Improve Font::printDamages movement
 
 - Manage disabled items in SelectableWindow ( maybe use a std::vector<std::pair<std::string, bool>>> for commands container )
-
-- Let ItemWindows get data they'll display
-- EquipItemWindow should be removed
-	* Solve that problem: ItemWindow::getItem()
-- Manage usable Items and their function through a lua script by object
-- Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
-	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
 
 - Create a new class SkillActivity, child of ItemActivity
 	* Add it in the menu
