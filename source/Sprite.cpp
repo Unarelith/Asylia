@@ -32,8 +32,8 @@ void Sprite::drawFrame(s16 x, s16 y, u16 frame) {
 	render(x, y, m_frameWidth, m_frameHeight, frameX, frameY, m_frameWidth, m_frameHeight);
 }
 
-void Sprite::addAnimation(u16 size, u16 *tabAnim, u16 delay) {
-	m_animations.push_back(SpriteAnimation(size, tabAnim, delay));
+void Sprite::addAnimation(SpriteAnimation animation) {
+	m_animations.push_back(SpriteAnimation(animation.size, animation.tabAnim, animation.delay));
 }
 
 void Sprite::resetAnimation(u16 anim) {

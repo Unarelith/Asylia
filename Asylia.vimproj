@@ -17,6 +17,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    maps.xml
    player.xml
    skills.xml
+   spriteAnimations.xml
    tilesets.xml
    weapons.xml
   }
@@ -135,6 +136,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   Sound.hpp
   Sprite.hpp
   SpriteAnimation.hpp
+  SpriteAnimationManager.hpp
   Tileset.hpp
   Timer.hpp
   TimeManager.hpp
@@ -206,6 +208,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   Skill.cpp
   Sound.cpp
   Sprite.cpp
+  SpriteAnimationManager.cpp
   Timer.cpp
   TimeManager.cpp
   Weapon.cpp

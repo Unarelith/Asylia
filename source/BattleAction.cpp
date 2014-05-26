@@ -65,11 +65,11 @@ bool BattleAction::drawDamages() {
 	}
 	
 	if(m_animationAtEnd) {
-		if(dmgmvcount < 15) {
+		if(dmgmvcount < 10) {
 			dmgvy = -2;
 		}
-		else if(dmgmvcount < 60) {
-			dmgvy = 2;
+		else if(dmgmvcount < 40) {
+			dmgvy = 3;
 		} else {
 			m_animationAtEnd = false;
 			dmgy = 0;

@@ -72,6 +72,7 @@ using namespace tinyxml2;
 
 #include "Timer.hpp"
 #include "SpriteAnimation.hpp"
+#include "SpriteAnimationManager.hpp"
 #include "Sprite.hpp"
 #include "Animation.hpp"
 #include "AnimationManager.hpp"

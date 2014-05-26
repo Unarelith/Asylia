@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  AnimationManager.hpp
+ *       Filename:  SpriteAnimationManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  22/03/2014 19:34:26
+ *        Created:  26/05/2014 19:06:52
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,16 +15,14 @@
  *
  * =====================================================================================
  */
-#ifndef ANIMATIONMANAGER_HPP_
-#define ANIMATIONMANAGER_HPP_
+#ifndef SPRITEANIMATIONMANAGER_HPP_
+#define SPRITEANIMATIONMANAGER_HPP_
 
-namespace AnimationManager {
+namespace SpriteAnimationManager {
 	void init();
 	void free();
 	
-	Animation *getAnimationByName(std::string name);
-	
-	extern std::vector<Animation*> animations;
-};
+	extern std::map<std::string, std::vector<SpriteAnimation>> spriteAnimations;
+}
 
-#endif // ANIMATIONMANAGER_HPP_
+#endif // SPRITEANIMATIONMANAGER_HPP_

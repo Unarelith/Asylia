@@ -1,14 +1,10 @@
-- Improve Animation, Sprite and SpriteAnimation classes
+- Improve Animation classes
 	* Animation:
 		=> Add position ( up, centered, down )
 		=> Add movement ( for arrows )
 		=> Add actions ( like blinking the player of play a sound effect )
-	* Sprite:
-		=> Improve Sprite::addAnimation(u8, u16*, u16) to Sprite::addAnimation(std::vector<u16>, u16)
-	* SpriteAnimation:
-		=> Change tabAnim type from u16* to std::vector<u16>
 
-- Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
+- Add animations
 
 - Remove viewport by adding static vars to Map
 	=> Like Map::scrollX and Map::scrollY
@@ -43,6 +39,7 @@
 		=> Sort BattleAction by battlers' speed
 		=> Add stats growth functions
 
+- Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 - Add parameters to events, like speed for characters and all params for the chests
 
 - Improve battler death color fading
@@ -63,8 +60,6 @@
 	* Add it in the battles
 
 - Maybe create Activity child classes instead of modes for BattleActivity
-
-- Improve AnimationManager using XML
 
 - Make shop interface, callable from an event ( like a ShopActivity )
 	* ShopChoiceWindow

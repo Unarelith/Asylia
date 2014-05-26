@@ -111,12 +111,12 @@ void Battler::kill() {
 		m_image->setColorMod(Color(r, 128, 128));
 	}
 	
-	if(a > 10) {
-		a -= 10;
+	if(a > 20) {
+		a -= 20;
 		m_image->setAlphaMod(a);
 	}
 	
-	if(a <= 10) {
+	if(a <= 20) {
 		m_image->hidden(true);
 		a = 255;
 		r = 0;

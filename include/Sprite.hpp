@@ -25,7 +25,7 @@ class Sprite : public Image {
 		
 		void drawFrame(s16 x, s16 y, u16 frame);
 		
-		void addAnimation(u16 size, u16 *tabAnim, u16 delay);
+		void addAnimation(SpriteAnimation animation);
 		void resetAnimation(u16 anim);
 		void startAnimation(u16 anim);
 		void stopAnimation(u16 anim);

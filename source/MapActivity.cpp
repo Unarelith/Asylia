@@ -36,11 +36,15 @@ MapActivity::~MapActivity() {
 	
 	AnimationManager::free();
 	
+	SpriteAnimationManager::free();
+	
 	LuaHandler::free();
 }
 
 void MapActivity::init() {
 	LuaHandler::init();
+	
+	SpriteAnimationManager::init();
 	
 	AnimationManager::init();
 	

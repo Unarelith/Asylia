@@ -21,18 +21,18 @@ Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bo
 	if(appearance.find("event") != std::string::npos) {
 		m_type = Type::Event;
 		
-		addAnimation(4, AnimationManager::event[DIR_DOWN], 125);
-		addAnimation(4, AnimationManager::event[DIR_LEFT], 125);
-		addAnimation(4, AnimationManager::event[DIR_RIGHT], 125);
-		addAnimation(4, AnimationManager::event[DIR_UP], 125);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_DOWN]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_LEFT]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_RIGHT]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_UP]);
 	} else {
 		if(appearance == "") m_type = Type::Event;
 		else m_type = Type::NPC;
 		
-		addAnimation(4, AnimationManager::character[DIR_DOWN], 125);
-		addAnimation(4, AnimationManager::character[DIR_LEFT], 125);
-		addAnimation(4, AnimationManager::character[DIR_RIGHT], 125);
-		addAnimation(4, AnimationManager::character[DIR_UP], 125);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
+		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
 	}
 	
 	m_folder = std::string("data/events/") + name + "/";

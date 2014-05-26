@@ -22,10 +22,10 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(fil
 	
 	m_speed = CHARA_SPEED;
 	
-	addAnimation(4, AnimationManager::character[DIR_DOWN], 125);
-	addAnimation(4, AnimationManager::character[DIR_LEFT], 125);
-	addAnimation(4, AnimationManager::character[DIR_RIGHT], 125);
-	addAnimation(4, AnimationManager::character[DIR_UP], 125);
+	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
+	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
+	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
+	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
 	
 	m_inventory = new Inventory;
 	
