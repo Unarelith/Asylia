@@ -20,7 +20,8 @@
 EquipActivity::EquipActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Equip;
 	
-	m_itemwin = new EquipItemWindow(0, 0);
+	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, 150, 0);
+	m_itemwin->changeSet(0, 0);
 	
 	m_itemMode = false;
 }

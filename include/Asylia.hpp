@@ -101,7 +101,6 @@ using namespace tinyxml2;
 #include "CommandWindow.hpp"
 #include "MessageWindow.hpp"
 #include "ItemWindow.hpp"
-#include "EquipItemWindow.hpp"
 #include "EquipStatsWindow.hpp"
 #include "EquipChoiceWindow.hpp"
 #include "ActorStatsWindow.hpp"

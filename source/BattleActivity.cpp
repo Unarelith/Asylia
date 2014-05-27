@@ -27,7 +27,7 @@ BattleActivity::BattleActivity() {
 	
 	m_mode = Mode::Choice;
 	
-	m_itemwin = new ItemWindow(0, 0, GameWindow::main->width(), 320 - 52);
+	m_itemwin = new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52);
 	
 	m_infowin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 	

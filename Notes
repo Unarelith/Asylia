@@ -1,6 +1,3 @@
-- Let ItemWindows get data they'll display
-- EquipItemWindow should be removed
-	* Solve that problem: ItemWindow::getItem()
 - Manage usable Items and their function through a lua script by object
 - Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
 	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )

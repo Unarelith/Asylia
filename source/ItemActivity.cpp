@@ -20,7 +20,7 @@
 ItemActivity::ItemActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Items;
 	
-	m_itemwin = new ItemWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height() - 52);
+	m_itemwin = new ItemWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52, 150, 0);
 }
 
 ItemActivity::~ItemActivity() {

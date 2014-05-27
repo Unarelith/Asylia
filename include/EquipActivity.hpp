@@ -29,7 +29,7 @@ class EquipActivity : public Activity {
 	private:
 		EquipStatsWindow m_statswin;
 		EquipChoiceWindow m_choicewin;
-		EquipItemWindow *m_itemwin;
+		ItemWindow *m_itemwin;
 		
 		bool m_itemMode;
 };

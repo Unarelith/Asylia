@@ -150,7 +150,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    MessageWindow.hpp
    InfoWindow.hpp
    ItemWindow.hpp
-   EquipItemWindow.hpp
    EquipStatsWindow.hpp
    EquipChoiceWindow.hpp
    ActorStatsWindow.hpp
@@ -220,7 +219,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    MessageWindow.cpp
    InfoWindow.cpp
    ItemWindow.cpp
-   EquipItemWindow.cpp
    EquipStatsWindow.cpp
    EquipChoiceWindow.cpp
    ActorStatsWindow.cpp
