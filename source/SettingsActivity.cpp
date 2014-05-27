@@ -17,16 +17,16 @@
  */
 #include "Asylia.hpp"
 
-SettingsActivity::SettingsActivity() {
+SettingsActivity::SettingsActivity(Activity *parent) : Activity(parent) {
 	m_settings = new CommandWindow(150, 160, 150, 96);
 	
-	m_settings->addCommand(_t("Sound"));
-	m_settings->addCommand(_t("Language"));
+	m_settings->addCommand("Sound");
+	m_settings->addCommand("Language");
 	
 	m_sound = new CommandWindow(300, 160, 150, 96);
 	
-	m_sound->addCommand(_t("ON"));
-	m_sound->addCommand(_t("OFF"));
+	m_sound->addCommand("ON");
+	m_sound->addCommand("OFF");
 	
 	m_language = new CommandWindow(300, 160, 150, 96);
 	
@@ -95,22 +95,9 @@ void SettingsActivity::update() {
 			switch(m_language->pos()) {
 				case 0:
 					LanguageManager::init("fr-fr");
-					ActivityManager::pop();
-					ActivityManager::pop();
-					ActivityManager::push(new MenuActivity);
-					((MenuActivity*)ActivityManager::top())->cmdwin()->pos(5);
-					ActivityManager::push(new SettingsActivity);
-					((SettingsActivity*)ActivityManager::top())->mode(Mode::Language);
 					break;
 				case 1:
 					LanguageManager::init("en-us");
-					ActivityManager::pop();
-					ActivityManager::pop();
-					ActivityManager::push(new MenuActivity);
-					((MenuActivity*)ActivityManager::top())->cmdwin()->pos(5);
-					ActivityManager::push(new SettingsActivity);
-					((SettingsActivity*)ActivityManager::top())->mode(Mode::Language);
-					((SettingsActivity*)ActivityManager::top())->m_language->pos(1);
 					break;
 				default: break;
 			}
@@ -125,7 +112,7 @@ void SettingsActivity::update() {
 }
 
 void SettingsActivity::render() {
-	MenuActivity::render();
+	if(m_parent) m_parent->render();
 	
 	if(m_mode == Mode::Settings) {
 		m_settings->draw();

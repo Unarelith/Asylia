@@ -50,16 +50,16 @@ void MenuActivity::update() {
 		
 		switch(m_cmdwin->pos()) {
 			case 0:
-				ActivityManager::push(new ItemActivity);
+				ActivityManager::push(new ItemActivity(this));
 				break;
 			case 1: break;
 			case 2:
-				ActivityManager::push(new EquipActivity);
+				ActivityManager::push(new EquipActivity(this));
 				break;
 			case 3: break;
 			case 4: break;
 			case 5:
-				ActivityManager::push(new SettingsActivity);
+				ActivityManager::push(new SettingsActivity(this));
 				break;
 			case 6:
 				ActivityManager::push(new BattleActivity);
@@ -80,6 +80,6 @@ void MenuActivity::update() {
 void MenuActivity::render() {
 	if(m_parent) m_parent->render();
 	
-	m_cmdwin->draw();
+	m_cmdwin->draw(ActivityManager::top() == this);
 }
 

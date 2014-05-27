@@ -1,5 +1,3 @@
-- Replace all MenuActivity::render() by m_parent->render();
-
 - Let ItemWindows get data they'll display
 - EquipItemWindow should be removed
 	* Solve that problem: ItemWindow::getItem()

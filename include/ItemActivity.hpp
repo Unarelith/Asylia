@@ -18,9 +18,9 @@
 #ifndef ITEMACTIVITY_HPP_
 #define ITEMACTIVITY_HPP_
 
-class ItemActivity : public MenuActivity {
+class ItemActivity : public Activity {
 	public:
-		ItemActivity();
+		ItemActivity(Activity *parent = NULL);
 		~ItemActivity();
 		
 		void update();

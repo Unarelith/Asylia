@@ -18,9 +18,9 @@
 #ifndef SETTINGSACTIVITY_HPP_
 #define SETTINGSACTIVITY_HPP_
 
-class SettingsActivity : public MenuActivity {
+class SettingsActivity : public Activity {
 	public:
-		SettingsActivity();
+		SettingsActivity(Activity *parent = NULL);
 		~SettingsActivity();
 		
 		void update();

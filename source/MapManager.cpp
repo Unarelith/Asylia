@@ -42,6 +42,8 @@ void MapManager::free() {
 		delete tilesets.back();
 		tilesets.pop_back();
 	}
+	
+	currentMap = NULL;
 }
 
 void MapManager::initTilesets() {

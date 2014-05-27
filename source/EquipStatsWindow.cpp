@@ -65,7 +65,7 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	printName(CharacterManager::player->battler(), m_x + 20, m_y + 20, m_width - 130);
 	printLevel(CharacterManager::player->battler(), m_x + m_width - 90, m_y + 20, m_x + m_width - 20);
 	
-	Interface::defaultFont->printToImage("->", 0, m_y, &arrow, FONT_LARGE, Color::system);
+	Interface::defaultFont->printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::system);
 	
 	Interface::defaultFont->printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::system);
 	Interface::defaultFont->printToImage(to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);

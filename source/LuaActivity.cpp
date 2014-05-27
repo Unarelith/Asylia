@@ -30,14 +30,10 @@ LuaActivity::~LuaActivity() {
 }
 
 void LuaActivity::update() {
-	MapActivity::update();
-	
 	LuaHandler::doString(m_table + ".update()");
 }
 
 void LuaActivity::render() {
-	MapActivity::render();
-	
 	LuaHandler::doString(m_table + ".render()");
 }
 

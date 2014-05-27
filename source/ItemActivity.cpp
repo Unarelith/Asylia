@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-ItemActivity::ItemActivity() {
+ItemActivity::ItemActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Items;
 	
 	m_itemwin = new ItemWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height() - 52);
@@ -41,7 +41,7 @@ void ItemActivity::update() {
 }
 
 void ItemActivity::render() {
-	MenuActivity::render();
+	if(m_parent) m_parent->render();
 	
 	m_itemwin->draw();
 }

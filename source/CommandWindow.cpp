@@ -40,7 +40,7 @@ CommandWindow::~CommandWindow() {
 }
 
 void CommandWindow::drawItem(u8 pos) {
-	Interface::defaultFont->printScaled(m_commands[pos].c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE);
+	Interface::defaultFont->printScaled(_t(m_commands[pos]).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE);
 }
 
 void CommandWindow::drawHorizontalCenteredItem(u8 pos) {

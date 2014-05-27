@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-EquipActivity::EquipActivity() {
+EquipActivity::EquipActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Equip;
 	
 	m_itemwin = new EquipItemWindow(0, 0);
@@ -74,7 +74,7 @@ void EquipActivity::update() {
 }
 
 void EquipActivity::render() {
-	MenuActivity::render();
+	if(m_parent) m_parent->render();
 	
 	if(m_itemMode) m_statswin.draw(m_itemwin->currentItem());
 	else m_statswin.draw();

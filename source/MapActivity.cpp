@@ -37,9 +37,13 @@ MapActivity::~MapActivity() {
 	AnimationManager::free();
 	
 	SpriteAnimationManager::free();
+	
+	LuaHandler::free();
 }
 
 void MapActivity::init() {
+	LuaHandler::init();
+	
 	SpriteAnimationManager::init();
 	
 	AnimationManager::init();
@@ -66,7 +70,7 @@ void MapActivity::init() {
 void MapActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
-		ActivityManager::push(new MenuActivity);
+		ActivityManager::push(new MenuActivity(this));
 	}
 	
 	CharacterManager::player->move();

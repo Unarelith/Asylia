@@ -18,9 +18,9 @@
 #ifndef EQUIPACTIVITY_HPP_
 #define EQUIPACTIVITY_HPP_
 
-class EquipActivity : public MenuActivity {
+class EquipActivity : public Activity {
 	public:
-		EquipActivity();
+		EquipActivity(Activity *parent = NULL);
 		~EquipActivity();
 		
 		void update();

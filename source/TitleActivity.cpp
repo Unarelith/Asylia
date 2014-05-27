@@ -49,7 +49,6 @@ void TitleActivity::update() {
 		switch(m_cmdwin->pos()) {
 			case 0:
 				ActivityManager::push(new MapActivity);
-				((MapActivity *)ActivityManager::top())->init();
 				break;
 			case 1: break;
 			case 2:
