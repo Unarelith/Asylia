@@ -9,4 +9,3 @@
 /home/quentin/Projects/Asylia/droid/libs/armeabi/gdbserver \
 /home/quentin/Projects/Asylia/droid/libs/armeabi/libSDL2.so \
 /home/quentin/Projects/Asylia/droid/libs/armeabi/libgnustl_shared.so \
-/home/quentin/Projects/Asylia/droid/libs/armeabi/libnative_midi.so \

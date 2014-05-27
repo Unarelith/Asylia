@@ -54,11 +54,13 @@
 /home/quentin/Projects/Asylia/droid/assets/data/config/armors.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/events.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/skills.xml \
+/home/quentin/Projects/Asylia/droid/assets/data/config/spriteAnimations.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/weapons.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/maps.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/tilesets.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/player.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/config/battles.xml \
+/home/quentin/Projects/Asylia/droid/assets/data/config/animations.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/locale/en-us.xml \
 /home/quentin/Projects/Asylia/droid/assets/data/locale/fr-fr.xml \
 /home/quentin/Projects/Asylia/droid/assets/graphics/interface \

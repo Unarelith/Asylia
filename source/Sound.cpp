@@ -84,16 +84,21 @@ void Sound::Music::free() {
 }
 
 void Sound::Music::load(const char *filename, Mix_Music **music) {
+#ifndef __ANDROID__
 	*music = Mix_LoadMUS(filename);
 	if(!*music) {
 		error("Unable to load music: %s (ERROR: %s)", filename, Mix_GetError());
 		exit(EXIT_FAILURE);
 	}
+#endif
 }
 
 void Sound::Music::play(Mix_Music *music, int loops) {
 	current = music;
+	
+#ifndef __ANDROID__
 	Mix_PlayMusic(music, loops);
+#endif
 }
 
 void Sound::Music::halt() {
