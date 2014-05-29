@@ -48,6 +48,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
   maps=maps {
    map0-0-0.tmx
+   map0-1-0.tmx
   }
   saves=saves {
    0.xml
@@ -57,107 +58,127 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
  }
  droid=droid {
+  AndroidManifest.xml
+  build.xml
   src=src {
    com=com {
     quent42340=quent42340 {
 	 asylia=asylia {
-	  Asylia.java
 	 }
 	}
    }
   }
  }
- external=external {
-  lua.c
-  lauxlib.h
-  lua.h
-  luaconf.h
-  lualib.h
-  lua.hpp
-  AndroidIO.cpp
-  AndroidIO.hpp
-  SLB.cpp
-  SLB.hpp
-  tinyxml2.cpp
-  tinyxml2.hpp
- }
  include=include {
-  activity {
-   Activity.hpp
-   MapActivity.hpp
-   DialogActivity.hpp
-   MenuActivity.hpp
-   LuaActivity.hpp
-   TitleActivity.hpp
-   EndActivity.hpp
-   ItemActivity.hpp
-   EquipActivity.hpp
-   BattleActivity.hpp
-   SettingsActivity.hpp
-  }
+  Activity.hpp
   ActivityManager.hpp
   Actor.hpp
+  ActorStatsWindow.hpp
   Animation.hpp
   AnimationManager.hpp
   Armor.hpp
   Asylia.hpp
   Battle.hpp
   BattleAction.hpp
+  BattleActionWindow.hpp
+  BattleActivity.hpp
+  BattleChoiceWindow.hpp
   BattleManager.hpp
   Battler.hpp
   BattlerManager.hpp
   Character.hpp
   CharacterManager.hpp
-  Color.hpp
-  Config.hpp
-  Debug.hpp
+  CommandWindow.hpp
+  DialogActivity.hpp
+  EndActivity.hpp
   Enemy.hpp
+  EquipActivity.hpp
+  EquipChoiceWindow.hpp
+  EquipStatsWindow.hpp
   Event.hpp
   EventManager.hpp
   Font.hpp
-  Game.hpp
+  InfoWindow.hpp
   Interface.hpp
   Inventory.hpp
   Item.hpp
+  ItemActivity.hpp
   ItemManager.hpp
+  ItemWindow.hpp
   Keyboard.hpp
   LanguageManager.hpp
-  LuaHandler.hpp
+  LuaActivity.hpp
   Map.hpp
+  MapActivity.hpp
   MapManager.hpp
+  MenuActivity.hpp
+  MessageWindow.hpp
   Player.hpp
-  Rectangle.hpp
   SaveManager.hpp
-  SDLManager.hpp
-  SDLHeaders.hpp
+  SelectableWindow.hpp
+  SettingsActivity.hpp
   Skill.hpp
-  Sound.hpp
-  Sprite.hpp
-  SpriteAnimation.hpp
   SpriteAnimationManager.hpp
+  TextWindow.hpp
   Tileset.hpp
-  Timer.hpp
-  TimeManager.hpp
-  Types.hpp
+  TitleActivity.hpp
   Weapon.hpp
-  window {
-   Window.hpp
-   TextWindow.hpp
-   SelectableWindow.hpp
-   CommandWindow.hpp
-   MessageWindow.hpp
-   InfoWindow.hpp
-   ItemWindow.hpp
-   EquipStatsWindow.hpp
-   EquipChoiceWindow.hpp
-   ActorStatsWindow.hpp
-   BattleChoiceWindow.hpp
-   BattleActionWindow.hpp
-   ItemActionWindow.hpp
-  }
-  XMLFile.hpp
+  Window.hpp
  }
  source=source {
+  Activity.cpp
+  ActivityManager.cpp
+  Actor.cpp
+  ActorStatsWindow.cpp
+  Animation.cpp
+  AnimationManager.cpp
+  Armor.cpp
+  Battle.cpp
+  BattleAction.cpp
+  BattleActionWindow.cpp
+  BattleActivity.cpp
+  BattleChoiceWindow.cpp
+  BattleManager.cpp
+  Battler.cpp
+  BattlerManager.cpp
+  Character.cpp
+  CharacterManager.cpp
+  CommandWindow.cpp
+  DialogActivity.cpp
+  EndActivity.cpp
+  Enemy.cpp
+  EquipActivity.cpp
+  EquipChoiceWindow.cpp
+  EquipStatsWindow.cpp
+  Event.cpp
+  EventManager.cpp
+  Font.cpp
+  InfoWindow.cpp
+  Interface.cpp
+  Inventory.cpp
+  Item.cpp
+  ItemActivity.cpp
+  ItemManager.cpp
+  ItemWindow.cpp
+  Keyboard.cpp
+  LanguageManager.cpp
+  LuaActivity.cpp
+  Map.cpp
+  MapActivity.cpp
+  MapManager.cpp
+  MenuActivity.cpp
+  MessageWindow.cpp
+  Player.cpp
+  SaveManager.cpp
+  SelectableWindow.cpp
+  SettingsActivity.cpp
+  Skill.cpp
+  SpriteAnimationManager.cpp
+  TextWindow.cpp
+  TitleActivity.cpp
+  Weapon.cpp
+  Window.cpp
+  main.cpp
   activity {
    Activity.cpp
    MapActivity.cpp
@@ -171,43 +192,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    BattleActivity.cpp
    SettingsActivity.cpp
   }
-  ActivityManager.cpp
-  Actor.cpp
-  Animation.cpp
-  AnimationManager.cpp
-  Armor.cpp
-  Battle.cpp
-  BattleAction.cpp
-  BattleManager.cpp
-  Battler.cpp
-  BattlerManager.cpp
-  Character.cpp
-  CharacterManager.cpp
-  Color.cpp
-  Enemy.cpp
-  Event.cpp
-  EventManager.cpp
-  Font.cpp
-  Game.cpp
-  Interface.cpp
-  Inventory.cpp
-  Item.cpp
-  ItemManager.cpp
-  Keyboard.cpp
-  LanguageManager.cpp
-  LuaHandler.cpp
-  Map.cpp
-  MapManager.cpp
-  Player.cpp
-  SaveManager.cpp
-  SDLManager.cpp
-  Skill.cpp
-  Sound.cpp
-  Sprite.cpp
-  SpriteAnimationManager.cpp
-  Timer.cpp
-  TimeManager.cpp
-  Weapon.cpp
   window {
    Window.cpp
    TextWindow.cpp
@@ -222,7 +206,5 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    BattleChoiceWindow.cpp
    BattleActionWindow.cpp
   }
-  XMLFile.cpp
-  main.cpp
  }
 }

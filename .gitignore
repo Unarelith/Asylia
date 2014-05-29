@@ -4,5 +4,6 @@ droid/libs
 droid/obj
 *~
 Asylia
+*.a
 *.swp
 *.swo

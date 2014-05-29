@@ -1,0 +1,37 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  MenuActivity.hpp
+ *
+ *    Description:  
+ *
+ *        Version:  1.0
+ *        Created:  21/03/2014 18:21:02
+ *       Revision:  none
+ *       Compiler:  gcc
+ *
+ *         Author:  Quentin BAZIN, <quent42340@gmail.com>
+ *        Company:  Deloptia
+ *
+ * =====================================================================================
+ */
+#ifndef MENUACTIVITY_HPP_
+#define MENUACTIVITY_HPP_
+
+class MenuActivity : public Activity {
+	public:
+		MenuActivity(Activity *parent = NULL);
+		~MenuActivity();
+		
+		void loadCommandWindow();
+		
+		void update();
+		void render();
+		
+		CommandWindow *cmdwin() { return m_cmdwin; }
+		
+	private:
+		CommandWindow *m_cmdwin;
+};
+
+#endif // MENUACTIVITY_HPP_
