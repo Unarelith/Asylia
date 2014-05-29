@@ -116,8 +116,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   EventManager.hpp
   Font.hpp
   Game.hpp
-  GameWindow.hpp
-  Image.hpp
   Interface.hpp
   Inventory.hpp
   Item.hpp
@@ -155,6 +153,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    ActorStatsWindow.hpp
    BattleChoiceWindow.hpp
    BattleActionWindow.hpp
+   ItemActionWindow.hpp
   }
   XMLFile.hpp
  }
@@ -190,8 +189,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   EventManager.cpp
   Font.cpp
   Game.cpp
-  GameWindow.cpp
-  Image.cpp
   Interface.cpp
   Inventory.cpp
   Item.cpp

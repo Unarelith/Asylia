@@ -39,16 +39,26 @@ class Item {
 			Skill
 		};
 		
+		enum Effect {
+			None,
+			StatsEffect,
+			MapEffect
+		};
+		
 		Type type() const { return m_type; }
+		
+		Effect effect() const { return m_effect; }
 		
 		Animation *battleAnimation() const { return m_battleAnimation; }
 		
-		void setType(Type type) { m_type = type; }
+		void setEffect(int effect) { m_effect = (Item::Effect)effect; }
 		
 	protected:
 		u16 m_id;
 		
 		Type m_type;
+		
+		Effect m_effect;
 		
 		std::string m_name;
 		std::string m_description;

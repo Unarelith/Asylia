@@ -25,6 +25,8 @@ Item::Item(std::string name, std::string description, std::string thumbnail, Ani
 	
 	m_type = Type::BasicItem;
 	
+	m_effect = Effect::None;
+	
 	m_name = name;
 	m_description = description;
 	

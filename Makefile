@@ -1,4 +1,14 @@
 #---------------------------------------------------------------------------------
+# Executable name
+#---------------------------------------------------------------------------------
+TARGET		:=  $(shell basename $(CURDIR))
+
+#---------------------------------------------------------------------------------
+# Modules to load
+#---------------------------------------------------------------------------------
+MODULES	:=	display core
+
+#---------------------------------------------------------------------------------
 # Compiler executables
 #---------------------------------------------------------------------------------
 CC		:=	gcc
@@ -14,22 +24,20 @@ LDFLAGS	:=	-g
 #---------------------------------------------------------------------------------
 # Any extra libraries you wish to link with your project
 #---------------------------------------------------------------------------------
-LIBS	:=	-lSDL2_ttf -lSDL2_mixer -lSDL2_image -lSDL2
+LIBS	:=	$(foreach mod,$(MODULES),-lAsylia_$(mod)) \
+			-lSDL2_ttf -lSDL2_mixer -lSDL2_image -lSDL2
 
 #---------------------------------------------------------------------------------
-# List of directories containing libraries, this must be the top level containing
-# include and lib
-#---------------------------------------------------------------------------------
-LIBDIRS	:=	
-
-#---------------------------------------------------------------------------------
-# Source folders and executable name
+# Source folders
 #--------------------------------------------------------------------------------
-TARGET		:=  $(shell basename $(CURDIR))
 BUILD		:=	build
-SOURCES		:=	source external
-INCLUDES	:=	source include external
-OTHERLIBS	:= 	
+SOURCES		:=	source modules/external
+INCLUDES	:=	include modules/external modules/include
+
+#---------------------------------------------------------------------------------
+# Additional folders for libraries
+#---------------------------------------------------------------------------------
+LIBDIRS		:= 	modules/lib
 
 #---------------------------------------------------------------------------------
 # Source files
@@ -66,7 +74,7 @@ export OFILES	:=	$(CPPFILES:.cpp=.o) $(CFILES:.c=.o)
 
 export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 
-export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(dir)/lib) $(foreach dir,$(OTHERLIBS),-L$(CURDIR)/$(dir))
+export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
 .PHONY: $(BUILD) clean clear run edit droid tags install uninstall

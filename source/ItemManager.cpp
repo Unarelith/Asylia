@@ -58,6 +58,7 @@ void ItemManager::loadItems() {
 	u8 id = 0;
 	while(itemElement) {
 		const char *animation;
+		int effect;
 		
 		animation = itemElement->Attribute("animation");
 		if(!animation) animation = "";
@@ -68,6 +69,10 @@ void ItemManager::loadItems() {
 			std::string("graphics/items/") + to_string(id) + ".png",
 			AnimationManager::getAnimationByName(animation)
 		));
+		
+		if(itemElement->QueryIntAttribute("effect", &effect) == XML_NO_ERROR) {
+			items.back()->setEffect(effect);
+		}
 		
 		itemElement = itemElement->NextSiblingElement("item");
 		id++;
