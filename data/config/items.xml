@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <items>
-	<item name="Potion1" animation="BaseAttack"/>
-	<item name="Potion2" animation="BaseAttack"/>
-	<item name="Potion3" animation="BaseAttack"/>
-	<item name="Potion4" animation="BaseAttack"/>
+	<item name="Potion1"/>
+	<item name="Potion2"/>
+	<item name="Potion3"/>
+	<item name="Potion4"/>
 	
-	<item name="Key1" animation="BaseAttack"/>
-	<item name="Key2" animation="BaseAttack"/>
-	<item name="Key3" animation="BaseAttack"/>
+	<item name="Key1"/>
+	<item name="Key2"/>
+	<item name="Key3"/>
 </items>

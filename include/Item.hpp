@@ -43,6 +43,8 @@ class Item {
 		
 		Animation *battleAnimation() const { return m_battleAnimation; }
 		
+		void setType(Type type) { m_type = type; }
+		
 	protected:
 		u16 m_id;
 		

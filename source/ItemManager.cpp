@@ -57,11 +57,16 @@ void ItemManager::loadItems() {
 	XMLElement *itemElement = doc.FirstChildElement("items").FirstChildElement("item").ToElement();
 	u8 id = 0;
 	while(itemElement) {
+		const char *animation;
+		
+		animation = itemElement->Attribute("animation");
+		if(!animation) animation = "";
+		
 		items.push_back(new Item(
 			std::string("Item") + to_string(id),
 			std::string("Item") + to_string(id) + "Desc",
 			std::string("graphics/items/") + to_string(id) + ".png",
-			AnimationManager::getAnimationByName(itemElement->Attribute("animation"))
+			AnimationManager::getAnimationByName(animation)
 		));
 		
 		itemElement = itemElement->NextSiblingElement("item");
@@ -113,11 +118,16 @@ void ItemManager::loadSkills() {
 	XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
 	u8 id = 0;
 	while(skillElement) {
+		const char *animation;
+		
+		animation = skillElement->Attribute("animation");
+		if(!animation) animation = "";
+		
 		skills.push_back(new Skill(
 			std::string("Skill") + to_string(id),
 			std::string("Skill") + to_string(id) + "Desc",
 			std::string("graphics/skills/") + to_string(id) + ".png",
-			AnimationManager::getAnimationByName(skillElement->Attribute("animation")),
+			AnimationManager::getAnimationByName(animation),
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		));

@@ -13,6 +13,12 @@
 ~ Create a class "ModLibrary" which will provide through static functions
    all that is required to mod the game correctly, like easy functions
 
+- Error check in XML config file reading
+	=> Add an overlay to XMLElement which tests attributes
+
+- Improve damage rendering on android
+	=> Coordinates based on SDL_GetTicks
+
 - Add a "Switch" class
 - Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
 
