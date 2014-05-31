@@ -6,7 +6,7 @@ TARGET		:=  $(shell basename $(CURDIR))
 #---------------------------------------------------------------------------------
 # Modules to load
 #---------------------------------------------------------------------------------
-MODULES		:=	managers activities windows entities objects display core
+MODULES		:=	activities windows entities objects display core
 
 #---------------------------------------------------------------------------------
 # Compiler executables
