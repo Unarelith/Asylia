@@ -38,12 +38,16 @@ BattleActivity::BattleActivity() {
 	m_gameover = new Image("graphics/interface/Gameover.jpg");
 	m_gameoverAlpha = 1;
 	
-	//m_victoryWindow = new InfoWindow(GameWindow::main->width() / 2 - 128, GameWindow::main->height() / 2 - 96, 256, 192);
+	m_victorywin = new VictoryWindow(m_battle);
 	
 	Sound::Music::play(Sound::Music::battle, -1);
 }
 
 BattleActivity::~BattleActivity() {
+	delete m_victorywin;
+	
+	delete m_gameover;
+	
 	delete m_infowin;
 	
 	delete m_itemwin;
@@ -217,9 +221,6 @@ void BattleActivity::update() {
 			
 			if(j == m_battle->enemies().size()) {
 				m_mode = Mode::Victory;
-				DialogActivity *dialog = ActivityManager::newDialogWithParent(this);
-				dialog->addMessage("You win! 999999 exp 999ø");
-				return;
 			}
 			
 			if(m_battle->actionStackEmpty()) {
@@ -243,10 +244,14 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::Victory) {
-		Sound::Effect::play(Sound::Effect::confirm);
-		ActivityManager::pop();
-		Sound::Music::halt();
-		Sound::Music::play(Sound::Music::theme, -1);
+		if(Keyboard::isKeyPressed(Keyboard::GameAttack)) {
+			Sound::Effect::play(Sound::Effect::confirm);
+			ActivityManager::pop();
+			Sound::Music::halt();
+			Sound::Music::play(Sound::Music::theme, -1);
+		}
+		
+		m_victorywin->update();
 	}
 }
 
@@ -287,6 +292,10 @@ void BattleActivity::render() {
 					m_battle->popAction();
 				}
 			}
+		}
+		
+		if(m_mode == Mode::Victory) {
+			m_victorywin->draw();
 		}
 	} else {
 		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);

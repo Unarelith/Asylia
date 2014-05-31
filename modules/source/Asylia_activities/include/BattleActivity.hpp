@@ -67,6 +67,8 @@ class BattleActivity : public Activity {
 		
 		Image *m_gameover;
 		u16 m_gameoverAlpha;
+		
+		VictoryWindow *m_victorywin;
 };
 
 #endif // BATTLEACTIVITY_HPP_
