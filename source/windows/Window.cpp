@@ -97,3 +97,25 @@ void Window::drawBattler(Battler *battler, s16 x, s16 y) {
 	battler->image()->render(x, y);
 }
 
+void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
+	Image countImg, itemImg;
+	
+	item->thumbnail()->render(m_x + x, m_y + y);
+	
+	if(count != 0) {
+		Interface::defaultFont->printToImage(to_string(count).c_str(), m_x + x - 16 + width, m_y + y, &countImg, FONT_LARGE);
+		countImg.render(countImg.posRect().x - countImg.width());
+	}
+	
+	Interface::defaultFont->printScaledToImage(item->name().c_str(), m_x + x + 28, m_y + y, width - countImg.width(), 32, &itemImg, FONT_LARGE);
+	
+	if(m_y + y < m_y) {
+		itemImg.render(-1, m_y + 4, 0, itemImg.height() - (y + 32 - m_y), -1, m_y - y + 4, 0, itemImg.height() - (y + 32 - m_y));
+	}
+	else if(m_y + y + 32 > m_y + m_height) {
+		itemImg.render(-1, m_y + y, 0, m_height - y - 4, -1, -1, 0, m_height - y - 4);
+	} else {
+		itemImg.render(-1, -1, 0, 0, -1, -1, 0, 0);
+	}
+}
+

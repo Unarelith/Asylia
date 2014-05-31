@@ -1,3 +1,6 @@
+- Improve VictoryWindow:
+	=> EXP, Gold and Items come from Battle
+
 - Manage usable Items and their function through a lua script by object
 - Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
 	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
@@ -37,8 +40,6 @@
 		=> Function u32 Keyboard::lastDirectionKeyPressed();
 	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
 		=> Render copy once in a texture in a push_back, then push the texture too
-	* #29 - Improve victory window
-		=> Make a VictoryWindow
 	* #30 - Add other stats and sort BattleActions in stack
 		=> Damage formula improvement needed
 		=> Sort BattleAction by battlers' speed

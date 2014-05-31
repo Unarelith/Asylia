@@ -41,6 +41,7 @@ class Window {
 		void printHP(Battler *battler, s16 x, s16 y, s16 x2);
 		void printSP(Battler *battler, s16 x, s16 y, s16 x2);
 		void drawBattler(Battler *battler, s16 x, s16 y);
+		void printItem(Item *item, u16 count, s16 x, s16 y, u16 width);
 		
 	protected:
 		s16 m_x;
