@@ -4,9 +4,9 @@
 TARGET		:=  $(shell basename $(CURDIR))
 
 #---------------------------------------------------------------------------------
-# Modules to load
+# Source sub-folders
 #---------------------------------------------------------------------------------
-MODULES		:=	activities windows entities objects display core external
+SUBFOLDERS	:=	activities core display entities managers objects windows
 
 #---------------------------------------------------------------------------------
 # Compiler executables
@@ -24,20 +24,19 @@ LDFLAGS	:=	-g
 #---------------------------------------------------------------------------------
 # Any extra libraries you wish to link with your project
 #---------------------------------------------------------------------------------
-LIBS	:=	$(foreach mod,$(MODULES),-lAsylia_$(mod)) \
-			-lSDL2_ttf -lSDL2_mixer -lSDL2_image -lSDL2
+LIBS	:=	-lSDL2_ttf -lSDL2_mixer -lSDL2_image -lSDL2
 
 #---------------------------------------------------------------------------------
 # Source folders
 #--------------------------------------------------------------------------------
 BUILD		:=	build
-SOURCES		:=	source modules/external
-INCLUDES	:=	include modules/external modules/include
+SOURCES		:=	source external $(foreach dir,$(SUBFOLDERS),source/$(dir))
+INCLUDES	:=	include external $(foreach dir,$(SUBFOLDERS),include/$(dir))
 
 #---------------------------------------------------------------------------------
 # Additional folders for libraries
 #---------------------------------------------------------------------------------
-LIBDIRS		:= 	modules/lib
+LIBDIRS		:= 	
 
 #---------------------------------------------------------------------------------
 # Source files
@@ -77,7 +76,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean clear run edit modules_clean modules droid tags install uninstall
+.PHONY: $(BUILD) clean clear run edit droid tags install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -92,14 +91,6 @@ run:
 edit:
 	@echo editing ...
 	@gvim -c "Project $(TARGET).vimproj"
-
-#---------------------------------------------------------------------------------
-modules_clean:
-	@make clean --no-print-directory -C modules/ -f Makefile
-
-#---------------------------------------------------------------------------------
-modules:
-	@make all --no-print-directory -C modules/ -f Makefile
 
 #---------------------------------------------------------------------------------
 droid:

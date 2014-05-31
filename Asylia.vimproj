@@ -72,190 +72,173 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
  include=include {
   Asylia.hpp
   Game.hpp
- }
- modules=modules {
-  source=source {
-   Asylia_activities=Asylia_activities {
-    Makefile
-	include=include {
-     Activity.hpp
-     ActivityManager.hpp
-     BattleActivity.hpp
-     DialogActivity.hpp
-     EndActivity.hpp
-     EquipActivity.hpp
-     ItemActivity.hpp
-     LuaActivity.hpp
-     MapActivity.hpp
-     MenuActivity.hpp
-     SettingsActivity.hpp
-     TitleActivity.hpp
-	}
-	source=source {
-     Activity.cpp
-     ActivityManager.cpp
-     BattleActivity.cpp
-     DialogActivity.cpp
-     EndActivity.cpp
-     EquipActivity.cpp
-     ItemActivity.cpp
-     LuaActivity.cpp
-     MapActivity.cpp
-     MenuActivity.cpp
-     SettingsActivity.cpp
-     TitleActivity.cpp
-	}
-   }
-   Asylia_core=Asylia_core {
-    Makefile
-	include=include {
-     Color.hpp
-     Config.hpp
-     Debug.hpp
-     LanguageManager.hpp
-     LuaHandler.hpp
-     Rectangle.hpp
-     SDLHeaders.hpp
-     SDLManager.hpp
-     Sound.hpp
-     TimeManager.hpp
-     Types.hpp
-     XMLFile.hpp
-	}
-	source=source {
-     Color.cpp
-     LanguageManager.cpp
-     LuaHandler.cpp
-     SDLManager.cpp
-     Sound.cpp
-     TimeManager.cpp
-     XMLFile.cpp
-	}
-   }
-   Asylia_display=Asylia_display {
-    Makefile
-	include=include {
-     Animation.hpp
-     AnimationManager.hpp
-     Font.hpp
-     GameWindow.hpp
-     Image.hpp
-     Interface.hpp
-     Map.hpp
-     MapManager.hpp
-     Sprite.hpp
-     SpriteAnimation.hpp
-     SpriteAnimationManager.hpp
-     Tileset.hpp
-     Timer.hpp
-	}
-	source=source {
-     Animation.cpp
-     AnimationManager.cpp
-     Font.cpp
-     GameWindow.cpp
-     Image.cpp
-     Interface.cpp
-     Map.cpp
-     MapManager.cpp
-     Sprite.cpp
-     SpriteAnimationManager.cpp
-     Timer.cpp
-	}
-   }
-   Asylia_entities=Asylia_entities {
-    Makefile
-	include=include {
-     Actor.hpp
-     Battler.hpp
-     BattlerManager.hpp
-     Character.hpp
-     CharacterManager.hpp
-     Enemy.hpp
-     Event.hpp
-     EventManager.hpp
-     Player.hpp
-     SaveManager.hpp
-	}
-	source=source {
-     Actor.cpp
-     Battler.cpp
-     BattlerManager.cpp
-     Character.cpp
-     CharacterManager.cpp
-     Enemy.cpp
-     Event.cpp
-     EventManager.cpp
-     Player.cpp
-     SaveManager.cpp
-	}
-   }
-   Asylia_objects=Asylia_objects {
-    Makefile
-	include=include {
-     Armor.hpp
-     Battle.hpp
-     BattleAction.hpp
-     BattleManager.hpp
-     Inventory.hpp
-     Item.hpp
-     ItemManager.hpp
-     Keyboard.hpp
-     Skill.hpp
-     Weapon.hpp
-	}
-	source=source {
-     Armor.cpp
-     Battle.cpp
-     BattleAction.cpp
-     BattleManager.cpp
-     Inventory.cpp
-     Item.cpp
-     ItemManager.cpp
-     Keyboard.cpp
-     Skill.cpp
-     Weapon.cpp
-	}
-   }
-   Asylia_windows=Asylia_windows {
-    Makefile
-	include=include {
-     ActorStatsWindow.hpp
-     BattleActionWindow.hpp
-     BattleChoiceWindow.hpp
-     CommandWindow.hpp
-     EquipChoiceWindow.hpp
-     EquipStatsWindow.hpp
-     InfoWindow.hpp
-     ItemWindow.hpp
-     MessageWindow.hpp
-     SelectableWindow.hpp
-     TextWindow.hpp
-     Window.hpp
-	}
-	source=source {
-     ActorStatsWindow.cpp
-     BattleActionWindow.cpp
-     BattleChoiceWindow.cpp
-     CommandWindow.cpp
-     EquipChoiceWindow.cpp
-     EquipStatsWindow.cpp
-     InfoWindow.cpp
-     ItemWindow.cpp
-     MessageWindow.cpp
-     SelectableWindow.cpp
-     TextWindow.cpp
-     Window.cpp
-	}
-   }
+  activities=activities {
+   Activity.hpp
+   BattleActivity.hpp
+   DialogActivity.hpp
+   EndActivity.hpp
+   EquipActivity.hpp
+   ItemActivity.hpp
+   LuaActivity.hpp
+   MapActivity.hpp
+   MenuActivity.hpp
+   SettingsActivity.hpp
+   TitleActivity.hpp
+  }
+  core=core {
+   Color.hpp
+   Config.hpp
+   Debug.hpp
+   LuaHandler.hpp
+   Rectangle.hpp
+   SDLHeaders.hpp
+   SDLManager.hpp
+   Sound.hpp
+   TimeManager.hpp
+   Types.hpp
+   XMLFile.hpp
+  }
+  display=display {
+   Animation.hpp
+   AnimationManager.hpp
+   Font.hpp
+   GameWindow.hpp
+   Image.hpp
+   Interface.hpp
+   Map.hpp
+   Sprite.hpp
+   SpriteAnimation.hpp
+   Tileset.hpp
+   Timer.hpp
+  }
+  entities=entities {
+   Actor.hpp
+   Battler.hpp
+   Character.hpp
+   Enemy.hpp
+   Event.hpp
+   Player.hpp
+  }
+  managers=managers {
+   ActivityManager.hpp
+   BattlerManager.hpp
+   CharacterManager.hpp
+   EventManager.hpp
+   LanguageManager.hpp
+   MapManager.hpp
+   SaveManager.hpp
+   SpriteAnimationManager.hpp
+  }
+  objects=objects {
+   Armor.hpp
+   Battle.hpp
+   BattleAction.hpp
+   BattleManager.hpp
+   Inventory.hpp
+   Item.hpp
+   ItemManager.hpp
+   Keyboard.hpp
+   Skill.hpp
+   Weapon.hpp
+  }
+  windows=windows {
+   ActorStatsWindow.hpp
+   BattleActionWindow.hpp
+   BattleChoiceWindow.hpp
+   CommandWindow.hpp
+   EquipChoiceWindow.hpp
+   EquipStatsWindow.hpp
+   InfoWindow.hpp
+   ItemWindow.hpp
+   MessageWindow.hpp
+   SelectableWindow.hpp
+   TextWindow.hpp
+   VictoryWindow.hpp
+   Window.hpp
   }
  }
  source=source {
   Game.cpp
   main.cpp
+  activities=activities {
+   Activity.cpp
+   BattleActivity.cpp
+   DialogActivity.cpp
+   EndActivity.cpp
+   EquipActivity.cpp
+   ItemActivity.cpp
+   LuaActivity.cpp
+   MapActivity.cpp
+   MenuActivity.cpp
+   SettingsActivity.cpp
+   TitleActivity.cpp
+  }
+  core=core {
+   Color.cpp
+   LuaHandler.cpp
+   SDLManager.cpp
+   Sound.cpp
+   TimeManager.cpp
+   XMLFile.cpp
+  }
+  display=display {
+   Animation.cpp
+   AnimationManager.cpp
+   Font.cpp
+   GameWindow.cpp
+   Image.cpp
+   Interface.cpp
+   Map.cpp
+   MapManager.cpp
+   Sprite.cpp
+   SpriteAnimationManager.cpp
+   Timer.cpp
+  }
+  entities=entities {
+   Actor.cpp
+   Battler.cpp
+   Character.cpp
+   Enemy.cpp
+   Event.cpp
+   Player.cpp
+  }
+  managers=managers {
+   ActivityManager.cpp
+   BattleManager.cpp
+   BattlerManager.cpp
+   CharacterManager.cpp
+   EventManager.cpp
+   ItemManager.cpp
+   LanguageManager.cpp
+   SaveManager.cpp
+  }
+  objects=objects {
+   Armor.cpp
+   Battle.cpp
+   BattleAction.cpp
+   Inventory.cpp
+   Item.cpp
+   Keyboard.cpp
+   Skill.cpp
+   Weapon.cpp
+  }
+  windows=windows {
+   ActorStatsWindow.cpp
+   BattleActionWindow.cpp
+   BattleChoiceWindow.cpp
+   CommandWindow.cpp
+   EquipChoiceWindow.cpp
+   EquipStatsWindow.cpp
+   InfoWindow.cpp
+   ItemWindow.cpp
+   MessageWindow.cpp
+   SelectableWindow.cpp
+   TextWindow.cpp
+   VictoryWindow.cpp
+   Window.cpp
+  }
  }
  wiki=wiki {
   Home.textile
-  HowToCompileModules.textile
  }
 }

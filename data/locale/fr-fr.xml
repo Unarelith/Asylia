@@ -33,6 +33,9 @@
 	<text id="Sound" text="Son"/>
 	<text id="ON" text="ON"/>
 	<text id="OFF" text="OFF"/>
+	<text id="Victory" text="Gagné!"/>
+	<text id="EXP" text="EXP"/>
+	<text id="Gold" text="Or"/>
 	
 	<text id="Normal" text="Normal"/>
 	

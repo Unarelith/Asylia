@@ -1,6 +1,0 @@
-Welcome to the Asylia wiki!
-
-How to compile modules:
-
-make modules <= Compiles all modules
-

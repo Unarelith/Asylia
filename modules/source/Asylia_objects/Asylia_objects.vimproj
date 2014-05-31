@@ -1,7 +1,0 @@
-Asylia_objects=/home/quentin/Projects/Asylia/modules/Asylia_objects CD=. filter=".gitignore *.c *.h *.diff *.vim AUTHORS ChangeLog COPYING Makefile Notes TODO *.textile *.cpp" {
- Makefile
- include=include {
- }
- source=source {
- }
-}
