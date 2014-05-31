@@ -6,7 +6,7 @@ TARGET		:=  $(shell basename $(CURDIR))
 #---------------------------------------------------------------------------------
 # Modules to load
 #---------------------------------------------------------------------------------
-MODULES		:=	activities windows entities objects display core
+MODULES		:=	activities windows entities objects display core external
 
 #---------------------------------------------------------------------------------
 # Compiler executables
@@ -77,7 +77,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean clear run edit droid tags install uninstall
+.PHONY: $(BUILD) clean clear run edit modules_clean modules droid tags install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -92,6 +92,14 @@ run:
 edit:
 	@echo editing ...
 	@gvim -c "Project $(TARGET).vimproj"
+
+#---------------------------------------------------------------------------------
+modules_clean:
+	@make clean --no-print-directory -C modules/ -f Makefile
+
+#---------------------------------------------------------------------------------
+modules:
+	@make all --no-print-directory -C modules/ -f Makefile
 
 #---------------------------------------------------------------------------------
 droid:

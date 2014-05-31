@@ -17,7 +17,7 @@ CXXFLAGS:=	$(CFLAGS) -std=c++11
 TARGET	:=  $(shell basename $(CURDIR))
 BUILD	:=	build
 SOURCES	:=	source
-INCLUDES:=	../../include ../../../include ../../external
+INCLUDES:=	../../include ../../../include
 
 #---------------------------------------------------------------------------------
 # Source files

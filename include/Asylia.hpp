@@ -106,6 +106,7 @@ using namespace tinyxml2;
 #include "ActorStatsWindow.hpp"
 #include "BattleChoiceWindow.hpp"
 #include "BattleActionWindow.hpp"
+#include "VictoryWindow.hpp"
 
 #include "Character.hpp"
 #include "Player.hpp"
