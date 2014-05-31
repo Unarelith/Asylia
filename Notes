@@ -6,8 +6,8 @@
 - Improve Animation classes
 	* Animation:
 		=> Add position ( up, centered, down )
-		=> Add movement ( for arrows )
-		=> Add actions ( like blinking the player of play a sound effect )
+		=> Add movement ( for arrows and other kind of bullets )
+		=> Add actions ( like blinking the player or playing a sound effect )
 
 - Add a class "LuaMod" or "ModScript" or "Mod"
 ~ Create a class "ModLibrary" which will provide through static functions
@@ -20,7 +20,7 @@
 	=> Coordinates based on SDL_GetTicks
 
 - Add a "Switch" class
-- Add other Lua pseudo-classes like "Enemy", "Door", "Teleporter", "Switch", etc...
+- Add other Lua pseudo-classes like "EnemyEvent", "DoorEvent", "TeleporterEvent", "SwitchEvent", etc...
 
 - Add a lot of stats display help functions to Window class
 	* Improve windows by using these functions ( drawItem remaining )
@@ -30,7 +30,7 @@
 	* #16 - Work on transitions between maps
 		=> Add a line like <border pos="Left" area="" mapX="" mapY=""/>
 			* Scroll like in Radonia
-			* While scrolling, render a scaled version of the two maps, to improve performances
+			* While scrolling, render only a scaled version of the two maps, to improve performances
 		=> Add a Transition class, child of Sprite, to handle map transitions
 	* #17 - Up and Down keys have an higher priority than Left and Right ones
 		=> Make a key stack, and then search for the last directional key pressed
@@ -96,6 +96,8 @@
 - Improve all interfaces
 
 - Change graphics and font
+
+- Make a wiki which will reference all lua functions availables
 
 - Check bugs
 
