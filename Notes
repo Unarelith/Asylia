@@ -36,7 +36,7 @@
 	=> Coordinates based on SDL_GetTicks
 
 - Add a "Switch" class
-- Add other Lua pseudo-classes like "EnemyEvent", "DoorEvent", "TeleporterEvent", "SwitchEvent", etc...
+- Add other Lua pseudo-classes like "DoorEvent", "TeleporterEvent", "SwitchEvent", etc...
 
 - Add a lot of stats display help functions to Window class
 	* Improve windows by using these functions ( drawItem remaining )
