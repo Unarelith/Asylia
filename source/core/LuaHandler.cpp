@@ -39,7 +39,8 @@ void LuaHandler::bindClasses() {
 														 .set("pop", &ActivityManager::pop)
 														 .set("push", &ActivityManager::push)
 														 .set("size", &ActivityManager::size)
-														 .set("newDialog", &ActivityManager::newDialog);
+														 .set("newDialog", &ActivityManager::newDialog)
+														 .set("startBattle", &ActivityManager::startBattle);
 	
 	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
 	

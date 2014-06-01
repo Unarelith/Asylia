@@ -36,7 +36,6 @@ void MenuActivity::loadCommandWindow() {
 	choices.push_back(_t("State"));
 	choices.push_back(_t("Save"));
 	choices.push_back(_t("Settings"));
-	choices.push_back("Battle test");
 	choices.push_back(_t("Quit"));
 	
 	m_cmdwin = new CommandWindow(150, choices);
@@ -62,9 +61,6 @@ void MenuActivity::update() {
 				ActivityManager::push(new SettingsActivity(this));
 				break;
 			case 6:
-				ActivityManager::push(new BattleActivity);
-				break;
-			case 7:
 				ActivityManager::push(new EndActivity);
 				break;
 			default: break;

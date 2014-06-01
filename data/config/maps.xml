@@ -5,6 +5,7 @@
 			<event name="event0"/>
 			<event name="event3c"/>
 			<event name="chest0"/>
+			<event name="enemy0"/>
 		</map>
 		<map layers="3" x="1" y="0" tilesetID="0"/>
 	</area>

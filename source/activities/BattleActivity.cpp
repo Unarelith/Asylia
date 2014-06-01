@@ -17,10 +17,10 @@
  */
 #include "Asylia.hpp"
 
-BattleActivity::BattleActivity() {
+BattleActivity::BattleActivity(Battle *battle) {
 	m_type = Type::BattleAct;
 	
-	m_battle = new Battle(*BattleManager::battles[0]);
+	m_battle = new Battle(*battle);
 	
 	m_currentPos = 0;
 	m_arrowPos = 0;

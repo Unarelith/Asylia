@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid) : Character(appearance.c_str(), x, y, anim) {
+Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {
 		m_type = Type::Event;
 		

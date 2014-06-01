@@ -1,4 +1,4 @@
-event3c = CharacterEvent.new("event3c", 1)
+event3c = CharacterEvent.new("event3c", 1, false)
 
 event3c.init = function()
 	event3c = event3c:initCharacter();

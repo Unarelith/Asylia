@@ -35,6 +35,7 @@ void EventManager::free() {
 void EventManager::loadLibs() {
 	LuaHandler::doFile("data/lualibs/CharacterEvent.lua");
 	LuaHandler::doFile("data/lualibs/ChestEvent.lua");
+	LuaHandler::doFile("data/lualibs/EnemyEvent.lua");
 }
 
 void EventManager::initEvents() {
@@ -60,6 +61,7 @@ void EventManager::initEvents() {
 void EventManager::loadCharacterEvent(XMLElement *characterElement) {
 	std::string name, appearance;
 	u16 x, y, direction;
+	int frameWidth, frameHeight;
 	bool solid;
 	
 	name = characterElement->Attribute("name");
@@ -74,9 +76,17 @@ void EventManager::loadCharacterEvent(XMLElement *characterElement) {
 		solid = true;
 	}
 	
+	if(characterElement->QueryIntAttribute("frameWidth", &frameWidth) != XML_NO_ERROR) {
+		frameWidth = 32;
+	}
+	
+	if(characterElement->QueryIntAttribute("frameHeight", &frameHeight) != XML_NO_ERROR) {
+		frameHeight = 48;
+	}
+	
 	events[name] = new Event(
 		name, std::string("graphics/characters/") + appearance + ".png",
-		x * 32, y * 32, direction, solid
+		x * 32, y * 32, direction, solid, frameWidth, frameHeight
 	);
 }
 

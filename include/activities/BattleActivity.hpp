@@ -20,7 +20,7 @@
 
 class BattleActivity : public Activity {
 	public:
-		BattleActivity();
+		BattleActivity(Battle *battle);
 		~BattleActivity();
 		
 		void update();

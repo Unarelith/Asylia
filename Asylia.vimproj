@@ -37,10 +37,14 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    event3c=event3c {
     main.lua
    }
+   enemy0=enemy0 {
+    main.lua
+   }
   }
   lualibs=lualibs {
    CharacterEvent.lua
    ChestEvent.lua
+   EnemyEvent.lua
   }
   locale=locale {
    en-us.xml

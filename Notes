@@ -1,7 +1,20 @@
+- Improve collisions with Characters bigger than 32*48
+
 - Improve VictoryWindow:
 	=> EXP, Gold and Items come from Battle
+	=> Add music
+- Add music to GameOver
+- Add attacks sound effects
+	=> Sound::Effect::loadAttacks();
+	=> Sound::Effect::play(Sound::Effect::attacks["BaseAttack"]):
 
-- Manage usable Items and their function through a lua script by object
+- Add sound effects to chests
+
+- Manage usable Items and their function
+	=> A virtual base class ItemAction
+		* Child classes ItemHealAction or ItemDamagesAction, or ItemMapAction
+	=> Give a way to check conditions before being able to use an item
+	
 - Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
 	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
 
