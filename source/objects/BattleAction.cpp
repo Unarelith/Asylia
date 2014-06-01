@@ -65,10 +65,10 @@ bool BattleAction::drawDamages() {
 	}
 	
 	if(m_animationAtEnd) {
-		if(dmgmvcount < 10) {
+		if(dmgmvcount < 8) {
 			dmgvy = -2;
 		}
-		else if(dmgmvcount < 40) {
+		else if(dmgmvcount < 30) {
 			dmgvy = 3;
 		} else {
 			m_animationAtEnd = false;
@@ -83,7 +83,7 @@ bool BattleAction::drawDamages() {
 		dmgmvcount += abs(dmgvy);
 		
 		u16 dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - log10(m_damages + 10) * 9 / 2;
-		Interface::defaultFont->printDamages(m_damages, dmgx, dmgy, Color::red);
+		Interface::defaultFont->printDamages(m_damages, dmgx, dmgy - 8, Color(255, 42, 36));
 	}
 		
 	return false;
