@@ -1,65 +1,11 @@
-- Improve collisions with Characters bigger than 32*48
-
-- Improve VictoryWindow:
-	=> EXP, Gold and Items come from Battle
-	=> Add music
-- Add music to GameOver
-- Add attacks sound effects
-	=> Sound::Effect::loadAttacks();
-	=> Sound::Effect::play(Sound::Effect::attacks["BaseAttack"]):
-
-- Add sound effects to chests
-
-- Manage usable Items and their function
-	=> A virtual base class ItemAction
-		* Child classes ItemHealAction or ItemDamagesAction, or ItemMapAction
-	=> Give a way to check conditions before being able to use an item
-	
-- Create a new class ItemChoiceWindow which represents all the possibilities to do with the Item we choosed
-	( For example a potion have a choice "Use" which change the mode to ChooseActorTarget )
-
-- Add animations
-- Improve Animation classes
-	* Animation:
-		=> Add position ( up, centered, down )
-		=> Add movement ( for arrows and other kind of bullets )
-		=> Add actions ( like blinking the player or playing a sound effect )
-
-- Add a class "LuaMod" or "ModScript" or "Mod"
-~ Create a class "ModLibrary" which will provide through static functions
-   all that is required to mod the game correctly, like easy functions
-
-- Error check in XML config file reading
-	=> Add an overlay to XMLElement which tests attributes
-
-- Improve damage rendering on android
-	=> Coordinates based on SDL_GetTicks
-
-- Add a "Switch" class
-- Add other Lua pseudo-classes like "DoorEvent", "TeleporterEvent", "SwitchEvent", etc...
-
 - Add a lot of stats display help functions to Window class
-	* Improve windows by using these functions ( drawItem remaining )
 	* Find a way to improve EquipStatsWindow
-
-- Fix issues:
-	* #16 - Work on transitions between maps
-		=> Add a line like <border pos="Left" area="" mapX="" mapY=""/>
-			* Scroll like in Radonia
-			* While scrolling, render only a scaled version of the two maps, to improve performances
-		=> Add a Transition class, child of Sprite, to handle map transitions
-	* #17 - Up and Down keys have an higher priority than Left and Right ones
-		=> Make a key stack, and then search for the last directional key pressed
-		=> Function u32 Keyboard::lastDirectionKeyPressed();
-	* #19 - Improve Activity rendering by screenshotting and saving previous screen, to display it faster
-		=> Render copy once in a texture in a push_back, then push the texture too
-	* #30 - Add other stats and sort BattleActions in stack
-		=> Damage formula improvement needed
-		=> Sort BattleAction by battlers' speed
-		=> Add stats growth functions
 
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 - Add parameters to events, like speed for characters and all params for the chests
+	=> Add a class Chest, child of Character, which will help for the save engine later
+		OR
+	=> Make a save engine which will work well with Lua, useful for modding
 
 - Improve battler death color fading
 - Improve Font::printDamages color
@@ -83,7 +29,8 @@
 		dungeons/
 		---- dungeon1/
 		---- ---- room1/
-		---- ---- ---- main.lua
+		---- ---- ---- event0/
+		---- ---- ---- ---- main.lua
 		---- dungeon 2/
 	* etc..
 
@@ -98,6 +45,8 @@
 	* Save events state ( Character position, chest open state, etc... )
 	* Save player state
 	* Save actors state
+		=>>>>>>> Make an EventListener which will get all the new state changement, to save it later
+		=>>>>>>> It will keep everything in game state, useful for auto save
 
 - Improve TitleScreen
 

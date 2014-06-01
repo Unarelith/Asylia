@@ -29,7 +29,7 @@ void VictoryWindow::draw() {
 	
 	m_height = 134 + 32 * itemsNb;
 	
-	m_y = GameWindow::main->height() / 2 - m_height / 2;
+	m_y = 319 / 2 - m_height / 2; // GameWindow::main->height() - 319 = ActorStatsWindow->height()
 	
 	Window::draw();
 	

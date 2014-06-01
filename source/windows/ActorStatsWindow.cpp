@@ -40,7 +40,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 		actor->image()->setAlphaMod(190);
 	}
 	
-	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, m_y - actor->image()->height() / 6);
+	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, GameWindow::main->height() - actor->image()->height());
 	
 	printName(actor, 20 + m_width / 4 * pos, 20, m_width - 40);
 	printHP(actor, 20 + m_width / 4 * pos, 52, m_width / 4 * (pos + 1) - 20);
