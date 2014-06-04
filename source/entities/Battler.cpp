@@ -55,21 +55,21 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 }
 
 void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell) {
-	m_basehp = 2 * vit + 3 * str + 4 * intell;
-	m_basesp = 2 * str + 3 * intell + 4 * wis;
+	m_agi = growAgi(agi, m_level - 1);
+	m_vit = growVit(vit, m_level - 1);
+	m_dex = growDex(dex, m_level - 1);
+	m_str = growStr(str, m_level - 1);
+	m_wis = growWis(wis, m_level - 1);
+	m_int = growInt(intell, m_level - 1);
+	
+	m_basehp = 2 * m_str + 3 * m_vit + 4 * m_wis;
+	m_basesp = 2 * m_dex + 3 * m_wis + 4 * m_int;
 	
 	m_hp = m_basehp;
 	m_sp = m_basesp;
 	
-	m_atk = 0.2 * vit + 0.3 * dex + 0.5 * str;
-	m_def = 0.2 * intell + 0.3 * vit + 0.5 * agi;
-	
-	m_agi = agi;
-	m_vit = vit;
-	m_dex = dex;
-	m_str = str;
-	m_wis = wis;
-	m_int = intell;
+	m_atk = 0.2 * m_vit + 0.3 * m_dex + 0.5 * m_str;
+	m_def = 0.2 * m_int + 0.3 * m_vit + 0.5 * m_agi;
 }
 
 Battler::~Battler() {

@@ -34,9 +34,9 @@ void BattlerManager::initActors() {
 		u8 level;
 		
 		name = actorElement->Attribute("name");
-		appearance = std::string("") + "graphics/battlers/" + actorElement->Attribute("appearance") + ".png";
+		appearance = std::string("graphics/battlers/") + actorElement->Attribute("appearance") + ".png";
 		
-		level = actorElement->FirstChildElement("stats")->IntAttribute("level");
+		level = actorElement->IntAttribute("level");
 		
 		actors.push_back(new Actor(name, appearance, level));
 		
@@ -62,9 +62,9 @@ void BattlerManager::initEnemies() {
 		u8 level;
 		
 		name = enemyElement->Attribute("name");
-		appearance = std::string("") + "graphics/battlers/" + enemyElement->Attribute("appearance") + ".png";
+		appearance = std::string("graphics/battlers/") + enemyElement->Attribute("appearance") + ".png";
 		
-		level = enemyElement->FirstChildElement("stats")->IntAttribute("level");
+		level = enemyElement->IntAttribute("level");
 		
 		enemies.push_back(new Enemy(name, appearance, level));
 		
