@@ -24,6 +24,9 @@ class EquipStatsWindow : public Window {
 		~EquipStatsWindow();
 		
 		void draw(Item *currentItem = NULL);
+		
+	private:
+		Battler *m_battler;
 };
 
 #endif // EQUIPSTATSWINDOW_HPP_
