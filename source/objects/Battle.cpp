@@ -73,25 +73,33 @@ void Battle::enemyTurn() {
 }
 
 void Battle::pushAction(Battler *actor, Battler *receiver, Item *item) {
-	m_actionStack.push(new BattleAction(actor, receiver, item));
+	m_actions.push_back(new BattleAction(actor, receiver, item));
 }
 
 void Battle::processAction() {
-	if(m_actionStack.top()->receiver()->hp() == 0) {
-		if(m_actionStack.top()->receiver()->type() == Battler::Type::TypeEnemy) {
-			m_actionStack.top()->setReceiver(getNextEnemyPair(1, -1).second);
+	if(m_actions.back()->receiver()->hp() == 0) {
+		if(m_actions.back()->receiver()->type() == Battler::Type::TypeEnemy) {
+			m_actions.back()->setReceiver(getNextEnemyPair(1, -1).second);
 		} else {
-			m_actionStack.top()->setReceiver(getNextActorPair(1, -1).second);
+			m_actions.back()->setReceiver(getNextActorPair(1, -1).second);
 		}
 	}
 	
-	m_actionStack.top()->process();
+	m_actions.back()->process();
 }
 
 void Battle::checkDead() {
-	if(m_actionStack.top()->receiver()->hp() == 0) {
-		if(m_actionStack.top()->animationAtEnd()) m_actionStack.top()->receiver()->kill();
+	if(m_actions.back()->receiver()->hp() == 0) {
+		if(m_actions.back()->animationAtEnd()) m_actions.back()->receiver()->kill();
 	}
+}
+
+bool sortFunction(BattleAction *a, BattleAction *b) {
+	return (a->actor()->speed() >  b->receiver()->speed());
+}
+
+void Battle::sortBattleActions() {
+	std::sort(m_actions.begin(), m_actions.end(), sortFunction);
 }
 
 std::pair<u8, Actor*> Battle::getNextActorPair(s8 v, s8 current) {

@@ -26,6 +26,7 @@
 #include <numeric>
 #include <list>
 #include <utility>
+#include <algorithm>
 
 #ifdef __ANDROID__
 	std::string to_string(int n);

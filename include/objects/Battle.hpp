@@ -33,11 +33,13 @@ class Battle {
 		
 		void pushAction(Battler *actor, Battler *receiver, Item *item);
 		void processAction();
-		bool drawAction() { return m_actionStack.top()->drawDamages(); }
-		void popAction() { m_actionStack.pop(); }
-		bool actionStackEmpty() { return (m_actionStack.size() == 0); }
+		bool drawAction() { return m_actions.back()->drawDamages(); }
+		void popAction() { m_actions.pop_back(); }
+		bool actionStackEmpty() { return (m_actions.size() == 0); }
 		
 		void checkDead();
+		
+		void sortBattleActions();
 		
 		Actor *getActor(u8 id) { return m_actors[id].second; }
 		Enemy *getEnemy(u8 id) { return m_enemies[id].second; }
@@ -62,7 +64,7 @@ class Battle {
 		
 		Image *m_battleback;
 		
-		std::stack<BattleAction*> m_actionStack;
+		std::vector<BattleAction*> m_actions;
 };
 
 #endif // BATTLE_HPP_

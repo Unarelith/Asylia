@@ -199,6 +199,7 @@ void BattleActivity::update() {
 	
 	if(m_mode == Mode::EnemyTurn) {
 		m_battle->enemyTurn();
+		m_battle->sortBattleActions();
 		m_mode = Mode::ProcessActions;
 	}
 	

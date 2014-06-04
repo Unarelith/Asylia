@@ -73,12 +73,14 @@ class Battler {
 			TypeEnemy
 		};
 		
-		u16 growAgi(u16 agi, u16 level) { return agi + level * 0.15 * agi; }
-		u16 growVit(u16 vit, u16 level) { return vit + level * 0.20 * vit; }
-		u16 growDex(u16 dex, u16 level) { return dex + level * 0.18 * dex; }
-		u16 growStr(u16 str, u16 level) { return str + level * 0.20 * str; }
-		u16 growWis(u16 wis, u16 level) { return wis + level * 0.19 * wis; }
-		u16 growInt(u16 intell, u16 level) { return intell + level * 0.19 * intell; }
+		u16 growAgi(u16 agi, u16 level) { return agi + level * 0.30 * agi; }
+		u16 growVit(u16 vit, u16 level) { return vit + level * 0.40 * vit; }
+		u16 growDex(u16 dex, u16 level) { return dex + level * 0.36 * dex; }
+		u16 growStr(u16 str, u16 level) { return str + level * 0.40 * str; }
+		u16 growWis(u16 wis, u16 level) { return wis + level * 0.38 * wis; }
+		u16 growInt(u16 intell, u16 level) { return intell + level * 0.38 * intell; }
+		
+		u16 speed() { return 0.4 * m_agi + 0.2 * m_vit; }
 		
 	protected:
 		std::string m_name;

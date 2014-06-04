@@ -27,8 +27,8 @@ class BattleAction {
 		
 		bool drawDamages();
 		
-		Battler *actor() { return m_actor; }
-		Battler *receiver() { return m_receiver; }
+		Battler *actor() const { return m_actor; }
+		Battler *receiver() const { return m_receiver; }
 		
 		bool animationAtEnd() const { return m_animationAtEnd; }
 		

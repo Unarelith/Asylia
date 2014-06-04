@@ -41,7 +41,7 @@ void BattleAction::process() {
 		m_damages = (m_actor->totalAtk() + ((Skill*)(m_item))->atk()) * 2 - m_receiver->def();
 		if(m_damages <= 0) m_damages = 1;
 		m_damages += (rand() % (int)ceil(m_variance * m_damages * 2)) - m_variance * m_damages;
-		if(m_damages <= 0) m_damages = 0;
+		if(m_damages <= 0) m_damages = 1;
 		m_receiver->hurt(m_damages);
 	}
 }

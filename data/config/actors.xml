@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actors>
-	<actor name="Arshes" appearance="Fighter01" level="56">
+	<actor name="Arshes" appearance="Fighter01" level="15">
 		<stats agi="13" vit="10" dex="9" str="16" wis="10" int="13"/>
 	</actor>
 	<actor name="Basil" appearance="Lancer01" level="1">
