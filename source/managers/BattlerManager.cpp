@@ -32,31 +32,22 @@ void BattlerManager::initActors() {
 	while(actorElement) {
 		std::string name, appearance;
 		u8 level;
-		s16 hp, sp;
-		u16 atk, def;
 		
 		name = actorElement->Attribute("name");
 		appearance = std::string("") + "graphics/battlers/" + actorElement->Attribute("appearance") + ".png";
 		
 		level = actorElement->FirstChildElement("stats")->IntAttribute("level");
 		
-		hp = actorElement->FirstChildElement("stats")->IntAttribute("hp");
-		sp = actorElement->FirstChildElement("stats")->IntAttribute("sp");
+		actors.push_back(new Actor(name, appearance, level));
 		
-		atk = actorElement->FirstChildElement("stats")->IntAttribute("atk");
-		def = actorElement->FirstChildElement("stats")->IntAttribute("def");
-		
-		actors.push_back(new Actor(name, appearance, level, hp, sp, atk, def));
-		
-		XMLElement *charalinkElement = actorElement->FirstChildElement("charalink");
-		if(charalinkElement) {
-			s16 id = charalinkElement->IntAttribute("id");
-			
-			if(id == -1) {
-				actors.back()->linkInventory(CharacterManager::player->inventory());
-				CharacterManager::player->linkBattler((Battler*)actors.back());
-			}
-		}
+		actors.back()->calculateAllStats(
+			actorElement->FirstChildElement("stats")->IntAttribute("agi"),
+			actorElement->FirstChildElement("stats")->IntAttribute("vit"),
+			actorElement->FirstChildElement("stats")->IntAttribute("dex"),
+			actorElement->FirstChildElement("stats")->IntAttribute("str"),
+			actorElement->FirstChildElement("stats")->IntAttribute("wis"),
+			actorElement->FirstChildElement("stats")->IntAttribute("int")
+		);
 		
 		actorElement = actorElement->NextSiblingElement("actor");
 	}
@@ -69,31 +60,22 @@ void BattlerManager::initEnemies() {
 	while(enemyElement) {
 		std::string name, appearance;
 		u8 level;
-		s16 hp, sp;
-		u16 atk, def;
 		
 		name = enemyElement->Attribute("name");
 		appearance = std::string("") + "graphics/battlers/" + enemyElement->Attribute("appearance") + ".png";
 		
 		level = enemyElement->FirstChildElement("stats")->IntAttribute("level");
 		
-		hp = enemyElement->FirstChildElement("stats")->IntAttribute("hp");
-		sp = enemyElement->FirstChildElement("stats")->IntAttribute("sp");
+		enemies.push_back(new Enemy(name, appearance, level));
 		
-		atk = enemyElement->FirstChildElement("stats")->IntAttribute("atk");
-		def = enemyElement->FirstChildElement("stats")->IntAttribute("def");
-		
-		enemies.push_back(new Enemy(name, appearance, level, hp, sp, atk, def));
-		
-		XMLElement *charalinkElement = enemyElement->FirstChildElement("charalink");
-		if(charalinkElement) {
-			s16 id = charalinkElement->IntAttribute("id");
-			
-			if(id == -1) {
-				actors.back()->linkInventory(CharacterManager::player->inventory());
-				CharacterManager::player->linkBattler((Battler*)actors.back());
-			}
-		}
+		enemies.back()->calculateAllStats(
+			enemyElement->FirstChildElement("stats")->IntAttribute("agi"),
+			enemyElement->FirstChildElement("stats")->IntAttribute("vit"),
+			enemyElement->FirstChildElement("stats")->IntAttribute("dex"),
+			enemyElement->FirstChildElement("stats")->IntAttribute("str"),
+			enemyElement->FirstChildElement("stats")->IntAttribute("wis"),
+			enemyElement->FirstChildElement("stats")->IntAttribute("int")
+		);
 		
 		enemyElement = enemyElement->NextSiblingElement("enemy");
 	}

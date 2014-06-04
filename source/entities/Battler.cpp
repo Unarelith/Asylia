@@ -22,7 +22,7 @@ Battler::Battler(const Battler &battler) {
 	
 	m_image = new Image(*battler.m_image);
 	
-	m_inventory = battler.m_inventory;
+	m_inventory = CharacterManager::player->inventory();
 	
 	m_level = battler.m_level;
 	
@@ -40,27 +40,36 @@ Battler::Battler(const Battler &battler) {
 	m_type = battler.m_type;
 }
 
-Battler::Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def) {
+Battler::Battler(std::string name, std::string appearance, u8 level) {
 	m_name = name;
 	
 	m_image = new Image(appearance.c_str());
 	
-	m_inventory = NULL;
+	m_inventory = CharacterManager::player->inventory();
 	
 	m_level = level;
-	
-	m_hp = hp;
-	m_sp = sp;
-	
-	m_basehp = hp;
-	m_basesp = sp;
-	
-	m_atk = atk;
-	m_def = def;
 	
 	m_state = State::Normal;
 	
 	m_type = Type::TypeNone;
+}
+
+void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell) {
+	m_basehp = 2 * vit + 3 * str + 4 * intell;
+	m_basesp = 2 * str + 3 * intell + 4 * wis;
+	
+	m_hp = m_basehp;
+	m_sp = m_basesp;
+	
+	m_atk = 0.2 * vit + 0.3 * dex + 0.5 * str;
+	m_def = 0.2 * intell + 0.3 * vit + 0.5 * agi;
+	
+	m_agi = agi;
+	m_vit = vit;
+	m_dex = dex;
+	m_str = str;
+	m_wis = wis;
+	m_int = intell;
 }
 
 Battler::~Battler() {

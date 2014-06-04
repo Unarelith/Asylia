@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actors>
-	<actor name="Arshes" appearance="Fighter01">
-		<stats level="56" hp="4589" sp="4268" atk="1239" def="952"/>
-		<!-- <stats level="1" hp="80" sp="50" atk="15" def="10"/> !-->
-		<charalink id="-1"/>
+	<actor name="Arshes" appearance="Fighter01" level="56">
+		<stats agi="256" vit="358" dex="198" str="385" wis="216" int="156"/>
 	</actor>
-	<actor name="Basil" appearance="Lancer01">
-		<stats level="1" hp="100" sp="40" atk="15" def="15"/>
+	<actor name="Basil" appearance="Lancer01" level="1">
+		<stats agi="12" vit="8" dex="9" str="12" wis="13" int="11"/>
 	</actor>
-	<actor name="Gloria" appearance="Cleric01">
-		<stats level="1" hp="75" sp="50" atk="10" def="10"/>
+	<actor name="Gloria" appearance="Cleric01" level="1">
+		<stats agi="10" vit="10" dex="10" str="10" wis="10" int="10"/>
 	</actor>
-	<actor name="Hilda" appearance="Mage01">
-		<stats level="1" hp="80" sp="100" atk="10" def="15"/>
+	<actor name="Hilda" appearance="Mage01" level="1">
+		<stats agi="10" vit="10" dex="10" str="10" wis="10" int="10"/>
 	</actor>
 </actors>

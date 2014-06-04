@@ -21,20 +21,18 @@
 class Battler {
 	public:
 		Battler(const Battler &battler);
-		Battler(std::string name, std::string appearance, u8 level, s16 hp, s16 sp, u16 atk, u16 def);
+		Battler(std::string name, std::string appearance, u8 level);
 		~Battler();
+		
+		void calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell);
 		
 		void blink();
 		
 		void kill();
 		
-		void linkInventory(Inventory *inventory) { m_inventory = inventory; }
-		
 		std::string name() const { return m_name; }
 		
 		Image *image() { return m_image; }
-		
-		Inventory *inventory() { return m_inventory; }
 		
 		u8 level() const { return m_level; }
 		
@@ -60,6 +58,8 @@ class Battler {
 		std::string getStateString();
 		
 		void attack(Battler *battler, Skill *skill);
+		
+		Inventory *inventory() const { return m_inventory; }
 		
 		enum State {
 			Normal
@@ -90,6 +90,13 @@ class Battler {
 		
 		u16 m_atk;
 		u16 m_def;
+		
+		u16 m_agi;
+		u16 m_vit;
+		u16 m_dex;
+		u16 m_str;
+		u16 m_wis;
+		u16 m_int;
 		
 		u8 m_state;
 		

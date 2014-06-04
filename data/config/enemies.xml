@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <enemies>
-	<enemy name="Ghost" appearance="Undead01">
-		<stats level="1" hp="60" sp="40" atk="10" def="10"/>
+	<enemy name="Ghost" appearance="Undead01" level="1">
+		<stats agi="10" vit="10" dex="10" str="10" wis="10" int="10"/>
 	</enemy>
-	<enemy name="Demon" appearance="Devil03">
-		<stats level="1" hp="100" sp="50" atk="15" def="9"/>
+	<enemy name="Demon" appearance="Devil03" level="1">
+		<stats agi="10" vit="10" dex="10" str="10" wis="10" int="10"/>
 	</enemy>
 </enemies>
