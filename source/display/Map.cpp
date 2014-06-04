@@ -56,16 +56,18 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
 	
-	m_layersTex = NULL;
+	m_sublayersTex = NULL;
+	m_overlayTex = NULL;
 }
 
 Map::~Map() {
 	for(u8 i = 0 ; i < m_layers ; i++) {
-		if(m_layersTex && m_layersTex[i]) SDL_DestroyTexture(m_layersTex[i]);
 		delete[] m_data[i];
 	}
 	
-	delete[] m_layersTex;
+	if(m_overlayTex) SDL_DestroyTexture(m_overlayTex);
+	if(m_sublayersTex) SDL_DestroyTexture(m_sublayersTex);
+	
 	delete[] m_data;
 }
 
@@ -107,22 +109,29 @@ void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
 }
 
 void Map::load() {
-	if(m_layersTex) return;
+	if(m_sublayersTex && m_overlayTex) return;
 	
-	m_layersTex = new SDL_Texture*[m_layers];
 	SDL_QueryTexture(m_tileset->tiles->texture(), &m_pixelFormat, NULL, NULL, NULL);
 	
+	m_sublayersTex = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
+	m_overlayTex = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
+	
+	SDL_SetTextureBlendMode(m_sublayersTex, SDL_BLENDMODE_BLEND);
+	SDL_SetTextureBlendMode(m_overlayTex, SDL_BLENDMODE_BLEND);
+	
+	SDL_SetRenderTarget(GameWindow::main->renderer(), m_sublayersTex);
+	
 	for(u8 i = 0 ; i < m_layers ; i++) {
-		m_layersTex[i] = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
-		SDL_SetTextureBlendMode(m_layersTex[i], SDL_BLENDMODE_BLEND);
-		SDL_SetRenderTarget(GameWindow::main->renderer(), m_layersTex[i]);
-		
+		if(i == m_layers - 1) {
+			SDL_SetRenderTarget(GameWindow::main->renderer(), m_overlayTex);
+		}
 		for(u16 y = 0 ; y < m_height ; y++) {
 			for(u16 x = 0 ; x < m_width ; x++) {
 				loadTile(x, y, i);
 			}
 		}
 	}
+	
 	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
 	
 	for(u16 i = 0 ; i < m_events.size() ; i++) {
@@ -131,18 +140,16 @@ void Map::load() {
 }
 
 void Map::render() {
-	for(u8 i = 0 ; i < m_layers - 1 ; i++) {
-		SDL_Rect clip, pos;
-		clip.x = scrollX;
-		clip.y = scrollY;
-		clip.w = GameWindow::main->width();
-		clip.h = GameWindow::main->height();
-		pos.x =	0;
-		pos.y = 0;
-		pos.w = GameWindow::main->width();
-		pos.h = GameWindow::main->height();
-		SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[i], &clip, &pos);
-	}
+	SDL_Rect clip, pos;
+	clip.x = scrollX;
+	clip.y = scrollY;
+	clip.w = GameWindow::main->width();
+	clip.h = GameWindow::main->height();
+	pos.x =	0;
+	pos.y = 0;
+	pos.w = GameWindow::main->width();
+	pos.h = GameWindow::main->height();
+	SDL_RenderCopy(GameWindow::main->renderer(), m_sublayersTex, &clip, &pos);
 }
 
 void Map::renderOverlay() {
@@ -155,7 +162,7 @@ void Map::renderOverlay() {
 	pos.y = 0;
 	pos.w = GameWindow::main->width();
 	pos.h = GameWindow::main->height();
-	SDL_RenderCopy(GameWindow::main->renderer(), m_layersTex[m_layers - 1], &clip, &pos);
+	SDL_RenderCopy(GameWindow::main->renderer(), m_overlayTex, &clip, &pos);
 }
 
 s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {

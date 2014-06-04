@@ -67,7 +67,8 @@ class Map {
 		u8 m_layers;
 		s16 **m_data;
 		
-		SDL_Texture **m_layersTex;
+		SDL_Texture *m_sublayersTex;
+		SDL_Texture *m_overlayTex;
 		Uint32 m_pixelFormat;
 		
 		std::vector<Event*> m_events;
