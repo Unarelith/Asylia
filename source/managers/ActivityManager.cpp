@@ -30,6 +30,7 @@ void ActivityManager::init() {
 }
 
 void ActivityManager::push(Activity *activity) {
+	activity->screenshot(top());
 	activities.push(activity);
 	if(top()->type() == Activity::Type::Map) ((MapActivity*)activity)->init();
 	top()->update();

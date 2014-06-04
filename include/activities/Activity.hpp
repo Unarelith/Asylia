@@ -28,6 +28,8 @@ class Activity {
 		
 		void pollEvents();
 		
+		void screenshot(Activity *activity);
+		
 		typedef enum {
 			None,
 			Map,
@@ -47,6 +49,8 @@ class Activity {
 		Type m_type;
 		
 		Activity *m_parent;
+		
+		SDL_Texture *m_background;
 };
 
 #endif // ACTIVITY_HPP_

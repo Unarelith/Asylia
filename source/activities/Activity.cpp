@@ -21,9 +21,13 @@ Activity::Activity(Activity *parent) {
 	m_type = Type::None;
 	
 	m_parent = parent;
+	
+	m_background = SDL_CreateTexture(GameWindow::main->renderer(), 372645892, SDL_TEXTUREACCESS_TARGET, GameWindow::main->width(), GameWindow::main->height());
+	SDL_SetTextureBlendMode(m_background, SDL_BLENDMODE_BLEND);
 }
 
 Activity::~Activity() {
+	if(m_background) SDL_DestroyTexture(m_background);
 }
 
 void Activity::pollEvents() {
@@ -59,5 +63,11 @@ void Activity::pollEvents() {
 				break;
 		}
 	}
+}
+
+void Activity::screenshot(Activity *activity) {
+	SDL_SetRenderTarget(GameWindow::main->renderer(), m_background);
+	activity->render();
+	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
 }
 
