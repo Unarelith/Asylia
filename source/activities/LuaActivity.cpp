@@ -34,6 +34,8 @@ void LuaActivity::update() {
 }
 
 void LuaActivity::render() {
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	
 	LuaHandler::doString(m_table + ".render()");
 }
 

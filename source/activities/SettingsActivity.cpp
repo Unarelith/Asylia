@@ -95,9 +95,11 @@ void SettingsActivity::update() {
 			switch(m_language->pos()) {
 				case 0:
 					LanguageManager::init("fr-fr");
+					screenshot(m_parent);
 					break;
 				case 1:
 					LanguageManager::init("en-us");
+					screenshot(m_parent);
 					break;
 				default: break;
 			}
@@ -112,7 +114,7 @@ void SettingsActivity::update() {
 }
 
 void SettingsActivity::render() {
-	if(m_parent) m_parent->render();
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
 	if(m_mode == Mode::Settings) {
 		m_settings->draw();

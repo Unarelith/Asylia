@@ -42,7 +42,7 @@ void DialogActivity::update() {
 }
 
 void DialogActivity::render() {
-	if(m_parent) m_parent->render();
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
 	m_msgwin->draw();
 }

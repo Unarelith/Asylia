@@ -74,7 +74,7 @@ void MenuActivity::update() {
 }
 
 void MenuActivity::render() {
-	if(m_parent) m_parent->render();
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
 	m_cmdwin->draw(ActivityManager::top() == this);
 }

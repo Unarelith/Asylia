@@ -75,7 +75,7 @@ void EquipActivity::update() {
 }
 
 void EquipActivity::render() {
-	if(m_parent) m_parent->render();
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
 	if(m_itemMode) m_statswin.draw(m_itemwin->currentItem());
 	else m_statswin.draw();
