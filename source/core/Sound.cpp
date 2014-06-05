@@ -72,9 +72,9 @@ void Sound::Effect::play(Mix_Chunk *se) {
 }
 
 void Sound::Music::init() {
-	load("audio/music/battle.mid", &battle);
-	load("audio/music/theme.mid", &theme);
-	load("audio/music/title.mid", &title);
+	load("audio/music/battle.mp3", &battle);
+	load("audio/music/theme.mp3", &theme);
+	load("audio/music/title.mp3", &title);
 }
 
 void Sound::Music::free() {
@@ -84,21 +84,17 @@ void Sound::Music::free() {
 }
 
 void Sound::Music::load(const char *filename, Mix_Music **music) {
-#ifndef __ANDROID__
 	*music = Mix_LoadMUS(filename);
 	if(!*music) {
 		error("Unable to load music: %s (ERROR: %s)", filename, Mix_GetError());
 		exit(EXIT_FAILURE);
 	}
-#endif
 }
 
 void Sound::Music::play(Mix_Music *music, int loops) {
 	current = music;
 	
-#ifndef __ANDROID__
 	Mix_PlayMusic(music, loops);
-#endif
 }
 
 void Sound::Music::halt() {

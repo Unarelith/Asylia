@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
+   Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
 
    This software is provided 'as-is', without any express or implied
    warranty.  In no event will the authors be held liable for any damages
@@ -34,7 +34,7 @@ DrawChessBoard(SDL_Renderer * renderer)
 		x = x + coloum;
 		for(coloum; coloum < 4+(row%2); coloum++)
 		{
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0xFF);
 
 			rect.w = darea.w/8;
 			rect.h = darea.h/8;
@@ -54,10 +54,13 @@ main(int argc, char *argv[])
 	SDL_Surface *surface;
 	SDL_Renderer *renderer;
 
+    /* Enable standard application logging */
+    SDL_LogSetPriority(SDL_LOG_CATEGORY_APPLICATION, SDL_LOG_PRIORITY_INFO);
+
 	/* Initialize SDL */
 	if(SDL_Init(SDL_INIT_VIDEO) != 0)
 	{
-		fprintf(stderr,"SDL_Init fail : %s\n", SDL_GetError());
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "SDL_Init fail : %s\n", SDL_GetError());
 		return 1;
 	}
 
@@ -66,19 +69,19 @@ main(int argc, char *argv[])
 	window = SDL_CreateWindow("Chess Board", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
 	if(!window)
 	{
-		fprintf(stderr,"Window creation fail : %s\n",SDL_GetError());
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window creation fail : %s\n",SDL_GetError());
 		return 1;
 	}	
 	surface = SDL_GetWindowSurface(window);
 	renderer = SDL_CreateSoftwareRenderer(surface);
 	if(!renderer)
 	{
-		fprintf(stderr,"Render creation for surface fail : %s\n",SDL_GetError());
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Render creation for surface fail : %s\n",SDL_GetError());
 		return 1;
 	}
 
 	/* Clear the rendering surface with the specified color */
-	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0);
+	SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(renderer);
 
 

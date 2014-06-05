@@ -1,6 +1,6 @@
 /*
   Simple DirectMedia Layer
-  Copyright (C) 1997-2013 Sam Lantinga <slouken@libsdl.org>
+  Copyright (C) 1997-2014 Sam Lantinga <slouken@libsdl.org>
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages
@@ -35,10 +35,10 @@ const char *SDLTest_AssertCheckFormat = "Assert '%s': %s";
 /* Assert summary message format */
 const char *SDLTest_AssertSummaryFormat = "Assert Summary: Total=%d Passed=%d Failed=%d";
 
-/*! \brief counts the failed asserts */
+/* ! \brief counts the failed asserts */
 static Uint32 SDLTest_AssertsFailed = 0;
 
-/*! \brief counts the passed asserts */
+/* ! \brief counts the passed asserts */
 static Uint32 SDLTest_AssertsPassed = 0;
 
 /*

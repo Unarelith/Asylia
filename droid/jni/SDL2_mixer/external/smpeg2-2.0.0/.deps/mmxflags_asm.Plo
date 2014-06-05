@@ -1,0 +1,3 @@
+mmxflags_asm.lo: video/mmxflags_asm.S /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

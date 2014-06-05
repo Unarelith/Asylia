@@ -102,7 +102,7 @@ int platform_testEndianessAndSwap(void *arg)
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_GetXYZ() functions
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_GetPlatform
@@ -151,7 +151,7 @@ int platform_testGetFunctions (void *arg)
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_HasXYZ() functions
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_Has3DNow
@@ -163,12 +163,13 @@ int platform_testGetFunctions (void *arg)
  * http://wiki.libsdl.org/moin.cgi/SDL_HasSSE3
  * http://wiki.libsdl.org/moin.cgi/SDL_HasSSE41
  * http://wiki.libsdl.org/moin.cgi/SDL_HasSSE42
+ * http://wiki.libsdl.org/moin.cgi/SDL_HasAVX
  */
 int platform_testHasFunctions (void *arg)
 {
    int ret;
 
-   // TODO: independently determine and compare values as well
+   /* TODO: independently determine and compare values as well */
 
    ret = SDL_HasRDTSC();
    SDLTest_AssertPass("SDL_HasRDTSC()");
@@ -197,10 +198,13 @@ int platform_testHasFunctions (void *arg)
    ret = SDL_HasSSE42();
    SDLTest_AssertPass("SDL_HasSSE42()");
 
+   ret = SDL_HasAVX();
+   SDLTest_AssertPass("SDL_HasAVX()");
+
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_GetVersion
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_GetVersion
@@ -225,7 +229,7 @@ int platform_testGetVersion(void *arg)
 }
 
 
-/*!
+/* !
  * \brief Tests SDL_VERSION macro
  */
 int platform_testSDLVersion(void *arg)
@@ -248,7 +252,7 @@ int platform_testSDLVersion(void *arg)
 }
 
 
-/*!
+/* !
  * \brief Tests default SDL_Init
  */
 int platform_testDefaultInit(void *arg)
@@ -270,7 +274,7 @@ int platform_testDefaultInit(void *arg)
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_Get/Set/ClearError
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_GetError
@@ -279,6 +283,7 @@ int platform_testDefaultInit(void *arg)
  */
 int platform_testGetSetClearError(void *arg)
 {
+   int result;
    const char *testError = "Testing";
    char *lastError;
    int len;
@@ -297,8 +302,9 @@ int platform_testGetSetClearError(void *arg)
              "SDL_GetError(): no message expected, len: %i", len);
    }
 
-   SDL_SetError("%s", testError);
+   result = SDL_SetError("%s", testError);
    SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
    lastError = (char *)SDL_GetError();
    SDLTest_AssertCheck(lastError != NULL,
              "SDL_GetError() != NULL");
@@ -315,26 +321,28 @@ int platform_testGetSetClearError(void *arg)
              lastError);
    }
 
-   // Clean up
+   /* Clean up */
    SDL_ClearError();
    SDLTest_AssertPass("SDL_ClearError()");
 
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_SetError with empty input
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_SetError
  */
 int platform_testSetErrorEmptyInput(void *arg)
 {
+   int result;
    const char *testError = "";
    char *lastError;
    int len;
 
-   SDL_SetError("%s", testError);
+   result = SDL_SetError("%s", testError);
    SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
    lastError = (char *)SDL_GetError();
    SDLTest_AssertCheck(lastError != NULL,
              "SDL_GetError() != NULL");
@@ -351,32 +359,34 @@ int platform_testSetErrorEmptyInput(void *arg)
              lastError);
    }
 
-   // Clean up
+   /* Clean up */
    SDL_ClearError();
    SDLTest_AssertPass("SDL_ClearError()");
 
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_SetError with invalid input
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_SetError
  */
 int platform_testSetErrorInvalidInput(void *arg)
 {
-   const char *testError = NULL;
+   int result;
+   const char *invalidError = NULL;
    const char *probeError = "Testing";
    char *lastError;
    int len;
 
-   // Reset
+   /* Reset */
    SDL_ClearError();
    SDLTest_AssertPass("SDL_ClearError()");
 
-   // Check for no-op
-   SDL_SetError(testError);
+   /* Check for no-op */
+   result = SDL_SetError(invalidError);
    SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
    lastError = (char *)SDL_GetError();
    SDLTest_AssertCheck(lastError != NULL,
              "SDL_GetError() != NULL");
@@ -392,13 +402,15 @@ int platform_testSetErrorInvalidInput(void *arg)
              lastError);
    }
 
-   // Set
-   SDL_SetError(probeError);
+   /* Set */
+   result = SDL_SetError(probeError);
    SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
 
-   // Check for no-op
-   SDL_SetError(testError);
+   /* Check for no-op */
+   result = SDL_SetError(invalidError);
    SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
    lastError = (char *)SDL_GetError();
    SDLTest_AssertCheck(lastError != NULL,
              "SDL_GetError() != NULL");
@@ -415,14 +427,38 @@ int platform_testSetErrorInvalidInput(void *arg)
              lastError);
    }
 
-   // Clean up
+   /* Reset */
+   SDL_ClearError();
+   SDLTest_AssertPass("SDL_ClearError()");
+
+   /* Set and check */
+   result = SDL_SetError(probeError);
+   SDLTest_AssertPass("SDL_SetError()");
+   SDLTest_AssertCheck(result == -1, "SDL_SetError: expected -1, got: %i", result);
+   lastError = (char *)SDL_GetError();
+   SDLTest_AssertCheck(lastError != NULL,
+             "SDL_GetError() != NULL");
+   if (lastError != NULL)
+   {
+     len = SDL_strlen(lastError);
+     SDLTest_AssertCheck(len == SDL_strlen(probeError),
+             "SDL_GetError(): expected message len %i, was len: %i",
+             SDL_strlen(probeError),
+             len);
+     SDLTest_AssertCheck(SDL_strcmp(lastError, probeError) == 0,
+             "SDL_GetError(): expected message '%s', was message: '%s'",
+             probeError,
+             lastError);
+   }
+   
+   /* Clean up */
    SDL_ClearError();
    SDLTest_AssertPass("SDL_ClearError()");
 
    return TEST_COMPLETED;
 }
 
-/*!
+/* !
  * \brief Tests SDL_GetPowerInfo
  * \sa
  * http://wiki.libsdl.org/moin.cgi/SDL_GetPowerInfo
@@ -472,7 +508,7 @@ int platform_testGetPowerInfo(void *arg)
          pct);
    }
 
-   // Partial return value variations
+   /* Partial return value variations */
    stateAgain = SDL_GetPowerInfo(&secsAgain, NULL);
    SDLTest_AssertCheck(
         state==stateAgain,

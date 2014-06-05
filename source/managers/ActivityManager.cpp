@@ -30,7 +30,7 @@ void ActivityManager::init() {
 }
 
 void ActivityManager::push(Activity *activity) {
-	activity->screenshot(top());
+	if(activities.size() > 0) activity->screenshot(top());
 	activities.push(activity);
 	if(top()->type() == Activity::Type::Map) ((MapActivity*)activity)->init();
 	if(top()->type() != Activity::Type::Dialog) top()->update();

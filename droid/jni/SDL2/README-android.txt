@@ -4,13 +4,14 @@ Simple DirectMedia Layer for Android
 
 Requirements:
 
-Android SDK (version 10 or later)
+Android SDK (version 12 or later)
 http://developer.android.com/sdk/index.html
 
 Android NDK r7 or later
-http://developer.android.com/sdk/ndk/index.html
+http://developer.android.com/tools/sdk/ndk/index.html
 
 Minimum API level supported by SDL: 10 (Android 2.3.3)
+Joystick support is available for API level >=12 devices.
 
 ================================================================================
  How the port works
@@ -28,7 +29,7 @@ android-project/src/org/libsdl/app/SDLActivity.java
 
 The Java code loads your game code, the SDL shared library, and
 dispatches to native functions implemented in the SDL library:
-src/SDL_android.c
+src/core/android/SDL_android.c
 
 Your project must include some glue code that starts your main() routine:
 src/main/android/SDL_android_main.c
@@ -38,7 +39,33 @@ src/main/android/SDL_android_main.c
  Building an app
 ================================================================================
 
-Instructions:
+For simple projects you can use the script located at build-scripts/androidbuild.sh
+
+There's two ways of using it:
+
+androidbuild.sh com.yourcompany.yourapp < sources.list
+androidbuild.sh com.yourcompany.yourapp source1.c source2.c ...sourceN.c
+
+sources.list should be a text file with a source file name in each line
+Filenames should be specified relative to the current directory, for example if
+you are in the build-scripts directory and want to create the testgles.c test, you'll
+run:
+    
+./androidbuild.sh org.libsdl.testgles ../test/testgles.c
+
+One limitation of this script is that all sources provided will be aggregated into
+a single directory, thus all your source files should have a unique name.
+
+Once the project is complete the script will tell you where the debug APK is located.
+If you want to create a signed release APK, you can use the project created by this
+utility to generate it.
+
+Finally, a word of caution: re running androidbuild.sh wipes any changes you may have
+done in the build directory for the app!
+
+
+For more complex projects, follow these instructions:
+    
 1. Copy the android-project directory wherever you want to keep your projects
    and rename it to the name of your project.
 2. Move or symlink this SDL directory into the <project>/jni directory
@@ -82,6 +109,28 @@ android-project/
 	src/org/libsdl/app/SDLActivity.java - the Java class handling the initialization and binding
 				  to SDL.  Be very careful changing this, as the SDL library relies
 				  on this implementation.
+
+
+================================================================================
+ Build an app with static linking of libSDL
+================================================================================
+
+This build uses the Android NDK module system.
+
+Instructions:
+1. Copy the android-project directory wherever you want to keep your projects
+   and rename it to the name of your project.
+2. Rename <project>/jni/src/Android_static.mk to <project>/jni/src/Android.mk
+   (overwrite the existing one)
+3. Edit <project>/jni/src/Android.mk to include your source files
+4. create and export an environment variable named NDK_MODULE_PATH that points
+   to the parent directory of this SDL directory. e.g.:
+
+   export NDK_MODULE_PATH="$PWD"/..
+
+5. Edit <project>/src/org/libsdl/app/SDLActivity.java and remove the call to
+   System.loadLibrary("SDL2") line 42.
+6. Run 'ndk-build' (a script provided by the NDK). This compiles the C source
 
 
 ================================================================================
@@ -211,7 +260,7 @@ The best place to start is with docs/OVERVIEW.TXT
 ================================================================================
 
 First make sure that you've installed Eclipse and the Android extensions as described here:
-	http://developer.android.com/sdk/eclipse-adt.html
+	http://developer.android.com/tools/sdk/eclipse-adt.html
 
 Once you've copied the SDL android project and customized it, you can create an Eclipse project from it:
  * File -> New -> Other
@@ -348,8 +397,11 @@ When you're done instrumenting with valgrind, you can disable the wrapper:
  Why is API level 10 the minimum required?
 ================================================================================
 
-API level 10 is required because SDL requires some functionality for running not
-available on older devices and some for building which is not in older NDK/SDKs.
+API level 10 is the minimum required level at runtime (that is, on the device) 
+because SDL requires some functionality for running not
+available on older devices. Since the incorporation of joystick support into SDL,
+the minimum SDK required to *build* SDL is version 12. Devices running API levels
+10-11 are still supported, only with the joystick functionality disabled.
 
 Support for native OpenGL ES and ES2 applications was introduced in the NDK for
 API level 4 and 8. EGL was made a stable API in the NDK for API level 9, which
@@ -381,4 +433,6 @@ Reference: http://www.khronos.org/registry/egl/specs/EGLTechNote0001.html
  Known issues
 ================================================================================
 
-- TODO. I'm sure there's a bunch more stuff I haven't thought of 
+- The number of buttons reported for each joystick is hardcoded to be 36, which
+is the current maximum number of buttons Android can report.
+

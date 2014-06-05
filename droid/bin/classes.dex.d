@@ -1,10 +1,17 @@
 /home/quentin/Projects/Asylia/droid/bin/classes.dex : \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLMain.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLJoystickHandler_API12.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLJoystickHandler_API12$SDLJoystick.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLSurface.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLGenericMotionListener_API12.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLJoystickHandler_API12$RangeComparator.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity$SDLCommandHandler.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity$ShowTextInputTask.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLInputConnection.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLActivity$1.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLSurface$1.class \
+/home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/SDLJoystickHandler.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/org/libsdl/app/DummyEdit.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/com/quent42340/asylia/R.class \
 /home/quentin/Projects/Asylia/droid/bin/classes/com/quent42340/asylia/R$layout.class \

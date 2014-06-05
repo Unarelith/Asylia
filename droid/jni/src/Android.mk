@@ -1,5 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
+SUBFOLDERS	:=	activities core display entities managers objects windows
+
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := main
@@ -16,7 +18,8 @@ LOCAL_C_INCLUDES := $(LOCAL_PATH)/$(SDL_PATH)/include \
 					$(LOCAL_PATH)/$(SDL_NET_PATH) \
 					$(LOCAL_PATH)/$(SDL_TTF_PATH) \
 					$(LOCAL_PATH)/../../../external \
-					$(LOCAL_PATH)/../../../include
+					$(LOCAL_PATH)/../../../include \
+					$(foreach dir,$(SUBFOLDERS),$(LOCAL_PATH)/../../../include/$(dir))
 
 # Add your application source files here...
 LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
@@ -24,7 +27,9 @@ LOCAL_SRC_FILES := $(SDL_PATH)/src/main/android/SDL_android_main.c \
 	$(wildcard $(LOCAL_PATH)/../../../external/*.c) \
 	$(wildcard $(LOCAL_PATH)/../../../external/*.cpp) \
 	$(wildcard $(LOCAL_PATH)/../../../source/*.c) \
-	$(wildcard $(LOCAL_PATH)/../../../source/*.cpp))
+	$(wildcard $(LOCAL_PATH)/../../../source/*.cpp) \
+	$(wildcard $(LOCAL_PATH)/../../../source/*/*.c) \
+	$(wildcard $(LOCAL_PATH)/../../../source/*/*.cpp))
 
 LOCAL_SHARED_LIBRARIES := SDL2 SDL2_image SDL2_mixer SDL2_net SDL2_ttf
 
