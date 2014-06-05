@@ -125,6 +125,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
   managers=managers {
    ActivityManager.hpp
+   BattleManager.hpp
    BattlerManager.hpp
    CharacterManager.hpp
    EventManager.hpp
@@ -137,7 +138,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Armor.hpp
    Battle.hpp
    BattleAction.hpp
-   BattleManager.hpp
    Inventory.hpp
    Item.hpp
    ItemManager.hpp

@@ -20,7 +20,7 @@
 
 - Maybe create Activity child classes instead of modes for BattleActivity
 
-- Make shop interface, callable from an event ( like a ShopActivity )
+- Make a shop interface, callable from an event ( like a ShopActivity )
 	* ShopChoiceWindow
 
 - Make a DebugWindow which will help to test a lot of things

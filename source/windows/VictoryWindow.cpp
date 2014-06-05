@@ -34,8 +34,8 @@ void VictoryWindow::draw() {
 	Window::draw();
 	
 	Interface::defaultFont->printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
-	printStat(20, 52, _t("EXP"), 423, 60, 180);
-	printStat(20, 84, _t("Gold"), 125, 60, 180);
+	printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
+	printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
 	
 	printItem(ItemManager::items[0], 0, 20, 116, 160);
 	printItem(ItemManager::items[1], 0, 20, 148, 160);

@@ -21,7 +21,7 @@
 class Battle {
 	public:
 		Battle(const Battle &battle);
-		Battle(std::string battleback);
+		Battle(std::string battleback, u16 exp, u16 gold);
 		~Battle();
 		
 		void addActor(Actor *actor) { m_actors.push_back(std::make_pair(m_actorsCount, new Actor(*actor))); m_actorsCount++; }
@@ -55,6 +55,9 @@ class Battle {
 		
 		void renderBattleback();
 		
+		u16 exp() const { return m_exp; }
+		u16 gold() const { return m_gold; }
+		
 	private:
 		std::vector<std::pair<u8, Actor*>> m_actors;
 		std::vector<std::pair<u8, Enemy*>> m_enemies;
@@ -65,6 +68,9 @@ class Battle {
 		Image *m_battleback;
 		
 		std::vector<BattleAction*> m_actions;
+		
+		u16 m_exp;
+		u16 m_gold;
 };
 
 #endif // BATTLE_HPP_

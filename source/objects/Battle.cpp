@@ -30,13 +30,19 @@ Battle::Battle(const Battle &battle) {
 	m_enemiesCount = battle.m_enemiesCount;
 	
 	m_battleback = new Image(*battle.m_battleback);
+	
+	m_exp = battle.m_exp;
+	m_gold = battle.m_gold;
 }
 
-Battle::Battle(std::string battleback) {
+Battle::Battle(std::string battleback, u16 exp, u16 gold) {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 	
 	m_battleback = new Image(battleback.c_str());
+	
+	m_exp = exp;
+	m_gold = gold;
 }
 
 Battle::~Battle() {
