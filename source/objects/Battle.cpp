@@ -33,8 +33,6 @@ Battle::Battle(const Battle &battle) {
 	
 	m_exp = battle.m_exp;
 	m_gold = battle.m_gold;
-	
-	m_copy = true;
 }
 
 Battle::Battle(std::string battleback, u16 exp, u16 gold) {
@@ -45,12 +43,10 @@ Battle::Battle(std::string battleback, u16 exp, u16 gold) {
 	
 	m_exp = exp;
 	m_gold = gold;
-	
-	m_copy = false;
 }
 
 Battle::~Battle() {
-	if(!m_copy) delete m_battleback;
+	delete m_battleback;
 	
 	while(m_actors.size() != 0) {
 		delete m_actors.back().second;
