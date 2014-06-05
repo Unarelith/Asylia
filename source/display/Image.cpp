@@ -23,7 +23,7 @@ Image::Image() {
 	m_hidden = false;
 }
 
-Image::Image(const Image &img) {
+/*Image::Image(const Image &img) {
 	m_width = img.m_width;
 	m_height = img.m_height;
 	
@@ -50,7 +50,7 @@ Image::Image(const Image &img) {
 	m_posRect.h = img.m_posRect.h;
 	
 	m_hidden = false;
-}
+}*/
 
 Image::Image(const char *filename) {
 	SDL_RWops *image = SDL_RWFromFile(filename, "rb");
@@ -111,7 +111,10 @@ Image::Image(SDL_Surface *surface) {
 }
 
 Image::~Image() {
-	if(m_texture) SDL_DestroyTexture(m_texture);
+	if(m_texture) {
+		SDL_DestroyTexture(m_texture);
+		m_texture = NULL;
+	}
 }
 
 void Image::reload(const char *filename) {

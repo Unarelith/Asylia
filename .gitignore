@@ -2,6 +2,11 @@ build
 droid/bin
 droid/libs
 droid/obj
+droid/jni/SDL2/*
+droid/jni/SDL2_image/*
+droid/jni/SDL2_mixer/*
+droid/jni/SDL2_net/*
+droid/jni/SDL2_ttf/*
 *~
 Asylia
 *.a
