@@ -1,5 +1,10 @@
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
+		=> Always render the arrow at the same position
+			not relative with numbers anymore
+				OR
+		=> Create a super-optimized function which displays that very fastly
+			in Font
 
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 - Add parameters to events, like speed for characters and all params for the chests
