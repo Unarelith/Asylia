@@ -50,6 +50,8 @@ class Image {
 		void hidden(bool hidden) { m_hidden = hidden; }
 		
 	protected:
+		std::string m_filename;
+		
 		u16 m_width;
 		u16 m_height;
 		
