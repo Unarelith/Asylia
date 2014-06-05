@@ -71,6 +71,7 @@ void MapActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
 		ActivityManager::push(new MenuActivity(this));
+		return;
 	}
 	
 	CharacterManager::player->move();

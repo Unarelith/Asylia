@@ -31,8 +31,8 @@ class ActivityManager {
 		static int size() { return activities.size(); }
 		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.top()) { delete activitiesBin.top(); activitiesBin.pop(); } }
 		
-		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity(); activities.push(dialog); return dialog; }
-		static DialogActivity *newDialogWithParent(Activity *parent) { DialogActivity *dialog = new DialogActivity(parent); activities.push(dialog); return dialog; }
+		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity(); push(dialog); return dialog; }
+		static DialogActivity *newDialogWithParent(Activity *parent) { DialogActivity *dialog = new DialogActivity(parent); push(dialog); return dialog; }
 		
 		static void startBattle(u16 id) { push(new BattleActivity(BattleManager::battles[id])); }
 };

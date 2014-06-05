@@ -6,6 +6,7 @@
 	=> Add a class Chest, child of Character, which will help for the save engine later
 		OR
 	=> Make a save engine which will work well with Lua, useful for modding
+		=> A lua function save in each pseudo-class?
 
 - Improve battler death color fading
 - Improve Font::printDamages color
