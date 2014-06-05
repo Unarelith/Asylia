@@ -21,7 +21,6 @@
 class Image {
 	public:
 		Image();
-		//Image(const Image &img);
 		Image(const char *filename);
 		Image(SDL_Surface *surface);
 		~Image();
