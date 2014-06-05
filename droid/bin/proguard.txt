@@ -1,3 +1,0 @@
-# view AndroidManifest.xml #generated:24
--keep class com.quent42340.asylia.Asylia { <init>(...); }
-
