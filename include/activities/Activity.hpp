@@ -45,6 +45,8 @@ class Activity {
 		
 		Type type() const { return m_type; }
 		
+		Activity *parent() const { return m_parent; }
+		
 	protected:
 		Type m_type;
 		

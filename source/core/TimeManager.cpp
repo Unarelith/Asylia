@@ -37,6 +37,8 @@ void TimeManager::endMeasuringRenderingTime() {
 	if(renderingTimeValues.size() > 10) {
 		sum = std::accumulate(renderingTimeValues.begin(), renderingTimeValues.end(), 0);
 		renderingTimeMean = sum / renderingTimeValues.size();
+		debug("Rendering time mean: %ld", renderingTimeMean);
+		renderingTimeValues.clear();
 	}
 }
 
