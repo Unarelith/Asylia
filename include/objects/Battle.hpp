@@ -27,6 +27,10 @@ class Battle {
 		void addActor(Actor *actor) { m_actors.push_back(std::make_pair(m_actorsCount, new Actor(*actor))); m_actorsCount++; }
 		void addEnemy(Enemy *enemy, s16 x, s16 y) { m_enemies.push_back(std::make_pair(m_enemiesCount, new Enemy(*enemy))); m_enemiesCount++; m_enemies.back().second->setPosition(x, y); }
 		
+		void addItem(Item *item, u16 count) { m_items.push_back(std::make_pair(item, count)); }
+		void addWeapon(Weapon *weapon) { m_items.push_back(std::make_pair(item, count)); }
+		void addArmor(Armor *armor) { m_items.push_back(std::make_pair(item, count)); }
+		
 		void drawArrow(Battler *battler);
 		
 		void enemyTurn();
@@ -71,6 +75,8 @@ class Battle {
 		
 		u16 m_exp;
 		u16 m_gold;
+		
+		std::vector<std::pair<Item*, u16>> m_items;
 };
 
 #endif // BATTLE_HPP_

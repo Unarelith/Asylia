@@ -33,6 +33,8 @@ Battle::Battle(const Battle &battle) {
 	
 	m_exp = battle.m_exp;
 	m_gold = battle.m_gold;
+	
+	m_items = battle.m_items;
 }
 
 Battle::Battle(std::string battleback, u16 exp, u16 gold) {
