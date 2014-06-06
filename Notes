@@ -1,3 +1,6 @@
+- Improve Makefile:
+	=> For 'make' display '[5/5]' instead of '[5/1]'
+
 - Manage the chance to get an item
 - Give 'exp' and 'gold' to Actors
 - Manage a team of characters

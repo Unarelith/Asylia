@@ -144,19 +144,19 @@ $(eval COUNTER := $(words $(notdir $(wildcard *.o))))
 
 #---------------------------------------------------------------------------------
 $(OUTPUT): $(OFILES)
-	@echo built ... $(notdir $@)
+	@echo -ne '\033[2Kbuilt ... $(notdir $@)\n'
 	@$(LD) $(LDFLAGS) $(OFILES) $(LIBPATHS) $(LIBS) -o $@
 
 #---------------------------------------------------------------------------------
 %.o: %.c
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
-	@echo -ne '\033[2K [$(COUNTER)/$(call plus,$(words $(CFILES)),$(words $(CPPFILES)))] $(notdir $<) \r'
+	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),1))] $(notdir $<) \r'
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	
 #---------------------------------------------------------------------------------
 %.o: %.cpp
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
-	@echo -ne '\033[2K [$(COUNTER)/$(call plus,$(words $(CFILES)),$(words $(CPPFILES)))] $(notdir $<) \r'
+	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),1))] $(notdir $<) \r'
 	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 	
 #-include *.d
