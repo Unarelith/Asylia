@@ -59,7 +59,7 @@ class Battler {
 		
 		void attack(Battler *battler, Skill *skill);
 		
-		Inventory *inventory() const { return m_inventory; }
+		Inventory *inventory() { return &m_inventory; }
 		
 		enum State {
 			Normal
@@ -87,7 +87,7 @@ class Battler {
 		
 		Image *m_image;
 		
-		Inventory *m_inventory;
+		Inventory m_inventory;
 		
 		u8 m_level;
 		

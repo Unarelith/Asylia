@@ -45,7 +45,7 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	
 	m_image = new Image(appearance.c_str());
 	
-	m_inventory = CharacterManager::player->inventory();
+	m_inventory = Inventory(*CharacterManager::player->inventory());
 	
 	m_level = level;
 	
@@ -83,16 +83,14 @@ void Battler::blink() {
 
 u16 Battler::totalAtk() {
 	u16 atk = m_atk;
-	if(m_inventory && m_inventory->weapon()) atk += m_inventory->weapon()->atk();
+	if(m_inventory.weapon()) atk += m_inventory.weapon()->atk();
 	return atk;
 }
 
 u16 Battler::totalDef() {
 	u16 def = m_def;
-	if(m_inventory) {
-		for(auto it : m_inventory->armorlist()) {
-			def += it->def();
-		}
+	for(auto it : m_inventory.armorlist()) {
+		def += it->def();
 	}
 	return def;
 }

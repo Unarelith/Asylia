@@ -66,7 +66,7 @@ class Character : public Sprite {
 		
 		void setHitbox(s16 x, s16 y, u16 width, u16 height);
 		
-		Inventory *inventory() const { return m_inventory; }
+		Inventory *inventory() { return &m_inventory; }
 		
 		enum Direction {
 			Down, Right, Left, Up
@@ -108,7 +108,7 @@ class Character : public Sprite {
 		
 		bool m_solid;
 		
-		Inventory *m_inventory;
+		Inventory m_inventory;
 };
 
 #endif // CHARACTER_HPP_
