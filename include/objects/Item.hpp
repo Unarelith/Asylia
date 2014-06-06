@@ -23,14 +23,14 @@ class Item {
 		Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation = NULL);
 		~Item();
 		
+		u16 id() const { return m_id; }
+		
 		std::string name() const { return _t(m_name); }
 		std::string description() const { return _t(m_description); }
 		
 		u8 level() const { return m_level; }
 		
 		Image *thumbnail() const { return m_thumbnail; }
-		
-		static u16 count;
 		
 		enum Type {
 			BasicItem,
@@ -50,6 +50,8 @@ class Item {
 		Effect effect() const { return m_effect; }
 		
 		Animation *battleAnimation() const { return m_battleAnimation; }
+		
+		void setID(u16 id) { m_id = id; }
 		
 		void setEffect(int effect) { m_effect = (Item::Effect)effect; }
 		

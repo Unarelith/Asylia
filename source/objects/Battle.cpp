@@ -33,8 +33,6 @@ Battle::Battle(const Battle &battle) {
 	
 	m_exp = battle.m_exp;
 	m_gold = battle.m_gold;
-	
-	m_items = battle.m_items;
 }
 
 Battle::Battle(std::string battleback, u16 exp, u16 gold) {
@@ -103,7 +101,7 @@ void Battle::checkDead() {
 }
 
 bool sortFunction(BattleAction *a, BattleAction *b) {
-	return (a->actor()->speed() >  b->receiver()->speed());
+	return (a->actor()->speed() <  b->receiver()->speed());
 }
 
 void Battle::sortBattleActions() {

@@ -19,8 +19,11 @@
 
 Enemy::Enemy(std::string name, std::string appearance, u8 level) : Battler(name, appearance, level) {
 	m_type = Type::TypeEnemy;
+	
+	m_inventory = new Inventory;
 }
 
 Enemy::~Enemy() {
+	delete m_inventory;
 }
 

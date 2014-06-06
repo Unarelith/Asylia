@@ -70,6 +70,8 @@ void ItemManager::loadItems() {
 			AnimationManager::getAnimationByName(animation)
 		));
 		
+		items.back()->setID(id);
+		
 		if(itemElement->QueryIntAttribute("effect", &effect) == XML_NO_ERROR) {
 			items.back()->setEffect(effect);
 		}
@@ -93,6 +95,8 @@ void ItemManager::loadArmors() {
 			armorElement->IntAttribute("defense")
 		));
 		
+		armors.back()->setID(id);
+		
 		armorElement = armorElement->NextSiblingElement("armor");
 		id++;
 	}
@@ -111,6 +115,8 @@ void ItemManager::loadWeapons() {
 			weaponElement->IntAttribute("damage"),
 			weaponElement->DoubleAttribute("hitRate")
 		));
+		
+		weapons.back()->setID(id);
 		
 		weaponElement = weaponElement->NextSiblingElement("weapon");
 		id++;
@@ -136,6 +142,8 @@ void ItemManager::loadSkills() {
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		));
+		
+		skills.back()->setID(id);
 		
 		skillElement = skillElement->NextSiblingElement("skill");
 		id++;

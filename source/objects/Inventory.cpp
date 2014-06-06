@@ -105,6 +105,18 @@ void Inventory::clear() {
 	m_weapons.clear();
 }
 
+void Inventory::add(Inventory *other) {
+	for(auto &it : other->m_items) {
+		addItem(it.first->id(), it.second);
+	}
+	for(auto &it : other->m_armors) {
+		addItem(it.first->id(), it.second);
+	}
+	for(auto &it : other->m_weapons) {
+		addItem(it.first->id(), it.second);
+	}
+}
+
 void Inventory::equipArmor(Armor *armor) {
 	for(auto it : m_armorlist) {
 		if(it->slot() == armor->slot()) {

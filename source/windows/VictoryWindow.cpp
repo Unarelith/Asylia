@@ -19,14 +19,23 @@
 
 VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
 	m_battle = battle;
+	
+	for(auto &it : m_battle->enemies()) {
+		m_inventory.add(it.second->inventory());
+	}
+	
+	m_itemsNb = 0;
+	for(auto &it : m_battle->enemies()) {
+		m_itemsNb += it.second->inventory()->nbItems();
+		m_itemsNb += it.second->inventory()->nbArmors();
+		m_itemsNb += it.second->inventory()->nbWeapons();
+	}
 }
 
 VictoryWindow::~VictoryWindow() {
 }
 
 void VictoryWindow::draw() {
-	u16 itemsNb = 2;
-	
 	m_height = 134 + 32 * itemsNb;
 	
 	m_y = 319 / 2 - m_height / 2; // GameWindow::main->height() - 319 = ActorStatsWindow->height()
@@ -37,7 +46,20 @@ void VictoryWindow::draw() {
 	printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
 	printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
 	
-	printItem(ItemManager::items[0], 0, 20, 116, 160);
-	printItem(ItemManager::items[1], 0, 20, 148, 160);
+	u16 i = 0;
+	for(auto &it : m_battle->enemies()) {
+		for(u16 j = 0 ; j < it.second->inventory()->nbItems() ; j++) {
+			printItem(it.second->inventory()->getItem(j), 0, 20, 116 + i * 32, 160);
+			i++;
+		}
+		for(u16 j = 0 ; j < it.second->inventory()->nbArmors() ; j++) {
+			printItem(it.second->inventory()->getArmor(j), 0, 20, 116 + i * 32, 160);
+			i++;
+		}
+		for(u16 j = 0 ; j < it.second->inventory()->nbWeapons() ; j++) {
+			printItem(it.second->inventory()->getWeapon(j), 0, 20, 116 + i * 32, 160);
+			i++;
+		}
+	}
 }
 

@@ -17,11 +17,8 @@
  */
 #include "Asylia.hpp"
 
-u16 Item::count = 0;
-
 Item::Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation) {
-	m_id = count;
-	count++;
+	m_id = 0;
 	
 	m_type = Type::BasicItem;
 	

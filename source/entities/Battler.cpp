@@ -22,7 +22,7 @@ Battler::Battler(const Battler &battler) {
 	
 	m_image = new Image(*battler.m_image);
 	
-	m_inventory = CharacterManager::player->inventory();
+	m_inventory = battler.m_inventory;
 	
 	m_level = battler.m_level;
 	

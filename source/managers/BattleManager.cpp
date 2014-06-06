@@ -30,8 +30,8 @@ void BattleManager::init() {
 		battleback = std::string("graphics/battlebacks/") + battleElement->Attribute("battleback") + ".jpg";
 		
 		currentBattle = new Battle(battleback,
-								   battleElement->FirstChildElement("result")->IntAttribute("exp"),
-								   battleElement->FirstChildElement("result")->IntAttribute("gold"));
+								   battleElement->IntAttribute("exp"),
+								   battleElement->IntAttribute("gold"));
 		
 		XMLElement *actorElement = battleElement->FirstChildElement("actor");
 		while(actorElement) {
@@ -50,11 +50,6 @@ void BattleManager::init() {
 			currentBattle->addEnemy(BattlerManager::enemies[enemyElement->IntAttribute("id")], x, y);
 			
 			enemyElement = enemyElement->NextSiblingElement("enemy");
-		}
-		
-		XMLElement *itemElement = battleElement->FirstChildElement("result")->FirstChildElement("item");
-		while(itemElement) {
-			
 		}
 		
 		battles.push_back(currentBattle);

@@ -27,6 +27,9 @@ class VictoryWindow : public Window {
 		
 	private:
 		Battle *m_battle;
+		
+		Inventory m_inventory;
+		u16 m_itemsNb;
 };
 
 #endif // VICTORYWINDOW_HPP_
