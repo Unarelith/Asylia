@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <battles>
-	<battle battleback="Grassland" exp="27" gold="100">
+	<battle battleback="Grassland">
 		<actor id="0"/>
 		<actor id="1"/>
+		
 		<enemy id="0" x="100" y="160"/>
 		<enemy id="1" x="150" y="60"/>
 		<enemy id="0" x="450" y="160"/>
+		
+		<result exp="27" gold="100">
+			<item type="Item" id="0" count="1"/>
+			<item type="Item" id="1" count="1"/>
+		</result>
 	</battle>
 </battles>
