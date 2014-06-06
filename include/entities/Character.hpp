@@ -56,6 +56,9 @@ class Character : public Sprite {
 		
 		void changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction);
 		
+		void gainGold(u16 value) { m_gold += value; }
+		void loseGold(u16 value) { m_gold += value; }
+		
 		s16 x() const { return m_x; }
 		s16 y() const { return m_y; }
 		
@@ -78,6 +81,8 @@ class Character : public Sprite {
 		
 	protected:
 		Type m_type;
+		
+		u16 m_gold;
 		
 		s16 m_x;
 		s16 m_y;

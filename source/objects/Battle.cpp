@@ -112,7 +112,7 @@ void Battle::checkDead() {
 }
 
 bool sortFunction(BattleAction *a, BattleAction *b) {
-	return (a->actor()->speed() >  b->receiver()->speed());
+	return (a->actor()->speed() >  b->actor()->speed());
 }
 
 void Battle::sortBattleActions() {

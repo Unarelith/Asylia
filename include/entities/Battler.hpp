@@ -89,7 +89,9 @@ class Battler {
 		
 		void levelUp();
 		
-		void checkLevelUp() { if(expRemainingToLevelUp() < 0) { m_exp = abs(expRemainingToLevelUp()); levelUp(); } }
+		void checkLevelUp() { if(expRemainingToLevelUp() < 0) levelUp(); }
+		
+		void gainExp(u16 value) { m_exp += value; }
 		
 	protected:
 		std::string m_name;
@@ -100,8 +102,6 @@ class Battler {
 		
 		u8 m_level;
 		u16 m_exp;
-		
-		u16 m_gold;
 		
 		s16 m_hp;
 		s16 m_sp;

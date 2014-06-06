@@ -27,8 +27,6 @@ Battler::Battler(const Battler &battler) {
 	m_level = battler.m_level;
 	m_exp = battler.m_exp;
 	
-	m_gold = battler.m_gold;
-	
 	m_hp = battler.m_hp;
 	m_sp = battler.m_sp;
 	
@@ -52,8 +50,6 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	
 	m_level = level;
 	m_exp = 0;
-	
-	m_gold = 0;
 	
 	m_state = State::Normal;
 	
@@ -137,6 +133,8 @@ void Battler::kill() {
 }
 
 void Battler::levelUp() {
+	m_exp = abs(expRemainingToLevelUp());
+	
 	m_level++;
 	
 	m_agi = growAgi(m_agi, 1);

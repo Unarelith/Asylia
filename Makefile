@@ -42,13 +42,14 @@ LIBDIRS		:=
 # Source files
 #---------------------------------------------------------------------------------
 ifneq ($(BUILD),$(notdir $(CURDIR)))
+
 #---------------------------------------------------------------------------------
 export OUTPUT	:=	$(CURDIR)/$(TARGET)
 
 export VPATH	:=	$(foreach dir,$(SOURCES),$(CURDIR)/$(dir))
 
-CFILES		:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c)))
-CPPFILES	:=	$(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
+export CFILES	:=	$(sort $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.c))))
+export CPPFILES	:=	$(sort $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp))))
 
 SOURCEFILES	:=	$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.c)) \
 				$(foreach dir,$(SOURCES),$(wildcard $(dir)/*.cpp))
@@ -131,10 +132,15 @@ uninstall:
 
 #---------------------------------------------------------------------------------
 else
+
+include ../external/make_libs/gmsl
+
 #---------------------------------------------------------------------------------
 # Makefile targets
 #---------------------------------------------------------------------------------
 all: $(OUTPUT)
+
+$(eval COUNTER := $(words $(notdir $(wildcard *.o))))
 
 #---------------------------------------------------------------------------------
 $(OUTPUT): $(OFILES)
@@ -143,14 +149,14 @@ $(OUTPUT): $(OFILES)
 
 #---------------------------------------------------------------------------------
 %.o: %.c
-#---------------------------------------------------------------------------------
-	@echo $(notdir $<)
+	$(eval COUNTER := $(call plus,$(COUNTER),1))
+	@echo -ne '\033[2K [$(COUNTER)/$(call plus,$(words $(CFILES)),$(words $(CPPFILES)))] $(notdir $<) \r'
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
+	
 #---------------------------------------------------------------------------------
 %.o: %.cpp
-#---------------------------------------------------------------------------------
-	@echo $(notdir $<)
+	$(eval COUNTER := $(call plus,$(COUNTER),1))
+	@echo -ne '\033[2K [$(COUNTER)/$(call plus,$(words $(CFILES)),$(words $(CPPFILES)))] $(notdir $<) \r'
 	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 	
 #-include *.d

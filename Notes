@@ -1,5 +1,4 @@
 - Manage the chance to get an item
-- Calculate 'exp' and 'gold' by enemy, don't give it anymore in a battle
 - Give 'exp' and 'gold' to Actors
 - Manage a team of characters
 - remove <actor> lines in battles.xml to replace m_actors by the current equip
