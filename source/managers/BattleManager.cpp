@@ -29,9 +29,7 @@ void BattleManager::init() {
 		
 		battleback = std::string("graphics/battlebacks/") + battleElement->Attribute("battleback") + ".jpg";
 		
-		currentBattle = new Battle(battleback,
-								   battleElement->IntAttribute("exp"),
-								   battleElement->IntAttribute("gold"));
+		currentBattle = new Battle(battleback);
 		
 		XMLElement *actorElement = battleElement->FirstChildElement("actor");
 		while(actorElement) {

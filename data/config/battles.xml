@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <battles>
-	<battle battleback="Grassland" exp="27" gold="100">
+	<battle battleback="Grassland">
 		<actor id="0"/>
 		<actor id="1"/>
+		<actor id="2"/>
+		<actor id="3"/>
 		
 		<enemy id="0" x="100" y="160"/>
 		<enemy id="1" x="150" y="60"/>

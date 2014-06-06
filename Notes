@@ -3,6 +3,12 @@
 - Give 'exp' and 'gold' to Actors
 - Manage a team of characters
 - remove <actor> lines in battles.xml to replace m_actors by the current equip
+- Add a class Troop ( equip of enemies )
+	=> Replace battles.xml by troops.xml
+	=> Define battleback by Map, but it's possible to change
+	=> Edit all related files
+		-> Battle object created at each Battle
+		-> Delete BattleManager and create TroopManager
 - Make a ActorChoiceWindow which will permit to choose between equip members
 	=> Create a function Window::drawCursor(s16 x, s16 y, u16 width, u16 height);
 	=> Add that window in MenuActivity, which will show it only on demand
@@ -11,13 +17,18 @@
 		-> Improve ItemWindow to let the user select a void element at the end
 			( In order to be able to unequip )
 
+- Player is a state, not a class
+	=> CharacterManager::player is so a Character*
+	=> Adds the possibility to change player while playing
+
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
 		=> Always render the arrow at the same position
 			not relative with numbers anymore
 				OR
-		=> Create a super-optimized function which displays that very fastly
+		=> Create a super-optimized function displaying it very fastly
 			in Font
+	* Add a parameter 'bool seeMaximum' to see '25/125' instead of '25'
 
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 - Add parameters to events, like speed for characters and all params for the chests

@@ -25,6 +25,9 @@ Battler::Battler(const Battler &battler) {
 	m_inventory = battler.m_inventory;
 	
 	m_level = battler.m_level;
+	m_exp = battler.m_exp;
+	
+	m_gold = battler.m_gold;
 	
 	m_hp = battler.m_hp;
 	m_sp = battler.m_sp;
@@ -48,6 +51,9 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	m_inventory = Inventory(*CharacterManager::player->inventory());
 	
 	m_level = level;
+	m_exp = 0;
+	
+	m_gold = 0;
 	
 	m_state = State::Normal;
 	
@@ -128,5 +134,16 @@ void Battler::kill() {
 		a = 255;
 		r = 0;
 	}
+}
+
+void Battler::levelUp() {
+	m_level++;
+	
+	m_agi = growAgi(m_agi, 1);
+	m_vit = growVit(m_vit, 1);
+	m_dex = growDex(m_dex, 1);
+	m_str = growStr(m_str, 1);
+	m_wis = growWis(m_wis, 1);
+	m_int = growInt(m_int, 1);
 }
 

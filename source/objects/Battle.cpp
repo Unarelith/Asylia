@@ -35,14 +35,14 @@ Battle::Battle(const Battle &battle) {
 	m_gold = battle.m_gold;
 }
 
-Battle::Battle(std::string battleback, u16 exp, u16 gold) {
+Battle::Battle(std::string battleback) {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 	
 	m_battleback = new Image(battleback.c_str());
 	
-	m_exp = exp;
-	m_gold = gold;
+	m_exp = 0;
+	m_gold = 0;
 }
 
 Battle::~Battle() {
@@ -57,6 +57,17 @@ Battle::~Battle() {
 		delete m_enemies.back().second;
 		m_enemies.pop_back();
 	}
+}
+
+void Battle::addEnemy(Enemy *enemy, s16 x, s16 y) {
+	m_enemies.push_back(std::make_pair(m_enemiesCount, new Enemy(*enemy)));
+	
+	m_enemies.back().second->setPosition(x, y);
+	
+	m_exp += m_enemies.back().second->expGivenIfKilled();
+	m_gold += m_enemies.back().second->goldGivenIfKilled();
+	
+	m_enemiesCount++;
 }
 
 void Battle::drawArrow(Battler *battler) {
