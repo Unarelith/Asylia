@@ -102,6 +102,6 @@ std::string LanguageManager::translate(std::string str) {
 }
 
 std::string _t(std::string str) {
-	return LanguageManager::translate(std::string("\x1b[30m") + str);
+	return LanguageManager::translate(str);
 }
 
