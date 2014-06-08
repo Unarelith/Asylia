@@ -146,8 +146,8 @@ void Character::inCollisionWith(Character *c) {
 		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
 		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
-		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
-		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
+		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
+		|| (x2 >= cx && x2 <= cx2 && y2 >= cy && y2 <= cy2)) {
 			if(c->m_solid) m_vx = 0;
 			
 			collisionAction(c);
@@ -161,8 +161,8 @@ void Character::inCollisionWith(Character *c) {
 		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
 		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
-		if(((x == cx || x == cx2) || (x2 == cx || x2 == cx2))
-		&& ((y == cy || y == cy2) || (y2 == cy || y2 == cy2))) {
+		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
+		|| (x2 >= cx && x2 <= cx2 && y2 >= cy && y2 <= cy2)) {
 			if(c->m_solid) m_vy = 0;
 			
 			collisionAction(c);

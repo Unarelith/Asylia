@@ -1,9 +1,3 @@
-- [Issue #37] Improve collisions for Characters bigger than 32*48
-	=> When the big Character is:
-		-> Static: Collisions OK.
-		-> Moving: Previous tile collisions: Not OK.
-			* Why?
-
 - Player become a class of its own
 	=> Player holds gold and -things related-
 		-> Check in Character things that Event doesn't need
