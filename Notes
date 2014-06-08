@@ -1,12 +1,6 @@
-- Player become a class of its own
-	=> Player holds gold and -things related-
-		-> Check in Character things that Event doesn't need
-	=> Add a member: Character *m_character;
-	=> void draw() { m_character->draw(); } etc...
-	=> Adds the possibility to change character while playing
-		-> On map skill?
+- Fix a litte bug:
+	-> For bigger character, the action is not supported everywhere
 
-- Manage the chance to get an item
 - Manage a team of Actors in Player
 - Remove <actor> lines in battles.xml to replace Battle::m_actors by the current equip
 - Define team in player.xml
@@ -61,6 +55,8 @@
 	=> Add actions ( AnimationAction class )
 	=> Add animations
 
+- Improve ActivityManager::newDialog
+
 - Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
 - Add parameters to events, like speed for characters and all params for the chests
 	=> Add a class Chest, child of Character, which will help for the save engine later
@@ -98,6 +94,7 @@
 	=> For 'make', when there is all .o in 'build', display '[5/5]' instead of '[5/1]'
 		-> The second '5' is the number of targets to build
 			* Delete .o we'll build?
+	=> Fix 'Subtraction overflow' error when 'build' is empty
 
 - Create a new class SkillActivity, child of ItemActivity
 	* Add it in the menu
@@ -119,6 +116,9 @@
 	=> Add gui functions
 
 - [Issue #6] Improve pad and buttons for Android
+
+- Add the possibility to change Player sprite while playing
+	=> On-map skill?
 
 - [Issue #9] When application is in background, pause app instead of exiting
 

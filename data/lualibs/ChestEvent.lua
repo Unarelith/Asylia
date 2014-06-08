@@ -39,7 +39,7 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 				
 				dialog:addMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 				
-				CharacterManager.player():inventory():addItem(self.itemID, self.itemCount)
+				CharacterManager.player():inventory():addItem(self.itemID, self.itemCount, 1)
 				
 				self.empty = true
 			end

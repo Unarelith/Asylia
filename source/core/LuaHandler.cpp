@@ -99,7 +99,8 @@ void LuaHandler::bindClasses() {
 									   .set("animationAtEnd", &Sprite::animationAtEnd);
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
-													   .set("addMessage", &DialogActivity::addMessage);
+													   .set("addMessage", &DialogActivity::addMessage)
+													   .set("drawItem", &DialogActivity::drawItem);
 	
 	SLB::Class<LanguageManager>("LanguageManager", &slbm).set("translate", &LanguageManager::translate);
 	doString("function _t(str) return LanguageManager.translate(str) end");

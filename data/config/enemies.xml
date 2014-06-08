@@ -3,7 +3,7 @@
 	<enemy name="Ghost" appearance="Undead01" level="1">
 		<stats agi="12" vit="6" dex="9" str="15" wis="9" int="15"/>
 		
-		<item type="Item" id="0" count="3" chance="0.75"/>
+		<item type="Item" id="0" count="3" chance="0.50"/>
 		<item type="Item" id="1" count="4" chance="0.75"/>
 	</enemy>
 	<enemy name="Demon" appearance="Devil03" level="1">

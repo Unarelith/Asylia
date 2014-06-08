@@ -79,20 +79,21 @@ void BattlerManager::initEnemies() {
 		
 		XMLElement *itemElement = enemyElement->FirstChildElement("item");
 		while(itemElement) {
-			u16 id, count, chance;
+			u16 id, count;
+			double chance;
 			
 			id = itemElement->IntAttribute("id");
 			count = itemElement->IntAttribute("count");
-			chance = itemElement->IntAttribute("chance");
+			chance = itemElement->DoubleAttribute("chance");
 			
 			if(itemElement->Attribute("type", "Item")) {
-				enemies.back()->inventory()->addItem(id, count);
+				enemies.back()->inventory()->addItem(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Armor")) {
-				enemies.back()->inventory()->addArmor(id, count);
+				enemies.back()->inventory()->addArmor(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Weapon")) {
-				enemies.back()->inventory()->addWeapon(id, count);
+				enemies.back()->inventory()->addWeapon(id, count, chance);
 			}
 			
 			itemElement = itemElement->NextSiblingElement("item");

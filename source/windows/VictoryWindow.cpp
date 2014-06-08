@@ -21,7 +21,7 @@ VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() 
 	m_battle = battle;
 	
 	for(auto &it : m_battle->enemies()) {
-		m_inventory.add(it.second->inventory());
+		m_inventory.add(it.second->inventory(), true);
 	}
 	
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();
@@ -51,15 +51,15 @@ void VictoryWindow::draw() {
 	
 	u16 i = 0;
 	for(u16 j = 0 ; j < m_inventory.nbItems() ; j++) {
-		printItem(m_inventory.getItem(j), 0, 20, 116 + i * 32, 160);
+		printItem(m_inventory.getItem(j), m_inventory.getItemCount(j), 20, 116 + i * 32, 175);
 		i++;
 	}
 	for(u16 j = 0 ; j < m_inventory.nbArmors() ; j++) {
-		printItem(m_inventory.getArmor(j), 0, 20, 116 + i * 32, 160);
+		printItem(m_inventory.getArmor(j), m_inventory.getArmorCount(j), 20, 116 + i * 32, 175);
 		i++;
 	}
 	for(u16 j = 0 ; j < m_inventory.nbWeapons() ; j++) {
-		printItem(m_inventory.getWeapon(j), 0, 20, 116 + i * 32, 160);
+		printItem(m_inventory.getWeapon(j), m_inventory.getWeaponCount(j), 20, 116 + i * 32, 175);
 		i++;
 	}
 }
