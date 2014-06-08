@@ -20,6 +20,8 @@
 Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(filename) {
 	m_frameWidth = frameWidth;
 	m_frameHeight = frameHeight;
+	
+	m_lastFrameDisplayed = 0;
 }
 
 Sprite::~Sprite() {
@@ -28,6 +30,8 @@ Sprite::~Sprite() {
 void Sprite::drawFrame(s16 x, s16 y, u16 frame) {
 	u16 frameY = (frame / (m_width / m_frameWidth)) * m_frameHeight;
 	u16 frameX = (frame - (frameY / m_frameHeight) * (m_width / m_frameWidth)) * m_frameWidth;
+	
+	m_lastFrameDisplayed = frame;
 	
 	render(x, y, m_frameWidth, m_frameHeight, frameX, frameY, m_frameWidth, m_frameHeight);
 }

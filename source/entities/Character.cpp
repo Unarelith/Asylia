@@ -62,13 +62,11 @@ void Character::render() {
 		if(m_moving) {
 			playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
 		} else {
-			stopAnimation(m_direction);
 			drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
 		}
 	} else {
-		stopAnimation(m_direction);
+		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
 		m_movementTimer.stop();
-		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[(u16)(m_animations[m_direction].timer.time() / m_animations[m_direction].delay)]);
 	}
 }
 

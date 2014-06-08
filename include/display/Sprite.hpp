@@ -43,6 +43,8 @@ class Sprite : public Image {
 		u16 m_frameHeight;
 		
 		std::vector<SpriteAnimation> m_animations;
+		
+		u16 m_lastFrameDisplayed;
 };
 
 #endif // SPRITE_HPP_
