@@ -69,6 +69,8 @@ class Character : public Sprite {
 		
 		void setHitbox(s16 x, s16 y, u16 width, u16 height);
 		
+		void setPosition(s16 x, s16 y) { m_x = x; m_y = y; }
+		
 		Inventory *inventory() { return &m_inventory; }
 		
 		enum Direction {

@@ -54,7 +54,9 @@ void LuaHandler::bindClasses() {
 									 .set("getTicks", &SDL_GetTicks)
 									 .set("render", &Character::render)
 									 .set("x", &Character::x)
-									 .set("y", &Character::y);
+									 .set("y", &Character::y)
+									 .set("setHitbox", &Character::setHitbox)
+									 .set("setPosition", &Character::setPosition);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
