@@ -1,8 +1,7 @@
 - Improve Makefile:
-	=> For 'make' display '[5/5]' instead of '[5/1]'
+	=> For 'make', when there is all .o in 'build', display '[5/5]' instead of '[5/1]'
 
 - Manage the chance to get an item
-- Give 'exp' and 'gold' to Actors
 - Manage a team of characters
 - remove <actor> lines in battles.xml to replace m_actors by the current equip
 - Add a class Troop ( equip of enemies )

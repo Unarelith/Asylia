@@ -140,7 +140,8 @@ include ../external/make_libs/gmsl
 #---------------------------------------------------------------------------------
 all: $(OUTPUT)
 
-$(eval COUNTER := $(words $(notdir $(wildcard *.o))))
+COUNTER :=	$(words $(notdir $(wildcard *.o)))
+T		:=	1
 
 #---------------------------------------------------------------------------------
 $(OUTPUT): $(OFILES)
@@ -150,13 +151,13 @@ $(OUTPUT): $(OFILES)
 #---------------------------------------------------------------------------------
 %.o: %.c
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
-	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),1))] $(notdir $<) \r'
+	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),$(T)))] $(notdir $<) \r'
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	
 #---------------------------------------------------------------------------------
 %.o: %.cpp
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
-	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),1))] $(notdir $<) \r'
+	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),$(T)))] $(notdir $<) \r'
 	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
 	
 #-include *.d

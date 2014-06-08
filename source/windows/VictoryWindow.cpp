@@ -27,6 +27,12 @@ VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() 
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();
 	
 	CharacterManager::player->inventory()->add(&m_inventory);
+	
+	for(auto &it : m_battle->actors()) {
+		it.second->gainExp(m_battle->exp() / m_battle->actors().size());
+	}
+	CharacterManager::player->gainGold(m_battle->gold());
+	Sound::Effect::play(Sound::Effect::confirm);
 }
 
 VictoryWindow::~VictoryWindow() {

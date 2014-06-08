@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-u32 TimeManager::renderingTimeMean = 33;
+u32 TimeManager::renderingTimeMean = 0;
 u32 TimeManager::tempBeginRendering = 0;
 u32 TimeManager::frameBegin = 0;
 u32 TimeManager::frameEnd = 0;
@@ -25,6 +25,7 @@ u32 TimeManager::timeToWait = 0;
 std::vector<u32> TimeManager::renderingTimeValues;
 u16 TimeManager::maxFrameskip = 5;
 u16 TimeManager::frameskip = 0;
+u16 TimeManager::currentFrameDuration = 33;
 
 void TimeManager::beginMeasuringRenderingTime() {
 	tempBeginRendering = SDL_GetTicks();
@@ -37,7 +38,7 @@ void TimeManager::endMeasuringRenderingTime() {
 	if(renderingTimeValues.size() > 10) {
 		sum = std::accumulate(renderingTimeValues.begin(), renderingTimeValues.end(), 0);
 		renderingTimeMean = sum / renderingTimeValues.size();
-		debug("Rendering time mean: %ld", renderingTimeMean);
+		//debug("Rendering time mean: %ld", renderingTimeMean);
 		renderingTimeValues.clear();
 	}
 }
@@ -75,9 +76,19 @@ void TimeManager::measureFrameDuration() {
 		frameEnd = SDL_GetTicks();
 		if(frameEnd - frameBegin <= 33) {
 			timeToWait = 33 - (frameEnd - frameBegin);
+			currentFrameDuration = 33;
 		} else {
 			timeToWait = 0;
+			currentFrameDuration = frameEnd - frameBegin + 1;
 		}
 	}
+}
+
+void TimeManager::renderRTMCounter() {
+	InfoWindow win(GameWindow::main->width() - 120,
+				   GameWindow::main->height() - 52,
+				   120, 52);
+	
+	win.drawTextCentered(std::string("RTM: ") + to_string(renderingTimeMean));
 }
 

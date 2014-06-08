@@ -74,6 +74,8 @@ void Game::mainLoop() {
 				
 				ActivityManager::top()->render();
 				
+				TimeManager::renderRTMCounter(); // Rendering time mean
+				
 				Interface::renderHUD();
 				
 				GameWindow::main->update();
@@ -87,3 +89,4 @@ void Game::mainLoop() {
 		TimeManager::measureFrameDuration();
 	}
 }
+

@@ -247,11 +247,6 @@ void BattleActivity::update() {
 	
 	if(m_mode == Mode::Victory) {
 		if(Keyboard::isKeyPressed(Keyboard::GameAttack)) {
-			for(auto &it : m_battle->actors()) {
-				it.second->gainExp(m_battle->exp() / m_battle->actors().size());
-			}
-			CharacterManager::player->gainGold(m_battle->gold());
-			Sound::Effect::play(Sound::Effect::confirm);
 			ActivityManager::pop();
 			Sound::Music::halt();
 			Sound::Music::play(Sound::Music::theme, -1);
