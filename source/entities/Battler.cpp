@@ -22,8 +22,6 @@ Battler::Battler(const Battler &battler) {
 	
 	m_image = new Image(*battler.m_image);
 	
-	m_inventory = battler.m_inventory;
-	
 	m_level = battler.m_level;
 	m_exp = battler.m_exp;
 	
@@ -45,8 +43,6 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	m_name = name;
 	
 	m_image = new Image(appearance.c_str());
-	
-	m_inventory = Inventory(*CharacterManager::player->inventory());
 	
 	m_level = level;
 	m_exp = 0;
@@ -81,20 +77,6 @@ void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16
 void Battler::blink() {
 	m_image->setColorMod(Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
 	m_image->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
-}
-
-u16 Battler::totalAtk() {
-	u16 atk = m_atk;
-	if(m_inventory.weapon()) atk += m_inventory.weapon()->atk();
-	return atk;
-}
-
-u16 Battler::totalDef() {
-	u16 def = m_def;
-	for(auto it : m_inventory.armorlist()) {
-		def += it->def();
-	}
-	return def;
 }
 
 std::string Battler::getStateString() {

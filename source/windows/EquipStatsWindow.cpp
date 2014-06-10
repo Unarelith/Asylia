@@ -35,7 +35,7 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	if(currentItem && currentItem->type() != Item::Type::BasicItem) {
 		if(currentItem->type() == Item::Type::Armor) {
 			finalAtk = baseAtk;
-			Armor *armor = m_actor->inventory()->armor(((Armor*)currentItem)->slot());
+			Armor *armor = m_actor->equipment()->armor(((Armor*)currentItem)->slot());
 			if(armor) finalDef = m_actor->totalDef() - armor->def() + ((Armor*)currentItem)->def();
 			else finalDef = m_actor->totalDef() + ((Armor*)currentItem)->def();
 			

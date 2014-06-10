@@ -50,6 +50,6 @@ void CharacterManager::loadActorsTeam() {
 		actorElement = actorElement->NextSiblingElement("actor");
 	}
 	
-	player->getTeamMember(0)->equipArmor(player->inventory()->getArmor(0));
+	player->getTeamMember(0)->equipment()->equipArmor(player->inventory()->getArmor(0));
 }
 

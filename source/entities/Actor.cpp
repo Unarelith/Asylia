@@ -24,3 +24,17 @@ Actor::Actor(std::string name, std::string appearance, u8 level) : Battler(name,
 Actor::~Actor() {
 }
 
+u16 Actor::totalAtk() {
+	u16 atk = m_atk;
+	if(m_equipment.weapon()) atk += m_equipment.weapon()->atk();
+	return atk;
+}
+
+u16 Actor::totalDef() {
+	u16 def = m_def;
+	for(auto it : m_equipment.armors()) {
+		def += it->def();
+	}
+	return def;
+}
+

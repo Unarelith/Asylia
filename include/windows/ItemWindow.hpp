@@ -26,7 +26,7 @@ class ItemWindow : public SelectableWindow {
 		void drawItem(u8 pos);
 		void draw(bool cursor = true, bool infoWinText = true);
 		
-		void changeSet(u8 equipment, u8 equipType);
+		void changeSet(u8 equipID, u8 equipType, Equipment *equipment);
 		
 		bool hasItems() { return m_inventory->items().size(); }
 		

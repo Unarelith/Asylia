@@ -23,6 +23,8 @@ class Inventory {
 		Inventory();
 		~Inventory();
 		
+		void clear();
+		
 		void addItem(u8 id, s16 count, double chance = 1);
 		void removeItem(u8 id, s16 count);
 		

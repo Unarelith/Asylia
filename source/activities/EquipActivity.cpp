@@ -29,8 +29,8 @@ EquipActivity::EquipActivity(u8 actorPos, Activity *parent) : Activity(parent) {
 	m_statswin = new EquipStatsWindow(m_actor);
 	m_choicewin = new EquipChoiceWindow(m_equipment);
 	
-	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, m_equipment, 150, 0);
-	m_itemwin->changeSet(0, 0);
+	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, CharacterManager::player->inventory(), 150, 0);
+	m_itemwin->changeSet(0, 0, m_equipment);
 }
 
 EquipActivity::~EquipActivity() {
@@ -41,21 +41,21 @@ EquipActivity::~EquipActivity() {
 }
 
 void EquipActivity::update() {
-	if(m_choicewin.pos() == 0) {
-		m_itemwin->changeSet(m_choicewin.pos(), m_choicewin.pos());
+	if(m_choicewin->pos() == 0) {
+		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos());
 	} else {
-		m_itemwin->changeSet(m_choicewin.pos(), m_choicewin.pos() - 1);
+		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos() - 1);
 	}
 	
 	if(m_itemMode) m_itemwin->update();
-	else m_choicewin.update();
+	else m_choicewin->update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_itemwin->hasItems()) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			
 			if(m_itemMode) {
-				if(m_choicewin.pos() == 0) {
+				if(m_choicewin->pos() == 0) {
 					m_equipment->equipWeapon((Weapon*)m_itemwin->currentItem());
 				} else {
 					m_equipment->equipArmor((Armor*)m_itemwin->currentItem());
@@ -87,9 +87,9 @@ void EquipActivity::update() {
 void EquipActivity::render() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
-	if(m_itemMode) m_statswin.draw(m_itemwin->currentItem());
-	else m_statswin.draw();
-	m_choicewin.draw(!m_itemMode);
+	if(m_itemMode) m_statswin->draw(m_itemwin->currentItem());
+	else m_statswin->draw();
+	m_choicewin->draw(!m_itemMode);
 	m_itemwin->draw(m_itemMode, m_itemMode);
 }
 

@@ -30,7 +30,7 @@ BattleActivity::BattleActivity(Battle *battle) {
 	
 	m_mode = Mode::Choice;
 	
-	m_itemwin = new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, BattlerManager::actors[0]->inventory());
+	m_itemwin = new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, CharacterManager::player->inventory());
 	
 	m_infowin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 	
@@ -125,7 +125,7 @@ void BattleActivity::update() {
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
-			m_currentItem = m_battle->getActor(m_currentPos)->inventory()->getItem(m_itemwin->pos());
+			m_currentItem = CharacterManager::player->inventory()->getItem(m_itemwin->pos());
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {

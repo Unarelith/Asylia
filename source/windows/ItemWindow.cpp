@@ -18,7 +18,7 @@
 #include "Asylia.hpp"
 
 ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
-	m_inventory = inventory;
+	m_inventory = new Inventory(*inventory);
 	
 	m_itemMax = m_inventory->nbItems();
 	m_columnMax = 2;
@@ -53,18 +53,18 @@ void ItemWindow::draw(bool cursor, bool infowinText) {
 	}
 }
 
-void ItemWindow::changeSet(u8 equipment, u8 equipType) {
+void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 	m_inventory->clear();
 	
-	if(equipment == 0) {
+	if(equipID == 0) {
 		for(auto& it : CharacterManager::player->inventory()->weapons()) {
-			if(std::get<0>(it)->equipType() == equipType && std::get<0>(it) != CharacterManager::player->inventory()->weapon()) {
+			if(std::get<0>(it)->equipType() == equipType && std::get<0>(it) != equipment->weapon()) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
-			if(std::get<0>(it)->slot() == equipType && std::get<0>(it) != CharacterManager::player->inventory()->armor(std::get<0>(it)->slot())) {
+			if(std::get<0>(it)->slot() == equipType && std::get<0>(it) != equipment->armor(std::get<0>(it)->slot())) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}

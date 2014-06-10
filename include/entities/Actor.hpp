@@ -23,6 +23,9 @@ class Actor : public Battler {
 		Actor(std::string name, std::string appearance, u8 level);
 		~Actor();
 		
+		u16 totalAtk();
+		u16 totalDef();
+		
 		Equipment *equipment() { return &m_equipment; }
 		
 	private:

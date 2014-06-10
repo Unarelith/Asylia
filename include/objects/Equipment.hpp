@@ -28,6 +28,7 @@ class Equipment {
 		
 		Weapon *weapon() const { return m_weapon; }
 		Armor *armor(u8 slot) const { for(auto it : m_armors) if(it->slot() == slot) return it; return NULL; }
+		std::list<Armor*> armors() const { return m_armors; }
 		
 	private:
 		Weapon *m_weapon;

@@ -52,9 +52,6 @@ class Battler {
 		void hurt(u16 damages) { m_hp -= damages; if(m_hp < 0) m_hp = 0; }
 		void heal(u16 p = 100) { m_hp += s16(p / 100 * m_basehp); }
 		
-		u16 totalAtk();
-		u16 totalDef();
-		
 		std::string getStateString();
 		
 		void attack(Battler *battler, Skill *skill);

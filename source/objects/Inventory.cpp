@@ -21,6 +21,10 @@ Inventory::Inventory() {
 }
 
 Inventory::~Inventory() {
+	clear();
+}
+
+void Inventory::clear() {
 	m_items.clear();
 	m_armors.clear();
 	m_weapons.clear();
