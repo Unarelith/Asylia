@@ -17,19 +17,27 @@
  */
 #include "Asylia.hpp"
 
-EquipActivity::EquipActivity(Activity *parent) : Activity(parent) {
+EquipActivity::EquipActivity(u8 actorPos, Activity *parent) : Activity(parent) {
 	m_type = Type::Equip;
 	
-	m_inventory = BattlerManager::actors[0]->inventory();
-	
-	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, m_inventory, 150, 0);
-	m_itemwin->changeSet(0, 0);
-	
 	m_itemMode = false;
+	
+	m_actor = CharacterManager::player->getTeamMember(actorPos);
+	
+	m_equipment = CharacterManager::player->getTeamMember(actorPos)->equipment();
+	
+	m_statswin = new EquipStatsWindow(m_actor);
+	m_choicewin = new EquipChoiceWindow(m_equipment);
+	
+	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, m_equipment, 150, 0);
+	m_itemwin->changeSet(0, 0);
 }
 
 EquipActivity::~EquipActivity() {
 	delete m_itemwin;
+	
+	delete m_choicewin;
+	delete m_statswin;
 }
 
 void EquipActivity::update() {
@@ -48,9 +56,9 @@ void EquipActivity::update() {
 			
 			if(m_itemMode) {
 				if(m_choicewin.pos() == 0) {
-					m_inventory->equipWeapon((Weapon*)m_itemwin->currentItem());
+					m_equipment->equipWeapon((Weapon*)m_itemwin->currentItem());
 				} else {
-					m_inventory->equipArmor((Armor*)m_itemwin->currentItem());
+					m_equipment->equipArmor((Armor*)m_itemwin->currentItem());
 				}
 				
 				m_itemMode = false;

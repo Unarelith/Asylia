@@ -87,13 +87,13 @@ void BattlerManager::initEnemies() {
 			chance = itemElement->DoubleAttribute("chance");
 			
 			if(itemElement->Attribute("type", "Item")) {
-				enemies.back()->inventory()->addItem(id, count, chance);
+				enemies.back()->loot()->addItem(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Armor")) {
-				enemies.back()->inventory()->addArmor(id, count, chance);
+				enemies.back()->loot()->addArmor(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Weapon")) {
-				enemies.back()->inventory()->addWeapon(id, count, chance);
+				enemies.back()->loot()->addWeapon(id, count, chance);
 			}
 			
 			itemElement = itemElement->NextSiblingElement("item");

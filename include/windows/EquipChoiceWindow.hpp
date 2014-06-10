@@ -20,10 +20,13 @@
 
 class EquipChoiceWindow : public SelectableWindow {
 	public:
-		EquipChoiceWindow();
+		EquipChoiceWindow(Equipment *equipment);
 		~EquipChoiceWindow();
 		
 		void draw(bool drawCursor = true);
+		
+	private:
+		Equipment *m_equipment;
 };
 
 #endif // EQUIPCHOICEWINDOW_HPP_

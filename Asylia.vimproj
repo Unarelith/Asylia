@@ -138,6 +138,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Armor.hpp
    Battle.hpp
    BattleAction.hpp
+   Equipment.hpp
    Inventory.hpp
    Item.hpp
    ItemManager.hpp
@@ -221,6 +222,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Armor.cpp
    Battle.cpp
    BattleAction.cpp
+   Equipment.cpp
    Inventory.cpp
    Item.cpp
    Keyboard.cpp

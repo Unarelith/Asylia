@@ -22,11 +22,10 @@ Player *CharacterManager::player = NULL;
 void CharacterManager::init() {
 	XMLFile doc("data/config/player.xml");
 	
-	const char *className = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->Attribute("class");
-	u16 id = doc.FirstChildElement("player").FirstChildElement("appearance").ToElement()->IntAttribute("id");
+	const char *appearance = doc.FirstChildElement("player").ToElement()->Attribute("appearance");
 	XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
 	
-	player = new Player(std::string("") + "graphics/characters/" + className + ((id < 10)?("0"):("")) + to_string(id) + ".png",
+	player = new Player(std::string("graphics/characters/") + appearance + ".png",
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
 						positionElement->IntAttribute("direction"));
@@ -50,5 +49,7 @@ void CharacterManager::loadActorsTeam() {
 		
 		actorElement = actorElement->NextSiblingElement("actor");
 	}
+	
+	player->getTeamMember(0)->equipArmor(player->inventory()->getArmor(0));
 }
 

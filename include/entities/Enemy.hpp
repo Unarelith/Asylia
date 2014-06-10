@@ -24,6 +24,11 @@ class Enemy : public Battler {
 		~Enemy();
 		
 		std::string name() const { return _t(m_name); }
+		
+		Inventory *loot() { return &m_loot; }
+		
+	private:
+		Inventory m_loot;
 };
 
 #endif // ENEMY_HPP_

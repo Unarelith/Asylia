@@ -21,7 +21,7 @@ VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() 
 	m_battle = battle;
 	
 	for(auto &it : m_battle->enemies()) {
-		m_inventory.add(it.second->inventory(), true);
+		m_inventory.add(it.second->loot(), true);
 	}
 	
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();

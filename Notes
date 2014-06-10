@@ -1,16 +1,23 @@
-- Problems with Inventory and ItemWindow, the step below should fix them
-
-- Make an ActorChoiceWindow which will permit to choose between equip members
-	=> Adapt EquipActivity to get the current actor to equip
+- Problems with Inventory and ItemWindow, the steps below should fix them
 
 - Create two classes:
 	* Equipment ( contains Weapons and Armors )
-		=> Adapt Actor, EquipActivity and Equip***Window
+		=> Update Actor, Inventory, EquipActivity and Equip***Window
 		=> Only for Actors
 	* Loot ( contains Items, Weapons and Armors enemies loots )
-		=> Adapt Enemy and VictoryWindow
+		=> Update Enemy, BattlerManager and VictoryWindow
 		=> Only for Enemies
 - Remove Inventory in Battlers and set a single instance in Characters
+
+- Improve EquipStatsWindow because it's not relative to an Actor
+	=> Lot of conception issues because Equipment and Loot
+		should have been created before EquipStatsWindow etc...
+
+- Improve ActorChoiceWindow
+	=> Set a member m_appearance to get "Character" appearance
+		-> Each Actor has a Sprite that looks like a Character
+		-> The Sprite of the first Actor of the team is Player's Sprite
+	=> Adapt EquipActivity to get the current actor to equip
 
 - Improve EquipActivity
 	-> Improve ItemWindow to let the user select a void element at the end

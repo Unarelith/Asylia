@@ -17,8 +17,8 @@
  */
 #include "Asylia.hpp"
 
-EquipStatsWindow::EquipStatsWindow() : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
-	m_battler = BattlerManager::actors[0];
+EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
+	m_actor = actor;
 }
 
 EquipStatsWindow::~EquipStatsWindow() {
@@ -29,15 +29,15 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	Color finalAtkColor(Color::white), finalDefColor(Color::white);
 	Image arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
 	
-	baseAtk = m_battler->totalAtk();
-	baseDef = m_battler->totalDef();
+	baseAtk = m_actor->totalAtk();
+	baseDef = m_actor->totalDef();
 	
 	if(currentItem && currentItem->type() != Item::Type::BasicItem) {
 		if(currentItem->type() == Item::Type::Armor) {
 			finalAtk = baseAtk;
-			Armor *armor = m_battler->inventory()->armor(((Armor*)currentItem)->slot());
-			if(armor) finalDef = m_battler->totalDef() - armor->def() + ((Armor*)currentItem)->def();
-			else finalDef = m_battler->totalDef() + ((Armor*)currentItem)->def();
+			Armor *armor = m_actor->inventory()->armor(((Armor*)currentItem)->slot());
+			if(armor) finalDef = m_actor->totalDef() - armor->def() + ((Armor*)currentItem)->def();
+			else finalDef = m_actor->totalDef() + ((Armor*)currentItem)->def();
 			
 			if(finalDef > baseDef) {
 				finalDefColor = Color::green;
@@ -46,7 +46,7 @@ void EquipStatsWindow::draw(Item *currentItem) {
 				finalDefColor = Color::red;
 			}
 		} else {
-			finalAtk = m_battler->atk() + ((Weapon*)currentItem)->atk();
+			finalAtk = m_actor->atk() + ((Weapon*)currentItem)->atk();
 			finalDef = baseDef;
 			
 			if(finalAtk > baseAtk) {
@@ -63,8 +63,8 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	
 	Window::draw();
 	
-	printName(m_battler, 20, 20, m_width - 130);
-	printLevel(m_battler, m_width - 90, 20, m_width - 20);
+	printName(m_actor, 20, 20, m_width - 130);
+	printLevel(m_actor, m_width - 90, 20, m_width - 20);
 	
 	Interface::defaultFont->printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::system);
 	
@@ -79,7 +79,7 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	finalAtkImg.render(finalAtkImg.posRect().x - finalAtkImg.width());
 	finalDefImg.render(finalDefImg.posRect().x - finalDefImg.width());
 	
-	if(m_battler->atk() > m_battler->def()) {
+	if(m_actor->atk() > m_actor->def()) {
 		arrow.render(finalAtkImg.posRect().x - arrow.width() - 8);
 		arrow.render(-1, arrow.posRect().y + 32);
 	} else {

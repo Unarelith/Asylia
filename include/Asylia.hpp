@@ -85,6 +85,7 @@ using namespace tinyxml2;
 #include "ItemManager.hpp"
 
 #include "Inventory.hpp"
+#include "Equipment.hpp"
 
 #include "Battler.hpp"
 #include "Enemy.hpp"

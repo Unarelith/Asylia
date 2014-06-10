@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<player>
-	<appearance class="Fighter" id="1"/>
+<player appearance="Fighter01">
 	<position x="2" y="2" direction="0"/>
-
+	
 	<team>
 		<actor id="0"/>
 		<actor id="1"/>

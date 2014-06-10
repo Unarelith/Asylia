@@ -57,7 +57,7 @@ void MenuActivity::update() {
 			switch(m_cmdwin->pos()) {
 				case 1: break;
 				case 2:
-					ActivityManager::push(new EquipActivity(this));
+					ActivityManager::push(new EquipActivity(m_actorChoicewin->pos(), this));
 					break;
 				case 3: break;
 				default: break;

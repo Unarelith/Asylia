@@ -59,8 +59,6 @@ class Battler {
 		
 		void attack(Battler *battler, Skill *skill);
 		
-		Inventory *inventory() { return &m_inventory; }
-		
 		enum State {
 			Normal
 		};
@@ -97,8 +95,6 @@ class Battler {
 		std::string m_name;
 		
 		Image *m_image;
-		
-		Inventory m_inventory;
 		
 		u8 m_level;
 		u16 m_exp;

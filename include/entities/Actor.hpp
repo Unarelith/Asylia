@@ -22,6 +22,11 @@ class Actor : public Battler {
 	public:
 		Actor(std::string name, std::string appearance, u8 level);
 		~Actor();
+		
+		Equipment *equipment() { return &m_equipment; }
+		
+	private:
+		Equipment m_equipment;
 };
 
 #endif // ACTOR_HPP_

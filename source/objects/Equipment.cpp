@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  EquipStatsWindow.hpp
+ *       Filename:  Equipment.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  13/04/2014 17:27:24
+ *        Created:  10/06/2014 22:13:46
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,18 +15,23 @@
  *
  * =====================================================================================
  */
-#ifndef EQUIPSTATSWINDOW_HPP_
-#define EQUIPSTATSWINDOW_HPP_
+#include "Asylia.hpp"
 
-class EquipStatsWindow : public Window {
-	public:
-		EquipStatsWindow(Actor *actor);
-		~EquipStatsWindow();
-		
-		void draw(Item *currentItem = NULL);
-		
-	private:
-		Actor *m_actor;
-};
+Equipment::Equipment() {
+	m_weapon = NULL;
+}
 
-#endif // EQUIPSTATSWINDOW_HPP_
+Equipment::~Equipment() {
+}
+
+void Equipment::equipArmor(Armor *armor) {
+	for(auto it : m_armors) {
+		if(it->slot() == armor->slot()) {
+			m_armors.remove(it);
+			break;
+		}
+	}
+	
+	m_armors.push_back(armor);
+}
+

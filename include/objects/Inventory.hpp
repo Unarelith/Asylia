@@ -32,8 +32,6 @@ class Inventory {
 		void addWeapon(u8 id, s16 count, double chance = 1);
 		void removeWeapon(u8 id, s16 count);
 		
-		void clear();
-		
 		void add(Inventory *other, bool withChance = false);
 		
 		u16 nbItems() { return m_items.size(); }
@@ -55,20 +53,10 @@ class Inventory {
 		std::list<std::tuple<Armor*, s16, double>> armors() { return m_armors; }
 		std::list<std::tuple<Weapon*, s16, double>> weapons() { return m_weapons; }
 		
-		Weapon *weapon() const { return m_weapon; }
-		std::list<Armor*> armorlist() { return m_armorlist; }
-		Armor *armor(u8 slot) const { for(auto it : m_armorlist) if(it->slot() == slot) return it; return NULL; }
-		
-		void equipWeapon(Weapon *weapon) { m_weapon = weapon; }
-		void equipArmor(Armor *armor);
-		
 	private:
 		std::list<std::tuple<Item*, s16, double>> m_items;
 		std::list<std::tuple<Armor*, s16, double>> m_armors;
 		std::list<std::tuple<Weapon*, s16, double>> m_weapons;
-		
-		Weapon *m_weapon;
-		std::list<Armor*> m_armorlist;
 };
 
 #endif // INVENTORY_HPP_

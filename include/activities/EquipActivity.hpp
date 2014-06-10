@@ -20,20 +20,23 @@
 
 class EquipActivity : public Activity {
 	public:
-		EquipActivity(Activity *parent = NULL);
+		EquipActivity(u8 actorPos, Activity *parent = NULL);
 		~EquipActivity();
 		
 		void update();
 		void render();
 		
 	private:
-		EquipStatsWindow m_statswin;
-		EquipChoiceWindow m_choicewin;
-		ItemWindow *m_itemwin;
-		
 		bool m_itemMode;
 		
-		Inventory *m_inventory;
+		Actor *m_actor;
+		
+		Equipment *m_equipment;
+		
+		EquipStatsWindow *m_statswin;
+		EquipChoiceWindow *m_choicewin;
+		
+		ItemWindow *m_itemwin;
 };
 
 #endif // EQUIPACTIVITY_HPP_

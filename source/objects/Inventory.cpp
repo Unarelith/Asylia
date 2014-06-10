@@ -18,11 +18,12 @@
 #include "Asylia.hpp"
 
 Inventory::Inventory() {
-	m_weapon = NULL;
 }
 
 Inventory::~Inventory() {
-	clear();
+	m_items.clear();
+	m_armors.clear();
+	m_weapons.clear();
 }
 
 void Inventory::addItem(u8 id, s16 count, double chance) {
@@ -97,15 +98,6 @@ void Inventory::removeWeapon(u8 id, s16 count) {
 	});
 }
 
-void Inventory::clear() {
-	m_items.clear();
-	m_armors.clear();
-	m_weapons.clear();
-	
-	m_weapon = NULL;
-	m_armorlist.clear();
-}
-
 void Inventory::add(Inventory *other, bool withChance) {
 	for(auto &it : other->m_items) {
 		if(!withChance || rand()%101 <= std::get<2>(it) * 100) addItem(std::get<0>(it)->id(), std::get<1>(it));
@@ -116,15 +108,5 @@ void Inventory::add(Inventory *other, bool withChance) {
 	for(auto &it : other->m_weapons) {
 		if(!withChance || rand()%101 <= std::get<2>(it) * 100) addItem(std::get<0>(it)->id(), std::get<1>(it));
 	}
-}
-
-void Inventory::equipArmor(Armor *armor) {
-	for(auto it : m_armorlist) {
-		if(it->slot() == armor->slot()) {
-			m_armorlist.remove(it);
-			break;
-		}
-	}
-	m_armorlist.push_back(armor);
 }
 

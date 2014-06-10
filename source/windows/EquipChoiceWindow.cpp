@@ -17,11 +17,13 @@
  */
 #include "Asylia.hpp"
 
-EquipChoiceWindow::EquipChoiceWindow() : SelectableWindow(150 + (GameWindow::main->width() - 150) / 2, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
+EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(150 + (GameWindow::main->width() - 150) / 2, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
 	m_itemMax = 4;
 	m_columnMax = 1;
 	
 	m_pos = 0;
+	
+	m_equipment = equipment;
 }
 
 EquipChoiceWindow::~EquipChoiceWindow() {
@@ -30,18 +32,18 @@ EquipChoiceWindow::~EquipChoiceWindow() {
 void EquipChoiceWindow::draw(bool drawCursor) {
 	SelectableWindow::draw(drawCursor);
 	
-	if(!CharacterManager::player->inventory()->weapon()) {
+	if(!m_equipment->weapon()) {
 		ItemManager::weapons[0]->thumbnail()->render(m_x + 20, m_y + 20);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
 		Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::system);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
 	} else {
-		CharacterManager::player->inventory()->weapon()->thumbnail()->render(m_x + 20, m_y + 20);
-		Interface::defaultFont->printScaled(CharacterManager::player->inventory()->weapon()->name().c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE);
+		m_equipment->weapon()->thumbnail()->render(m_x + 20, m_y + 20);
+		Interface::defaultFont->printScaled(m_equipment->weapon()->name().c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE);
 	}
 	
 	for(u8 slot = 0 ; slot < 3 ; slot++) {
-		Armor *armor = CharacterManager::player->inventory()->armor(slot);
+		Armor *armor = m_equipment->armor(slot);
 		if(!armor) {
 			for(auto it : ItemManager::armors) {
 				if(it->slot() == slot) {
