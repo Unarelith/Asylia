@@ -45,7 +45,7 @@ void ItemWindow::drawItem(u8 pos) {
 void ItemWindow::draw(bool cursor, bool infowinText) {
 	SelectableWindow::draw(cursor);
 	
-	if(infowinText) m_infoWindow->drawTextScaled(CharacterManager::player->inventory()->getItem(m_pos)->description());
+	if(infowinText) m_infoWindow->drawTextScaled(m_inventory->getItem(m_pos)->description());
 	else m_infoWindow->drawTextScaled(" ");
 	
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
