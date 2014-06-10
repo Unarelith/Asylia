@@ -147,6 +147,8 @@ void Character::inCollisionWith(Character *c) {
 		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
+		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
+		|| (x >= cx && x <= cx2 && y2 >= cy && y2 <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y2 >= cy && y2 <= cy2)) {
 			if(c->m_solid) m_vx = 0;
 			
@@ -162,6 +164,8 @@ void Character::inCollisionWith(Character *c) {
 		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
 		
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
+		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
+		|| (x >= cx && x <= cx2 && y2 >= cy && y2 <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y2 >= cy && y2 <= cy2)) {
 			if(c->m_solid) m_vy = 0;
 			
@@ -177,20 +181,20 @@ bool Character::canInitiateConversationWith(Character *c) {
 	s16 x = (m_x + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
 	s16 y = (m_y + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
 	
-	if(cx == x) {
-		if(cy == y + 1 && m_direction == DIR_DOWN) {
+	if(cx <= x && cx > x - c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2)) {
+		if(cy > y && cy <= y + c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
 			return true;
 		}
-		if(cy == y - 1 && m_direction == DIR_UP) {
+		if(cy < y && cy >= y - c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2) && m_direction == DIR_UP) {
 			return true;
 		}
 	}
 	
-	if(cy == y) {
-		if(cx == x + 1 && m_direction == DIR_RIGHT) {
+	if(cy <= y && cy > y - c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2)) {
+		if(cx > x && cx <= x + c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2) && m_direction == DIR_RIGHT) {
 			return true;
 		}
-		if(cx == x - 1 && m_direction == DIR_LEFT) {
+		if(cx < x && cx >= x - c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2) && m_direction == DIR_LEFT) {
 			return true;
 		}
 	}

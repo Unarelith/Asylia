@@ -1,7 +1,3 @@
-- Fix a litte bug:
-	=> For bigger character, the action is not supported everywhere
-		-> Character::canTalkWith
-
 - Manage a team of Actors in Player
 	=> Remove <actor> lines in battles.xml to replace Battle::m_actors by the current equip
 	=> Define team in player.xml
