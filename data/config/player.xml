@@ -2,4 +2,11 @@
 <player>
 	<appearance class="Fighter" id="1"/>
 	<position x="2" y="2" direction="0"/>
+
+	<team>
+		<actor id="0"/>
+		<actor id="1"/>
+		<actor id="2"/>
+		<actor id="3"/>
+	</team>
 </player>

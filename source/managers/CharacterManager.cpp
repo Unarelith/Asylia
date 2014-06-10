@@ -30,6 +30,18 @@ void CharacterManager::init() {
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
 						positionElement->IntAttribute("direction"));
+	
+	XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
+	while(actorElement) {
+		if(player->teamSize() == 4) {
+			warning("Player can't handle more than 4 actors in team.");
+			break;
+		}
+		
+		player->addTeamMember(actorElement->IntAttribute("id"));
+		
+		actorElement = actorElement->NextSiblingElement("actor");
+	}
 }
 
 void CharacterManager::free() {

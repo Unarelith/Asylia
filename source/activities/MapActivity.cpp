@@ -58,9 +58,9 @@ void MapActivity::init() {
 	
 	ItemManager::init();
 	
-	CharacterManager::init();
-	
 	BattlerManager::init();
+	
+	CharacterManager::init();
 	
 	BattleManager::init();
 	

@@ -1,9 +1,11 @@
 - Manage a team of Actors in Player
-	=> Remove <actor> lines in battles.xml to replace Battle::m_actors by the current equip
+	=> Remove <actor> lines in battles.xml to replace Battle::m_actors
+		by the current team
+	=> Add a member to Player: std::vector<Actor*> m_team;
 	=> Define team in player.xml
 		-> Edit CharacterManager
 
-- Add a class Troop ( equip of enemies )
+- Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further
 	=> Edit all related files

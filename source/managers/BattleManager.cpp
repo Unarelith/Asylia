@@ -31,13 +31,6 @@ void BattleManager::init() {
 		
 		currentBattle = new Battle(battleback);
 		
-		XMLElement *actorElement = battleElement->FirstChildElement("actor");
-		while(actorElement) {
-			currentBattle->addActor(BattlerManager::actors[actorElement->IntAttribute("id")]);
-			
-			actorElement = actorElement->NextSiblingElement("actor");
-		}
-		
 		XMLElement *enemyElement = battleElement->FirstChildElement("enemy");
 		while(enemyElement) {
 			s16 x, y;

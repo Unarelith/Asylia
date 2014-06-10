@@ -21,6 +21,9 @@ BattleActivity::BattleActivity(Battle *battle) {
 	m_type = Type::BattleAct;
 	
 	m_battle = new Battle(*battle);
+	for(u8 i = 0 ; i < CharacterManager::player->teamSize() ; i++) {
+		m_battle->addActor(CharacterManager::player->getTeamMember(i));
+	}
 	
 	m_currentPos = 0;
 	m_arrowPos = 0;
