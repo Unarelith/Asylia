@@ -42,9 +42,9 @@ EquipActivity::~EquipActivity() {
 
 void EquipActivity::update() {
 	if(m_choicewin->pos() == 0) {
-		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos());
+		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos(), m_equipment);
 	} else {
-		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos() - 1);
+		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos() - 1, m_equipment);
 	}
 	
 	if(m_itemMode) m_itemwin->update();

@@ -45,6 +45,9 @@ class Battler {
 		u16 atk() const { return m_atk; }
 		u16 def() const { return m_def; }
 		
+		u16 totalAtk() const { return m_atk; }
+		u16 totalDef() const { return m_def; }
+		
 		u8 state() const { return (u8)m_state; }
 		
 		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }
