@@ -33,5 +33,16 @@ void Equipment::equipArmor(Armor *armor) {
 	}
 	
 	m_armors.push_back(armor);
+	m_armors.back()->setEquipped(true);
+}
+
+void Equipment::unequipArmor(u8 slot) {
+	for(auto it : m_armors) {
+		if(it->slot() == slot) {
+			it->setEquipped(false);
+			m_armors.remove(it);
+			break;
+		}
+	}
 }
 

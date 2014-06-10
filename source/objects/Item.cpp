@@ -32,6 +32,8 @@ Item::Item(std::string name, std::string description, std::string thumbnail, Ani
 	m_thumbnail = new Image(thumbnail.c_str());
 	
 	m_battleAnimation = battleAnimation;
+	
+	m_equipped = false;
 }
 
 Item::~Item() {

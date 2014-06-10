@@ -51,9 +51,13 @@ class Item {
 		
 		Animation *battleAnimation() const { return m_battleAnimation; }
 		
+		bool equipped() const { return m_equipped; }
+		
 		void setID(u16 id) { m_id = id; }
 		
 		void setEffect(int effect) { m_effect = (Item::Effect)effect; }
+		
+		void setEquipped(bool equipped) { m_equipped = equipped; }
 		
 	protected:
 		u16 m_id;
@@ -70,6 +74,8 @@ class Item {
 		Image *m_thumbnail;
 		
 		Animation *m_battleAnimation;
+		
+		bool m_equipped;
 };
 
 #endif // ITEM_HPP_

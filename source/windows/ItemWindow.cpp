@@ -58,13 +58,13 @@ void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 	
 	if(equipID == 0) {
 		for(auto& it : CharacterManager::player->inventory()->weapons()) {
-			if(std::get<0>(it)->equipType() == equipType && std::get<0>(it) != equipment->weapon()) {
+			if(!std::get<0>(it)->equipped() && std::get<0>(it)->equipType() == equipType && std::get<0>(it) != equipment->weapon()) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
-			if(std::get<0>(it)->slot() == equipType && std::get<0>(it) != equipment->armor(std::get<0>(it)->slot())) {
+			if(!std::get<0>(it)->equipped() && std::get<0>(it)->slot() == equipType && std::get<0>(it) != equipment->armor(std::get<0>(it)->slot())) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
