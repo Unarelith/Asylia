@@ -51,24 +51,23 @@ void EquipActivity::update() {
 	else m_choicewin->update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-		if(m_itemwin->hasItems()) {
-			Sound::Effect::play(Sound::Effect::confirm);
-			
-			if(m_itemMode) {
-				if(m_choicewin->pos() == 0) {
-					m_equipment->equipWeapon((Weapon*)m_itemwin->currentItem());
-				} else {
-					m_equipment->equipArmor((Armor*)m_itemwin->currentItem());
-				}
-				
-				m_itemMode = false;
-				m_itemwin->pos(0);
-				m_itemwin->update();
+		Sound::Effect::play(Sound::Effect::confirm);
+		
+		if(m_itemMode) {
+			Item *currentItem = m_itemwin->currentItem();
+			if(m_choicewin->pos() == 0) {
+				if(currentItem) m_equipment->equipWeapon((Weapon*)currentItem);
+				else m_equipment->unequipWeapon();
 			} else {
-				m_itemMode = true;
+				if(currentItem) m_equipment->equipArmor((Armor*)currentItem);
+				else m_equipment->unequipArmor(m_choicewin->pos() - 1);
 			}
+			
+			m_itemMode = false;
+			m_itemwin->pos(0);
+			m_itemwin->update();
 		} else {
-			Sound::Effect::play(Sound::Effect::blocked);
+			m_itemMode = true;
 		}
 	}
 	

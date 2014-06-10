@@ -26,6 +26,10 @@ class EquipActivity : public Activity {
 		void update();
 		void render();
 		
+		bool itemMode() const { return m_itemMode; }
+		
+		u16 choicewinPos() { return m_choicewin->pos(); }
+		
 	private:
 		bool m_itemMode;
 		

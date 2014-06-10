@@ -45,10 +45,10 @@ void ItemWindow::drawItem(u8 pos) {
 void ItemWindow::draw(bool cursor, bool infowinText) {
 	SelectableWindow::draw(cursor);
 	
-	if(infowinText) m_infoWindow->drawTextScaled(m_inventory->getItem(m_pos)->description());
+	if(infowinText && m_pos < m_inventory->nbItems()) m_infoWindow->drawTextScaled(m_inventory->getItem(m_pos)->description());
 	else m_infoWindow->drawTextScaled(" ");
 	
-	for(u8 i = 0 ; i < m_itemMax ; i++) {
+	for(u8 i = 0 ; i < m_inventory->nbItems() ; i++) {
 		drawItem(i);
 	}
 }
@@ -62,18 +62,23 @@ void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
+		
+		if(equipment->weapon()) m_itemMax = m_inventory->nbItems() + 1;
+		else m_itemMax = m_inventory->nbItems();
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
 			if(!std::get<0>(it)->equipped() && std::get<0>(it)->slot() == equipType && std::get<0>(it) != equipment->armor(std::get<0>(it)->slot())) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
+		
+		if(equipment->armor(equipType)) m_itemMax = m_inventory->nbItems() + 1;
+		else m_itemMax = m_inventory->nbItems();
 	}
-	
-	m_itemMax = m_inventory->nbItems();
 }
 
 Item *ItemWindow::currentItem() {
-	return m_inventory->getItem(m_pos);
+	if(m_pos >= m_inventory->nbItems()) return NULL;
+	else return m_inventory->getItem(m_pos);
 }
 

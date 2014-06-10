@@ -1,6 +1,5 @@
 - Improve EquipActivity
-	-> Improve ItemWindow to let the user select a void element at the end
-			( In order to be able to unequip )
+	-> Improve performances
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
@@ -134,8 +133,6 @@
 						main.lua <==|==>|
 						event0/			|
 							main.lua <==|
-
-- Improve EquipActivity performances on Android
 
 - Create StateWindow class
 
