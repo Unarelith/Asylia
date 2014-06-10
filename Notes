@@ -1,11 +1,17 @@
 - Problems with Inventory and ItemWindow, the step below should fix them
 
 - Make an ActorChoiceWindow which will permit to choose between equip members
-	=> Add that window in MenuActivity, which will show it only on demand
-		-> Don't forget to avoid the cursor in menu CommandWindow
 	=> Adapt EquipActivity to get the current actor to equip
-	=> Check bugs
-		
+
+- Create two classes:
+	* Equipment ( contains Weapons and Armors )
+		=> Adapt Actor, EquipActivity and Equip***Window
+		=> Only for Actors
+	* Loot ( contains Items, Weapons and Armors enemies loots )
+		=> Adapt Enemy and VictoryWindow
+		=> Only for Enemies
+- Remove Inventory in Battlers and set a single instance in Characters
+
 - Improve EquipActivity
 	-> Improve ItemWindow to let the user select a void element at the end
 			( In order to be able to unequip )
