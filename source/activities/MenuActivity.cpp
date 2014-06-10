@@ -52,6 +52,8 @@ void MenuActivity::update() {
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		if(m_actorChoiceMode) {
+			m_actorChoiceMode = false;
+			
 			switch(m_cmdwin->pos()) {
 				case 1: break;
 				case 2:
@@ -60,7 +62,6 @@ void MenuActivity::update() {
 				case 3: break;
 				default: break;
 			}
-			m_actorChoiceMode = false;
 		} else {
 			switch(m_cmdwin->pos()) {
 				case 0:
@@ -73,9 +74,10 @@ void MenuActivity::update() {
 				case 6:
 					ActivityManager::push(new EndActivity);
 					break;
-				default: break;
+				default:
+					m_actorChoiceMode = true;
+					break;
 			}
-			m_actorChoiceMode = true;
 		}
 	}
 	

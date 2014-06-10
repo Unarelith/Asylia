@@ -4,9 +4,11 @@
 	=> Add that window in MenuActivity, which will show it only on demand
 		-> Don't forget to avoid the cursor in menu CommandWindow
 	=> Adapt EquipActivity to get the current actor to equip
-		-> Improve ItemWindow to let the user select a void element at the end
-			( In order to be able to unequip )
 	=> Check bugs
+		
+- Improve EquipActivity
+	-> Improve ItemWindow to let the user select a void element at the end
+			( In order to be able to unequip )
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
