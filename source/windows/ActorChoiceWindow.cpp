@@ -21,11 +21,16 @@ ActorChoiceWindow::ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height) : Sele
 	m_itemMax = CharacterManager::player->teamSize();
 	
 	m_pos = 0;
-	
-	m_cursor = Rectangle(0, 0, m_width - 32, (m_height / 4) - 16);
 }
 
 ActorChoiceWindow::~ActorChoiceWindow() {
+}
+
+void ActorChoiceWindow::update() {
+	SelectableWindow::update();
+	
+	m_cursor = Rectangle(0, 0, m_width - 32, (m_height / 4) - 16);
+	m_cursor.y = (m_cursor.height + 11) * m_pos;
 }
 
 void ActorChoiceWindow::drawActor(u16 pos) {
@@ -39,7 +44,7 @@ void ActorChoiceWindow::drawActor(u16 pos) {
 }
 
 void ActorChoiceWindow::draw() {
-	Window::draw(false);
+	Window::draw();
 	
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
 		drawActor(i);

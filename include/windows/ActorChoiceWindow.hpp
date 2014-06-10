@@ -23,6 +23,8 @@ class ActorChoiceWindow : public SelectableWindow {
 		ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height);
 		~ActorChoiceWindow();
 		
+		void update();
+		
 		void drawActor(u16 pos);
 		
 		void draw();
