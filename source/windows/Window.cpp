@@ -36,10 +36,13 @@ void Window::update() {
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
 	
-	Interface::interface->render(x, y, width, height, 129, 64, 30, 32);
+	Interface::interface->render(x, y, width, height, 132, 68, 23, 23);
 	
 	Interface::interface->render(x, y, 1, height, 128, 64, 1, 32);
 	Interface::interface->render(x + width - 1, y, 1, height, 159, 64, 1, 32);
+	
+	Interface::interface->render(x, y, width, 1, 129, 64, 31, 1);
+	Interface::interface->render(x, y + height - 1, width, 1, 129, 95, 31, 1);
 	
 	Interface::interface->setAlphaMod(255);
 }
