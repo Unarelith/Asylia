@@ -31,11 +31,11 @@ ActorChoiceWindow::~ActorChoiceWindow() {
 void ActorChoiceWindow::drawActor(u16 pos) {
 	u16 y = pos * (m_height - 20) / 4;
 	
-	printName(CharacterManager::player->getTeamMember(pos), 80, 20 + y, 150);
-	printLevel(CharacterManager::player->getTeamMember(pos), 80, 52 + y, 140);
-	printState(CharacterManager::player->getTeamMember(pos), 160, 52 + y, 80);
-	printHP(CharacterManager::player->getTeamMember(pos), 310, 52 + y, 460);
-	printSP(CharacterManager::player->getTeamMember(pos), 310, 84 + y, 460);
+	printName(CharacterManager::player->getTeamMember(pos), 80, 25 + y, 150);
+	printLevel(CharacterManager::player->getTeamMember(pos), 80, 57 + y, 140);
+	printState(CharacterManager::player->getTeamMember(pos), 160, 57 + y, 80);
+	printHP(CharacterManager::player->getTeamMember(pos), 310, 57 + y, 460);
+	printSP(CharacterManager::player->getTeamMember(pos), 310, 89 + y, 460);
 }
 
 void ActorChoiceWindow::draw() {
