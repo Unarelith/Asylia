@@ -80,6 +80,7 @@ void EquipActivity::update() {
 			m_itemwin->update();
 		} else {
 			ActivityManager::pop();
+			if(ActivityManager::top()->type() == Activity::Type::Menu) ((MenuActivity*)ActivityManager::top())->actorChoiceModeOn();
 		}
 	}
 }

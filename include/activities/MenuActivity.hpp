@@ -30,6 +30,8 @@ class MenuActivity : public Activity {
 		
 		CommandWindow *cmdwin() { return m_cmdwin; }
 		
+		void actorChoiceModeOn() { m_actorChoiceMode = true; }
+		
 	private:
 		CommandWindow *m_cmdwin;
 		

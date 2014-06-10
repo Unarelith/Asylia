@@ -84,7 +84,10 @@ void MenuActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
 		if(!m_actorChoiceMode) ActivityManager::pop();
-		else m_actorChoiceMode = false;
+		else {
+			m_actorChoiceMode = false;
+			m_actorChoicewin->pos(0);
+		}
 	}
 	
 	if(!m_actorChoiceMode) m_cmdwin->update();
