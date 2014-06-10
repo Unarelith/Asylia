@@ -20,8 +20,10 @@
 
 class Sprite : public Image {
 	public:
-		Sprite(const char *filename, u16 frameWidth = 16, u16 frameHeight = 16);
+		Sprite(const char *filename, u16 frameWidth, u16 frameHeight);
 		~Sprite();
+		
+		void reload(Sprite *sprite);
 		
 		void drawFrame(s16 x, s16 y, u16 frame);
 		

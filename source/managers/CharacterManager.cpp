@@ -51,5 +51,7 @@ void CharacterManager::loadActorsTeam() {
 	}
 	
 	player->getTeamMember(0)->equipment()->equipArmor(player->inventory()->getArmor(0));
+	
+	player->reload(player->getTeamMember(1)->sprite());
 }
 

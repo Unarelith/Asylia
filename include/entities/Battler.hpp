@@ -32,7 +32,9 @@ class Battler {
 		
 		std::string name() const { return m_name; }
 		
-		Image *image() { return m_image; }
+		Image *image() const { return m_image; }
+		
+		Sprite *sprite() const { return m_sprite; }
 		
 		u8 level() const { return m_level; }
 		
@@ -95,6 +97,8 @@ class Battler {
 		std::string m_name;
 		
 		Image *m_image;
+		
+		Sprite *m_sprite;
 		
 		u8 m_level;
 		u16 m_exp;

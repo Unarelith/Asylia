@@ -22,6 +22,8 @@ Battler::Battler(const Battler &battler) {
 	
 	m_image = new Image(*battler.m_image);
 	
+	m_sprite = new Sprite(*battler.m_sprite);
+	
 	m_level = battler.m_level;
 	m_exp = battler.m_exp;
 	
@@ -44,6 +46,12 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	
 	m_image = new Image(appearance.c_str());
 	
+	m_sprite = new Sprite(appearance.replace(appearance.find("battlers"), 8, "characters").c_str(), 32, 48);
+	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
+	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
+	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
+	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
+	
 	m_level = level;
 	m_exp = 0;
 	
@@ -53,7 +61,9 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 }
 
 Battler::~Battler() {
-	if(m_image) delete m_image;
+	delete m_sprite;
+	
+	delete m_image;
 }
 
 void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell) {

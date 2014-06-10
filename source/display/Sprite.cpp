@@ -27,6 +27,14 @@ Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(fi
 Sprite::~Sprite() {
 }
 
+void Sprite::reload(Sprite *sprite) {
+	Image::reload(sprite->m_filename.c_str());
+	
+	m_animations.clear();
+	
+	m_lastFrameDisplayed = 0;
+}
+
 void Sprite::drawFrame(s16 x, s16 y, u16 frame) {
 	u16 frameY = (frame / (m_width / m_frameWidth)) * m_frameHeight;
 	u16 frameX = (frame - (frameY / m_frameHeight) * (m_width / m_frameWidth)) * m_frameWidth;

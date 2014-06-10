@@ -38,6 +38,8 @@ class Image {
 		void setAlphaMod(u8 alpha) { SDL_SetTextureAlphaMod(m_texture, alpha); }
 		void setColorMod(Color color) { SDL_SetTextureColorMod(m_texture, color.r, color.g, color.b); setAlphaMod(color.a); }
 		
+		std::string filename() const { return m_filename; }
+		
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
 		

@@ -1,8 +1,3 @@
-- Improve ActorChoiceWindow
-	=> Set a member m_appearance to get "Character" appearance
-		-> Each Actor has a Sprite that looks like a Character
-		-> The Sprite of the first Actor of the team is Player's Sprite
-
 - Improve EquipActivity
 	-> Improve ItemWindow to let the user select a void element at the end
 			( In order to be able to unequip )
