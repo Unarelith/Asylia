@@ -30,6 +30,14 @@ void CharacterManager::init() {
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
 						positionElement->IntAttribute("direction"));
+}
+
+void CharacterManager::free() {
+	delete player;
+}
+
+void CharacterManager::loadActorsTeam() {
+	XMLFile doc("data/config/player.xml");
 	
 	XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
 	while(actorElement) {
@@ -42,9 +50,5 @@ void CharacterManager::init() {
 		
 		actorElement = actorElement->NextSiblingElement("actor");
 	}
-}
-
-void CharacterManager::free() {
-	delete player;
 }
 

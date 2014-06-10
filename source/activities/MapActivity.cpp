@@ -54,15 +54,17 @@ void MapActivity::init() {
 	
 	LuaHandler::bindClasses();
 	
-	MapManager::currentMap->load();
-	
 	ItemManager::init();
-	
-	BattlerManager::init();
 	
 	CharacterManager::init();
 	
+	BattlerManager::init();
+	
+	CharacterManager::loadActorsTeam();
+	
 	BattleManager::init();
+	
+	MapManager::currentMap->load();
 	
 	Sound::Music::play(Sound::Music::theme, -1);
 }

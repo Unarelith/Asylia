@@ -23,6 +23,8 @@ class CharacterManager {
 		static void init();
 		static void free();
 		
+		static void loadActorsTeam();
+		
 		static Player *getPlayer() { return player; }
 		
 		static Player *player;
