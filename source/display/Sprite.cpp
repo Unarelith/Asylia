@@ -31,6 +31,9 @@ void Sprite::reload(Sprite *sprite) {
 	Image::reload(sprite->m_filename.c_str());
 	
 	m_animations.clear();
+	for(auto &it : sprite->m_animations) {
+		m_animations.push_back(it);
+	}
 	
 	m_lastFrameDisplayed = 0;
 }
