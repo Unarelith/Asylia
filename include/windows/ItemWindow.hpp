@@ -20,7 +20,7 @@
 
 class ItemWindow : public SelectableWindow {
 	public:
-		ItemWindow(s16 x, s16 y, u16 width, u16 height, s16 infowinX = 0, s16 infowinY = 0);
+		ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX = 0, s16 infowinY = 0);
 		~ItemWindow();
 		
 		void drawItem(u8 pos);
@@ -28,12 +28,12 @@ class ItemWindow : public SelectableWindow {
 		
 		void changeSet(u8 equipment, u8 equipType);
 		
-		bool hasItems() { return m_inventory.items().size(); }
+		bool hasItems() { return m_inventory->items().size(); }
 		
 		Item *currentItem();
 		
 	private:
-		Inventory m_inventory;
+		Inventory *m_inventory;
 };
 
 #endif // ITEMWINDOW_HPP_

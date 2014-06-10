@@ -20,7 +20,9 @@
 EquipActivity::EquipActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Equip;
 	
-	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, 150, 0);
+	m_inventory = BattlerManager::actors[0]->inventory();
+	
+	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, m_inventory, 150, 0);
 	m_itemwin->changeSet(0, 0);
 	
 	m_itemMode = false;
@@ -46,9 +48,9 @@ void EquipActivity::update() {
 			
 			if(m_itemMode) {
 				if(m_choicewin.pos() == 0) {
-					CharacterManager::player->inventory()->equipWeapon((Weapon*)m_itemwin->currentItem());
+					m_inventory->equipWeapon((Weapon*)m_itemwin->currentItem());
 				} else {
-					CharacterManager::player->inventory()->equipArmor((Armor*)m_itemwin->currentItem());
+					m_inventory->equipArmor((Armor*)m_itemwin->currentItem());
 				}
 				
 				m_itemMode = false;

@@ -32,6 +32,8 @@ class MenuActivity : public Activity {
 		
 	private:
 		CommandWindow *m_cmdwin;
+		
+		ActorChoiceWindow *m_actorChoicewin;
 };
 
 #endif // MENUACTIVITY_HPP_

@@ -17,15 +17,15 @@
  */
 #include "Asylia.hpp"
 
-ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
-	m_itemMax = CharacterManager::player->inventory()->nbItems();
+ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
+	m_inventory = inventory;
+	
+	m_itemMax = m_inventory->nbItems();
 	m_columnMax = 2;
 	
 	m_pos = 0;
 	
 	m_infoWindow = new InfoWindow(infowinX, infowinY, width, 52);
-	
-	m_inventory = Inventory(*CharacterManager::player->inventory());
 }
 
 ItemWindow::~ItemWindow() {
@@ -39,7 +39,7 @@ void ItemWindow::drawItem(u8 pos) {
 	x = 22 + pos % m_columnMax * (width + 32);
 	y = 21 + pos / m_columnMax * 32 - m_scroll * 32;
 	
-	printItem(m_inventory.getItem(pos), m_inventory.getItemCount(pos), x, y, width);
+	printItem(m_inventory->getItem(pos), m_inventory->getItemCount(pos), x, y, width);
 }
 
 void ItemWindow::draw(bool cursor, bool infowinText) {
@@ -54,26 +54,26 @@ void ItemWindow::draw(bool cursor, bool infowinText) {
 }
 
 void ItemWindow::changeSet(u8 equipment, u8 equipType) {
-	m_inventory.clear();
+	m_inventory->clear();
 	
 	if(equipment == 0) {
 		for(auto& it : CharacterManager::player->inventory()->weapons()) {
 			if(std::get<0>(it)->equipType() == equipType && std::get<0>(it) != CharacterManager::player->inventory()->weapon()) {
-				m_inventory.pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
+				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
 	} else {
 		for(auto& it : CharacterManager::player->inventory()->armors()) {
 			if(std::get<0>(it)->slot() == equipType && std::get<0>(it) != CharacterManager::player->inventory()->armor(std::get<0>(it)->slot())) {
-				m_inventory.pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
+				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
 		}
 	}
 	
-	m_itemMax = m_inventory.nbItems();
+	m_itemMax = m_inventory->nbItems();
 }
 
 Item *ItemWindow::currentItem() {
-	return m_inventory.getItem(m_pos);
+	return m_inventory->getItem(m_pos);
 }
 

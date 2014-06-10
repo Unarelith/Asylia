@@ -32,6 +32,8 @@ class EquipActivity : public Activity {
 		ItemWindow *m_itemwin;
 		
 		bool m_itemMode;
+		
+		Inventory *m_inventory;
 };
 
 #endif // EQUIPACTIVITY_HPP_

@@ -50,9 +50,12 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 	m_inFrontOf = NULL;
 	
 	m_solid = true;
+	
+	m_inventory = new Inventory;
 }
 
 Character::~Character() {
+	delete m_inventory;
 }
 
 void Character::render() {

@@ -56,6 +56,10 @@ Battler::Battler(std::string name, std::string appearance, u8 level) {
 	m_type = Type::TypeNone;
 }
 
+Battler::~Battler() {
+	if(m_image) delete m_image;
+}
+
 void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell) {
 	m_agi = growAgi(agi, m_level - 1);
 	m_vit = growVit(vit, m_level - 1);
@@ -72,10 +76,6 @@ void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16
 	
 	m_atk = 0.2 * m_vit + 0.3 * m_dex + 0.5 * m_str;
 	m_def = 0.2 * m_int + 0.3 * m_vit + 0.5 * m_agi;
-}
-
-Battler::~Battler() {
-	if(m_image) delete m_image;
 }
 
 void Battler::blink() {

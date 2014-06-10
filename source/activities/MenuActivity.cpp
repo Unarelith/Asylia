@@ -21,9 +21,13 @@ MenuActivity::MenuActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Menu;
 	
 	loadCommandWindow();
+	
+	m_actorChoicewin = new ActorChoiceWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height());
 }
 
 MenuActivity::~MenuActivity() {
+	delete m_actorChoicewin;
+	
 	delete m_cmdwin;
 }
 
@@ -77,5 +81,7 @@ void MenuActivity::render() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
 	m_cmdwin->draw(ActivityManager::top() == this);
+	
+	m_actorChoicewin->draw();
 }
 

@@ -71,7 +71,7 @@ class Character : public Sprite {
 		
 		void setPosition(s16 x, s16 y) { m_x = x; m_y = y; }
 		
-		Inventory *inventory() { return &m_inventory; }
+		Inventory *inventory() { return m_inventory; }
 		
 		enum Direction {
 			Down, Right, Left, Up
@@ -115,7 +115,7 @@ class Character : public Sprite {
 		
 		bool m_solid;
 		
-		Inventory m_inventory;
+		Inventory *m_inventory;
 };
 
 #endif // CHARACTER_HPP_

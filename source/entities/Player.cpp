@@ -27,26 +27,26 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(fil
 	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
 	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
 	
-	m_inventory.addItem(0, 1);
-	m_inventory.addItem(1, 1);
-	m_inventory.addItem(5, 1);
-	m_inventory.addItem(2, 1);
-	m_inventory.addItem(3, 1);
-	m_inventory.addItem(4, 1);
-	m_inventory.addItem(6, 1);
+	m_inventory->addItem(0, 1);
+	m_inventory->addItem(1, 1);
+	m_inventory->addItem(5, 1);
+	m_inventory->addItem(2, 1);
+	m_inventory->addItem(3, 1);
+	m_inventory->addItem(4, 1);
+	m_inventory->addItem(6, 1);
 	
-	m_inventory.addWeapon(0, 1);
-	m_inventory.addWeapon(1, 1);
-	m_inventory.addWeapon(2, 1);
-	m_inventory.addWeapon(3, 1);
+	m_inventory->addWeapon(0, 1);
+	m_inventory->addWeapon(1, 1);
+	m_inventory->addWeapon(2, 1);
+	m_inventory->addWeapon(3, 1);
 	
-	m_inventory.addArmor(0, 1);
-	m_inventory.addArmor(1, 1);
-	m_inventory.addArmor(2, 1);
-	m_inventory.addArmor(3, 1);
-	m_inventory.addArmor(4, 1);
+	m_inventory->addArmor(0, 1);
+	m_inventory->addArmor(1, 1);
+	m_inventory->addArmor(2, 1);
+	m_inventory->addArmor(3, 1);
+	m_inventory->addArmor(4, 1);
 	
-	m_inventory.equipArmor(m_inventory.getArmor(0));
+	m_inventory->equipArmor(m_inventory->getArmor(0));
 }
 
 Player::~Player() {

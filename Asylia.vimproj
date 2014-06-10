@@ -146,6 +146,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Weapon.hpp
   }
   windows=windows {
+   ActorChoiceWindow.hpp
    ActorStatsWindow.hpp
    BattleActionWindow.hpp
    BattleChoiceWindow.hpp
@@ -227,6 +228,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Weapon.cpp
   }
   windows=windows {
+   ActorChoiceWindow.cpp
    ActorStatsWindow.cpp
    BattleActionWindow.cpp
    BattleChoiceWindow.cpp
