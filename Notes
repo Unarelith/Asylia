@@ -1,6 +1,3 @@
-- Improve EquipActivity
-	-> Improve performances
-
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further
@@ -162,6 +159,9 @@
 - [Issue #10] Lines with linear scaling
 	=> Search a solution to avoid this problem
 	=> Happens on PC too
+
+- Improve EquipActivity performances
+	=> See the FIXME at the first line of update()
 
 - Improve all interfaces
 

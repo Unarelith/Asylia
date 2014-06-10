@@ -41,6 +41,7 @@ EquipActivity::~EquipActivity() {
 }
 
 void EquipActivity::update() {
+	// FIXME: SLOW?? //
 	if(m_choicewin->pos() == 0) {
 		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos(), m_equipment);
 	} else {
