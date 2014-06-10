@@ -14,6 +14,8 @@ CharacterEvent.new = function(eventName, nbOfMessages)
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
 				self.character:setDirection(3 - CharacterManager.player():getDirection())
 				
+				self.render() -- Update the Character direction in screenshot
+				
 				local dialog = ActivityManager.newDialog()
 				
 				for i = 0, nbOfMessages - 1 do
