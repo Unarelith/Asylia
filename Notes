@@ -51,9 +51,6 @@
 	=> Make a save engine which will work well with Lua, useful for modding
 		=> A lua function save in each pseudo-class?
 
-- [Issue #40] Improve damage rendering on Android
-	=> Base coordinates on SDL_GetTicks() instead of global variables
-
 -> Improve battle rendering on Android
 
 -> Improve battler death color fading

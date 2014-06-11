@@ -36,6 +36,8 @@
 	<text id="Victory" text="Gagné!"/>
 	<text id="EXP" text="EXP"/>
 	<text id="Gold" text="Or"/>
+	<text id="Yes" text="Oui"/>
+	<text id="No" text="Non"/>
 	
 	<text id="Normal" text="Normal"/>
 	
@@ -49,7 +51,10 @@
 	</event>
 	
 	<event name="event3c">
-		<message text="Eh mince ! J'ai encore loupé mon bus..."/>
+		<message text="Salut, je suis un fantôme!"/>
+		<message text="Tu veux savoir un secret?"/>
+		<message text="Haha, c'est un secret."/>
+		<message text="D'accord."/>
 	</event>
 	
 	<!-- Items -->
