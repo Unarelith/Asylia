@@ -34,7 +34,7 @@ class ActivityManager {
 		static DialogActivity *newDialog() { DialogActivity *dialog = new DialogActivity(); push(dialog); return dialog; }
 		static DialogActivity *newDialogWithParent(Activity *parent) { DialogActivity *dialog = new DialogActivity(parent); push(dialog); return dialog; }
 		
-		static void startBattle(u16 id) { push(new BattleActivity(BattleManager::battles[id])); }
+		static void startBattle(u16 id) { push(new BattleActivity(TroopManager::troops[id])); }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

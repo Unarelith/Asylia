@@ -56,6 +56,8 @@ class Battle {
 		std::vector<std::pair<u8, Actor*>> actors() { return m_actors; }
 		std::vector<std::pair<u8, Enemy*>> enemies() { return m_enemies; }
 		
+		void setBattleback(Image *battleback) { m_battleback = battleback; }
+		
 		void renderBattleback();
 		
 		u16 exp() const { return m_exp; }

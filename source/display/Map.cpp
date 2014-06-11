@@ -58,9 +58,13 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 	
 	m_sublayersTex = NULL;
 	m_overlayTex = NULL;
+	
+	m_battleback = NULL;
 }
 
 Map::~Map() {
+	if(m_battleback) delete m_battleback;
+	
 	for(u8 i = 0 ; i < m_layers ; i++) {
 		delete[] m_data[i];
 	}

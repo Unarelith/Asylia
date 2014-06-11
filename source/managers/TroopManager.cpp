@@ -25,11 +25,14 @@ void TroopManager::init() {
 	XMLElement *troopElement = doc.FirstChildElement("troops").FirstChildElement("troop").ToElement();
 	while(troopElement) {
 		Troop *currentTroop;
-		std::string troopback;
+		std::string battleback;
 		
-		troopback = std::string("graphics/troopbacks/") + troopElement->Attribute("troopback") + ".jpg";
-		
-		currentTroop = new Troop(troopback);
+		if(!troopElement->Attribute("battleback", "")) {
+			battleback = std::string("graphics/battlebacks/") + troopElement->Attribute("battleback") + ".jpg";
+			currentTroop = new Troop(new Image(battleback.c_str()));
+		} else {
+			currentTroop = new Troop;
+		}
 		
 		XMLElement *enemyElement = troopElement->FirstChildElement("enemy");
 		while(enemyElement) {
@@ -38,7 +41,7 @@ void TroopManager::init() {
 			x = enemyElement->IntAttribute("x");
 			y = enemyElement->IntAttribute("y");
 			
-			currentTroop->addEnemy(TrooprManager::enemies[enemyElement->IntAttribute("id")], x, y);
+			currentTroop->addEnemy(BattlerManager::enemies[enemyElement->IntAttribute("id")], x, y);
 			
 			enemyElement = enemyElement->NextSiblingElement("enemy");
 		}

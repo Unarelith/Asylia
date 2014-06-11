@@ -45,6 +45,10 @@ class Map {
 		
 		std::vector<Event*> events() const { return m_events; }
 		
+		Image *battleback() const { return m_battleback; }
+		
+		void setBattleback(Image *battleback) { m_battleback = battleback; }
+		
 		static s32 scrollX;
 		static s32 scrollY;
 		

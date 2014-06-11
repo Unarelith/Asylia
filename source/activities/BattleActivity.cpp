@@ -17,13 +17,15 @@
  */
 #include "Asylia.hpp"
 
-BattleActivity::BattleActivity(Battle *battle) {
+BattleActivity::BattleActivity(Troop *troop) {
 	m_type = Type::BattleAct;
 	
-	m_battle = new Battle(*battle);
+	m_troop = troop;
+	m_battle = new Battle;
 	for(u8 i = 0 ; i < CharacterManager::player->teamSize() ; i++) {
 		m_battle->addActor(CharacterManager::player->getTeamMember(i));
 	}
+	m_battle->addTroop(m_troop);
 	
 	m_currentPos = 0;
 	m_arrowPos = 0;

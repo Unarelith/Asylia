@@ -20,7 +20,7 @@
 
 class BattleActivity : public Activity {
 	public:
-		BattleActivity(Battle *battle);
+		BattleActivity(Troop *troop);
 		~BattleActivity();
 		
 		void update();
@@ -45,6 +45,8 @@ class BattleActivity : public Activity {
 		};
 		
 	private:
+		Troop *m_troop;
+		
 		Battle *m_battle;
 		
 		ActorStatsWindow m_actorStatswin;

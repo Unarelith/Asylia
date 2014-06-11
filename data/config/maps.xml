@@ -7,6 +7,6 @@
 			<event name="chest0"/>
 			<event name="enemy0"/>
 		</map>
-		<map layers="3" x="1" y="0" tilesetID="0"/>
+		<map layers="3" x="1" y="0" tilesetID="0" battleback="Grassland"/>
 	</area>
 </maps>

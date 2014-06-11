@@ -17,10 +17,13 @@
  */
 #include "Asylia.hpp"
 
-Troop::Troop() {
+Troop::Troop(Image *battleback) {
+	m_battleback = battleback;
 }
 
 Troop::~Troop() {
+	if(m_battleback) delete m_battleback;
+	
 	m_enemies.clear();
 }
 

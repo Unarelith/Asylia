@@ -1,10 +1,3 @@
-- Add a class Troop ( team of enemies )
-	=> Replace battles.xml by troops.xml
-	=> Define battleback by Map, but it's possible to change it further
-	=> Edit all related files
-		-> Battle object created at each Battle
-		-> Delete BattleManager and create TroopManager
-
 - Manage disabled items in SelectableWindow
 	=> Maybe use a std::vector<std::pair<std::string, bool>>>
 		( for commands container )

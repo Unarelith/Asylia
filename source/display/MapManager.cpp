@@ -88,6 +88,8 @@ void MapManager::initMaps() {
 			
 			currentArea.push_back(new Map(mapFilename.str().c_str(), x, y, areaID, layers, tilesetID));
 			
+			currentArea.back()->setBattleback(new Image(std::string(std::string("graphics/battlebacks/") + mapElement->Attribute("battleback") + ".jpg").c_str()));
+			
 			XMLElement *eventElement = mapElement->FirstChildElement("event");
 			while(eventElement) {
 				currentArea.back()->addEvent(EventManager::getEventByName(eventElement->Attribute("name")));
