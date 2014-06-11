@@ -32,16 +32,6 @@ MessageWindow::~MessageWindow() {
 void MessageWindow::update() {
 	TextWindow::update();
 	
-	if(!m_choiceMode) {
-		if(m_messages.size() != 0 && m_messages.front().substr(0, 9) == "<Command>") {
-			m_messages.front().replace(0, 9, "");
-			m_choiceMode = true;
-			updateCmdwinSize();
-		}
-	} else {
-		m_cmdwin->update();
-	}
-	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_choiceMode) {
 			Sound::Effect::play(Sound::Effect::confirm);
@@ -50,6 +40,7 @@ void MessageWindow::update() {
 				if((*it).substr(0, 1) == "[") {
 					if((*it).substr(0, 3) != std::string("[") + to_string(m_cmdwin->pos()) + "]") {
 						m_messages.erase(it);
+						it = m_messages.begin();
 					} else {
 						(*it).replace(0, 3, "");
 					}
@@ -60,6 +51,16 @@ void MessageWindow::update() {
 		if(m_messages.size() != 0) {
 			m_messages.erase(m_messages.begin());
 		}
+	}
+	
+	if(!m_choiceMode) {
+		if(m_messages.size() != 0 && m_messages.front().substr(0, 9) == "<Command>") {
+			m_messages.front().replace(0, 9, "");
+			m_choiceMode = true;
+			updateCmdwinSize();
+		}
+	} else {
+		m_cmdwin->update();
 	}
 }
 
