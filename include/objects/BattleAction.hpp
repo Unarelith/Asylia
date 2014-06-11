@@ -25,6 +25,7 @@ class BattleAction {
 		
 		void process();
 		
+		void updateDamages();
 		bool drawDamages();
 		
 		Battler *actor() const { return m_actor; }
@@ -45,6 +46,10 @@ class BattleAction {
 		double m_variance;
 		
 		bool m_animationAtEnd;
+		
+		u16 m_dmgy;
+		s8 m_dmgvy;
+		u16 m_dmgmvcount;
 };
 
 #endif // BATTLEACTION_HPP_

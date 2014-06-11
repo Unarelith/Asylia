@@ -28,6 +28,10 @@ BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
 	m_variance = 0.20;
 	
 	m_animationAtEnd = false;
+	
+	m_dmgy = 0;
+	m_dmgvy = 0;
+	m_dmgmvcount = 0;
 }
 
 BattleAction::~BattleAction() {
@@ -46,9 +50,31 @@ void BattleAction::process() {
 	}
 }
 
-u16 dmgy = 0;
-s16 dmgvy = 0;
-u16 dmgmvcount = 0;
+void BattleAction::updateDamages() {
+	if(m_item->battleAnimation()->animationAtEnd(0)) {
+		m_dmgy = m_receiver->image()->posRect().y + m_receiver->image()->height() / 2 - 8;
+	}
+	
+	if(m_animationAtEnd) {
+		if(m_dmgmvcount < 8) {
+			m_dmgvy = -2;
+		}
+		else if(m_dmgmvcount < 30) {
+			m_dmgvy = 3;
+		} else {
+			m_animationAtEnd = false;
+			m_dmgy = 0;
+			m_dmgvy = 0;
+			m_dmgmvcount = 0;
+		}
+		
+		m_dmgy += m_dmgvy;
+		
+		m_dmgmvcount += abs(m_dmgvy);
+		
+	}
+}
+
 bool BattleAction::drawDamages() {
 	if(m_actor->hp() == 0) return true;
 	if(!m_receiver) return true;
@@ -59,33 +85,19 @@ bool BattleAction::drawDamages() {
 		
 		m_animationAtEnd = true;
 		
-		dmgy = m_receiver->image()->posRect().y + m_receiver->image()->height() / 2 - 8;
 	} else {
 		if(!m_animationAtEnd) m_item->battleAnimation()->play(m_receiver);
 	}
 	
 	if(m_animationAtEnd) {
-		if(dmgmvcount < 8) {
-			dmgvy = -2;
-		}
-		else if(dmgmvcount < 30) {
-			dmgvy = 3;
-		} else {
-			m_animationAtEnd = false;
-			dmgy = 0;
-			dmgvy = 0;
-			dmgmvcount = 0;
+		if(m_dmgmvcount >= 30) {
 			return true;
 		}
 		
-		dmgy += dmgvy;
-		
-		dmgmvcount += abs(dmgvy);
-		
 		u16 dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - log10(m_damages + 10) * 9 / 2;
-		Interface::defaultFont->printDamages(m_damages, dmgx, dmgy - 8, Color(255, 42, 36));
+		Interface::defaultFont->printDamages(m_damages, dmgx, m_dmgy - 8, Color(255, 42, 36));
 	}
-		
+	
 	return false;
 }
 

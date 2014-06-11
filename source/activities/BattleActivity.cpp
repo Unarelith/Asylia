@@ -238,6 +238,7 @@ void BattleActivity::update() {
 			m_processingAction = true;
 		} else {
 			m_battle->checkDead();
+			m_battle->updateAction();
 		}
 	}
 	

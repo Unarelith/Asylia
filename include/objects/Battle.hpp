@@ -33,6 +33,7 @@ class Battle {
 		
 		void pushAction(Battler *actor, Battler *receiver, Item *item);
 		void processAction();
+		void updateAction() { m_actions.back()->updateDamages(); }
 		bool drawAction() { return m_actions.back()->drawDamages(); }
 		void popAction() { m_actions.pop_back(); }
 		bool actionStackEmpty() { return (m_actions.size() == 0); }
