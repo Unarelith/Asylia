@@ -1,5 +1,5 @@
-- Improve DialogWindow: When '<Command>' is in the first message
-	it's possible to see '<Command>' during a millisecond
+- Issues:
+	* In battles, BattleActions are not sorted correctly
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml

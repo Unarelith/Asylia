@@ -6,14 +6,14 @@ event3c.init = function()
 	event3c.addMessages = function()
 		local dialog = ActivityManager.newDialog()
 		
-		dialog:addMessage(_t("event3c-0"))
-		
 		dialog:addMessage("<Command>" .. _t("event3c-1"))
 		dialog:addCommand(_t("Yes"))
 		dialog:addCommand(_t("No"))
 		
 		dialog:addMessage("[0]" .. _t("event3c-2"))
 		dialog:addMessage("[1]" .. _t("event3c-3"))
+		
+		dialog:update();
 	end
 	
 	event3c.movements = {

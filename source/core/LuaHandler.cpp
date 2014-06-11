@@ -99,6 +99,7 @@ void LuaHandler::bindClasses() {
 									   .set("animationAtEnd", &Sprite::animationAtEnd);
 	
 	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
+													   .set("update", &DialogActivity::update)
 													   .set("addMessage", &DialogActivity::addMessage)
 													   .set("addCommand", &DialogActivity::addCommand);
 	
