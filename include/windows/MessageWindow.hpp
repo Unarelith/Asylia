@@ -23,7 +23,7 @@ class MessageWindow : public TextWindow {
 		MessageWindow();
 		~MessageWindow();
 		
-		void addMessage(std::string msg) { m_messages.push(msg); }
+		void addMessage(std::string msg) { m_messages.push_back(msg); }
 		void addCommand(std::string msg) { m_cmdwin->addCommand(msg); }
 		
 		void update();
@@ -31,10 +31,10 @@ class MessageWindow : public TextWindow {
 		
 		void draw();
 		
-		std::queue<std::string> messages() const { return m_messages; }
+		std::vector<std::string> messages() const { return m_messages; }
 		
 	private:
-		std::queue<std::string> m_messages;
+		std::vector<std::string> m_messages;
 		
 		CommandWindow *m_cmdwin;
 		

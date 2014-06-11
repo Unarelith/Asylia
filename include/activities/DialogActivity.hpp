@@ -24,7 +24,7 @@ class DialogActivity : public Activity {
 		~DialogActivity();
 		
 		void addMessage(std::string msg) { m_msgwin->addMessage(msg); }
-		void clearMessages() { while(m_msgwin->messages().size() != 0) m_msgwin->messages().pop(); }
+		void clearMessages() { m_msgwin->messages().clear(); }
 		
 		void addCommand(std::string cmd) { m_msgwin->addCommand(cmd); }
 		

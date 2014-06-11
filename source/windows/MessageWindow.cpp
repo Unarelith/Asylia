@@ -34,6 +34,7 @@ void MessageWindow::update() {
 	
 	if(!m_choiceMode) {
 		if(m_messages.size() != 0 && m_messages.front().substr(0, 9) == "<Command>") {
+			m_messages.front().replace(0, 9, "");
 			m_choiceMode = true;
 			updateCmdwinSize();
 		}
@@ -41,16 +42,23 @@ void MessageWindow::update() {
 		m_cmdwin->update();
 	}
 	
-	while(m_messages.front().substr(0, 1) == "[" && m_messages.front().substr(0, 3) != std::string("[") + to_string(m_cmdwin->pos()) + "]") m_messages.pop();
-	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_choiceMode) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			m_choiceMode = false;
+			for(std::vector<std::string>::iterator it = m_messages.begin() ; it != m_messages.end() ; it++) {
+				if((*it).substr(0, 1) == "[") {
+					if((*it).substr(0, 3) != std::string("[") + to_string(m_cmdwin->pos()) + "]") {
+						m_messages.erase(it);
+					} else {
+						(*it).replace(0, 3, "");
+					}
+				}
+			}
 		}
 		
 		if(m_messages.size() != 0) {
-			m_messages.pop();
+			m_messages.erase(m_messages.begin());
 		}
 	}
 }
@@ -62,7 +70,7 @@ void MessageWindow::updateCmdwinSize() {
 	}
 	
 	m_cmdwin->width(maxSize * 20 + 40);
-	m_cmdwin->height(m_cmdwin->commands().size() * 32 + 40);
+	m_cmdwin->height(m_cmdwin->commands().size() * 32 + 32);
 	m_cmdwin->y(m_cmdwin->y() - m_cmdwin->height());
 }
 

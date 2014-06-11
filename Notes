@@ -1,7 +1,8 @@
 - Add choices in DialogWindow
 	=> Yes/No style but with variable text
-		=> Bug with yes: segfault
-		=> Bug with no: blinking
+		* Issue: We can see during a millisecond the text we are normally
+			not able to see
+		* Issue: Remove '<Command>' '[0]' and [1] in text displayed
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
