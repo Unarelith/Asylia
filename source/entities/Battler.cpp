@@ -36,6 +36,13 @@ Battler::Battler(const Battler &battler) {
 	m_atk = battler.m_atk;
 	m_def = battler.m_def;
 	
+	m_agi = battler.m_agi;
+	m_vit = battler.m_vit;
+	m_dex = battler.m_dex;
+	m_str = battler.m_str;
+	m_wis = battler.m_wis;
+	m_int = battler.m_int;
+	
 	m_state = battler.m_state;
 	
 	m_type = battler.m_type;

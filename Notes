@@ -1,6 +1,3 @@
-- Issues:
-	* In battles, BattleActions are not sorted correctly
-
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further

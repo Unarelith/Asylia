@@ -82,7 +82,7 @@ class Battler {
 		u16 growWis(u16 wis, u16 level) { return wis + level * 0.38 * wis; }
 		u16 growInt(u16 intell, u16 level) { return intell + level * 0.38 * intell; }
 		
-		u16 speed() { return 4 * m_agi + 2 * m_vit; }
+		u16 speed() { return 2 * m_agi + m_vit; }
 		
 		u16 expGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.20 * (40 * std::exp(m_level) + 1)); }
 		u16 goldGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.15 * (40 * m_level + 1)); }
