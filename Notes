@@ -1,3 +1,7 @@
+- Manage disabled items in SelectableWindow
+	=> Maybe use a std::vector<std::pair<std::string, bool>>>
+		( for commands container )
+
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further
@@ -6,7 +10,7 @@
 		-> Delete BattleManager and create TroopManager
 
 - Create a class system for Actors
-	=> There is Weapon and Armor that are only for one class
+	=> Some Weapons and Armors are only available for a single class
 
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
@@ -72,8 +76,6 @@
 	=> Add a class 'LuaMod'
 	=> Create a class 'ModLibrary' which will provide all the functions
 	   required to develop a mod in Lua
-
-- Manage disabled items in SelectableWindow ( maybe use a std::vector<std::pair<std::string, bool>>> for commands container )
 
 - Improve Makefile:
 	=> For 'make', when there is all .o in 'build', display '[5/5]' instead of '[5/1]'
