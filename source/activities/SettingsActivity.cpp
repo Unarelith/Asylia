@@ -18,17 +18,17 @@
 #include "Asylia.hpp"
 
 SettingsActivity::SettingsActivity(Activity *parent) : Activity(parent) {
-	m_settings = new CommandWindow(150, 160, 150, 96);
+	m_settings = new CommandWindow(150, 160, 150);
 	
 	m_settings->addCommand("Sound");
 	m_settings->addCommand("Language");
 	
-	m_sound = new CommandWindow(300, 160, 150, 96);
+	m_sound = new CommandWindow(300, 160, 150);
 	
 	m_sound->addCommand("ON");
 	m_sound->addCommand("OFF");
 	
-	m_language = new CommandWindow(300, 160, 150, 96);
+	m_language = new CommandWindow(300, 160, 150);
 	
 	m_language->addCommand("Français");
 	m_language->addCommand("English");

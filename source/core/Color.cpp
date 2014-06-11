@@ -20,7 +20,7 @@
 Color Color::white(255, 255, 255);
 Color Color::black(0, 0, 0);
 Color Color::system(192, 224, 255);
-Color Color::disabled(255, 255, 255, 128);
+Color Color::disabled(192, 204, 195);
 Color Color::red(237, 52, 36);
 Color Color::green(52, 255, 36);
 

@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-CommandWindow::CommandWindow(s16 x, s16 y, u16 width, u16 height, bool horizontal, bool centered) : SelectableWindow(x, y, width, height) {
+CommandWindow::CommandWindow(s16 x, s16 y, u16 width, bool horizontal, bool centered) : SelectableWindow(x, y, width, (horizontal)?(64):(32)) {
 	m_horizontal = horizontal;
 	m_centered = centered;
 	
@@ -26,12 +26,11 @@ CommandWindow::CommandWindow(s16 x, s16 y, u16 width, u16 height, bool horizonta
 	m_pos = 0;
 }
 
-CommandWindow::CommandWindow(u16 width, std::vector<std::string> commands) : SelectableWindow(0, 0, width, commands.size() * 32 + 32) {
+CommandWindow::CommandWindow(u16 width) : SelectableWindow(0, 0, width, 32) {
 	m_horizontal = false;
 	m_centered = false;
 	
-	m_itemMax = commands.size();
-	m_commands = commands;
+	m_itemMax = 0;
 	
 	m_pos = 0;
 }
@@ -40,7 +39,7 @@ CommandWindow::~CommandWindow() {
 }
 
 void CommandWindow::drawItem(u8 pos) {
-	Interface::defaultFont->printScaled(_t(m_commands[pos]).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE);
+	Interface::defaultFont->printScaled(_t(m_commands[pos].first).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE, (!m_commands[pos].second)?(Color::white):(Color::disabled));
 }
 
 void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
@@ -50,7 +49,7 @@ void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
 	x = pos % m_columnMax * (width + 32) + 16;
 	y = pos / m_columnMax * 32 + 16;
 	
-	Interface::defaultFont->printCentered(m_commands[pos].c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE);
+	Interface::defaultFont->printCentered(m_commands[pos].first.c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(Color::white):(Color::disabled));
 }
 
 void CommandWindow::draw(bool cursor) {

@@ -34,49 +34,51 @@ MenuActivity::~MenuActivity() {
 }
 
 void MenuActivity::loadCommandWindow() {
-	std::vector<std::string> choices;
+	m_cmdwin = new CommandWindow(150);
 	
-	choices.push_back(_t("Items"));
-	choices.push_back(_t("Skills"));
-	choices.push_back(_t("Equip"));
-	choices.push_back(_t("State"));
-	choices.push_back(_t("Save"));
-	choices.push_back(_t("Settings"));
-	choices.push_back(_t("Quit"));
-	
-	m_cmdwin = new CommandWindow(150, choices);
+	m_cmdwin->addCommand("Items");
+	m_cmdwin->addCommand("Skills", true);
+	m_cmdwin->addCommand("Equip");
+	m_cmdwin->addCommand("State", true);
+	m_cmdwin->addCommand("Save", true);
+	m_cmdwin->addCommand("Settings");
+	m_cmdwin->addCommand("Quit");
 }
 
 void MenuActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-		Sound::Effect::play(Sound::Effect::confirm);
-		
-		if(m_actorChoiceMode) {
-			m_actorChoiceMode = false;
-			
-			switch(m_cmdwin->pos()) {
-				case 1: break;
-				case 2:
-					ActivityManager::push(new EquipActivity(m_actorChoicewin->pos(), this));
-					break;
-				case 3: break;
-				default: break;
-			}
+		if(m_cmdwin->disabled(m_cmdwin->pos())) {
+			Sound::Effect::play(Sound::Effect::blocked);
 		} else {
-			switch(m_cmdwin->pos()) {
-				case 0:
-					ActivityManager::push(new ItemActivity(this));
-					break;
-				case 4: break;
-				case 5:
-					ActivityManager::push(new SettingsActivity(this));
-					break;
-				case 6:
-					ActivityManager::push(new EndActivity);
-					break;
-				default:
-					m_actorChoiceMode = true;
-					break;
+			Sound::Effect::play(Sound::Effect::confirm);
+			
+			if(m_actorChoiceMode) {
+				m_actorChoiceMode = false;
+				
+				switch(m_cmdwin->pos()) {
+					case 1: break;
+					case 2:
+						ActivityManager::push(new EquipActivity(m_actorChoicewin->pos(), this));
+						break;
+					case 3: break;
+					default: break;
+				}
+			} else {
+				switch(m_cmdwin->pos()) {
+					case 0:
+						ActivityManager::push(new ItemActivity(this));
+						break;
+					case 4: break;
+					case 5:
+						ActivityManager::push(new SettingsActivity(this));
+						break;
+					case 6:
+						ActivityManager::push(new EndActivity);
+						break;
+					default:
+						m_actorChoiceMode = true;
+						break;
+				}
 			}
 		}
 	}

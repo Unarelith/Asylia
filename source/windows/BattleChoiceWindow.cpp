@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, GameWindow::main->width(), 64, true, true) {
+BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, GameWindow::main->width(), true, true) {
 	addCommand(_t("Fight"));
 	addCommand(_t("Escape"));
 	

@@ -17,11 +17,11 @@
  */
 #include "Asylia.hpp"
 
-BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, GameWindow::main->width() / 4, 160) {
-	addCommand(_t("Attack"));
-	addCommand(_t("Skill"));
-	addCommand(_t("Defend"));
-	addCommand(_t("Item"));
+BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, GameWindow::main->width() / 4) {
+	addCommand("Attack");
+	addCommand("Skill", true);
+	addCommand("Defend", true);
+	addCommand("Item");
 }
 
 BattleActionWindow::~BattleActionWindow() {

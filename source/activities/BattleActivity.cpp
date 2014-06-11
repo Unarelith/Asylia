@@ -88,6 +88,11 @@ void BattleActivity::update() {
 		m_battle->getActor(m_currentPos)->blink();
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+			if(m_battleActionwin.disabled(m_battleActionwin.pos())) {
+				Sound::Effect::play(Sound::Effect::blocked);
+				return;
+			}
+			
 			Sound::Effect::play(Sound::Effect::confirm);
 			switch(m_battleActionwin.pos()) {
 				case 0:

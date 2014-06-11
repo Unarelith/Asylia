@@ -67,7 +67,7 @@ void MessageWindow::update() {
 void MessageWindow::updateCmdwinSize() {
 	u16 maxSize = 0;
 	for(auto &it : m_cmdwin->commands()) {
-		if(it.size() > maxSize) maxSize = it.size();
+		if(std::get<0>(it).size() > maxSize) maxSize = std::get<0>(it).size();
 	}
 	
 	m_cmdwin->width(maxSize * 20 + 40);

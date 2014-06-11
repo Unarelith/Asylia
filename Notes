@@ -1,7 +1,3 @@
-- Manage disabled items in SelectableWindow
-	=> Maybe use a std::vector<std::pair<std::string, bool>>>
-		( for commands container )
-
 - Create a class system for Actors
 	=> Some Weapons and Armors are only available for a single class
 

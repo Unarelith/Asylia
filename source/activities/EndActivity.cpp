@@ -18,13 +18,11 @@
 #include "Asylia.hpp"
 
 EndActivity::EndActivity(bool disableCancel) {
-	std::vector<std::string> choices;
+	m_cmdwin = new CommandWindow(192);
+	if(!disableCancel) m_cmdwin->addCommand("Cancel");
+	m_cmdwin->addCommand("TitleScreen");
+	m_cmdwin->addCommand("Quit");
 	
-	if(!disableCancel) choices.push_back(_t("Cancel"));
-	choices.push_back(_t("TitleScreen"));
-	choices.push_back(_t("Quit"));
-	
-	m_cmdwin = new CommandWindow(192, choices);
 	m_cmdwin->x(GameWindow::main->width() / 2 - m_cmdwin->width() / 2);
 	m_cmdwin->y(GameWindow::main->height() / 2 - m_cmdwin->height() / 2);
 }
@@ -36,6 +34,11 @@ void EndActivity::update() {
 	m_cmdwin->update();
 	
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+		if(m_cmdwin->disabled(m_cmdwin->pos())) {
+			Sound::Effect::play(Sound::Effect::blocked);
+			return;
+		}
+		
 		Sound::Effect::play(Sound::Effect::confirm);
 		
 		u8 n = m_cmdwin->pos();
