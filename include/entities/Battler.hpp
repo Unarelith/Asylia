@@ -87,7 +87,7 @@ class Battler {
 		u16 expGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.20 * (40 * std::exp(m_level) + 1)); }
 		u16 goldGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.15 * (40 * m_level + 1)); }
 		
-		s16 expRemainingToLevelUp() { return m_level * 756 - m_exp; }
+		s16 expRemainingToLevelUp() { return m_level * 656 - m_exp; }
 		
 		void levelUp();
 		

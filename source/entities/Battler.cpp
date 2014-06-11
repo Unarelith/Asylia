@@ -135,5 +135,14 @@ void Battler::levelUp() {
 	m_str = growStr(m_str, 1);
 	m_wis = growWis(m_wis, 1);
 	m_int = growInt(m_int, 1);
+	
+	m_basehp = 2 * m_str + 3 * m_vit + 4 * m_wis;
+	m_basesp = 2 * m_dex + 3 * m_wis + 4 * m_int;
+	
+	m_hp = m_basehp;
+	m_sp = m_basesp;
+	
+	m_atk = 0.2 * m_vit + 0.3 * m_dex + 0.5 * m_str;
+	m_def = 0.2 * m_int + 0.3 * m_vit + 0.5 * m_agi;
 }
 
