@@ -92,9 +92,11 @@ using namespace tinyxml2;
 #include "Actor.hpp"
 #include "BattlerManager.hpp"
 
+#include "Troop.hpp"
+#include "TroopManager.hpp"
+
 #include "BattleAction.hpp"
 #include "Battle.hpp"
-#include "BattleManager.hpp"
 
 #include "Window.hpp"
 #include "TextWindow.hpp"

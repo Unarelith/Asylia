@@ -19,7 +19,7 @@
 
 Battle::Battle(const Battle &battle) {
 	for(auto &it : battle.m_actors) {
-		m_actors.push_back(std::make_pair(it.first, new Actor(*it.second)));
+		m_actors.push_back(it);
 	}
 	
 	for(auto &it : battle.m_enemies) {
@@ -35,11 +35,11 @@ Battle::Battle(const Battle &battle) {
 	m_gold = battle.m_gold;
 }
 
-Battle::Battle(std::string battleback) {
+Battle::Battle() {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 	
-	m_battleback = new Image(battleback.c_str());
+	m_battleback = new Image(MapManager::currentMap->battleback());
 	
 	m_exp = 0;
 	m_gold = 0;
@@ -48,14 +48,15 @@ Battle::Battle(std::string battleback) {
 Battle::~Battle() {
 	delete m_battleback;
 	
-	while(m_actors.size() != 0) {
-		delete m_actors.back().second;
-		m_actors.pop_back();
-	}
-	
 	while(m_enemies.size() != 0) {
 		delete m_enemies.back().second;
 		m_enemies.pop_back();
+	}
+}
+
+void Battle::addTroop(Troop *troop) {
+	for(u8 i = 0 ; i < troop->size() ; i++) {
+		addEnemy(troop->getEnemy(i), troop->getEnemyX(i), troop->getEnemyY(i));
 	}
 }
 

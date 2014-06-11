@@ -1,7 +1,3 @@
-- Manage disabled items in SelectableWindow
-	=> Maybe use a std::vector<std::pair<std::string, bool>>>
-		( for commands container )
-
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further
@@ -9,12 +5,17 @@
 		-> Battle object created at each Battle
 		-> Delete BattleManager and create TroopManager
 
+- Manage disabled items in SelectableWindow
+	=> Maybe use a std::vector<std::pair<std::string, bool>>>
+		( for commands container )
+
 - Create a class system for Actors
 	=> Some Weapons and Armors are only available for a single class
 
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
-		=> Create a super-optimized function very fast in Font
+		=> Render once "50 -> 45" for example
+			-> ATK and DEF arrow must be at the same position
 
 - [Issue #35] Add music and sound effects
 	=> Convert all music to mp3 and test reading on android

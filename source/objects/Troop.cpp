@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  BattleManager.hpp
+ *       Filename:  Troop.cpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  27/04/2014 21:09:54
+ *        Created:  11/06/2014 15:32:37
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,14 +15,12 @@
  *
  * =====================================================================================
  */
-#ifndef BATTLEMANAGER_HPP_
-#define BATTLEMANAGER_HPP_
+#include "Asylia.hpp"
 
-namespace BattleManager {
-	void init();
-	void free();
-	
-	extern std::vector<Battle*> battles;
-};
+Troop::Troop() {
+}
 
-#endif // BATTLEMANGER_HPP_
+Troop::~Troop() {
+	m_enemies.clear();
+}
+

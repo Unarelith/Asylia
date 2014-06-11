@@ -72,6 +72,8 @@ class Map {
 		Uint32 m_pixelFormat;
 		
 		std::vector<Event*> m_events;
+		
+		Image *m_battleback;
 };
 
 #endif // MAP_HPP_

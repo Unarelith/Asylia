@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <maps startarea="0" startx="0" starty="0">
 	<area>
-		<map layers="3" x="0" y="0" tilesetID="0">
+		<map layers="3" x="0" y="0" tilesetID="0" battleback="Grassland">
 			<event name="event0"/>
 			<event name="event3c"/>
 			<event name="chest0"/>

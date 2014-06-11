@@ -10,7 +10,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    actors.xml
    animations.xml
    armors.xml
-   battles.xml
    enemies.xml
    events.xml
    items.xml
@@ -19,6 +18,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    skills.xml
    spriteAnimations.xml
    tilesets.xml
+   troops.xml
    weapons.xml
   }
   events=events {
@@ -125,7 +125,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
   managers=managers {
    ActivityManager.hpp
-   BattleManager.hpp
    BattlerManager.hpp
    CharacterManager.hpp
    EventManager.hpp
@@ -133,6 +132,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    MapManager.hpp
    SaveManager.hpp
    SpriteAnimationManager.hpp
+   TroopManager.hpp
   }
   objects=objects {
    Armor.hpp
@@ -144,6 +144,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    ItemManager.hpp
    Keyboard.hpp
    Skill.hpp
+   Troop.hpp
    Weapon.hpp
   }
   windows=windows {
@@ -210,13 +211,13 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   }
   managers=managers {
    ActivityManager.cpp
-   BattleManager.cpp
    BattlerManager.cpp
    CharacterManager.cpp
    EventManager.cpp
    ItemManager.cpp
    LanguageManager.cpp
    SaveManager.cpp
+   TroopManager.cpp
   }
   objects=objects {
    Armor.cpp
@@ -227,6 +228,7 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Item.cpp
    Keyboard.cpp
    Skill.cpp
+   Troop.cpp
    Weapon.cpp
   }
   windows=windows {

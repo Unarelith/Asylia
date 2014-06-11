@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<battles>
-	<battle battleback="Grassland">
+<troops>
+	<troop battleback="">
 		<enemy id="0" x="100" y="160"/>
 		<enemy id="1" x="150" y="60"/>
 		<enemy id="0" x="450" y="160"/>
-	</battle>
-</battles>
+	</troop>
+</troops>

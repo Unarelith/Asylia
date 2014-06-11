@@ -21,10 +21,12 @@
 class Battle {
 	public:
 		Battle(const Battle &battle);
-		Battle(std::string battleback);
+		Battle();
 		~Battle();
 		
 		void addActor(Actor *actor) { m_actors.push_back(std::make_pair(m_actorsCount, new Actor(*actor))); m_actorsCount++; }
+		
+		void addTroop(Troop *troop);
 		void addEnemy(Enemy *enemy, s16 x, s16 y);
 		
 		void drawArrow(Battler *battler);
