@@ -28,10 +28,11 @@ VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() 
 	
 	CharacterManager::player->inventory()->add(&m_inventory);
 	
-	for(auto &it : m_battle->actors()) {
-		it.second->gainExp(m_battle->exp() / m_battle->actors().size());
+	for(u8 i = 0 ; i < CharacterManager::player->teamSize() ; i++) {
+		CharacterManager::player->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
 	}
 	CharacterManager::player->gainGold(m_battle->gold());
+	
 	Sound::Effect::play(Sound::Effect::confirm);
 }
 
