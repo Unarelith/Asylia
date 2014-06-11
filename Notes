@@ -1,3 +1,27 @@
+- Improve a lot the way to display DialogWindow
+	=> Remove ActivityManager.newDialog()
+	=> Remove std::vector<std::string> m_messages
+		-> Replace by std::vector<Message*> m_messages
+		-> Create Message class, attributes:
+			* m_string
+			* m_scope
+			* m_scopePos
+			* m_type
+				~ SimpleMessage
+				~ Choice
+					+ m_choices
+				~ Battle
+					+ m_troopID
+		-> Create a function Message *getMessage(u16 scope, u16 scopePos);
+	=> Improve event scripts
+	=> Add conditions for messages ( in Lua )
+		-> Useful for Quests
+
+- Create Quest class and QuestManager
+	=> Create 'quests.xml' with type, name, description, gold and exp
+		-> 'type' can be Talk, Bring, Hunt, HuntAndBring, FindAndBring
+	=> Add a 'Quests' entry in menu
+
 - Create a class system for Actors
 	=> Some Weapons and Armors are only available for a single class
 
@@ -129,9 +153,6 @@
 		=>>>>>>> It will keep everything in game state, useful for auto save
 
 - Improve TitleScreen
-
-- Add conditions in messages for CharacterEvents
-	=> Useful for Quests
 
 - Add colors in text
 	=> BBCode-like parser in a special Font function
