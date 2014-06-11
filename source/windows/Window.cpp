@@ -67,11 +67,13 @@ void Window::draw(bool cursor) {
 	}
 }
 
-void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2) {
+void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2, u16 max) {
 	Image statImg;
 	
 	Interface::defaultFont->printScaled(statName.c_str(), m_x + x, m_y + y, nameWidth, 28, FONT_LARGE, Color::system);
-	Interface::defaultFont->printToImage(to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
+	
+	if(max == 0) Interface::defaultFont->printToImage(to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
+	else Interface::defaultFont->printToImage(std::string(to_string(statValue) + "/" + to_string(max)).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
 	
 	statImg.render(statImg.posRect().x - statImg.width());
 }
@@ -88,12 +90,16 @@ void Window::printLevel(Battler *battler, s16 x, s16 y, s16 x2) {
 	printStat(x, y, _t("Lv"), battler->level(), 25, x2);
 }
 
-void Window::printHP(Battler *battler, s16 x, s16 y, s16 x2) {
-	printStat(x, y, _t("HP"), battler->hp(), 60, x2);
+void Window::printHP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum) {
+	printStat(x, y, _t("HP"), battler->hp(), 60, x2, (onMaximum)?(battler->basehp()):(0));
 }
 
-void Window::printSP(Battler *battler, s16 x, s16 y, s16 x2) {
-	printStat(x, y, _t("SP"), battler->sp(), 60, x2);
+void Window::printSP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum) {
+	printStat(x, y, _t("SP"), battler->sp(), 60, x2, (onMaximum)?(battler->basesp()):(0));
+}
+
+void Window::printExp(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum) {
+	printStat(x, y, _t("EXP"), battler->exp(), 60, x2, (onMaximum)?(battler->exp() + battler->expRemainingToLevelUp()):(0));
 }
 
 void Window::drawBattler(Battler *battler, s16 x, s16 y) {

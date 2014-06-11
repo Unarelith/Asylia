@@ -34,12 +34,13 @@ class Window {
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
 		
-		void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width);
+		void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width, u16 max = 0);
 		void printName(Battler *battler, s16 x, s16 y, u16 width);
 		void printState(Battler *battler, s16 x, s16 y, u16 width);
 		void printLevel(Battler *battler, s16 x, s16 y, s16 x2);
-		void printHP(Battler *battler, s16 x, s16 y, s16 x2);
-		void printSP(Battler *battler, s16 x, s16 y, s16 x2);
+		void printHP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
+		void printSP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
+		void printExp(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
 		void drawBattler(Battler *battler, s16 x, s16 y);
 		void printItem(Item *item, u16 count, s16 x, s16 y, u16 width);
 		

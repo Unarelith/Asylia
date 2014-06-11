@@ -1,3 +1,9 @@
+- Add choices in DialogWindow
+	=> Yes/No style but with variable text
+
+- Finish ActorChoiceWindow:
+	* Experience / Class
+
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
 	=> Define battleback by Map, but it's possible to change it further
@@ -12,7 +18,6 @@
 				OR
 		=> Create a super-optimized function displaying it very fastly
 			in Font
-	* Add a parameter 'bool seeMaximum' to see '25/125' instead of '25'
 
 - [Issue #35] Add music and sound effects
 	=> Convert all music to mp3 and test reading on android
@@ -145,9 +150,6 @@
 
 - Add conditions in messages for CharacterEvents
 	=> Useful for Quests
-
-- Add choices in DialogWindow
-	=> Yes/No style but with variable text
 
 - Add colors in text
 	=> BBCode-like parser in a special Font function

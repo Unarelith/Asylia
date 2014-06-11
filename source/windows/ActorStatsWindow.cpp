@@ -43,9 +43,9 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, GameWindow::main->height() - actor->image()->height());
 	
 	printName(actor, 20 + m_width / 4 * pos, 20, m_width - 40);
+	printState(actor, 20 + m_width / 4 * pos, 116, m_width - 40);
 	printHP(actor, 20 + m_width / 4 * pos, 52, m_width / 4 * (pos + 1) - 20);
 	printSP(actor, 20 + m_width / 4 * pos, 84, m_width / 4 * (pos + 1) - 20);
-	printState(actor, 20 + m_width / 4 * pos, 116, m_width - 40);
 }
 
 void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {

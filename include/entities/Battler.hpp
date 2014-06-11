@@ -52,6 +52,8 @@ class Battler {
 		
 		u8 state() const { return (u8)m_state; }
 		
+		u16 exp() const { return m_exp; }
+		
 		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }
 		
 		void hurt(u16 damages) { m_hp -= damages; if(m_hp < 0) m_hp = 0; }
@@ -82,10 +84,10 @@ class Battler {
 		
 		u16 speed() { return 4 * m_agi + 2 * m_vit; }
 		
-		u16 expGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.20 * (40 * exp(m_level) + 1)); }
+		u16 expGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.20 * (40 * std::exp(m_level) + 1)); }
 		u16 goldGivenIfKilled() { return 40 * m_level + 1 + rand() % int(0.15 * (40 * m_level + 1)); }
 		
-		s16 expRemainingToLevelUp() { return m_level * (40 + 1 + rand() % int(0.20 * 41)) - m_exp; }
+		s16 expRemainingToLevelUp() { return m_level * 756 - m_exp; }
 		
 		void levelUp();
 		
