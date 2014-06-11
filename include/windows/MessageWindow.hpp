@@ -24,14 +24,21 @@ class MessageWindow : public TextWindow {
 		~MessageWindow();
 		
 		void addMessage(std::string msg) { m_messages.push(msg); }
+		void addCommand(std::string msg) { m_cmdwin->addCommand(msg); }
 		
 		void update();
+		void updateCmdwinSize();
+		
 		void draw();
 		
 		std::queue<std::string> messages() const { return m_messages; }
 		
 	private:
 		std::queue<std::string> m_messages;
+		
+		CommandWindow *m_cmdwin;
+		
+		bool m_choiceMode;
 };
 
 #endif // MESSAGEWINDOW_HPP_

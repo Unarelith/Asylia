@@ -10,17 +10,21 @@ CharacterEvent.new = function(eventName, nbOfMessages)
 			self.character:render()
 		end
 		
+		self.addMessages = function()
+			local dialog = ActivityManager.newDialog()
+			
+			for i = 0, nbOfMessages - 1 do
+				dialog:addMessage(_t(eventName .. "-" .. tostring(i)))
+			end
+		end
+		
 		self.action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
 				self.character:setDirection(3 - CharacterManager.player():getDirection())
 				
 				self.render() -- Update the Character direction in screenshot
 				
-				local dialog = ActivityManager.newDialog()
-				
-				for i = 0, nbOfMessages - 1 do
-					dialog:addMessage(_t(eventName .. "-" .. tostring(i)))
-				end
+				self.addMessages()
 			end
 		end
 		

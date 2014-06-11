@@ -28,11 +28,17 @@ class Window {
 		void drawCursor(s16 x, s16 y, u16 width, u16 height);
 		void draw(bool cursor = true);
 		
-		void x(s16 x) { m_x = x; }
-		void y(s16 y) { m_y = y; }
+		s16 x() const { return m_x; }
+		s16 y() const { return m_y; }
 		
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
+		
+		void x(s16 x) { m_x = x; }
+		void y(s16 y) { m_y = y; }
+		
+		void width(u16 width) { m_width = width; }
+		void height(u16 height) { m_height = height; }
 		
 		void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width, u16 max = 0);
 		void printName(Battler *battler, s16 x, s16 y, u16 width);

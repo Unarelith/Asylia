@@ -1,5 +1,7 @@
 - Add choices in DialogWindow
 	=> Yes/No style but with variable text
+		=> Bug with yes: segfault
+		=> Bug with no: blinking
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml
@@ -8,13 +10,12 @@
 		-> Battle object created at each Battle
 		-> Delete BattleManager and create TroopManager
 
+- Create a class system for Actors
+	=> There is Weapon and Armor that are only for one class
+
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
-		=> Always render the arrow at the same position
-			not relative with numbers anymore
-				OR
-		=> Create a super-optimized function displaying it very fastly
-			in Font
+		=> Create a super-optimized function very fast in Font
 
 - [Issue #35] Add music and sound effects
 	=> Convert all music to mp3 and test reading on android
