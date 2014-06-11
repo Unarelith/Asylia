@@ -39,6 +39,10 @@ void DialogActivity::update() {
 		ActivityManager::pop();
 		ActivityManager::top()->update();
 	}
+	
+	if(ActivityManager::top()->type() == Activity::Type::BattleAct) {
+		m_msgwin->eraseCurrentMessage();
+	}
 }
 
 void DialogActivity::render() {

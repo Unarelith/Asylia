@@ -31,6 +31,8 @@ class MessageWindow : public TextWindow {
 		
 		void draw();
 		
+		void eraseCurrentMessage() { m_messages.erase(m_messages.begin()); }
+		
 		std::vector<std::string> messages() const { return m_messages; }
 		
 	private:

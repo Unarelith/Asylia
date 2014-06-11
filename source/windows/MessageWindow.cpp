@@ -57,8 +57,9 @@ void MessageWindow::update() {
 	}
 	
 	if(m_messages.size() != 0 && m_messages.front().substr(0, 8) == "<Battle>") {
-		ActivityManager::startBattle(atoi(m_messages.front().substr(8, m_messages.front().size() - 8).c_str()));
-		m_messages.erase(m_messages.begin());
+		int troopID = atoi(m_messages.front().substr(8, m_messages.front().size() - 8).c_str());
+		ActivityManager::startBattle(troopID);
+		return;
 	}
 	
 	if(!m_choiceMode) {
@@ -84,8 +85,10 @@ void MessageWindow::updateCmdwinSize() {
 }
 
 void MessageWindow::draw() {
-	TextWindow::draw(m_messages.front());
-	
-	if(m_choiceMode) m_cmdwin->draw();
+	if(m_messages.size() > 0) {
+		TextWindow::draw(m_messages.front());
+		
+		if(m_choiceMode) m_cmdwin->draw();
+	}
 }
 
