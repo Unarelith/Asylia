@@ -2,7 +2,7 @@
 <events>
 	<!-- Map (0;0;0) -->
 	<event type="Character" name="event0" appearance="Fighter02" x="5" y="5" direction="0"/>
-	<event type="Character" name="event3c" appearance="Fighter02" x="10" y="10" direction="1"/>
+	<event type="Character" name="event3c" appearance="Undead01" x="10" y="10" direction="1"/>
 	<event type="Chest" name="chest0" x="2" y="0" chestType="1"/>
 	<event type="Character" name="enemy0" appearance="Devil03" x="10" y="6" direction="1" frameWidth="80" frameHeight="80"/>
 </events>

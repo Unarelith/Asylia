@@ -1,8 +1,5 @@
-- Add choices in DialogWindow
-	=> Yes/No style but with variable text
-		* Issue: We can see during a millisecond the text we are normally
-			not able to see
-		* Issue: Remove '<Command>' '[0]' and [1] in text displayed
+- Improve DialogWindow: When '<Command>' is in the first message
+	it's possible to see '<Command>' during a millisecond
 
 - Add a class Troop ( team of enemies )
 	=> Replace battles.xml by troops.xml

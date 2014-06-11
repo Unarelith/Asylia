@@ -8,12 +8,12 @@ event3c.init = function()
 		
 		dialog:addMessage(_t("event3c-0"))
 		
-		dialog:addMessage("<Command>Would you know that?")
-		dialog:addCommand("Yes")
-		dialog:addCommand("No")
+		dialog:addMessage("<Command>" .. _t("event3c-1"))
+		dialog:addCommand(_t("Yes"))
+		dialog:addCommand(_t("No"))
 		
-		dialog:addMessage("[0]Haha you'll never know.")
-		dialog:addMessage("[1]Come back later.")
+		dialog:addMessage("[0]" .. _t("event3c-2"))
+		dialog:addMessage("[1]" .. _t("event3c-3"))
 	end
 	
 	event3c.movements = {
