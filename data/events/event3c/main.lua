@@ -1,7 +1,9 @@
 event3c = CharacterEvent.new("event3c", 0, false)
 
 event3c.init = function()
-	event3c = event3c:initCharacter();
+	event3c = event3c:initCharacter()
+	
+	event3c.troopID = 0
 	
 	event3c.addMessages = function()
 		local dialog = ActivityManager.newDialog()
@@ -13,7 +15,13 @@ event3c.init = function()
 		dialog:addCommand(_t("No"))
 		
 		dialog:addMessage("[0]" .. _t("event3c-2"))
-		dialog:addMessage("[1]" .. _t("event3c-3"))
+		
+		dialog:addMessage("[1]<Command>" .. _t("event3c-3"))
+		
+		dialog:addMessage("[1][0]" .. _t("event3c-4"))
+		dialog:addMessage("[1][0]<Battle>" .. tostring(event3c.troopID))
+		
+		dialog:addMessage("[1][1]" .. _t("event3c-5"))
 		
 		dialog:update();
 	end

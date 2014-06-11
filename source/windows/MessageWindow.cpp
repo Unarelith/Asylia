@@ -36,6 +36,7 @@ void MessageWindow::update() {
 		if(m_choiceMode) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			m_choiceMode = false;
+			
 			for(std::vector<std::string>::iterator it = m_messages.begin() ; it != m_messages.end() ; it++) {
 				if((*it).substr(0, 1) == "[") {
 					if((*it).substr(0, 3) != std::string("[") + to_string(m_cmdwin->pos()) + "]") {
@@ -46,11 +47,18 @@ void MessageWindow::update() {
 					}
 				}
 			}
+			
+			m_cmdwin->pos(0);
 		}
 		
 		if(m_messages.size() != 0) {
 			m_messages.erase(m_messages.begin());
 		}
+	}
+	
+	if(m_messages.size() != 0 && m_messages.front().substr(0, 8) == "<Battle>") {
+		ActivityManager::startBattle(atoi(m_messages.front().substr(8, m_messages.front().size() - 8).c_str()));
+		m_messages.erase(m_messages.begin());
 	}
 	
 	if(!m_choiceMode) {
@@ -72,7 +80,7 @@ void MessageWindow::updateCmdwinSize() {
 	
 	m_cmdwin->width(maxSize * 20 + 40);
 	m_cmdwin->height(m_cmdwin->commands().size() * 32 + 32);
-	m_cmdwin->y(m_cmdwin->y() - m_cmdwin->height());
+	m_cmdwin->y(m_y - m_cmdwin->height());
 }
 
 void MessageWindow::draw() {

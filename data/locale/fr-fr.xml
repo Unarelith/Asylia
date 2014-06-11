@@ -54,7 +54,9 @@
 		<message text="Salut, je suis un fantôme!"/>
 		<message text="Tu veux savoir un secret?"/>
 		<message text="Haha, c'est un secret."/>
-		<message text="D'accord."/>
+		<message text="T'es sûr ?"/>
+		<message text="Dans ce cas, combattons."/>
+		<message text="Trop tard !"/>
 	</event>
 	
 	<!-- Items -->

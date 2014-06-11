@@ -54,7 +54,9 @@
 		<message text="Hi, I'm a ghost."/>
 		<message text="Would you know a secret?"/>
 		<message text="Haha, it's a secret."/>
-		<message text="OK."/>
+		<message text="Are you sure?"/>
+		<message text="So let's battle."/>
+		<message text="It's too late!"/>
 	</event>
 	
 	<!-- Items -->

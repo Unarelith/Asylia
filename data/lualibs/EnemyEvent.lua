@@ -1,6 +1,6 @@
 EnemyEvent = {}
 
-EnemyEvent.new = function(eventName, battleID, atCollision)
+EnemyEvent.new = function(eventName, troopID, atCollision)
 	local initCharacter = function(self)
 		self.character = MapManager.currentMap:getEvent(eventName)
 		
@@ -14,13 +14,13 @@ EnemyEvent.new = function(eventName, battleID, atCollision)
 		
 		self.action = function()
 			if not self.atCollision and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-				ActivityManager.startBattle(battleID)
+				ActivityManager.startBattle(troopID)
 			end
 		end
 		
 		self.collisionAction = function()
 			if self.atCollision then
-				ActivityManager.startBattle(battleID)
+				ActivityManager.startBattle(troopID)
 			end
 		end
 		
