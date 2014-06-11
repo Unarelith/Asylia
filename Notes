@@ -2,7 +2,7 @@
 	=> Remove ActivityManager.newDialog()
 	=> Remove std::vector<std::string> m_messages
 		-> Replace by std::vector<Message*> m_messages
-		-> Create Message class, attributes:
+		-> Create Message class with these attributes:
 			* m_string
 			* m_scope
 			* m_scopePos
@@ -15,11 +15,16 @@
 		-> Create a function Message *getMessage(u16 scope, u16 scopePos);
 	=> Improve event scripts
 	=> Add conditions for messages ( in Lua )
-		-> Useful for Quests
 
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp
-		-> 'type' can be Talk, Bring, Hunt, HuntAndBring, FindAndBring
+		-> 'type' can be:
+			* Talk: message
+			* Bring: itemsIDs
+			* Hunt: enemiesIDs
+			* HuntAndBring: enemiesIDs, itemsIDs
+			* FindAndBring: itemsIDs
+		-> DP Strategy?
 	=> Add a 'Quests' entry in menu
 
 - Create a class system for Actors
@@ -50,20 +55,16 @@
 			* For example a potion have a choice "Use" 
 				--> Change the mode to ChooseActorTarget
 
+- Create a new class SkillActivity
+	* Add skills
+	* Add it in the menu
+	* Add it in the battles
+
 - [Issue #33] Improve Animation class
 	=> Add position ( top, middle, bottom )
 	=> Add movement ( for bullets )
 	=> Add actions ( AnimationAction class )
 	=> Add animations
-
-- Improve ActivityManager::newDialog
-
-- Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
-- Add parameters to events, like speed for characters and all params for the chests
-	=> Add a class Chest, child of Character, which will help for the save engine later
-		OR
-	=> Make a save engine which will work well with Lua, useful for modding
-		=> A lua function save in each pseudo-class?
 
 -> Improve battle rendering on Android
 
@@ -93,10 +94,6 @@
 		-> The second '5' is the number of targets to build
 			* Delete .o we'll build?
 	=> Fix 'Subtraction overflow' error when 'build' is empty
-
-- Create a new class SkillActivity, child of ItemActivity
-	* Add it in the menu
-	* Add it in the battles
 
 - [Issue #17] Up and Down keys have an higher priority than Left and Right ones
 	=> Make an history of the last directional key pressed
@@ -151,6 +148,13 @@
 	* Save actors state
 		=>>>>>>> Make an EventListener which will get all the new state changement, to save it later
 		=>>>>>>> It will keep everything in game state, useful for auto save
+
+- Permit to omit useless functions in events ( like update or collisionAction for event3c, or movements for chest0 )
+- Add parameters to events, like speed for characters and all params for the chests
+	=> Add a class Chest, child of Character, which will help for the save engine later
+		OR
+	=> Make a save engine which will work well with Lua, useful for modding
+		=> A lua function save in each pseudo-class?
 
 - Improve TitleScreen
 
