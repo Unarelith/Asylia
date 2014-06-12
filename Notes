@@ -6,7 +6,7 @@
 			* m_string
 			* m_scope
 			* m_scopePos
-			* m_type
+			* m_type OR m_action
 				~ SimpleMessage
 				~ Choice
 					+ m_choices
@@ -19,12 +19,14 @@
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp
 		-> 'type' can be:
-			* Talk: message
-			* Bring: itemsIDs
+			* Talk: actorID
+			* Bring: itemsIDs, actorID
 			* Hunt: enemiesIDs
 			* HuntAndBring: enemiesIDs, itemsIDs
-			* FindAndBring: itemsIDs
+			* FindAndBring: itemsIDs, actorID
 		-> DP Strategy?
+	Talk	FindAndBring \ HundAndBring
+	Bring			Hunt /
 	=> Add a 'Quests' entry in menu
 
 - Create a class system for Actors
