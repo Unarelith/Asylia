@@ -98,16 +98,11 @@ using namespace tinyxml2;
 #include "BattleAction.hpp"
 #include "Battle.hpp"
 
-#include "DialogMessage.hpp"
-#include "DialogChoice.hpp"
-#include "DialogBattle.hpp"
-
 #include "Window.hpp"
 #include "TextWindow.hpp"
 #include "InfoWindow.hpp"
 #include "SelectableWindow.hpp"
 #include "CommandWindow.hpp"
-#include "MessageWindow.hpp"
 #include "ItemWindow.hpp"
 #include "EquipStatsWindow.hpp"
 #include "EquipChoiceWindow.hpp"
@@ -128,7 +123,7 @@ using namespace tinyxml2;
 
 #include "Activity.hpp"
 #include "MapActivity.hpp"
-#include "DialogActivity.hpp"
+#include "MessageActivity.hpp"
 #include "MenuActivity.hpp"
 #include "LuaActivity.hpp"
 #include "TitleActivity.hpp"

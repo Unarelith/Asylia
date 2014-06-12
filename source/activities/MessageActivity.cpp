@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogActivity.cpp
+ *       Filename:  MessageActivity.cpp
  *
  *    Description:  
  *
@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-DialogActivity::DialogActivity(Activity *parent) : Activity(parent) {
+MessageActivity::MessageActivity(std::string message, Activity *parent) : Activity(parent) {
 	m_type = Type::Dialog;
 	
 	m_parent = parent;
@@ -25,29 +25,24 @@ DialogActivity::DialogActivity(Activity *parent) : Activity(parent) {
 		m_parent = ActivityManager::top();
 	}
 	
-	m_msgwin = new MessageWindow();
-}
-
-DialogActivity::~DialogActivity() {
-	delete m_msgwin;
-}
-
-void DialogActivity::update() {
-	m_msgwin->update();
+	m_txtwin = new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3);
 	
-	if(m_msgwin->messages().size() == 0) {
+	m_message = message;
+}
+
+MessageActivity::~MessageActivity() {
+	delete m_txtwin;
+}
+
+void MessageActivity::update() {
+	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		ActivityManager::pop();
-		ActivityManager::top()->update();
-	}
-	
-	if(ActivityManager::top()->type() == Activity::Type::BattleAct) {
-		m_msgwin->eraseCurrentMessage();
 	}
 }
 
-void DialogActivity::render() {
+void MessageActivity::render() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
 	
-	m_msgwin->draw();
+	m_txtwin->draw(m_message);
 }
 

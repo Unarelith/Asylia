@@ -79,13 +79,13 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   activities=activities {
    Activity.hpp
    BattleActivity.hpp
-   DialogActivity.hpp
    EndActivity.hpp
    EquipActivity.hpp
    ItemActivity.hpp
    LuaActivity.hpp
    MapActivity.hpp
    MenuActivity.hpp
+   MessageActivity.hpp
    SettingsActivity.hpp
    TitleActivity.hpp
   }
@@ -138,9 +138,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Armor.hpp
    Battle.hpp
    BattleAction.hpp
-   DialogBattle.hpp
-   DialogChoice.hpp
-   DialogMessage.hpp
    Equipment.hpp
    Inventory.hpp
    Item.hpp
@@ -160,7 +157,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    EquipStatsWindow.hpp
    InfoWindow.hpp
    ItemWindow.hpp
-   MessageWindow.hpp
    SelectableWindow.hpp
    TextWindow.hpp
    VictoryWindow.hpp
@@ -173,13 +169,13 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
   activities=activities {
    Activity.cpp
    BattleActivity.cpp
-   DialogActivity.cpp
    EndActivity.cpp
    EquipActivity.cpp
    ItemActivity.cpp
    LuaActivity.cpp
    MapActivity.cpp
    MenuActivity.cpp
+   MessageActivity.cpp
    SettingsActivity.cpp
    TitleActivity.cpp
   }
@@ -226,9 +222,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    Armor.cpp
    Battle.cpp
    BattleAction.cpp
-   DialogBattle.cpp
-   DialogChoice.cpp
-   DialogMessage.cpp
    Equipment.cpp
    Inventory.cpp
    Item.cpp
@@ -247,7 +240,6 @@ Asylia=~/Projects/Asylia CD=. filter=".gitignore *.c *.cpp *.h *.hpp *.vim AUTHO
    EquipStatsWindow.cpp
    InfoWindow.cpp
    ItemWindow.cpp
-   MessageWindow.cpp
    SelectableWindow.cpp
    TextWindow.cpp
    VictoryWindow.cpp

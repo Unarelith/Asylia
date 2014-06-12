@@ -34,10 +34,9 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 			end
 			
 			if self.animationAtEnd and not self.empty then
-				local dialog = ActivityManager.newDialog()
 				local item = ItemManager.getItem(self.itemID)
 				
-				dialog:addMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
+				ActivityManager.drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 				
 				CharacterManager.player():inventory():addItem(self.itemID, self.itemCount, 1)
 				

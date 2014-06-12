@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  DialogChoice.hpp
+ *       Filename:  MessageActivity.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  12/06/2014 10:01:14
+ *        Created:  21/03/2014 18:19:08
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,15 +15,21 @@
  *
  * =====================================================================================
  */
-#ifndef DIALOGCHOICE_HPP_
-#define DIALOGCHOICE_HPP_
+#ifndef MESSAGEACTIVITY_HPP_
+#define MESSAGEACTIVITY_HPP_
 
-class DialogChoice : public DialogMessage {
+class MessageActivity : public Activity {
 	public:
-		DialogChoice(std::string question);
-		~DialogChoice();
+		MessageActivity(std::string message, Activity *parent = NULL);
+		~MessageActivity();
+		
+		void update();
+		void render();
 		
 	private:
-}:
+		TextWindow *m_txtwin;
+		
+		std::string m_message;
+};
 
-#endif // DIALOGCHOICE_HPP_
+#endif // MESSAGEACTIVITY_HPP_

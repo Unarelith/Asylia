@@ -1,6 +1,6 @@
 CharacterEvent = {}
 
-CharacterEvent.new = function(eventName, nbOfMessages)
+CharacterEvent.new = function(eventName)
 	local initCharacter = function(self)
 		self.character = MapManager.currentMap:getEvent(eventName)
 		
@@ -10,13 +10,7 @@ CharacterEvent.new = function(eventName, nbOfMessages)
 			self.character:render()
 		end
 		
-		self.addMessages = function()
-			local dialog = ActivityManager.newDialog()
-			
-			for i = 0, nbOfMessages - 1 do
-				dialog:addMessage(_t(eventName .. "-" .. tostring(i)))
-			end
-		end
+		self.actions = function() end
 		
 		self.action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
@@ -24,7 +18,7 @@ CharacterEvent.new = function(eventName, nbOfMessages)
 				
 				self.render() -- Update the Character direction in screenshot
 				
-				self.addMessages()
+				self.actions()
 			end
 		end
 		

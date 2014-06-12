@@ -39,7 +39,7 @@ void LuaHandler::bindClasses() {
 														 .set("pop", &ActivityManager::pop)
 														 .set("push", &ActivityManager::push)
 														 .set("size", &ActivityManager::size)
-														 .set("newDialog", &ActivityManager::newDialog)
+														 .set("drawMessage", &ActivityManager::drawMessage)
 														 .set("startBattle", &ActivityManager::startBattle);
 	
 	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
@@ -97,11 +97,6 @@ void LuaHandler::bindClasses() {
 									   .set("drawFrame", &Sprite::drawFrame)
 									   .set("playAnimation", &Sprite::playAnimation)
 									   .set("animationAtEnd", &Sprite::animationAtEnd);
-	
-	SLB::Class<DialogActivity>("DialogActivity", &slbm).constructor()
-													   .set("update", &DialogActivity::update)
-													   .set("addMessage", &DialogActivity::addMessage)
-													   .set("addCommand", &DialogActivity::addCommand);
 	
 	SLB::Class<LanguageManager>("LanguageManager", &slbm).set("translate", &LanguageManager::translate);
 	doString("function _t(str) return LanguageManager.translate(str) end");
