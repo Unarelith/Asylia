@@ -1,5 +1,5 @@
+- Improve Lua handling of Events
 - Improve Events
-
 - Improve MessageActivity handling in events
 	=> void Event::addAction(std::string luaFunctionName) { m_actions.push_back(luaFunctionName); }
 	=> void Event::processAction(u8 actionID) { LuaHandler::doString(m_actions[actionID]); m_processingAction = true; }
