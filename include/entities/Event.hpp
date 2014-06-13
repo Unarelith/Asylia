@@ -25,6 +25,8 @@ class Event : public Character {
 		
 		void init();
 		
+		void move(std::string function);
+		
 		void update();
 		void render();
 		

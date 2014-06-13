@@ -23,14 +23,12 @@
 #define DIR_RIGHT 2
 #define DIR_UP 3
 
-class Event;
-
 class Character : public Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth = 32, u16 frameHeight = 48);
 		virtual ~Character();
 		
-		void move(std::string function);
+		void move();
 		void render();
 		
 		virtual void action() = 0;

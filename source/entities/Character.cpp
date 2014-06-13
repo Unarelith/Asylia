@@ -73,9 +73,7 @@ void Character::render() {
 	}
 }
 
-void Character::move(std::string function) {
-	LuaHandler::doString(function);
-	
+void Character::move() {
 	if(m_vx > 0) m_direction = DIR_RIGHT;
 	if(m_vx < 0) m_direction = DIR_LEFT;
 	if(m_vy > 0) m_direction = DIR_DOWN;

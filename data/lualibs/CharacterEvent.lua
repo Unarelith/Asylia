@@ -10,7 +10,8 @@ CharacterEvent.new = function(eventName)
 			self.character:render()
 		end
 		
-		self.actions = function() end
+		self.actions = {}
+		self.currentActionID = 0
 		
 		self.action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
@@ -18,7 +19,11 @@ CharacterEvent.new = function(eventName)
 				
 				self.render() -- Update the Character direction in screenshot
 				
-				self.actions()
+				if self.currentActionID < #self.actions then
+					if self.actions[self.currentActionID]() then
+						self.currentActionID = self.currentActionID + 1;
+					end
+				end
 			end
 		end
 		

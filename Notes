@@ -1,3 +1,12 @@
+- Improve Events
+
+- Improve MessageActivity handling in events
+	=> void Event::addAction(std::string luaFunctionName) { m_actions.push_back(luaFunctionName); }
+	=> void Event::processAction(u8 actionID) { LuaHandler::doString(m_actions[actionID]); m_processingAction = true; }
+	=> bool Event::isProcessingAction() const { return m_processingAction; }
+	=> void Event::waitForNextAction() { if(ActivityManager::current->type() == Activity::Type::Map) m_processingAction = false; }
+	=> void Event::processActions() { for(u16 i = 0 ; i < m_actions.size()) process}
+
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp
 		-> 'type' can be:
