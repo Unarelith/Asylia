@@ -11,7 +11,7 @@ CharacterEvent.new = function(eventName)
 		end
 		
 		self.actions = {}
-		self.currentActionID = 0
+		self.currentActionID = 1
 		
 		self.action = function()
 			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
@@ -21,7 +21,7 @@ CharacterEvent.new = function(eventName)
 				
 				if self.currentActionID < #self.actions then
 					if self.actions[self.currentActionID]() then
-						self.currentActionID = self.currentActionID + 1;
+						self.currentActionID = self.currentActionID + 1
 					end
 				end
 			end

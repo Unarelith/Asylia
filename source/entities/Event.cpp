@@ -51,6 +51,8 @@ void Event::init() {
 
 void Event::move(std::string function) {
 	LuaHandler::doString(function);
+	
+	Character::move();
 }
 
 void Event::update() {

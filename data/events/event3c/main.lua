@@ -4,7 +4,7 @@ event3c.init = function()
 	event3c = event3c:initCharacter()
 	
 	event3c.actions = {
-		function() ActivityManager.drawMessage(_t("event1-0")) end,
+		function() ActivityManager.drawMessage(_t("event3c-0")) end,
 		function() ActivityManager.drawMessage(_t("event0-1")) end
 	}
 	

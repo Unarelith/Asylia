@@ -77,7 +77,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean clear run edit droid tags install uninstall
+.PHONY: $(BUILD) clean clear run droid tags install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -87,11 +87,6 @@ $(BUILD):
 run:
 	@echo running ...
 	@./$(TARGET)
-
-#---------------------------------------------------------------------------------
-edit:
-	@echo editing ...
-	@gvim -c "Project $(TARGET).vimproj"
 
 #---------------------------------------------------------------------------------
 droid:
