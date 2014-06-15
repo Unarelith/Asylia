@@ -31,7 +31,7 @@ class ActivityManager {
 		static int size() { return activities.size(); }
 		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.top()) { delete activitiesBin.top(); activitiesBin.pop(); } }
 		
-		static void drawMessage(std::string message) { MessageActivity *activity = new MessageActivity(message); push(activity); }
+		static bool drawMessage(std::string message) { MessageActivity *activity = new MessageActivity(message); push(activity); return top()->type() == Activity::Type::Map; }
 		
 		static void startBattle(u16 id) { push(new BattleActivity(TroopManager::troops[id])); }
 };
