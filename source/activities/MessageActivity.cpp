@@ -37,6 +37,7 @@ MessageActivity::~MessageActivity() {
 void MessageActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		ActivityManager::pop();
+		ActivityManager::top()->update();
 	}
 }
 

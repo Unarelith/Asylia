@@ -39,6 +39,9 @@ Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bo
 	m_name = name;
 	
 	m_solid = solid;
+	
+	m_processingAction = false;
+	m_actionID = 0;
 }
 
 Event::~Event() {
@@ -59,9 +62,40 @@ void Event::update() {
 	move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
 	
 	LuaHandler::doString(m_name + ".update()");
+	
+	// Should be in movement, or after a precise time
+	if(m_actionID > m_actions.size()) {
+		m_actionID = 0;
+	}
+	
+	if(isProcessingAction()) {
+		waitForNextAction();
+	}
+	
+	if(!isProcessingAction() && m_actionID > 0) {
+		processAction();
+	}
 }
 
 void Event::render() {
 	LuaHandler::doString(m_name + ".render()");
+}
+
+void Event::addAction(std::string luaFunction) {
+	m_actions.push_back(luaFunction);
+}
+
+void Event::processAction() {
+	if(m_actions.size() != 0 && m_actionID <= m_actions.size()) {
+		LuaHandler::doString(std::string("load(") + m_name + ".actions[" + to_string(m_actionID) + "])()");
+		m_processingAction = true;
+	}
+}
+
+void Event::waitForNextAction() {
+	if(ActivityManager::top()->type() == Activity::Type::Map) {
+		m_processingAction = false;
+		m_actionID++;
+	}
 }
 

@@ -43,7 +43,7 @@ Game::Game() {
 }
 
 Game::~Game() {
-	ActivityManager::checkActivitiesToDelete();
+	ActivityManager::free();
 	
 	Interface::free();
 	

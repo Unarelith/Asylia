@@ -30,11 +30,21 @@ class Event : public Character {
 		void update();
 		void render();
 		
+		void addAction(std::string luaFunction);
+		void processAction();
+		bool isProcessingAction() const { return m_processingAction; }
+		void waitForNextAction();
+		void startActions() { m_actionID = 1; }
+		
 		std::string name() const { return m_name; }
 		
 	private:
 		std::string m_folder;
 		std::string m_name;
+		
+		bool m_processingAction;
+		u16 m_actionID;
+		std::vector<std::string> m_actions;
 };
 
 #endif // EVENT_HPP_

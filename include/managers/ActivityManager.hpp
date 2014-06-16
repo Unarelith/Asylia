@@ -21,19 +21,18 @@
 class ActivityManager {
 	public:
 		static void init();
+		static void free();
 		
 		static std::stack<Activity*> activities;
-		static std::stack<Activity*> activitiesBin;
 		
 		static Activity *top() { return activities.top(); }
 		static void pop() { delete top(); activities.pop(); }
 		static void push(Activity *activity);
 		static int size() { return activities.size(); }
-		static void checkActivitiesToDelete() { if(activitiesBin.size() > 0 && activitiesBin.top()) { delete activitiesBin.top(); activitiesBin.pop(); } }
 		
-		static bool drawMessage(std::string message) { MessageActivity *activity = new MessageActivity(message); push(activity); return top()->type() == Activity::Type::Map; }
+		static MessageActivity *drawMessage(std::string message) { MessageActivity *activity = new MessageActivity(message); push(activity); return activity; }
 		
-		static void startBattle(u16 id) { push(new BattleActivity(TroopManager::troops[id])); }
+		static BattleActivity *startBattle(u16 id) { BattleActivity *activity = new BattleActivity(TroopManager::troops[id]); push(activity); return activity; }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

@@ -56,7 +56,9 @@ void LuaHandler::bindClasses() {
 									 .set("x", &Character::x)
 									 .set("y", &Character::y)
 									 .set("setHitbox", &Character::setHitbox)
-									 .set("setPosition", &Character::setPosition);
+									 .set("setPosition", &Character::setPosition)
+									 .set("addAction", &Event::addAction)
+									 .set("startActions", &Event::startActions);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
@@ -83,15 +85,22 @@ void LuaHandler::bindClasses() {
 								 .set("scrollX", &Map::getScrollX)
 								 .set("scrollY", &Map::getScrollY);
 	
+	SLB::Class<BattleActivity>("BattleActivity", &slbm);
+	
 	SLB::Class<MapActivity>("MapActivity", &slbm);
 	
 	SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
+	
+	SLB::Class<MessageActivity>("MessageActivity", &slbm);
 	
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)
 									   .set("changeMap", &Character::changeMap)
 									   .set("stop", &Character::stop)
-									   .set("inventory", &Player::inventory);
+									   .set("inventory", &Player::inventory)
+									   .set("x", &Character::x)
+									   .set("y", &Character::y)
+									   .set("inFrontOf", &Character::inFrontOf);
 	
 	SLB::Class<Sprite>("Sprite", &slbm).constructor<const char *, u16, u16>()
 									   .set("drawFrame", &Sprite::drawFrame)

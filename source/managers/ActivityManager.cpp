@@ -18,7 +18,6 @@
 #include "Asylia.hpp"
 
 std::stack<Activity*> ActivityManager::activities;
-std::stack<Activity*> ActivityManager::activitiesBin;
 
 void ActivityManager::init() {
 #ifdef NO_TITLESCREEN
@@ -27,6 +26,12 @@ void ActivityManager::init() {
 #else
 	activities.push(new TitleActivity);
 #endif
+}
+
+void ActivityManager::free() {
+	while(activities.size() != 0) {
+		pop();
+	}
 }
 
 void ActivityManager::push(Activity *activity) {

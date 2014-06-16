@@ -81,6 +81,7 @@ export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
+	@touch $@/default.o
 	@make --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
 
 #---------------------------------------------------------------------------------
@@ -145,12 +146,14 @@ $(OUTPUT): $(OFILES)
 
 #---------------------------------------------------------------------------------
 %.o: %.c
+	@rm -f default.o
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
 	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),$(T)))] $(notdir $<) \r'
 	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	
 #---------------------------------------------------------------------------------
 %.o: %.cpp
+	@rm -f default.o
 	$(eval COUNTER := $(call plus,$(COUNTER),1))
 	@echo -ne '\033[2K [$(call subtract,$(COUNTER),$(words $(notdir $(wildcard *.o))))/$(call subtract,$(call plus,$(words $(CFILES)),$(words $(CPPFILES))),$(call subtract,$(words $(notdir $(wildcard *.o))),$(T)))] $(notdir $<) \r'
 	@$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -o $@
