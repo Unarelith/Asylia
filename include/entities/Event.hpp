@@ -35,6 +35,7 @@ class Event : public Character {
 		bool isProcessingAction() const { return m_processingAction; }
 		void waitForNextAction();
 		void checkCondition(bool condition);
+		void setActionID(u16 actionID) { m_actionID = actionID; }
 		
 		std::string name() const { return m_name; }
 		

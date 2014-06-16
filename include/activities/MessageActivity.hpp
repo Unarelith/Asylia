@@ -23,11 +23,19 @@ class MessageActivity : public Activity {
 		MessageActivity(std::string message, Activity *parent = NULL);
 		~MessageActivity();
 		
+		void addCommand(std::string command) { m_cmdwin->addCommand(command); updateCmdwinSize(); }
+		
+		void updateCmdwinSize();
+		
+		u16 getCmdwinPos() { return m_cmdwin->pos(); }
+		
 		void update();
 		void render();
 		
 	private:
 		TextWindow *m_txtwin;
+		
+		CommandWindow *m_cmdwin;
 		
 		std::string m_message;
 };

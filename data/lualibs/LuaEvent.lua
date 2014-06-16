@@ -13,7 +13,7 @@ LuaEvent = {
 			
 			self.addAction = function(func)
 				local str = string.dump(func)
-				event0.event:addAction(str)
+				self.event:addAction(str)
 				table.insert(self.actions, #self.actions+1, func)
 			end
 			

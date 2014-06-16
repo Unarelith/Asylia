@@ -58,7 +58,8 @@ void LuaHandler::bindClasses() {
 									 .set("setHitbox", &Character::setHitbox)
 									 .set("setPosition", &Character::setPosition)
 									 .set("addAction", &Event::addAction)
-									 .set("checkCondition", &Event::checkCondition);
+									 .set("checkCondition", &Event::checkCondition)
+									 .set("setActionID", &Event::setActionID);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
@@ -91,7 +92,8 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
 	
-	SLB::Class<MessageActivity>("MessageActivity", &slbm);
+	SLB::Class<MessageActivity>("MessageActivity", &slbm).set("addCommand", &MessageActivity::addCommand)
+														 .set("getCmdwinPos", &MessageActivity::getCmdwinPos);
 	
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)
