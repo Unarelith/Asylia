@@ -31,9 +31,6 @@ class Character : public Sprite {
 		void move();
 		void render();
 		
-		virtual void action() = 0;
-		virtual void collisionAction() = 0;
-		
 		void testCollisions();
 		
 		void mapCollisions();

@@ -59,21 +59,9 @@ void Event::update() {
 	move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
 	
 	LuaHandler::doString(m_name + ".update()");
-	
-	action();
 }
 
 void Event::render() {
 	LuaHandler::doString(m_name + ".render()");
-}
-
-void Event::action() {
-	if(CharacterManager::player->inFrontOf() == this) {
-		LuaHandler::doString(m_name + ".action()");
-	}
-}
-
-void Event::collisionAction() {
-	LuaHandler::doString(m_name + ".collisionAction()");
 }
 

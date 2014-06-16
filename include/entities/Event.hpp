@@ -30,9 +30,6 @@ class Event : public Character {
 		void update();
 		void render();
 		
-		void action();
-		void collisionAction();
-		
 		std::string name() const { return m_name; }
 		
 	private:
