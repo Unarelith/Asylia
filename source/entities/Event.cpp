@@ -61,16 +61,11 @@ void Event::move(std::string function) {
 void Event::update() {
 	move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
 	
-	LuaHandler::doString(m_name + ".update()");
-	
-	// Should be in movement, or after a precise time
-	if(m_actionID > m_actions.size()) {
-		m_actionID = 0;
-	}
-	
 	if(isProcessingAction()) {
 		waitForNextAction();
 	}
+	
+	LuaHandler::doString(m_name + ".update()");
 	
 	if(!isProcessingAction() && m_actionID > 0) {
 		processAction();
@@ -96,6 +91,17 @@ void Event::waitForNextAction() {
 	if(ActivityManager::top()->type() == Activity::Type::Map) {
 		m_processingAction = false;
 		m_actionID++;
+	}
+}
+
+void Event::checkCondition(bool condition) {
+	if(condition && m_actionID == 0) {
+		m_direction = 3 - CharacterManager::player->getDirection();
+		m_actionID = 1;
+	}
+	
+	if(!condition && m_actionID > m_actions.size()) {
+		m_actionID = 0;
 	}
 }
 

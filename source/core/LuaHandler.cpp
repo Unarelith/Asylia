@@ -58,7 +58,7 @@ void LuaHandler::bindClasses() {
 									 .set("setHitbox", &Character::setHitbox)
 									 .set("setPosition", &Character::setPosition)
 									 .set("addAction", &Event::addAction)
-									 .set("startActions", &Event::startActions);
+									 .set("checkCondition", &Event::checkCondition);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
