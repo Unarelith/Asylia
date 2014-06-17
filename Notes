@@ -1,16 +1,12 @@
-- EquipActivity issue:
-	* Segfault sometimes when there is no weapon/armor equipped and
-	  when there's no items in inventory
-			Program received signal SIGSEGV, Segmentation fault.
-			0x00000000004072a8 in Armor::def (this=0x0) at /home/quentin/Projects/Asylia/include/objects/Armor.hpp:33
-			33			u16 def() const { return m_def; }
-			#0  0x00000000004072a8 in Armor::def (this=0x0) at /home/quentin/Projects/Asylia/include/objects/Armor.hpp:33
-			#1  0x000000000041fd79 in EquipStatsWindow::draw (this=0x206ee80, currentItem=0x0) at /home/quentin/Projects/Asylia/source/windows/EquipStatsWindow.cpp:68
-			#2  0x000000000041ed8f in EquipActivity::render (this=0x2072630) at /home/quentin/Projects/Asylia/source/activities/EquipActivity.cpp:91
-			#3  0x0000000000424bf0 in Game::mainLoop (this=0x7fffffffd8df) at /home/quentin/Projects/Asylia/source/Game.cpp:75
-			#4  0x000000000046ec24 in main (argc=1, argv=0x7fffffffd9d8) at /home/quentin/Projects/Asylia/source/main.cpp:23
-
-- Work on Event actions
+- Improve events
+	* Simplify the condition in eventXXX.update
+	* Add battles with parameters:
+		=> battleID
+		=> escapeActionID
+		=> victoryActionID
+		=> defeatActionID ( impossible now because defeat=gameover )
+			-> Add a 'bool m_allowDefeat' flag to startBattle() and to BattleActivity
+	* Improve EnemyEvent and ChestEvent
 
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp

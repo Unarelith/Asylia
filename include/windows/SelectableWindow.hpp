@@ -26,6 +26,8 @@ class SelectableWindow : public Window {
 		void updateCursor();
 		void update();
 		
+		u16 itemMax() const { return m_itemMax; }
+		
 		s16 pos() const { return m_pos; }
 		void pos(u16 pos) { m_pos = pos; }
 		
