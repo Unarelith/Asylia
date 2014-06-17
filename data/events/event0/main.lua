@@ -1,37 +1,15 @@
 event0 = LuaEvent.new("event0")
 
-function addActionToQueue(event, actionID, ...)
-	local params = ParameterList()
-	local _args = {...}
-	
-	for i, param in pairs(_args) do
-		if type(param) == "number" then
-			local ipart, fpart = math.modf(param)
-			if fpart == 0 then
-				params:addIntParameter(param)
-			else
-				params:addFloatParameter(param)
-			end
-		elseif type(param) == "string" then
-			params:addStringParameter(param)
-		end
-	end
-	
-	EventInterpreter.addActionToQueue(event.event:name(), actionID, params)
-end
-
 event0.init = function()
 	event0 = event0:initEvent()
 	
-	--[[params = ParameterList()
-	params:addStringParameter(_t("event0-0"))
-	EventInterpreter.addActionToQueue(event0.event:name(), 0, params)
-	params:clear()
-	params:addStringParameter(_t("event0-1"))
-	EventInterpreter.addActionToQueue(event0.event:name(), 0, params)]]--
-	
-	addActionToQueue(event0, 0, _t("event0-0"))
-	addActionToQueue(event0, 0, _t("event0-1"))
+	event0.update = function()
+		if CharacterManager.player():inFrontOf(event0.event)
+		and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
+			event0:addAction(0, LuaEvent.drawText, _t("event0-0"), 1)
+			event0:addAction(1, LuaEvent.drawText, _t("event0-1"), -1)
+		end
+	end
 	
 	event0.movements = {
 		function() event0.event:moveLeft() end,

@@ -41,6 +41,8 @@ Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bo
 	m_solid = solid;
 	
 	m_locked = false;
+	
+	m_currentActionID = 0;
 }
 
 Event::~Event() {

@@ -20,15 +20,19 @@
 
 class EventAction {
 	public:
-		EventAction(u16 actionID, ParameterList parameters);
+		EventAction(u16 id, u16 actionType, ParameterList parameters);
 		~EventAction();
 		
-		u16 actionID() const { return m_actionID; }
+		u16 id() const { return m_id; }
+		
+		u16 actionType() const { return m_actionType; }
 		
 		ParameterList *parameters() const { return m_parameters; }
 		
 	private:
-		u16 m_actionID;
+		u16 m_id;
+		
+		u16 m_actionType;
 		
 		ParameterList *m_parameters;
 };

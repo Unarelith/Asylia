@@ -36,7 +36,12 @@ class Event : public Character {
 		void unlock() { m_locked = false; }
 		bool isLocked() const { return m_locked; }
 		
+		s16 currentActionID() const { return m_currentActionID; }
+		void currentActionID(s16 actionID) { m_currentActionID = actionID; }
+		
 	private:
+		s16 m_currentActionID;
+		
 		std::string m_folder;
 		std::string m_name;
 		

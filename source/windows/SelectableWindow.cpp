@@ -17,6 +17,8 @@
  */
 #include "Asylia.hpp"
 
+u16 SelectableWindow::lastPos = 0;
+
 SelectableWindow::SelectableWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
 	m_itemMax = 1;
 	m_columnMax = 1;
@@ -40,6 +42,8 @@ void SelectableWindow::updateCursor() {
 	y = m_pos / m_columnMax * 32 - m_scroll * 32;
 	
 	m_cursor = Rectangle(x, y, cursorWidth, 32);
+	
+	lastPos = m_pos;
 }
 
 void SelectableWindow::update() {
