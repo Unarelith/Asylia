@@ -189,8 +189,8 @@ CriticalSection	external/SLB.hpp	/^  struct CriticalSection$/;"	s	namespace:SLB
 CurrentAllocs	external/tinyxml2.hpp	/^    int CurrentAllocs() const		{$/;"	f	class:tinyxml2::MemPoolT
 DEBUG	external/tinyxml2.hpp	57;"	d
 DEBUG_HPP_	include/core/Debug.hpp	19;"	d
-DELETE_ATTRIBUTE	external/tinyxml2.cpp	60;"	d	file:
-DELETE_NODE	external/tinyxml2.cpp	53;"	d	file:
+DELETE_ATTRIBUTE	external/tinyxml2.cpp	61;"	d	file:
+DELETE_NODE	external/tinyxml2.cpp	54;"	d	file:
 DIGITBIT	external/lua.c	3664;"	d	file:
 DIR_DOWN	include/entities/Character.hpp	21;"	d
 DIR_LEFT	include/entities/Character.hpp	22;"	d
@@ -242,6 +242,7 @@ EQUIPSTATSWINDOW_HPP_	include/windows/EquipStatsWindow.hpp	19;"	d
 ERRFUNC	external/lua.c	17004;"	d	file:
 ERRLIB	external/lua.c	17003;"	d	file:
 ERRORSTACKSIZE	external/lua.c	6625;"	d	file:
+EVENTACTION_HPP_	include/objects/EventAction.hpp	19;"	d
 EVENTMANAGER_HPP_	include/managers/EventManager.hpp	19;"	d
 EVENT_HPP_	include/entities/Event.hpp	19;"	d
 EXTRA_STACK	external/lua.c	2338;"	d	file:
@@ -273,6 +274,8 @@ ErrorID	external/tinyxml2.hpp	/^    XMLError  ErrorID() const {$/;"	f	class:tiny
 Event	include/entities/Character.hpp	/^			None, Player, NPC, Event$/;"	e	enum:Character::Type
 Event	include/entities/Event.hpp	/^class Event : public Character {$/;"	c
 Event	source/entities/Event.cpp	/^Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {$/;"	f	class:Event
+EventAction	include/objects/EventAction.hpp	/^class EventAction {$/;"	c
+EventAction	source/objects/EventAction.cpp	/^EventAction::EventAction() {$/;"	f	class:EventAction
 EventManager	include/managers/EventManager.hpp	/^class EventManager {$/;"	c
 FC_DefaultClassConstructor	external/SLB.hpp	/^    FC_DefaultClassConstructor() {}$/;"	f	struct:SLB::Private::FC_DefaultClassConstructor
 FC_DefaultClassConstructor	external/SLB.hpp	/^  struct FC_DefaultClassConstructor<C()> : public FuncCall$/;"	s	namespace:SLB::Private
@@ -2327,11 +2330,11 @@ actors	include/objects/Battle.hpp	/^		std::vector<std::pair<u8, Actor*>> actors(
 actors	source/managers/BattlerManager.cpp	/^std::vector<Actor*> BattlerManager::actors;$/;"	m	class:BattlerManager	file:
 actvar	external/lua.c	/^  } actvar;$/;"	m	struct:Dyndata	typeref:struct:Dyndata::__anon10	file:
 add	source/objects/Inventory.cpp	/^void Inventory::add(Inventory *other, bool withChance) {$/;"	f	class:Inventory
-addAction	source/entities/Event.cpp	/^void Event::addAction(std::string luaFunction) {$/;"	f	class:Event
 addActor	include/objects/Battle.hpp	/^		void addActor(Actor *actor) { m_actors.push_back(std::make_pair(m_actorsCount, new Actor(*actor))); m_actorsCount++; }$/;"	f	class:Battle
 addAnimation	source/display/Sprite.cpp	/^void Sprite::addAnimation(SpriteAnimation animation) {$/;"	f	class:Sprite
 addArmor	source/objects/Inventory.cpp	/^void Inventory::addArmor(u8 id, s16 count, double chance) {$/;"	f	class:Inventory
 addClassConversor	external/SLB.hpp	/^  inline void Manager::addClassConversor( Conversor c )$/;"	f	class:SLB::Manager
+addCommand	include/activities/MessageActivity.hpp	/^		void addCommand(std::string command) { m_cmdwin->addCommand(command); updateCmdwinSize(); }$/;"	f	class:MessageActivity
 addCommand	include/windows/CommandWindow.hpp	/^		void addCommand(std::string cmd, bool disabled = false) { if(!m_horizontal) m_height += 32; m_commands.push_back(std::make_pair(cmd, disabled)); m_itemMax++; };$/;"	f	class:CommandWindow
 addConversor	external/SLB.hpp	/^  inline void Manager::addConversor()$/;"	f	class:SLB::Manager
 addEnemy	include/objects/Troop.hpp	/^		void addEnemy(Enemy *enemy, s16 x, s16 y) { m_enemies.push_back(std::make_tuple(enemy, x, y)); }$/;"	f	class:Troop
@@ -2501,7 +2504,6 @@ changeSet	source/windows/ItemWindow.cpp	/^void ItemWindow::changeSet(u8 equipID,
 changenvalue	external/lua.c	1526;"	d	file:
 changewhite	external/lua.c	2623;"	d	file:
 check	external/lua.c	/^static void check (LexState *ls, int c) {$/;"	f	file:
-checkCondition	source/entities/Event.cpp	/^void Event::checkCondition(bool condition) {$/;"	f	class:Event
 checkDead	source/objects/Battle.cpp	/^void Battle::checkDead() {$/;"	f	class:Battle
 checkGC	external/lua.c	12745;"	d	file:
 checkLevelUp	include/entities/Battler.hpp	/^		void checkLevelUp() { if(expRemainingToLevelUp() < 0) levelUp(); }$/;"	f	class:Battler
@@ -2944,6 +2946,7 @@ getClass	external/SLB.hpp	/^    static ClassInfo *getClass(lua_State *L)$/;"	f	s
 getClassInfo	external/SLB.hpp	/^    ClassInfo* getClassInfo() const$/;"	f	class:SLB::Hybrid
 getClassMap	external/SLB.hpp	/^    const ClassMap& getClassMap() const { return _classes; }$/;"	f	class:SLB::Manager
 getClasses	external/SLB.hpp	/^    ClassMap& getClasses() { return _classes; }$/;"	f	class:SLB::Manager
+getCmdwinPos	include/activities/MessageActivity.hpp	/^		u16 getCmdwinPos() { return m_cmdwin->pos(); }$/;"	f	class:MessageActivity
 getConstructor	external/SLB.hpp	/^    FuncCall* getConstructor() { return _constructor.get(); }$/;"	f	class:SLB::ClassInfo
 getConstructor	external/SLB.hpp	/^    const FuncCall* getConstructor() const { return _constructor.get(); }$/;"	f	class:SLB::ClassInfo
 getDirection	include/entities/Character.hpp	/^		u8 getDirection() const { return m_direction; }$/;"	f	class:Character
@@ -3192,7 +3195,6 @@ isLfunction	external/lua.c	1874;"	d	file:
 isLua	external/lua.c	2397;"	d	file:
 isPlaying	include/display/SpriteAnimation.hpp	/^	bool isPlaying;$/;"	m	struct:SpriteAnimation
 isPointer	external/SLB.hpp	/^    bool isPointer() const   { return (_flags & I_Pointer) || (_flags & I_Const_Pointer); }$/;"	f	class:SLB::InstanceBase
-isProcessingAction	include/entities/Event.hpp	/^		bool isProcessingAction() const { return m_processingAction; }$/;"	f	class:Event
 isReference	external/SLB.hpp	/^    bool isReference() const { return (_flags & I_Reference) != 0; }$/;"	f	class:SLB::InstanceBase
 isStarted	include/display/Timer.hpp	/^		bool isStarted() const { return m_isStarted; }$/;"	f	class:Timer
 isSubClassOf	external/SLB.cpp	/^  bool ClassInfo::isSubClassOf( const ClassInfo *base )$/;"	f	class:SLB::ClassInfo
@@ -4003,8 +4005,6 @@ lvm_c	external/lua.c	12243;"	d	file:
 lvm_h	external/lua.c	3347;"	d	file:
 lzio_c	external/lua.c	13109;"	d	file:
 lzio_h	external/lua.c	2116;"	d	file:
-m_actionID	include/entities/Event.hpp	/^		u16 m_actionID;$/;"	m	class:Event
-m_actions	include/entities/Event.hpp	/^		std::vector<std::string> m_actions;$/;"	m	class:Event
 m_actions	include/objects/Battle.hpp	/^		std::vector<BattleAction*> m_actions;$/;"	m	class:Battle
 m_actor	include/activities/EquipActivity.hpp	/^		Actor *m_actor;$/;"	m	class:EquipActivity
 m_actor	include/objects/BattleAction.hpp	/^		Battler *m_actor;$/;"	m	class:BattleAction
@@ -4041,6 +4041,7 @@ m_choicewin	include/activities/EquipActivity.hpp	/^		EquipChoiceWindow *m_choice
 m_clipRect	include/display/Image.hpp	/^		SDL_Rect m_clipRect;$/;"	m	class:Image
 m_cmdwin	include/activities/EndActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:EndActivity
 m_cmdwin	include/activities/MenuActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:MenuActivity
+m_cmdwin	include/activities/MessageActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:MessageActivity
 m_cmdwin	include/activities/TitleActivity.hpp	/^		CommandWindow *m_cmdwin;$/;"	m	class:TitleActivity
 m_columnMax	include/windows/SelectableWindow.hpp	/^		u8 m_columnMax;$/;"	m	class:SelectableWindow
 m_commands	include/windows/CommandWindow.hpp	/^		std::vector<std::pair<std::string,bool>> m_commands;$/;"	m	class:CommandWindow
@@ -4135,7 +4136,6 @@ m_pixelFormat	include/display/Map.hpp	/^		Uint32 m_pixelFormat;$/;"	m	class:Map
 m_pos	include/windows/SelectableWindow.hpp	/^		s16 m_pos;$/;"	m	class:SelectableWindow
 m_posRect	include/display/Image.hpp	/^		SDL_Rect m_posRect;$/;"	m	class:Image
 m_processingAction	include/activities/BattleActivity.hpp	/^		bool m_processingAction;$/;"	m	class:BattleActivity
-m_processingAction	include/entities/Event.hpp	/^		bool m_processingAction;$/;"	m	class:Event
 m_receiver	include/objects/BattleAction.hpp	/^		Battler *m_receiver;$/;"	m	class:BattleAction
 m_renderer	include/display/GameWindow.hpp	/^		SDL_Renderer *m_renderer;$/;"	m	class:GameWindow
 m_scroll	include/windows/SelectableWindow.hpp	/^		u8 m_scroll;$/;"	m	class:SelectableWindow
@@ -4482,7 +4482,6 @@ printToImage	source/display/Font.cpp	/^void Font::printToImage(const char *str, 
 priority	external/lua.c	/^} priority[] = {  \/* ORDER OPR *\/$/;"	v	typeref:struct:__anon17	file:
 process	external/SLB.cpp	/^void ErrorHandler::process(lua_State *L)$/;"	f	class:SLB::ErrorHandler
 process	source/objects/BattleAction.cpp	/^void BattleAction::process() {$/;"	f	class:BattleAction
-processAction	source/entities/Event.cpp	/^void Event::processAction() {$/;"	f	class:Event
 processAction	source/objects/Battle.cpp	/^void Battle::processAction() {$/;"	f	class:Battle
 propagateall	external/lua.c	/^static void propagateall (global_State *g) {$/;"	f	file:
 propagatelist	external/lua.c	/^static void propagatelist (global_State *g, GCObject *l) {$/;"	f	file:
@@ -5031,6 +5030,7 @@ update	source/windows/ActorChoiceWindow.cpp	/^void ActorChoiceWindow::update() {
 update	source/windows/SelectableWindow.cpp	/^void SelectableWindow::update() {$/;"	f	class:SelectableWindow
 update	source/windows/Window.cpp	/^void Window::update() {$/;"	f	class:Window
 updateAction	include/objects/Battle.hpp	/^		void updateAction() { m_actions.back()->updateDamages(); }$/;"	f	class:Battle
+updateCmdwinSize	source/activities/MessageActivity.cpp	/^void MessageActivity::updateCmdwinSize() {$/;"	f	class:MessageActivity
 updateCursor	source/windows/SelectableWindow.cpp	/^void SelectableWindow::updateCursor() {$/;"	f	class:SelectableWindow
 updateDamages	source/objects/BattleAction.cpp	/^void BattleAction::updateDamages() {$/;"	f	class:BattleAction
 updatePad	source/objects/Keyboard.cpp	/^void Keyboard::updatePad(SDL_Event *e) {$/;"	f	class:Keyboard
@@ -5064,7 +5064,6 @@ vmcase	external/lua.c	12763;"	d	file:
 vmcasenb	external/lua.c	12764;"	d	file:
 vmdispatch	external/lua.c	12762;"	d	file:
 vt	external/lua.c	/^      lu_byte vt;  \/* whether 't' is register (VLOCAL) or upvalue (VUPVAL) *\/$/;"	m	struct:expdesc::__anon8::__anon9	file:
-waitForNextAction	source/entities/Event.cpp	/^void Event::waitForNextAction() {$/;"	f	class:Event
 waitUntilItsTime	source/core/TimeManager.cpp	/^void TimeManager::waitUntilItsTime() {$/;"	f	class:TimeManager
 warning	include/core/Debug.hpp	31;"	d
 warning	include/core/Debug.hpp	37;"	d
@@ -5135,6 +5134,7 @@ zgetc	external/lua.c	2127;"	d	file:
 ~Equipment	source/objects/Equipment.cpp	/^Equipment::~Equipment() {$/;"	f	class:Equipment
 ~ErrorHandler	external/SLB.hpp	/^    virtual ~ErrorHandler() {}$/;"	f	class:SLB::ErrorHandler
 ~Event	source/entities/Event.cpp	/^Event::~Event() {$/;"	f	class:Event
+~EventAction	source/objects/EventAction.cpp	/^EventAction::~EventAction() {$/;"	f	class:EventAction
 ~Font	source/display/Font.cpp	/^Font::~Font() {$/;"	f	class:Font
 ~FuncCall	external/SLB.cpp	/^  FuncCall::~FuncCall()$/;"	f	class:SLB::FuncCall
 ~Game	source/Game.cpp	/^Game::~Game() {$/;"	f	class:Game

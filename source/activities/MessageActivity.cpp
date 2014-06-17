@@ -18,7 +18,7 @@
 #include "Asylia.hpp"
 
 MessageActivity::MessageActivity(std::string message, Activity *parent) : Activity(parent) {
-	m_type = Type::Dialog;
+	m_type = Type::Message;
 	
 	m_parent = parent;
 	if(m_parent == NULL) {

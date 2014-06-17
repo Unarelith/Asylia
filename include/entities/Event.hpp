@@ -32,9 +32,15 @@ class Event : public Character {
 		
 		std::string name() const { return m_name; }
 		
+		void lock() { m_locked = true; }
+		void unlock() { m_locked = false; }
+		bool isLocked() const { return m_locked; }
+		
 	private:
 		std::string m_folder;
 		std::string m_name;
+		
+		bool m_locked;
 };
 
 #endif // EVENT_HPP_

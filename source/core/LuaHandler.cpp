@@ -56,7 +56,10 @@ void LuaHandler::bindClasses() {
 									 .set("x", &Character::x)
 									 .set("y", &Character::y)
 									 .set("setHitbox", &Character::setHitbox)
-									 .set("setPosition", &Character::setPosition);
+									 .set("setPosition", &Character::setPosition)
+									 .set("name", &Event::name);
+	
+	SLB::Class<EventInterpreter>("EventInterpreter", &slbm).set("addActionToQueue", &EventInterpreter::addActionToQueue);
 	
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
@@ -91,6 +94,15 @@ void LuaHandler::bindClasses() {
 	
 	SLB::Class<MessageActivity>("MessageActivity", &slbm).set("addCommand", &MessageActivity::addCommand)
 														 .set("getCmdwinPos", &MessageActivity::getCmdwinPos);
+	
+	SLB::Class<ParameterList>("ParameterList", &slbm).constructor()
+													 .set("addIntParameter", &ParameterList::addIntParameter)
+													 .set("addFloatParameter", &ParameterList::addFloatParameter)
+													 .set("addStringParameter", &ParameterList::addStringParameter);
+	
+	SLB::Class<IntParameter>("IntParameter", &slbm);
+	SLB::Class<FloatParameter>("FloatParameter", &slbm);
+	SLB::Class<StringParameter>("StringParameter", &slbm);
 	
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)

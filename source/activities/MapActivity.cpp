@@ -39,6 +39,8 @@ MapActivity::~MapActivity() {
 	SpriteAnimationManager::free();
 	
 	LuaHandler::free();
+	
+	EventInterpreter::free();
 }
 
 void MapActivity::init() {

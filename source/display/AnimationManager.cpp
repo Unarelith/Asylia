@@ -51,7 +51,6 @@ void AnimationManager::free() {
 		delete animations.back();
 		animations.pop_back();
 	}
-	animations.clear();
 }
 
 Animation *AnimationManager::getAnimationByName(std::string name) {

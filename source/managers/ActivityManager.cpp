@@ -38,6 +38,6 @@ void ActivityManager::push(Activity *activity) {
 	activities.push(activity);
 	if(top()->parent()) top()->screenshot(top()->parent());
 	if(top()->type() == Activity::Type::Map) ((MapActivity*)activity)->init();
-	if(top()->type() != Activity::Type::Dialog) top()->update();
+	if(top()->type() != Activity::Type::Message) top()->update();
 }
 

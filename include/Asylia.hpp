@@ -118,7 +118,10 @@ using namespace tinyxml2;
 
 #include "Interface.hpp"
 
+#include "Parameter.hpp"
+#include "EventAction.hpp"
 #include "Event.hpp"
+#include "EventInterpreter.hpp"
 #include "EventManager.hpp"
 
 #include "Activity.hpp"
