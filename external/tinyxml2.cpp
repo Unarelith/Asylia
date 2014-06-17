@@ -22,6 +22,7 @@ must not be misrepresented as being the original software.
 distribution.
 */
 
+#include "SDLHeaders.hpp"
 #include "tinyxml2.hpp"
 #include "Config.hpp"
 #include "Debug.hpp"

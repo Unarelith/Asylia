@@ -9,14 +9,6 @@ LuaEvent = {
 				self.event:render()
 			end
 			
-			self.actions = {}
-			
-			self.addAction = function(func)
-				local str = string.dump(func)
-				self.event:addAction(str)
-				table.insert(self.actions, #self.actions+1, func)
-			end
-			
 			return self
 		end
 		
