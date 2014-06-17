@@ -34,7 +34,9 @@ void EventInterpreter::addActionToQueue(std::string eventName, u16 actionID, Par
 }
 
 void EventInterpreter::update(Event *e) {
-	switch(actions[e->name()].back()->actionID()) {
+	if(actions[e->name()].size() == 0) return;
+	
+	switch(actions[e->name()].front()->actionID()) {
 		case 0:		action0(e);		break;
 		case 1:		action1(e);		break;
 		default:					break;
@@ -42,7 +44,7 @@ void EventInterpreter::update(Event *e) {
 }
 
 void EventInterpreter::action0(Event *e) {
-	ParameterList *params = actions[e->name()].back()->parameters();
+	ParameterList *params = actions[e->name()].front()->parameters();
 	
 	if(params->at(0)->isString() && !e->isLocked()) {
 		ActivityManager::drawMessage(*(std::string*)(params->at(0)->value()));
@@ -50,7 +52,9 @@ void EventInterpreter::action0(Event *e) {
 	}
 	
 	if(ActivityManager::top()->type() != Activity::Type::Message) {
+		actions[e->name()].pop();
 		e->unlock();
+		update(e);
 	}
 }
 

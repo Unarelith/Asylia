@@ -20,8 +20,8 @@
 
 class Parameter {
 	public:
-		Parameter() {}
-		virtual ~Parameter() = 0;
+		Parameter();
+		virtual ~Parameter();
 		
 		virtual void *value() = 0;
 		
@@ -30,43 +30,44 @@ class Parameter {
 		bool isString() { return m_type == Type::StringParameter; }
 		
 		enum Type {
+			Undefined,
 			IntParameter,
 			FloatParameter,
 			StringParameter
 		};
 		
-	private:
+	protected:
 		Type m_type;
 };
 
-class IntParameter {
+class IntParameter : public Parameter {
 	public:
-		IntParameter(int value) { m_value = value; }
-		~IntParameter() {}
+		IntParameter(int value);
+		~IntParameter();
 		
-		int *value() { return &m_value; }
+		void *value() { return (void*)&m_value; }
 		
 	private:
 		int m_value;
 };
 
-class FloatParameter {
+class FloatParameter : public Parameter {
 	public:
-		FloatParameter(float value) { m_value = value; }
-		~FloatParameter() {}
+		FloatParameter(float value);
+		~FloatParameter();
 		
-		float *value() { return &m_value; }
+		void *value() { return (void*)&m_value; }
 		
 	private:
 		float m_value;
 };
 
-class StringParameter {
+class StringParameter : public Parameter {
 	public:
-		StringParameter(std::string value) { m_value = value; }
-		~StringParameter() {}
+		StringParameter(std::string value);
+		~StringParameter();
 		
-		std::string *value() { return &m_value; }
+		void *value() { return (void*)&m_value; }
 		
 	private:
 		std::string m_value;
@@ -74,8 +75,11 @@ class StringParameter {
 
 class ParameterList {
 	public:
-		ParameterList() {}
-		~ParameterList() { while(m_list.size() != 0) { delete m_list.back(); m_list.pop_back(); } }
+		ParameterList(const ParameterList &list);
+		ParameterList();
+		~ParameterList();
+		
+		void clear();
 		
 		Parameter *at(u16 id) const { return m_list[id]; }
 		Parameter *operator[](u16 id) const { return m_list[id]; }

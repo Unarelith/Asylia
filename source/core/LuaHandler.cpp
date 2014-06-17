@@ -98,7 +98,8 @@ void LuaHandler::bindClasses() {
 	SLB::Class<ParameterList>("ParameterList", &slbm).constructor()
 													 .set("addIntParameter", &ParameterList::addIntParameter)
 													 .set("addFloatParameter", &ParameterList::addFloatParameter)
-													 .set("addStringParameter", &ParameterList::addStringParameter);
+													 .set("addStringParameter", &ParameterList::addStringParameter)
+													 .set("clear", &ParameterList::clear);
 	
 	SLB::Class<IntParameter>("IntParameter", &slbm);
 	SLB::Class<FloatParameter>("FloatParameter", &slbm);
