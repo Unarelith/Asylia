@@ -60,7 +60,7 @@ void MessageActivity::update() {
 		}
 		
 		ActivityManager::pop();
-		ActivityManager::top()->update();
+		MapManager::currentMap->updateEventsActions();
 	}
 }
 

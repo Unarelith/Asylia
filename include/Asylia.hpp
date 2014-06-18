@@ -121,7 +121,6 @@ using namespace tinyxml2;
 #include "Parameter.hpp"
 #include "EventAction.hpp"
 #include "Event.hpp"
-#include "EventInterpreter.hpp"
 #include "EventManager.hpp"
 
 #include "Activity.hpp"
@@ -136,6 +135,8 @@ using namespace tinyxml2;
 #include "BattleActivity.hpp"
 #include "SettingsActivity.hpp"
 #include "ActivityManager.hpp"
+
+#include "EventInterpreter.hpp"
 
 #include "Tileset.hpp"
 #include "Map.hpp"

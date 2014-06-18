@@ -64,6 +64,10 @@ void Event::update() {
 	
 	LuaHandler::doString(m_name + ".update()");
 	
+	updateActions();
+}
+
+void Event::updateActions() {
 	EventInterpreter::update(this);
 }
 

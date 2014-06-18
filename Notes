@@ -1,4 +1,6 @@
 - Improve events
+	* Issues:
+		~ Between two actions, all events are updated because they move
 	* Simplify the condition in eventXXX.update
 	* Add battles with parameters:
 		=> battleID
@@ -6,7 +8,7 @@
 		=> victoryActionID
 		=> defeatActionID ( impossible now because defeat=gameover )
 			-> Add a 'bool m_allowDefeat' flag to startBattle() and to BattleActivity
-	* Improve EnemyEvent and ChestEvent
+	* Remove EnemyEvent and improve ChestEvent
 
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp

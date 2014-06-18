@@ -28,6 +28,8 @@ class Event : public Character {
 		void move(std::string function);
 		
 		void update();
+		void updateActions();
+		
 		void render();
 		
 		std::string name() const { return m_name; }

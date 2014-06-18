@@ -94,6 +94,12 @@ void Map::eventsUpdate() {
 	}
 }
 
+void Map::updateEventsActions() {
+	for(u16 i = 0 ; i < m_events.size() ; i++) {
+		m_events[i]->updateActions();
+	}
+}
+
 void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
 	u16 posX = tileX * m_tileset->tileWidth;
 	u16 posY = tileY * m_tileset->tileHeight;

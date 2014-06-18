@@ -55,6 +55,7 @@ ParameterList *EventInterpreter::getParameters(Event *e) {
 	return actions[e->name()][e->currentActionID()]->parameters();
 }
 
+/* Action 0: DrawText */
 void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
 	
@@ -73,6 +74,7 @@ void EventInterpreter::action0(Event *e) {
 	}
 }
 
+/* Action 1: StartBattle */
 void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 	
@@ -90,6 +92,7 @@ void EventInterpreter::action1(Event *e) {
 	}
 }
 
+/* Action 2: AskQuestion */
 void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
 	

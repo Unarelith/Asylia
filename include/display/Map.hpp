@@ -27,6 +27,7 @@ class Map {
 		Event *getEvent(std::string name);
 		
 		void eventsUpdate();
+		void updateEventsActions();
 		
 		void loadTile(u16 tileX, u16 tileY, u8 layer);
 		void load();
