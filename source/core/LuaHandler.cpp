@@ -57,7 +57,8 @@ void LuaHandler::bindClasses() {
 									 .set("y", &Character::y)
 									 .set("setHitbox", &Character::setHitbox)
 									 .set("setPosition", &Character::setPosition)
-									 .set("name", &Event::name);
+									 .set("name", &Event::name)
+									 .set("face", &Character::face);
 	
 	SLB::Class<EventInterpreter>("EventInterpreter", &slbm).set("addActionToQueue", &EventInterpreter::addActionToQueue);
 	

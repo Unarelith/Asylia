@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-SUBFOLDERS	:=	activities core display entities managers objects windows
+SUBFOLDERS	:=	activities core display entities events managers objects windows
 
 include $(CLEAR_VARS)
 

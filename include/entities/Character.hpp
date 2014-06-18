@@ -60,6 +60,8 @@ class Character : public Sprite {
 		u8 getDirection() const { return m_direction; }
 		void setDirection(u8 direction) { m_direction = direction; }
 		
+		void face(Character *c) { m_direction = 3 - c->m_direction; }
+		
 		bool inFrontOf(Character *c) { return m_inFrontOf == c; }
 		
 		void setHitbox(s16 x, s16 y, u16 width, u16 height);

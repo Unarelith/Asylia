@@ -6,6 +6,8 @@ event3c.init = function()
 	event3c.update = function()
 		if CharacterManager.player():inFrontOf(event3c.event)
 		and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
+			event3c.event:face(CharacterManager.player())
+			
 			event3c:addAction(0, LuaEvent.drawText, _t("event3c-0"), 1)
 			event3c:addAction(1, LuaEvent.askQuestion, _t("event3c-1"),
 							  _t("Yes"), 2,
