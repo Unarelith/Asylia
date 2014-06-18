@@ -84,9 +84,7 @@ void EventInterpreter::action1(Event *e) {
 	}
 	
 	if(ActivityManager::top()->type() != Activity::Type::BattleAct) {
-		if(params->size() == 2 && params->at(1)->isInteger()) {
-			e->currentActionID(*(int*)params->at(1)->value());
-		}
+		e->currentActionID(*(int*)params->at(1)->value());
 		
 		e->unlock();
 	}

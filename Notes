@@ -12,7 +12,6 @@
 			=> Improve collisions functions for bigger events
 
 - Improve events
-	* Simplify the condition in eventXXX.update
 	* Add battles with parameters:
 		=> battleID
 		=> escapeActionID
