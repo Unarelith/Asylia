@@ -75,7 +75,7 @@ class Character : public Sprite {
 		};
 		
 		enum Type {
-			None, Player, NPC, Event
+			None, Player, TypeNPC, TypeEvent
 		};
 		
 	protected:

@@ -1,6 +1,17 @@
+- Issues
+	* Sound
+		~ ALSA lib pcm.c:7843:(snd_pcm_recorder) underrun occured
+	* Events
+		~ Collisions between Demon and Ghost like that is buggy:
+			  |DD|
+			  |DD|
+			  ||
+			  \/
+			  |G|
+	* MessageActivity
+		~ French "event0-0" text is too close to the right border of the window
+
 - Improve events
-	* Issues:
-		~ Between two actions, all events are updated because they move
 	* Simplify the condition in eventXXX.update
 	* Add battles with parameters:
 		=> battleID

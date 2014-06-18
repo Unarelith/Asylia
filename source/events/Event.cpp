@@ -19,15 +19,15 @@
 
 Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {
-		m_type = Type::Event;
+		m_type = Type::TypeEvent;
 		
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_DOWN]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_LEFT]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_RIGHT]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_UP]);
 	} else {
-		if(appearance == "") m_type = Type::Event;
-		else m_type = Type::NPC;
+		if(appearance == "") m_type = Type::TypeEvent;
+		else m_type = Type::TypeNPC;
 		
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);

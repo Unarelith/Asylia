@@ -60,7 +60,14 @@ Character::~Character() {
 
 void Character::render() {
 	if(ActivityManager::activities.top()->type() == Activity::Type::Map) {
-		if(!m_movementTimer.isStarted()) m_movementTimer.start();
+		if(!m_movementTimer.isStarted()) {
+			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
+				m_movementTimer.start();
+			}
+			else if(!((Event*)(this))->isLocked()) {
+				m_movementTimer.start();
+			}
+		}
 		
 		if(m_moving) {
 			playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
@@ -69,6 +76,7 @@ void Character::render() {
 		}
 	} else {
 		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
+		stopAnimation(m_direction);
 		m_movementTimer.stop();
 	}
 }
@@ -215,7 +223,7 @@ void Character::eventCollisions() {
 		}
 	}
 	
-	if(m_type == Type::Event || m_type == Type::NPC) {
+	if(m_type == Type::TypeEvent || m_type == Type::TypeNPC) {
 		inCollisionWith(CharacterManager::player);
 	}
 }

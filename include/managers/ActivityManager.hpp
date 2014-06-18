@@ -30,7 +30,7 @@ class ActivityManager {
 		static void push(Activity *activity);
 		static int size() { return activities.size(); }
 		
-		static MessageActivity *drawMessage(std::string message) { MessageActivity *activity = new MessageActivity(message); push(activity); return activity; }
+		static MessageActivity *drawMessage(std::string message) { top()->render(); MessageActivity *activity = new MessageActivity(message); push(activity); return activity; }
 		
 		static BattleActivity *startBattle(u16 id) { BattleActivity *activity = new BattleActivity(TroopManager::troops[id]); push(activity); return activity; }
 };
