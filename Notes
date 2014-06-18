@@ -2,14 +2,14 @@
 	* Sound
 		~ ALSA lib pcm.c:7843:(snd_pcm_recorder) underrun occured
 	* Events
+		~ Demon moves between event0 messages when talking to event0 in movement
 		~ Collisions between Demon and Ghost like that is buggy:
 			  |DD|
 			  |DD|
 			  ||
 			  \/
 			  |G|
-	* MessageActivity
-		~ French "event0-0" text is too close to the right border of the window
+			=> Improve collisions functions for bigger events
 
 - Improve events
 	* Simplify the condition in eventXXX.update
