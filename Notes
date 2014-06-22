@@ -1,10 +1,4 @@
 - Improve events
-	* Add battles with parameters:
-		=> battleID
-		=> escapeActionID
-		=> victoryActionID
-		=> defeatActionID ( impossible now because defeat=gameover )
-			-> Add a 'bool m_allowDefeat' flag to startBattle() and to BattleActivity
 	* Remove EnemyEvent and improve ChestEvent
 
 - Create Quest class and QuestManager
