@@ -26,15 +26,19 @@ class Parameter {
 		virtual void *value() = 0;
 		
 		bool isInteger() { return m_type == Type::IntParameter; }
+		bool isBoolean() { return m_type == Type::BoolParameter; }
 		bool isFloat() { return m_type == Type::FloatParameter; }
 		bool isString() { return m_type == Type::StringParameter; }
 		
 		enum Type {
 			Undefined,
 			IntParameter,
+			BoolParameter,
 			FloatParameter,
 			StringParameter
 		};
+		
+		Type type() const { return m_type; }
 		
 	protected:
 		Type m_type;
@@ -49,6 +53,17 @@ class IntParameter : public Parameter {
 		
 	private:
 		int m_value;
+};
+
+class BoolParameter : public Parameter {
+	public:
+		BoolParameter(bool value);
+		~BoolParameter();
+		
+		void *value() { return (void*)&m_value; }
+		
+	private:
+		bool m_value;
 };
 
 class FloatParameter : public Parameter {
@@ -87,6 +102,7 @@ class ParameterList {
 		u16 size() const { return m_list.size(); }
 		
 		void addIntParameter(int param) { m_list.push_back((Parameter*)(new IntParameter(param))); }	
+		void addBoolParameter(bool param) { m_list.push_back((Parameter*)(new BoolParameter(param))); }	
 		void addFloatParameter(float param) { m_list.push_back((Parameter*)(new FloatParameter(param))); }	
 		void addStringParameter(std::string param) { m_list.push_back((Parameter*)(new StringParameter(param))); }	
 		

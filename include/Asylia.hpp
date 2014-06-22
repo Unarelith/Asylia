@@ -122,6 +122,7 @@ using namespace tinyxml2;
 #include "EventAction.hpp"
 #include "Event.hpp"
 #include "EventManager.hpp"
+#include "EventListener.hpp"
 
 #include "Activity.hpp"
 #include "MapActivity.hpp"

@@ -17,7 +17,7 @@
  */
 #include "Asylia.hpp"
 
-BattleActivity::BattleActivity(Troop *troop) {
+BattleActivity::BattleActivity(Troop *troop, bool allowDefeat) {
 	m_type = Type::BattleAct;
 	
 	m_troop = troop;
@@ -44,6 +44,8 @@ BattleActivity::BattleActivity(Troop *troop) {
 	m_gameoverAlpha = 1;
 	
 	m_victorywin = new VictoryWindow(m_battle);
+	
+	m_allowDefeat = allowDefeat;
 	
 	Sound::Music::play(Sound::Music::battle, -1);
 }
@@ -73,7 +75,11 @@ void BattleActivity::update() {
 					break;
 				case 1:
 					Sound::Effect::play(Sound::Effect::back);
+					
 					ActivityManager::pop();
+					
+					EventListener::addBattleResult(1); // Escape
+					
 					Sound::Music::halt();
 					Sound::Music::play(Sound::Music::theme, -1);
 					break;
@@ -250,15 +256,24 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::GameOver) {
-		m_gameoverAlpha += 2;
-		if(m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) {
-			ActivityManager::push(new EndActivity(true));
+		if(!m_allowDefeat) m_gameoverAlpha += 2;
+		if((m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) || m_allowDefeat) {
+			if(!m_allowDefeat) {
+				ActivityManager::push(new EndActivity(true));
+			} else {
+				ActivityManager::pop();
+				
+				EventListener::addBattleResult(2); // Defeat
+			}
 		}
 	}
 	
 	if(m_mode == Mode::Victory) {
 		if(Keyboard::isKeyPressed(Keyboard::GameAttack)) {
 			ActivityManager::pop();
+			
+			EventListener::addBattleResult(0); // Victory
+			
 			Sound::Music::halt();
 			Sound::Music::play(Sound::Music::theme, -1);
 		}
@@ -307,7 +322,8 @@ void BattleActivity::render() {
 		if(m_mode == Mode::Victory) {
 			m_victorywin->draw();
 		}
-	} else {
+	}
+	else if(!m_allowDefeat) {
 		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
 		m_gameover->render();
 		if(m_gameoverAlpha > 400) {

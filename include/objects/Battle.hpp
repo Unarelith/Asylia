@@ -76,6 +76,8 @@ class Battle {
 		
 		u16 m_exp;
 		u16 m_gold;
+		
+		bool m_allowDefeat;
 };
 
 #endif // BATTLE_HPP_

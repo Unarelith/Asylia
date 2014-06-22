@@ -91,7 +91,7 @@ void EquipActivity::update() {
 }
 
 void EquipActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	renderBackground();
 	
 	if(m_itemMode) m_statswin->draw(m_itemwin->currentItem());
 	else m_statswin->draw();

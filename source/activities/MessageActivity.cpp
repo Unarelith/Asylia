@@ -57,6 +57,8 @@ void MessageActivity::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_cmdwin->commands().size() > 0) {
 			Sound::Effect::play(Sound::Effect::confirm);
+			
+			EventListener::addMessageActivityAction(m_cmdwin->pos());
 		}
 		
 		ActivityManager::pop();
@@ -65,7 +67,7 @@ void MessageActivity::update() {
 }
 
 void MessageActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	renderBackground();
 	
 	if(m_cmdwin->commands().size() > 0) {
 		m_cmdwin->draw();

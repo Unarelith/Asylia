@@ -17,7 +17,10 @@ event3c.init = function()
 							  _t("Yes"), 4,
 							  _t("No"), 1)
 			event3c:addAction(4, LuaEvent.drawText, _t("event3c-4"), 5)
-			event3c:addAction(5, LuaEvent.startBattle, 1, -1)
+			event3c:addAction(5, LuaEvent.startBattle, 1, true, 6, 7, 8)
+			event3c:addAction(6, LuaEvent.drawText, "Aaaaaaaaaaarg!!!", -1)
+			event3c:addAction(7, LuaEvent.drawText, "Tsssssssss...", -1)
+			event3c:addAction(8, LuaEvent.drawText, "Muhahahahaha", -1)
 		end
 	end
 	

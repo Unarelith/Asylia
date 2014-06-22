@@ -28,6 +28,8 @@ class Activity {
 		
 		void pollEvents();
 		
+		void renderBackground();
+		
 		void screenshot(Activity *activity);
 		
 		typedef enum {

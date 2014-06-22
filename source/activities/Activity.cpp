@@ -65,6 +65,11 @@ void Activity::pollEvents() {
 	}
 }
 
+void Activity::renderBackground() {
+	SDL_Rect posRect = {0, 0, GameWindow::main->width(), GameWindow::main->height()};
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, &posRect);
+}
+
 void Activity::screenshot(Activity *activity) {
 	SDL_SetRenderTarget(GameWindow::main->renderer(), m_background);
 	activity->render();

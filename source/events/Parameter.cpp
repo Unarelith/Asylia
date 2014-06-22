@@ -33,6 +33,15 @@ IntParameter::IntParameter(int value) {
 IntParameter::~IntParameter() {
 }
 
+BoolParameter::BoolParameter(bool value) {
+	m_type = Type::BoolParameter;
+	
+	m_value = value;
+}
+
+BoolParameter::~BoolParameter() {
+}
+
 FloatParameter::FloatParameter(float value) {
 	m_type = Type::FloatParameter;
 	
@@ -54,6 +63,7 @@ StringParameter::~StringParameter() {
 ParameterList::ParameterList(const ParameterList &list) {
 	for(auto it : list.m_list) {
 		if(it->isInteger()) addIntParameter(*(int*)it->value());
+		if(it->isBoolean()) addBoolParameter(*(bool*)it->value());
 		if(it->isFloat()) addFloatParameter(*(float*)it->value());
 		if(it->isString()) addStringParameter(*(std::string*)it->value());
 	}

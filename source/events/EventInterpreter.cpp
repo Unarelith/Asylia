@@ -79,12 +79,12 @@ void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 	
 	if(params->at(0)->isInteger() && !e->isLocked()) {
-		ActivityManager::startBattle(*(int*)(params->at(0)->value()));
+		if(params->at(1)->isBoolean()) ActivityManager::startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
 		e->lock();
 	}
 	
 	if(ActivityManager::top()->type() != Activity::Type::BattleAct) {
-		e->currentActionID(*(int*)params->at(1)->value());
+		e->currentActionID(*(int*)params->at(2 + EventListener::lastBattleResult())->value());
 		
 		e->unlock();
 	}

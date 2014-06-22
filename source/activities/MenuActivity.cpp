@@ -97,7 +97,7 @@ void MenuActivity::update() {
 }
 
 void MenuActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	renderBackground();
 	
 	m_cmdwin->draw(ActivityManager::top() == this && !m_actorChoiceMode);
 	

@@ -32,7 +32,7 @@ class ActivityManager {
 		
 		static MessageActivity *drawMessage(std::string message) { top()->render(); MessageActivity *activity = new MessageActivity(message); push(activity); return activity; }
 		
-		static BattleActivity *startBattle(u16 id) { BattleActivity *activity = new BattleActivity(TroopManager::troops[id]); push(activity); return activity; }
+		static BattleActivity *startBattle(u16 id, bool allowDefeat) { BattleActivity *activity = new BattleActivity(TroopManager::troops[id], allowDefeat); push(activity); return activity; }
 };
 
 #endif // ACTIVITYMANAGER_HPP_

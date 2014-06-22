@@ -1,16 +1,3 @@
-- Issues
-	* Sound
-		~ ALSA lib pcm.c:7843:(snd_pcm_recorder) underrun occured
-	* Events
-		~ Demon moves between event0 messages when talking to event0 in movement
-		~ Collisions between Demon and Ghost like that is buggy:
-			  |DD|
-			  |DD|
-			  ||
-			  \/
-			  |G|
-			=> Improve collisions functions for bigger events
-
 - Improve events
 	* Add battles with parameters:
 		=> battleID
@@ -94,6 +81,19 @@
 	=> Add a class 'LuaMod'
 	=> Create a class 'ModLibrary' which will provide all the functions
 	   required to develop a mod in Lua
+
+- Minor Issues
+	* Sound
+		~ Sometimes sound is broken and I get that error: ALSA lib pcm.c:7843:(snd_pcm_recorder) underrun occured
+	* Events
+		~ Demon moves between event0 messages when talking to event0 in movement
+		~ Collisions between Demon and Ghost like that is buggy:
+			  |DD|
+			  |DD|
+			  ||
+			  \/
+			  |G|
+			=> Improve collisions functions for bigger events
 
 - Improve Makefile:
 	=> For 'make', when there is all .o in 'build', display '[5/5]' instead of '[5/1]'

@@ -41,7 +41,7 @@ void ItemActivity::update() {
 }
 
 void ItemActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	renderBackground();
 	
 	m_itemwin->draw();
 }

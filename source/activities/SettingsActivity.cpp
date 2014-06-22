@@ -114,7 +114,7 @@ void SettingsActivity::update() {
 }
 
 void SettingsActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+	renderBackground();
 	
 	if(m_mode == Mode::Settings) {
 		m_settings->draw();

@@ -17,6 +17,8 @@ LuaEvent = {
 						end
 					elseif type(param) == "string" then
 						params:addStringParameter(param)
+					elseif type(param) == "boolean" then
+						params:addBoolParameter(param)
 					end
 				end
 				

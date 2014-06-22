@@ -20,7 +20,7 @@
 
 class BattleActivity : public Activity {
 	public:
-		BattleActivity(Troop *troop);
+		BattleActivity(Troop *troop, bool allowDefeat = false);
 		~BattleActivity();
 		
 		void update();
@@ -71,6 +71,8 @@ class BattleActivity : public Activity {
 		u16 m_gameoverAlpha;
 		
 		VictoryWindow *m_victorywin;
+		
+		bool m_allowDefeat;
 };
 
 #endif // BATTLEACTIVITY_HPP_
