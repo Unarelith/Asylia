@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <enemies>
-	<enemy name="Ghost" appearance="Undead01" level="200">
+	<enemy name="Ghost" appearance="Undead01" level="5">
 		<stats agi="12" vit="6" dex="9" str="15" wis="9" int="15"/>
 		
 		<item type="Item" id="0" count="3" chance="0.50"/>
 		<item type="Item" id="1" count="4" chance="0.75"/>
 	</enemy>
-	<enemy name="Demon" appearance="Devil03" level="200">
+	<enemy name="Demon" appearance="Devil03" level="5">
 		<stats agi="16" vit="8" dex="12" str="16" wis="8" int="16"/>
 		
 		<item type="Item" id="6" count="1" chance="1"/>

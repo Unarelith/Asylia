@@ -256,8 +256,8 @@ void BattleActivity::update() {
 	}
 	
 	if(m_mode == Mode::GameOver) {
-		if(!m_allowDefeat) m_gameoverAlpha += 2;
-		if((m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) || m_allowDefeat) {
+		m_gameoverAlpha += 2;
+		if((m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) || (m_gameoverAlpha > 100 && m_allowDefeat)) {
 			if(!m_allowDefeat) {
 				ActivityManager::push(new EndActivity(true));
 			} else {
@@ -322,12 +322,19 @@ void BattleActivity::render() {
 		if(m_mode == Mode::Victory) {
 			m_victorywin->draw();
 		}
-	}
-	else if(!m_allowDefeat) {
-		if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
-		m_gameover->render();
-		if(m_gameoverAlpha > 400) {
-			Interface::defaultFont->print("Press A to continue", 3, 3, FONT_LARGE);
+	} else {
+		if(!m_allowDefeat) {
+			if(m_gameoverAlpha < 256) m_gameover->setAlphaMod(m_gameoverAlpha);
+			m_gameover->render();
+			if(m_gameoverAlpha > 400) {
+				Interface::defaultFont->print("Press A to continue", 3, 3, FONT_LARGE);
+			}
+		} else {
+			m_battle->renderBattleback();
+			
+			m_actorStatswin.drawEnemies(m_battle->enemies());
+			
+			m_actorStatswin.drawActors(m_battle->actors());
 		}
 	}
 }
