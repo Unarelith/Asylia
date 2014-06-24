@@ -35,7 +35,6 @@ void EventManager::free() {
 void EventManager::loadLibs() {
 	LuaHandler::doFile("data/lualibs/LuaEvent.lua");
 	LuaHandler::doFile("data/lualibs/ChestEvent.lua");
-	LuaHandler::doFile("data/lualibs/EnemyEvent.lua");
 }
 
 void EventManager::initEvents() {

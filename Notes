@@ -1,5 +1,6 @@
 - Improve events
 	* Remove EnemyEvent and improve ChestEvent
+	* Make a teleport action in events
 
 - Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp
