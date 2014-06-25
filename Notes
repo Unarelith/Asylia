@@ -1,5 +1,5 @@
 - Improve events
-	* Remove EnemyEvent and improve ChestEvent
+	* Make a chest example
 	* Make a teleport action in events
 
 - Create Quest class and QuestManager
@@ -16,7 +16,7 @@
 	=> Add a 'Quests' entry in menu
 
 - Create a class system for Actors
-	=> Some Weapons and Armors are only available for a single class
+	=> Some Weapons and Armors are only available for a single or multiple classes
 
 - Add a lot of stats display help functions to Window class
 	* Find a way to improve EquipStatsWindow
