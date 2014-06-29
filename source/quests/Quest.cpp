@@ -15,9 +15,11 @@
  *
  * =====================================================================================
  */
-#include "Quest.hpp"
+#include "Asylia.hpp"
 
-Quest::Quest() {
+Quest::Quest(u16 exp, u16 gold) {
+	m_exp = exp;
+	m_gold = gold;
 }
 
 Quest::~Quest() {

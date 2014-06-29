@@ -20,10 +20,19 @@
 
 class Quest {
 	public:
-		Quest();
+		Quest(u16 exp, u16 gold);
 		~Quest();
 		
+		void addObjective(QuestObjective *objective) { m_objectives.push_back(objective); }
+		
+		Inventory *items() { return &m_items; }
+		
 	private:
+		u16 m_exp;
+		u16 m_gold;
+		Inventory m_items;
+		
+		std::vector<QuestObjective*> m_objectives;
 };
 
 #endif // QUEST_HPP_
