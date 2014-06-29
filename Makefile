@@ -6,7 +6,7 @@ TARGET		:=  $(shell basename $(CURDIR))
 #---------------------------------------------------------------------------------
 # Source sub-folders
 #---------------------------------------------------------------------------------
-SUBFOLDERS	:=	activities core display entities events managers objects windows
+SUBFOLDERS	:=	activities core display entities events managers objects quests windows
 
 #---------------------------------------------------------------------------------
 # Compiler executables

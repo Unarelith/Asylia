@@ -1,8 +1,4 @@
-- Improve events
-	* Make a chest example
-	* Make a teleport action in events
-
-- Create Quest class and QuestManager
+- [Quests] Create Quest class and QuestManager
 	=> Create 'quests.xml' with type, name, description, gold and exp
 		-> 'type' can be:
 			* Talk: actorID
@@ -42,6 +38,10 @@
 		-> Represents all the possibilities to do with the Item we choosed
 			* For example a potion have a choice "Use" 
 				--> Change the mode to ChooseActorTarget
+
+- [Session00] Improve events
+	* Make a teleport action in events
+	* Improve ChestEvent
 
 - Create a new class SkillActivity
 	* Add skills

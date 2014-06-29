@@ -98,6 +98,8 @@ using namespace tinyxml2;
 #include "BattleAction.hpp"
 #include "Battle.hpp"
 
+#include "Quest.hpp"
+
 #include "Window.hpp"
 #include "TextWindow.hpp"
 #include "InfoWindow.hpp"
