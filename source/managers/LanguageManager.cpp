@@ -93,6 +93,26 @@ void LanguageManager::init(std::string language) {
 		skillElement = skillElement->NextSiblingElement("skill");
 		counter++;
 	}
+	
+	/* QUESTS */
+	XMLElement *questElement = doc.FirstChildElement("language").FirstChildElement("quest").ToElement();
+	counter = 0;
+	while(questElement) {
+		text[std::string("Quest") + to_string(counter)] = questElement->Attribute("name");
+		text[std::string("Quest") + to_string(counter) + "Desc"] = questElement->Attribute("description");
+		
+		XMLElement *objectiveElement = questElement->FirstChildElement("objective");
+		u16 id = 0;
+		while(objectiveElement) {
+			text[std::string("Quest") + to_string(counter) + "_Obj" + to_string(id) + "Desc"] = objectiveElement->Attribute("description");
+			
+			objectiveElement = objectiveElement->NextSiblingElement("objective");
+			id++;
+		}
+		
+		questElement = questElement->NextSiblingElement("quest");
+		counter++;
+	}
 }
 
 std::string LanguageManager::translate(std::string str) {

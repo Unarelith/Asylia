@@ -49,20 +49,36 @@ void QuestActivity::update() {
 		
 		if(s_load || Keyboard::isKeyPressedOnce(Keyboard::GameLeft) || Keyboard::isKeyPressedOnce(Keyboard::GameRight)) {
 			s_load = false;
+			
 			m_questListwin->clear();
+			m_currentQuest = NULL;
+			
+			bool first = false;
 			for(auto it : CharacterManager::player->quests()) {
 				switch(m_questCategorywin->pos()) {
 					case 0:
-						m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+						if(!first) {
+							m_currentQuest = it;
+							first = true;
+						}
+						m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
 						break;
 					case 1:
 						if(!it->completed()) {
-							m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+							if(!first) {
+								m_currentQuest = it;
+								first = true;
+							}
+							m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
 						}
 						break;
 					case 2:
 						if(it->completed()) {
-							m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+							if(!first) {
+								m_currentQuest = it;
+								first = true;
+							}
+							m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
 						}
 						break;
 					default: break;

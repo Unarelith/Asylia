@@ -38,6 +38,7 @@
 	<text id="Gold" text="Or"/>
 	<text id="Yes" text="Oui"/>
 	<text id="No" text="Non"/>
+	<text id="Description" text="Description"/>
 	
 	<text id="Normal" text="Normal"/>
 	
@@ -93,4 +94,9 @@
 	<!-- Skills -->
 	<skill name="BaseAttack" description="Pas de description."/>
 	<skill name="Boule de feu" description="Une boule de feu très chaude."/>
+
+	<!-- Quests -->
+	<quest name="Quête de test" description="La quête de test est une quête de test qui a pour but de tester le système de quêtes.">
+		<objective description="Rapporter une potion"/>
+	</quest>
 </language>

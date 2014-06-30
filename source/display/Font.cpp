@@ -21,22 +21,25 @@ Font::Font(const char *filename) {
 	m_fontSmall  = TTF_OpenFont(filename, FONT_SMALL);
 	m_fontMedium = TTF_OpenFont(filename, FONT_MEDIUM);
 	m_fontLarge  = TTF_OpenFont(filename, FONT_LARGE);
+	m_fontMaxi  = TTF_OpenFont(filename, FONT_MAXI);
 }
 
 Font::~Font() {
 	TTF_CloseFont(m_fontSmall);
 	TTF_CloseFont(m_fontMedium);
 	TTF_CloseFont(m_fontLarge);
+	TTF_CloseFont(m_fontMaxi);
 }
 
 void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -49,10 +52,11 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -69,10 +73,11 @@ void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize si
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -85,10 +90,11 @@ void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 heig
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -104,10 +110,11 @@ void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, Fo
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, str, SDL_Color{color.r, color.g, color.b, color.a}, width);
@@ -120,10 +127,11 @@ void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, F
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
@@ -157,10 +165,11 @@ void Font::setStyle(FontSize size, int style) {
 	TTF_Font *font = NULL;
 	
 	switch(size) {
-		case FONT_SMALL:  font = m_fontSmall;		break;
-		case FONT_MEDIUM: font = m_fontMedium;		break;
-		case FONT_LARGE:  font = m_fontLarge;		break;
-		default:		  error("Bad font size");	return;
+		case FONT_SMALL:	font = m_fontSmall;		break;
+		case FONT_MEDIUM:	font = m_fontMedium;	break;
+		case FONT_LARGE:	font = m_fontLarge;		break;
+		case FONT_MAXI:		font = m_fontMaxi;		break;
+		default:			error("Bad font size");	return;
 	}
 	
 	TTF_SetFontStyle(font, style);

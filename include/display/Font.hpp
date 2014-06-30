@@ -21,7 +21,8 @@
 typedef enum {
 	FONT_SMALL = 11,
 	FONT_MEDIUM = 16,
-	FONT_LARGE = 18
+	FONT_LARGE = 18,
+	FONT_MAXI = 22
 } FontSize;
 
 class Font {
@@ -44,6 +45,7 @@ class Font {
 		TTF_Font *m_fontSmall;
 		TTF_Font *m_fontMedium;
 		TTF_Font *m_fontLarge;
+		TTF_Font *m_fontMaxi;
 };
 
 #endif // FONT_HPP_

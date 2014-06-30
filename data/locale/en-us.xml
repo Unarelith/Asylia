@@ -38,6 +38,7 @@
 	<text id="Gold" text="Gold"/>
 	<text id="Yes" text="Yes"/>
 	<text id="No" text="No"/>
+	<text id="Description" text="Description"/>
 	
 	<text id="Normal" text="Normal"/>
 	
@@ -93,4 +94,9 @@
 	<!-- Skills -->
 	<skill name="BaseAttack" description="No description."/>
 	<skill name="Fireball" description="A very hot fireball."/>
+
+	<!-- Quests -->
+	<quest name="Test quest" description="The test quest is a quest used for quest system testing purpose only.">
+		<objective description="Bring a potion"/>
+	</quest>
 </language>
