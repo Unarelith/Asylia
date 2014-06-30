@@ -1,6 +1,5 @@
 - [Quests] Work on quests
-	=> Fix segfault when pressing A, then B, then A on "All"
-		in quests menu
+	=> Update LanguageManager
 	=> Add a new quest objective: "GoSomewhere"
 
 - WTF Issue: Check Screenshot near 30/06/2014 - 16:52

@@ -24,9 +24,9 @@ class CommandWindow : public SelectableWindow {
 		CommandWindow(u16 width);
 		~CommandWindow();
 		
-		void clear() { m_commands.clear(); if(m_horizontal) m_height = 64; else m_height = 32; };
+		void clear() { m_commands.clear(); if(m_horizontal) m_height = 64; else m_height = 32; m_itemMax = 0; }
 		
-		void addCommand(std::string cmd, bool disabled = false) { if(!m_horizontal) m_height += 32; m_commands.push_back(std::make_pair(cmd, disabled)); m_itemMax++; };
+		void addCommand(std::string cmd, bool disabled = false) { if(!m_horizontal) m_height += 32; m_commands.push_back(std::make_pair(cmd, disabled)); m_itemMax++; }
 		
 		void drawItem(u8 pos);
 		void drawHorizontalCenteredItem(u8 pos);

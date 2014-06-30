@@ -42,19 +42,39 @@ QuestActivity::~QuestActivity() {
 }
 
 void QuestActivity::update() {
+	static bool s_load = true;
+	
 	if(m_mode == Mode::CategoryChoice) {
 		m_questCategorywin->update();
+		
+		if(s_load || Keyboard::isKeyPressedOnce(Keyboard::GameLeft) || Keyboard::isKeyPressedOnce(Keyboard::GameRight)) {
+			s_load = false;
+			m_questListwin->clear();
+			for(auto it : CharacterManager::player->quests()) {
+				switch(m_questCategorywin->pos()) {
+					case 0:
+						m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+						break;
+					case 1:
+						if(!it->completed()) {
+							m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+						}
+						break;
+					case 2:
+						if(it->completed()) {
+							m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
+						}
+						break;
+					default: break;
+				}
+			}
+			m_questListwin->height(GameWindow::main->height() - 114);
+		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			
 			m_mode = Mode::QuestChoice;
-			
-			m_questListwin->clear();
-			for(auto it : CharacterManager::player->quests()) {
-				m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
-			}
-			m_questListwin->height(GameWindow::main->height() - 114);
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {

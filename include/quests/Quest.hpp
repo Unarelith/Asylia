@@ -29,6 +29,8 @@ class Quest {
 		
 		Inventory *items() { return &m_items; }
 		
+		bool completed() const { return m_completed; }
+		
 		static u16 counter;
 		
 	private:
@@ -37,6 +39,8 @@ class Quest {
 		u16 m_exp;
 		u16 m_gold;
 		Inventory m_items;
+		
+		bool m_completed;
 		
 		std::vector<QuestObjective*> m_objectives;
 };

@@ -25,6 +25,8 @@ Quest::Quest(u16 exp, u16 gold) {
 	
 	m_exp = exp;
 	m_gold = gold;
+	
+	m_completed = false;
 }
 
 Quest::~Quest() {
