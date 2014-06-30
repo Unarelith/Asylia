@@ -1,15 +1,13 @@
-- [Quests] Create Quest class and QuestManager
-	=> Create 'quests.xml' with type, name, description, gold and exp
-		-> 'type' can be:
-			* Talk: actorID
-			* Bring: itemsIDs, actorID
-			* Hunt: enemiesIDs
-			* HuntAndBring: enemiesIDs, itemsIDs
-			* FindAndBring: itemsIDs, actorID
-		-> DP Strategy?
-	Talk	FindAndBring \ HundAndBring
-	Bring			Hunt /
+- [Quests] Work on quests
+	=> Work on QuestManager::init()
+		-> It works like EventManager::init()
+	=> Work on Quest inclusion in Player class
+		-> Remove it in Actor class
 	=> Add a 'Quests' entry in menu
+		-> Add QuestWindow
+			~ Get Quests from Player
+		-> Add QuestActivity
+		-> Sort quests vector at QuestActivity constructor
 
 - Create a class system for Actors
 	=> Some Weapons and Armors are only available for a single or multiple classes
