@@ -117,6 +117,7 @@ using namespace tinyxml2;
 #include "BattleActionWindow.hpp"
 #include "VictoryWindow.hpp"
 #include "ActorChoiceWindow.hpp"
+#include "QuestInfoWindow.hpp"
 
 #include "Character.hpp"
 #include "Player.hpp"
@@ -140,6 +141,7 @@ using namespace tinyxml2;
 #include "EquipActivity.hpp"
 #include "BattleActivity.hpp"
 #include "SettingsActivity.hpp"
+#include "QuestActivity.hpp"
 #include "ActivityManager.hpp"
 
 #include "EventInterpreter.hpp"

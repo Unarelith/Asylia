@@ -22,6 +22,8 @@ MapActivity::MapActivity() {
 }
 
 MapActivity::~MapActivity() {
+	QuestManager::free();
+	
 	TroopManager::free();
 	
 	BattlerManager::free();
@@ -65,6 +67,8 @@ void MapActivity::init() {
 	CharacterManager::loadActorsTeam();
 	
 	TroopManager::init();
+	
+	QuestManager::init();
 	
 	MapManager::currentMap->load();
 	

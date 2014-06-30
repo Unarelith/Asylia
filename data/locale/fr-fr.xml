@@ -44,6 +44,11 @@
 	<text id="Ghost" text="Fantôme"/>
 	<text id="Demon" text="Démon"/>
 	
+	<text id="Quests" text="Quêtes"/>
+	<text id="Quests_All" text="Toutes"/>
+	<text id="Quests_Current" text="En cours"/>
+	<text id="Quests_Completed" text="Terminées"/>
+	
 	<!-- Event messages -->
 	<event name="event0">
 		<message text="Salut, est-ce que tu sais que tu es dans un monde incroyable, fait de magie et d'autres choses que tu ne connais pas encore ?"/>

@@ -40,6 +40,7 @@ void MenuActivity::loadCommandWindow() {
 	m_cmdwin->addCommand("Skills", true);
 	m_cmdwin->addCommand("Equip");
 	m_cmdwin->addCommand("State", true);
+	m_cmdwin->addCommand("Quests");
 	m_cmdwin->addCommand("Save", true);
 	m_cmdwin->addCommand("Settings");
 	m_cmdwin->addCommand("Quit");
@@ -68,11 +69,14 @@ void MenuActivity::update() {
 					case 0:
 						ActivityManager::push(new ItemActivity(this));
 						break;
-					case 4: break;
-					case 5:
+					case 4:
+						ActivityManager::push(new QuestActivity(this));
+						break;
+					case 5: break;
+					case 6:
 						ActivityManager::push(new SettingsActivity(this));
 						break;
-					case 6:
+					case 7:
 						ActivityManager::push(new EndActivity);
 						break;
 					default:

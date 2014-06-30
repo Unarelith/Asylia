@@ -44,6 +44,11 @@
 	<text id="Ghost" text="Ghost"/>
 	<text id="Demon" text="Demon"/>
 	
+	<text id="Quests" text="Quests"/>
+	<text id="Quests_All" text="All"/>
+	<text id="Quests_Current" text="Current"/>
+	<text id="Quests_Completed" text="Completed"/>
+	
 	<!-- Event messages -->
 	<event name="event0">
 		<message text="Hi, do you know that you're in a incredible world made of magic and other things you don't even know?"/>

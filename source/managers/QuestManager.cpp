@@ -53,17 +53,17 @@ void QuestManager::init() {
 		
 		XMLElement *objectiveElement = questElement->FirstChildElement("objectives")->FirstChildElement("objective");
 		while(objectiveElement) {
-			std::string type = itemElement->Attribute("type");
+			std::string type = objectiveElement->Attribute("type");
 			
 			if(type == "BringItem") {
+				u16 type = objectiveElement->IntAttribute("itemtype");
 				u16 id = objectiveElement->IntAttribute("id");
-				u16 type = objectiveElement->IntAttribute("type");
 				
 				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type));
 			}
 			else if(type == "GetItem") {
+				u16 type = objectiveElement->IntAttribute("itemtype");
 				u16 id = objectiveElement->IntAttribute("id");
-				u16 type = objectiveElement->IntAttribute("type");
 				u16 count = objectiveElement->IntAttribute("count");
 				
 				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, count));

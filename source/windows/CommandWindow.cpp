@@ -49,7 +49,7 @@ void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
 	x = pos % m_columnMax * (width + 32) + 16;
 	y = pos / m_columnMax * 32 + 16;
 	
-	Interface::defaultFont->printCentered(m_commands[pos].first.c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(Color::white):(Color::disabled));
+	Interface::defaultFont->printCentered(_t(m_commands[pos].first).c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(Color::white):(Color::disabled));
 }
 
 void CommandWindow::draw(bool cursor) {

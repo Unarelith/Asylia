@@ -32,6 +32,8 @@ class Player : public Character {
 		
 		void addQuest(Quest *quest) { m_quests.push_back(quest); }
 		
+		std::vector<Quest*> quests() const { return m_quests; }
+		
 	private:
 		std::vector<Actor*> m_team;
 		

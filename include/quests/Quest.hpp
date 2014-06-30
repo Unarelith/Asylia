@@ -25,6 +25,8 @@ class Quest {
 		
 		void addObjective(QuestObjective *objective) { m_objectives.push_back(objective); }
 		
+		u16 id() const { return m_id; }
+		
 		Inventory *items() { return &m_items; }
 		
 		static u16 counter;
