@@ -41,10 +41,10 @@ XMLFile::XMLFile(const char *filename) {
 				error("Error while parsing element.");
 				break;
 			case XML_ERROR_PARSING_ATTRIBUTE:
-				error("Error while parsing attribute");
+				error("Error while parsing attribute.");
 				break;
 			case XML_ERROR_IDENTIFYING_TAG:
-				error("Identifying tag");
+				error("Error while identifying tag.");
 				break;
 			case XML_ERROR_PARSING_TEXT:
 				error("Error while parsing text.");
@@ -59,16 +59,16 @@ XMLFile::XMLFile(const char *filename) {
 				error("Error while parsing declaration.");
 				break;
 			case XML_ERROR_PARSING_UNKNOWN:
-				error("Parsing error: Unknown object");
+				error("Parsing error: Unknown object.");
 				break;
 			case XML_ERROR_EMPTY_DOCUMENT:
-				error("Empty document");
+				error("Empty document.");
 				break;
 			case XML_ERROR_MISMATCHED_ELEMENT:
-				error("Element mismatched");
+				error("Element mismatched.");
 				break;
 			case XML_ERROR_PARSING:
-				error("Parsing error");
+				error("Parsing error.");
 				break;
 			default:
 				error("Unknown error. (CODE: %d)", code);

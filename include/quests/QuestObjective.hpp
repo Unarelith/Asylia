@@ -40,6 +40,8 @@ class QuestObjective {
 		
 	protected:
 		Type m_type;
+		
+		ParameterList m_params;
 };
 
 #endif // QUESTOBJECTIVE_HPP_

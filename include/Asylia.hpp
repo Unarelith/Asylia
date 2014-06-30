@@ -56,6 +56,8 @@ using namespace tinyxml2;
 #include "Color.hpp"
 #include "Rectangle.hpp"
 
+#include "Parameter.hpp"
+
 #include "LanguageManager.hpp"
 
 #include "Sound.hpp"
@@ -87,6 +89,10 @@ using namespace tinyxml2;
 #include "Inventory.hpp"
 #include "Equipment.hpp"
 
+#include "QuestObjective.hpp"
+#include "Quest.hpp"
+#include "QuestManager.hpp"
+
 #include "Battler.hpp"
 #include "Enemy.hpp"
 #include "Actor.hpp"
@@ -97,9 +103,6 @@ using namespace tinyxml2;
 
 #include "BattleAction.hpp"
 #include "Battle.hpp"
-
-#include "QuestObjective.hpp"
-#include "Quest.hpp"
 
 #include "Window.hpp"
 #include "TextWindow.hpp"
@@ -121,7 +124,6 @@ using namespace tinyxml2;
 
 #include "Interface.hpp"
 
-#include "Parameter.hpp"
 #include "EventAction.hpp"
 #include "Event.hpp"
 #include "EventManager.hpp"

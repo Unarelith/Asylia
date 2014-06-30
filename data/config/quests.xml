@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quests>
+	<quest exp="100" gold="25">
+		<item id="1"/>
+		<objectives>
+			<objective type="BringItem" id="0"/>
+			<objective type="GetItem" id="3" count="5"/>
+			<objective type="BeatEnemy" id="0" count="5"/>
+			<objective type="TalkToSomeone" name="event0"/>
+		</objectives>
+	</quest>
+</quests>

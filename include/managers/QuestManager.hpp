@@ -1,12 +1,12 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Quest.cpp
+ *       Filename:  QuestManager.hpp
  *
  *    Description:  
  *
  *        Version:  1.0
- *        Created:  29/06/2014 19:58:55
+ *        Created:  30/06/2014 16:25:45
  *       Revision:  none
  *       Compiler:  gcc
  *
@@ -15,20 +15,14 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#ifndef QUESTMANAGER_HPP_
+#define QUESTMANAGER_HPP_
 
-u16 Quest::counter = 0;
-
-Quest::Quest(u16 exp, u16 gold, std::string description) {
-	m_id = counter;
-	counter++;
+namespace QuestManager {
+	void init();
+	void free();
 	
-	m_exp = exp;
-	m_gold = gold;
-	
-	m_description = description;
-}
+	extern std::vector<Quest*> quests;
+};
 
-Quest::~Quest() {
-}
-
+#endif // QUESTMANAGER_HPP_

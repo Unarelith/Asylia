@@ -27,12 +27,18 @@ class Quest {
 		
 		Inventory *items() { return &m_items; }
 		
+		static u16 counter;
+		
 	private:
+		u16 m_id;
+		
 		u16 m_exp;
 		u16 m_gold;
 		Inventory m_items;
 		
 		std::vector<QuestObjective*> m_objectives;
+		
+		std::string m_description;
 };
 
 #endif // QUEST_HPP_

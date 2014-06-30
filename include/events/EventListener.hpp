@@ -18,22 +18,21 @@
 #ifndef EVENTLISTENER_HPP_
 #define EVENTLISTENER_HPP_
 
-class EventListener {
-	public:
-		enum Type {
-			BattleResult,
-			MessageActivityAction
-		};
-		
-		static void addBattleResult(u8 battleResult);
-		static void addMessageActivityAction(u8 pos);
-		
-		static s32 getLastValueOf(Type type);
-		
-		static s8 lastBattleResult();
-		static s8 lastMessageActivityAction();
-		
-		static std::vector<std::pair<Type, s32>> actionHistory;
+namespace EventListener {
+	enum Type {
+		MessageActivityAction
+		BattleResult,
+	};
+	
+	void addMessageActivityAction(u8 pos);
+	void addBattleResult(u8 battleResult);
+	
+	s32 getLastValueOf(Type type);
+	
+	s8 lastMessageActivityAction();
+	s8 lastBattleResult();
+	
+	extern std::vector<std::pair<Type, s32>> actionHistory;
 };
 
 #endif // EVENTLISTENER_HPP_
