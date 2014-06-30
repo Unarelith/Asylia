@@ -44,4 +44,6 @@
 	#endif
 #endif
 
+#define TRACE(s) info(#s); s
+
 #endif // DEBUG_HPP_
