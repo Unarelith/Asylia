@@ -3,7 +3,7 @@
 	<quest exp="100" gold="25">
 		<item type="Item" id="1" count="3"/>
 		<objectives>
-			<objective type="BringItem" itemtype="Item" id="0"/>
+			<objective type="BringItem" itemtype="Item" id="0" event="event0"/>
 			<objective type="GetItem" itemtype="Item" id="3" count="5"/>
 			<objective type="BeatEnemy" id="0" count="5"/>
 			<objective type="TalkToSomeone" name="event0"/>

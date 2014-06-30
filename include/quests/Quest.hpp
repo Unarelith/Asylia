@@ -23,13 +23,15 @@ class Quest {
 		Quest(u16 exp, u16 gold);
 		~Quest();
 		
-		void addObjective(QuestObjective *objective) { m_objectives.push_back(objective); }
+		void addObjective(QuestObjective *objective) { m_objectives.push_back(objective); m_objectives.back()->setID(m_objectives.size() - 1); }
 		
 		u16 id() const { return m_id; }
 		
 		Inventory *items() { return &m_items; }
 		
 		bool completed() const { return m_completed; }
+		
+		std::vector<QuestObjective*> objectives() const { return m_objectives; }
 		
 		static u16 counter;
 		

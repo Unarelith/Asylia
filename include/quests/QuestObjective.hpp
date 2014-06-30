@@ -21,7 +21,7 @@
 class QuestObjective {
 	public:
 		QuestObjective();
-		QuestObjective(u16 itemToBring, Item::Type type);
+		QuestObjective(u16 itemToBring, Item::Type type, std::string eventToBringTo);
 		QuestObjective(u16 itemToGet, Item::Type type, u16 count);
 		QuestObjective(u16 enemyToBeat, u16 count);
 		QuestObjective(std::string eventToTalkTo);
@@ -38,8 +38,13 @@ class QuestObjective {
 			TalkToSomeone
 		};
 		
+		void setID(u16 id) { m_id = id; }
+		u16 id() const { return m_id; }
+		
 	protected:
 		Type m_type;
+		
+		u16 m_id;
 		
 		ParameterList m_params;
 };

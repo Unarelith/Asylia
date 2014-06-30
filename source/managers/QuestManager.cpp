@@ -58,8 +58,9 @@ void QuestManager::init() {
 			if(type == "BringItem") {
 				u16 type = objectiveElement->IntAttribute("itemtype");
 				u16 id = objectiveElement->IntAttribute("id");
+				std::string event = objectiveElement->Attribute("event");
 				
-				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type));
+				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, event));
 			}
 			else if(type == "GetItem") {
 				u16 type = objectiveElement->IntAttribute("itemtype");
