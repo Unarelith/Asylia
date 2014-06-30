@@ -19,16 +19,18 @@
 
 u16 Quest::counter = 0;
 
-Quest::Quest(u16 exp, u16 gold, std::string description) {
+Quest::Quest(u16 exp, u16 gold) {
 	m_id = counter;
 	counter++;
 	
 	m_exp = exp;
 	m_gold = gold;
-	
-	m_description = description;
 }
 
 Quest::~Quest() {
+	while(m_objectives.size() != 0) {
+		delete m_objectives.back();
+		m_objectives.pop_back();
+	}
 }
 

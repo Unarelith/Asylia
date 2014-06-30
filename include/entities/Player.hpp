@@ -30,8 +30,12 @@ class Player : public Character {
 		
 		u16 teamSize() { return m_team.size(); }
 		
+		void addQuest(Quest *quest) { m_quests.push_back(quest); }
+		
 	private:
 		std::vector<Actor*> m_team;
+		
+		std::vector<Quest*> m_quests;
 };
 
 #endif // PLAYER_HPP_

@@ -20,8 +20,8 @@
 
 namespace EventListener {
 	enum Type {
-		MessageActivityAction
-		BattleResult,
+		MessageActivityAction,
+		BattleResult
 	};
 	
 	void addMessageActivityAction(u8 pos);

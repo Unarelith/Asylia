@@ -30,8 +30,6 @@ class Actor : public Battler {
 		
 	private:
 		Equipment m_equipment;
-		
-		std::vector<Quest*> m_quests;
 };
 
 #endif // ACTOR_HPP_

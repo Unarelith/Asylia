@@ -48,6 +48,9 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(fil
 }
 
 Player::~Player() {
+	m_quests.clear();
+	
+	m_team.clear();
 }
 
 void Player::move() {

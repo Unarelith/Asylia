@@ -37,8 +37,6 @@ class Quest {
 		Inventory m_items;
 		
 		std::vector<QuestObjective*> m_objectives;
-		
-		std::string m_description;
 };
 
 #endif // QUEST_HPP_

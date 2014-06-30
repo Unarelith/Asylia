@@ -77,7 +77,7 @@ export INCLUDE	:=	$(foreach dir,$(INCLUDES),-I$(CURDIR)/$(dir))
 export LIBPATHS	:=	$(foreach dir,$(LIBDIRS),-L$(CURDIR)/$(dir))
 
 #---------------------------------------------------------------------------------
-.PHONY: $(BUILD) clean clear run droid tags install uninstall
+.PHONY: $(BUILD) clean clear run droid tags doc install uninstall
 #------------------------------------------------------------------------------
 $(BUILD):
 	@[ -d $@ ] || mkdir -p $@
@@ -104,6 +104,12 @@ droid:
 tags:
 	@echo generating tags file ...
 	@ctags $(SOURCEFILES) $(HEADERFILES)
+	
+#---------------------------------------------------------------------------------
+doc:
+	@cd doxygen
+	@doxygen doxygen.cfg
+	@cd ..
 	
 #---------------------------------------------------------------------------------
 clean:

@@ -3,6 +3,7 @@ droid/bin
 droid/libs
 droid/obj
 droid/jni/SDL2*
+doxygen
 *~
 Asylia
 *.a

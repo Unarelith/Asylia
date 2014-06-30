@@ -1,0 +1,95 @@
+\hypertarget{classKeyboard}{\section{Keyboard Class Reference}
+\label{classKeyboard}\index{Keyboard@{Keyboard}}
+}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classKeyboard_ae75418ec058c9faa11da8a00600debf0}{static const u8 $\ast$ {\bfseries get\-State} ()}\label{classKeyboard_ae75418ec058c9faa11da8a00600debf0}
+
+\item 
+\hypertarget{classKeyboard_a6410f07ddc53561a82d5328d8b330aab}{static void {\bfseries update} ()}\label{classKeyboard_a6410f07ddc53561a82d5328d8b330aab}
+
+\item 
+\hypertarget{classKeyboard_a9335bbe850023636c516fd3097b80682}{static void {\bfseries force\-Update} ()}\label{classKeyboard_a9335bbe850023636c516fd3097b80682}
+
+\item 
+\hypertarget{classKeyboard_acec5b8eed39c370d54f8a37f836599eb}{static void {\bfseries reset\-Pad} (S\-D\-L\-\_\-\-Event $\ast$e, bool released=false)}\label{classKeyboard_acec5b8eed39c370d54f8a37f836599eb}
+
+\item 
+\hypertarget{classKeyboard_a28b59927237e9ca52cd30a1f6edcd543}{static void {\bfseries update\-Pad} (S\-D\-L\-\_\-\-Event $\ast$e)}\label{classKeyboard_a28b59927237e9ca52cd30a1f6edcd543}
+
+\item 
+\hypertarget{classKeyboard_a9b181f95b0743003ac6ddefa4d2ac788}{static bool {\bfseries is\-Key\-Pressed} (u32 key)}\label{classKeyboard_a9b181f95b0743003ac6ddefa4d2ac788}
+
+\item 
+\hypertarget{classKeyboard_a4be9c375121e8de66e858b2b2f01cd5f}{static bool {\bfseries is\-Key\-Pressed\-Once} (u32 key)}\label{classKeyboard_a4be9c375121e8de66e858b2b2f01cd5f}
+
+\item 
+\hypertarget{classKeyboard_a5a39520afd20c574bf3d574069005449}{static bool {\bfseries is\-Key\-Pressed\-With\-Delay} (u32 key, u16 delay)}\label{classKeyboard_a5a39520afd20c574bf3d574069005449}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classKeyboard_a08007721b0a4fd6e9f7cfe28c70642f7}{static const u8 $\ast$ {\bfseries state} = N\-U\-L\-L}\label{classKeyboard_a08007721b0a4fd6e9f7cfe28c70642f7}
+
+\item 
+\hypertarget{classKeyboard_a06624a2a2b9d99013c2a8628e987b616}{static u8 {\bfseries pad\-State} \mbox{[}7\mbox{]} = \{0, 0, 0, 0, 0, 0, 0\}}\label{classKeyboard_a06624a2a2b9d99013c2a8628e987b616}
+
+\item 
+\hypertarget{classKeyboard_a9bf5466f6c1ff2e61083f338adada94a}{static s32 {\bfseries pad\-Finger} \mbox{[}7\mbox{]} = \{-\/1, -\/1, -\/1, -\/1, -\/1, -\/1, -\/1\}}\label{classKeyboard_a9bf5466f6c1ff2e61083f338adada94a}
+
+\item 
+\hypertarget{classKeyboard_a737a295b7ba6d914fde38f161c86c6eb}{static u32 {\bfseries last\-Time\-Pressed} \mbox{[}7\mbox{]} = \{0, 0, 0, 0, 0, 0, 0\}}\label{classKeyboard_a737a295b7ba6d914fde38f161c86c6eb}
+
+\item 
+\hypertarget{classKeyboard_a7be1de7dabf081e6d8a6999976fcce14}{static u8 {\bfseries pressed} \mbox{[}7\mbox{]} = \{0, 0, 0, 0, 0, 0, 0\}}\label{classKeyboard_a7be1de7dabf081e6d8a6999976fcce14}
+
+\item 
+static u32 {\bfseries keys\-Code} \mbox{[}7\mbox{]}
+\item 
+\hypertarget{classKeyboard_aed71247c8acfe01b6ef9199fcb8fb9f7}{static const u32 {\bfseries Game\-Up} = P\-A\-D\-\_\-\-U\-P}\label{classKeyboard_aed71247c8acfe01b6ef9199fcb8fb9f7}
+
+\item 
+\hypertarget{classKeyboard_af40e4943fa960c4a09a9e835a32662c0}{static const u32 {\bfseries Game\-Down} = P\-A\-D\-\_\-\-D\-O\-W\-N}\label{classKeyboard_af40e4943fa960c4a09a9e835a32662c0}
+
+\item 
+\hypertarget{classKeyboard_a70832e4a44d3d57886fcd9f9946557d2}{static const u32 {\bfseries Game\-Left} = P\-A\-D\-\_\-\-L\-E\-F\-T}\label{classKeyboard_a70832e4a44d3d57886fcd9f9946557d2}
+
+\item 
+\hypertarget{classKeyboard_ac802f359882ec1a1cb973c0c2ea4cf33}{static const u32 {\bfseries Game\-Right} = P\-A\-D\-\_\-\-R\-I\-G\-H\-T}\label{classKeyboard_ac802f359882ec1a1cb973c0c2ea4cf33}
+
+\item 
+\hypertarget{classKeyboard_a57b7df9b59dc8f0d236bdcb31cd6218a}{static const u32 {\bfseries Game\-Attack} = P\-A\-D\-\_\-\-A}\label{classKeyboard_a57b7df9b59dc8f0d236bdcb31cd6218a}
+
+\item 
+\hypertarget{classKeyboard_a54e2a9e16cf0abc68a69fb55747faac5}{static const u32 {\bfseries Game\-Back} = P\-A\-D\-\_\-\-B}\label{classKeyboard_a54e2a9e16cf0abc68a69fb55747faac5}
+
+\item 
+\hypertarget{classKeyboard_a10b9fae028e00cc0c20aa63f420f9ebc}{static const u32 {\bfseries Game\-Menu} = P\-A\-D\-\_\-\-M\-E\-N\-U}\label{classKeyboard_a10b9fae028e00cc0c20aa63f420f9ebc}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classKeyboard_ae7ca0673df6ed9edf8bbb15dc4a75e90}{\index{Keyboard@{Keyboard}!keys\-Code@{keys\-Code}}
+\index{keys\-Code@{keys\-Code}!Keyboard@{Keyboard}}
+\subsubsection[{keys\-Code}]{\setlength{\rightskip}{0pt plus 5cm}u32 Keyboard\-::keys\-Code\hspace{0.3cm}{\ttfamily [static]}}}\label{classKeyboard_ae7ca0673df6ed9edf8bbb15dc4a75e90}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+= \{
+    SDL\_SCANCODE\_UP,
+    SDL\_SCANCODE\_DOWN,
+    SDL\_SCANCODE\_LEFT,
+    SDL\_SCANCODE\_RIGHT,
+    SDL\_SCANCODE\_RETURN,
+    SDL\_SCANCODE\_BACKSPACE,
+    SDL\_SCANCODE\_ESCAPE
+\}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/quentin/\-Projects/\-Asylia/include/objects/Keyboard.\-hpp\item 
+/home/quentin/\-Projects/\-Asylia/source/objects/Keyboard.\-cpp\end{DoxyCompactItemize}
