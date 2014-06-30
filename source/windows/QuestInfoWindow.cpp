@@ -60,6 +60,8 @@ void QuestInfoWindow::draw(Quest *quest) {
 				std::string objectiveDesc = std::string("- ") + _t(std::string("Quest") + to_string(quest->id()) + "_Obj" + to_string(it->id()) + "Desc");
 				
 				Interface::defaultFont->print(objectiveDesc.c_str(), m_x + 30, m_y + 242 + 28 * it->id(), FONT_LARGE);
+				
+				printStat(0, 242 + 28 * it->id(), " ", 1, 0, m_width - 30, 5);
 			}
 		}
 		else if(m_mode == Mode::RewardsMode) {
