@@ -1,5 +1,6 @@
 build
 droid/bin
+droid/gen
 droid/libs
 droid/obj
 droid/jni/SDL2*
