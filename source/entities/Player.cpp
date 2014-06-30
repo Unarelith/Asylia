@@ -45,6 +45,8 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(fil
 	m_inventory->addArmor(2, 1);
 	m_inventory->addArmor(3, 1);
 	m_inventory->addArmor(4, 1);
+	
+	m_quests.push_back(QuestManager::quests[0]);
 }
 
 Player::~Player() {

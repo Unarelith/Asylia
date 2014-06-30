@@ -54,6 +54,7 @@ void QuestActivity::update() {
 			for(auto it : CharacterManager::player->quests()) {
 				m_questListwin->addCommand(std::string("quest") + to_string(it->id()) + "name");
 			}
+			m_questListwin->height(GameWindow::main->height() - 114);
 		}
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {

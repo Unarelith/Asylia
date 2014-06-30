@@ -95,7 +95,6 @@
 	=> For 'make', when there is all .o in 'build', display '[5/5]' instead of '[5/1]'
 		-> The second '5' is the number of targets to build
 			* Delete .o we'll build?
-	=> Fix 'Subtraction overflow' error when 'build' is empty
 
 - [Issue #17] Up and Down keys have an higher priority than Left and Right ones
 	=> Make an history of the last directional key pressed
