@@ -1,13 +1,7 @@
 - [Quests] Work on quests
+	=> Fix segfault when pressing A, then B, then A on "All"
+		in quests menu
 	=> Add a new quest objective: "GoSomewhere"
-	=> Add a 'Quests' entry in menu
-		-> Add quest windows
-			* QuestListWindow ( CommandWindow in fact )
-				~ Get Quests from Player
-			* QuestInfoWindow
-			* QuestCategoryWindow ( CommandWindow in fact )
-		-> Add QuestActivity
-		-> Sort quests vector at QuestActivity constructor
 
 - WTF Issue: Check Screenshot near 30/06/2014 - 16:52
 	-> When talking to enemy0, the action done is one of chest0, why?
