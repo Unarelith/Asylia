@@ -1,10 +1,10 @@
 - [Quests] Work on quests
-	=> Add rewards to QuestInfoWindow
 	=> Check state of an objective
 	=> Add a new quest objective: "GoSomewhere"
 	=> Check completed quests
 	=> Make VictoryWindow as a base class for BattleVictoryWindow
 		and QuestCompletedWindow
+	=> Improve QuestInfoWindow rendering
 
 - Add event names
 
@@ -12,7 +12,12 @@
 	-> When talking to enemy0 from bottom-left tile, and from the up,
 		the action done is chest0 one, why?
 
-- Random map generation
+- Random world generation
+	=> Random map generation
+	=> Random name generation
+	=> Random event generation
+	=> Random enemy generation
+	=> Random quest generation
 
 - Create a class system for Actors
 	=> Some Weapons and Armors are only available for a single or multiple classes
