@@ -21,7 +21,7 @@ QuestObjective::QuestObjective() {
 	m_type = Type::Undefined;
 }
 
-QuestObjective::QuestObjective(u16 itemToBring, Item::Type type, std::string eventToBringT) {
+QuestObjective::QuestObjective(u16 itemToBring, Item::Type type, std::string eventToBringTo) {
 	m_type = Type::BringItem;
 	
 	m_params.addIntParameter(itemToBring);

@@ -1,6 +1,6 @@
 LuaEvent = {
 	new = function(eventName)
-		local initEvent = function(self, name = nil)
+		local initEvent = function(self)
 			self.event = MapManager.currentMap:getEvent(eventName)
 			
 			self.addAction = function(self, id, actionID, ...)

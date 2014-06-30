@@ -27,6 +27,8 @@ class Quest {
 		
 		u16 id() const { return m_id; }
 		
+		u16 exp() const { return m_exp; }
+		u16 gold() const { return m_gold; }
 		Inventory *items() { return &m_items; }
 		
 		bool completed() const { return m_completed; }

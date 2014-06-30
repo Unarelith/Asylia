@@ -47,20 +47,24 @@ void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(255);
 }
 
-void Window::draw(bool cursor) {
+void Window::drawWindow(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(225);
-	Interface::interface->render(m_x + 1, m_y + 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
+	Interface::interface->render(x + 1, y + 1, width - 2, height - 2, 0, 0, 128, 128);
 	Interface::interface->setAlphaMod(255);
 	
-	Interface::interface->render(m_x, m_y, 3, 3, 128, 0, 3, 3);
-	Interface::interface->render(m_x + m_width - 3, m_y, 3, 3, 189, 0, 3, 3);
-	Interface::interface->render(m_x, m_y + m_height - 3, 3, 3, 128, 61, 3, 3);
-	Interface::interface->render(m_x + m_width - 3, m_y + m_height - 3, 3, 3, 189, 61, 3, 3);
+	Interface::interface->render(x, y, 3, 3, 128, 0, 3, 3);
+	Interface::interface->render(x + width - 3, y, 3, 3, 189, 0, 3, 3);
+	Interface::interface->render(x, y + height - 3, 3, 3, 128, 61, 3, 3);
+	Interface::interface->render(x + width - 3, y + height - 3, 3, 3, 189, 61, 3, 3);
 	
-	Interface::interface->render(m_x + 3, m_y, m_width - 6, 3, 132, 0, 58, 3);
-	Interface::interface->render(m_x, m_y + 3, 3, m_height - 6, 128, 3, 3, 58);
-	Interface::interface->render(m_x + 3, m_y + m_height - 3, m_width - 6, 3, 132, 61, 58, 3);
-	Interface::interface->render(m_x + m_width - 3, m_y + 3, 3, m_height - 6, 189, 3, 3, 58);
+	Interface::interface->render(x + 3, y, width - 6, 3, 132, 0, 58, 3);
+	Interface::interface->render(x, y + 3, 3, height - 6, 128, 3, 3, 58);
+	Interface::interface->render(x + 3, y + height - 3, width - 6, 3, 132, 61, 58, 3);
+	Interface::interface->render(x + width - 3, y + 3, 3, height - 6, 189, 3, 3, 58);
+}
+
+void Window::draw(bool cursor) {
+	drawWindow(m_x, m_y, m_width, m_height);
 	
 	if(m_cursor.width > 0 && cursor) {
 		drawCursor(16 + m_x + m_cursor.x, 16 + m_y + m_cursor.y, m_cursor.width, m_cursor.height);

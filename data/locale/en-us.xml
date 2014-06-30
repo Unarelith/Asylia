@@ -39,6 +39,8 @@
 	<text id="Yes" text="Yes"/>
 	<text id="No" text="No"/>
 	<text id="Description" text="Description"/>
+	<text id="Rewards" text="Rewards"/>
+	<text id="Objectives" text="Objectives"/>
 	
 	<text id="Normal" text="Normal"/>
 	
@@ -97,6 +99,9 @@
 
 	<!-- Quests -->
 	<quest name="Test quest" description="The test quest is a quest used for quest system testing purpose only.">
-		<objective description="Bring a potion"/>
+		<objective description="Bring a Potion to Jenny"/>
+		<objective description="Get a Tonic"/>
+		<objective description="Kill 5 Ghosts"/>
+		<objective description="Talk to the Ghost"/>
 	</quest>
 </language>

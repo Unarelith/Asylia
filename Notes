@@ -1,8 +1,10 @@
 - [Quests] Work on quests
-	=> Update LanguageManager
-	=> Work on QuestInfoWindow
-		~ Use Window::drawStat
+	=> Add rewards to QuestInfoWindow
+	=> Check state of an objective
 	=> Add a new quest objective: "GoSomewhere"
+	=> Check completed quests
+	=> Make VictoryWindow as a base class for BattleVictoryWindow
+		and QuestCompletedWindow
 
 - Add event names
 

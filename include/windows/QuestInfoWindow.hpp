@@ -23,7 +23,16 @@ class QuestInfoWindow : public Window {
 		QuestInfoWindow();
 		~QuestInfoWindow();
 		
+		void update();
 		void draw(Quest *quest);
+		
+		enum Mode {
+			ObjectivesMode,
+			RewardsMode
+		};
+		
+	private:
+		Mode m_mode;
 };
 
 #endif // QUESTINFOWINDOW_HPP_

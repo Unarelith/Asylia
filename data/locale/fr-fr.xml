@@ -39,6 +39,8 @@
 	<text id="Yes" text="Oui"/>
 	<text id="No" text="Non"/>
 	<text id="Description" text="Description"/>
+	<text id="Rewards" text="Récompense"/>
+	<text id="Objectives" text="Objectifs"/>
 	
 	<text id="Normal" text="Normal"/>
 	
@@ -97,6 +99,9 @@
 
 	<!-- Quests -->
 	<quest name="Quête de test" description="La quête de test est une quête de test qui a pour but de tester le système de quêtes.">
-		<objective description="Rapporter une potion"/>
+		<objective description="Rapporter une Potion à Jenny"/>
+		<objective description="Obtenir un Remontant"/>
+		<objective description="Tuer 5 Fantômes"/>
+		<objective description="Parler au Fantôme"/>
 	</quest>
 </language>

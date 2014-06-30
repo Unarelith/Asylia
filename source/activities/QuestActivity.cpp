@@ -30,8 +30,8 @@ QuestActivity::QuestActivity(Activity *parent) : Activity(parent) {
 	m_questCategorywin->addCommand("Quests_Current");
 	m_questCategorywin->addCommand("Quests_Completed");
 	
-	m_questListwin = new CommandWindow(0, 114, 200);
-	m_questListwin->height(GameWindow::main->height() - 114);
+	m_questListwin = new CommandWindow(0, 116, 200);
+	m_questListwin->height(GameWindow::main->height() - 116);
 }
 
 QuestActivity::~QuestActivity() {
@@ -96,11 +96,14 @@ void QuestActivity::update() {
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			
+			s_load = true;
+			
 			ActivityManager::pop();
 		}
 	}
 	else if(m_mode == Mode::QuestChoice) {
 		m_questListwin->update();
+		m_questInfowin.update();
 		
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
