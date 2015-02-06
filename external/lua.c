@@ -17668,7 +17668,7 @@ LUAMOD_API int luaopen_package (lua_State *L) {
 ** By default, Lua uses tmpnam except when POSIX is available, where it
 ** uses mkstemp.
 */
-#if defined(LUA_USE_MKSTEMP)
+//#if defined(LUA_USE_MKSTEMP)
 #include <unistd.h>
 #define LUA_TMPNAMBUFSIZE	32
 #define lua_tmpnam(b,e) { \
@@ -17677,12 +17677,12 @@ LUAMOD_API int luaopen_package (lua_State *L) {
         if (e != -1) close(e); \
         e = (e == -1); }
 
-#elif !defined(lua_tmpnam)
+//#elif !defined(lua_tmpnam)
 
-#define LUA_TMPNAMBUFSIZE	L_tmpnam
-#define lua_tmpnam(b,e)		{ e = (tmpnam(b) == NULL); }
+//#define LUA_TMPNAMBUFSIZE	L_tmpnam
+//#define lua_tmpnam(b,e)		{ e = (tmpnam(b) == NULL); }
 
-#endif
+//#endif
 
 
 /*
@@ -19145,7 +19145,7 @@ static void auxsort (lua_State *L, int l, int u) {
         lua_pop(L, 1);  /* remove a[j] */
       }
       if (j<i) {
-        lua_pop(L, 3);  /* pop pivot, a[i], a[j] */
+        ;lua_pop(L, 3);  /* pop pivot, a[i], a[j] */
         break;
       }
       set2(L, i, j);

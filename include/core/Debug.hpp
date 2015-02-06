@@ -44,6 +44,6 @@
 	#endif
 #endif
 
-#define TRACE(s) info(#s); s
+#define TRACE(s) { info("Function called: " #s); s }
 
 #endif // DEBUG_HPP_

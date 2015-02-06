@@ -25,4 +25,4 @@ typedef signed short s16;
 typedef unsigned long u32;
 typedef signed long s32;
 
-#endif // TYPES_HPP_H
+#endif // TYPES_HPP_
