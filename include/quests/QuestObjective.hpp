@@ -3,7 +3,7 @@
  *
  *       Filename:  QuestObjective.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  29/06/2014 23:08:52
@@ -26,26 +26,26 @@ class QuestObjective {
 		QuestObjective(u16 enemyToBeat, u16 count);
 		QuestObjective(std::string eventToTalkTo);
 		~QuestObjective();
-		
+
 		enum Type {
 			Undefined,
-			
+
 			BringItem,
 			GetItem,
-			
+
 			BeatEnemy,
-			
+
 			TalkToSomeone
 		};
-		
+
 		void setID(u16 id) { m_id = id; }
 		u16 id() const { return m_id; }
-		
+
 	protected:
 		Type m_type;
-		
+
 		u16 m_id;
-		
+
 		ParameterList m_params;
 };
 

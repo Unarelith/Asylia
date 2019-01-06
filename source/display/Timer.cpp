@@ -3,7 +3,7 @@
  *
  *       Filename:  Timer.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 19:38:08

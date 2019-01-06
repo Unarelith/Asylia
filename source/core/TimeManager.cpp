@@ -3,7 +3,7 @@
  *
  *       Filename:  TimeManager.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  14/03/2014 22:04:44
@@ -33,7 +33,7 @@ void TimeManager::beginMeasuringRenderingTime() {
 
 void TimeManager::endMeasuringRenderingTime() {
 	u32 sum;
-	
+
 	renderingTimeValues.push_back(SDL_GetTicks() - tempBeginRendering);
 	if(renderingTimeValues.size() > 10) {
 		sum = std::accumulate(renderingTimeValues.begin(), renderingTimeValues.end(), 0);
@@ -88,7 +88,7 @@ void TimeManager::renderRTMCounter() {
 	InfoWindow win(GameWindow::main->width() - 120,
 				   GameWindow::main->height() - 52,
 				   120, 52);
-	
+
 	win.drawTextCentered(std::string("RTM: ") + to_string(renderingTimeMean));
 }
 

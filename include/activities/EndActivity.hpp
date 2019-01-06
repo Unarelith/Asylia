@@ -3,7 +3,7 @@
  *
  *       Filename:  EndActivity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 17:46:04
@@ -22,10 +22,10 @@ class EndActivity : public Activity {
 	public:
 		EndActivity(bool disableCancel = false);
 		~EndActivity();
-		
+
 		void update();
 		void render();
-		
+
 	private:
 		CommandWindow *m_cmdwin;
 };

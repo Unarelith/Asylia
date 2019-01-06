@@ -3,7 +3,7 @@
  *
  *       Filename:  EquipChoiceWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  17/04/2014 20:38:44
@@ -22,9 +22,9 @@ class EquipChoiceWindow : public SelectableWindow {
 	public:
 		EquipChoiceWindow(Equipment *equipment);
 		~EquipChoiceWindow();
-		
+
 		void draw(bool drawCursor = true);
-		
+
 	private:
 		Equipment *m_equipment;
 };

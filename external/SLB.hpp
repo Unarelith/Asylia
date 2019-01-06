@@ -9,10 +9,10 @@
   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
   copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-  
+
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-  
+
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,7 +20,7 @@
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
-	
+
 	Jose L. Hidalgo (www.pplux.com)
 	pplux@pplux.com
 */
@@ -75,7 +75,7 @@
   #define SLB_DEBUG_OUTPUT stderr
 #endif
 
-// you can redefine the function to be used to debug, should have a 
+// you can redefine the function to be used to debug, should have a
 // printf-like interface.
 #ifndef SLB_DEBUG_FUNC
   #include <cstdio>
@@ -120,7 +120,7 @@
   // SPP_ENUM(3,class T, = void SPP_COMMA) --> class T1 = void, class T2 = void, class T3 = void
   #define SPP_ENUM(num, X, INTER)                  SPP_ENUM_ ## num (X, SPP_UNPAR(INTER) )
 
-  // enumerates using COMMA as separator 
+  // enumerates using COMMA as separator
   #define SPP_ENUM_D(num,X)                        SPP_ENUM_ ## num (X, SPP_COMMA)
 
   // Repeats "X" which should be a macro(N) num times, REPEAT_Z starts from 0
@@ -128,7 +128,7 @@
   // SPP_REPEAT(3,DO) --> DO(1) DO(2) DO(3) --> T1; T2; T3;
   #define SPP_REPEAT(num, X)                       SPP_REPEAT_ ## num (SPP_UNPAR(X))
   #define SPP_REPEAT_Z(num, X)                     X(0) SPP_REPEAT_ ## num (SPP_UNPAR(X))
-  
+
   #define SPP_REPEAT_BASE(num, X, base)            SPP_REPEAT_BASE_ ## num \
                                                               (SPP_UNPAR(X),SPP_UNPAR(base))
   #define SPP_REPEAT_BASE_Z(num, X, base)          X(0,base) SPP_REPEAT_BASE_ ## num \
@@ -139,12 +139,12 @@
   #define SPP_MAIN_REPEAT(num, X)                  SPP_MAIN_REPEAT_ ## num (SPP_UNPAR(X))
   #define SPP_MAIN_REPEAT_Z(num, X)                X(0) SPP_MAIN_REPEAT_ ## num (SPP_UNPAR(X))
   #define SPP_COMMA                                SPP_UNPAR(,)
-  #define SPP_SPACE 
+  #define SPP_SPACE
   #define SPP_COMMA_IF(num)                        SPP_IF(num,SPP_COMMA)
 
   #define SPP_UNPAR(...) __VA_ARGS__
 
-  #define SPP_ENUM_0(X, INTER)  
+  #define SPP_ENUM_0(X, INTER)
   #define SPP_ENUM_1(X, INTER)  X##1
   #define SPP_ENUM_2(X, INTER)  SPP_ENUM_1(X,  SPP_UNPAR(INTER)) INTER X##2
   #define SPP_ENUM_3(X, INTER)  SPP_ENUM_2(X,  SPP_UNPAR(INTER)) INTER X##3
@@ -179,111 +179,111 @@
   #define SPP_ENUM_32(X, INTER) SPP_ENUM_31(X, SPP_UNPAR(INTER)) INTER X##32
   #define SPP_ENUM_MAX(X, INTER) SPP_ENUM_10(X, INTER) /* Change this up to 32 */
 
-  #define SPP_REPEAT_0(X) 
+  #define SPP_REPEAT_0(X)
   #define SPP_REPEAT_1(X) X(1)
-  #define SPP_REPEAT_2(X) SPP_REPEAT_1(X) X(2) 
-  #define SPP_REPEAT_3(X) SPP_REPEAT_2(X) X(3) 
-  #define SPP_REPEAT_4(X) SPP_REPEAT_3(X) X(4) 
-  #define SPP_REPEAT_5(X) SPP_REPEAT_4(X) X(5) 
-  #define SPP_REPEAT_6(X) SPP_REPEAT_5(X) X(6) 
-  #define SPP_REPEAT_7(X) SPP_REPEAT_6(X) X(7) 
-  #define SPP_REPEAT_8(X) SPP_REPEAT_7(X) X(8) 
-  #define SPP_REPEAT_9(X) SPP_REPEAT_8(X) X(9) 
-  #define SPP_REPEAT_10(X) SPP_REPEAT_9(X) X(10) 
-  #define SPP_REPEAT_11(X) SPP_REPEAT_10(X) X(11) 
-  #define SPP_REPEAT_12(X) SPP_REPEAT_11(X) X(12) 
-  #define SPP_REPEAT_13(X) SPP_REPEAT_12(X) X(13) 
-  #define SPP_REPEAT_14(X) SPP_REPEAT_13(X) X(14) 
-  #define SPP_REPEAT_15(X) SPP_REPEAT_14(X) X(15) 
-  #define SPP_REPEAT_16(X) SPP_REPEAT_15(X) X(16) 
-  #define SPP_REPEAT_17(X) SPP_REPEAT_16(X) X(17) 
-  #define SPP_REPEAT_18(X) SPP_REPEAT_17(X) X(18) 
-  #define SPP_REPEAT_19(X) SPP_REPEAT_18(X) X(19) 
-  #define SPP_REPEAT_20(X) SPP_REPEAT_19(X) X(20) 
-  #define SPP_REPEAT_21(X) SPP_REPEAT_20(X) X(21) 
-  #define SPP_REPEAT_22(X) SPP_REPEAT_21(X) X(22) 
-  #define SPP_REPEAT_23(X) SPP_REPEAT_22(X) X(23) 
-  #define SPP_REPEAT_24(X) SPP_REPEAT_23(X) X(24) 
-  #define SPP_REPEAT_25(X) SPP_REPEAT_24(X) X(25) 
-  #define SPP_REPEAT_26(X) SPP_REPEAT_25(X) X(26) 
-  #define SPP_REPEAT_27(X) SPP_REPEAT_26(X) X(27) 
-  #define SPP_REPEAT_28(X) SPP_REPEAT_27(X) X(28) 
-  #define SPP_REPEAT_29(X) SPP_REPEAT_28(X) X(29) 
-  #define SPP_REPEAT_30(X) SPP_REPEAT_29(X) X(30) 
-  #define SPP_REPEAT_31(X) SPP_REPEAT_30(X) X(31) 
-  #define SPP_REPEAT_32(X) SPP_REPEAT_31(X) X(32) 
+  #define SPP_REPEAT_2(X) SPP_REPEAT_1(X) X(2)
+  #define SPP_REPEAT_3(X) SPP_REPEAT_2(X) X(3)
+  #define SPP_REPEAT_4(X) SPP_REPEAT_3(X) X(4)
+  #define SPP_REPEAT_5(X) SPP_REPEAT_4(X) X(5)
+  #define SPP_REPEAT_6(X) SPP_REPEAT_5(X) X(6)
+  #define SPP_REPEAT_7(X) SPP_REPEAT_6(X) X(7)
+  #define SPP_REPEAT_8(X) SPP_REPEAT_7(X) X(8)
+  #define SPP_REPEAT_9(X) SPP_REPEAT_8(X) X(9)
+  #define SPP_REPEAT_10(X) SPP_REPEAT_9(X) X(10)
+  #define SPP_REPEAT_11(X) SPP_REPEAT_10(X) X(11)
+  #define SPP_REPEAT_12(X) SPP_REPEAT_11(X) X(12)
+  #define SPP_REPEAT_13(X) SPP_REPEAT_12(X) X(13)
+  #define SPP_REPEAT_14(X) SPP_REPEAT_13(X) X(14)
+  #define SPP_REPEAT_15(X) SPP_REPEAT_14(X) X(15)
+  #define SPP_REPEAT_16(X) SPP_REPEAT_15(X) X(16)
+  #define SPP_REPEAT_17(X) SPP_REPEAT_16(X) X(17)
+  #define SPP_REPEAT_18(X) SPP_REPEAT_17(X) X(18)
+  #define SPP_REPEAT_19(X) SPP_REPEAT_18(X) X(19)
+  #define SPP_REPEAT_20(X) SPP_REPEAT_19(X) X(20)
+  #define SPP_REPEAT_21(X) SPP_REPEAT_20(X) X(21)
+  #define SPP_REPEAT_22(X) SPP_REPEAT_21(X) X(22)
+  #define SPP_REPEAT_23(X) SPP_REPEAT_22(X) X(23)
+  #define SPP_REPEAT_24(X) SPP_REPEAT_23(X) X(24)
+  #define SPP_REPEAT_25(X) SPP_REPEAT_24(X) X(25)
+  #define SPP_REPEAT_26(X) SPP_REPEAT_25(X) X(26)
+  #define SPP_REPEAT_27(X) SPP_REPEAT_26(X) X(27)
+  #define SPP_REPEAT_28(X) SPP_REPEAT_27(X) X(28)
+  #define SPP_REPEAT_29(X) SPP_REPEAT_28(X) X(29)
+  #define SPP_REPEAT_30(X) SPP_REPEAT_29(X) X(30)
+  #define SPP_REPEAT_31(X) SPP_REPEAT_30(X) X(31)
+  #define SPP_REPEAT_32(X) SPP_REPEAT_31(X) X(32)
   #define SPP_REPEAT_MAX(X) SPP_REPEAT_10(X)  /* Change this up to 32 */
 
-  #define SPP_REPEAT_BASE_0(X,base) 
+  #define SPP_REPEAT_BASE_0(X,base)
   #define SPP_REPEAT_BASE_1(X,base) X(1, base)
-  #define SPP_REPEAT_BASE_2(X,base) SPP_REPEAT_BASE_1(X,base) X(2, base) 
-  #define SPP_REPEAT_BASE_3(X,base) SPP_REPEAT_BASE_2(X,base) X(3, base) 
-  #define SPP_REPEAT_BASE_4(X,base) SPP_REPEAT_BASE_3(X,base) X(4, base) 
-  #define SPP_REPEAT_BASE_5(X,base) SPP_REPEAT_BASE_4(X,base) X(5, base) 
-  #define SPP_REPEAT_BASE_6(X,base) SPP_REPEAT_BASE_5(X,base) X(6, base) 
-  #define SPP_REPEAT_BASE_7(X,base) SPP_REPEAT_BASE_6(X,base) X(7, base) 
-  #define SPP_REPEAT_BASE_8(X,base) SPP_REPEAT_BASE_7(X,base) X(8, base) 
-  #define SPP_REPEAT_BASE_9(X,base) SPP_REPEAT_BASE_8(X,base) X(9, base) 
-  #define SPP_REPEAT_BASE_10(X,base) SPP_REPEAT_BASE_9(X,base) X(10, base) 
-  #define SPP_REPEAT_BASE_11(X,base) SPP_REPEAT_BASE_10(X,base) X(11, base) 
-  #define SPP_REPEAT_BASE_12(X,base) SPP_REPEAT_BASE_11(X,base) X(12, base) 
-  #define SPP_REPEAT_BASE_13(X,base) SPP_REPEAT_BASE_12(X,base) X(13, base) 
-  #define SPP_REPEAT_BASE_14(X,base) SPP_REPEAT_BASE_13(X,base) X(14, base) 
-  #define SPP_REPEAT_BASE_15(X,base) SPP_REPEAT_BASE_14(X,base) X(15, base) 
-  #define SPP_REPEAT_BASE_16(X,base) SPP_REPEAT_BASE_15(X,base) X(16, base) 
-  #define SPP_REPEAT_BASE_17(X,base) SPP_REPEAT_BASE_16(X,base) X(17, base) 
-  #define SPP_REPEAT_BASE_18(X,base) SPP_REPEAT_BASE_17(X,base) X(18, base) 
-  #define SPP_REPEAT_BASE_19(X,base) SPP_REPEAT_BASE_18(X,base) X(19, base) 
-  #define SPP_REPEAT_BASE_20(X,base) SPP_REPEAT_BASE_19(X,base) X(20, base) 
-  #define SPP_REPEAT_BASE_21(X,base) SPP_REPEAT_BASE_20(X,base) X(21, base) 
-  #define SPP_REPEAT_BASE_22(X,base) SPP_REPEAT_BASE_21(X,base) X(22, base) 
-  #define SPP_REPEAT_BASE_23(X,base) SPP_REPEAT_BASE_22(X,base) X(23, base) 
-  #define SPP_REPEAT_BASE_24(X,base) SPP_REPEAT_BASE_23(X,base) X(24, base) 
-  #define SPP_REPEAT_BASE_25(X,base) SPP_REPEAT_BASE_24(X,base) X(25, base) 
-  #define SPP_REPEAT_BASE_26(X,base) SPP_REPEAT_BASE_25(X,base) X(26, base) 
-  #define SPP_REPEAT_BASE_27(X,base) SPP_REPEAT_BASE_26(X,base) X(27, base) 
-  #define SPP_REPEAT_BASE_28(X,base) SPP_REPEAT_BASE_27(X,base) X(28, base) 
-  #define SPP_REPEAT_BASE_29(X,base) SPP_REPEAT_BASE_28(X,base) X(29, base) 
-  #define SPP_REPEAT_BASE_30(X,base) SPP_REPEAT_BASE_29(X,base) X(30, base) 
-  #define SPP_REPEAT_BASE_31(X,base) SPP_REPEAT_BASE_30(X,base) X(31, base) 
-  #define SPP_REPEAT_BASE_32(X,base) SPP_REPEAT_BASE_31(X,base) X(32, base) 
+  #define SPP_REPEAT_BASE_2(X,base) SPP_REPEAT_BASE_1(X,base) X(2, base)
+  #define SPP_REPEAT_BASE_3(X,base) SPP_REPEAT_BASE_2(X,base) X(3, base)
+  #define SPP_REPEAT_BASE_4(X,base) SPP_REPEAT_BASE_3(X,base) X(4, base)
+  #define SPP_REPEAT_BASE_5(X,base) SPP_REPEAT_BASE_4(X,base) X(5, base)
+  #define SPP_REPEAT_BASE_6(X,base) SPP_REPEAT_BASE_5(X,base) X(6, base)
+  #define SPP_REPEAT_BASE_7(X,base) SPP_REPEAT_BASE_6(X,base) X(7, base)
+  #define SPP_REPEAT_BASE_8(X,base) SPP_REPEAT_BASE_7(X,base) X(8, base)
+  #define SPP_REPEAT_BASE_9(X,base) SPP_REPEAT_BASE_8(X,base) X(9, base)
+  #define SPP_REPEAT_BASE_10(X,base) SPP_REPEAT_BASE_9(X,base) X(10, base)
+  #define SPP_REPEAT_BASE_11(X,base) SPP_REPEAT_BASE_10(X,base) X(11, base)
+  #define SPP_REPEAT_BASE_12(X,base) SPP_REPEAT_BASE_11(X,base) X(12, base)
+  #define SPP_REPEAT_BASE_13(X,base) SPP_REPEAT_BASE_12(X,base) X(13, base)
+  #define SPP_REPEAT_BASE_14(X,base) SPP_REPEAT_BASE_13(X,base) X(14, base)
+  #define SPP_REPEAT_BASE_15(X,base) SPP_REPEAT_BASE_14(X,base) X(15, base)
+  #define SPP_REPEAT_BASE_16(X,base) SPP_REPEAT_BASE_15(X,base) X(16, base)
+  #define SPP_REPEAT_BASE_17(X,base) SPP_REPEAT_BASE_16(X,base) X(17, base)
+  #define SPP_REPEAT_BASE_18(X,base) SPP_REPEAT_BASE_17(X,base) X(18, base)
+  #define SPP_REPEAT_BASE_19(X,base) SPP_REPEAT_BASE_18(X,base) X(19, base)
+  #define SPP_REPEAT_BASE_20(X,base) SPP_REPEAT_BASE_19(X,base) X(20, base)
+  #define SPP_REPEAT_BASE_21(X,base) SPP_REPEAT_BASE_20(X,base) X(21, base)
+  #define SPP_REPEAT_BASE_22(X,base) SPP_REPEAT_BASE_21(X,base) X(22, base)
+  #define SPP_REPEAT_BASE_23(X,base) SPP_REPEAT_BASE_22(X,base) X(23, base)
+  #define SPP_REPEAT_BASE_24(X,base) SPP_REPEAT_BASE_23(X,base) X(24, base)
+  #define SPP_REPEAT_BASE_25(X,base) SPP_REPEAT_BASE_24(X,base) X(25, base)
+  #define SPP_REPEAT_BASE_26(X,base) SPP_REPEAT_BASE_25(X,base) X(26, base)
+  #define SPP_REPEAT_BASE_27(X,base) SPP_REPEAT_BASE_26(X,base) X(27, base)
+  #define SPP_REPEAT_BASE_28(X,base) SPP_REPEAT_BASE_27(X,base) X(28, base)
+  #define SPP_REPEAT_BASE_29(X,base) SPP_REPEAT_BASE_28(X,base) X(29, base)
+  #define SPP_REPEAT_BASE_30(X,base) SPP_REPEAT_BASE_29(X,base) X(30, base)
+  #define SPP_REPEAT_BASE_31(X,base) SPP_REPEAT_BASE_30(X,base) X(31, base)
+  #define SPP_REPEAT_BASE_32(X,base) SPP_REPEAT_BASE_31(X,base) X(32, base)
   #define SPP_REPEAT_BASE_MAX(X,base) SPP_REPEAT_BASE_10(X,base)  /* Change this up to 32 */
 
   #define SPP_MAIN_REPEAT_1(X) X(1)
-  #define SPP_MAIN_REPEAT_2(X) SPP_MAIN_REPEAT_1(X) X(2) 
-  #define SPP_MAIN_REPEAT_3(X) SPP_MAIN_REPEAT_2(X) X(3) 
-  #define SPP_MAIN_REPEAT_4(X) SPP_MAIN_REPEAT_3(X) X(4) 
-  #define SPP_MAIN_REPEAT_5(X) SPP_MAIN_REPEAT_4(X) X(5) 
-  #define SPP_MAIN_REPEAT_6(X) SPP_MAIN_REPEAT_5(X) X(6) 
-  #define SPP_MAIN_REPEAT_7(X) SPP_MAIN_REPEAT_6(X) X(7) 
-  #define SPP_MAIN_REPEAT_8(X) SPP_MAIN_REPEAT_7(X) X(8) 
-  #define SPP_MAIN_REPEAT_9(X) SPP_MAIN_REPEAT_8(X) X(9) 
-  #define SPP_MAIN_REPEAT_10(X) SPP_MAIN_REPEAT_9(X) X(10) 
-  #define SPP_MAIN_REPEAT_11(X) SPP_MAIN_REPEAT_10(X) X(11) 
-  #define SPP_MAIN_REPEAT_12(X) SPP_MAIN_REPEAT_11(X) X(12) 
-  #define SPP_MAIN_REPEAT_13(X) SPP_MAIN_REPEAT_12(X) X(13) 
-  #define SPP_MAIN_REPEAT_14(X) SPP_MAIN_REPEAT_13(X) X(14) 
-  #define SPP_MAIN_REPEAT_15(X) SPP_MAIN_REPEAT_14(X) X(15) 
-  #define SPP_MAIN_REPEAT_16(X) SPP_MAIN_REPEAT_15(X) X(16) 
-  #define SPP_MAIN_REPEAT_17(X) SPP_MAIN_REPEAT_16(X) X(17) 
-  #define SPP_MAIN_REPEAT_18(X) SPP_MAIN_REPEAT_17(X) X(18) 
-  #define SPP_MAIN_REPEAT_19(X) SPP_MAIN_REPEAT_18(X) X(19) 
-  #define SPP_MAIN_REPEAT_20(X) SPP_MAIN_REPEAT_19(X) X(20) 
-  #define SPP_MAIN_REPEAT_21(X) SPP_MAIN_REPEAT_20(X) X(21) 
-  #define SPP_MAIN_REPEAT_22(X) SPP_MAIN_REPEAT_21(X) X(22) 
-  #define SPP_MAIN_REPEAT_23(X) SPP_MAIN_REPEAT_22(X) X(23) 
-  #define SPP_MAIN_REPEAT_24(X) SPP_MAIN_REPEAT_23(X) X(24) 
-  #define SPP_MAIN_REPEAT_25(X) SPP_MAIN_REPEAT_24(X) X(25) 
-  #define SPP_MAIN_REPEAT_26(X) SPP_MAIN_REPEAT_25(X) X(26) 
-  #define SPP_MAIN_REPEAT_27(X) SPP_MAIN_REPEAT_26(X) X(27) 
-  #define SPP_MAIN_REPEAT_28(X) SPP_MAIN_REPEAT_27(X) X(28) 
-  #define SPP_MAIN_REPEAT_29(X) SPP_MAIN_REPEAT_28(X) X(29) 
-  #define SPP_MAIN_REPEAT_30(X) SPP_MAIN_REPEAT_29(X) X(30) 
-  #define SPP_MAIN_REPEAT_31(X) SPP_MAIN_REPEAT_30(X) X(31) 
-  #define SPP_MAIN_REPEAT_32(X) SPP_MAIN_REPEAT_31(X) X(32) 
+  #define SPP_MAIN_REPEAT_2(X) SPP_MAIN_REPEAT_1(X) X(2)
+  #define SPP_MAIN_REPEAT_3(X) SPP_MAIN_REPEAT_2(X) X(3)
+  #define SPP_MAIN_REPEAT_4(X) SPP_MAIN_REPEAT_3(X) X(4)
+  #define SPP_MAIN_REPEAT_5(X) SPP_MAIN_REPEAT_4(X) X(5)
+  #define SPP_MAIN_REPEAT_6(X) SPP_MAIN_REPEAT_5(X) X(6)
+  #define SPP_MAIN_REPEAT_7(X) SPP_MAIN_REPEAT_6(X) X(7)
+  #define SPP_MAIN_REPEAT_8(X) SPP_MAIN_REPEAT_7(X) X(8)
+  #define SPP_MAIN_REPEAT_9(X) SPP_MAIN_REPEAT_8(X) X(9)
+  #define SPP_MAIN_REPEAT_10(X) SPP_MAIN_REPEAT_9(X) X(10)
+  #define SPP_MAIN_REPEAT_11(X) SPP_MAIN_REPEAT_10(X) X(11)
+  #define SPP_MAIN_REPEAT_12(X) SPP_MAIN_REPEAT_11(X) X(12)
+  #define SPP_MAIN_REPEAT_13(X) SPP_MAIN_REPEAT_12(X) X(13)
+  #define SPP_MAIN_REPEAT_14(X) SPP_MAIN_REPEAT_13(X) X(14)
+  #define SPP_MAIN_REPEAT_15(X) SPP_MAIN_REPEAT_14(X) X(15)
+  #define SPP_MAIN_REPEAT_16(X) SPP_MAIN_REPEAT_15(X) X(16)
+  #define SPP_MAIN_REPEAT_17(X) SPP_MAIN_REPEAT_16(X) X(17)
+  #define SPP_MAIN_REPEAT_18(X) SPP_MAIN_REPEAT_17(X) X(18)
+  #define SPP_MAIN_REPEAT_19(X) SPP_MAIN_REPEAT_18(X) X(19)
+  #define SPP_MAIN_REPEAT_20(X) SPP_MAIN_REPEAT_19(X) X(20)
+  #define SPP_MAIN_REPEAT_21(X) SPP_MAIN_REPEAT_20(X) X(21)
+  #define SPP_MAIN_REPEAT_22(X) SPP_MAIN_REPEAT_21(X) X(22)
+  #define SPP_MAIN_REPEAT_23(X) SPP_MAIN_REPEAT_22(X) X(23)
+  #define SPP_MAIN_REPEAT_24(X) SPP_MAIN_REPEAT_23(X) X(24)
+  #define SPP_MAIN_REPEAT_25(X) SPP_MAIN_REPEAT_24(X) X(25)
+  #define SPP_MAIN_REPEAT_26(X) SPP_MAIN_REPEAT_25(X) X(26)
+  #define SPP_MAIN_REPEAT_27(X) SPP_MAIN_REPEAT_26(X) X(27)
+  #define SPP_MAIN_REPEAT_28(X) SPP_MAIN_REPEAT_27(X) X(28)
+  #define SPP_MAIN_REPEAT_29(X) SPP_MAIN_REPEAT_28(X) X(29)
+  #define SPP_MAIN_REPEAT_30(X) SPP_MAIN_REPEAT_29(X) X(30)
+  #define SPP_MAIN_REPEAT_31(X) SPP_MAIN_REPEAT_30(X) X(31)
+  #define SPP_MAIN_REPEAT_32(X) SPP_MAIN_REPEAT_31(X) X(32)
   #define SPP_MAIN_REPEAT_MAX(X) SPP_MAIN_REPEAT_10(X)  /* Change this up to 32 */
 
-  #define SPP_IF_0(X) 
+  #define SPP_IF_0(X)
   #define SPP_IF_1(X) X
   #define SPP_IF_2(X) X
   #define SPP_IF_3(X) X
@@ -337,7 +337,7 @@
   #endif
 #else /* not windows */
   #  define SLB_EXPORT
-#endif  
+#endif
 
 #endif
 
@@ -347,7 +347,7 @@
 #ifndef __SLB_DEBUG__
 #define __SLB_DEBUG__
 
-  
+
 #if SLB_DEBUG_LEVEL != 0
   //->#include "SPP.hpp"
   //->#include "Export.hpp"
@@ -395,7 +395,7 @@
     #include<sstream>
     #include<stdexcept>
     //->#include "lua.hpp"
-  
+
     struct __SLB__cleanstack
     {
       __SLB__cleanstack(struct lua_State *L, int delta, const char *where, int line)
@@ -457,7 +457,7 @@
 
 #else
   #define SLB_DEBUG(level,...)
-  #define SLB_DEBUG_STACK(... ) 
+  #define SLB_DEBUG_STACK(... )
   #define SLB_DEBUG_CLEAN_STACK(...)
   #define SLB_DEBUG_CALL
 #endif
@@ -501,7 +501,7 @@ extern "C" {
    Based on Steven Lavavej's "Mallocator"
    http://blogs.msdn.com/b/vcblog/archive/2008/08/28/the-mallocator.aspx
 
-   This is a stateless global allocator that redirects all memory 
+   This is a stateless global allocator that redirects all memory
    allocation to user supplied "malloc" and "free" functions.
    The default implementation actually uses the global malloc and free
    functions.  The user supplied functions must be registered before
@@ -529,7 +529,7 @@ namespace SLB
   SLB_EXPORT void* Malloc(size_t);
   SLB_EXPORT void Free(void*);
 
-  //Generic stateless allocator that uses the SLB::Malloc and 
+  //Generic stateless allocator that uses the SLB::Malloc and
   // SLB::Free functions for memory management
   template <typename T>
   class Allocator
@@ -544,26 +544,26 @@ namespace SLB
     typedef ptrdiff_t difference_type;
 
     /*
-    T * address(T& r) const 
+    T * address(T& r) const
     {
       return &r;
     }
     */
 
-    const T * address(const T& s) const 
+    const T * address(const T& s) const
     {
       return &s;
     }
 
 
-    size_t max_size() const 
+    size_t max_size() const
     {
       // The following has been carefully written to be independent of
       // the definition of size_t and to avoid signed/unsigned warnings.
       return (static_cast<size_t>(0) - static_cast<size_t>(1)) / sizeof(T);
     }
 
-    template <typename U> struct rebind 
+    template <typename U> struct rebind
     {
       typedef Allocator<U> other;
     };
@@ -573,7 +573,7 @@ namespace SLB
       return !(*this == other);
     }
 
-    void construct(T * const p, const T& t) const 
+    void construct(T * const p, const T& t) const
     {
       void * const pv = static_cast<void *>(p);
       new (pv) T(t);
@@ -591,7 +591,7 @@ namespace SLB
     #pragma warning(pop)
     #endif
 
-    bool operator==(const Allocator& /*other*/) const 
+    bool operator==(const Allocator& /*other*/) const
     {
       return true;
     }
@@ -616,7 +616,7 @@ namespace SLB
       }
 
       void * const pv = Malloc(n * sizeof(T));
-      if (pv == NULL) 
+      if (pv == NULL)
       {
         SLB_THROW(std::bad_alloc());
         SLB_CRITICAL_ERROR("Out of memory");
@@ -626,12 +626,12 @@ namespace SLB
     }
 
 
-    void deallocate(T * const p, const size_t /* n */) const 
+    void deallocate(T * const p, const size_t /* n */) const
     {
       Free(p);
     }
 
-    template <typename U> T * allocate(const size_t n, const U * /* const hint */) const 
+    template <typename U> T * allocate(const size_t n, const U * /* const hint */) const
     {
       return allocate(n);
     }
@@ -640,7 +640,7 @@ namespace SLB
     Allocator& operator=(const Allocator&);
   };
 
-  
+
   template <typename T>
   void Free_T(T** ptr)
   {
@@ -683,7 +683,7 @@ namespace SLB
 #if 1
   typedef std::basic_string< char, std::char_traits<char>, Allocator<char> > String;
 #else
-  class SLB_EXPORT String : public std::basic_string< char, std::char_traits<char>, Allocator<char> > 
+  class SLB_EXPORT String : public std::basic_string< char, std::char_traits<char>, Allocator<char> >
   {
   public:
     typedef std::basic_string< char, std::char_traits<char>, Allocator<char> > Base;
@@ -741,7 +741,7 @@ namespace SLB {
       return __func__
     #endif
   }
-  
+
   template<class T>
   inline unsigned long TypeID<T>::Hash()
   {
@@ -760,7 +760,7 @@ namespace SLB {
     }
     return hash_;
   }
-  
+
 
   class TypeInfoWrapper
   {
@@ -774,7 +774,7 @@ namespace SLB {
     TypeInfoWrapper(unsigned long hash, const char *name) :
       _ID(hash), _name(name)
     {
-    
+
     }
 
     unsigned long type() const { return _ID; }
@@ -795,7 +795,7 @@ namespace SLB {
     {
       return _ID != o._ID;
     }
-    
+
   private:
     unsigned long _ID;
     const char *_name;
@@ -832,7 +832,7 @@ struct lua_State;
 namespace SLB
 {
 
-  class SLB_EXPORT Object 
+  class SLB_EXPORT Object
   {
   public:
     unsigned int referenceCount() const { return _refCounter; }
@@ -860,7 +860,7 @@ namespace SLB
     unsigned int _refCounter;
     String _info; // for metadata, documentation, ...
 
-    
+
     Object( const Object &slbo);
     Object& operator=( const Object &slbo);
   };
@@ -887,11 +887,11 @@ namespace SLB
     return result;
   }
 
-  
+
   // ------------------------------------------------------------
   // ------------------------------------------------------------
   // ------------------------------------------------------------
-    
+
   inline void Object::ref()
   {
     ++_refCounter;
@@ -900,8 +900,8 @@ namespace SLB
   inline void Object::unref()
   {
     assert(_refCounter > 0);
-    --_refCounter; 
-    if (_refCounter == 0) 
+    --_refCounter;
+    if (_refCounter == 0)
     {
       const void *ptr = memoryRawPointer();
       this->~Object();
@@ -947,7 +947,7 @@ namespace Private {
 template<class T>
 inline void push(lua_State *L, T v)
 {
-  SLB_DEBUG_CALL; 
+  SLB_DEBUG_CALL;
   Private::Type<T>::push(L,v);
 }
 
@@ -955,14 +955,14 @@ inline void push(lua_State *L, T v)
 template<class T>
 inline T get(lua_State *L, int pos)
 {
-  SLB_DEBUG_CALL; 
+  SLB_DEBUG_CALL;
   return Private::Type<T>::get(L,pos);
 }
 
-template<class T> 
+template<class T>
 inline void setGlobal(lua_State *L, T v, const char *name)
 {
-  SLB_DEBUG_CALL; 
+  SLB_DEBUG_CALL;
   SLB::push(L,v);
   lua_setglobal(L,name);
 }
@@ -970,7 +970,7 @@ inline void setGlobal(lua_State *L, T v, const char *name)
 template<class T>
 inline T getGlobal(lua_State *L, const char *name)
 {
-  SLB_DEBUG_CALL; 
+  SLB_DEBUG_CALL;
   lua_getglobal(L,name);
   T value = SLB::get<T>(L, -1);
   lua_pop(L,1); // remove the value
@@ -1007,11 +1007,11 @@ namespace SLB {
     // holds a reference to a const object
     template<class T> inline Object* ref( const T& obj )
     { return new (Malloc(sizeof(RefValue<T>))) RefValue<T>(obj); }
-    
+
     // holds a reference to an object (ptr)
     template<class T> inline Object* ref( T *obj )
     { return new (Malloc(sizeof(RefValue<T>))) RefValue<T>(obj); }
-    
+
     // holds a reference to a const object (const ptr)
     template<class T> inline Object* ref( const T *obj )
     { return new (Malloc(sizeof(RefValue<T>))) RefValue<T>(obj); }
@@ -1074,36 +1074,36 @@ namespace SLB {
   //--------------------------------------------------------------------
   // Inline implementations:
   //--------------------------------------------------------------------
-  
+
   template<class T>
-  inline RefValue<T>::RefValue( T& obj ) : 
+  inline RefValue<T>::RefValue( T& obj ) :
     _obj(&obj), _isConst(false)
   {
   }
 
   template<class T>
-  inline RefValue<T>::RefValue( const T& obj ) : 
+  inline RefValue<T>::RefValue( const T& obj ) :
     _constObj(&obj), _isConst(true)
   {
   }
 
   template<class T>
-  inline RefValue<T>::RefValue( T *obj ) : 
+  inline RefValue<T>::RefValue( T *obj ) :
     _obj(obj), _isConst(false)
   {
   }
 
   template<class T>
-  inline RefValue<T>::RefValue( const T *obj ) : 
+  inline RefValue<T>::RefValue( const T *obj ) :
     _constObj(obj), _isConst(true)
   {
   }
-  
+
   template<class T>
   inline void RefValue<T>::pushImplementation(lua_State *L)
   {
-    if (_isConst) SLB::push(L, _constObj);  
-    else SLB::push(L, _obj);  
+    if (_isConst) SLB::push(L, _constObj);
+    else SLB::push(L, _obj);
   }
 
   template<class T>
@@ -1121,7 +1121,7 @@ namespace SLB {
   inline AutoDeleteValue<T>::AutoDeleteValue( T *obj ) : _obj(obj)
   {
   }
-  
+
   template<class T>
   inline void AutoDeleteValue<T>::pushImplementation(lua_State *L)
   {
@@ -1249,14 +1249,14 @@ namespace SLB {
 
     Object* rawGet(const String &);
     void rawSet(const String &, Object*);
-    
+
     void pushImplementation(lua_State *);
 
     /** will try to find the object, if not present will return -1. If this
      * function is not overriden not finding an object will raise an error
      * It is highly recommended to call this method in subclasses of Table
      * first.*/
-    virtual int __index(lua_State *L); 
+    virtual int __index(lua_State *L);
     virtual int __newindex(lua_State *L);
 
     virtual int __call(lua_State *L);
@@ -1292,7 +1292,7 @@ namespace SLB {
   //--------------------------------------------------------------------
   // Inline implementations:
   //--------------------------------------------------------------------
-    
+
 }
 
 
@@ -1304,7 +1304,7 @@ namespace SLB {
 #define __SLB_CONVERSOR__
 
 namespace SLB {
-  
+
   struct Conversor
   {
     virtual void* operator()(void* obj) = 0;
@@ -1366,7 +1366,7 @@ namespace SLB {
     virtual const char* end() = 0;
 
     /// Called on each stack element, here you can call SE_*
-    /// functions. 
+    /// functions.
     virtual void stackElement(int /*level*/) {}
 
   protected:
@@ -1390,7 +1390,7 @@ namespace SLB {
 
     /// StackElement function
     /// shorten version of source
-    const char *SE_shortSource(); 
+    const char *SE_shortSource();
 
     /// StackElement function
     /// number of line, or -1 if there is no info available
@@ -1438,7 +1438,7 @@ namespace SLB {
   class SLB_EXPORT ThreadSafeErrorHandler : public ErrorHandler
   {
   public:
-    /** Will call EH but locking at the begin, and at the end. 
+    /** Will call EH but locking at the begin, and at the end.
         The ErrorHandler passed will be freed be owned by this
       object */
     ThreadSafeErrorHandler( ErrorHandler *EH );
@@ -1479,7 +1479,7 @@ namespace SLB
 
   class SLB_EXPORT Iterator : public Object
   {
-  public: 
+  public:
     Iterator(IteratorBase *b);
 
   protected:
@@ -1538,13 +1538,13 @@ namespace SLB
   // ------------------------------------------------------------
   // ------------------------------------------------------------
   // ------------------------------------------------------------
-  
+
   template<class T>
   inline StdIterator<T>::StdIterator(MemberFuncs m_first, MemberFuncs m_end)
     : _begin(m_first), _end(m_end)
   {
   }
-  
+
   template<class T>
   inline int StdIterator<T>::push(lua_State *L)
   {
@@ -1566,7 +1566,7 @@ namespace SLB
   {
     SLB_DEBUG_CALL
     Iterator *d = reinterpret_cast<Iterator*>(lua_touserdata(L,1));
-    
+
     if ( d[0] != d[1] )
     {
       SLB::push(L, T::unref(d[0]) );
@@ -1603,28 +1603,28 @@ namespace SLB
 namespace SLB
 {
 
-  class SLB_EXPORT LuaCallBase 
-  { 
+  class SLB_EXPORT LuaCallBase
+  {
   public:
     // this allows to store a luaCall, mainly used by
     // Hybrid classes...
     virtual ~LuaCallBase();
-  protected: 
+  protected:
     LuaCallBase(lua_State *L, int index);
     LuaCallBase(lua_State *L, const char *func);
     void execute(int numArgs, int numOutput, int top);
 
     lua_State *_lua_state;
-    int _ref; 
+    int _ref;
   private:
     void getFunc(int index);
     static int errorHandler(lua_State *L);
-  }; 
+  };
 
   template<typename T>
   struct LuaCall;
 
-  #define SLB_ARG(N) T##N arg_##N, 
+  #define SLB_ARG(N) T##N arg_##N,
   #define SLB_PUSH_ARGS(N) push<T##N>(_lua_state, arg_##N );
 
   #define SLB_REPEAT(N) \
@@ -1679,7 +1679,7 @@ namespace SLB
   //--------------------------------------------------------------------
   // Inline implementations:
   //--------------------------------------------------------------------
-  
+
 #endif
 
 
@@ -1741,7 +1741,7 @@ namespace SLB {
 
     /** Copy from one lua_State to another:
       - for basic types it will make a basic copy
-      - returns true if copy was made, otherwise returns false. 
+      - returns true if copy was made, otherwise returns false.
       - doesn't touch the original element
 
       ** WARNING **
@@ -1793,11 +1793,11 @@ namespace SLB {
     static Manager *_default;
     friend class ClassInfo;
   };
-  
+
   //--------------------------------------------------------------------
   // Inline implementations:
   //--------------------------------------------------------------------
-  
+
   template<class D, class B>
   struct ClassConversor
   {
@@ -1807,7 +1807,7 @@ namespace SLB {
       B* base = derived;
       return (void*) base;
     }
-    
+
     static void* convertToDerived(void *raw_b)
     {
       B* base = reinterpret_cast<B*>(raw_b);
@@ -1826,7 +1826,7 @@ namespace SLB {
     {
       return &static_cast<B>(*ptr);
     }
-    
+
   };
 
   template<class D, class B>
@@ -1858,7 +1858,7 @@ namespace SLB {
     if (C1 == C2)
     {
       SLB_DEBUG(11, "same class");
-      return obj; 
+      return obj;
     }
 
     ConversionsMap::iterator i = _conversions.find( ConversionsMap::key_type(C1,C2) );
@@ -1869,7 +1869,7 @@ namespace SLB {
     }
 
     //The _conversions map only hold direct conversions added via .inherits<> or .static_inherits<>.
-    // recursiveConvert can extract implied conversions from the _conversions table (but much less 
+    // recursiveConvert can extract implied conversions from the _conversions table (but much less
     // efficiently than a direct conversion).  For example if a direct conversion from Animal to Dog
     // exists and a conversion from Dog to Poodle exists, then recursiveConvert can convert an
     // Animal to a Poodle.
@@ -1915,7 +1915,7 @@ namespace SLB {
     namespace SLB { typedef CRITICAL_SECTION MutexData; }
   #else // WIN32
   // Posix Mutex:
-    #include <pthread.h>  
+    #include <pthread.h>
     namespace SLB { typedef pthread_mutex_t MutexData; }
   #endif
 #endif //SLB_THREAD_SAFE
@@ -2059,7 +2059,7 @@ namespace SLB {
         an element from the stack */
     virtual void get(lua_State *, int idx);
 
-  
+
   protected:
     BaseProperty();
     virtual ~BaseProperty();
@@ -2073,9 +2073,9 @@ namespace SLB {
   {
   public:
     typedef M T::*MemberPtr;
-    Property( MemberPtr m) : _m(m) 
+    Property( MemberPtr m) : _m(m)
     {
-      
+
     }
   protected:
     virtual ~Property() {}
@@ -2181,7 +2181,7 @@ namespace SLB
   protected:
     FuncCall();
     virtual ~FuncCall();
-  
+
     void pushImplementation(lua_State *L);
     virtual int call(lua_State *L) = 0;
 
@@ -2191,13 +2191,13 @@ namespace SLB
   private:
     static int _call(lua_State *L);
 
-  friend class Manager;  
+  friend class Manager;
   friend class ClassInfo;
   SLB_CLASS(FuncCall, Object);
   };
 
 } //end of SLB namespace
-  
+
 //->#include "FuncCall_inline.hpp"
 #endif
 
@@ -2277,7 +2277,7 @@ namespace SLB {
       class Implementation : public virtual InstanceBase
       {
       public:
-        // constructor from a pointer 
+        // constructor from a pointer
         Implementation(ClassInfo *ci, T* ptr) : InstanceBase( I_Pointer,ci ), _ptr(ptr)
         {
         }
@@ -2291,7 +2291,7 @@ namespace SLB {
         {
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &ref) : InstanceBase( I_MustFreeMem, ci ), _ptr( 0L )
         {
           _ptr = new (Malloc(sizeof(T))) T(ref);
@@ -2330,7 +2330,7 @@ namespace SLB {
         {
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &ref) : InstanceBase( I_Invalid, ci ), _ptr( 0L )
         {
         }
@@ -2348,13 +2348,13 @@ namespace SLB {
       };
     };
 
-    struct NoCopyNoDestroy 
+    struct NoCopyNoDestroy
     {
       template<class T>
       class Implementation : public virtual InstanceBase
       {
       public:
-        // constructor form a pointer 
+        // constructor form a pointer
         Implementation(ClassInfo *ci, T* ptr) : InstanceBase( I_Pointer, ci ), _ptr(ptr)
         {
         }
@@ -2368,7 +2368,7 @@ namespace SLB {
         {
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &) : InstanceBase( I_Invalid, ci ), _ptr( 0L )
         {
         }
@@ -2387,7 +2387,7 @@ namespace SLB {
     };
 
     template<template <class> class T_SmartPtr>
-    struct SmartPtr 
+    struct SmartPtr
     {
       template<class T>
       class Implementation : public virtual InstanceBase
@@ -2406,7 +2406,7 @@ namespace SLB {
           _const_ptr = &(*_sm_ptr);
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &ref) : InstanceBase( I_MustFreeMem, ci ), _sm_ptr( 0L ), _const_ptr(0)
         {
           _sm_ptr = new (Malloc(sizeof(T))) T( ref );
@@ -2446,7 +2446,7 @@ namespace SLB {
           _const_ptr = &(*_sm_ptr);
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &ref) : InstanceBase( I_Invalid, ci ), _sm_ptr( 0L ), _const_ptr(&ref)
         {
         }
@@ -2483,7 +2483,7 @@ namespace SLB {
           _const_ptr = &(*_sm_ptr);
         }
 
-        // copy constructor,  
+        // copy constructor,
         Implementation(ClassInfo *ci, const T &ref) : InstanceBase( I_Invalid, ci ), _sm_ptr( 0L ), _const_ptr(&ref)
         {
           T *obj = const_cast<T*>(&ref);
@@ -2502,7 +2502,7 @@ namespace SLB {
       };
     };
 
-  
+
   } // end of Instance namespace
 
 
@@ -2592,7 +2592,7 @@ namespace SLB {
   {
   public:
     typedef SLB_Map(TypeInfoWrapper, ClassInfo* ) BaseClassMap;
-    
+
     const TypeInfoWrapper &getTypeid() const { return __TIW; }
     const String &getName() const      { return _name; }
     void setName(const String&);
@@ -2693,7 +2693,7 @@ namespace SLB {
     ref_ptr<FuncCall> _constructor;
     ref_ptr<FuncCall> _meta__index[2];    // 0 = class, 1 = object
     ref_ptr<FuncCall> _meta__newindex[2]; // 0 = class, 1 = object
-    ref_ptr<FuncCall> _meta__eq; 
+    ref_ptr<FuncCall> _meta__eq;
     bool _isHybrid;
 
   private:
@@ -2708,8 +2708,8 @@ namespace SLB {
   //--------------------------------------------------------------------
   // Inline implementations:
   //--------------------------------------------------------------------
-  
-    
+
+
   template<class D, class B>
   inline void ClassInfo::dynamicInheritsFrom()
   {
@@ -2733,7 +2733,7 @@ namespace SLB {
   {
     /* This is a pretty ugly cast, SLB Manager handles changes from one type to other through
        void*, here we are changing the function to receive two pointers from the expected types (when the
-       origin will be void*) It should be completely safe, as a pointer is the same size no matter the type. 
+       origin will be void*) It should be completely safe, as a pointer is the same size no matter the type.
 
        Anyway, it's a pretty ugly trick. */
     typedef void* (*T_void)(void*);
@@ -2790,12 +2790,12 @@ namespace Private {
 
   // SLB_INFO: Collects info of the arguments
   #define SLB_INFO_PARAMS(N) _Targs.push_back(\
-      std::pair<TypeInfoWrapper, String>( _TIW(T##N), "") ); 
+      std::pair<TypeInfoWrapper, String>( _TIW(T##N), "") );
   #define SLB_INFO(RETURN, N) \
     _Treturn = _TIW(RETURN);\
     SPP_REPEAT(N,SLB_INFO_PARAMS ) \
 
-  // SLB_GET: Generates Code to get N parameters 
+  // SLB_GET: Generates Code to get N parameters
   //
   //    N       --> Number of parameters
   //    START   --> where to start getting parameters
@@ -2811,18 +2811,18 @@ namespace Private {
           lua_gettop(L)-(START), N); \
     }\
     SPP_REPEAT_BASE(N,SLB_GET_PARAMS, (START) ) \
-    
 
-  // FC_Method (BODY) 
+
+  // FC_Method (BODY)
   //    N       --> Number of parameters
   //
   // ( if is a const method )
   //    NAME    --> FC_Method   |  FC_ConstMethod
-  //    CONST   --> /*nothing*/ |  const 
-  // 
+  //    CONST   --> /*nothing*/ |  const
+  //
   // ( if returns or not a value)
   //    HEADER  --> class R    |  /*nothing*/
-  //    RETURN  --> R          |  void 
+  //    RETURN  --> R          |  void
   //
   //    ...     --> implementation of call function
   #define SLB_FC_METHOD_BODY(N,NAME, CONST, HEADER,RETURN, ...) \
@@ -2847,7 +2847,7 @@ namespace Private {
   // FC_Method (implementation with return or not a value):
   // ( if is a const method )
   //    NAME    --> FC_Method   |  FC_ConstMethod
-  //    CONST   --> /*nothing*/ |  const 
+  //    CONST   --> /*nothing*/ |  const
   #define SLB_FC_METHOD(N, NAME, CONST) \
     SLB_FC_METHOD_BODY(N, NAME, CONST, SPP_COMMA class R ,R, \
         CONST C *obj = SLB::get<CONST C*>(L,1); \
@@ -2879,7 +2879,7 @@ namespace Private {
   //
   // ( if returns or not a value)
   //    HEADER  --> class R    |  /*nothing*/
-  //    RETURN  --> R          |  void 
+  //    RETURN  --> R          |  void
   //
   //    ...     --> implementation of call function
   #define SLB_FC_FUNCTION_BODY(N, HEADER, RETURN, ...) \
@@ -2898,8 +2898,8 @@ namespace Private {
       } \
     private: \
       RETURN (*_func)(SPP_ENUM_D(N,T)); \
-    }; 
-  
+    };
+
   #define SLB_FC_FUNCTION(N) \
     SLB_FC_FUNCTION_BODY( N, class R SPP_COMMA_IF(N), R, \
         SLB_GET(N,0) \
@@ -2960,7 +2960,7 @@ namespace Private {
   #undef SLB_GET_PARAMS
 
 
-}} // end of SLB::Private namespace  
+}} // end of SLB::Private namespace
 
 #endif
 
@@ -3013,7 +3013,7 @@ namespace SLB {
     typedef Private::FC_DefaultClassConstructor<C(SPP_ENUM_D(N,T))> _type_;\
     return new (Malloc(sizeof(_type_))) _type_; \
   } \
-  
+
   SPP_MAIN_REPEAT_Z(MAX,SLB_REPEAT)
   #undef SLB_REPEAT
 
@@ -3043,7 +3043,7 @@ namespace Private {
 
     static ClassInfo *getClass(lua_State *L)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"getClass '%s'", _TIW(T).name());
       ClassInfo *c = SLB::Manager::getInstance(L)->getClass(_TIW(T));
       if (c == 0) luaL_error(L, "Unknown class %s", _TIW(T).name());
@@ -3052,16 +3052,16 @@ namespace Private {
 
     static void push(lua_State *L,const T &obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(8,"Push<T=%s>(L=%p, obj =%p)", _TIW(T).name(), L, &obj);
       getClass(L)->push_copy(L, (void*) &obj);
     }
 
     static T get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(8,"Get<T=%s>(L=%p, pos = %i)", _TIW(T).name(), L, pos);
-      T* obj = reinterpret_cast<T*>( getClass(L)->get_ptr(L, pos) );  
+      T* obj = reinterpret_cast<T*>( getClass(L)->get_ptr(L, pos) );
       SLB_DEBUG(9,"obj = %p", obj);
       return *obj;
     }
@@ -3074,7 +3074,7 @@ namespace Private {
     typedef T* GetType;
     static ClassInfo *getClass(lua_State *L)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"getClass '%s'", _TIW(T).name());
       ClassInfo *c = SLB::Manager::getInstance(L)->getClass(_TIW(T));
       if (c == 0) luaL_error(L, "Unknown class %s", _TIW(T).name());
@@ -3083,7 +3083,7 @@ namespace Private {
 
     static void push(lua_State *L, T *obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"push '%s' of %p",
           _TIW(T).name(),
           obj);
@@ -3097,7 +3097,7 @@ namespace Private {
       /*TODO Change this for TypeInfoWrapper?
       const std::type_info &t_T = _TIW(T);
       const std::type_info &t_obj = _TIW(*obj);
-      
+
       assert("Invalid typeinfo!!! (type)" && (&t_T) );
       assert("Invalid typeinfo!!! (object)" && (&t_obj) );
 
@@ -3108,7 +3108,7 @@ namespace Private {
         TypeInfoWrapper wt_obj = _TIW(*obj);
         // check if the internal class exists...
         ClassInfo *c = SLB::Manager::getInstance(L)->getClass(wt_obj);
-        if ( c ) 
+        if ( c )
         {
           SLB_DEBUG(8,"Push<T*=%s> with conversion from "
             "T(%p)->T(%p) (L=%p, obj =%p)",
@@ -3119,26 +3119,26 @@ namespace Private {
           return;
         }
       }*/
-      // use this class...  
+      // use this class...
       getClass(L)->push_ptr(L, (void*) obj);
     }
 
     static T* get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"get '%s' at pos %d", _TIW(T).name(), pos);
       return reinterpret_cast<T*>( getClass(L)->get_ptr(L, pos) );
     }
 
   };
-  
+
   template<class T>
   struct Type<const T*>
   {
     typedef const T* GetType;
     static ClassInfo *getClass(lua_State *L)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"getClass '%s'", _TIW(T).name());
       ClassInfo *c = SLB::Manager::getInstance(L)->getClass(_TIW(T));
       if (c == 0) luaL_error(L, "Unknown class %s", _TIW(T).name());
@@ -3147,7 +3147,7 @@ namespace Private {
 
     static void push(lua_State *L,const T *obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"push '%s' of %p", _TIW(T).name(), obj);
       if (obj == 0)
       {
@@ -3162,7 +3162,7 @@ namespace Private {
         TypeInfoWrapper wt_obj = _TIW(*obj);
         // check if the internal class exists...
         ClassInfo *c = SLB::Manager::getInstance(L)->getClass(wt_obj);
-        if ( c ) 
+        if ( c )
         {
           SLB_DEBUG(8,"Push<const T*=%s> with conversion from "
             "T(%p)->T(%p) (L=%p, obj =%p)",
@@ -3179,7 +3179,7 @@ namespace Private {
 
     static const T* get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"get '%s' at pos %d", _TIW(T).name(), pos);
       return reinterpret_cast<const T*>( getClass(L)->get_const_ptr(L, pos) );
     }
@@ -3192,14 +3192,14 @@ namespace Private {
     typedef const T& GetType;
     static void push(lua_State *L,const T &obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"push '%s' of %p(const ref)", _TIW(T).name(), &obj);
       Type<const T*>::push(L, &obj);
     }
 
     static const T& get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"get '%s' at pos %d", _TIW(T).name(), pos);
       const T* obj = Type<const T*>::get(L,pos);
       //TODO: remove the _TIW(T).getName() and use classInfo :)
@@ -3208,14 +3208,14 @@ namespace Private {
     }
 
   };
-  
+
   template<class T>
   struct Type<T&>
   {
     typedef T& GetType;
     static ClassInfo *getClass(lua_State *L)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"getClass '%s'", _TIW(T).name());
       ClassInfo *c = SLB::Manager::getInstance(L)->getClass(_TIW(T));
       if (c == 0) luaL_error(L, "Unknown class %s", _TIW(T).name());
@@ -3224,14 +3224,14 @@ namespace Private {
 
     static void push(lua_State *L,T &obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"push '%s' of %p (reference)", _TIW(T).name(), &obj);
       getClass(L)->push_ref(L, (void*) &obj);
     }
 
     static T& get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(10,"get '%s' at pos %d", _TIW(T).name(), pos);
       return *(Type<T*>::get(L,pos));
     }
@@ -3246,7 +3246,7 @@ namespace Private {
     typedef void* GetType;
     static void push(lua_State *L,void* obj)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       if (obj == 0) lua_pushnil(L);
       else
       {
@@ -3257,7 +3257,7 @@ namespace Private {
 
     static void *get(lua_State *L, int pos)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(8,"Get<void*> (L=%p, pos=%i ) =%p)",L, pos, lua_touserdata(L,pos));
       if (lua_islightuserdata(L,pos)) return lua_touserdata(L,pos);
       //TODO: Check here if is an userdata and convert it to void
@@ -3273,13 +3273,13 @@ namespace Private {
     typedef char GetType;
     static void push(lua_State *L, char v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push char = %d",v);
       lua_pushinteger(L,v);
     }
     static char get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       char v = (char) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get char (pos %d) = %d",p,v);
       return v;
@@ -3295,13 +3295,13 @@ namespace Private {
     typedef unsigned char GetType;
     static void push(lua_State *L, unsigned char v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push unsigned char = %d",v);
       lua_pushinteger(L,v);
     }
     static unsigned char get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       unsigned char v = (unsigned char) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get unsigned char (pos %d) = %d",p,v);
       return v;
@@ -3317,13 +3317,13 @@ namespace Private {
     typedef short GetType;
     static void push(lua_State *L, short v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push short = %d",v);
       lua_pushinteger(L,v);
     }
     static short get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       short v = (short) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get short (pos %d) = %d",p,v);
       return v;
@@ -3341,13 +3341,13 @@ namespace Private {
 
     static void push(lua_State *L, unsigned short v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push unsigned short = %d",v);
       lua_pushinteger(L,v);
     }
     static unsigned short get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       unsigned short v = (unsigned short) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get unsigned short (pos %d) = %d",p,v);
       return v;
@@ -3364,13 +3364,13 @@ namespace Private {
     typedef int GetType;
     static void push(lua_State *L, int v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push integer = %d",v);
       lua_pushinteger(L,v);
     }
     static int get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       int v = (int) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get integer (pos %d) = %d",p,v);
       return v;
@@ -3387,13 +3387,13 @@ namespace Private {
     typedef unsigned int GetType;
     static void push(lua_State *L, unsigned int v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push unsigned integer = %d",v);
       lua_pushinteger(L,v);
     }
     static unsigned int get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       unsigned int v = static_cast<unsigned int>(lua_tointeger(L,p));
       SLB_DEBUG(6,"Get unsigned integer (pos %d) = %d",p,v);
       return v;
@@ -3403,7 +3403,7 @@ namespace Private {
 
   template<> struct Type<unsigned int&> : public Type<unsigned int> {};
   template<> struct Type<const unsigned int&> : public Type<unsigned int> {};
-  
+
 
   template<>
   struct Type<long>
@@ -3411,13 +3411,13 @@ namespace Private {
     typedef long GetType;
     static void push(lua_State *L, long v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push long = %ld",v);
       lua_pushinteger(L,v);
     }
     static long get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       long v = (long) lua_tointeger(L,p);
       SLB_DEBUG(6,"Get long (pos %d) = %ld",p,v);
       return v;
@@ -3427,7 +3427,7 @@ namespace Private {
 
   template<> struct Type<long&> : public Type<long> {};
   template<> struct Type<const long&> : public Type<long> {};
-  
+
 
   /* unsigned long == unsigned int */
   template<>
@@ -3436,14 +3436,14 @@ namespace Private {
     typedef unsigned long GetType;
     static void push(lua_State *L, unsigned long v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push unsigned long = %lu",v);
       lua_pushnumber(L,v);
     }
 
     static unsigned long get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       unsigned long v = (unsigned long) lua_tonumber(L,p);
       SLB_DEBUG(6,"Get unsigned long (pos %d) = %lu",p,v);
       return v;
@@ -3453,7 +3453,7 @@ namespace Private {
 
   template<> struct Type<unsigned long&> : public Type<unsigned long> {};
   template<> struct Type<const unsigned long&> : public Type<unsigned long> {};
-  
+
 
   template<>
   struct Type<unsigned long long>
@@ -3461,14 +3461,14 @@ namespace Private {
     typedef unsigned long long GetType;
     static void push(lua_State *L, unsigned long long v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push unsigned long long = %llu",v);
       lua_pushnumber(L,(lua_Number) v);
     }
 
     static unsigned long long get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       unsigned long long v = (unsigned long long) lua_tonumber(L,p);
       SLB_DEBUG(6,"Get unsigned long long (pos %d) = %llu",p,v);
       return v;
@@ -3477,7 +3477,7 @@ namespace Private {
 
   template<> struct Type<unsigned long long&> : public Type<unsigned long long> {};
   template<> struct Type<const unsigned long long&> : public Type<unsigned long long> {};
-  
+
   // Type specialization for <double>
   template<>
   struct Type<double>
@@ -3485,13 +3485,13 @@ namespace Private {
     typedef double GetType;
     static void push(lua_State *L, double v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push double = %f",v);
       lua_pushnumber(L,v);
     }
     static double get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       double v = (double) lua_tonumber(L,p);
       SLB_DEBUG(6,"Get double (pos %d) = %f",p,v);
       return v;
@@ -3501,7 +3501,7 @@ namespace Private {
 
   template<> struct Type<double&> : public Type<double> {};
   template<> struct Type<const double&> : public Type<double> {};
-  
+
   // Type specialization for <float>
   template<>
   struct Type<float>
@@ -3509,14 +3509,14 @@ namespace Private {
     typedef float GetType;
     static void push(lua_State *L, float v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push float = %f",v);
       lua_pushnumber(L,v);
     }
 
     static float get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       float v = (float) lua_tonumber(L,p);
       SLB_DEBUG(6,"Get float (pos %d) = %f",p,v);
       return v;
@@ -3526,8 +3526,8 @@ namespace Private {
 
   template<> struct Type<float&> : public Type<float> {};
   template<> struct Type<const float&> : public Type<float> {};
-  
-  
+
+
   // Type specialization for <bool>
   template<>
   struct Type<bool>
@@ -3535,13 +3535,13 @@ namespace Private {
     typedef bool GetType;
     static void push(lua_State *L, bool v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push bool = %d",(int)v);
       lua_pushboolean(L,v);
     }
     static bool get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       bool v = (lua_toboolean(L,p) != 0);
       SLB_DEBUG(6,"Get bool (pos %d) = %d",p,v);
       return v;
@@ -3558,14 +3558,14 @@ namespace Private {
     typedef std::string GetType;
     static void push(lua_State *L, const std::string &v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       SLB_DEBUG(6, "Push const std::string& = %s",v.c_str());
       lua_pushlstring(L, v.data(), v.size());
     }
 
     static std::string get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       size_t len;
       const char* v = (const char*) lua_tolstring(L,p, &len);
       SLB_DEBUG(6,"Get std::string (pos %d) = %s",p,v);
@@ -3585,7 +3585,7 @@ namespace Private {
     typedef const char* GetType;
     static void push(lua_State *L, const char* v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       if (v)
       {
         SLB_DEBUG(6, "Push const char* = %s",v);
@@ -3600,7 +3600,7 @@ namespace Private {
 
     static const char* get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       const char* v = (const char*) lua_tostring(L,p);
       SLB_DEBUG(6,"Get const char* (pos %d) = %s",p,v);
       return v;
@@ -3614,7 +3614,7 @@ namespace Private {
     typedef const unsigned char* GetType;
     static void push(lua_State *L, const unsigned char* v)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       if (v)
       {
         SLB_DEBUG(6, "Push const unsigned char* = %s",v);
@@ -3629,7 +3629,7 @@ namespace Private {
 
     static const unsigned char* get(lua_State *L, int p)
     {
-      SLB_DEBUG_CALL; 
+      SLB_DEBUG_CALL;
       const unsigned char* v = (const unsigned char*) lua_tostring(L,p);
       SLB_DEBUG(6,"Get const unsigned char* (pos %d) = %s",p,v);
       return v;
@@ -3665,9 +3665,9 @@ struct lua_State;
 namespace SLB {
 
   class HybridBase;
-    
+
   struct SLB_EXPORT InvalidMethod : public std::exception
-  {  
+  {
     InvalidMethod(const HybridBase*, const char *c);
     ~InvalidMethod() throw() {}
     const char* what() const throw() { return _what.c_str(); }
@@ -3689,11 +3689,11 @@ namespace SLB {
 
     /** use this to release memory allocated by the hybrid object, inside
      * the lua_State.*/
-    void unAttach(); 
+    void unAttach();
 
     /** Use this function to register this class as hybrid, it will override
      * ClassInfo metamethods of class__index, class__newindex, object__index and
-         * object__newindex. 
+         * object__newindex.
      * Note: if your class requires those methods contact me to see if it is possible
      * to do it, by the moment this is the only way this works */
     static void registerAsHybrid(ClassInfo *ci);
@@ -3747,7 +3747,7 @@ namespace SLB {
       if (!c->initialized())
       {
         // Give a default instance factory... that only is able
-        // to handle push/get of pointers without handling 
+        // to handle push/get of pointers without handling
         // construction, copy, delete, ...
         typedef InstanceFactoryAdapter< BaseClass,
           Instance::NoCopyNoDestroy::Implementation<BaseClass> > t_IFA;
@@ -3762,7 +3762,7 @@ namespace SLB {
     {
       return _mgr->getClass( _TIW(BaseClass) );
     }
-    
+
   #define SLB_ARG_H(N) ,T##N arg_##N
   #define SLB_ARG(N) , arg_##N
   #define SLB_BODY(N) \
@@ -3927,7 +3927,7 @@ namespace SLB {
 struct lua_State;
 
 namespace SLB {
-  
+
   struct ClassBase
   {
     ClassBase() {}
@@ -3967,7 +3967,7 @@ namespace SLB {
 
 
     /** Declares a class as hybrid, this will imply that the __index
-     * and __newindex methods will be overriden, see 
+     * and __newindex methods will be overriden, see
      * Hybrid::registerAsHybrid */
     __Self &hybrid()
     {
@@ -4022,7 +4022,7 @@ namespace SLB {
     {
       _class->setClass__index( FuncCall::create(func) ); return *this;
     }
-    
+
     /* Class__index for lua_functions */
     __Self &class__index(lua_CFunction func)
     {
@@ -4049,7 +4049,7 @@ namespace SLB {
     {
       _class->setClass__newindex( FuncCall::create(func) ); return *this;
     }
-    
+
     /* Class__newindex for lua_functions */
     __Self &class__newindex(lua_CFunction func)
     {
@@ -4076,7 +4076,7 @@ namespace SLB {
     {
       _class->setObject__index( FuncCall::create(func) ); return *this;
     }
-    
+
     /* Object__index for lua_functions */
     __Self &object__index(lua_CFunction func)
     {
@@ -4103,7 +4103,7 @@ namespace SLB {
     {
       _class->setObject__newindex( FuncCall::create(func) ); return *this;
     }
-    
+
     /* Object__newindex for lua_functions */
     __Self &object__newindex(lua_CFunction func)
     {
@@ -4120,7 +4120,7 @@ namespace SLB {
     {
       _class->set__eq( FuncCall::create(func) ); return *this;
     }
-    
+
     __Self &__add()
     { SLB_DEBUG_CALL; SLB_DEBUG(0, "NOT IMPLEMENTED!"); return *this; }
 
@@ -4198,7 +4198,7 @@ namespace SLB {
     Manager* _mgr;
 
   };
-  
+
   template<typename T, typename W>
   inline Class<T,W>::Class(const char *name, Manager *m)
     : _class(0), _lastObj(0), _param(0), _mgr(m)
@@ -4218,14 +4218,14 @@ namespace SLB {
     : _class(c._class), _mgr(c._mgr)
   {
   }
-  
+
   template<typename T, typename W>
   inline Class<T,W>& Class<T,W>::operator=(const Class &c)
   {
     _class = c._class;
     _mgr = c._mgr;
   }
-  
+
   template<typename T, typename W>
   inline Class<T,W> &Class<T,W>::rawSet(const char *name, Object *obj)
   {
@@ -4234,7 +4234,7 @@ namespace SLB {
     _param = 0;
     return *this;
   }
-  
+
   template<typename T,  typename W>
   inline Class<T,W> &Class<T,W>::constructor()
   {
@@ -4254,7 +4254,7 @@ namespace SLB {
       {
         static bool equal(TEnum a, TEnum b) { return a == b; }
       };
-      // if it is not initialized then add a simple adapter for 
+      // if it is not initialized then add a simple adapter for
       // references.
       typedef InstanceFactoryAdapter< TEnum, SLB::Instance::Default::Implementation<TEnum> > t_IFA;
       c->setInstanceFactory( new (Malloc(sizeof(t_IFA))) t_IFA );
@@ -4285,7 +4285,7 @@ namespace SLB {
         if (_param >= max_param)
         {
         std::cerr
-          << "SLB_Warning: " << fc->getInfo() <<" to many parameters (total args=" << max_param << ")" 
+          << "SLB_Warning: " << fc->getInfo() <<" to many parameters (total args=" << max_param << ")"
           << "("  << _param << ", " << s << ")"
           << std::endl;
         }
@@ -4297,7 +4297,7 @@ namespace SLB {
       else
       {
         std::cerr
-          << "SLB_Warning: Can not set param info to a non-funcCall object " 
+          << "SLB_Warning: Can not set param info to a non-funcCall object "
           << "("  << _param << ", " << s << ")"
           << std::endl;
       }
@@ -4380,10 +4380,10 @@ namespace SLB {
   template<class C>
   struct Operator
   {
-    static C* defaultAdd (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)+(*b) ); }  
-    static C* defaultSub (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)-(*b) ); }  
-    static C* defaultMult(const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)*(*b) ); }  
-    static C* defaultDiv (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)/(*b) ); }  
+    static C* defaultAdd (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)+(*b) ); }
+    static C* defaultSub (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)-(*b) ); }
+    static C* defaultMult(const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)*(*b) ); }
+    static C* defaultDiv (const C *a,  const C *b)  { return new (Malloc(sizeof(C))) C( (*a)/(*b) ); }
   };
 
 
@@ -4397,7 +4397,7 @@ namespace SLB {
 #ifndef __SLB_SCRIPT__
 #define __SLB_SCRIPT__
 
-//->#include "lua.hpp" 
+//->#include "lua.hpp"
 //->#include "PushGet.hpp"
 //->#include "Type.hpp"
 #include<stdexcept>
@@ -4405,9 +4405,9 @@ namespace SLB {
 namespace SLB {
 
   class ErrorHandler; // #include <SLB/Error.hpp>
-  
+
   class SLB_EXPORT Script
-  {  
+  {
   public:
     typedef void (*PrintCallback)(
         Script *,     // Script that produced the print call
@@ -4419,8 +4419,8 @@ namespace SLB {
     virtual ~Script();
 
     // changes if the created lua_state will load default libraries when
-    // it is created. This change only takes effect when the lua_State is 
-    // created (when getState() method is called the first time). You can 
+    // it is created. This change only takes effect when the lua_State is
+    // created (when getState() method is called the first time). You can
     // always call resetState() to make sure the next created state will
     // have or wont have default libraries loaded
     void loadDefaultLibs(bool b) { _loadDefaultLibs = b; }
@@ -4436,7 +4436,7 @@ namespace SLB {
     bool safeDoFile(const char *filename);
 
     // Tries to load and execute the given chunk of code. This method can
-    // throw exceptions or exit the program (depends on SLB_USE_EXCEPTIONS 
+    // throw exceptions or exit the program (depends on SLB_USE_EXCEPTIONS
     // definition). If you ned a safe call that doesn't fail use safeDoString
     // method instead.
     void doString(
@@ -4466,7 +4466,7 @@ namespace SLB {
     size_t memUsage();
 
     /// Pass a new ErrorHandler, the error handler will be part of the object
-    /// and it will be destroyed when the object is destroyed. 
+    /// and it will be destroyed when the object is destroyed.
     void setErrorHandler(ErrorHandler *h);
 
     /// Returns the manager that this Script is using
@@ -4522,15 +4522,15 @@ namespace SLB {
 #ifndef __SLB_STATEFUL_HYBRID__
 #define __SLB_STATEFUL_HYBRID__
 
-//->#include "Hybrid.hpp" 
-//->#include "Script.hpp" 
+//->#include "Hybrid.hpp"
+//->#include "Script.hpp"
 
 namespace SLB {
-  
+
   /* S -> Requires to have a method "getState" and "close" */
   template<class T, class S = SLB::Script>
   class StatefulHybrid : public S, public Hybrid< T >
-  {  
+  {
   public:
     StatefulHybrid(Manager *m = Manager::defaultManager()) :
       S(m), Hybrid<T>(m)
@@ -4546,13 +4546,13 @@ namespace SLB {
     virtual void onCloseState(lua_State *L) { HybridBase::unAttach(); S::onCloseState(L); }
 
   };
-  
+
   template<class T, class S >
   inline bool StatefulHybrid<T,S>::isAttached() const
   {
     //StatefulHybrids are always attached (but as we use a lazy attachment, here
     // we have to simulate and do the attachment, that means throw away constness)
-    
+
     StatefulHybrid<T,S> *me = const_cast< StatefulHybrid<T,S>* >(this);
     me->getState(); // That's enought to ensure the attachment
     return true;

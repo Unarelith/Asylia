@@ -3,7 +3,7 @@
  *
  *       Filename:  EventInterpreter.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  17/06/2014 21:12:45
@@ -42,7 +42,7 @@ void EventInterpreter::update(Event *e) {
 		}
 		return;
 	}
-	
+
 	switch(actions[e->name()][e->currentActionID()]->actionType()) {
 		case 0:		action0(e);		break;
 		case 1:		action1(e);		break;
@@ -58,17 +58,17 @@ ParameterList *EventInterpreter::getParameters(Event *e) {
 /* Action 0: DrawText */
 void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
-	
+
 	if(params->at(0)->isString() && !e->isLocked()) {
 		ActivityManager::drawMessage(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
-	
+
 	if(ActivityManager::top()->type() != Activity::Type::Message) {
 		if(params->size() == 2 && params->at(1)->isInteger()) {
 			e->currentActionID(*(int*)params->at(1)->value());
 		}
-		
+
 		e->unlock();
 		update(e);
 	}
@@ -77,15 +77,15 @@ void EventInterpreter::action0(Event *e) {
 /* Action 1: StartBattle */
 void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
-	
+
 	if(params->at(0)->isInteger() && !e->isLocked()) {
 		if(params->at(1)->isBoolean()) ActivityManager::startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
 		e->lock();
 	}
-	
+
 	if(ActivityManager::top()->type() != Activity::Type::BattleAct) {
 		e->currentActionID(*(int*)params->at(2 + EventListener::lastBattleResult())->value());
-		
+
 		e->unlock();
 	}
 }
@@ -93,24 +93,24 @@ void EventInterpreter::action1(Event *e) {
 /* Action 2: AskQuestion */
 void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
-	
+
 	if(params->at(0)->isString() && !e->isLocked()) {
 		MessageActivity *activity = ActivityManager::drawMessage(*(std::string*)(params->at(0)->value()));
-		
+
 		for(u16 i = 1 ; i < params->size() ; i+=2) {
 			if(params->at(i)->isString()) {
 				activity->addCommand(*(std::string*)params->at(i)->value());
 			}
 		}
-		
+
 		e->lock();
 	}
-	
+
 	if(ActivityManager::top()->type() != Activity::Type::Message) {
 		if(params->at((SelectableWindow::lastPos + 1) * 2)->isInteger()) {
 			e->currentActionID(*(int*)params->at((SelectableWindow::lastPos + 1) * 2)->value());
 		}
-		
+
 		e->unlock();
 		update(e);
 	}

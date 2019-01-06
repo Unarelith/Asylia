@@ -3,7 +3,7 @@
  *
  *       Filename:  EventListener.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/06/2014 19:19:11
@@ -23,15 +23,15 @@ namespace EventListener {
 		MessageActivityAction,
 		BattleResult
 	};
-	
+
 	void addMessageActivityAction(u8 pos);
 	void addBattleResult(u8 battleResult);
-	
+
 	s32 getLastValueOf(Type type);
-	
+
 	s8 lastMessageActivityAction();
 	s8 lastBattleResult();
-	
+
 	extern std::vector<std::pair<Type, s32>> actionHistory;
 };
 

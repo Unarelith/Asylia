@@ -3,7 +3,7 @@
  *
  *       Filename:  LuaActivity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 18:21:31
@@ -22,10 +22,10 @@ class LuaActivity : public Activity {
 	public:
 		LuaActivity(std::string filename, std::string table);
 		~LuaActivity();
-		
+
 		void update();
 		void render();
-		
+
 	private:
 		std::string m_table;
 };

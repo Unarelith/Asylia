@@ -3,7 +3,7 @@
  *
  *       Filename:  ItemWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  24/03/2014 22:13:29
@@ -22,16 +22,16 @@ class ItemWindow : public SelectableWindow {
 	public:
 		ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX = 0, s16 infowinY = 0);
 		~ItemWindow();
-		
+
 		void drawItem(u8 pos);
 		void draw(bool cursor = true, bool infoWinText = true);
-		
+
 		void changeSet(u8 equipID, u8 equipType, Equipment *equipment);
-		
+
 		bool hasItems() { return m_inventory->items().size(); }
-		
+
 		Item *currentItem();
-		
+
 	private:
 		Inventory *m_inventory;
 };

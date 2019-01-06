@@ -3,7 +3,7 @@
  *
  *       Filename:  Activity.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  20/03/2014 21:21:01
@@ -19,9 +19,9 @@
 
 Activity::Activity(Activity *parent) {
 	m_type = Type::None;
-	
+
 	m_parent = parent;
-	
+
 	m_background = SDL_CreateTexture(GameWindow::main->renderer(), 372645892, SDL_TEXTUREACCESS_TARGET, GameWindow::main->width(), GameWindow::main->height());
 	SDL_SetTextureBlendMode(m_background, SDL_BLENDMODE_BLEND);
 }

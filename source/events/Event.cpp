@@ -3,7 +3,7 @@
  *
  *       Filename:  Event.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 23:54:51
@@ -20,7 +20,7 @@
 Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {
 		m_type = Type::TypeEvent;
-		
+
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_DOWN]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_LEFT]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_RIGHT]);
@@ -28,20 +28,20 @@ Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bo
 	} else {
 		if(appearance == "") m_type = Type::TypeEvent;
 		else m_type = Type::TypeNPC;
-		
+
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
 		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
 	}
-	
+
 	m_folder = std::string("data/events/") + name + "/";
 	m_name = name;
-	
+
 	m_solid = solid;
-	
+
 	m_locked = false;
-	
+
 	m_currentActionID = 0;
 }
 
@@ -55,17 +55,17 @@ void Event::init() {
 
 void Event::move(std::string function) {
 	LuaHandler::doString(function);
-	
+
 	Character::move();
 }
 
 void Event::update() {
 	updateActions();
-	
+
 	if(ActivityManager::top()->type() == Activity::Type::Map) {
 		move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
 	}
-	
+
 	LuaHandler::doString(m_name + ".update()");
 }
 

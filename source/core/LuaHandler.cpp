@@ -3,7 +3,7 @@
  *
  *       Filename:  LuaHandler.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 23:48:26
@@ -22,11 +22,11 @@ SLB::Manager LuaHandler::slbm;
 
 void LuaHandler::init() {
 	L = luaL_newstate();
-	
+
 	luaL_openlibs(L);
-	
+
 	slbm.registerSLB(L);
-	
+
 	doString("SLB.using(SLB)");
 }
 
@@ -41,9 +41,9 @@ void LuaHandler::bindClasses() {
 														 .set("size", &ActivityManager::size)
 														 .set("drawMessage", &ActivityManager::drawMessage)
 														 .set("startBattle", &ActivityManager::startBattle);
-	
+
 	SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
-	
+
 	SLB::Class<Event>("Event", &slbm).inherits<Sprite>()
 									 .set("moveUp", &Character::moveUp)
 									 .set("moveDown", &Character::moveDown)
@@ -59,19 +59,19 @@ void LuaHandler::bindClasses() {
 									 .set("setPosition", &Character::setPosition)
 									 .set("name", &Event::name)
 									 .set("face", &Character::face);
-	
+
 	SLB::Class<EventInterpreter>("EventInterpreter", &slbm).set("addActionToQueue", &EventInterpreter::addActionToQueue);
-	
+
 	SLB::Class<Image>("Image", &slbm).constructor<const char*>()
 									 .set("renderCopy", &Image::renderCopy)
 									 .set("render", &Image::render);
-	
+
 	SLB::Class<Inventory>("Inventory", &slbm).set("addItem", &Inventory::addItem);
-	
+
 	SLB::Class<Item>("Item", &slbm).set("name", &Item::name);
-	
+
 	SLB::Class<ItemManager>("ItemManager", &slbm).set("getItem", &ItemManager::getItem);
-	
+
 	SLB::Class<Keyboard>("Keyboard", &slbm).set("isKeyPressed", &Keyboard::isKeyPressed)
 										   .set("isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay)
 										   .set("isKeyPressedOnce", &Keyboard::isKeyPressedOnce)
@@ -82,31 +82,31 @@ void LuaHandler::bindClasses() {
 										   .set("GameAttack", Keyboard::GameAttack)
 										   .set("GameBack", Keyboard::GameBack)
 										   .set("GameMenu", Keyboard::GameMenu);
-	
+
 	SLB::Class<Map>("Map", &slbm).set("getEvent", &Map::getEvent)
 								 .set("scrollX", &Map::getScrollX)
 								 .set("scrollY", &Map::getScrollY);
-	
+
 	SLB::Class<BattleActivity>("BattleActivity", &slbm);
-	
+
 	SLB::Class<MapActivity>("MapActivity", &slbm);
-	
+
 	SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
-	
+
 	SLB::Class<MessageActivity>("MessageActivity", &slbm).set("addCommand", &MessageActivity::addCommand)
 														 .set("getCmdwinPos", &MessageActivity::getCmdwinPos);
-	
+
 	SLB::Class<ParameterList>("ParameterList", &slbm).constructor()
 													 .set("addIntParameter", &ParameterList::addIntParameter)
 													 .set("addBoolParameter", &ParameterList::addBoolParameter)
 													 .set("addFloatParameter", &ParameterList::addFloatParameter)
 													 .set("addStringParameter", &ParameterList::addStringParameter)
 													 .set("clear", &ParameterList::clear);
-	
+
 	SLB::Class<IntParameter>("IntParameter", &slbm);
 	SLB::Class<FloatParameter>("FloatParameter", &slbm);
 	SLB::Class<StringParameter>("StringParameter", &slbm);
-	
+
 	SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
 									   .set("getDirection", &Character::getDirection)
 									   .set("changeMap", &Character::changeMap)
@@ -115,12 +115,12 @@ void LuaHandler::bindClasses() {
 									   .set("x", &Character::x)
 									   .set("y", &Character::y)
 									   .set("inFrontOf", &Character::inFrontOf);
-	
+
 	SLB::Class<Sprite>("Sprite", &slbm).constructor<const char *, u16, u16>()
 									   .set("drawFrame", &Sprite::drawFrame)
 									   .set("playAnimation", &Sprite::playAnimation)
 									   .set("animationAtEnd", &Sprite::animationAtEnd);
-	
+
 	SLB::Class<LanguageManager>("LanguageManager", &slbm).set("translate", &LanguageManager::translate);
 	doString("function _t(str) return LanguageManager.translate(str) end");
 }

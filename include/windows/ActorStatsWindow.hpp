@@ -3,7 +3,7 @@
  *
  *       Filename:  ActorStatsWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  13/04/2014 17:27:24
@@ -22,10 +22,10 @@ class ActorStatsWindow : public Window {
 	public:
 		ActorStatsWindow();
 		~ActorStatsWindow();
-		
+
 		void drawActors(std::vector<std::pair<u8, Actor*>> actors);
 		void drawActor(Actor *actor, u8 pos);
-		
+
 		void drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies);
 		void drawEnemy(Enemy *enemy, u8 pos, u8 max);
 };

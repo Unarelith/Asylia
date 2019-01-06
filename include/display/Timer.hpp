@@ -3,7 +3,7 @@
  *
  *       Filename:  Timer.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 19:37:18
@@ -22,20 +22,20 @@ class Timer {
 	public:
 		Timer();
 		~Timer();
-		
+
 		void stop();
 		void start();
 		void reset();
-		
+
 		bool isStarted() const { return m_isStarted; }
-		
+
 		u16 time() { return (m_isStarted) ? SDL_GetTicks() - m_t : m_tick; }
-		
+
 	private:
 		u16 m_t;
-		
+
 		bool m_isStarted;
-		
+
 		u16 m_tick;
 };
 

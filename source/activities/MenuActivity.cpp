@@ -3,7 +3,7 @@
  *
  *       Filename:  MenuActivity.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 18:23:30
@@ -19,23 +19,23 @@
 
 MenuActivity::MenuActivity(Activity *parent) : Activity(parent) {
 	m_type = Type::Menu;
-	
+
 	loadCommandWindow();
-	
+
 	m_actorChoicewin = new ActorChoiceWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height());
-	
+
 	m_actorChoiceMode = false;
 }
 
 MenuActivity::~MenuActivity() {
 	delete m_actorChoicewin;
-	
+
 	delete m_cmdwin;
 }
 
 void MenuActivity::loadCommandWindow() {
 	m_cmdwin = new CommandWindow(150);
-	
+
 	m_cmdwin->addCommand("Items");
 	m_cmdwin->addCommand("Skills", true);
 	m_cmdwin->addCommand("Equip");
@@ -52,10 +52,10 @@ void MenuActivity::update() {
 			Sound::Effect::play(Sound::Effect::blocked);
 		} else {
 			Sound::Effect::play(Sound::Effect::confirm);
-			
+
 			if(m_actorChoiceMode) {
 				m_actorChoiceMode = false;
-				
+
 				switch(m_cmdwin->pos()) {
 					case 1: break;
 					case 2:
@@ -86,7 +86,7 @@ void MenuActivity::update() {
 			}
 		}
 	}
-	
+
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
 		if(!m_actorChoiceMode) ActivityManager::pop();
@@ -95,16 +95,16 @@ void MenuActivity::update() {
 			m_actorChoicewin->pos(0);
 		}
 	}
-	
+
 	if(!m_actorChoiceMode) m_cmdwin->update();
 	else m_actorChoicewin->update();
 }
 
 void MenuActivity::render() {
 	renderBackground();
-	
+
 	m_cmdwin->draw(ActivityManager::top() == this && !m_actorChoiceMode);
-	
+
 	if(m_actorChoiceMode) {
 		m_actorChoicewin->draw();
 	}

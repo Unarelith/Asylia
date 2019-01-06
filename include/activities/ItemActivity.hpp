@@ -3,7 +3,7 @@
  *
  *       Filename:  ItemActivity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  24/03/2014 22:24:46
@@ -22,10 +22,10 @@ class ItemActivity : public Activity {
 	public:
 		ItemActivity(Activity *parent = NULL);
 		~ItemActivity();
-		
+
 		void update();
 		void render();
-		
+
 	private:
 		ItemWindow *m_itemwin;
 };

@@ -3,7 +3,7 @@
  *
  *       Filename:  BattleActionWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  23/04/2014 18:56:41
@@ -22,7 +22,7 @@ class BattleActionWindow : public CommandWindow {
 	public:
 		BattleActionWindow();
 		~BattleActionWindow();
-		
+
 		void draw(u8 pos);
 };
 

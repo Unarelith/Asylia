@@ -3,7 +3,7 @@
  *
  *       Filename:  Config.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 17:33:52

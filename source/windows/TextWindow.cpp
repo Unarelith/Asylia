@@ -3,7 +3,7 @@
  *
  *       Filename:  TextWindow.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  23/03/2014 18:22:52
@@ -25,7 +25,7 @@ TextWindow::~TextWindow() {
 
 void TextWindow::draw(std::string text) {
 	Window::draw();
-	
+
 	Interface::defaultFont->printTextBox(text.c_str(), m_x + 22, m_y + 21, m_width - 44, m_height - 42, FONT_LARGE);
 }
 

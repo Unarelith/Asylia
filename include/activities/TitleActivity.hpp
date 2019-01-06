@@ -3,7 +3,7 @@
  *
  *       Filename:  TitleActivity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 17:18:32
@@ -22,10 +22,10 @@ class TitleActivity : public Activity {
 	public:
 		TitleActivity();
 		~TitleActivity();
-		
+
 		void update();
 		void render();
-		
+
 	private:
 		Image *m_background;
 		CommandWindow *m_cmdwin;

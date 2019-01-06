@@ -3,7 +3,7 @@
  *
  *       Filename:  Actor.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/04/2014 19:30:35
@@ -22,12 +22,12 @@ class Actor : public Battler {
 	public:
 		Actor(std::string name, std::string appearance, u8 level);
 		~Actor();
-		
+
 		u16 totalAtk();
 		u16 totalDef();
-		
+
 		Equipment *equipment() { return &m_equipment; }
-		
+
 	private:
 		Equipment m_equipment;
 };

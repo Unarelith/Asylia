@@ -3,7 +3,7 @@
  *
  *       Filename:  MapActivity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 18:19:43
@@ -22,9 +22,9 @@ class MapActivity : public Activity {
 	public:
 		MapActivity();
 		~MapActivity();
-		
+
 		void init();
-		
+
 		void update();
 		void render();
 };

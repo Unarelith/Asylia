@@ -3,7 +3,7 @@
  *
  *       Filename:  Battle.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  23/04/2014 18:05:00
@@ -21,16 +21,16 @@ Battle::Battle(const Battle &battle) {
 	for(auto &it : battle.m_actors) {
 		m_actors.push_back(it);
 	}
-	
+
 	for(auto &it : battle.m_enemies) {
 		m_enemies.push_back(std::make_pair(it.first, new Enemy(*it.second)));
 	}
-	
+
 	m_actorsCount = battle.m_actorsCount;
 	m_enemiesCount = battle.m_enemiesCount;
-	
+
 	m_battleback = battle.m_battleback;
-	
+
 	m_exp = battle.m_exp;
 	m_gold = battle.m_gold;
 }
@@ -38,9 +38,9 @@ Battle::Battle(const Battle &battle) {
 Battle::Battle() {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
-	
+
 	m_battleback = MapManager::currentMap->battleback();
-	
+
 	m_exp = 0;
 	m_gold = 0;
 }
@@ -61,25 +61,25 @@ void Battle::addTroop(Troop *troop) {
 
 void Battle::addEnemy(Enemy *enemy, s16 x, s16 y) {
 	m_enemies.push_back(std::make_pair(m_enemiesCount, new Enemy(*enemy)));
-	
+
 	m_enemies.back().second->setPosition(x, y);
-	
+
 	m_exp += m_enemies.back().second->expGivenIfKilled();
 	m_gold += m_enemies.back().second->goldGivenIfKilled();
-	
+
 	m_enemiesCount++;
 }
 
 void Battle::drawArrow(Battler *battler) {
 	s16 x, y;
 	u16 width, height;
-	
+
 	width = battler->image()->posRect().w;
 	height = battler->image()->posRect().h;
-	
+
 	x = battler->image()->posRect().x + width / 2 - 16;
 	y = battler->image()->posRect().y + height / 2;
-	
+
 	Interface::interface->render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
 
@@ -101,7 +101,7 @@ void Battle::processAction() {
 			m_actions.back()->setReceiver(getNextActorPair(1, -1).second);
 		}
 	}
-	
+
 	m_actions.back()->process();
 }
 
@@ -126,7 +126,7 @@ std::pair<u8, Actor*> Battle::getNextActorPair(s8 v, s8 current) {
 			return std::make_pair(current, (Actor*)NULL);
 		}
 	} while(getActor(current)->hp() == 0);
-	
+
 	return m_actors[current];
 }
 
@@ -138,7 +138,7 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 		} else {
 		}
 	} while(getEnemy(current)->hp() == 0);
-	
+
 	return m_enemies[current];
 }
 

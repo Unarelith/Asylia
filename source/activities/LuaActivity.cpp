@@ -3,7 +3,7 @@
  *
  *       Filename:  LuaActivity.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 18:23:52
@@ -19,9 +19,9 @@
 
 LuaActivity::LuaActivity(std::string filename, std::string table) {
 	m_type = Type::Lua;
-	
+
 	m_table = table;
-	
+
 	LuaHandler::doFile(filename.c_str());
 	LuaHandler::doString(table + ".init()");
 }
@@ -35,7 +35,7 @@ void LuaActivity::update() {
 
 void LuaActivity::render() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
-	
+
 	LuaHandler::doString(m_table + ".render()");
 }
 

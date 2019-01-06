@@ -3,7 +3,7 @@
  *
  *       Filename:  main.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  14/03/2014 21:22:59
@@ -19,9 +19,9 @@
 
 int main(int argc, char *argv[]) {
 	Game game;
-	
+
 	game.mainLoop();
-	
+
 	return 0;
 }
 

@@ -3,7 +3,7 @@
  *
  *       Filename:  InfoWindow.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  05/04/2014 15:57:15
@@ -25,13 +25,13 @@ InfoWindow::~InfoWindow() {
 
 void InfoWindow::drawTextScaled(std::string text) {
 	Window::draw();
-	
+
 	Interface::defaultFont->printScaled(text.c_str(), m_x + 18, m_y + 15, m_width - 16, 32, FONT_LARGE);
 }
 
 void InfoWindow::drawTextCentered(std::string text) {
 	Window::draw();
-	
+
 	Interface::defaultFont->printCentered(text.c_str(), m_x, m_y, m_width, m_height, FONT_LARGE);
 }
 

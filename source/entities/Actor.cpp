@@ -3,7 +3,7 @@
  *
  *       Filename:  Actor.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/04/2014 19:32:59

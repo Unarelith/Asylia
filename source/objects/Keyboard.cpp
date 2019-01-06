@@ -3,7 +3,7 @@
  *
  *       Filename:  Keyboard.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  20/03/2014 21:46:54
@@ -115,7 +115,7 @@ void Keyboard::resetPad(SDL_Event *e, bool released) {
 	if(padFinger[PAD_A] == e->tfinger.fingerId || padFinger[PAD_A] < 0) padState[PAD_A] = 0;
 	if(padFinger[PAD_B] == e->tfinger.fingerId || padFinger[PAD_B] < 0) padState[PAD_B] = 0;
 	if(padFinger[PAD_MENU] == e->tfinger.fingerId || padFinger[PAD_MENU] < 0) padState[PAD_MENU] = 0;
-	
+
 	// Reset finger state
 	if(padFinger[PAD_UP] == e->tfinger.fingerId && released) padFinger[PAD_UP] = -1;
 	if(padFinger[PAD_A]	== e->tfinger.fingerId && released) padFinger[PAD_A] = -1;
@@ -126,55 +126,55 @@ void Keyboard::resetPad(SDL_Event *e, bool released) {
 void Keyboard::updatePad(SDL_Event *e) {
 	u16 fx = e->tfinger.x * GameWindow::main->width();
 	u16 fy = e->tfinger.y * GameWindow::main->height();
-	
+
 	u16 px = Interface::pad->posRect().x;
 	u16 py = Interface::pad->posRect().y + Interface::pad->posRect().h / 2;
-	
+
 	u16 ax = Interface::buttonA->posRect().x;
 	u16 ay = Interface::buttonA->posRect().y;
-	
+
 	u16 bx = Interface::buttonB->posRect().x;
 	u16 by = Interface::buttonB->posRect().y;
-	
+
 	u16 menux = Interface::buttonMenu->posRect().x;
 	u16 menuy = Interface::buttonMenu->posRect().y;
-	
+
 	resetPad(e);
-	
+
 	// Up: (0;0;71;28)
 	if(fx > px - 16 && fx < px + 71 + 16 && fy > py - 16 && fy < py + 28 - 8) {
 		padState[PAD_UP] = 1;
 		padFinger[PAD_UP] = e->tfinger.fingerId;
 	}
-	
+
 	// Down: (0;44;71;71)
 	if(fx > px - 16 && fx < px + 71 + 16 && fy > py + 44 + 8 && fy < py + 71 + 16) {
 		padState[PAD_DOWN] = 1;
 		padFinger[PAD_UP] = e->tfinger.fingerId;
 	}
-	
+
 	// Left: (0;0;28;71)
 	if(fx > px - 16 && fx < px + 28 - 8 && fy > py - 16 && fy < py + 71 + 16) {
 		padState[PAD_LEFT] = 1;
 		padFinger[PAD_UP] = e->tfinger.fingerId;
 	}
-	
+
 	// Right: (44;0;71;71)
 	if(fx > px + 44 + 8 && fx < px + 71 + 16 && fy > py - 16 && fy < py + 71 + 16) {
 		padState[PAD_RIGHT] = 1;
 		padFinger[PAD_UP] = e->tfinger.fingerId;
 	}
-	
+
 	if(fx > ax && fx < ax + 32 && fy > ay && fy < ay + 32) {
 		padState[PAD_A] = 1;
 		padFinger[PAD_A] = e->tfinger.fingerId;
 	}
-	
+
 	if(fx > bx && fx < bx + 32 && fy > by && fy < by + 32) {
 		padState[PAD_B] = 1;
 		padFinger[PAD_B] = e->tfinger.fingerId;
 	}
-	
+
 	if(fx > menux && fx < menux + 32 && fy > menuy && fy < menuy + 32) {
 		padState[PAD_MENU] = 1;
 		padFinger[PAD_MENU] = e->tfinger.fingerId;

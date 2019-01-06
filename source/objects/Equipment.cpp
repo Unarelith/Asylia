@@ -3,7 +3,7 @@
  *
  *       Filename:  Equipment.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  10/06/2014 22:13:46
@@ -31,7 +31,7 @@ void Equipment::equipArmor(Armor *armor) {
 			break;
 		}
 	}
-	
+
 	m_armors.push_back(armor);
 	m_armors.back()->setEquipped(true);
 }

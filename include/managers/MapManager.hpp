@@ -3,7 +3,7 @@
  *
  *       Filename:  MapManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 19:14:22
@@ -24,13 +24,13 @@ class MapManager {
 	public:
 		static void init();
 		static void free();
-		
+
 		static void initTilesets();
 		static void initMaps();
-		
+
 		static std::vector<Tileset*> tilesets;
 		static std::vector<std::vector<Map*>> maps;
-		
+
 		static Map *currentMap;
 };
 

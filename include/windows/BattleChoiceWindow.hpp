@@ -3,7 +3,7 @@
  *
  *       Filename:  BattleChoiceWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  23/04/2014 18:54:47

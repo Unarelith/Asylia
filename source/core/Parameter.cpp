@@ -3,7 +3,7 @@
  *
  *       Filename:  Parameter.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  17/06/2014 22:58:23
@@ -26,7 +26,7 @@ Parameter::~Parameter() {
 
 IntParameter::IntParameter(int value) {
 	m_type = Type::IntParameter;
-	
+
 	m_value = value;
 }
 
@@ -35,7 +35,7 @@ IntParameter::~IntParameter() {
 
 BoolParameter::BoolParameter(bool value) {
 	m_type = Type::BoolParameter;
-	
+
 	m_value = value;
 }
 
@@ -44,7 +44,7 @@ BoolParameter::~BoolParameter() {
 
 FloatParameter::FloatParameter(float value) {
 	m_type = Type::FloatParameter;
-	
+
 	m_value = value;
 }
 
@@ -53,7 +53,7 @@ FloatParameter::~FloatParameter() {
 
 StringParameter::StringParameter(std::string value) {
 	m_type = Type::StringParameter;
-	
+
 	m_value = value;
 }
 

@@ -3,7 +3,7 @@
  *
  *       Filename:  ActivityManager.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  20/03/2014 21:49:08

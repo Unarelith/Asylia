@@ -3,7 +3,7 @@
  *
  *       Filename:  Sprite.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 19:39:39
@@ -20,7 +20,7 @@
 Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(filename) {
 	m_frameWidth = frameWidth;
 	m_frameHeight = frameHeight;
-	
+
 	m_lastFrameDisplayed = 0;
 }
 
@@ -29,21 +29,21 @@ Sprite::~Sprite() {
 
 void Sprite::reload(Sprite *sprite) {
 	Image::reload(sprite->m_filename.c_str());
-	
+
 	m_animations.clear();
 	for(auto &it : sprite->m_animations) {
 		m_animations.push_back(it);
 	}
-	
+
 	m_lastFrameDisplayed = 0;
 }
 
 void Sprite::drawFrame(s16 x, s16 y, u16 frame) {
 	u16 frameY = (frame / (m_width / m_frameWidth)) * m_frameHeight;
 	u16 frameX = (frame - (frameY / m_frameHeight) * (m_width / m_frameWidth)) * m_frameWidth;
-	
+
 	m_lastFrameDisplayed = frame;
-	
+
 	render(x, y, m_frameWidth, m_frameHeight, frameX, frameY, m_frameWidth, m_frameHeight);
 }
 
@@ -80,12 +80,12 @@ void Sprite::playAnimation(s16 x, s16 y, u16 anim) {
 		startAnimation(anim);
 		m_animations[anim].isPlaying = true;
 	}
-	
+
 	if(animationAtEnd(anim)) {
 		resetAnimation(anim);
 		startAnimation(anim);
 	}
-	
+
 	u16 animToDraw = m_animations[anim].tabAnim[(u16)(m_animations[anim].timer.time() / m_animations[anim].delay)];
 	drawFrame(x, y, animToDraw);
 }

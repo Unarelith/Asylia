@@ -3,7 +3,7 @@
  *
  *       Filename:  Skill.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  04/05/2014 17:58:52
@@ -19,7 +19,7 @@
 
 Skill::Skill(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation, u16 atk, double hitRate) : Item(name, description, thumbnail, battleAnimation) {
 	m_type = Type::Skill;
-	
+
 	m_atk = atk;
 	m_hitRate = hitRate;
 }

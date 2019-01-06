@@ -3,7 +3,7 @@
  *
  *       Filename:  LuaHandler.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 23:46:58
@@ -21,12 +21,12 @@
 namespace LuaHandler {
 	void init();
 	void free();
-	
+
 	void bindClasses();
-	
+
 	void doFile(const char *filename);
 	void doString(std::string str);
-	
+
 	extern lua_State *L;
 	extern SLB::Manager slbm;
 };

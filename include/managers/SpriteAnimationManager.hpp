@@ -3,7 +3,7 @@
  *
  *       Filename:  SpriteAnimationManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  26/05/2014 19:06:52
@@ -21,7 +21,7 @@
 namespace SpriteAnimationManager {
 	void init();
 	void free();
-	
+
 	extern std::map<std::string, std::vector<SpriteAnimation>> spriteAnimations;
 }
 

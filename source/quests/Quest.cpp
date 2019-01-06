@@ -3,7 +3,7 @@
  *
  *       Filename:  Quest.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  29/06/2014 19:58:55
@@ -22,10 +22,10 @@ u16 Quest::counter = 0;
 Quest::Quest(u16 exp, u16 gold) {
 	m_id = counter;
 	counter++;
-	
+
 	m_exp = exp;
 	m_gold = gold;
-	
+
 	m_completed = false;
 }
 

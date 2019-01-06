@@ -3,7 +3,7 @@
  *
  *       Filename:  Activity.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  20/03/2014 21:01:10
@@ -22,16 +22,16 @@ class Activity {
 	public:
 		Activity(Activity *parent = NULL);
 		virtual ~Activity() = 0;
-		
+
 		virtual void update() = 0;
 		virtual void render() = 0;
-		
+
 		void pollEvents();
-		
+
 		void renderBackground();
-		
+
 		void screenshot(Activity *activity);
-		
+
 		typedef enum {
 			None,
 			Map,
@@ -44,16 +44,16 @@ class Activity {
 			Equip,
 			BattleAct
 		} Type;
-		
+
 		Type type() const { return m_type; }
-		
+
 		Activity *parent() const { return m_parent; }
-		
+
 	protected:
 		Type m_type;
-		
+
 		Activity *m_parent;
-		
+
 		SDL_Texture *m_background;
 };
 

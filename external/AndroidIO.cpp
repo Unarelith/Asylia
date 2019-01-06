@@ -34,10 +34,10 @@ extern "C" JNIEXPORT void JNICALL Java_com_quent42340_asylia_Asylia_load(JNIEnv 
 
 FILE *android_fopen(const char *fname, const char *mode) {
 	if(mode[0] == 'w') return NULL;
-	
+
 	AAsset *asset = AAssetManager_open(android_asset_manager, fname, 0);
 	if(!asset) return NULL;
-	
+
 	return funopen(asset, android_read, android_write, android_seek, android_close);
 }
 

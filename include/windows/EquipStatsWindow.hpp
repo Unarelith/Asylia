@@ -3,7 +3,7 @@
  *
  *       Filename:  EquipStatsWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  13/04/2014 17:27:24
@@ -22,9 +22,9 @@ class EquipStatsWindow : public Window {
 	public:
 		EquipStatsWindow(Actor *actor);
 		~EquipStatsWindow();
-		
+
 		void draw(Item *currentItem = NULL);
-		
+
 	private:
 		Actor *m_actor;
 };

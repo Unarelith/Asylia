@@ -3,7 +3,7 @@
  *
  *       Filename:  Tileset.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 19:12:55
@@ -20,12 +20,12 @@
 
 struct Tileset {
 	Tileset() : tileWidth(16), tileHeight(16) {}
-	
+
 	Image *tiles;
-	
+
 	u16 tileWidth;
 	u16 tileHeight;
-	
+
 	u16 *nonPassableLayer;
 };
 

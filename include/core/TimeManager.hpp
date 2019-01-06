@@ -3,7 +3,7 @@
  *
  *       Filename:  TimeManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  14/03/2014 22:00:01
@@ -21,14 +21,14 @@
 namespace TimeManager {
 	void beginMeasuringRenderingTime();
 	void endMeasuringRenderingTime();
-	
+
 	bool isTimeToUpdate();
 	bool hasEnoughTimeToDraw();
 	void waitUntilItsTime();
 	void measureFrameDuration();
-	
+
 	void renderRTMCounter();
-	
+
 	extern u32 renderingTimeMean;
 	extern u32 tempBeginRendering;
 	extern u32 frameBegin;

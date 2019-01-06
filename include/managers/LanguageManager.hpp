@@ -3,7 +3,7 @@
  *
  *       Filename:  LanguageManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  02/04/2014 13:49:13
@@ -21,9 +21,9 @@
 class LanguageManager {
 	public:
 		static void init(std::string language);
-		
+
 		static std::string translate(std::string str);
-		
+
 		static std::map<std::string, std::string> text;
 		static std::string currentLanguage;
 };

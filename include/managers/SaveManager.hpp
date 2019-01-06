@@ -3,7 +3,7 @@
  *
  *       Filename:  SaveManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  03/05/2014 21:28:26

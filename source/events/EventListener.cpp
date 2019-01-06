@@ -3,7 +3,7 @@
  *
  *       Filename:  EventListener.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/06/2014 19:25:50

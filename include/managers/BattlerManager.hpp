@@ -3,7 +3,7 @@
  *
  *       Filename:  BattlerManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  27/04/2014 20:44:27
@@ -21,10 +21,10 @@
 namespace BattlerManager {
 	void init();
 	void free();
-	
+
 	void initActors();
 	void initEnemies();
-	
+
 	extern std::vector<Actor*> actors;
 	extern std::vector<Enemy*> enemies;
 };

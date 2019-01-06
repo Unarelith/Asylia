@@ -3,7 +3,7 @@
  *
  *       Filename:  XMLFile.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  24/05/2014 14:52:48
@@ -19,11 +19,11 @@
 
 XMLFile::XMLFile(const char *filename) {
 	int code;
-	
+
 	code = m_xml.LoadFile(filename);
 	if(code != 0) {
 		error("Failed to load %s.", filename);
-		
+
 		switch(code) {
 			case XML_ERROR_FILE_NOT_FOUND:
 				error("File not found.");
@@ -74,10 +74,10 @@ XMLFile::XMLFile(const char *filename) {
 				error("Unknown error. (CODE: %d)", code);
 				break;
 		}
-		
+
 		exit(EXIT_FAILURE);
 	}
-	
+
 	m_doc = new XMLHandle(&m_xml);
 }
 

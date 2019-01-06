@@ -3,7 +3,7 @@
  *
  *       Filename:  Debug.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  21/03/2014 17:34:50
@@ -25,7 +25,7 @@
 #ifdef __ANDROID__
 	#define VIEWPORT
 	#define PAD
-	
+
 	#define info(txt...) __android_log_print(ANDROID_LOG_INFO, APP_NAME, txt)
 	#define debug(txt...) __android_log_print(ANDROID_LOG_DEBUG, APP_NAME, txt)
 	#define warning(txt...) __android_log_print(ANDROID_LOG_WARN, APP_NAME, txt)

@@ -3,7 +3,7 @@
  *
  *       Filename:  Animation.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  24/05/2014 15:51:10
@@ -19,7 +19,7 @@
 
 Animation::Animation(const char *filename, std::string name, u16 delay, std::vector<u16> frames, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_name = name;
-	
+
 	addAnimation(SpriteAnimation(frames.size(), frames, delay));
 }
 

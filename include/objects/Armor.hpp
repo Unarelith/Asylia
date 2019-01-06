@@ -3,7 +3,7 @@
  *
  *       Filename:  Armor.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  06/04/2014 23:49:25
@@ -28,10 +28,10 @@ class Armor : public Item {
 	public:
 		Armor(std::string name, std::string description, std::string thumbnail, u8 slot, u16 def);
 		~Armor();
-		
+
 		u8 slot() const { return m_slot; }
 		u16 def() const { return m_def; }
-		
+
 	private:
 		u8 m_slot;
 		u16 m_def;

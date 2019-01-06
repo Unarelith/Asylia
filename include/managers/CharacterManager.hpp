@@ -3,7 +3,7 @@
  *
  *       Filename:  CharacterManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 20:21:11
@@ -22,11 +22,11 @@ class CharacterManager {
 	public:
 		static void init();
 		static void free();
-		
+
 		static void loadActorsTeam();
-		
+
 		static Player *getPlayer() { return player; }
-		
+
 		static Player *player;
 };
 

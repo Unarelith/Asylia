@@ -3,7 +3,7 @@
  *
  *       Filename:  SettingsActivity.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  03/05/2014 16:53:00
@@ -19,20 +19,20 @@
 
 SettingsActivity::SettingsActivity(Activity *parent) : Activity(parent) {
 	m_settings = new CommandWindow(150, 160, 150);
-	
+
 	m_settings->addCommand("Sound");
 	m_settings->addCommand("Language");
-	
+
 	m_sound = new CommandWindow(300, 160, 150);
-	
+
 	m_sound->addCommand("ON");
 	m_sound->addCommand("OFF");
-	
+
 	m_language = new CommandWindow(300, 160, 150);
-	
+
 	m_language->addCommand("Français");
 	m_language->addCommand("English");
-	
+
 	m_mode = Mode::Settings;
 }
 
@@ -45,7 +45,7 @@ SettingsActivity::~SettingsActivity() {
 void SettingsActivity::update() {
 	if(m_mode == Mode::Settings) {
 		m_settings->update();
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			switch(m_settings->pos()) {
@@ -58,7 +58,7 @@ void SettingsActivity::update() {
 				default: break;
 			}
 		}
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			ActivityManager::pop();
@@ -66,7 +66,7 @@ void SettingsActivity::update() {
 	}
 	else if(m_mode == Mode::Sound) {
 		m_sound->update();
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			switch(m_sound->pos()) {
 				case 0:
@@ -81,7 +81,7 @@ void SettingsActivity::update() {
 				default: break;
 			}
 		}
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			m_mode = Mode::Settings;
@@ -89,7 +89,7 @@ void SettingsActivity::update() {
 	}
 	else if(m_mode == Mode::Language) {
 		m_language->update();
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
 			switch(m_language->pos()) {
@@ -104,7 +104,7 @@ void SettingsActivity::update() {
 				default: break;
 			}
 		}
-		
+
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			m_mode = Mode::Settings;
@@ -115,18 +115,18 @@ void SettingsActivity::update() {
 
 void SettingsActivity::render() {
 	renderBackground();
-	
+
 	if(m_mode == Mode::Settings) {
 		m_settings->draw();
 	}
 	else if(m_mode == Mode::Sound) {
 		m_settings->draw(false);
-		
+
 		m_sound->draw();
 	}
 	else if(m_mode == Mode::Language) {
 		m_settings->draw(false);
-		
+
 		m_language->draw();
 	}
 }

@@ -3,7 +3,7 @@
  *
  *       Filename:  QuestManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  30/06/2014 16:25:45
@@ -21,7 +21,7 @@
 namespace QuestManager {
 	void init();
 	void free();
-	
+
 	extern std::vector<Quest*> quests;
 };
 

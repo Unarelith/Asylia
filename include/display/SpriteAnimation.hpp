@@ -3,7 +3,7 @@
  *
  *       Filename:  SpriteAnimation.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 19:33:35
@@ -21,7 +21,7 @@
 struct SpriteAnimation {
 	SpriteAnimation(u16 _size, std::vector<u16> _tabAnim, u16 _delay, bool _isPlaying = false) :
 		size(_size), tabAnim(_tabAnim), delay(_delay), isPlaying(_isPlaying) {}
-	
+
 	u16 size;
 	std::vector<u16> tabAnim;
 	u16 delay;

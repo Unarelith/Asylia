@@ -3,7 +3,7 @@
  *
  *       Filename:  Game.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  14/03/2014 21:27:51
@@ -22,9 +22,9 @@ class Game {
 	public:
 		Game();
 		~Game();
-		
+
 		void mainLoop();
-		
+
 		static bool quit;
 		static bool paused;
 };

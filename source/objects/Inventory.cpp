@@ -3,7 +3,7 @@
  *
  *       Filename:  Inventory.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  05/04/2014 18:12:14
@@ -38,7 +38,7 @@ void Inventory::addItem(u8 id, s16 count, double chance) {
 			return;
 		}
 	}
-	
+
 	m_items.push_back(std::make_tuple(ItemManager::items[id], count, chance));
 }
 
@@ -48,7 +48,7 @@ void Inventory::removeItem(u8 id, s16 count) {
 			std::get<1>(it) -= count;
 		}
 	}
-	
+
 	m_items.remove_if([](std::tuple<Item*, s16, double>& element) {
 		return std::get<1>(element) < 1;
 	});
@@ -62,7 +62,7 @@ void Inventory::addArmor(u8 id, s16 count, double chance) {
 			return;
 		}
 	}
-	
+
 	m_armors.push_back(std::make_tuple(ItemManager::armors[id], count, chance));
 }
 
@@ -72,7 +72,7 @@ void Inventory::removeArmor(u8 id, s16 count) {
 			std::get<1>(it) -= count;
 		}
 	}
-	
+
 	m_armors.remove_if([](std::tuple<Armor*, s16, double>& element) {
 		return std::get<1>(element) < 1;
 	});
@@ -86,7 +86,7 @@ void Inventory::addWeapon(u8 id, s16 count, double chance) {
 			return;
 		}
 	}
-	
+
 	m_weapons.push_back(std::make_tuple(ItemManager::weapons[id], count, chance));
 }
 
@@ -96,7 +96,7 @@ void Inventory::removeWeapon(u8 id, s16 count) {
 			std::get<1>(it) -= count;
 		}
 	}
-	
+
 	m_weapons.remove_if([](std::tuple<Weapon*, s16, double>& element) {
 		return std::get<1>(element) < 1;
 	});

@@ -3,7 +3,7 @@
  *
  *       Filename:  Window.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 00:33:17
@@ -20,10 +20,10 @@
 Window::Window(s16 x, s16 y, u16 width, u16 height) {
 	m_x = x;
 	m_y = y;
-	
+
 	m_width = width;
 	m_height = height;
-	
+
 	m_cursor = Rectangle(0, 0, 0, 0);
 }
 
@@ -35,15 +35,15 @@ void Window::update() {
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
-	
+
 	Interface::interface->render(x, y, width, height, 132, 68, 23, 23);
-	
+
 	Interface::interface->render(x, y, 1, height, 128, 64, 1, 32);
 	Interface::interface->render(x + width - 1, y, 1, height, 159, 64, 1, 32);
-	
+
 	Interface::interface->render(x, y, width, 1, 129, 64, 31, 1);
 	Interface::interface->render(x, y + height - 1, width, 1, 129, 95, 31, 1);
-	
+
 	Interface::interface->setAlphaMod(255);
 }
 
@@ -51,12 +51,12 @@ void Window::drawWindow(s16 x, s16 y, u16 width, u16 height) {
 	Interface::interface->setAlphaMod(225);
 	Interface::interface->render(x + 1, y + 1, width - 2, height - 2, 0, 0, 128, 128);
 	Interface::interface->setAlphaMod(255);
-	
+
 	Interface::interface->render(x, y, 3, 3, 128, 0, 3, 3);
 	Interface::interface->render(x + width - 3, y, 3, 3, 189, 0, 3, 3);
 	Interface::interface->render(x, y + height - 3, 3, 3, 128, 61, 3, 3);
 	Interface::interface->render(x + width - 3, y + height - 3, 3, 3, 189, 61, 3, 3);
-	
+
 	Interface::interface->render(x + 3, y, width - 6, 3, 132, 0, 58, 3);
 	Interface::interface->render(x, y + 3, 3, height - 6, 128, 3, 3, 58);
 	Interface::interface->render(x + 3, y + height - 3, width - 6, 3, 132, 61, 58, 3);
@@ -65,7 +65,7 @@ void Window::drawWindow(s16 x, s16 y, u16 width, u16 height) {
 
 void Window::draw(bool cursor) {
 	drawWindow(m_x, m_y, m_width, m_height);
-	
+
 	if(m_cursor.width > 0 && cursor) {
 		drawCursor(16 + m_x + m_cursor.x, 16 + m_y + m_cursor.y, m_cursor.width, m_cursor.height);
 	}
@@ -73,12 +73,12 @@ void Window::draw(bool cursor) {
 
 void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2, u16 max) {
 	Image statImg;
-	
+
 	Interface::defaultFont->printScaled(statName.c_str(), m_x + x, m_y + y, nameWidth, 28, FONT_LARGE, Color::system);
-	
+
 	if(max == 0) Interface::defaultFont->printToImage(to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
 	else Interface::defaultFont->printToImage(std::string(to_string(statValue) + "/" + to_string(max)).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
-	
+
 	statImg.render(statImg.posRect().x - statImg.width());
 }
 
@@ -112,16 +112,16 @@ void Window::drawBattler(Battler *battler, s16 x, s16 y) {
 
 void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
 	Image countImg, itemImg;
-	
+
 	item->thumbnail()->render(m_x + x, m_y + y);
-	
+
 	if(count != 0) {
 		Interface::defaultFont->printToImage(to_string(count).c_str(), m_x + x - 16 + width, m_y + y, &countImg, FONT_LARGE);
 		countImg.render(countImg.posRect().x - countImg.width());
 	}
-	
+
 	Interface::defaultFont->printScaledToImage(item->name().c_str(), m_x + x + 28, m_y + y, width - countImg.width(), 32, &itemImg, FONT_LARGE);
-	
+
 	if(m_y + y < m_y) {
 		itemImg.render(-1, m_y + 4, 0, itemImg.height() - (y + 32 - m_y), -1, m_y - y + 4, 0, itemImg.height() - (y + 32 - m_y));
 	}

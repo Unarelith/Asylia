@@ -3,7 +3,7 @@
  *
  *       Filename:  Sound.cpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 13:42:16
@@ -33,7 +33,7 @@ Mix_Music *Sound::Music::current = NULL;
 void Sound::init() {
 	Effect::init();
 	Music::init();
-	
+
 	Music::mute();
 }
 
@@ -93,7 +93,7 @@ void Sound::Music::load(const char *filename, Mix_Music **music) {
 
 void Sound::Music::play(Mix_Music *music, int loops) {
 	current = music;
-	
+
 	Mix_PlayMusic(music, loops);
 }
 

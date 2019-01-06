@@ -3,7 +3,7 @@
  *
  *       Filename:  SDLHeaders.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  14/03/2014 22:23:07

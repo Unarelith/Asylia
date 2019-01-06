@@ -3,7 +3,7 @@
  *
  *       Filename:  AnimationManager.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  22/03/2014 19:34:26
@@ -21,9 +21,9 @@
 namespace AnimationManager {
 	void init();
 	void free();
-	
+
 	Animation *getAnimationByName(std::string name);
-	
+
 	extern std::vector<Animation*> animations;
 };
 

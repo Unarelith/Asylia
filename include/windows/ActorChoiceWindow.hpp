@@ -3,7 +3,7 @@
  *
  *       Filename:  ActorChoiceWindow.hpp
  *
- *    Description:  
+ *    Description:
  *
  *        Version:  1.0
  *        Created:  10/06/2014 15:54:15
@@ -22,11 +22,11 @@ class ActorChoiceWindow : public SelectableWindow {
 	public:
 		ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height);
 		~ActorChoiceWindow();
-		
+
 		void update();
-		
+
 		void drawActor(u16 pos);
-		
+
 		void draw();
 };
 
