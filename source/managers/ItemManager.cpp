@@ -68,7 +68,7 @@ void ItemManager::loadItems() {
 
 		items.back()->setID(id);
 
-		if(itemElement->QueryIntAttribute("effect", &effect) == XML_NO_ERROR) {
+		if(!itemElement->QueryIntAttribute("effect", &effect)) {
 			items.back()->setEffect(effect);
 		}
 

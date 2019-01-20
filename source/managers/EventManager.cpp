@@ -67,15 +67,15 @@ void EventManager::loadCharacterEvent(XMLElement *characterElement) {
 
 	direction = characterElement->IntAttribute("direction");
 
-	if(characterElement->QueryBoolAttribute("solid", &solid) != XML_NO_ERROR) {
+	if(characterElement->QueryBoolAttribute("solid", &solid)) {
 		solid = true;
 	}
 
-	if(characterElement->QueryIntAttribute("frameWidth", &frameWidth) != XML_NO_ERROR) {
+	if(characterElement->QueryIntAttribute("frameWidth", &frameWidth)) {
 		frameWidth = 32;
 	}
 
-	if(characterElement->QueryIntAttribute("frameHeight", &frameHeight) != XML_NO_ERROR) {
+	if(characterElement->QueryIntAttribute("frameHeight", &frameHeight)) {
 		frameHeight = 48;
 	}
 

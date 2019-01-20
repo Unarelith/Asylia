@@ -12,3 +12,7 @@ Asylia
 *.swo
 wiki
 .ycm_extra_conf.py
+CMakeCache.txt
+CMakeFiles
+compile_commands.json
+cmake_install.cmake

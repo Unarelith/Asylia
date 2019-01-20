@@ -30,17 +30,11 @@ XMLFile::XMLFile(const char *filename) {
 			case XML_ERROR_FILE_READ_ERROR:
 				error("File read error.");
 				break;
-			case XML_ERROR_ELEMENT_MISMATCH:
-				error("Element mismatch.");
-				break;
 			case XML_ERROR_PARSING_ELEMENT:
 				error("Error while parsing element.");
 				break;
 			case XML_ERROR_PARSING_ATTRIBUTE:
 				error("Error while parsing attribute.");
-				break;
-			case XML_ERROR_IDENTIFYING_TAG:
-				error("Error while identifying tag.");
 				break;
 			case XML_ERROR_PARSING_TEXT:
 				error("Error while parsing text.");
