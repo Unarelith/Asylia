@@ -5,13 +5,9 @@
  *
  *    Description:
  *
- *        Version:  1.0
  *        Created:  22/03/2014 17:20:07
- *       Revision:  none
- *       Compiler:  gcc
  *
- *         Author:  Quentin BAZIN, <quent42340@gmail.com>
- *        Company:  Deloptia
+ *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
