@@ -14,16 +14,19 @@
 #ifndef LANGUAGEMANAGER_HPP_
 #define LANGUAGEMANAGER_HPP_
 
+#include <map>
+#include <string>
+
 class LanguageManager {
 	public:
-		static void init(std::string language);
+		static void init(const std::string &language);
 
-		static std::string translate(std::string str);
+		static const std::string &translate(const std::string &str);
 
 		static std::map<std::string, std::string> text;
 		static std::string currentLanguage;
 };
 
-std::string _t(std::string str);
+const std::string &_t(const std::string &str);
 
 #endif // LANGUAGEMANAGER_HPP_

@@ -14,6 +14,8 @@
 #ifndef BATTLEACTIONWINDOW_HPP_
 #define BATTLEACTIONWINDOW_HPP_
 
+#include "CommandWindow.hpp"
+
 class BattleActionWindow : public CommandWindow {
 	public:
 		BattleActionWindow();

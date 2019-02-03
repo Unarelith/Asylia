@@ -35,11 +35,11 @@ Game::Game() {
 
 	LanguageManager::init("en-us");
 
-	ActivityManager::init();
+	StateManager::init();
 }
 
 Game::~Game() {
-	ActivityManager::free();
+	StateManager::free();
 
 	Interface::free();
 
@@ -55,20 +55,20 @@ Game::~Game() {
 void Game::mainLoop() {
 	while(!quit) {
 		if(TimeManager::isTimeToUpdate()) {
-			ActivityManager::top()->pollEvents();
+			StateManager::top()->pollEvents();
 
 			Keyboard::update();
 
 			if(Game::paused == true) continue;
 
-			ActivityManager::top()->update();
+			StateManager::top()->update();
 
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
 
 				GameWindow::main->clear();
 
-				ActivityManager::top()->render();
+				StateManager::top()->render();
 
 				TimeManager::renderRTMCounter(); // Rendering time mean
 

@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  MapActivity.cpp
+ *       Filename:  MapState.cpp
  *
  *    Description:
  *
@@ -11,13 +11,28 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "AnimationManager.hpp"
+#include "BattlerManager.hpp"
+#include "CharacterManager.hpp"
+#include "EventInterpreter.hpp"
+#include "EventManager.hpp"
+#include "ItemManager.hpp"
+#include "Keyboard.hpp"
+#include "LuaHandler.hpp"
+#include "MapManager.hpp"
+#include "MapState.hpp"
+#include "MenuState.hpp"
+#include "QuestManager.hpp"
+#include "Sound.hpp"
+#include "SpriteAnimationManager.hpp"
+#include "StateManager.hpp"
+#include "TroopManager.hpp"
 
-MapActivity::MapActivity() {
+MapState::MapState() {
 	m_type = Type::Map;
 }
 
-MapActivity::~MapActivity() {
+MapState::~MapState() {
 	TroopManager::free();
 
 	BattlerManager::free();
@@ -41,7 +56,7 @@ MapActivity::~MapActivity() {
 	EventInterpreter::free();
 }
 
-void MapActivity::init() {
+void MapState::init() {
 	LuaHandler::init();
 
 	SpriteAnimationManager::init();
@@ -71,10 +86,10 @@ void MapActivity::init() {
 	Sound::Music::play(Sound::Music::theme, -1);
 }
 
-void MapActivity::update() {
+void MapState::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
-		ActivityManager::push(new MenuActivity(this));
+		StateManager::push(new MenuState(this));
 		return;
 	}
 
@@ -88,7 +103,7 @@ void MapActivity::update() {
 	MapManager::currentMap->eventsUpdate();
 }
 
-void MapActivity::render() {
+void MapState::render() {
 	MapManager::currentMap->render();
 
 	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {

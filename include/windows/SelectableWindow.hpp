@@ -14,6 +14,8 @@
 #ifndef SELECTABLEWINDOW_HPP_
 #define SELECTABLEWINDOW_HPP_
 
+#include "InfoWindow.hpp"
+
 class SelectableWindow : public Window {
 	public:
 		SelectableWindow(s16 x, s16 y, u16 width, u16 height);

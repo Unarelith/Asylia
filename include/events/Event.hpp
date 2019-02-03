@@ -14,6 +14,8 @@
 #ifndef EVENT_HPP_
 #define EVENT_HPP_
 
+#include "Character.hpp"
+
 class Event : public Character {
 	public:
 		Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid = false, u16 frameWidth = 32, u16 frameHeight = 48);

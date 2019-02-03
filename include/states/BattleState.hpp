@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  BattleActivity.hpp
+ *       Filename:  BattleState.hpp
  *
  *    Description:
  *
@@ -11,13 +11,22 @@
  *
  * =====================================================================================
  */
-#ifndef BATTLEACTIVITY_HPP_
-#define BATTLEACTIVITY_HPP_
+#ifndef BATTLESTATE_HPP_
+#define BATTLESTATE_HPP_
 
-class BattleActivity : public Activity {
+#include "ActorStatsWindow.hpp"
+#include "ApplicationState.hpp"
+#include "Battle.hpp"
+#include "BattleActionWindow.hpp"
+#include "BattleChoiceWindow.hpp"
+#include "ItemWindow.hpp"
+#include "Troop.hpp"
+#include "VictoryWindow.hpp"
+
+class BattleState : public ApplicationState {
 	public:
-		BattleActivity(Troop *troop, bool allowDefeat = false);
-		~BattleActivity();
+		BattleState(Troop *troop, bool allowDefeat = false);
+		~BattleState();
 
 		void update();
 		void render();
@@ -71,4 +80,4 @@ class BattleActivity : public Activity {
 		bool m_allowDefeat;
 };
 
-#endif // BATTLEACTIVITY_HPP_
+#endif // BATTLESTATE_HPP_

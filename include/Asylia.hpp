@@ -30,10 +30,6 @@
 	#define to_string(n) std::to_string(n)
 #endif
 
-#include "AndroidIO.hpp"
-
-#include "lua.hpp"
-#include "SLB.hpp"
 #include "LuaHandler.hpp"
 
 #include <tinyxml2.h>
@@ -126,19 +122,19 @@ using namespace tinyxml2;
 #include "EventManager.hpp"
 #include "EventListener.hpp"
 
-#include "Activity.hpp"
-#include "MapActivity.hpp"
-#include "MessageActivity.hpp"
-#include "MenuActivity.hpp"
-#include "LuaActivity.hpp"
-#include "TitleActivity.hpp"
-#include "EndActivity.hpp"
-#include "ItemActivity.hpp"
-#include "EquipActivity.hpp"
-#include "BattleActivity.hpp"
-#include "SettingsActivity.hpp"
-#include "QuestActivity.hpp"
-#include "ActivityManager.hpp"
+#include "ApplicationState.hpp"
+#include "MapState.hpp"
+#include "MessageState.hpp"
+#include "MenuState.hpp"
+#include "LuaState.hpp"
+#include "TitleState.hpp"
+#include "EndState.hpp"
+#include "ItemState.hpp"
+#include "EquipState.hpp"
+#include "BattleState.hpp"
+#include "SettingsState.hpp"
+#include "QuestState.hpp"
+#include "StateManager.hpp"
 
 #include "EventInterpreter.hpp"
 

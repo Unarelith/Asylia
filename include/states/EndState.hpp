@@ -1,30 +1,31 @@
 /*
  * =====================================================================================
  *
- *       Filename:  TitleActivity.hpp
+ *       Filename:  EndState.hpp
  *
  *    Description:
  *
- *        Created:  22/03/2014 17:18:32
+ *        Created:  22/03/2014 17:46:04
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#ifndef TITLEACTIVITY_HPP_
-#define TITLEACTIVITY_HPP_
+#ifndef ENDSTATE_HPP_
+#define ENDSTATE_HPP_
 
-class TitleActivity : public Activity {
+#include "ApplicationState.hpp"
+#include "CommandWindow.hpp"
+
+class EndState : public ApplicationState {
 	public:
-		TitleActivity();
-		~TitleActivity();
+		EndState(bool disableCancel = false);
 
 		void update();
 		void render();
 
 	private:
-		Image *m_background;
-		CommandWindow *m_cmdwin;
+		CommandWindow m_cmdwin{192};
 };
 
-#endif // TITLEACTIVITY_HPP_
+#endif // ENDSTATE_HPP_

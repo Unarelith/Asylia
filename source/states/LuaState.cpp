@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  LuaActivity.cpp
+ *       Filename:  LuaState.cpp
  *
  *    Description:
  *
@@ -11,9 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "GameWindow.hpp"
+#include "LuaState.hpp"
+#include "LuaHandler.hpp"
+#include "SDLHeaders.hpp"
 
-LuaActivity::LuaActivity(std::string filename, std::string table) {
+LuaState::LuaState(const std::string &filename, const std::string &table) {
 	m_type = Type::Lua;
 
 	m_table = table;
@@ -22,15 +25,12 @@ LuaActivity::LuaActivity(std::string filename, std::string table) {
 	LuaHandler::doString(table + ".init()");
 }
 
-LuaActivity::~LuaActivity() {
-}
-
-void LuaActivity::update() {
+void LuaState::update() {
 	LuaHandler::doString(m_table + ".update()");
 }
 
-void LuaActivity::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, NULL);
+void LuaState::render() {
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, nullptr, nullptr);
 
 	LuaHandler::doString(m_table + ".render()");
 }

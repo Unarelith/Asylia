@@ -14,6 +14,9 @@
 #ifndef ENEMY_HPP_
 #define ENEMY_HPP_
 
+#include "Battler.hpp"
+#include "Inventory.hpp"
+
 class Enemy : public Battler {
 	public:
 		Enemy(std::string name, std::string appearance, u8 level);

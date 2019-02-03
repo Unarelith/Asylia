@@ -53,15 +53,15 @@ void EquipStatsWindow::draw(Item *currentItem) {
 			}
 		}
 	}
-	else if(((EquipActivity*)ActivityManager::top())->itemMode()) {
-		if(((EquipActivity*)ActivityManager::top())->choicewinPos() == 0) {
+	else if(((EquipState*)StateManager::top())->itemMode()) {
+		if(((EquipState*)StateManager::top())->choicewinPos() == 0) {
 			finalAtk = m_actor->atk();
 			finalDef = baseDef;
 
 			finalAtkColor = Color::red;
 		} else {
 			finalAtk = baseAtk;
-			finalDef = baseDef - m_actor->equipment()->armor(((EquipActivity*)ActivityManager::top())->choicewinPos() - 1)->def();
+			finalDef = baseDef - m_actor->equipment()->armor(((EquipState*)StateManager::top())->choicewinPos() - 1)->def();
 
 			finalDefColor = Color::red;
 		}

@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  MenuActivity.hpp
+ *       Filename:  MenuState.hpp
  *
  *    Description:
  *
@@ -11,29 +11,33 @@
  *
  * =====================================================================================
  */
-#ifndef MENUACTIVITY_HPP_
-#define MENUACTIVITY_HPP_
+#ifndef MENUSTATE_HPP_
+#define MENUSTATE_HPP_
 
-class MenuActivity : public Activity {
+#include <memory>
+
+#include "ActorChoiceWindow.hpp"
+#include "ApplicationState.hpp"
+#include "CommandWindow.hpp"
+
+class MenuState : public ApplicationState {
 	public:
-		MenuActivity(Activity *parent = NULL);
-		~MenuActivity();
+		MenuState(ApplicationState *parent = nullptr);
 
 		void loadCommandWindow();
 
 		void update();
 		void render();
 
-		CommandWindow *cmdwin() { return m_cmdwin; }
+		CommandWindow *cmdwin() { return m_cmdwin.get(); }
 
 		void actorChoiceModeOn() { m_actorChoiceMode = true; }
 
 	private:
-		CommandWindow *m_cmdwin;
-
-		ActorChoiceWindow *m_actorChoicewin;
+		std::unique_ptr<CommandWindow> m_cmdwin;
+		std::unique_ptr<ActorChoiceWindow> m_actorChoicewin;
 
 		bool m_actorChoiceMode;
 };
 
-#endif // MENUACTIVITY_HPP_
+#endif // MENUSTATE_HPP_

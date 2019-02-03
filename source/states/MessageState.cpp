@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  MessageActivity.cpp
+ *       Filename:  MessageState.cpp
  *
  *    Description:
  *
@@ -11,30 +11,30 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "EventListener.hpp"
+#include "GameWindow.hpp"
+#include "Keyboard.hpp"
+#include "MapManager.hpp"
+#include "MessageState.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
 
-MessageActivity::MessageActivity(std::string message, Activity *parent) : Activity(parent) {
+MessageState::MessageState(const std::string &message, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Message;
 
 	m_parent = parent;
-	if(m_parent == NULL) {
-		m_parent = ActivityManager::top();
+	if(m_parent == nullptr) {
+		m_parent = StateManager::top();
 	}
 
-	m_txtwin = new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3);
+	m_txtwin.reset(new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3));
 
-	m_cmdwin = new CommandWindow(m_txtwin->x(), 0, 150, 0);
+	m_cmdwin.reset(new CommandWindow(m_txtwin->x(), 0, 150, 0));
 
 	m_message = message;
 }
 
-MessageActivity::~MessageActivity() {
-	delete m_cmdwin;
-
-	delete m_txtwin;
-}
-
-void MessageActivity::updateCmdwinSize() {
+void MessageState::updateCmdwinSize() {
 	u16 sizeMax = 0;
 	for(auto &it : m_cmdwin->commands()) {
 		if(it.first.size() > sizeMax) sizeMax = it.first.size();
@@ -45,7 +45,7 @@ void MessageActivity::updateCmdwinSize() {
 	m_cmdwin->y(m_txtwin->y() - m_cmdwin->height());
 }
 
-void MessageActivity::update() {
+void MessageState::update() {
 	if(m_cmdwin->commands().size() > 0) {
 		m_cmdwin->update();
 	}
@@ -54,15 +54,15 @@ void MessageActivity::update() {
 		if(m_cmdwin->commands().size() > 0) {
 			Sound::Effect::play(Sound::Effect::confirm);
 
-			EventListener::addMessageActivityAction(m_cmdwin->pos());
+			EventListener::addMessageStateAction(m_cmdwin->pos());
 		}
 
-		ActivityManager::pop();
+		StateManager::pop();
 		MapManager::currentMap->updateEventsActions();
 	}
 }
 
-void MessageActivity::render() {
+void MessageState::render() {
 	renderBackground();
 
 	if(m_cmdwin->commands().size() > 0) {

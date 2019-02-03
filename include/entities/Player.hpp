@@ -14,6 +14,10 @@
 #ifndef PLAYER_HPP_
 #define PLAYER_HPP_
 
+#include "BattlerManager.hpp"
+#include "Character.hpp"
+#include "Quest.hpp"
+
 class Player : public Character {
 	public:
 		Player(std::string filename, s16 x, s16 y, u8 direction);

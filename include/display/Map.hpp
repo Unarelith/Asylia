@@ -14,6 +14,9 @@
 #ifndef MAP_HPP_
 #define MAP_HPP_
 
+#include "Event.hpp"
+#include "Tileset.hpp"
+
 class Map {
 	public:
 		Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID);

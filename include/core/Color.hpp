@@ -14,10 +14,11 @@
 #ifndef COLOR_HPP_
 #define COLOR_HPP_
 
+#include "Types.hpp"
+
 class Color {
 	public:
 		Color(u8 _r, u8 _g, u8 _b, u8 _a = 255);
-		~Color();
 
 		void invert() { r=255-r; g=255-g; b=255-b; }
 

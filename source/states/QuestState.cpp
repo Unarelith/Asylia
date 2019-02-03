@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  QuestActivity.cpp
+ *       Filename:  QuestState.cpp
  *
  *    Description:
  *
@@ -13,10 +13,10 @@
  */
 #include "Asylia.hpp"
 
-QuestActivity::QuestActivity(Activity *parent) : Activity(parent) {
+QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_mode = Mode::CategoryChoice;
 
-	m_currentQuest = NULL;
+	m_currentQuest = nullptr;
 
 	m_questTitlewin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 
@@ -30,14 +30,14 @@ QuestActivity::QuestActivity(Activity *parent) : Activity(parent) {
 	m_questListwin->height(GameWindow::main->height() - 116);
 }
 
-QuestActivity::~QuestActivity() {
+QuestState::~QuestState() {
 	delete m_questListwin;
 	delete m_questCategorywin;
 
 	delete m_questTitlewin;
 }
 
-void QuestActivity::update() {
+void QuestState::update() {
 	static bool s_load = true;
 
 	if(m_mode == Mode::CategoryChoice) {
@@ -94,7 +94,7 @@ void QuestActivity::update() {
 
 			s_load = true;
 
-			ActivityManager::pop();
+			StateManager::pop();
 		}
 	}
 	else if(m_mode == Mode::QuestChoice) {
@@ -109,7 +109,7 @@ void QuestActivity::update() {
 	}
 }
 
-void QuestActivity::render() {
+void QuestState::render() {
 	m_parent->renderBackground();
 
 	m_questTitlewin->drawTextCentered(_t("Quests"));

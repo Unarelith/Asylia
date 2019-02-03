@@ -14,6 +14,8 @@
 #ifndef WEAPON_HPP_
 #define WEAPON_HPP_
 
+#include "Item.hpp"
+
 class Weapon : public Item {
 	public:
 		Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate);

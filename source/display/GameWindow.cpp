@@ -11,9 +11,11 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Config.hpp"
+#include "Debug.hpp"
+#include "GameWindow.hpp"
 
-GameWindow *GameWindow::main = NULL;
+GameWindow *GameWindow::main = nullptr;
 
 GameWindow::GameWindow(const char *caption) {
 #ifdef __ANDROID__

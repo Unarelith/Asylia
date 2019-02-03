@@ -14,6 +14,11 @@
 #ifndef BATTLE_HPP_
 #define BATTLE_HPP_
 
+#include "Actor.hpp"
+#include "BattleAction.hpp"
+#include "Item.hpp"
+#include "Troop.hpp"
+
 class Battle {
 	public:
 		Battle(const Battle &battle);

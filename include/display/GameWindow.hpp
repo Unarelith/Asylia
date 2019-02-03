@@ -14,6 +14,10 @@
 #ifndef GAMEWINDOW_HPP_
 #define GAMEWINDOW_HPP_
 
+#include "Color.hpp"
+#include "SDLHeaders.hpp"
+#include "Types.hpp"
+
 class GameWindow {
 	public:
 		GameWindow(const char *caption);

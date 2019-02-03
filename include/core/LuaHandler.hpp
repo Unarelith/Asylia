@@ -14,6 +14,10 @@
 #ifndef LUAHANDLER_HPP_
 #define LUAHANDLER_HPP_
 
+#include <string>
+
+// #include "SLB.hpp"
+
 namespace LuaHandler {
 	void init();
 	void free();
@@ -21,10 +25,10 @@ namespace LuaHandler {
 	void bindClasses();
 
 	void doFile(const char *filename);
-	void doString(std::string str);
+	void doString(const std::string &str);
 
-	extern lua_State *L;
-	extern SLB::Manager slbm;
+	// extern lua_State *L;
+	// extern SLB::Manager slbm;
 };
 
 #endif // LUAHANDLER_HPP_

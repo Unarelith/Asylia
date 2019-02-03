@@ -14,6 +14,9 @@
 #ifndef ITEM_HPP_
 #define ITEM_HPP_
 
+#include "Animation.hpp"
+#include "LanguageManager.hpp"
+
 class Item {
 	public:
 		Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation = NULL);

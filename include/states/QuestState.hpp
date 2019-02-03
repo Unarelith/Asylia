@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  QuestActivity.hpp
+ *       Filename:  QuestState.hpp
  *
  *    Description:
  *
@@ -11,13 +11,19 @@
  *
  * =====================================================================================
  */
-#ifndef QUESTACTIVITY_HPP_
-#define QUESTACTIVITY_HPP_
+#ifndef QUESTSTATE_HPP_
+#define QUESTSTATE_HPP_
 
-class QuestActivity : public Activity {
+#include "ApplicationState.hpp"
+#include "CommandWindow.hpp"
+#include "InfoWindow.hpp"
+#include "Quest.hpp"
+#include "QuestInfoWindow.hpp"
+
+class QuestState : public ApplicationState {
 	public:
-		QuestActivity(Activity *parent);
-		~QuestActivity();
+		QuestState(ApplicationState *parent);
+		~QuestState();
 
 		void update();
 		void render();
@@ -40,4 +46,4 @@ class QuestActivity : public Activity {
 		CommandWindow *m_questListwin;
 };
 
-#endif // QUESTACTIVITY_HPP_
+#endif // QUESTSTATE_HPP_

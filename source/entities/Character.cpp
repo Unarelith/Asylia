@@ -43,7 +43,7 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 	m_hitboxW = 32;
 	m_hitboxH = 32;
 
-	m_inFrontOf = NULL;
+	m_inFrontOf = nullptr;
 
 	m_solid = true;
 
@@ -55,7 +55,7 @@ Character::~Character() {
 }
 
 void Character::render() {
-	if(ActivityManager::activities.top()->type() == Activity::Type::Map) {
+	if(StateManager::activities.top()->type() == ApplicationState::Type::Map) {
 		if(!m_movementTimer.isStarted()) {
 			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
 				m_movementTimer.start();

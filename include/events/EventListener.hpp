@@ -14,18 +14,22 @@
 #ifndef EVENTLISTENER_HPP_
 #define EVENTLISTENER_HPP_
 
+#include <vector>
+
+#include "Types.hpp"
+
 namespace EventListener {
 	enum Type {
-		MessageActivityAction,
+		MessageStateAction,
 		BattleResult
 	};
 
-	void addMessageActivityAction(u8 pos);
+	void addMessageStateAction(u8 pos);
 	void addBattleResult(u8 battleResult);
 
 	s32 getLastValueOf(Type type);
 
-	s8 lastMessageActivityAction();
+	s8 lastMessageStateAction();
 	s8 lastBattleResult();
 
 	extern std::vector<std::pair<Type, s32>> actionHistory;

@@ -14,6 +14,8 @@
 #ifndef BATTLEACTION_HPP_
 #define BATTLEACTION_HPP_
 
+#include "Battler.hpp"
+
 class BattleAction {
 	public:
 		BattleAction(Battler *actor, Battler *receiver, Item *item);

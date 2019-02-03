@@ -16,14 +16,14 @@
 Image::Image() {
 	m_filename = "";
 
-	m_texture = NULL;
+	m_texture = nullptr;
 
 	m_hidden = false;
 }
 
 Image::Image(const Image &img) {
 	if(img.m_filename != "") {
-		m_texture = NULL;
+		m_texture = nullptr;
 
 		reload(img.m_filename.c_str());
 	} else {
@@ -111,7 +111,7 @@ Image::Image(SDL_Surface *surface) {
 Image::~Image() {
 	if(m_texture) {
 		SDL_DestroyTexture(m_texture);
-		m_texture = NULL;
+		m_texture = nullptr;
 	}
 }
 

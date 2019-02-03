@@ -14,6 +14,10 @@
 #ifndef ITEMWINDOW_HPP_
 #define ITEMWINDOW_HPP_
 
+#include "Equipment.hpp"
+#include "Inventory.hpp"
+#include "SelectableWindow.hpp"
+
 class ItemWindow : public SelectableWindow {
 	public:
 		ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX = 0, s16 infowinY = 0);

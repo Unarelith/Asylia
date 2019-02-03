@@ -14,6 +14,9 @@
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
 
+#include "Battler.hpp"
+#include "Rectangle.hpp"
+
 class Window {
 	public:
 		Window(s16 x, s16 y, u16 width, u16 height);

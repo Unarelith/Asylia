@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.cpp
+ *       Filename:  ApplicationState.cpp
  *
  *    Description:
  *
@@ -11,9 +11,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "ApplicationState.hpp"
+#include "EndState.hpp"
+#include "GameWindow.hpp"
+#include "Game.hpp"
+#include "Keyboard.hpp"
+#include "MenuState.hpp"
+#include "StateManager.hpp"
 
-Activity::Activity(Activity *parent) {
+ApplicationState::ApplicationState(ApplicationState *parent) {
 	m_type = Type::None;
 
 	m_parent = parent;
@@ -22,11 +28,11 @@ Activity::Activity(Activity *parent) {
 	SDL_SetTextureBlendMode(m_background, SDL_BLENDMODE_BLEND);
 }
 
-Activity::~Activity() {
+ApplicationState::~ApplicationState() {
 	if(m_background) SDL_DestroyTexture(m_background);
 }
 
-void Activity::pollEvents() {
+void ApplicationState::pollEvents() {
 	SDL_Event event;
 	while(SDL_PollEvent(&event) != 0) {
 		switch(event.type) {
@@ -46,13 +52,13 @@ void Activity::pollEvents() {
 			case SDL_APP_WILLENTERFOREGROUND:
 				Game::quit = true; // FIXME: See #9
 				Game::paused = false;
-				if(ActivityManager::top()->type() == Type::Map) {
-					ActivityManager::push(new MenuActivity);
+				if(StateManager::top()->type() == Type::Map) {
+					StateManager::push(new MenuState);
 				}
 				break;
 			case SDL_APP_TERMINATING:
-				if(ActivityManager::top()->type() != Type::GameEnd) {
-					ActivityManager::push(new EndActivity);
+				if(StateManager::top()->type() != Type::GameEnd) {
+					StateManager::push(new EndState);
 				}
 				break;
 			default:
@@ -61,14 +67,14 @@ void Activity::pollEvents() {
 	}
 }
 
-void Activity::renderBackground() {
+void ApplicationState::renderBackground() {
 	SDL_Rect posRect = {0, 0, GameWindow::main->width(), GameWindow::main->height()};
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, &posRect);
 }
 
-void Activity::screenshot(Activity *activity) {
+void ApplicationState::screenshot(ApplicationState *applicationstate) {
 	SDL_SetRenderTarget(GameWindow::main->renderer(), m_background);
-	activity->render();
+	applicationstate->render();
 	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
 }
 

@@ -14,6 +14,8 @@
 #ifndef MAPMANAGER_HPP_
 #define MAPMANAGER_HPP_
 
+#include "Map.hpp"
+
 #define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::maps[area].size()))
 
 class MapManager {

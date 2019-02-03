@@ -1,29 +1,32 @@
 /*
  * =====================================================================================
  *
- *       Filename:  EndActivity.hpp
+ *       Filename:  LuaState.hpp
  *
  *    Description:
  *
- *        Created:  22/03/2014 17:46:04
+ *        Created:  21/03/2014 18:21:31
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#ifndef ENDACTIVITY_HPP_
-#define ENDACTIVITY_HPP_
+#ifndef LUASTATE_HPP_
+#define LUASTATE_HPP_
 
-class EndActivity : public Activity {
+#include <string>
+
+#include "ApplicationState.hpp"
+
+class LuaState : public ApplicationState {
 	public:
-		EndActivity(bool disableCancel = false);
-		~EndActivity();
+		LuaState(const std::string &filename, const std::string &table);
 
 		void update();
 		void render();
 
 	private:
-		CommandWindow *m_cmdwin;
+		std::string m_table;
 };
 
-#endif // ENDACTIVITY_HPP_
+#endif // LUASTATE_HPP_

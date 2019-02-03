@@ -14,6 +14,8 @@
 #ifndef SOUND_HPP_
 #define SOUND_HPP_
 
+#include "SDLHeaders.hpp"
+
 namespace Sound {
 	void init();
 	void free();

@@ -14,6 +14,8 @@
 #ifndef QUESTOBJECTIVE_HPP_
 #define QUESTOBJECTIVE_HPP_
 
+#include "Parameter.hpp"
+
 class QuestObjective {
 	public:
 		QuestObjective();

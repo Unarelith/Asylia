@@ -14,6 +14,8 @@
 #ifndef TROOPMANAGER_HPP_
 #define TROOPMANAGER_HPP_
 
+#include "Troop.hpp"
+
 namespace TroopManager {
 	void init();
 	void free();

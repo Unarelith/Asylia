@@ -14,6 +14,8 @@
 #ifndef SKILL_HPP_
 #define SKILL_HPP_
 
+#include "Item.hpp"
+
 class Skill : public Item {
 	public:
 		Skill(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation, u16 atk, double hitRate);

@@ -20,6 +20,3 @@ Armor::Armor(std::string name, std::string description, std::string thumbnail, u
 	m_def = def;
 }
 
-Armor::~Armor() {
-}
-

@@ -14,6 +14,10 @@
 #ifndef EVENTMANAGER_HPP_
 #define EVENTMANAGER_HPP_
 
+#include "Debug.hpp"
+#include "Event.hpp"
+#include "XMLFile.hpp"
+
 class EventManager {
 	public:
 		static void init();
@@ -22,8 +26,8 @@ class EventManager {
 		static void loadLibs();
 
 		static void initEvents();
-		static void loadCharacterEvent(XMLElement *characterElement);
-		static void loadChestEvent(XMLElement *chestEvent);
+		static void loadCharacterEvent(tinyxml2::XMLElement *characterElement);
+		static void loadChestEvent(tinyxml2::XMLElement *chestEvent);
 
 		static Event *getEventByName(std::string name) { if(!events[name]) warning("Event %s not found", name.c_str()); return events[name]; }
 

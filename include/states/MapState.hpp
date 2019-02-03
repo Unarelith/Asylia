@@ -1,29 +1,30 @@
 /*
  * =====================================================================================
  *
- *       Filename:  LuaActivity.hpp
+ *       Filename:  MapState.hpp
  *
  *    Description:
  *
- *        Created:  21/03/2014 18:21:31
+ *        Created:  21/03/2014 18:19:43
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#ifndef LUAACTIVITY_HPP_
-#define LUAACTIVITY_HPP_
+#ifndef MAPSTATE_HPP_
+#define MAPSTATE_HPP_
 
-class LuaActivity : public Activity {
+#include "ApplicationState.hpp"
+
+class MapState : public ApplicationState {
 	public:
-		LuaActivity(std::string filename, std::string table);
-		~LuaActivity();
+		MapState();
+		~MapState();
+
+		void init();
 
 		void update();
 		void render();
-
-	private:
-		std::string m_table;
 };
 
-#endif // LUAACTIVITY_HPP_
+#endif // MAPSTATE_HPP_

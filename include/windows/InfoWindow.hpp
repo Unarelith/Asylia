@@ -14,6 +14,8 @@
 #ifndef INFOWINDOW_HPP_
 #define INFOWINDOW_HPP_
 
+#include "Window.hpp"
+
 class InfoWindow : public Window {
 	public:
 		InfoWindow(s16 x, s16 y, u16 width, u16 height);

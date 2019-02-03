@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  EquipActivity.cpp
+ *       Filename:  EquipState.cpp
  *
  *    Description:
  *
@@ -13,7 +13,7 @@
  */
 #include "Asylia.hpp"
 
-EquipActivity::EquipActivity(u8 actorPos, Activity *parent) : Activity(parent) {
+EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Equip;
 
 	m_itemMode = false;
@@ -22,21 +22,14 @@ EquipActivity::EquipActivity(u8 actorPos, Activity *parent) : Activity(parent) {
 
 	m_equipment = CharacterManager::player->getTeamMember(actorPos)->equipment();
 
-	m_statswin = new EquipStatsWindow(m_actor);
-	m_choicewin = new EquipChoiceWindow(m_equipment);
+	m_statswin.reset(new EquipStatsWindow(m_actor));
+	m_choicewin.reset(new EquipChoiceWindow(m_equipment));
 
-	m_itemwin = new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, CharacterManager::player->inventory(), 150, 0);
+	m_itemwin.reset(new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, CharacterManager::player->inventory(), 150, 0));
 	m_itemwin->changeSet(0, 0, m_equipment);
 }
 
-EquipActivity::~EquipActivity() {
-	delete m_itemwin;
-
-	delete m_choicewin;
-	delete m_statswin;
-}
-
-void EquipActivity::update() {
+void EquipState::update() {
 	// FIXME: SLOW?? //
 	if(m_choicewin->pos() == 0) {
 		m_itemwin->changeSet(m_choicewin->pos(), m_choicewin->pos(), m_equipment);
@@ -80,13 +73,13 @@ void EquipActivity::update() {
 			m_itemwin->pos(0);
 			m_itemwin->update();
 		} else {
-			ActivityManager::pop();
-			if(ActivityManager::top()->type() == Activity::Type::Menu) ((MenuActivity*)ActivityManager::top())->actorChoiceModeOn();
+			StateManager::pop();
+			if(StateManager::top()->type() == ApplicationState::Type::Menu) ((MenuState*)StateManager::top())->actorChoiceModeOn();
 		}
 	}
 }
 
-void EquipActivity::render() {
+void EquipState::render() {
 	renderBackground();
 
 	if(m_itemMode) m_statswin->draw(m_itemwin->currentItem());

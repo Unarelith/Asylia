@@ -14,6 +14,10 @@
 #ifndef EVENTINTERPRETER_HPP_
 #define EVENTINTERPRETER_HPP_
 
+#include "Event.hpp"
+#include "EventAction.hpp"
+#include "Parameter.hpp"
+
 class EventInterpreter {
 	public:
 		static void free();

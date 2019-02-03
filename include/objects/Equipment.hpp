@@ -14,10 +14,14 @@
 #ifndef EQUIPMENT_HPP_
 #define EQUIPMENT_HPP_
 
+#include <list>
+
+#include "Armor.hpp"
+#include "Weapon.hpp"
+
 class Equipment {
 	public:
 		Equipment();
-		~Equipment();
 
 		void equipWeapon(Weapon *weapon) { m_weapon = weapon; m_weapon->setEquipped(true); }
 		void equipArmor(Armor *armor);

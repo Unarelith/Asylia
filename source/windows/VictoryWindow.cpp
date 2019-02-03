@@ -32,9 +32,6 @@ VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() 
 	Sound::Effect::play(Sound::Effect::confirm);
 }
 
-VictoryWindow::~VictoryWindow() {
-}
-
 void VictoryWindow::draw() {
 	m_height = 134 + 32 * m_itemsNb;
 

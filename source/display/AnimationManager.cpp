@@ -49,13 +49,13 @@ void AnimationManager::free() {
 	}
 }
 
-Animation *AnimationManager::getAnimationByName(std::string name) {
+Animation *AnimationManager::getAnimationByName(const std::string &name) {
 	for(auto *it : animations) {
 		if(it->name() == name) {
 			return it;
 		}
 	}
 
-	return NULL;
+	return nullptr;
 }
 

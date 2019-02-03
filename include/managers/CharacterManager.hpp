@@ -14,6 +14,8 @@
 #ifndef CHARACTERMANAGER_HPP_
 #define CHARACTERMANAGER_HPP_
 
+#include "Player.hpp"
+
 class CharacterManager {
 	public:
 		static void init();

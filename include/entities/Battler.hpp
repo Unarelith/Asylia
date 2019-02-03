@@ -14,10 +14,17 @@
 #ifndef BATTLER_HPP_
 #define BATTLER_HPP_
 
+#include <string>
+
+#include "Image.hpp"
+#include "Skill.hpp"
+#include "Sprite.hpp"
+#include "Types.hpp"
+
 class Battler {
 	public:
 		Battler(const Battler &battler);
-		Battler(std::string name, std::string appearance, u8 level);
+		Battler(const std::string &name, const std::string &appearance, u8 level);
 		~Battler();
 
 		void calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell);
@@ -26,7 +33,7 @@ class Battler {
 
 		void kill();
 
-		std::string name() const { return m_name; }
+		const std::string &name() const { return m_name; }
 
 		Image *image() const { return m_image; }
 

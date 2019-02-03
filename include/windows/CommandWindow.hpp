@@ -14,6 +14,8 @@
 #ifndef COMMANDWINDOW_HPP_
 #define COMMANDWINDOW_HPP_
 
+#include "SelectableWindow.hpp"
+
 class CommandWindow : public SelectableWindow {
 	public:
 		CommandWindow(s16 x, s16 y, u16 width, bool horizontal = false, bool centered = false);

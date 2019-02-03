@@ -14,6 +14,8 @@
 #ifndef TROOP_HPP_
 #define TROOP_HPP_
 
+#include "Enemy.hpp"
+
 class Troop {
 	public:
 		Troop(Image *battleback = NULL);

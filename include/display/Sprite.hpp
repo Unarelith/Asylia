@@ -14,6 +14,9 @@
 #ifndef SPRITE_HPP_
 #define SPRITE_HPP_
 
+#include "Image.hpp"
+#include "SpriteAnimation.hpp"
+
 class Sprite : public Image {
 	public:
 		Sprite(const char *filename, u16 frameWidth, u16 frameHeight);

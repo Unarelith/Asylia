@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  SettingsActivity.cpp
+ *       Filename:  SettingsState.cpp
  *
  *    Description:
  *
@@ -13,38 +13,26 @@
  */
 #include "Asylia.hpp"
 
-SettingsActivity::SettingsActivity(Activity *parent) : Activity(parent) {
-	m_settings = new CommandWindow(150, 160, 150);
+SettingsState::SettingsState(ApplicationState *parent) : ApplicationState(parent) {
+	m_settings.addCommand("Sound");
+	m_settings.addCommand("Language");
 
-	m_settings->addCommand("Sound");
-	m_settings->addCommand("Language");
+	m_sound.addCommand("ON");
+	m_sound.addCommand("OFF");
 
-	m_sound = new CommandWindow(300, 160, 150);
-
-	m_sound->addCommand("ON");
-	m_sound->addCommand("OFF");
-
-	m_language = new CommandWindow(300, 160, 150);
-
-	m_language->addCommand("Français");
-	m_language->addCommand("English");
+	m_language.addCommand("Français");
+	m_language.addCommand("English");
 
 	m_mode = Mode::Settings;
 }
 
-SettingsActivity::~SettingsActivity() {
-	delete m_language;
-	delete m_sound;
-	delete m_settings;
-}
-
-void SettingsActivity::update() {
+void SettingsState::update() {
 	if(m_mode == Mode::Settings) {
-		m_settings->update();
+		m_settings.update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
-			switch(m_settings->pos()) {
+			switch(m_settings.pos()) {
 				case 0:
 					m_mode = Mode::Sound;
 					break;
@@ -57,14 +45,14 @@ void SettingsActivity::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
-			ActivityManager::pop();
+			StateManager::pop();
 		}
 	}
 	else if(m_mode == Mode::Sound) {
-		m_sound->update();
+		m_sound.update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			switch(m_sound->pos()) {
+			switch(m_sound.pos()) {
 				case 0:
 					Sound::Effect::mute = false;
 					Sound::Music::unmute();
@@ -84,11 +72,11 @@ void SettingsActivity::update() {
 		}
 	}
 	else if(m_mode == Mode::Language) {
-		m_language->update();
+		m_language.update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			Sound::Effect::play(Sound::Effect::confirm);
-			switch(m_language->pos()) {
+			switch(m_language.pos()) {
 				case 0:
 					LanguageManager::init("fr-fr");
 					screenshot(m_parent);
@@ -104,26 +92,26 @@ void SettingsActivity::update() {
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
 			m_mode = Mode::Settings;
-			m_settings->pos(1);
+			m_settings.pos(1);
 		}
 	}
 }
 
-void SettingsActivity::render() {
+void SettingsState::render() {
 	renderBackground();
 
 	if(m_mode == Mode::Settings) {
-		m_settings->draw();
+		m_settings.draw();
 	}
 	else if(m_mode == Mode::Sound) {
-		m_settings->draw(false);
+		m_settings.draw(false);
 
-		m_sound->draw();
+		m_sound.draw();
 	}
 	else if(m_mode == Mode::Language) {
-		m_settings->draw(false);
+		m_settings.draw(false);
 
-		m_language->draw();
+		m_language.draw();
 	}
 }
 

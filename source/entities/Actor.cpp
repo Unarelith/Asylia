@@ -13,11 +13,8 @@
  */
 #include "Asylia.hpp"
 
-Actor::Actor(std::string name, std::string appearance, u8 level) : Battler(name, appearance, level) {
+Actor::Actor(const std::string &name, const std::string &appearance, u8 level) : Battler(name, appearance, level) {
 	m_type = Type::TypeActor;
-}
-
-Actor::~Actor() {
 }
 
 u16 Actor::totalAtk() {

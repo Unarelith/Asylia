@@ -58,7 +58,7 @@ void Event::move(std::string function) {
 void Event::update() {
 	updateActions();
 
-	if(ActivityManager::top()->type() == Activity::Type::Map) {
+	if(StateManager::top()->type() == ApplicationState::Type::Map) {
 		move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
 	}
 

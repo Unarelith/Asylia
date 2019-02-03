@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  SettingsActivity.hpp
+ *       Filename:  SettingsState.hpp
  *
  *    Description:
  *
@@ -11,13 +11,15 @@
  *
  * =====================================================================================
  */
-#ifndef SETTINGSACTIVITY_HPP_
-#define SETTINGSACTIVITY_HPP_
+#ifndef SETTINGSSTATE_HPP_
+#define SETTINGSSTATE_HPP_
 
-class SettingsActivity : public Activity {
+#include "ApplicationState.hpp"
+#include "CommandWindow.hpp"
+
+class SettingsState : public ApplicationState {
 	public:
-		SettingsActivity(Activity *parent = NULL);
-		~SettingsActivity();
+		SettingsState(ApplicationState *parent = nullptr);
 
 		void update();
 		void render();
@@ -31,11 +33,11 @@ class SettingsActivity : public Activity {
 		void mode(Mode mode) { m_mode = mode; }
 
 	private:
-		CommandWindow *m_settings;
-		CommandWindow *m_sound;
-		CommandWindow *m_language;
+		CommandWindow m_settings{150, 160, 150};
+		CommandWindow m_sound{300, 160, 150};
+		CommandWindow m_language{300, 160, 150};
 
 		Mode m_mode;
 };
 
-#endif // SETTINGSACTIVITY_HPP_
+#endif // SETTINGSSTATE_HPP_

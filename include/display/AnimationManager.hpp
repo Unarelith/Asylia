@@ -14,11 +14,16 @@
 #ifndef ANIMATIONMANAGER_HPP_
 #define ANIMATIONMANAGER_HPP_
 
+#include <string>
+#include <vector>
+
+#include "Animation.hpp"
+
 namespace AnimationManager {
 	void init();
 	void free();
 
-	Animation *getAnimationByName(std::string name);
+	Animation *getAnimationByName(const std::string &name);
 
 	extern std::vector<Animation*> animations;
 };

@@ -14,6 +14,8 @@
 #ifndef ANIMATION_HPP_
 #define ANIMATION_HPP_
 
+#include "Sprite.hpp"
+
 class Battler;
 
 class Animation : public Sprite {

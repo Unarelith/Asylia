@@ -44,12 +44,13 @@ Battler::Battler(const Battler &battler) {
 	m_type = battler.m_type;
 }
 
-Battler::Battler(std::string name, std::string appearance, u8 level) {
+Battler::Battler(const std::string &name, const std::string &appearance, u8 level) {
 	m_name = name;
 
 	m_image = new Image(appearance.c_str());
 
-	m_sprite = new Sprite(appearance.replace(appearance.find("battlers"), 8, "characters").c_str(), 32, 48);
+	std::string str = appearance;
+	m_sprite = new Sprite(str.replace(str.find("battlers"), 8, "characters").c_str(), 32, 48);
 	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
 	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
 	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);

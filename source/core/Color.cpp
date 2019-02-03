@@ -27,6 +27,3 @@ Color::Color(u8 _r, u8 _g, u8 _b, u8 _a) {
 	a = _a;
 }
 
-Color::~Color() {
-}
-

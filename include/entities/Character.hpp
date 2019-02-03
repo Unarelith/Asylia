@@ -14,6 +14,9 @@
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
+#include "Inventory.hpp"
+#include "Sprite.hpp"
+
 #define DIR_DOWN 0
 #define DIR_LEFT 1
 #define DIR_RIGHT 2

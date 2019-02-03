@@ -28,10 +28,10 @@ void ActorStatsWindow::drawActors(std::vector<std::pair<u8, Actor*>> actors) {
 }
 
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
-	BattleActivity *battleActivity = ((BattleActivity*)ActivityManager::top());
-	u8 mode = battleActivity->mode();
-	if((mode == BattleActivity::Mode::Choice || mode == BattleActivity::Mode::EnemyTurn || mode == BattleActivity::Mode::ProcessActions || mode == BattleActivity::Mode::Victory)
-	|| (battleActivity->battle()->actors()[battleActivity->currentPos()].second != actor)) {
+	BattleState *battleState = ((BattleState*)StateManager::top());
+	u8 mode = battleState->mode();
+	if((mode == BattleState::Mode::Choice || mode == BattleState::Mode::EnemyTurn || mode == BattleState::Mode::ProcessActions || mode == BattleState::Mode::Victory)
+	|| (battleState->battle()->actors()[battleState->currentPos()].second != actor)) {
 		actor->image()->setColorMod(Color::white);
 		actor->image()->setAlphaMod(190);
 	}

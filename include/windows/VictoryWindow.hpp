@@ -14,10 +14,12 @@
 #ifndef VICTORYWINDOW_HPP_
 #define VICTORYWINDOW_HPP_
 
+#include "Battle.hpp"
+#include "Window.hpp"
+
 class VictoryWindow : public Window {
 	public:
 		VictoryWindow(Battle *battle);
-		~VictoryWindow();
 
 		void draw();
 

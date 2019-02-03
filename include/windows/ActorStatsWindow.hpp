@@ -14,6 +14,10 @@
 #ifndef ACTORSTATSWINDOW_HPP_
 #define ACTORSTATSWINDOW_HPP_
 
+#include "Actor.hpp"
+#include "Enemy.hpp"
+#include "Window.hpp"
+
 class ActorStatsWindow : public Window {
 	public:
 		ActorStatsWindow();

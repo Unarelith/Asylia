@@ -17,9 +17,6 @@ Equipment::Equipment() {
 	m_weapon = NULL;
 }
 
-Equipment::~Equipment() {
-}
-
 void Equipment::equipArmor(Armor *armor) {
 	for(auto it : m_armors) {
 		if(it->slot() == armor->slot()) {

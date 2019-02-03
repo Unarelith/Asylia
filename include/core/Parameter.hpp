@@ -14,6 +14,11 @@
 #ifndef PARAMETER_HPP_
 #define PARAMETER_HPP_
 
+#include <string>
+#include <vector>
+
+#include "Types.hpp"
+
 class Parameter {
 	public:
 		Parameter();

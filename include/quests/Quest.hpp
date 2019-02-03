@@ -14,6 +14,9 @@
 #ifndef QUEST_HPP_
 #define QUEST_HPP_
 
+#include "Inventory.hpp"
+#include "QuestObjective.hpp"
+
 class Quest {
 	public:
 		Quest(u16 exp, u16 gold);

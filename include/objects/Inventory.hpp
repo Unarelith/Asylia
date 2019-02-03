@@ -14,6 +14,12 @@
 #ifndef INVENTORY_HPP_
 #define INVENTORY_HPP_
 
+#include <list>
+#include <tuple>
+
+#include "Armor.hpp"
+#include "Weapon.hpp"
+
 class Inventory {
 	public:
 		Inventory();
@@ -36,13 +42,13 @@ class Inventory {
 		u16 nbArmors() { return m_armors.size(); }
 		u16 nbWeapons() { return m_weapons.size(); }
 
-		Item *getItem(u16 i) { u16 j = 0; for(auto &it : m_items) if(j++ == i) return std::get<0>(it); return NULL; }
+		Item *getItem(u16 i) { u16 j = 0; for(auto &it : m_items) if(j++ == i) return std::get<0>(it); return nullptr; }
 		s16 getItemCount(u16 i) { u16 j = 0; for(auto &it : m_items) if(j++ == i) return std::get<1>(it); return 0; }
 
-		Armor *getArmor(u16 i) { u16 j = 0; for(auto &it : m_armors) if(j++ == i) return std::get<0>(it); return NULL; }
+		Armor *getArmor(u16 i) { u16 j = 0; for(auto &it : m_armors) if(j++ == i) return std::get<0>(it); return nullptr; }
 		s16 getArmorCount(u16 i) { u16 j = 0; for(auto &it : m_armors) if(j++ == i) return std::get<1>(it); return 0; }
 
-		Weapon *getWeapon(u16 i) { u16 j = 0; for(auto &it : m_weapons) if(j++ == i) return std::get<0>(it); return NULL; }
+		Weapon *getWeapon(u16 i) { u16 j = 0; for(auto &it : m_weapons) if(j++ == i) return std::get<0>(it); return nullptr; }
 		s16 getWeaponCount(u16 i) { u16 j = 0; for(auto &it : m_weapons) if(j++ == i) return std::get<1>(it); return 0; }
 
 		void pushBackItem(Item *item, s16 count, double chance = 1) { m_items.push_back(std::make_tuple(item, count, chance)); }

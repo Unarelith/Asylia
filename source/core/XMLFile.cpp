@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "XMLFile.hpp"
 
 XMLFile::XMLFile(const char *filename) {
 	int code;
@@ -21,43 +22,43 @@ XMLFile::XMLFile(const char *filename) {
 		error("Failed to load %s.", filename);
 
 		switch(code) {
-			case XML_ERROR_FILE_NOT_FOUND:
+			case tinyxml2::XML_ERROR_FILE_NOT_FOUND:
 				error("File not found.");
 				break;
-			case XML_ERROR_FILE_COULD_NOT_BE_OPENED:
+			case tinyxml2::XML_ERROR_FILE_COULD_NOT_BE_OPENED:
 				error("File couldn't be opened.");
 				break;
-			case XML_ERROR_FILE_READ_ERROR:
+			case tinyxml2::XML_ERROR_FILE_READ_ERROR:
 				error("File read error.");
 				break;
-			case XML_ERROR_PARSING_ELEMENT:
+			case tinyxml2::XML_ERROR_PARSING_ELEMENT:
 				error("Error while parsing element.");
 				break;
-			case XML_ERROR_PARSING_ATTRIBUTE:
+			case tinyxml2::XML_ERROR_PARSING_ATTRIBUTE:
 				error("Error while parsing attribute.");
 				break;
-			case XML_ERROR_PARSING_TEXT:
+			case tinyxml2::XML_ERROR_PARSING_TEXT:
 				error("Error while parsing text.");
 				break;
-			case XML_ERROR_PARSING_CDATA:
+			case tinyxml2::XML_ERROR_PARSING_CDATA:
 				error("Error while parsing cdata.");
 				break;
-			case XML_ERROR_PARSING_COMMENT:
+			case tinyxml2::XML_ERROR_PARSING_COMMENT:
 				error("Error while parsing comment.");
 				break;
-			case XML_ERROR_PARSING_DECLARATION:
+			case tinyxml2::XML_ERROR_PARSING_DECLARATION:
 				error("Error while parsing declaration.");
 				break;
-			case XML_ERROR_PARSING_UNKNOWN:
+			case tinyxml2::XML_ERROR_PARSING_UNKNOWN:
 				error("Parsing error: Unknown object.");
 				break;
-			case XML_ERROR_EMPTY_DOCUMENT:
+			case tinyxml2::XML_ERROR_EMPTY_DOCUMENT:
 				error("Empty document.");
 				break;
-			case XML_ERROR_MISMATCHED_ELEMENT:
+			case tinyxml2::XML_ERROR_MISMATCHED_ELEMENT:
 				error("Element mismatched.");
 				break;
-			case XML_ERROR_PARSING:
+			case tinyxml2::XML_ERROR_PARSING:
 				error("Parsing error.");
 				break;
 			default:
@@ -68,10 +69,6 @@ XMLFile::XMLFile(const char *filename) {
 		exit(EXIT_FAILURE);
 	}
 
-	m_doc = new XMLHandle(&m_xml);
-}
-
-XMLFile::~XMLFile() {
-	delete m_doc;
+	m_doc.reset(new tinyxml2::XMLHandle(&m_xml));
 }
 

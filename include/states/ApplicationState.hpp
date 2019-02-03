@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Activity.hpp
+ *       Filename:  ApplicationState.hpp
  *
  *    Description:
  *
@@ -11,13 +11,15 @@
  *
  * =====================================================================================
  */
-#ifndef ACTIVITY_HPP_
-#define ACTIVITY_HPP_
+#ifndef APPLICATIONSTATE_HPP_
+#define APPLICATIONSTATE_HPP_
 
-class Activity {
+#include "SDLHeaders.hpp"
+
+class ApplicationState {
 	public:
-		Activity(Activity *parent = NULL);
-		virtual ~Activity() = 0;
+		ApplicationState(ApplicationState *parent = nullptr);
+		virtual ~ApplicationState() = 0;
 
 		virtual void update() = 0;
 		virtual void render() = 0;
@@ -26,7 +28,7 @@ class Activity {
 
 		void renderBackground();
 
-		void screenshot(Activity *activity);
+		void screenshot(ApplicationState *applicationstate);
 
 		typedef enum {
 			None,
@@ -43,14 +45,14 @@ class Activity {
 
 		Type type() const { return m_type; }
 
-		Activity *parent() const { return m_parent; }
+		ApplicationState *parent() const { return m_parent; }
 
 	protected:
 		Type m_type;
 
-		Activity *m_parent;
+		ApplicationState *m_parent;
 
 		SDL_Texture *m_background;
 };
 
-#endif // ACTIVITY_HPP_
+#endif // APPLICATIONSTATE_HPP_

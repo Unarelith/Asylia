@@ -56,11 +56,11 @@ void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		ActivityManager::drawMessage(*(std::string*)(params->at(0)->value()));
+		StateManager::drawMessage(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
 
-	if(ActivityManager::top()->type() != Activity::Type::Message) {
+	if(StateManager::top()->type() != ApplicationState::Type::Message) {
 		if(params->size() == 2 && params->at(1)->isInteger()) {
 			e->currentActionID(*(int*)params->at(1)->value());
 		}
@@ -75,11 +75,11 @@ void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isInteger() && !e->isLocked()) {
-		if(params->at(1)->isBoolean()) ActivityManager::startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
+		if(params->at(1)->isBoolean()) StateManager::startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
 		e->lock();
 	}
 
-	if(ActivityManager::top()->type() != Activity::Type::BattleAct) {
+	if(StateManager::top()->type() != ApplicationState::Type::BattleAct) {
 		e->currentActionID(*(int*)params->at(2 + EventListener::lastBattleResult())->value());
 
 		e->unlock();
@@ -91,18 +91,18 @@ void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		MessageActivity *activity = ActivityManager::drawMessage(*(std::string*)(params->at(0)->value()));
+		MessageState *state = StateManager::drawMessage(*(std::string*)(params->at(0)->value()));
 
 		for(u16 i = 1 ; i < params->size() ; i+=2) {
 			if(params->at(i)->isString()) {
-				activity->addCommand(*(std::string*)params->at(i)->value());
+				state->addCommand(*(std::string*)params->at(i)->value());
 			}
 		}
 
 		e->lock();
 	}
 
-	if(ActivityManager::top()->type() != Activity::Type::Message) {
+	if(StateManager::top()->type() != ApplicationState::Type::Message) {
 		if(params->at((SelectableWindow::lastPos + 1) * 2)->isInteger()) {
 			e->currentActionID(*(int*)params->at((SelectableWindow::lastPos + 1) * 2)->value());
 		}

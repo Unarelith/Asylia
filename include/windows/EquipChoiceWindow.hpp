@@ -14,6 +14,9 @@
 #ifndef EQUIPCHOICEWINDOW_HPP_
 #define EQUIPCHOICEWINDOW_HPP_
 
+#include "Equipment.hpp"
+#include "SelectableWindow.hpp"
+
 class EquipChoiceWindow : public SelectableWindow {
 	public:
 		EquipChoiceWindow(Equipment *equipment);

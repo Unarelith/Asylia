@@ -14,10 +14,12 @@
 #ifndef ACTOR_HPP_
 #define ACTOR_HPP_
 
+#include "Battler.hpp"
+#include "Equipment.hpp"
+
 class Actor : public Battler {
 	public:
-		Actor(std::string name, std::string appearance, u8 level);
-		~Actor();
+		Actor(const std::string &name, const std::string &appearance, u8 level);
 
 		u16 totalAtk();
 		u16 totalDef();

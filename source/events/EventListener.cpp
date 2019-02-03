@@ -15,8 +15,8 @@
 
 std::vector<std::pair<EventListener::Type, s32>> EventListener::actionHistory;
 
-void EventListener::addMessageActivityAction(u8 pos) {
-	actionHistory.push_back(std::make_pair(Type::MessageActivityAction, pos));
+void EventListener::addMessageStateAction(u8 pos) {
+	actionHistory.push_back(std::make_pair(Type::MessageStateAction, pos));
 }
 
 void EventListener::addBattleResult(u8 battleResult) {
@@ -32,7 +32,7 @@ s32 EventListener::getLastValueOf(Type type) {
 	return -1;
 }
 
-s8 EventListener::lastMessageActivityAction() {
+s8 EventListener::lastMessageStateAction() {
 	return getLastValueOf(Type::BattleResult);
 }
 

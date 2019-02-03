@@ -14,6 +14,9 @@
 #ifndef BATTLERMANAGER_HPP_
 #define BATTLERMANAGER_HPP_
 
+#include "Actor.hpp"
+#include "Enemy.hpp"
+
 namespace BattlerManager {
 	void init();
 	void free();

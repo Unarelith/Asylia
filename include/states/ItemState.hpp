@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  ItemActivity.hpp
+ *       Filename:  ItemState.hpp
  *
  *    Description:
  *
@@ -11,19 +11,23 @@
  *
  * =====================================================================================
  */
-#ifndef ITEMACTIVITY_HPP_
-#define ITEMACTIVITY_HPP_
+#ifndef ITEMSTATE_HPP_
+#define ITEMSTATE_HPP_
 
-class ItemActivity : public Activity {
+#include <memory>
+
+#include "ApplicationState.hpp"
+#include "ItemWindow.hpp"
+
+class ItemState : public ApplicationState {
 	public:
-		ItemActivity(Activity *parent = NULL);
-		~ItemActivity();
+		ItemState(ApplicationState *parent = nullptr);
 
 		void update();
 		void render();
 
 	private:
-		ItemWindow *m_itemwin;
+		std::unique_ptr<ItemWindow> m_itemwin;
 };
 
-#endif // ITEMACTIVITY_HPP_
+#endif // ITEMSTATE_HPP_
