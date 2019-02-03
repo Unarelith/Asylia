@@ -11,7 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "EndState.hpp"
+#include "Game.hpp"
+#include "GameWindow.hpp"
+#include "Keyboard.hpp"
+#include "StateManager.hpp"
+#include "Sound.hpp"
+#include "TitleState.hpp"
 
 EndState::EndState(bool disableCancel) {
 	if(!disableCancel) m_cmdwin.addCommand("Cancel");
@@ -43,16 +49,10 @@ void EndState::update() {
 				StateManager::pop();
 				break;
 			case 1:
-#ifndef NO_TITLESCREEN
-				while(StateManager::top()->type() != Type::TitleScreen) {
-					StateManager::pop();
-				}
-#else
 				while(StateManager::size() > 0) {
 					StateManager::pop();
 				}
 				StateManager::push(new TitleState);
-#endif
 				break;
 			case 2:
 				SDL_Delay(100);

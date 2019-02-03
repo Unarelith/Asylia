@@ -11,7 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CharacterManager.hpp"
+#include "EquipState.hpp"
+#include "GameWindow.hpp"
+#include "MenuState.hpp"
+#include "Keyboard.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
 
 EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Equip;

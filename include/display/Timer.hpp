@@ -14,6 +14,9 @@
 #ifndef TIMER_HPP_
 #define TIMER_HPP_
 
+#include "SDLHeaders.hpp"
+#include "Types.hpp"
+
 class Timer {
 	public:
 		Timer();

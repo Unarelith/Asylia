@@ -14,10 +14,11 @@
 #ifndef BATTLECHOICEWINDOW_HPP_
 #define BATTLECHOICEWINDOW_HPP_
 
+#include "CommandWindow.hpp"
+
 class BattleChoiceWindow : public CommandWindow {
 	public:
 		BattleChoiceWindow();
-		~BattleChoiceWindow();
 };
 
 #endif // BATTLECHOICEWINDOW_HPP_

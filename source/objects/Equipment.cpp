@@ -11,10 +11,10 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Equipment.hpp"
 
 Equipment::Equipment() {
-	m_weapon = NULL;
+	m_weapon = nullptr;
 }
 
 void Equipment::equipArmor(Armor *armor) {

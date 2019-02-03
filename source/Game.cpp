@@ -11,19 +11,25 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include <cstdlib>
+#include <ctime>
+
+#include "Config.hpp"
+#include "Game.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
+#include "Keyboard.hpp"
+#include "LanguageManager.hpp"
+#include "SDLManager.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
+#include "TimeManager.hpp"
 
 bool Game::quit = false;
 bool Game::paused = false;
 
-#ifdef __ANDROID__
-std::string to_string(int n) {
-	std::stringstream s; s << n; return s.str();
-}
-#endif
-
 Game::Game() {
-	srand(time(NULL));
+	std::srand(std::time(nullptr));
 
 	SDLManager::init();
 

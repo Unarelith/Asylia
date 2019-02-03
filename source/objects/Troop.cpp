@@ -11,7 +11,7 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Troop.hpp"
 
 Troop::Troop(Image *battleback) {
 	m_battleback = battleback;

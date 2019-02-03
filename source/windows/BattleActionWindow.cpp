@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "BattleActionWindow.hpp"
+#include "GameWindow.hpp"
 
 BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, GameWindow::main->width() / 4) {
 	addCommand("Attack");

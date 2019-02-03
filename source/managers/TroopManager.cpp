@@ -11,14 +11,16 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "BattlerManager.hpp"
+#include "TroopManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Troop*> TroopManager::troops;
 
 void TroopManager::init() {
 	XMLFile doc("data/config/troops.xml");
 
-	XMLElement *troopElement = doc.FirstChildElement("troops").FirstChildElement("troop").ToElement();
+	tinyxml2::XMLElement *troopElement = doc.FirstChildElement("troops").FirstChildElement("troop").ToElement();
 	while(troopElement) {
 		Troop *currentTroop;
 		std::string battleback;
@@ -30,7 +32,7 @@ void TroopManager::init() {
 			currentTroop = new Troop;
 		}
 
-		XMLElement *enemyElement = troopElement->FirstChildElement("enemy");
+		tinyxml2::XMLElement *enemyElement = troopElement->FirstChildElement("enemy");
 		while(enemyElement) {
 			s16 x, y;
 

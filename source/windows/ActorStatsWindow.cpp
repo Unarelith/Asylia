@@ -11,15 +11,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "ActorStatsWindow.hpp"
+#include "BattleState.hpp"
+#include "GameWindow.hpp"
+#include "StateManager.hpp"
 
 ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(), GameWindow::main->height() - 319) {
 }
 
-ActorStatsWindow::~ActorStatsWindow() {
-}
-
-void ActorStatsWindow::drawActors(std::vector<std::pair<u8, Actor*>> actors) {
+void ActorStatsWindow::drawActors(const std::vector<std::pair<u8, Actor*>> &actors) {
 	Window::draw();
 
 	for(u8 i = 0 ; i < actors.size() ; i++) {
@@ -44,7 +44,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	printSP(actor, 20 + m_width / 4 * pos, 84, m_width / 4 * (pos + 1) - 20);
 }
 
-void ActorStatsWindow::drawEnemies(std::vector<std::pair<u8, Enemy*>> enemies) {
+void ActorStatsWindow::drawEnemies(const std::vector<std::pair<u8, Enemy*>> &enemies) {
 	for(u8 i = 0 ; i < enemies.size() ; i++) {
 		drawEnemy(enemies[i].second, i, enemies.size());
 	}

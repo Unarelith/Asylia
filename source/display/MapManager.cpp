@@ -11,7 +11,11 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include <sstream>
+
+#include "EventManager.hpp"
+#include "MapManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Tileset*> MapManager::tilesets;
 std::vector<std::vector<Map*>> MapManager::maps;
@@ -45,7 +49,7 @@ void MapManager::free() {
 void MapManager::initTilesets() {
 	XMLFile doc("data/config/tilesets.xml");
 
-	XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
+	tinyxml2::XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
 	while(tilesetElement) {
 		std::stringstream tilesetFilename;
 		std::stringstream tilesetInfoFilename;
@@ -64,11 +68,11 @@ void MapManager::initTilesets() {
 void MapManager::initMaps() {
 	XMLFile doc("data/config/maps.xml");
 
-	XMLElement *areasElement = doc.FirstChildElement("maps").ToElement();
-	XMLElement *areaElement = areasElement->FirstChildElement("area");
+	tinyxml2::XMLElement *areasElement = doc.FirstChildElement("maps").ToElement();
+	tinyxml2::XMLElement *areaElement = areasElement->FirstChildElement("area");
 	u16 areaID = 0;
 	while(areaElement) {
-		XMLElement *mapElement = areaElement->FirstChildElement("map");
+		tinyxml2::XMLElement *mapElement = areaElement->FirstChildElement("map");
 		std::vector<Map*> currentArea;
 		while(mapElement) {
 			std::stringstream mapFilename;
@@ -86,7 +90,7 @@ void MapManager::initMaps() {
 
 			currentArea.back()->setBattleback(new Image(std::string(std::string("graphics/battlebacks/") + mapElement->Attribute("battleback") + ".jpg").c_str()));
 
-			XMLElement *eventElement = mapElement->FirstChildElement("event");
+			tinyxml2::XMLElement *eventElement = mapElement->FirstChildElement("event");
 			while(eventElement) {
 				currentArea.back()->addEvent(EventManager::getEventByName(eventElement->Attribute("name")));
 
@@ -113,14 +117,14 @@ void MapManager::initMaps() {
 void getNonPassableTiles(const char *filename, Tileset *tileset) {
 	XMLFile doc(filename);
 
-	XMLElement *nonPassableTilesElement = doc.FirstChildElement("map").FirstChildElement("layer").NextSiblingElement().ToElement();
+	tinyxml2::XMLElement *nonPassableTilesElement = doc.FirstChildElement("map").FirstChildElement("layer").NextSiblingElement().ToElement();
 	if(!nonPassableTilesElement) return;
 
 	u16 size = nonPassableTilesElement->IntAttribute("width") * nonPassableTilesElement->IntAttribute("height");
 
 	tileset->nonPassableLayer = new u16[size];
 
-	XMLElement *tileElement = nonPassableTilesElement->FirstChildElement("data")->FirstChildElement("tile");
+	tinyxml2::XMLElement *tileElement = nonPassableTilesElement->FirstChildElement("data")->FirstChildElement("tile");
 
 	for(u16 i = 0 ; i < size ; i++) {
 		if(!tileElement) break;

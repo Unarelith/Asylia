@@ -11,13 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "QuestObjective.hpp"
 
 QuestObjective::QuestObjective() {
 	m_type = Type::Undefined;
 }
 
-QuestObjective::QuestObjective(u16 itemToBring, Item::Type type, std::string eventToBringTo) {
+QuestObjective::QuestObjective(u16 itemToBring, Item::Type type, const std::string &eventToBringTo) {
 	m_type = Type::BringItem;
 
 	m_params.addIntParameter(itemToBring);
@@ -40,12 +40,9 @@ QuestObjective::QuestObjective(u16 enemyToBeat, u16 count) {
 	m_params.addIntParameter(count);
 }
 
-QuestObjective::QuestObjective(std::string eventToTalkTo) {
+QuestObjective::QuestObjective(const std::string &eventToTalkTo) {
 	m_type = Type::TalkToSomeone;
 
 	m_params.addStringParameter(eventToTalkTo);
-}
-
-QuestObjective::~QuestObjective() {
 }
 

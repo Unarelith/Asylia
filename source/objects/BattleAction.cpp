@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "BattleAction.hpp"
+#include "Interface.hpp"
 
 BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
 	m_actor = actor;

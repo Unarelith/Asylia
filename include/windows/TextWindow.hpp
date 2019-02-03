@@ -14,12 +14,13 @@
 #ifndef TEXTWINDOW_HPP_
 #define TEXTWINDOW_HPP_
 
+#include "Window.hpp"
+
 class TextWindow : public Window {
 	public:
 		TextWindow(s16 x, s16 y, u16 width, u16 height);
-		~TextWindow();
 
-		void draw(std::string text);
+		void draw(const std::string &text);
 };
 
 #endif // TEXTWINDOW_HPP_

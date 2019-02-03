@@ -11,7 +11,11 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Config.hpp"
+#include "Keyboard.hpp"
+#include "Player.hpp"
+#include "SpriteAnimationManager.hpp"
+#include "QuestManager.hpp"
 
 Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
 	m_type = Type::Player;

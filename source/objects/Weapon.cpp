@@ -11,9 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Weapon.hpp"
 
-Weapon::Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
+Weapon::Weapon(const std::string &name, const std::string &description, const std::string &thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
 	m_type = Type::Weapon;
 
 	m_atk = atk;
@@ -21,8 +21,5 @@ Weapon::Weapon(std::string name, std::string description, std::string thumbnail,
 
 	// FIXME: Temporary
 	m_equipType = 0;
-}
-
-Weapon::~Weapon() {
 }
 

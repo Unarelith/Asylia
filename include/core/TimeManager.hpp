@@ -14,6 +14,10 @@
 #ifndef TIMEMANAGER_HPP_
 #define TIMEMANAGER_HPP_
 
+#include <vector>
+
+#include "Types.hpp"
+
 namespace TimeManager {
 	void beginMeasuringRenderingTime();
 	void endMeasuringRenderingTime();

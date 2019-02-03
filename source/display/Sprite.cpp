@@ -11,16 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Sprite.hpp"
 
 Sprite::Sprite(const char *filename, u16 frameWidth, u16 frameHeight) : Image(filename) {
 	m_frameWidth = frameWidth;
 	m_frameHeight = frameHeight;
 
 	m_lastFrameDisplayed = 0;
-}
-
-Sprite::~Sprite() {
 }
 
 void Sprite::reload(Sprite *sprite) {

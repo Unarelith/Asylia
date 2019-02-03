@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "ActorChoiceWindow.hpp"
+#include "CharacterManager.hpp"
 
 ActorChoiceWindow::ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height) : SelectableWindow(x, y, width, height) {
 	m_itemMax = CharacterManager::player->teamSize();

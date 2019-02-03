@@ -14,6 +14,10 @@
 #ifndef ITEMMANAGER_HPP_
 #define ITEMMANAGER_HPP_
 
+#include "Armor.hpp"
+#include "Weapon.hpp"
+#include "Skill.hpp"
+
 class ItemManager {
 	public:
 		static void init();

@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "EventManager.hpp"
+#include "LuaHandler.hpp"
 
 std::map<std::string, Event*> EventManager::events;
 
@@ -36,7 +37,7 @@ void EventManager::loadLibs() {
 void EventManager::initEvents() {
 	XMLFile doc("data/config/events.xml");
 
-	XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
+	tinyxml2::XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
 	while(eventElement) {
 		std::string eventType = eventElement->Attribute("type");
 
@@ -53,7 +54,7 @@ void EventManager::initEvents() {
 	}
 }
 
-void EventManager::loadCharacterEvent(XMLElement *characterElement) {
+void EventManager::loadCharacterEvent(tinyxml2::XMLElement *characterElement) {
 	std::string name, appearance;
 	u16 x, y, direction;
 	int frameWidth, frameHeight;
@@ -85,7 +86,7 @@ void EventManager::loadCharacterEvent(XMLElement *characterElement) {
 	);
 }
 
-void EventManager::loadChestEvent(XMLElement *chestElement) {
+void EventManager::loadChestEvent(tinyxml2::XMLElement *chestElement) {
 	std::string name;
 	u16 x, y, chestType;
 

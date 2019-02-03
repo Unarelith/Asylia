@@ -14,6 +14,9 @@
 #ifndef KEYBOARD_HPP_
 #define KEYBOARD_HPP_
 
+#include "SDLHeaders.hpp"
+#include "Types.hpp"
+
 typedef enum {
 	PAD_UP,
 	PAD_DOWN,

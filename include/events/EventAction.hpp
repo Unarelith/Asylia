@@ -14,6 +14,8 @@
 #ifndef EVENTACTION_HPP_
 #define EVENTACTION_HPP_
 
+#include "Parameter.hpp"
+
 class EventAction {
 	public:
 		EventAction(u16 id, u16 actionType, ParameterList parameters);

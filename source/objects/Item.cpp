@@ -11,9 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Item.hpp"
 
-Item::Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation) {
+Item::Item(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation) {
 	m_id = 0;
 
 	m_type = Type::BasicItem;

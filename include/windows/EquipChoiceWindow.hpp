@@ -20,7 +20,6 @@
 class EquipChoiceWindow : public SelectableWindow {
 	public:
 		EquipChoiceWindow(Equipment *equipment);
-		~EquipChoiceWindow();
 
 		void draw(bool drawCursor = true);
 

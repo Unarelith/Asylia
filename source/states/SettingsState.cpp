@@ -11,7 +11,10 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Keyboard.hpp"
+#include "SettingsState.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
 
 SettingsState::SettingsState(ApplicationState *parent) : ApplicationState(parent) {
 	m_settings.addCommand("Sound");

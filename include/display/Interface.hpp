@@ -14,6 +14,9 @@
 #ifndef INTERFACE_HPP_
 #define INTERFACE_HPP_
 
+#include "Font.hpp"
+#include "Image.hpp"
+
 namespace Interface {
 	void init();
 	void free();

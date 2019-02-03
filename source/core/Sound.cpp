@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "Sound.hpp"
 
 Mix_Chunk *Sound::Effect::move = NULL;
 Mix_Chunk *Sound::Effect::confirm = NULL;

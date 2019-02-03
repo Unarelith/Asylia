@@ -11,7 +11,10 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "EquipChoiceWindow.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
+#include "ItemManager.hpp"
 
 EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(150 + (GameWindow::main->width() - 150) / 2, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
 	m_itemMax = 4;
@@ -20,9 +23,6 @@ EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(15
 	m_pos = 0;
 
 	m_equipment = equipment;
-}
-
-EquipChoiceWindow::~EquipChoiceWindow() {
 }
 
 void EquipChoiceWindow::draw(bool drawCursor) {

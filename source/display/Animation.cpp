@@ -11,15 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Animation.hpp"
+#include "Battler.hpp"
 
 Animation::Animation(const char *filename, std::string name, u16 delay, std::vector<u16> frames, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_name = name;
 
 	addAnimation(SpriteAnimation(frames.size(), frames, delay));
-}
-
-Animation::~Animation() {
 }
 
 void Animation::play(Battler *target) {

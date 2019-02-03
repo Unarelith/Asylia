@@ -18,8 +18,7 @@
 
 class Event : public Character {
 	public:
-		Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid = false, u16 frameWidth = 32, u16 frameHeight = 48);
-		~Event();
+		Event(const std::string &name, const std::string &appearance, u16 x, u16 y, u8 anim, bool solid = false, u16 frameWidth = 32, u16 frameHeight = 48);
 
 		void init();
 

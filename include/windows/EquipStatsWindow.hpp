@@ -14,12 +14,14 @@
 #ifndef EQUIPSTATSWINDOW_HPP_
 #define EQUIPSTATSWINDOW_HPP_
 
+#include "Actor.hpp"
+#include "Window.hpp"
+
 class EquipStatsWindow : public Window {
 	public:
 		EquipStatsWindow(Actor *actor);
-		~EquipStatsWindow();
 
-		void draw(Item *currentItem = NULL);
+		void draw(Item *currentItem = nullptr);
 
 	private:
 		Actor *m_actor;

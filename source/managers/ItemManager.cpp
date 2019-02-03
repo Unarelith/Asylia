@@ -11,7 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "AnimationManager.hpp"
+#include "ItemManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Item*> ItemManager::items;
 std::vector<Armor*> ItemManager::armors;
@@ -50,7 +52,7 @@ void ItemManager::free() {
 void ItemManager::loadItems() {
 	XMLFile doc("data/config/items.xml");
 
-	XMLElement *itemElement = doc.FirstChildElement("items").FirstChildElement("item").ToElement();
+	tinyxml2::XMLElement *itemElement = doc.FirstChildElement("items").FirstChildElement("item").ToElement();
 	u8 id = 0;
 	while(itemElement) {
 		const char *animation;
@@ -60,9 +62,9 @@ void ItemManager::loadItems() {
 		if(!animation) animation = "";
 
 		items.push_back(new Item(
-			std::string("Item") + to_string(id),
-			std::string("Item") + to_string(id) + "Desc",
-			std::string("graphics/items/") + to_string(id) + ".png",
+			std::string("Item") + std::to_string(id),
+			std::string("Item") + std::to_string(id) + "Desc",
+			std::string("graphics/items/") + std::to_string(id) + ".png",
 			AnimationManager::getAnimationByName(animation)
 		));
 
@@ -80,13 +82,13 @@ void ItemManager::loadItems() {
 void ItemManager::loadArmors() {
 	XMLFile doc("data/config/armors.xml");
 
-	XMLElement *armorElement = doc.FirstChildElement("armors").FirstChildElement("armor").ToElement();
+	tinyxml2::XMLElement *armorElement = doc.FirstChildElement("armors").FirstChildElement("armor").ToElement();
 	u8 id = 0;
 	while(armorElement) {
 		armors.push_back(new Armor(
-			std::string("Armor") + to_string(id),
-			std::string("Armor") + to_string(id) + "Desc",
-			std::string("graphics/armors/") + to_string(id) + ".png",
+			std::string("Armor") + std::to_string(id),
+			std::string("Armor") + std::to_string(id) + "Desc",
+			std::string("graphics/armors/") + std::to_string(id) + ".png",
 			armorElement->IntAttribute("slot"),
 			armorElement->IntAttribute("defense")
 		));
@@ -101,13 +103,13 @@ void ItemManager::loadArmors() {
 void ItemManager::loadWeapons() {
 	XMLFile doc("data/config/weapons.xml");
 
-	XMLElement *weaponElement = doc.FirstChildElement("weapons").FirstChildElement("weapon").ToElement();
+	tinyxml2::XMLElement *weaponElement = doc.FirstChildElement("weapons").FirstChildElement("weapon").ToElement();
 	u8 id = 0;
 	while(weaponElement) {
 		weapons.push_back(new Weapon(
-			std::string("Weapon") + to_string(id),
-			std::string("Weapon") + to_string(id) + "Desc",
-			std::string("graphics/weapons/") + to_string(id) + ".png",
+			std::string("Weapon") + std::to_string(id),
+			std::string("Weapon") + std::to_string(id) + "Desc",
+			std::string("graphics/weapons/") + std::to_string(id) + ".png",
 			weaponElement->IntAttribute("damage"),
 			weaponElement->DoubleAttribute("hitRate")
 		));
@@ -122,7 +124,7 @@ void ItemManager::loadWeapons() {
 void ItemManager::loadSkills() {
 	XMLFile doc("data/config/skills.xml");
 
-	XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
+	tinyxml2::XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
 	u8 id = 0;
 	while(skillElement) {
 		const char *animation;
@@ -131,9 +133,9 @@ void ItemManager::loadSkills() {
 		if(!animation) animation = "";
 
 		skills.push_back(new Skill(
-			std::string("Skill") + to_string(id),
-			std::string("Skill") + to_string(id) + "Desc",
-			std::string("graphics/skills/") + to_string(id) + ".png",
+			std::string("Skill") + std::to_string(id),
+			std::string("Skill") + std::to_string(id) + "Desc",
+			std::string("graphics/skills/") + std::to_string(id) + ".png",
 			AnimationManager::getAnimationByName(animation),
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")

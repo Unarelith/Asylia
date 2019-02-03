@@ -11,12 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Enemy.hpp"
 
 Enemy::Enemy(std::string name, std::string appearance, u8 level) : Battler(name, appearance, level) {
 	m_type = Type::TypeEnemy;
-}
-
-Enemy::~Enemy() {
 }
 

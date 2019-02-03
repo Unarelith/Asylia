@@ -11,13 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
+#include "Keyboard.hpp"
+#include "QuestInfoWindow.hpp"
 
 QuestInfoWindow::QuestInfoWindow() : Window(200, 116, GameWindow::main->width() - 200, GameWindow::main->height() - 116) {
 	m_mode = Mode::ObjectivesMode;
-}
-
-QuestInfoWindow::~QuestInfoWindow() {
 }
 
 void QuestInfoWindow::update() {
@@ -40,8 +40,8 @@ void QuestInfoWindow::draw(Quest *quest) {
 	}
 
 	if(quest) {
-		std::string questName = _t(std::string("Quest") + to_string(quest->id()));
-		std::string questDesc = std::string("    ") + _t(std::string("Quest") + to_string(quest->id()) + "Desc");
+		std::string questName = _t(std::string("Quest") + std::to_string(quest->id()));
+		std::string questDesc = std::string("    ") + _t(std::string("Quest") + std::to_string(quest->id()) + "Desc");
 
 		Interface::defaultFont->printCentered(questName.c_str(), m_x, m_y, GameWindow::main->width() - m_x, 64, FONT_MAXI);
 
@@ -53,7 +53,7 @@ void QuestInfoWindow::draw(Quest *quest) {
 			Interface::defaultFont->print((_t("Objectives") + ":").c_str(), m_x + 20, m_y + 214, FONT_LARGE, Color::system);
 
 			for(auto it : quest->objectives()) {
-				std::string objectiveDesc = std::string("- ") + _t(std::string("Quest") + to_string(quest->id()) + "_Obj" + to_string(it->id()) + "Desc");
+				std::string objectiveDesc = std::string("- ") + _t(std::string("Quest") + std::to_string(quest->id()) + "_Obj" + std::to_string(it->id()) + "Desc");
 
 				Interface::defaultFont->print(objectiveDesc.c_str(), m_x + 30, m_y + 242 + 28 * it->id(), FONT_LARGE);
 

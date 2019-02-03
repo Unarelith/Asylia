@@ -11,7 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "SDLManager.hpp"
+#include "SDLHeaders.hpp"
 
 void SDLManager::init() {
 	if(SDL_Init(SDL_INIT_VIDEO) < 0) {

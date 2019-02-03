@@ -11,7 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Character.hpp"
+#include "CharacterManager.hpp"
+#include "Event.hpp"
+#include "Map.hpp"
+#include "MapManager.hpp"
+#include "StateManager.hpp"
 
 Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_type = Type::None;

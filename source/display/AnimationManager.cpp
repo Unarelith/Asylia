@@ -11,14 +11,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "AnimationManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Animation*> AnimationManager::animations;
 
 void AnimationManager::init() {
 	XMLFile doc("data/config/animations.xml");
 
-	XMLElement *animationElement = doc.FirstChildElement("animations").FirstChildElement("animation").ToElement();
+	tinyxml2::XMLElement *animationElement = doc.FirstChildElement("animations").FirstChildElement("animation").ToElement();
 	while(animationElement) {
 		std::string name, filename;
 		u16 delay;
@@ -29,7 +30,7 @@ void AnimationManager::init() {
 		delay = animationElement->IntAttribute("delay");
 
 		std::vector<u16> frames;
-		XMLElement *frameElement = animationElement->FirstChildElement("frame");
+		tinyxml2::XMLElement *frameElement = animationElement->FirstChildElement("frame");
 		while(frameElement) {
 			frames.push_back(frameElement->IntAttribute("id"));
 

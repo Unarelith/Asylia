@@ -11,7 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include <numeric>
+
+#include "GameWindow.hpp"
+#include "InfoWindow.hpp"
+#include "SDLHeaders.hpp"
+#include "TimeManager.hpp"
 
 u32 TimeManager::renderingTimeMean = 0;
 u32 TimeManager::tempBeginRendering = 0;
@@ -85,6 +90,6 @@ void TimeManager::renderRTMCounter() {
 				   GameWindow::main->height() - 52,
 				   120, 52);
 
-	win.drawTextCentered(std::string("RTM: ") + to_string(renderingTimeMean));
+	win.drawTextCentered(std::string("RTM: ") + std::to_string(renderingTimeMean));
 }
 

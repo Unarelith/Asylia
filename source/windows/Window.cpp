@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Interface.hpp"
+#include "Window.hpp"
 
 Window::Window(s16 x, s16 y, u16 width, u16 height) {
 	m_x = x;
@@ -21,12 +22,6 @@ Window::Window(s16 x, s16 y, u16 width, u16 height) {
 	m_height = height;
 
 	m_cursor = Rectangle(0, 0, 0, 0);
-}
-
-Window::~Window() {
-}
-
-void Window::update() {
 }
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
@@ -72,8 +67,8 @@ void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 na
 
 	Interface::defaultFont->printScaled(statName.c_str(), m_x + x, m_y + y, nameWidth, 28, FONT_LARGE, Color::system);
 
-	if(max == 0) Interface::defaultFont->printToImage(to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
-	else Interface::defaultFont->printToImage(std::string(to_string(statValue) + "/" + to_string(max)).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
+	if(max == 0) Interface::defaultFont->printToImage(std::to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
+	else Interface::defaultFont->printToImage(std::string(std::to_string(statValue) + "/" + std::to_string(max)).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
 
 	statImg.render(statImg.posRect().x - statImg.width());
 }
@@ -112,7 +107,7 @@ void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
 	item->thumbnail()->render(m_x + x, m_y + y);
 
 	if(count != 0) {
-		Interface::defaultFont->printToImage(to_string(count).c_str(), m_x + x - 16 + width, m_y + y, &countImg, FONT_LARGE);
+		Interface::defaultFont->printToImage(std::to_string(count).c_str(), m_x + x - 16 + width, m_y + y, &countImg, FONT_LARGE);
 		countImg.render(countImg.posRect().x - countImg.width());
 	}
 

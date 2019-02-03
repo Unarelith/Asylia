@@ -11,15 +11,17 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "CharacterManager.hpp"
+#include "XMLFile.hpp"
 
-Player *CharacterManager::player = NULL;
+Player *CharacterManager::player = nullptr;
 
 void CharacterManager::init() {
 	XMLFile doc("data/config/player.xml");
 
 	const char *appearance = doc.FirstChildElement("player").ToElement()->Attribute("appearance");
-	XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
+	tinyxml2::XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
 
 	player = new Player(std::string("graphics/characters/") + appearance + ".png",
 						positionElement->IntAttribute("x") * 32,
@@ -34,7 +36,7 @@ void CharacterManager::free() {
 void CharacterManager::loadActorsTeam() {
 	XMLFile doc("data/config/player.xml");
 
-	XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
+	tinyxml2::XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
 	while(actorElement) {
 		if(player->teamSize() == 4) {
 			warning("Player can't handle more than 4 actors in team.");

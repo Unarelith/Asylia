@@ -14,6 +14,10 @@
 #ifndef SPRITEANIMATIONMANAGER_HPP_
 #define SPRITEANIMATIONMANAGER_HPP_
 
+#include <map>
+
+#include "SpriteAnimation.hpp"
+
 namespace SpriteAnimationManager {
 	void init();
 	void free();

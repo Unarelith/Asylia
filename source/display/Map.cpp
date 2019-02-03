@@ -11,7 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "GameWindow.hpp"
+#include "Map.hpp"
+#include "MapManager.hpp"
+#include "SDLHeaders.hpp"
+#include "XMLFile.hpp"
 
 s32 Map::scrollX = 0;
 s32 Map::scrollY = 0;
@@ -31,12 +36,12 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 
 	m_data = new s16*[m_layers];
 
-	XMLElement *layerElement = doc.FirstChildElement("map").FirstChildElement("layer").ToElement();
+	tinyxml2::XMLElement *layerElement = doc.FirstChildElement("map").FirstChildElement("layer").ToElement();
 
 	for(u8 i = 0 ; i < m_layers ; i++) {
 		m_data[i] = new s16[m_width * m_height];
 
-		XMLElement *tileElement = layerElement->FirstChildElement("data")->FirstChildElement("tile");
+		tinyxml2::XMLElement *tileElement = layerElement->FirstChildElement("data")->FirstChildElement("tile");
 
 		for(u16 j = 0 ; j < m_width * m_height ; j++) {
 			if(!tileElement) break;

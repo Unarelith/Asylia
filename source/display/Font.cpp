@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "Font.hpp"
 
 Font::Font(const char *filename) {
 	m_fontSmall  = TTF_OpenFont(filename, FONT_SMALL);
@@ -143,15 +144,15 @@ void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
 
 	TTF_SetFontOutline(m_fontLarge, 3);
 
-	print(to_string(damages).c_str(), x - 3, y - 3, FONT_LARGE, Color::black);
+	print(std::to_string(damages).c_str(), x - 3, y - 3, FONT_LARGE, Color::black);
 
 	TTF_SetFontOutline(m_fontLarge, 2);
 
-	print(to_string(damages).c_str(), x - 2, y - 2, FONT_LARGE, Color::white);
+	print(std::to_string(damages).c_str(), x - 2, y - 2, FONT_LARGE, Color::white);
 
 	TTF_SetFontOutline(m_fontLarge, 0);
 
-	print(to_string(damages).c_str(), x, y, FONT_LARGE, color);
+	print(std::to_string(damages).c_str(), x, y, FONT_LARGE, color);
 
 	TTF_SetFontHinting(m_fontLarge, TTF_HINTING_NORMAL);
 	TTF_SetFontKerning(m_fontLarge, 1);

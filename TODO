@@ -1,5 +1,7 @@
 # TODO
 
-• TODO: Delete `Asylia.hpp` and use headers when they’re needed
+• DONE: Rename “Activity” into “State” to prepare for GameKit migration
+• DONE: Delete `Asylia.hpp` and use headers when they’re needed
+• TODO: Remove useless dynamic allocations
 • TODO: Use `GameKit`
 

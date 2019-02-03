@@ -19,7 +19,7 @@
 
 class Item {
 	public:
-		Item(std::string name, std::string description, std::string thumbnail, Animation *battleAnimation = NULL);
+		Item(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation = NULL);
 		~Item();
 
 		u16 id() const { return m_id; }

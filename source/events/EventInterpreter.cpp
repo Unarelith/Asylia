@@ -11,7 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "EventInterpreter.hpp"
+#include "EventListener.hpp"
+#include "StateManager.hpp"
 
 std::map<std::string, std::vector<EventAction*>> EventInterpreter::actions;
 

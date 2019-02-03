@@ -11,7 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Battler.hpp"
+#include "Character.hpp"
+#include "SpriteAnimationManager.hpp"
 
 Battler::Battler(const Battler &battler) {
 	m_name = battler.m_name;

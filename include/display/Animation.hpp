@@ -21,7 +21,6 @@ class Battler;
 class Animation : public Sprite {
 	public:
 		Animation(const char *filename, std::string name, u16 delay, std::vector<u16> frames, u16 frameWidth = 192, u16 frameHeight = 192);
-		~Animation();
 
 		void play(Battler *target);
 

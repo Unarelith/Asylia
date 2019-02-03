@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Inventory.hpp"
+#include "ItemManager.hpp"
 
 Inventory::Inventory() {
 }

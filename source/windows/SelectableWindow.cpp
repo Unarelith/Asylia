@@ -11,7 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Keyboard.hpp"
+#include "SelectableWindow.hpp"
+#include "Sound.hpp"
 
 u16 SelectableWindow::lastPos = 0;
 
@@ -43,8 +45,6 @@ void SelectableWindow::updateCursor() {
 }
 
 void SelectableWindow::update() {
-	Window::update();
-
 	u8 rowMax = m_height / 32 - 1;
 
 	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 150)) {

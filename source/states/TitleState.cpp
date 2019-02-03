@@ -11,7 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Game.hpp"
+#include "GameWindow.hpp"
+#include "Keyboard.hpp"
+#include "MapState.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
+#include "TitleState.hpp"
 
 TitleState::TitleState() {
 	m_type = Type::TitleScreen;

@@ -14,10 +14,12 @@
 #ifndef QUESTINFOWINDOW_HPP_
 #define QUESTINFOWINDOW_HPP_
 
+#include "Quest.hpp"
+#include "Window.hpp"
+
 class QuestInfoWindow : public Window {
 	public:
 		QuestInfoWindow();
-		~QuestInfoWindow();
 
 		void update();
 		void draw(Quest *quest);

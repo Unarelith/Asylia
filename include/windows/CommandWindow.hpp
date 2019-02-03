@@ -20,7 +20,6 @@ class CommandWindow : public SelectableWindow {
 	public:
 		CommandWindow(s16 x, s16 y, u16 width, bool horizontal = false, bool centered = false);
 		CommandWindow(u16 width);
-		~CommandWindow();
 
 		void clear() { m_commands.clear(); if(m_horizontal) m_height = 64; else m_height = 32; m_itemMax = 0; }
 

@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CommandWindow.hpp"
+#include "Interface.hpp"
 
 CommandWindow::CommandWindow(s16 x, s16 y, u16 width, bool horizontal, bool centered) : SelectableWindow(x, y, width, (horizontal)?(64):(32)) {
 	m_horizontal = horizontal;
@@ -29,9 +30,6 @@ CommandWindow::CommandWindow(u16 width) : SelectableWindow(0, 0, width, 32) {
 	m_itemMax = 0;
 
 	m_pos = 0;
-}
-
-CommandWindow::~CommandWindow() {
 }
 
 void CommandWindow::drawItem(u8 pos) {

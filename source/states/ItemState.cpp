@@ -11,7 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CharacterManager.hpp"
+#include "GameWindow.hpp"
+#include "ItemState.hpp"
+#include "Keyboard.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
 
 ItemState::ItemState(ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Items;

@@ -11,7 +11,7 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Timer.hpp"
 
 Timer::Timer() {
 	m_t = SDL_GetTicks();

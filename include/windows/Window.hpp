@@ -20,9 +20,6 @@
 class Window {
 	public:
 		Window(s16 x, s16 y, u16 width, u16 height);
-		~Window();
-
-		void update();
 
 		void drawCursor(s16 x, s16 y, u16 width, u16 height);
 		void drawWindow(s16 x, s16 y, u16 width, u16 height);

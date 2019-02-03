@@ -11,14 +11,15 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "QuestManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Quest*> QuestManager::quests;
 
 void QuestManager::init() {
 	XMLFile doc("data/config/quests.xml");
 
-	XMLElement *questElement = doc.FirstChildElement("quests").FirstChildElement("quest").ToElement();
+	tinyxml2::XMLElement *questElement = doc.FirstChildElement("quests").FirstChildElement("quest").ToElement();
 	while(questElement) {
 		u16 exp, gold;
 
@@ -27,7 +28,7 @@ void QuestManager::init() {
 
 		quests.push_back(new Quest(exp, gold));
 
-		XMLElement *itemElement = questElement->FirstChildElement("item");
+		tinyxml2::XMLElement *itemElement = questElement->FirstChildElement("item");
 		while(itemElement) {
 			std::string type = itemElement->Attribute("type");
 
@@ -47,7 +48,7 @@ void QuestManager::init() {
 			itemElement = itemElement->NextSiblingElement("item");
 		}
 
-		XMLElement *objectiveElement = questElement->FirstChildElement("objectives")->FirstChildElement("objective");
+		tinyxml2::XMLElement *objectiveElement = questElement->FirstChildElement("objectives")->FirstChildElement("objective");
 		while(objectiveElement) {
 			std::string type = objectiveElement->Attribute("type");
 

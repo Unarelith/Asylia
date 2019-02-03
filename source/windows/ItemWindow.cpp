@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CharacterManager.hpp"
+#include "ItemWindow.hpp"
 
 ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
 	m_inventory = new Inventory(*inventory);
@@ -22,9 +23,6 @@ ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory
 	m_pos = 0;
 
 	m_infoWindow = new InfoWindow(infowinX, infowinY, width, 52);
-}
-
-ItemWindow::~ItemWindow() {
 }
 
 void ItemWindow::drawItem(u8 pos) {

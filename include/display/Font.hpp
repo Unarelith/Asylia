@@ -14,6 +14,9 @@
 #ifndef FONT_HPP_
 #define FONT_HPP_
 
+#include "Image.hpp"
+#include "SDLHeaders.hpp"
+
 typedef enum {
 	FONT_SMALL = 11,
 	FONT_MEDIUM = 16,

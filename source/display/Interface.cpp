@@ -11,15 +11,16 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
 
-Image *Interface::pad = NULL;
-Image *Interface::buttonA = NULL;
-Image *Interface::buttonB = NULL;
-Image *Interface::buttonMenu = NULL;
+Image *Interface::pad = nullptr;
+Image *Interface::buttonA = nullptr;
+Image *Interface::buttonB = nullptr;
+Image *Interface::buttonMenu = nullptr;
 
-Font *Interface::defaultFont = NULL;
-Image *Interface::interface = NULL;
+Font *Interface::defaultFont = nullptr;
+Image *Interface::interface = nullptr;
 
 void Interface::init() {
 	defaultFont = new Font("fonts/arial.ttf");

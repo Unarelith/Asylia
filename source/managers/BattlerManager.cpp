@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "BattlerManager.hpp"
+#include "XMLFile.hpp"
 
 std::vector<Actor*> BattlerManager::actors;
 std::vector<Enemy*> BattlerManager::enemies;
@@ -24,7 +25,7 @@ void BattlerManager::init() {
 void BattlerManager::initActors() {
 	XMLFile doc("data/config/actors.xml");
 
-	XMLElement *actorElement = doc.FirstChildElement("actors").FirstChildElement("actor").ToElement();
+	tinyxml2::XMLElement *actorElement = doc.FirstChildElement("actors").FirstChildElement("actor").ToElement();
 	while(actorElement) {
 		std::string name, appearance;
 		u8 level;
@@ -52,7 +53,7 @@ void BattlerManager::initActors() {
 void BattlerManager::initEnemies() {
 	XMLFile doc("data/config/enemies.xml");
 
-	XMLElement *enemyElement = doc.FirstChildElement("enemies").FirstChildElement("enemy").ToElement();
+	tinyxml2::XMLElement *enemyElement = doc.FirstChildElement("enemies").FirstChildElement("enemy").ToElement();
 	while(enemyElement) {
 		std::string name, appearance;
 		u8 level;
@@ -73,7 +74,7 @@ void BattlerManager::initEnemies() {
 			enemyElement->FirstChildElement("stats")->IntAttribute("int")
 		);
 
-		XMLElement *itemElement = enemyElement->FirstChildElement("item");
+		tinyxml2::XMLElement *itemElement = enemyElement->FirstChildElement("item");
 		while(itemElement) {
 			u16 id, count;
 			double chance;

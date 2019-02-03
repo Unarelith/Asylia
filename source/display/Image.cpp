@@ -11,7 +11,10 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Debug.hpp"
+#include "GameWindow.hpp"
+#include "Image.hpp"
+#include "SDLHeaders.hpp"
 
 Image::Image() {
 	m_filename = "";

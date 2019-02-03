@@ -11,9 +11,13 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Event.hpp"
+#include "EventInterpreter.hpp"
+#include "LuaHandler.hpp"
+#include "SpriteAnimationManager.hpp"
+#include "StateManager.hpp"
 
-Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
+Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {
 		m_type = Type::TypeEvent;
 
@@ -41,9 +45,6 @@ Event::Event(std::string name, std::string appearance, u16 x, u16 y, u8 anim, bo
 	m_currentActionID = 0;
 }
 
-Event::~Event() {
-}
-
 void Event::init() {
 	LuaHandler::doFile((m_folder + "main.lua").c_str());
 	LuaHandler::doString(m_name + ".init()");
@@ -59,7 +60,7 @@ void Event::update() {
 	updateActions();
 
 	if(StateManager::top()->type() == ApplicationState::Type::Map) {
-		move(m_name + ".movements[" + to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + to_string(m_speed) + ")");
+		move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
 	}
 
 	LuaHandler::doString(m_name + ".update()");

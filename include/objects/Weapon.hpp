@@ -18,8 +18,7 @@
 
 class Weapon : public Item {
 	public:
-		Weapon(std::string name, std::string description, std::string thumbnail, u16 atk, double hitRate);
-		~Weapon();
+		Weapon(const std::string &name, const std::string &description, const std::string &thumbnail, u16 atk, double hitRate);
 
 		u16 atk() const { return m_atk; }
 		double hitRate() const { return m_hitRate; }

@@ -11,9 +11,11 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
+#include "Keyboard.hpp"
 
-const u8 *Keyboard::state = NULL;
+const u8 *Keyboard::state = nullptr;
 u8 Keyboard::padState[7] = {0, 0, 0, 0, 0, 0, 0};
 s32 Keyboard::padFinger[7] = {-1, -1, -1, -1, -1, -1, -1};
 u32 Keyboard::lastTimePressed[7] = {0, 0, 0, 0, 0, 0, 0};
@@ -38,7 +40,7 @@ u32 Keyboard::keysCode[7] = {
 };
 
 const u8 *Keyboard::getState() {
-	return SDL_GetKeyboardState(NULL);
+	return SDL_GetKeyboardState(nullptr);
 }
 
 bool Keyboard::isKeyPressed(u32 key) {

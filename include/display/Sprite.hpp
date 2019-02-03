@@ -20,7 +20,6 @@
 class Sprite : public Image {
 	public:
 		Sprite(const char *filename, u16 frameWidth, u16 frameHeight);
-		~Sprite();
 
 		void reload(Sprite *sprite);
 

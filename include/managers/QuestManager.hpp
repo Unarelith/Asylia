@@ -14,6 +14,8 @@
 #ifndef QUESTMANAGER_HPP_
 #define QUESTMANAGER_HPP_
 
+#include "Quest.hpp"
+
 namespace QuestManager {
 	void init();
 	void free();

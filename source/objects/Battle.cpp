@@ -11,7 +11,12 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include <algorithm>
+
+#include "Battle.hpp"
+#include "Interface.hpp"
+#include "ItemManager.hpp"
+#include "MapManager.hpp"
 
 Battle::Battle(const Battle &battle) {
 	for(auto &it : battle.m_actors) {

@@ -20,7 +20,6 @@
 class Enemy : public Battler {
 	public:
 		Enemy(std::string name, std::string appearance, u8 level);
-		~Enemy();
 
 		std::string name() const { return _t(m_name); }
 

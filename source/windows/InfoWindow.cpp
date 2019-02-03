@@ -11,12 +11,10 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "InfoWindow.hpp"
+#include "Interface.hpp"
 
 InfoWindow::InfoWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
-}
-
-InfoWindow::~InfoWindow() {
 }
 
 void InfoWindow::drawTextScaled(std::string text) {

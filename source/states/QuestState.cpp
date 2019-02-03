@@ -11,7 +11,14 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CharacterManager.hpp"
+#include "CommandWindow.hpp"
+#include "GameWindow.hpp"
+#include "InfoWindow.hpp"
+#include "Keyboard.hpp"
+#include "QuestState.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
 
 QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_mode = Mode::CategoryChoice;
@@ -57,7 +64,7 @@ void QuestState::update() {
 							m_currentQuest = it;
 							first = true;
 						}
-						m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
+						m_questListwin->addCommand(std::string("Quest") + std::to_string(it->id()));
 						break;
 					case 1:
 						if(!it->completed()) {
@@ -65,7 +72,7 @@ void QuestState::update() {
 								m_currentQuest = it;
 								first = true;
 							}
-							m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
+							m_questListwin->addCommand(std::string("Quest") + std::to_string(it->id()));
 						}
 						break;
 					case 2:
@@ -74,7 +81,7 @@ void QuestState::update() {
 								m_currentQuest = it;
 								first = true;
 							}
-							m_questListwin->addCommand(std::string("Quest") + to_string(it->id()));
+							m_questListwin->addCommand(std::string("Quest") + std::to_string(it->id()));
 						}
 						break;
 					default: break;

@@ -11,9 +11,9 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "Armor.hpp"
 
-Armor::Armor(std::string name, std::string description, std::string thumbnail, u8 slot, u16 def) : Item(name, description, thumbnail) {
+Armor::Armor(const std::string &name, const std::string &description, const std::string &thumbnail, u8 slot, u16 def) : Item(name, description, thumbnail) {
 	m_type = Type::Armor;
 
 	m_slot = slot;

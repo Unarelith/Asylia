@@ -14,16 +14,16 @@
 #ifndef QUESTOBJECTIVE_HPP_
 #define QUESTOBJECTIVE_HPP_
 
+#include "Item.hpp"
 #include "Parameter.hpp"
 
 class QuestObjective {
 	public:
 		QuestObjective();
-		QuestObjective(u16 itemToBring, Item::Type type, std::string eventToBringTo);
+		QuestObjective(u16 itemToBring, Item::Type type, const std::string &eventToBringTo);
 		QuestObjective(u16 itemToGet, Item::Type type, u16 count);
 		QuestObjective(u16 enemyToBeat, u16 count);
-		QuestObjective(std::string eventToTalkTo);
-		~QuestObjective();
+		QuestObjective(const std::string &eventToTalkTo);
 
 		enum Type {
 			Undefined,

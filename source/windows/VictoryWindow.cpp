@@ -11,7 +11,11 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "CharacterManager.hpp"
+#include "GameWindow.hpp"
+#include "Interface.hpp"
+#include "Sound.hpp"
+#include "VictoryWindow.hpp"
 
 VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
 	m_battle = battle;

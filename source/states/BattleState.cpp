@@ -11,7 +11,19 @@
  *
  * =====================================================================================
  */
-#include "Asylia.hpp"
+#include "BattleState.hpp"
+#include "CharacterManager.hpp"
+#include "EndState.hpp"
+#include "EventListener.hpp"
+#include "GameWindow.hpp"
+#include "InfoWindow.hpp"
+#include "Interface.hpp"
+#include "ItemManager.hpp"
+#include "ItemWindow.hpp"
+#include "Keyboard.hpp"
+#include "Sound.hpp"
+#include "StateManager.hpp"
+#include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
 	m_type = Type::BattleAct;
@@ -301,7 +313,7 @@ void BattleState::render() {
 		if(m_mode == Mode::ChooseEnemyTarget) {
 			Enemy *enemy = m_battle->getEnemy(m_arrowPos);
 			m_battle->drawArrow(enemy);
-			m_infowin->drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + to_string(enemy->hp()) + "/" + to_string(enemy->basehp()) + "]");
+			m_infowin->drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + std::to_string(enemy->hp()) + "/" + std::to_string(enemy->basehp()) + "]");
 		}
 
 		m_actorStatswin.drawActors(m_battle->actors());
