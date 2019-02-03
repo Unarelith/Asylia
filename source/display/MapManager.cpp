@@ -19,7 +19,7 @@
 
 std::vector<Tileset*> MapManager::tilesets;
 std::vector<std::vector<Map*>> MapManager::maps;
-Map *MapManager::currentMap = NULL;
+Map *MapManager::currentMap = nullptr;
 
 void MapManager::init() {
 	initTilesets();
@@ -43,7 +43,7 @@ void MapManager::free() {
 		tilesets.pop_back();
 	}
 
-	currentMap = NULL;
+	currentMap = nullptr;
 }
 
 void MapManager::initTilesets() {

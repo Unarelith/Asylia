@@ -23,8 +23,6 @@
 
 #define CHARA_SPEED 4
 
-#define NO_TITLESCREEN
-
 #define COLORED_DEBUG
 
 #ifdef __ANDROID__

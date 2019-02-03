@@ -18,12 +18,9 @@
 std::stack<ApplicationState*> StateManager::activities;
 
 void StateManager::init() {
-#ifdef NO_TITLESCREEN
 	activities.push(new MapState);
 	((MapState *)activities.top())->init();
-#else
-	activities.push(new TitleState);
-#endif
+	// activities.push(new TitleState);
 }
 
 void StateManager::free() {

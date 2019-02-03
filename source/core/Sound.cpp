@@ -14,18 +14,18 @@
 #include "Debug.hpp"
 #include "Sound.hpp"
 
-Mix_Chunk *Sound::Effect::move = NULL;
-Mix_Chunk *Sound::Effect::confirm = NULL;
-Mix_Chunk *Sound::Effect::back = NULL;
-Mix_Chunk *Sound::Effect::blocked = NULL;
+Mix_Chunk *Sound::Effect::move = nullptr;
+Mix_Chunk *Sound::Effect::confirm = nullptr;
+Mix_Chunk *Sound::Effect::back = nullptr;
+Mix_Chunk *Sound::Effect::blocked = nullptr;
 
 bool Sound::Effect::mute = true;
 
-Mix_Music *Sound::Music::battle = NULL;
-Mix_Music *Sound::Music::theme = NULL;
-Mix_Music *Sound::Music::title = NULL;
+Mix_Music *Sound::Music::battle = nullptr;
+Mix_Music *Sound::Music::theme = nullptr;
+Mix_Music *Sound::Music::title = nullptr;
 
-Mix_Music *Sound::Music::current = NULL;
+Mix_Music *Sound::Music::current = nullptr;
 
 void Sound::init() {
 	Effect::init();
@@ -95,7 +95,7 @@ void Sound::Music::play(Mix_Music *music, int loops) {
 }
 
 void Sound::Music::halt() {
-	current = NULL;
+	current = nullptr;
 	Mix_HaltMusic();
 }
 

@@ -57,10 +57,10 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
 
-	m_sublayersTex = NULL;
-	m_overlayTex = NULL;
+	m_sublayersTex = nullptr;
+	m_overlayTex = nullptr;
 
-	m_battleback = NULL;
+	m_battleback = nullptr;
 }
 
 Map::~Map() {
@@ -86,7 +86,7 @@ Event *Map::getEvent(std::string name) {
 			return m_events[i];
 		}
 	}
-	return NULL;
+	return nullptr;
 }
 
 void Map::eventsUpdate() {
@@ -122,7 +122,7 @@ void Map::loadTile(u16 tileX, u16 tileY, u8 layer) {
 void Map::load() {
 	if(m_sublayersTex && m_overlayTex) return;
 
-	SDL_QueryTexture(m_tileset->tiles->texture(), &m_pixelFormat, NULL, NULL, NULL);
+	SDL_QueryTexture(m_tileset->tiles->texture(), &m_pixelFormat, nullptr, nullptr, nullptr);
 
 	m_sublayersTex = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
 	m_overlayTex = SDL_CreateTexture(GameWindow::main->renderer(), m_pixelFormat, SDL_TEXTUREACCESS_TARGET, m_width * m_tileset->tileWidth, m_height * m_tileset->tileHeight);
@@ -143,7 +143,7 @@ void Map::load() {
 		}
 	}
 
-	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
+	SDL_SetRenderTarget(GameWindow::main->renderer(), nullptr);
 
 	for(u16 i = 0 ; i < m_events.size() ; i++) {
 		m_events[i]->init();

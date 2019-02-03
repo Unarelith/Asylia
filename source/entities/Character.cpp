@@ -123,7 +123,7 @@ void Character::mapCollisions() {
 				  m_y + m_hitboxY + m_hitboxH - 1))) {
 		m_vx = 0;
 		m_vxCount = 32;
-		collisionAction(NULL);
+		collisionAction(nullptr);
 	}
 
 	if((!passable(m_x + m_hitboxX,
@@ -136,7 +136,7 @@ void Character::mapCollisions() {
 				  m_y + m_hitboxY + m_hitboxH - 1 + m_vy))) {
 		m_vy = 0;
 		m_vyCount = 32;
-		collisionAction(NULL);
+		collisionAction(nullptr);
 	}
 }
 
@@ -213,7 +213,7 @@ bool Character::canInitiateConversationWith(Character *c) {
 }
 
 void Character::eventCollisions() {
-	m_inFrontOf = NULL;
+	m_inFrontOf = nullptr;
 
 	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
 		if(MapManager::currentMap->events()[i] != this) {

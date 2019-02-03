@@ -72,7 +72,7 @@ void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 }
 
 Item *ItemWindow::currentItem() {
-	if(m_pos >= m_inventory->nbItems()) return NULL;
+	if(m_pos >= m_inventory->nbItems()) return nullptr;
 	else return m_inventory->getItem(m_pos);
 }
 

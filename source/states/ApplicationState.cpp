@@ -69,12 +69,12 @@ void ApplicationState::pollEvents() {
 
 void ApplicationState::renderBackground() {
 	SDL_Rect posRect = {0, 0, GameWindow::main->width(), GameWindow::main->height()};
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, NULL, &posRect);
+	SDL_RenderCopy(GameWindow::main->renderer(), m_background, nullptr, &posRect);
 }
 
 void ApplicationState::screenshot(ApplicationState *applicationstate) {
 	SDL_SetRenderTarget(GameWindow::main->renderer(), m_background);
 	applicationstate->render();
-	SDL_SetRenderTarget(GameWindow::main->renderer(), NULL);
+	SDL_SetRenderTarget(GameWindow::main->renderer(), nullptr);
 }
 

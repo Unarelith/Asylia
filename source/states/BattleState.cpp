@@ -44,7 +44,7 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 
 	m_infowin = new InfoWindow(0, 0, GameWindow::main->width(), 52);
 
-	m_currentItem = NULL;
+	m_currentItem = nullptr;
 
 	m_processingAction = false;
 
@@ -129,7 +129,7 @@ void BattleState::update() {
 			if(m_currentPos == 0) {
 				m_mode = Mode::Choice;
 			} else {
-				if(m_battle->getNextActorPair(-1, m_currentPos).second == NULL) {
+				if(m_battle->getNextActorPair(-1, m_currentPos).second == nullptr) {
 					m_currentPos = 0;
 					m_mode = Mode::Choice;
 				} else {

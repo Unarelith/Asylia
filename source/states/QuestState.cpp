@@ -54,7 +54,7 @@ void QuestState::update() {
 			s_load = false;
 
 			m_questListwin->clear();
-			m_currentQuest = NULL;
+			m_currentQuest = nullptr;
 
 			bool first = false;
 			for(auto it : CharacterManager::player->quests()) {

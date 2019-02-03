@@ -29,7 +29,7 @@ Font::~Font() {
 }
 
 void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -46,7 +46,7 @@ void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
 }
 
 void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -67,7 +67,7 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 }
 
 void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -84,7 +84,7 @@ void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize si
 }
 
 void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -104,7 +104,7 @@ void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 heig
 }
 
 void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -121,7 +121,7 @@ void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, Fo
 }
 
 void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;
@@ -159,7 +159,7 @@ void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
 }
 
 void Font::setStyle(FontSize size, int style) {
-	TTF_Font *font = NULL;
+	TTF_Font *font = nullptr;
 
 	switch(size) {
 		case FONT_SMALL:	font = m_fontSmall;		break;

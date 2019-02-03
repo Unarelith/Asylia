@@ -18,7 +18,7 @@
 
 class Troop {
 	public:
-		Troop(Image *battleback = NULL);
+		Troop(Image *battleback = nullptr);
 		~Troop();
 
 		Image *battleback() const { return m_battleback; }
