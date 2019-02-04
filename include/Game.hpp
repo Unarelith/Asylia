@@ -16,6 +16,7 @@
 
 #include <gk/core/SDLLoader.hpp>
 
+#include "ApplicationStateStack.hpp"
 #include "GameWindow.hpp"
 #include "LanguageManager.hpp"
 
@@ -31,6 +32,8 @@ class Game {
 
 	private:
 		gk::SDLLoader m_sdlLoader;
+
+		ApplicationStateStack m_stateStack;
 
 		GameWindow m_window;
 

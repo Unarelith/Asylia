@@ -15,7 +15,7 @@
 #include "EventInterpreter.hpp"
 #include "LuaHandler.hpp"
 #include "SpriteAnimationManager.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {
@@ -55,7 +55,7 @@ void Event::move(std::string function) {
 void Event::update() {
 	updateActions();
 
-	if(StateManager::top()->type() == ApplicationState::Type::Map) {
+	if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Map) {
 		move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
 	}
 

@@ -25,7 +25,7 @@
 #include "QuestManager.hpp"
 #include "Sound.hpp"
 #include "SpriteAnimationManager.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 #include "TroopManager.hpp"
 
 MapState::MapState() {
@@ -89,7 +89,7 @@ void MapState::init() {
 void MapState::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		Sound::Effect::play(Sound::Effect::confirm);
-		StateManager::push(new MenuState(this));
+		ApplicationStateStack::getInstance().push<MenuState>(this);
 		return;
 	}
 

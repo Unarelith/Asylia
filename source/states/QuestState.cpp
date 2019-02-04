@@ -17,7 +17,7 @@
 #include "Keyboard.hpp"
 #include "QuestState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_mode = Mode::CategoryChoice;
@@ -87,7 +87,7 @@ void QuestState::update() {
 
 			s_load = true;
 
-			StateManager::pop();
+			ApplicationStateStack::getInstance().pop();
 		}
 	}
 	else if(m_mode == Mode::QuestChoice) {

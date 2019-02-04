@@ -21,7 +21,7 @@
 #include "ItemWindow.hpp"
 #include "Keyboard.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 #include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
@@ -67,7 +67,7 @@ void BattleState::update() {
 				case 1:
 					Sound::Effect::play(Sound::Effect::back);
 
-					StateManager::pop();
+					ApplicationStateStack::getInstance().pop();
 
 					EventListener::addBattleResult(1); // Escape
 
@@ -250,9 +250,9 @@ void BattleState::update() {
 		m_gameoverAlpha += 2;
 		if((m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) || (m_gameoverAlpha > 100 && m_allowDefeat)) {
 			if(!m_allowDefeat) {
-				StateManager::push(new EndState(true));
+				ApplicationStateStack::getInstance().push<EndState>(true);
 			} else {
-				StateManager::pop();
+				ApplicationStateStack::getInstance().pop();
 
 				EventListener::addBattleResult(2); // Defeat
 			}
@@ -261,7 +261,7 @@ void BattleState::update() {
 
 	if(m_mode == Mode::Victory) {
 		if(Keyboard::isKeyPressed(Keyboard::GameAttack)) {
-			StateManager::pop();
+			ApplicationStateStack::getInstance().pop();
 
 			EventListener::addBattleResult(0); // Victory
 

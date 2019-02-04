@@ -26,7 +26,7 @@
 #include "MessageState.hpp"
 #include "Parameter.hpp"
 #include "Sprite.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 sol::state LuaHandler::lua;
 
@@ -43,13 +43,13 @@ void LuaHandler::free() {
 }
 
 void LuaHandler::bindClasses() {
-	lua.new_usertype<StateManager>("StateManager",
-		"top", &StateManager::top,
-		"pop", &StateManager::pop,
-		"push", &StateManager::push,
-		"size", &StateManager::getSize,
-		"drawMessage", &StateManager::drawMessage,
-		"startBattle", &StateManager::startBattle
+	lua.new_usertype<ApplicationStateStack>("StateManager",
+		"top", &ApplicationStateStack::top,
+		"pop", &ApplicationStateStack::pop,
+		// "push", &ApplicationStateStack::push,
+		"size", &ApplicationStateStack::size,
+		"drawMessage", &ApplicationStateStack::drawMessage,
+		"startBattle", &ApplicationStateStack::startBattle
 	);
 
 	lua.new_usertype<CharacterManager>("CharacterManager",

@@ -15,7 +15,7 @@
 #include "EquipStatsWindow.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
 	m_actor = actor;
@@ -54,15 +54,15 @@ void EquipStatsWindow::draw(Item *currentItem) {
 			}
 		}
 	}
-	else if(((EquipState*)StateManager::top())->itemMode()) {
-		if(((EquipState*)StateManager::top())->choicewinPos() == 0) {
+	else if(((EquipState&)ApplicationStateStack::getInstance().top()).itemMode()) {
+		if(((EquipState&)ApplicationStateStack::getInstance().top()).choicewinPos() == 0) {
 			finalAtk = m_actor->atk();
 			finalDef = baseDef;
 
 			finalAtkColor = Color::red;
 		} else {
 			finalAtk = baseAtk;
-			finalDef = baseDef - m_actor->equipment()->armor(((EquipState*)StateManager::top())->choicewinPos() - 1)->def();
+			finalDef = baseDef - m_actor->equipment()->armor(((EquipState&)ApplicationStateStack::getInstance().top()).choicewinPos() - 1)->def();
 
 			finalDefColor = Color::red;
 		}

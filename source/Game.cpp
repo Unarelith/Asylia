@@ -19,8 +19,8 @@
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 #include "Keyboard.hpp"
+#include "MapState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
 #include "TimeManager.hpp"
 
 bool Game::quit = false;
@@ -34,19 +34,19 @@ Game::Game() {
 	m_window.open(APP_NAME);
 	GameWindow::main = &m_window;
 
+	ApplicationStateStack::setInstance(m_stateStack);
+	LanguageManager::setInstance(m_languageManager);
+
 	Sound::init();
 
 	Interface::init();
 
 	m_languageManager.init("en-us");
-	LanguageManager::setInstance(m_languageManager);
 
-	StateManager::init();
+	m_stateStack.push<MapState>().init();
 }
 
 Game::~Game() {
-	StateManager::free();
-
 	Interface::free();
 
 	Sound::free();
@@ -55,20 +55,20 @@ Game::~Game() {
 void Game::mainLoop() {
 	while(!quit) {
 		if(TimeManager::isTimeToUpdate()) {
-			StateManager::top()->pollEvents();
+			m_stateStack.top().pollEvents();
 
 			Keyboard::update();
 
 			if(Game::paused == true) continue;
 
-			StateManager::top()->update();
+			m_stateStack.top().update();
 
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
 
 				GameWindow::main->clear();
 
-				StateManager::top()->render();
+				m_stateStack.top().render();
 
 				TimeManager::renderRTMCounter(); // Rendering time mean
 

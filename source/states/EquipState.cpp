@@ -17,7 +17,7 @@
 #include "MenuState.hpp"
 #include "Keyboard.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Equip;
@@ -79,8 +79,9 @@ void EquipState::update() {
 			m_itemwin->pos(0);
 			m_itemwin->update();
 		} else {
-			StateManager::pop();
-			if(StateManager::top()->type() == ApplicationState::Type::Menu) ((MenuState*)StateManager::top())->actorChoiceModeOn();
+			ApplicationStateStack::getInstance().pop();
+			if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Menu)
+				((MenuState&)ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
 		}
 	}
 }

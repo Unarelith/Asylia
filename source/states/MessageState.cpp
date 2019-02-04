@@ -17,14 +17,14 @@
 #include "MapManager.hpp"
 #include "MessageState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 MessageState::MessageState(const std::string &message, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Message;
 
 	m_parent = parent;
 	if(m_parent == nullptr) {
-		m_parent = StateManager::top();
+		m_parent = &ApplicationStateStack::getInstance().top();
 	}
 
 	m_txtwin.reset(new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3));
@@ -57,7 +57,7 @@ void MessageState::update() {
 			EventListener::addMessageStateAction(m_cmdwin->pos());
 		}
 
-		StateManager::pop();
+		ApplicationStateStack::getInstance().pop();
 		MapManager::currentMap->updateEventsActions();
 	}
 }

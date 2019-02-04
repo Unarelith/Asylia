@@ -16,7 +16,7 @@
 #include "Event.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_type = Type::None;
@@ -54,7 +54,7 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 }
 
 void Character::render() {
-	if(StateManager::activities.top()->type() == ApplicationState::Type::Map) {
+	if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Map) {
 		if(!m_movementTimer.isStarted()) {
 			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
 				m_movementTimer.start();

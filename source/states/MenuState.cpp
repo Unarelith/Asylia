@@ -20,7 +20,7 @@
 #include "QuestState.hpp"
 #include "SettingsState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 MenuState::MenuState(ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Menu;
@@ -58,7 +58,7 @@ void MenuState::update() {
 				switch(m_cmdwin->pos()) {
 					case 1: break;
 					case 2:
-						StateManager::push(new EquipState(m_actorChoicewin->pos(), this));
+						ApplicationStateStack::getInstance().push<EquipState>(m_actorChoicewin->pos(), this);
 						break;
 					case 3: break;
 					default: break;
@@ -66,17 +66,17 @@ void MenuState::update() {
 			} else {
 				switch(m_cmdwin->pos()) {
 					case 0:
-						StateManager::push(new ItemState(this));
+						ApplicationStateStack::getInstance().push<ItemState>(this);
 						break;
 					case 4:
-						StateManager::push(new QuestState(this));
+						ApplicationStateStack::getInstance().push<QuestState>(this);
 						break;
 					case 5: break;
 					case 6:
-						StateManager::push(new SettingsState(this));
+						ApplicationStateStack::getInstance().push<SettingsState>(this);
 						break;
 					case 7:
-						StateManager::push(new EndState);
+						ApplicationStateStack::getInstance().push<EndState>();
 						break;
 					default:
 						m_actorChoiceMode = true;
@@ -91,7 +91,7 @@ void MenuState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
-		if(!m_actorChoiceMode) StateManager::pop();
+		if(!m_actorChoiceMode) ApplicationStateStack::getInstance().pop();
 		else {
 			m_actorChoiceMode = false;
 			m_actorChoicewin->pos(0);
@@ -102,7 +102,7 @@ void MenuState::update() {
 void MenuState::render() {
 	renderBackground();
 
-	m_cmdwin->draw(StateManager::top() == this && !m_actorChoiceMode);
+	m_cmdwin->draw(&ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
 
 	if(m_actorChoiceMode) {
 		m_actorChoicewin->draw();

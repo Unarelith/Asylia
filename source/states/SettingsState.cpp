@@ -14,7 +14,7 @@
 #include "Keyboard.hpp"
 #include "SettingsState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 SettingsState::SettingsState(ApplicationState *parent) : ApplicationState(parent) {
 	m_settings.addCommand("Sound");
@@ -48,7 +48,7 @@ void SettingsState::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			Sound::Effect::play(Sound::Effect::back);
-			StateManager::pop();
+			ApplicationStateStack::getInstance().pop();
 		}
 	}
 	else if(m_mode == Mode::Sound) {

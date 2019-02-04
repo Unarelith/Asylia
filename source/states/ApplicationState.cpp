@@ -17,7 +17,7 @@
 #include "Game.hpp"
 #include "Keyboard.hpp"
 #include "MenuState.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 ApplicationState::ApplicationState(ApplicationState *parent) {
 	m_type = Type::None;
@@ -52,13 +52,13 @@ void ApplicationState::pollEvents() {
 			case SDL_APP_WILLENTERFOREGROUND:
 				Game::quit = true; // FIXME: See #9
 				Game::paused = false;
-				if(StateManager::top()->type() == Type::Map) {
-					StateManager::push(new MenuState);
+				if(ApplicationStateStack::getInstance().top().type() == Type::Map) {
+					ApplicationStateStack::getInstance().push<MenuState>();
 				}
 				break;
 			case SDL_APP_TERMINATING:
-				if(StateManager::top()->type() != Type::GameEnd) {
-					StateManager::push(new EndState);
+				if(ApplicationStateStack::getInstance().top().type() != Type::GameEnd) {
+					ApplicationStateStack::getInstance().push<EndState>();
 				}
 				break;
 			default:

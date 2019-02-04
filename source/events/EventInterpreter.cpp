@@ -13,7 +13,7 @@
  */
 #include "EventInterpreter.hpp"
 #include "EventListener.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 std::map<std::string, std::vector<EventAction*>> EventInterpreter::actions;
 
@@ -58,11 +58,11 @@ void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		StateManager::drawMessage(*(std::string*)(params->at(0)->value()));
+		ApplicationStateStack::getInstance().drawMessage(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
 
-	if(StateManager::top()->type() != ApplicationState::Type::Message) {
+	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::Message) {
 		if(params->size() == 2 && params->at(1)->isInteger()) {
 			e->currentActionID(*(int*)params->at(1)->value());
 		}
@@ -77,11 +77,11 @@ void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isInteger() && !e->isLocked()) {
-		if(params->at(1)->isBoolean()) StateManager::startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
+		if(params->at(1)->isBoolean()) ApplicationStateStack::getInstance().startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
 		e->lock();
 	}
 
-	if(StateManager::top()->type() != ApplicationState::Type::BattleAct) {
+	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::BattleAct) {
 		e->currentActionID(*(int*)params->at(2 + EventListener::lastBattleResult())->value());
 
 		e->unlock();
@@ -93,7 +93,7 @@ void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		MessageState *state = StateManager::drawMessage(*(std::string*)(params->at(0)->value()));
+		MessageState *state = ApplicationStateStack::getInstance().drawMessage(*(std::string*)(params->at(0)->value()));
 
 		for(u16 i = 1 ; i < params->size() ; i+=2) {
 			if(params->at(i)->isString()) {
@@ -104,7 +104,7 @@ void EventInterpreter::action2(Event *e) {
 		e->lock();
 	}
 
-	if(StateManager::top()->type() != ApplicationState::Type::Message) {
+	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::Message) {
 		if(params->at((SelectableWindow::lastPos + 1) * 2)->isInteger()) {
 			e->currentActionID(*(int*)params->at((SelectableWindow::lastPos + 1) * 2)->value());
 		}

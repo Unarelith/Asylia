@@ -15,7 +15,7 @@
 #include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 #include "Sound.hpp"
 #include "TitleState.hpp"
 
@@ -46,13 +46,13 @@ void EndState::update() {
 
 		switch(n) {
 			case 0:
-				StateManager::pop();
+				ApplicationStateStack::getInstance().pop();
 				break;
 			case 1:
-				while(StateManager::getSize() > 0) {
-					StateManager::pop();
+				while(ApplicationStateStack::getInstance().size() > 0) {
+					ApplicationStateStack::getInstance().pop();
 				}
-				StateManager::push(new TitleState);
+				ApplicationStateStack::getInstance().push<TitleState>();
 				break;
 			case 2:
 				SDL_Delay(100);
@@ -64,7 +64,7 @@ void EndState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
-		StateManager::pop();
+		ApplicationStateStack::getInstance().pop();
 	}
 }
 

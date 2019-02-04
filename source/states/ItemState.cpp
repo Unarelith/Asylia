@@ -16,7 +16,7 @@
 #include "ItemState.hpp"
 #include "Keyboard.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 
 ItemState::ItemState(ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Items;
@@ -33,7 +33,7 @@ void ItemState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		Sound::Effect::play(Sound::Effect::back);
-		StateManager::pop();
+		ApplicationStateStack::getInstance().pop();
 	}
 }
 

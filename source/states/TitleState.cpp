@@ -16,7 +16,7 @@
 #include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "Sound.hpp"
-#include "StateManager.hpp"
+#include "ApplicationStateStack.hpp"
 #include "TitleState.hpp"
 
 TitleState::TitleState() {
@@ -45,7 +45,7 @@ void TitleState::update() {
 
 		switch(m_cmdwin.pos()) {
 			case 0:
-				StateManager::push(new MapState);
+				ApplicationStateStack::getInstance().push<MapState>().init();
 				break;
 			case 1: break;
 			case 2:
