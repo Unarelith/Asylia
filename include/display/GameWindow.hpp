@@ -18,7 +18,7 @@
 
 #include "Color.hpp"
 #include "SDLHeaders.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 class GameWindow {
 	public:

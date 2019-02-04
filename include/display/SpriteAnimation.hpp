@@ -16,7 +16,7 @@
 
 #include <vector>
 
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 #include "Timer.hpp"
 
 struct SpriteAnimation {

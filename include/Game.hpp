@@ -15,6 +15,7 @@
 #define GAME_HPP_
 
 #include <gk/core/SDLLoader.hpp>
+#include <gk/resource/ResourceHandler.hpp>
 
 #include "ApplicationStateStack.hpp"
 #include "GameWindow.hpp"
@@ -38,6 +39,8 @@ class Game {
 		GameWindow m_window;
 
 		LanguageManager m_languageManager;
+
+		gk::ResourceHandler m_resourceHandler;
 };
 
 #endif // GAME_HPP_

@@ -17,20 +17,21 @@
 #include "Font.hpp"
 #include "Image.hpp"
 
-namespace Interface {
-	void init();
-	void free();
+class Interface {
+	public:
+		static void init();
 
-	void renderPad();
-	void renderHUD();
+		static void renderPad();
+		static void renderHUD();
 
-	extern Font *defaultFont;
-	extern Image *interface;
+	// private:
+		static Font *defaultFont;
+		static Image *interface;
 
-	extern Image *pad;
-	extern Image *buttonA;
-	extern Image *buttonB;
-	extern Image *buttonMenu;
+		static Image *pad;
+		static Image *buttonA;
+		static Image *buttonB;
+		static Image *buttonMenu;
 };
 
 #endif // INTERFACE_HPP_

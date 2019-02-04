@@ -19,7 +19,7 @@
 #include "ApplicationState.hpp"
 #include "CommandWindow.hpp"
 #include "TextWindow.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 class MessageState : public ApplicationState {
 	public:

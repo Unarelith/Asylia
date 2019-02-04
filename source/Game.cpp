@@ -36,6 +36,7 @@ Game::Game() {
 
 	ApplicationStateStack::setInstance(m_stateStack);
 	LanguageManager::setInstance(m_languageManager);
+	gk::ResourceHandler::setInstance(m_resourceHandler);
 
 	Sound::init();
 
@@ -47,8 +48,6 @@ Game::Game() {
 }
 
 Game::~Game() {
-	Interface::free();
-
 	Sound::free();
 }
 

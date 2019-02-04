@@ -22,7 +22,7 @@
 #include "EquipChoiceWindow.hpp"
 #include "EquipStatsWindow.hpp"
 #include "ItemWindow.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 class EquipState : public ApplicationState {
 	public:

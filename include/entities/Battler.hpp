@@ -19,7 +19,7 @@
 #include "Image.hpp"
 #include "Skill.hpp"
 #include "Sprite.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 class Battler {
 	public:

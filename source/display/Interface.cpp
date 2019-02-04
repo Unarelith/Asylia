@@ -11,6 +11,8 @@
  *
  * =====================================================================================
  */
+#include <gk/resource/ResourceHandler.hpp>
+
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 
@@ -23,32 +25,23 @@ Font *Interface::defaultFont = nullptr;
 Image *Interface::interface = nullptr;
 
 void Interface::init() {
-	defaultFont = new Font("fonts/arial.ttf");
+	auto &r = gk::ResourceHandler::getInstance();
 
-	interface = new Image("graphics/interface/Interface.png");
+	defaultFont = &r.add<Font>("font-default", "fonts/arial.ttf");
 
-	pad = new Image("graphics/interface/DPad.png");
+	interface = &r.add<Image>("image-interface", "graphics/interface/Interface.png");
+
+	pad = &r.add<Image>("image-dpad", "graphics/interface/DPad.png");
 	pad->setAlphaMod(150);
 
-	buttonA = new Image("graphics/interface/ButtonA.png");
+	buttonA = &r.add<Image>("image-buttonA", "graphics/interface/ButtonA.png");
 	buttonA->setAlphaMod(150);
 
-	buttonB = new Image("graphics/interface/ButtonA.png");
+	buttonB = &r.add<Image>("image-buttonB", "graphics/interface/ButtonA.png");
 	buttonB->setAlphaMod(150);
 
-	buttonMenu = new Image("graphics/interface/ButtonA.png");
+	buttonMenu = &r.add<Image>("image-buttonMenu", "graphics/interface/ButtonA.png");
 	buttonMenu->setAlphaMod(150);
-}
-
-void Interface::free() {
-	delete interface;
-
-	delete defaultFont;
-
-	delete pad;
-	delete buttonA;
-	delete buttonB;
-	delete buttonMenu;
 }
 
 void Interface::renderPad() {

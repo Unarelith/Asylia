@@ -15,7 +15,7 @@
 #define TIMER_HPP_
 
 #include "SDLHeaders.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 class Timer {
 	public:

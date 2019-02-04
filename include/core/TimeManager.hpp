@@ -16,7 +16,7 @@
 
 #include <vector>
 
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 namespace TimeManager {
 	void beginMeasuringRenderingTime();

@@ -15,7 +15,7 @@
 #define KEYBOARD_HPP_
 
 #include "SDLHeaders.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 
 typedef enum {
 	PAD_UP,

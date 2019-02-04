@@ -12,7 +12,7 @@
  * =====================================================================================
  */
 #include "LanguageManager.hpp"
-#include "Types.hpp"
+#include <gk/core/IntTypes.hpp>
 #include "XMLFile.hpp"
 
 template<>
