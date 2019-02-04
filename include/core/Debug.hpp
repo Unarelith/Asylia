@@ -14,6 +14,8 @@
 #ifndef DEBUG_HPP_
 #define DEBUG_HPP_
 
+#include <cstdio>
+
 #include "Config.hpp"
 #include "SDLHeaders.hpp"
 
