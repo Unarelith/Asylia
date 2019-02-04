@@ -74,6 +74,6 @@ void Event::collisionAction(Character *character) {
 	Character::collisionAction(character);
 	// FIXME: Doesn't work
 	if (character)
-		LuaHandler::doString(m_name + ".collisionAction()");
+		LuaHandler::doString("if " + m_name + ".collisionAction then " + m_name + ".collisionAction() end");
 }
 
