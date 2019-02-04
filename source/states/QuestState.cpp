@@ -11,13 +11,14 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
 #include "CommandWindow.hpp"
 #include "InfoWindow.hpp"
 #include "Keyboard.hpp"
 #include "QuestState.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
 
 QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_mode = Mode::CategoryChoice;
@@ -77,13 +78,13 @@ void QuestState::update() {
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_mode = Mode::QuestChoice;
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 
 			s_load = true;
 
@@ -95,7 +96,7 @@ void QuestState::update() {
 		m_questInfowin.update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 
 			m_mode = Mode::CategoryChoice;
 		}

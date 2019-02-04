@@ -12,3 +12,5 @@
    ◦ TODO: Audio system
    ◦ TODO: Rendering system
 
+• TODO: Move `Singleton` class into GameKit and use it in relevant places
+

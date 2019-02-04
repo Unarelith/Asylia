@@ -11,8 +11,11 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
 #include "LuaHandler.hpp"
 #include "AnimationManager.hpp"
+#include "ApplicationStateStack.hpp"
 #include "BattlerManager.hpp"
 #include "CharacterManager.hpp"
 #include "EventInterpreter.hpp"
@@ -23,9 +26,7 @@
 #include "MapState.hpp"
 #include "MenuState.hpp"
 #include "QuestManager.hpp"
-#include "Sound.hpp"
 #include "SpriteAnimationManager.hpp"
-#include "ApplicationStateStack.hpp"
 #include "TroopManager.hpp"
 
 MapState::MapState() {
@@ -83,12 +84,12 @@ void MapState::init() {
 
 	MapManager::currentMap->load();
 
-	Sound::Music::play(Sound::Music::theme, -1);
+	gk::AudioPlayer::playMusic("music-theme");
 }
 
 void MapState::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
-		Sound::Effect::play(Sound::Effect::confirm);
+		gk::AudioPlayer::playSound("sound-confirm");
 		ApplicationStateStack::getInstance().push<MenuState>(this);
 		return;
 	}

@@ -11,13 +11,14 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
 #include "EquipState.hpp"
 #include "GameWindow.hpp"
-#include "MenuState.hpp"
 #include "Keyboard.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
+#include "MenuState.hpp"
 
 EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Equip;
@@ -48,7 +49,7 @@ void EquipState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_itemMode) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			Item *currentItem = m_itemwin->currentItem();
 			if(m_choicewin->pos() == 0) {
@@ -64,16 +65,16 @@ void EquipState::update() {
 			m_itemwin->update();
 		}
 		else if(m_itemwin->itemMax() == 0) {
-			Sound::Effect::play(Sound::Effect::blocked);
+			gk::AudioPlayer::playSound("sound-blocked");
 		} else {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_itemMode = true;
 		}
 	}
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-		Sound::Effect::play(Sound::Effect::back);
+		gk::AudioPlayer::playSound("sound-back");
 		if(m_itemMode) {
 			m_itemMode = false;
 			m_itemwin->pos(0);

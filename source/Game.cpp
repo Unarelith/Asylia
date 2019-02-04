@@ -14,13 +14,13 @@
 #include <cstdlib>
 #include <ctime>
 
+#include "AudioLoader.hpp"
 #include "Config.hpp"
 #include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 #include "Keyboard.hpp"
 #include "MapState.hpp"
-#include "Sound.hpp"
 #include "TimeManager.hpp"
 
 bool Game::quit = false;
@@ -38,17 +38,13 @@ Game::Game() {
 	LanguageManager::setInstance(m_languageManager);
 	gk::ResourceHandler::setInstance(m_resourceHandler);
 
-	Sound::init();
+	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 
 	Interface::init();
 
 	m_languageManager.init("en-us");
 
 	m_stateStack.push<MapState>().init();
-}
-
-Game::~Game() {
-	Sound::free();
 }
 
 void Game::mainLoop() {

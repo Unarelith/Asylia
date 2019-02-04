@@ -11,9 +11,10 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
 #include "Keyboard.hpp"
 #include "SelectableWindow.hpp"
-#include "Sound.hpp"
 
 u16 SelectableWindow::lastPos = 0;
 
@@ -44,11 +45,11 @@ void SelectableWindow::update() {
 	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameUp, 150)) {
 		if(m_pos - m_columnMax >= 0) {
 			m_pos -= m_columnMax;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		else if(m_columnMax == 1) {
 			m_pos = m_itemMax - 1;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		if(m_pos / m_columnMax < m_scroll) m_scroll--;
 	}
@@ -56,11 +57,11 @@ void SelectableWindow::update() {
 	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameDown, 150)) {
 		if(m_pos + m_columnMax < m_itemMax) {
 			m_pos += m_columnMax;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		else if(m_columnMax == 1) {
 			m_pos = 0;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		if(m_pos / m_columnMax >= rowMax + m_scroll) m_scroll++;
 	}
@@ -68,7 +69,7 @@ void SelectableWindow::update() {
 	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
 		if(m_pos > 0 && m_columnMax > 1) {
 			m_pos--;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		if(m_pos / m_columnMax < m_scroll) m_scroll--;
 	}
@@ -76,7 +77,7 @@ void SelectableWindow::update() {
 	if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
 		if(m_pos < m_itemMax - 1 && m_columnMax > 1) {
 			m_pos++;
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 		}
 		if(m_pos / m_columnMax >= rowMax + m_scroll) m_scroll++;
 	}

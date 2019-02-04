@@ -11,12 +11,13 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "EndState.hpp"
 #include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
-#include "ApplicationStateStack.hpp"
-#include "Sound.hpp"
 #include "TitleState.hpp"
 
 EndState::EndState(bool disableCancel) {
@@ -33,11 +34,11 @@ void EndState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_cmdwin.disabled(m_cmdwin.pos())) {
-			Sound::Effect::play(Sound::Effect::blocked);
+			gk::AudioPlayer::playSound("sound-blocked");
 			return;
 		}
 
-		Sound::Effect::play(Sound::Effect::confirm);
+		gk::AudioPlayer::playSound("sound-confirm");
 
 		u8 n = m_cmdwin.pos();
 		if(m_cmdwin.commands().size() == 2) {
@@ -63,7 +64,7 @@ void EndState::update() {
 	}
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-		Sound::Effect::play(Sound::Effect::back);
+		gk::AudioPlayer::playSound("sound-back");
 		ApplicationStateStack::getInstance().pop();
 	}
 }

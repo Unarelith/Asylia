@@ -11,6 +11,9 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "BattleState.hpp"
 #include "CharacterManager.hpp"
 #include "EndState.hpp"
@@ -20,8 +23,6 @@
 #include "ItemManager.hpp"
 #include "ItemWindow.hpp"
 #include "Keyboard.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
 #include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
@@ -50,7 +51,7 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 
 	m_victorywin.init(&m_battle);
 
-	Sound::Music::play(Sound::Music::battle, -1);
+	gk::AudioPlayer::playMusic("music-battle");
 }
 
 void BattleState::update() {
@@ -58,21 +59,20 @@ void BattleState::update() {
 		m_battleChoicewin.update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 			switch(m_battleChoicewin.pos()) {
 				case 0:
 					m_mode = Mode::Action;
 					m_currentPos = m_battle.getNextActorPair(1, -1).first;
 					break;
 				case 1:
-					Sound::Effect::play(Sound::Effect::back);
+					gk::AudioPlayer::playSound("sound-back");
 
 					ApplicationStateStack::getInstance().pop();
 
 					EventListener::addBattleResult(1); // Escape
 
-					Sound::Music::halt();
-					Sound::Music::play(Sound::Music::theme, -1);
+					gk::AudioPlayer::playMusic("music-theme");
 					break;
 				default: break;
 			}
@@ -86,11 +86,11 @@ void BattleState::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			if(m_battleActionwin.disabled(m_battleActionwin.pos())) {
-				Sound::Effect::play(Sound::Effect::blocked);
+				gk::AudioPlayer::playSound("sound-blocked");
 				return;
 			}
 
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 			switch(m_battleActionwin.pos()) {
 				case 0:
 					m_mode = Mode::ChooseEnemyTarget;
@@ -108,7 +108,7 @@ void BattleState::update() {
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 			if(m_currentPos == 0) {
 				m_mode = Mode::Choice;
 			} else {
@@ -128,12 +128,12 @@ void BattleState::update() {
 		m_itemwin->update();
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 			m_currentItem = CharacterManager::player->inventory()->getItem(m_itemwin->pos());
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Action;
 		}
 	}
@@ -142,14 +142,14 @@ void BattleState::update() {
 		m_battle.getActor(m_currentPos)->blink();
 
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 150)) {
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 
 			m_arrowPos = m_battle.getNextActorPair(-1, m_arrowPos).first;
 
 			if(m_arrowPos < 0) m_arrowPos = m_battle.getNextActorPair(-1, m_battle.actors().size()).first;
 		}
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 150)) {
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 
 			m_arrowPos = m_battle.getNextActorPair(1, m_arrowPos).first;
 
@@ -157,7 +157,7 @@ void BattleState::update() {
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Action;
 		}
 	}
@@ -166,7 +166,7 @@ void BattleState::update() {
 		m_battle.getActor(m_currentPos)->blink();
 
 		if(Keyboard::isKeyPressedWithDelay(Keyboard::GameLeft, 200)) {
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 
 			m_arrowPos = m_battle.getNextEnemyPair(-1, m_arrowPos).first;
 
@@ -175,7 +175,7 @@ void BattleState::update() {
 			}
 		}
 		else if(Keyboard::isKeyPressedWithDelay(Keyboard::GameRight, 200)) {
-			Sound::Effect::play(Sound::Effect::move);
+			gk::AudioPlayer::playSound("sound-move");
 
 			m_arrowPos = m_battle.getNextEnemyPair(1, m_arrowPos).first;
 
@@ -185,7 +185,7 @@ void BattleState::update() {
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_battle.pushAction(m_battle.getActor(m_currentPos), m_battle.getEnemy(m_arrowPos), ItemManager::skills[0]);
 			m_arrowPos = 0;
@@ -199,7 +199,7 @@ void BattleState::update() {
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-			Sound::Effect::play(Sound::Effect::back);
+			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Action;
 		}
 	}
@@ -265,8 +265,7 @@ void BattleState::update() {
 
 			EventListener::addBattleResult(0); // Victory
 
-			Sound::Music::halt();
-			Sound::Music::play(Sound::Music::theme, -1);
+			gk::AudioPlayer::playMusic("music-theme");
 		}
 	}
 }

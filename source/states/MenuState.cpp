@@ -11,6 +11,9 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "EndState.hpp"
 #include "EquipState.hpp"
 #include "GameWindow.hpp"
@@ -19,8 +22,6 @@
 #include "MenuState.hpp"
 #include "QuestState.hpp"
 #include "SettingsState.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
 
 MenuState::MenuState(ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Menu;
@@ -48,9 +49,9 @@ void MenuState::loadCommandWindow() {
 void MenuState::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_cmdwin->disabled(m_cmdwin->pos())) {
-			Sound::Effect::play(Sound::Effect::blocked);
+			gk::AudioPlayer::playSound("sound-blocked");
 		} else {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			if(m_actorChoiceMode) {
 				m_actorChoiceMode = false;
@@ -90,7 +91,7 @@ void MenuState::update() {
 	else m_actorChoicewin->update();
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-		Sound::Effect::play(Sound::Effect::back);
+		gk::AudioPlayer::playSound("sound-back");
 		if(!m_actorChoiceMode) ApplicationStateStack::getInstance().pop();
 		else {
 			m_actorChoiceMode = false;

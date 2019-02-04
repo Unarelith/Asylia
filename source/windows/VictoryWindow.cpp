@@ -11,10 +11,11 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
 #include "CharacterManager.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
-#include "Sound.hpp"
 #include "VictoryWindow.hpp"
 
 VictoryWindow::VictoryWindow() : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
@@ -36,7 +37,7 @@ void VictoryWindow::init(Battle *battle) {
 	}
 	CharacterManager::player->gainGold(m_battle->gold());
 
-	Sound::Effect::play(Sound::Effect::confirm);
+	gk::AudioPlayer::playSound("sound-confirm");
 }
 
 void VictoryWindow::draw() {

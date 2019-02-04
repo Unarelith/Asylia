@@ -11,13 +11,14 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "EventListener.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "MapManager.hpp"
 #include "MessageState.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
 
 MessageState::MessageState(const std::string &message, ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Message;
@@ -52,7 +53,7 @@ void MessageState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 		if(m_cmdwin->commands().size() > 0) {
-			Sound::Effect::play(Sound::Effect::confirm);
+			gk::AudioPlayer::playSound("sound-confirm");
 
 			EventListener::addMessageStateAction(m_cmdwin->pos());
 		}

@@ -11,12 +11,13 @@
  *
  * =====================================================================================
  */
+#include <gk/audio/AudioPlayer.hpp>
+
+#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
 #include "GameWindow.hpp"
 #include "ItemState.hpp"
 #include "Keyboard.hpp"
-#include "Sound.hpp"
-#include "ApplicationStateStack.hpp"
 
 ItemState::ItemState(ApplicationState *parent) : ApplicationState(parent) {
 	m_type = Type::Items;
@@ -28,11 +29,11 @@ void ItemState::update() {
 	m_itemwin->update();
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
-		Sound::Effect::play(Sound::Effect::confirm);
+		gk::AudioPlayer::playSound("sound-confirm");
 	}
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
-		Sound::Effect::play(Sound::Effect::back);
+		gk::AudioPlayer::playSound("sound-back");
 		ApplicationStateStack::getInstance().pop();
 	}
 }

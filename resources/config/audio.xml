@@ -1,0 +1,10 @@
+<audio>
+	<music name="title"    volume="100"/>
+	<music name="theme"    volume="100"/>
+	<music name="battle"   volume="100"/>
+
+	<sound name="move"     volume="50"/>
+	<sound name="confirm"  volume="50"/>
+	<sound name="back"     volume="50"/>
+	<sound name="blocked"  volume="50"/>
+</audio>
