@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="80" height="80" tilewidth="16" tileheight="16">
  <tileset firstgid="1" name="Grassland" tilewidth="16" tileheight="16">
-  <image source="../../../../Projects/Elredien/graphics/tilesets/grassland.png" width="256" height="576"/>
+  <image source="../../graphics/tilesets/Grassland.png" width="256" height="576"/>
  </tileset>
  <layer name="Ground" width="80" height="80">
   <data>
