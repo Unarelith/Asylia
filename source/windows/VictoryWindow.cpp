@@ -17,7 +17,10 @@
 #include "Sound.hpp"
 #include "VictoryWindow.hpp"
 
-VictoryWindow::VictoryWindow(Battle *battle) : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
+VictoryWindow::VictoryWindow() : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
+}
+
+void VictoryWindow::init(Battle *battle) {
 	m_battle = battle;
 
 	for(auto &it : m_battle->enemies()) {

@@ -31,7 +31,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	BattleState *battleState = ((BattleState*)StateManager::top());
 	u8 mode = battleState->mode();
 	if((mode == BattleState::Mode::Choice || mode == BattleState::Mode::EnemyTurn || mode == BattleState::Mode::ProcessActions || mode == BattleState::Mode::Victory)
-	|| (battleState->battle()->actors()[battleState->currentPos()].second != actor)) {
+	|| (battleState->battle().actors()[battleState->currentPos()].second != actor)) {
 		actor->image()->setColorMod(Color::white);
 		actor->image()->setAlphaMod(190);
 	}

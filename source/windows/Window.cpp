@@ -104,7 +104,7 @@ void Window::drawBattler(Battler *battler, s16 x, s16 y) {
 void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
 	Image countImg, itemImg;
 
-	item->thumbnail()->render(m_x + x, m_y + y);
+	item->thumbnail().render(m_x + x, m_y + y);
 
 	if(count != 0) {
 		Interface::defaultFont->printToImage(std::to_string(count).c_str(), m_x + x - 16 + width, m_y + y, &countImg, FONT_LARGE);

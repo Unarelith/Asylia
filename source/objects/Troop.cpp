@@ -13,13 +13,10 @@
  */
 #include "Troop.hpp"
 
-Troop::Troop(Image *battleback) {
-	m_battleback = battleback;
-}
-
-Troop::~Troop() {
-	if(m_battleback) delete m_battleback;
-
-	m_enemies.clear();
+Troop::Troop(const std::string &battleback) {
+	if (!battleback.empty()) {
+		m_battleback.reload(battleback.c_str());
+		m_isBattlebackLoaded = true;
+	}
 }
 

@@ -57,8 +57,6 @@ void EndState::update() {
 			case 2:
 				SDL_Delay(100);
 				Game::quit = true;
-				// delete m_cmdwin;
-				// m_cmdwin = nullptr;
 				break;
 			default: break;
 		}
@@ -71,7 +69,6 @@ void EndState::update() {
 }
 
 void EndState::render() {
-	// if(m_cmdwin) m_cmdwin->draw();
 	m_cmdwin.draw();
 }
 

@@ -19,12 +19,14 @@
 
 class VictoryWindow : public Window {
 	public:
-		VictoryWindow(Battle *battle);
+		VictoryWindow();
+
+		void init(Battle *battle);
 
 		void draw();
 
 	private:
-		Battle *m_battle;
+		Battle *m_battle = nullptr;
 
 		Inventory m_inventory;
 		u16 m_itemsNb;

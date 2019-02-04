@@ -22,7 +22,7 @@ ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory
 
 	m_pos = 0;
 
-	m_infoWindow = new InfoWindow(infowinX, infowinY, width, 52);
+	m_infoWindow.reset(new InfoWindow(infowinX, infowinY, width, 52));
 }
 
 void ItemWindow::drawItem(u8 pos) {

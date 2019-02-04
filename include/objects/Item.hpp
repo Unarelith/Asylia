@@ -20,7 +20,6 @@
 class Item {
 	public:
 		Item(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation = nullptr);
-		~Item();
 
 		u16 id() const { return m_id; }
 
@@ -29,7 +28,7 @@ class Item {
 
 		u8 level() const { return m_level; }
 
-		Image *thumbnail() const { return m_thumbnail; }
+		Image &thumbnail() { return m_thumbnail; }
 
 		enum Type {
 			BasicItem,
@@ -70,7 +69,7 @@ class Item {
 
 		u8 m_level;
 
-		Image *m_thumbnail;
+		Image m_thumbnail;
 
 		Animation *m_battleAnimation;
 

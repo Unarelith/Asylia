@@ -14,12 +14,13 @@
 #ifndef SELECTABLEWINDOW_HPP_
 #define SELECTABLEWINDOW_HPP_
 
+#include <memory>
+
 #include "InfoWindow.hpp"
 
 class SelectableWindow : public Window {
 	public:
 		SelectableWindow(s16 x, s16 y, u16 width, u16 height);
-		~SelectableWindow();
 
 		void updateCursor();
 		void update();
@@ -41,7 +42,7 @@ class SelectableWindow : public Window {
 
 		u8 m_scroll;
 
-		InfoWindow *m_infoWindow;
+		std::unique_ptr<InfoWindow> m_infoWindow;
 };
 
 #endif // SELECTABLEWINDOW_HPP_

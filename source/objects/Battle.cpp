@@ -57,7 +57,7 @@ void Battle::addTroop(Troop *troop) {
 	for(u8 i = 0 ; i < troop->size() ; i++) {
 		addEnemy(troop->getEnemy(i), troop->getEnemyX(i), troop->getEnemyY(i));
 	}
-	if(troop->battleback()) m_battleback = troop->battleback();
+	if(troop->isBattlebackLoaded()) m_battleback = &troop->battleback();
 }
 
 void Battle::addEnemy(Enemy *enemy, s16 x, s16 y) {

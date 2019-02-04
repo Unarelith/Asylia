@@ -27,7 +27,7 @@ void TroopManager::init() {
 
 		if(!troopElement->Attribute("battleback", "")) {
 			battleback = std::string("graphics/battlebacks/") + troopElement->Attribute("battleback") + ".jpg";
-			currentTroop = new Troop(new Image(battleback.c_str()));
+			currentTroop = new Troop(battleback);
 		} else {
 			currentTroop = new Troop;
 		}

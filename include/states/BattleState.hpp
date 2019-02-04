@@ -14,11 +14,14 @@
 #ifndef BATTLESTATE_HPP_
 #define BATTLESTATE_HPP_
 
+#include <memory>
+
 #include "ActorStatsWindow.hpp"
 #include "ApplicationState.hpp"
 #include "Battle.hpp"
 #include "BattleActionWindow.hpp"
 #include "BattleChoiceWindow.hpp"
+#include "GameWindow.hpp"
 #include "ItemWindow.hpp"
 #include "Troop.hpp"
 #include "VictoryWindow.hpp"
@@ -26,12 +29,11 @@
 class BattleState : public ApplicationState {
 	public:
 		BattleState(Troop *troop, bool allowDefeat = false);
-		~BattleState();
 
 		void update();
 		void render();
 
-		Battle *battle() { return m_battle; }
+		Battle &battle() { return m_battle; }
 
 		s8 currentPos() const { return m_currentPos; }
 
@@ -50,9 +52,9 @@ class BattleState : public ApplicationState {
 		};
 
 	private:
-		Troop *m_troop;
+		Troop *m_troop = nullptr;
 
-		Battle *m_battle;
+		Battle m_battle;
 
 		ActorStatsWindow m_actorStatswin;
 
@@ -64,18 +66,18 @@ class BattleState : public ApplicationState {
 		BattleChoiceWindow m_battleChoicewin;
 		BattleActionWindow m_battleActionwin;
 
-		ItemWindow *m_itemwin;
+		std::unique_ptr<ItemWindow> m_itemwin;
 
-		InfoWindow *m_infowin;
+		InfoWindow m_infowin{0, 0, GameWindow::main->width(), 52};
 
 		Item *m_currentItem;
 
 		bool m_processingAction;
 
-		Image *m_gameover;
+		Image m_gameover{"graphics/interface/Gameover.jpg"};
 		u16 m_gameoverAlpha;
 
-		VictoryWindow *m_victorywin;
+		VictoryWindow m_victorywin;
 
 		bool m_allowDefeat;
 };

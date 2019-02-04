@@ -18,10 +18,10 @@
 
 class Troop {
 	public:
-		Troop(Image *battleback = nullptr);
-		~Troop();
+		Troop(const std::string &battleback = "");
 
-		Image *battleback() const { return m_battleback; }
+		Image &battleback() { return m_battleback; }
+		bool isBattlebackLoaded() { return m_isBattlebackLoaded; }
 
 		void addEnemy(Enemy *enemy, s16 x, s16 y) { m_enemies.push_back(std::make_tuple(enemy, x, y)); }
 
@@ -32,7 +32,8 @@ class Troop {
 		u8 size() { return m_enemies.size(); }
 
 	private:
-		Image *m_battleback;
+		Image m_battleback;
+		bool m_isBattlebackLoaded = false;
 
 		std::vector<std::tuple<Enemy*,s16,s16>> m_enemies;
 };
