@@ -1,0 +1,24 @@
+{
+   ignore stuff
+   Memcheck:Addr8
+   ...
+   obj:/usr/lib/dri/i965_dri.so
+}
+{
+   ignore stuff 2
+   Memcheck:Addr4
+   ...
+   obj:/usr/lib/dri/i965_dri.so
+}
+{
+   ignore stuff 3
+   Memcheck:Addr2
+   ...
+   obj:/usr/lib/dri/i965_dri.so
+}
+{
+   ignore stuff 4
+   Memcheck:Addr1
+   ...
+   obj:/usr/lib/dri/i965_dri.so
+}

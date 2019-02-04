@@ -140,7 +140,8 @@ void getNonPassableTiles(const char *filename, Tileset *tileset) {
 
 bool passable(s16 x, s16 y) {
 	for(u16 i = 0 ; i < MapManager::currentMap->layers() ; i++) {
-		if(MapManager::currentMap->tileset()->nonPassableLayer[MapManager::currentMap->getTile(x / MapManager::currentMap->tileset()->tileWidth, y / MapManager::currentMap->tileset()->tileHeight, i) - 1] == 0)
+		int tile = MapManager::currentMap->getTile(x / MapManager::currentMap->tileset()->tileWidth, y / MapManager::currentMap->tileset()->tileHeight, i) - 1;
+		if(tile < 0 || MapManager::currentMap->tileset()->nonPassableLayer[tile] == 0)
 			continue;
 		else return false;
 	}

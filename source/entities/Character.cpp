@@ -51,12 +51,6 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 	m_inFrontOf = nullptr;
 
 	m_solid = true;
-
-	m_inventory = new Inventory;
-}
-
-Character::~Character() {
-	delete m_inventory;
 }
 
 void Character::render() {
@@ -65,7 +59,7 @@ void Character::render() {
 			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
 				m_movementTimer.start();
 			}
-			else if(!((Event*)(this))->isLocked()) {
+			else if(m_type == Type::TypeNPC && !((Event*)(this))->isLocked()) {
 				m_movementTimer.start();
 			}
 		}

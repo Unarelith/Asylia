@@ -39,10 +39,6 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 	m_name = name;
 
 	m_solid = solid;
-
-	m_locked = false;
-
-	m_currentActionID = 0;
 }
 
 void Event::init() {

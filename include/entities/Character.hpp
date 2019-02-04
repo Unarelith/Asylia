@@ -25,7 +25,7 @@
 class Character : public Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth = 32, u16 frameHeight = 48);
-		virtual ~Character();
+		virtual ~Character() = default;
 
 		void move();
 		void render();
@@ -67,7 +67,7 @@ class Character : public Sprite {
 
 		void setPosition(s16 x, s16 y) { m_x = x; m_y = y; }
 
-		Inventory *inventory() { return m_inventory; }
+		Inventory *inventory() { return &m_inventory; }
 
 		enum Direction {
 			Down, Right, Left, Up
@@ -111,7 +111,7 @@ class Character : public Sprite {
 
 		bool m_solid;
 
-		Inventory *m_inventory;
+		Inventory m_inventory;
 };
 
 #endif // CHARACTER_HPP_

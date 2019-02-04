@@ -39,12 +39,12 @@ class Event : public Character {
 		void currentActionID(s16 actionID) { m_currentActionID = actionID; }
 
 	private:
-		s16 m_currentActionID;
+		s16 m_currentActionID = 0;
 
 		std::string m_folder;
 		std::string m_name;
 
-		bool m_locked;
+		bool m_locked = false;
 };
 
 #endif // EVENT_HPP_
