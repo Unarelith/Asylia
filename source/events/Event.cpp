@@ -70,3 +70,10 @@ void Event::render() {
 	LuaHandler::doString(m_name + ".render()");
 }
 
+void Event::collisionAction(Character *character) {
+	Character::collisionAction(character);
+	// FIXME: Doesn't work
+	if (character)
+		LuaHandler::doString(m_name + ".collisionAction()");
+}
+

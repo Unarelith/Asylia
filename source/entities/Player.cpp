@@ -17,7 +17,7 @@
 #include "SpriteAnimationManager.hpp"
 #include "QuestManager.hpp"
 
-Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
+Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
 	m_type = Type::Player;
 
 	m_speed = CHARA_SPEED;
@@ -47,12 +47,6 @@ Player::Player(std::string filename, s16 x, s16 y, u8 direction) : Character(fil
 	m_inventory.addArmor(4, 1);
 
 	m_quests.push_back(QuestManager::quests[0]);
-}
-
-Player::~Player() {
-	m_quests.clear();
-
-	m_team.clear();
 }
 
 void Player::move() {

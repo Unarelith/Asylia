@@ -40,7 +40,7 @@ class Character : public Sprite {
 
 		void stop() { m_vx = m_vy = 0; }
 
-		void collisionAction(Character *c);
+		virtual void collisionAction(Character *c);
 
 		void doMovement(s8 vx, s8 vy);
 		void moveUp() { doMovement(0, -m_speed); }

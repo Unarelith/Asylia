@@ -29,6 +29,8 @@ class Event : public Character {
 
 		void render();
 
+		void collisionAction(Character *character) override;
+
 		std::string name() const { return m_name; }
 
 		void lock() { m_locked = true; }
