@@ -13,16 +13,8 @@
  */
 #include "Game.hpp"
 
-int main(int, char *[]) {
-	try {
-		Game game;
-		game.mainLoop();
-	}
-	catch (const gk::Exception &e) {
-		std::cerr << "Fatal error " << e.what() << std::endl;
-		return 1;
-	}
-
-	return 0;
+int main(int argc, char **argv) {
+	Game game(argc, argv);
+	return game.run();
 }
 

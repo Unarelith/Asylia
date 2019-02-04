@@ -11,9 +11,6 @@
  *
  * =====================================================================================
  */
-#include <cstdlib>
-#include <ctime>
-
 #include "AudioLoader.hpp"
 #include "Config.hpp"
 #include "Game.hpp"
@@ -26,17 +23,17 @@
 bool Game::quit = false;
 bool Game::paused = false;
 
-Game::Game() {
-	std::srand(std::time(nullptr));
+Game::Game(int argc, char **argv) : gk::CoreApplication(argc, argv) {
+}
 
-	m_sdlLoader.load();
+void Game::init() {
+	gk::CoreApplication::init();
 
 	m_window.open(APP_NAME);
 	GameWindow::main = &m_window;
 
 	ApplicationStateStack::setInstance(m_stateStack);
 	LanguageManager::setInstance(m_languageManager);
-	gk::ResourceHandler::setInstance(m_resourceHandler);
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 
@@ -61,7 +58,7 @@ void Game::mainLoop() {
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
 
-				GameWindow::main->clear();
+				m_window.clear();
 
 				m_stateStack.top().render();
 
@@ -69,7 +66,7 @@ void Game::mainLoop() {
 
 				Interface::renderHUD();
 
-				GameWindow::main->update();
+				m_window.update();
 
 				TimeManager::endMeasuringRenderingTime();
 			}

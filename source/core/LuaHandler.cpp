@@ -13,8 +13,8 @@
  */
 #include "LuaHandler.hpp"
 
+#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
-#include "Debug.hpp"
 #include "Event.hpp"
 #include "EventInterpreter.hpp"
 #include "Game.hpp"
@@ -26,7 +26,6 @@
 #include "MessageState.hpp"
 #include "Parameter.hpp"
 #include "Sprite.hpp"
-#include "ApplicationStateStack.hpp"
 
 sol::state LuaHandler::lua;
 
@@ -180,7 +179,7 @@ void LuaHandler::bindClasses() {
 
 void LuaHandler::doFile(const char *filename) {
 	if(luaL_dofile(lua.lua_state(), filename)) {
-		error("%s", lua_tostring(lua.lua_state(), -1));
+		throw EXCEPTION(lua_tostring(lua.lua_state(), -1));
 		lua_pop(lua.lua_state(), 1);
 		Game::quit = true;
 	}
@@ -188,7 +187,7 @@ void LuaHandler::doFile(const char *filename) {
 
 void LuaHandler::doString(const std::string &str) {
 	if(luaL_dostring(lua.lua_state(), str.c_str())) {
-		error("%s", lua_tostring(lua.lua_state(), -1));
+		throw EXCEPTION(lua_tostring(lua.lua_state(), -1));
 		Game::quit = true;
 	}
 }

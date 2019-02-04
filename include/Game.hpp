@@ -14,6 +14,7 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <gk/core/CoreApplication.hpp>
 #include <gk/core/SDLLoader.hpp>
 #include <gk/resource/ResourceHandler.hpp>
 
@@ -21,25 +22,23 @@
 #include "GameWindow.hpp"
 #include "LanguageManager.hpp"
 
-class Game {
+class Game : public gk::CoreApplication {
 	public:
-		Game();
+		Game(int argc, char **argv);
 
-		void mainLoop();
+		void init() override;
 
 		static bool quit;
 		static bool paused;
 
 	private:
-		gk::SDLLoader m_sdlLoader;
+		void mainLoop() override;
 
 		ApplicationStateStack m_stateStack;
 
 		GameWindow m_window;
 
 		LanguageManager m_languageManager;
-
-		gk::ResourceHandler m_resourceHandler;
 };
 
 #endif // GAME_HPP_
