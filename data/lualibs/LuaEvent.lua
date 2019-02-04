@@ -1,12 +1,12 @@
 LuaEvent = {
 	new = function(eventName)
 		local initEvent = function(self)
-			self.event = MapManager.currentMap:getEvent(eventName)
-			
+			self.event = MapManager.currentMap():getEvent(eventName)
+
 			self.addAction = function(self, id, actionID, ...)
-				local params = ParameterList()
+				local params = ParameterList.new()
 				local _args = {...}
-				
+
 				for i, param in pairs(_args) do
 					if type(param) == "number" then
 						local ipart, fpart = math.modf(param)
@@ -21,22 +21,22 @@ LuaEvent = {
 						params:addBoolParameter(param)
 					end
 				end
-				
+
 				EventInterpreter.addActionToQueue(id, self.event:name(), actionID, params)
 			end
-			
+
 			self.update = function() end
-			
+
 			self.render = function()
 				self.event:render()
 			end
-			
+
 			return self
 		end
-		
+
 		return {initEvent = initEvent}
 	end,
-	
+
 	-- { ACTIONS } --
 	drawText = 0,
 	startBattle = 1,

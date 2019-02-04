@@ -11,8 +11,8 @@
  *
  * =====================================================================================
  */
-#include "EventManager.hpp"
 #include "LuaHandler.hpp"
+#include "EventManager.hpp"
 
 std::map<std::string, Event*> EventManager::events;
 

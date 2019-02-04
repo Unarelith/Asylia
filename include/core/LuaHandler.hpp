@@ -16,7 +16,7 @@
 
 #include <string>
 
-// #include "SLB.hpp"
+#include <sol.hpp>
 
 namespace LuaHandler {
 	void init();
@@ -27,8 +27,7 @@ namespace LuaHandler {
 	void doFile(const char *filename);
 	void doString(const std::string &str);
 
-	// extern lua_State *L;
-	// extern SLB::Manager slbm;
+	extern sol::state lua;
 };
 
 #endif // LUAHANDLER_HPP_

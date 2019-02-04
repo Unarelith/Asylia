@@ -31,7 +31,7 @@ class StateManager {
 		static ApplicationState *top() { return activities.top(); }
 		static void pop() { delete top(); activities.pop(); }
 		static void push(ApplicationState *state);
-		static int size() { return activities.size(); }
+		static int getSize() { return activities.size(); }
 
 		static MessageState *drawMessage(const std::string &message) {
 			top()->render();

@@ -3,8 +3,8 @@
 • DONE: Rename “Activity” into “State” to prepare for GameKit migration
 • DONE: Delete `Asylia.hpp` and use headers when they’re needed
 • DONE: Replace `NULL` by `nullptr`
+• DONE: Use `sol2` instead of `SLB`
 • TODO: Remove useless dynamic allocations
-• TODO: Use `sol2` instead of `SLB`
 • TODO: Rework the rendering engine to make it compatible with GameKit
 • TODO: Use `GameKit`
 

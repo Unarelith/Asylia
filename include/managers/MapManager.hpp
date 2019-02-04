@@ -29,6 +29,7 @@ class MapManager {
 		static std::vector<Tileset*> tilesets;
 		static std::vector<std::vector<Map*>> maps;
 
+		static Map *getCurrentMap() { return currentMap; }
 		static Map *currentMap;
 };
 

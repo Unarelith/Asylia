@@ -13,126 +13,182 @@
  */
 #include "LuaHandler.hpp"
 
-// lua_State *LuaHandler::L = nullptr;
-// SLB::Manager LuaHandler::slbm;
+#include "CharacterManager.hpp"
+#include "Debug.hpp"
+#include "Event.hpp"
+#include "EventInterpreter.hpp"
+#include "Game.hpp"
+#include "ItemManager.hpp"
+#include "Keyboard.hpp"
+#include "Map.hpp"
+#include "MapManager.hpp"
+#include "MapState.hpp"
+#include "MessageState.hpp"
+#include "Parameter.hpp"
+#include "Sprite.hpp"
+#include "StateManager.hpp"
+
+sol::state LuaHandler::lua;
 
 void LuaHandler::init() {
-	// L = luaL_newstate();
-    //
-	// luaL_openlibs(L);
-    //
-	// slbm.registerSLB(L);
-    //
-	// doString("SLB.using(SLB)");
+	lua.open_libraries(
+		sol::lib::base,
+		sol::lib::math,
+		sol::lib::table
+	);
 }
 
 void LuaHandler::free() {
-	// lua_close(L);
+	lua.stack_clear();
 }
 
 void LuaHandler::bindClasses() {
-	// SLB::Class<StateManager>("StateManager", &slbm).set("top", &StateManager::top)
-	// 											   .set("pop", &StateManager::pop)
-	// 											   .set("push", &StateManager::push)
-	// 											   .set("size", &StateManager::size)
-	// 											   .set("drawMessage", &StateManager::drawMessage)
-	// 											   .set("startBattle", &StateManager::startBattle);
-    //
-	// SLB::Class<CharacterManager>("CharacterManager", &slbm).set("player", &CharacterManager::getPlayer);
-    //
-	// SLB::Class<Event>("Event", &slbm).inherits<Sprite>()
-	// 								 .set("moveUp", &Character::moveUp)
-	// 								 .set("moveDown", &Character::moveDown)
-	// 								 .set("moveLeft", &Character::moveLeft)
-	// 								 .set("moveRight", &Character::moveRight)
-	// 								 .set("setDirection", &Character::setDirection)
-	// 								 .set("getDirection", &Character::getDirection)
-	// 								 .set("getTicks", &SDL_GetTicks)
-	// 								 .set("render", &Character::render)
-	// 								 .set("x", &Character::x)
-	// 								 .set("y", &Character::y)
-	// 								 .set("setHitbox", &Character::setHitbox)
-	// 								 .set("setPosition", &Character::setPosition)
-	// 								 .set("name", &Event::name)
-	// 								 .set("face", &Character::face);
-    //
-	// SLB::Class<EventInterpreter>("EventInterpreter", &slbm).set("addActionToQueue", &EventInterpreter::addActionToQueue);
-    //
-	// SLB::Class<Image>("Image", &slbm).constructor<const char*>()
-	// 								 .set("renderCopy", &Image::renderCopy)
-	// 								 .set("render", &Image::render);
-    //
-	// SLB::Class<Inventory>("Inventory", &slbm).set("addItem", &Inventory::addItem);
-    //
-	// SLB::Class<Item>("Item", &slbm).set("name", &Item::name);
-    //
-	// SLB::Class<ItemManager>("ItemManager", &slbm).set("getItem", &ItemManager::getItem);
-    //
-	// SLB::Class<Keyboard>("Keyboard", &slbm).set("isKeyPressed", &Keyboard::isKeyPressed)
-	// 									   .set("isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay)
-	// 									   .set("isKeyPressedOnce", &Keyboard::isKeyPressedOnce)
-	// 									   .set("GameUp", Keyboard::GameUp)
-	// 									   .set("GameDown", Keyboard::GameDown)
-	// 									   .set("GameLeft", Keyboard::GameLeft)
-	// 									   .set("GameRight", Keyboard::GameRight)
-	// 									   .set("GameAttack", Keyboard::GameAttack)
-	// 									   .set("GameBack", Keyboard::GameBack)
-	// 									   .set("GameMenu", Keyboard::GameMenu);
-    //
-	// SLB::Class<Map>("Map", &slbm).set("getEvent", &Map::getEvent)
-	// 							 .set("scrollX", &Map::getScrollX)
-	// 							 .set("scrollY", &Map::getScrollY);
-    //
-	// SLB::Class<BattleState>("BattleState", &slbm);
-    //
-	// SLB::Class<MapState>("MapState", &slbm);
-    //
-	// SLB::Class<MapManager>("MapManager", &slbm).set("currentMap", MapManager::currentMap);
-    //
-	// SLB::Class<MessageState>("MessageState", &slbm).set("addCommand", &MessageState::addCommand)
-	// 											   .set("getCmdwinPos", &MessageState::getCmdwinPos);
-    //
-	// SLB::Class<ParameterList>("ParameterList", &slbm).constructor()
-	// 												 .set("addIntParameter", &ParameterList::addIntParameter)
-	// 												 .set("addBoolParameter", &ParameterList::addBoolParameter)
-	// 												 .set("addFloatParameter", &ParameterList::addFloatParameter)
-	// 												 .set("addStringParameter", &ParameterList::addStringParameter)
-	// 												 .set("clear", &ParameterList::clear);
-    //
-	// SLB::Class<IntParameter>("IntParameter", &slbm);
-	// SLB::Class<FloatParameter>("FloatParameter", &slbm);
-	// SLB::Class<StringParameter>("StringParameter", &slbm);
-    //
-	// SLB::Class<Player>("Player", &slbm).set("setDirection", &Character::setDirection)
-	// 								   .set("getDirection", &Character::getDirection)
-	// 								   .set("changeMap", &Character::changeMap)
-	// 								   .set("stop", &Character::stop)
-	// 								   .set("inventory", &Player::inventory)
-	// 								   .set("x", &Character::x)
-	// 								   .set("y", &Character::y)
-	// 								   .set("inFrontOf", &Character::inFrontOf);
-    //
-	// SLB::Class<Sprite>("Sprite", &slbm).constructor<const char *, u16, u16>()
-	// 								   .set("drawFrame", &Sprite::drawFrame)
-	// 								   .set("playAnimation", &Sprite::playAnimation)
-	// 								   .set("animationAtEnd", &Sprite::animationAtEnd);
-    //
-	// SLB::Class<LanguageManager>("LanguageManager", &slbm).set("translate", &LanguageManager::translate);
-	// doString("function _t(str) return LanguageManager.translate(str) end");
+	lua.new_usertype<StateManager>("StateManager",
+		"top", &StateManager::top,
+		"pop", &StateManager::pop,
+		"push", &StateManager::push,
+		"size", &StateManager::getSize,
+		"drawMessage", &StateManager::drawMessage,
+		"startBattle", &StateManager::startBattle
+	);
+
+	lua.new_usertype<CharacterManager>("CharacterManager",
+		"player", &CharacterManager::getPlayer
+	);
+
+	lua.new_usertype<Event>("Event",
+		"moveUp", &Character::moveUp,
+		"moveDown", &Character::moveDown,
+		"moveLeft", &Character::moveLeft,
+		"moveRight", &Character::moveRight,
+		"setDirection", &Character::setDirection,
+		"getDirection", &Character::getDirection,
+		"getTicks", &SDL_GetTicks,
+		"render", &Character::render,
+		"x", &Character::x,
+		"y", &Character::y,
+		"setHitbox", &Character::setHitbox,
+		"setPosition", &Character::setPosition,
+		"name", &Event::name,
+		"face", &Character::face,
+		sol::base_classes, sol::bases<Character, Sprite>()
+	);
+
+	lua.new_usertype<EventInterpreter>("EventInterpreter",
+		"addActionToQueue", &EventInterpreter::addActionToQueue
+	);
+
+	lua.new_usertype<Image>("Image",
+		sol::constructors<Image(const char*)>(),
+		"renderCopy", &Image::renderCopy,
+		"render", &Image::render
+	);
+
+	lua.new_usertype<Inventory>("Inventory",
+		"addItem", &Inventory::addItem
+	);
+
+	lua.new_usertype<Item>("Item",
+		"name", &Item::name
+	);
+
+	lua.new_usertype<ItemManager>("ItemManager",
+		"getItem", &ItemManager::getItem
+	);
+
+	lua.new_usertype<Keyboard>("Keyboard",
+		"isKeyPressed", &Keyboard::isKeyPressed,
+		"isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay,
+		"isKeyPressedOnce", &Keyboard::isKeyPressedOnce
+		// "GameUp", Keyboard::GameUp,
+		// "GameDown", Keyboard::GameDown,
+		// "GameLeft", Keyboard::GameLeft,
+		// "GameRight", Keyboard::GameRight,
+		// "GameAttack", Keyboard::GameAttack,
+		// "GameBack", Keyboard::GameBack,
+		// "GameMenu", Keyboard::GameMenu
+	);
+
+	doString(
+		"Keyboard.GameUp     = " + std::to_string(Keyboard::GameUp) +
+		"Keyboard.GameDown   = " + std::to_string(Keyboard::GameDown) +
+		"Keyboard.GameLeft   = " + std::to_string(Keyboard::GameLeft) +
+		"Keyboard.GameRight  = " + std::to_string(Keyboard::GameRight) +
+		"Keyboard.GameAttack = " + std::to_string(Keyboard::GameAttack) +
+		"Keyboard.GameBack   = " + std::to_string(Keyboard::GameBack) +
+		"Keyboard.GameMenu   = " + std::to_string(Keyboard::GameMenu)
+	);
+
+	lua.new_usertype<Map>("Map",
+		"getEvent", &Map::getEvent,
+		"scrollX", &Map::getScrollX,
+		"scrollY", &Map::getScrollY
+	);
+
+	lua.new_usertype<BattleState>("BattleState");
+
+	lua.new_usertype<MapState>("MapState");
+
+	lua.new_usertype<MapManager>("MapManager",
+		// "currentMap", sol::as_function(&MapManager::currentMap)
+		"currentMap", &MapManager::getCurrentMap
+	);
+
+	lua.new_usertype<MessageState>("MessageState",
+		"addCommand", &MessageState::addCommand,
+		"getCmdwinPos", &MessageState::getCmdwinPos
+	);
+
+	lua.new_usertype<ParameterList>("ParameterList",
+		"addIntParameter", &ParameterList::addIntParameter,
+		"addBoolParameter", &ParameterList::addBoolParameter,
+		"addFloatParameter", &ParameterList::addFloatParameter,
+		"addStringParameter", &ParameterList::addStringParameter,
+		"clear", &ParameterList::clear
+	);
+
+	lua.new_usertype<IntParameter>("IntParameter");
+	lua.new_usertype<FloatParameter>("FloatParameter");
+	lua.new_usertype<StringParameter>("StringParameter");
+
+	lua.new_usertype<Player>("Player",
+		"setDirection", &Character::setDirection,
+		"getDirection", &Character::getDirection,
+		"changeMap", &Character::changeMap,
+		"stop", &Character::stop,
+		"inventory", &Player::inventory,
+		"x", &Character::x,
+		"y", &Character::y,
+		"inFrontOf", &Character::inFrontOf,
+		sol::base_classes, sol::bases<Character, Sprite>()
+	);
+
+	lua.new_usertype<Sprite>("Sprite",
+		sol::constructors<Sprite(const char *, u16, u16)>(),
+		"drawFrame", &Sprite::drawFrame,
+		"playAnimation", &Sprite::playAnimation,
+		"animationAtEnd", &Sprite::animationAtEnd
+	);
+
+	lua.new_usertype<LanguageManager>("LanguageManager",
+		"translate", &LanguageManager::translate
+	);
+
+	doString("function _t(str) return LanguageManager.translate(str) end");
 }
 
 void LuaHandler::doFile(const char *filename) {
-	// if(luaL_dofile(L, filename)) {
-	// 	error("%s", lua_tostring(L, -1));
-	// 	lua_pop(L, 1);
-	// 	Game::quit = true;
-	// }
+	if(luaL_dofile(lua.lua_state(), filename)) {
+		error("%s", lua_tostring(lua.lua_state(), -1));
+		lua_pop(lua.lua_state(), 1);
+		Game::quit = true;
+	}
 }
 
 void LuaHandler::doString(const std::string &str) {
-	// if(luaL_dostring(L, str.c_str())) {
-	// 	error("%s", lua_tostring(L, -1));
-	// 	Game::quit = true;
-	// }
+	if(luaL_dostring(lua.lua_state(), str.c_str())) {
+		error("%s", lua_tostring(lua.lua_state(), -1));
+		Game::quit = true;
+	}
 }
 

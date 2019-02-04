@@ -11,6 +11,7 @@
  *
  * =====================================================================================
  */
+#include "LuaHandler.hpp"
 #include "AnimationManager.hpp"
 #include "BattlerManager.hpp"
 #include "CharacterManager.hpp"
@@ -18,7 +19,6 @@
 #include "EventManager.hpp"
 #include "ItemManager.hpp"
 #include "Keyboard.hpp"
-#include "LuaHandler.hpp"
 #include "MapManager.hpp"
 #include "MapState.hpp"
 #include "MenuState.hpp"

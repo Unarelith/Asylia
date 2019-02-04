@@ -49,7 +49,7 @@ void EndState::update() {
 				StateManager::pop();
 				break;
 			case 1:
-				while(StateManager::size() > 0) {
+				while(StateManager::getSize() > 0) {
 					StateManager::pop();
 				}
 				StateManager::push(new TitleState);
