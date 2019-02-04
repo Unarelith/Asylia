@@ -32,7 +32,8 @@ Game::Game() {
 
 	m_sdlLoader.load();
 
-	GameWindow::main = new GameWindow(APP_NAME);
+	m_window.open(APP_NAME);
+	GameWindow::main = &m_window;
 
 	Sound::init();
 
@@ -49,10 +50,6 @@ Game::~Game() {
 	Interface::free();
 
 	Sound::free();
-
-	delete GameWindow::main;
-
-	exit(EXIT_SUCCESS);
 }
 
 void Game::mainLoop() {

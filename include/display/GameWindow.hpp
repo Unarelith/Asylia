@@ -14,26 +14,29 @@
 #ifndef GAMEWINDOW_HPP_
 #define GAMEWINDOW_HPP_
 
+#include <memory>
+
 #include "Color.hpp"
 #include "SDLHeaders.hpp"
 #include "Types.hpp"
 
 class GameWindow {
 	public:
-		GameWindow(const char *caption);
-		~GameWindow();
+		GameWindow() = default;
+
+		void open(const char *caption);
 
 		void clear();
 
 		void update();
 
-		void setRendererColor(Color color);
+		void setRendererColor(const Color &color);
 
-		void drawRect(s16 x, s16 y, u16 w, u16 h, Color c);
+		void drawRect(s16 x, s16 y, u16 w, u16 h, const Color &c);
 
-		void drawFillRect(s16 x, s16 y, u16 w, u16 h, Color c);
+		void drawFillRect(s16 x, s16 y, u16 w, u16 h, const Color &c);
 
-		SDL_Renderer *renderer() const { return m_renderer; }
+		SDL_Renderer *renderer() const { return m_renderer.get(); }
 
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
@@ -41,8 +44,11 @@ class GameWindow {
 		static GameWindow *main;
 
 	private:
-		SDL_Window *m_window;
-		SDL_Renderer *m_renderer;
+		using SDL_WindowPtr = std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)>;
+		using SDL_RendererPtr = std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)>;
+
+		SDL_WindowPtr m_window{nullptr, SDL_DestroyWindow};
+		SDL_RendererPtr m_renderer{nullptr, SDL_DestroyRenderer};
 
 		u16 m_width;
 		u16 m_height;

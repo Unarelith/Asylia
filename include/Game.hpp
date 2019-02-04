@@ -16,6 +16,8 @@
 
 #include <gk/core/SDLLoader.hpp>
 
+#include "GameWindow.hpp"
+
 class Game {
 	public:
 		Game();
@@ -28,6 +30,8 @@ class Game {
 
 	private:
 		gk::SDLLoader m_sdlLoader;
+
+		GameWindow m_window;
 };
 
 #endif // GAME_HPP_
