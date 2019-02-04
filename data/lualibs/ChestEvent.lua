@@ -12,7 +12,8 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 		self.itemCount = itemCount
 
 		self.update = function()
-			if Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
+			if CharacterManager.player():inFrontOf(self.character)
+			and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
 				if CharacterManager.player():getDirection() == 3 and not self.opened then
 					self.opened = true
 				end
