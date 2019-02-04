@@ -17,14 +17,17 @@
 #include <map>
 #include <string>
 
-class LanguageManager {
+#include "Singleton.hpp"
+
+class LanguageManager : public Singleton<LanguageManager> {
 	public:
-		static void init(const std::string &language);
+		void init(const std::string &language);
 
-		static const std::string &translate(const std::string &str);
+		const std::string &translate(const std::string &str);
 
-		static std::map<std::string, std::string> text;
-		static std::string currentLanguage;
+	private:
+		std::map<std::string, std::string> m_text;
+		std::string m_currentLanguage;
 };
 
 const std::string &_t(const std::string &str);

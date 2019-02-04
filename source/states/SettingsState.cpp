@@ -81,11 +81,11 @@ void SettingsState::update() {
 			Sound::Effect::play(Sound::Effect::confirm);
 			switch(m_language.pos()) {
 				case 0:
-					LanguageManager::init("fr-fr");
+					LanguageManager::getInstance().init("fr-fr");
 					screenshot(m_parent);
 					break;
 				case 1:
-					LanguageManager::init("en-us");
+					LanguageManager::getInstance().init("en-us");
 					screenshot(m_parent);
 					break;
 				default: break;

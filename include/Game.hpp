@@ -17,6 +17,7 @@
 #include <gk/core/SDLLoader.hpp>
 
 #include "GameWindow.hpp"
+#include "LanguageManager.hpp"
 
 class Game {
 	public:
@@ -32,6 +33,8 @@ class Game {
 		gk::SDLLoader m_sdlLoader;
 
 		GameWindow m_window;
+
+		LanguageManager m_languageManager;
 };
 
 #endif // GAME_HPP_

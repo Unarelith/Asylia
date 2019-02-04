@@ -171,10 +171,11 @@ void LuaHandler::bindClasses() {
 	);
 
 	lua.new_usertype<LanguageManager>("LanguageManager",
+		"getInstance", &LanguageManager::getInstance,
 		"translate", &LanguageManager::translate
 	);
 
-	doString("function _t(str) return LanguageManager.translate(str) end");
+	doString("function _t(str) return LanguageManager.getInstance():translate(str) end");
 }
 
 void LuaHandler::doFile(const char *filename) {

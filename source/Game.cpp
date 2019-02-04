@@ -19,7 +19,6 @@
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 #include "Keyboard.hpp"
-#include "LanguageManager.hpp"
 #include "Sound.hpp"
 #include "StateManager.hpp"
 #include "TimeManager.hpp"
@@ -39,7 +38,8 @@ Game::Game() {
 
 	Interface::init();
 
-	LanguageManager::init("en-us");
+	m_languageManager.init("en-us");
+	LanguageManager::setInstance(m_languageManager);
 
 	StateManager::init();
 }
