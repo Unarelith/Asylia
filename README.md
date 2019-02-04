@@ -5,7 +5,9 @@
 [![License](https://img.shields.io/badge/license-LGPLv2.1%2B-blue.svg)](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html)
 
 - Asylia is a classic RPG game engine made with SDL 2.0 and written in C++.
-- Asylia is a game that uses XML for configuration scripts, and Lua for modding/event management.
+- It uses XML for configuration scripts, and Lua for modding/event management.
+
+**Note:** I originally made this project in 2014. It's old, there's probably a lot of design issues, but I decided to migrate it to GameKit in order to keep consistency between my old projects.
 
 ## Screenshots
 
