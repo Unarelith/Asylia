@@ -14,6 +14,8 @@
 #ifndef GAME_HPP_
 #define GAME_HPP_
 
+#include <gk/core/SDLLoader.hpp>
+
 class Game {
 	public:
 		Game();
@@ -23,6 +25,9 @@ class Game {
 
 		static bool quit;
 		static bool paused;
+
+	private:
+		gk::SDLLoader m_sdlLoader;
 };
 
 #endif // GAME_HPP_

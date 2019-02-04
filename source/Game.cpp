@@ -20,7 +20,6 @@
 #include "Interface.hpp"
 #include "Keyboard.hpp"
 #include "LanguageManager.hpp"
-#include "SDLManager.hpp"
 #include "Sound.hpp"
 #include "StateManager.hpp"
 #include "TimeManager.hpp"
@@ -31,7 +30,7 @@ bool Game::paused = false;
 Game::Game() {
 	std::srand(std::time(nullptr));
 
-	SDLManager::init();
+	m_sdlLoader.load();
 
 	GameWindow::main = new GameWindow(APP_NAME);
 
@@ -52,8 +51,6 @@ Game::~Game() {
 	Sound::free();
 
 	delete GameWindow::main;
-
-	SDLManager::free();
 
 	exit(EXIT_SUCCESS);
 }
