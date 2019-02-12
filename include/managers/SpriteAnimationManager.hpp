@@ -16,13 +16,17 @@
 
 #include <map>
 
+#include "Singleton.hpp"
 #include "SpriteAnimation.hpp"
 
-namespace SpriteAnimationManager {
-	void init();
-	void free();
+class SpriteAnimationManager : public Singleton<SpriteAnimationManager> {
+	public:
+		void init();
 
-	extern std::map<std::string, std::vector<SpriteAnimation>> spriteAnimations;
-}
+		SpriteAnimation &getAnimation(const std::string &name, size_t id) { return m_spriteAnimations[name][id]; }
+
+	private:
+		std::map<std::string, std::vector<SpriteAnimation>> m_spriteAnimations;
+};
 
 #endif // SPRITEANIMATIONMANAGER_HPP_

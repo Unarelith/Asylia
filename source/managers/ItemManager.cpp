@@ -15,38 +15,14 @@
 #include "ItemManager.hpp"
 #include "XMLFile.hpp"
 
-std::vector<Item*> ItemManager::items;
-std::vector<Armor*> ItemManager::armors;
-std::vector<Weapon*> ItemManager::weapons;
-std::vector<Skill*> ItemManager::skills;
+template<>
+ItemManager *Singleton<ItemManager>::s_instance = nullptr;
 
 void ItemManager::init() {
 	loadItems();
 	loadArmors();
 	loadWeapons();
 	loadSkills();
-}
-
-void ItemManager::free() {
-	while(items.size() != 0) {
-		delete items.back();
-		items.pop_back();
-	}
-
-	while(armors.size() != 0) {
-		delete armors.back();
-		armors.pop_back();
-	}
-
-	while(weapons.size() != 0) {
-		delete weapons.back();
-		weapons.pop_back();
-	}
-
-	while(skills.size() != 0) {
-		delete skills.back();
-		skills.pop_back();
-	}
 }
 
 void ItemManager::loadItems() {
@@ -61,17 +37,17 @@ void ItemManager::loadItems() {
 		animation = itemElement->Attribute("animation");
 		if(!animation) animation = "";
 
-		items.push_back(new Item(
+		m_items.emplace_back(new Item(
 			std::string("Item") + std::to_string(id),
 			std::string("Item") + std::to_string(id) + "Desc",
 			std::string("graphics/items/") + std::to_string(id) + ".png",
-			AnimationManager::getAnimationByName(animation)
+			AnimationManager::getInstance().getAnimationByName(animation)
 		));
 
-		items.back()->setID(id);
+		m_items.back()->setID(id);
 
 		if(!itemElement->QueryIntAttribute("effect", &effect)) {
-			items.back()->setEffect(effect);
+			m_items.back()->setEffect(effect);
 		}
 
 		itemElement = itemElement->NextSiblingElement("item");
@@ -85,7 +61,7 @@ void ItemManager::loadArmors() {
 	tinyxml2::XMLElement *armorElement = doc.FirstChildElement("armors").FirstChildElement("armor").ToElement();
 	u8 id = 0;
 	while(armorElement) {
-		armors.push_back(new Armor(
+		m_armors.emplace_back(new Armor(
 			std::string("Armor") + std::to_string(id),
 			std::string("Armor") + std::to_string(id) + "Desc",
 			std::string("graphics/armors/") + std::to_string(id) + ".png",
@@ -93,7 +69,7 @@ void ItemManager::loadArmors() {
 			armorElement->IntAttribute("defense")
 		));
 
-		armors.back()->setID(id);
+		m_armors.back()->setID(id);
 
 		armorElement = armorElement->NextSiblingElement("armor");
 		id++;
@@ -106,7 +82,7 @@ void ItemManager::loadWeapons() {
 	tinyxml2::XMLElement *weaponElement = doc.FirstChildElement("weapons").FirstChildElement("weapon").ToElement();
 	u8 id = 0;
 	while(weaponElement) {
-		weapons.push_back(new Weapon(
+		m_weapons.emplace_back(new Weapon(
 			std::string("Weapon") + std::to_string(id),
 			std::string("Weapon") + std::to_string(id) + "Desc",
 			std::string("graphics/weapons/") + std::to_string(id) + ".png",
@@ -114,7 +90,7 @@ void ItemManager::loadWeapons() {
 			weaponElement->DoubleAttribute("hitRate")
 		));
 
-		weapons.back()->setID(id);
+		m_weapons.back()->setID(id);
 
 		weaponElement = weaponElement->NextSiblingElement("weapon");
 		id++;
@@ -132,16 +108,16 @@ void ItemManager::loadSkills() {
 		animation = skillElement->Attribute("animation");
 		if(!animation) animation = "";
 
-		skills.push_back(new Skill(
+		m_skills.emplace_back(new Skill(
 			std::string("Skill") + std::to_string(id),
 			std::string("Skill") + std::to_string(id) + "Desc",
 			std::string("graphics/skills/") + std::to_string(id) + ".png",
-			AnimationManager::getAnimationByName(animation),
+			AnimationManager::getInstance().getAnimationByName(animation),
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		));
 
-		skills.back()->setID(id);
+		m_skills.back()->setID(id);
 
 		skillElement = skillElement->NextSiblingElement("skill");
 		id++;

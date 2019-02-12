@@ -22,10 +22,10 @@ Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Charac
 
 	m_speed = CHARA_SPEED;
 
-	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
-	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
-	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
-	addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
+	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_DOWN));
+	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_LEFT));
+	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_RIGHT));
+	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_UP));
 
 	m_inventory.addItem(0, 1);
 	m_inventory.addItem(1, 1);
@@ -46,7 +46,7 @@ Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Charac
 	m_inventory.addArmor(3, 1);
 	m_inventory.addArmor(4, 1);
 
-	m_quests.push_back(QuestManager::quests[0]);
+	m_quests.push_back(QuestManager::getInstance().getQuest(0));
 }
 
 void Player::move() {

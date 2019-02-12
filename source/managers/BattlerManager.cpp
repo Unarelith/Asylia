@@ -14,8 +14,8 @@
 #include "BattlerManager.hpp"
 #include "XMLFile.hpp"
 
-std::vector<Actor*> BattlerManager::actors;
-std::vector<Enemy*> BattlerManager::enemies;
+template<>
+BattlerManager *Singleton<BattlerManager>::s_instance = nullptr;
 
 void BattlerManager::init() {
 	initActors();
@@ -35,9 +35,9 @@ void BattlerManager::initActors() {
 
 		level = actorElement->IntAttribute("level");
 
-		actors.push_back(new Actor(name, appearance, level));
+		m_actors.emplace_back(new Actor(name, appearance, level));
 
-		actors.back()->calculateAllStats(
+		m_actors.back()->calculateAllStats(
 			actorElement->FirstChildElement("stats")->IntAttribute("agi"),
 			actorElement->FirstChildElement("stats")->IntAttribute("vit"),
 			actorElement->FirstChildElement("stats")->IntAttribute("dex"),
@@ -63,9 +63,9 @@ void BattlerManager::initEnemies() {
 
 		level = enemyElement->IntAttribute("level");
 
-		enemies.push_back(new Enemy(name, appearance, level));
+		m_enemies.emplace_back(new Enemy(name, appearance, level));
 
-		enemies.back()->calculateAllStats(
+		m_enemies.back()->calculateAllStats(
 			enemyElement->FirstChildElement("stats")->IntAttribute("agi"),
 			enemyElement->FirstChildElement("stats")->IntAttribute("vit"),
 			enemyElement->FirstChildElement("stats")->IntAttribute("dex"),
@@ -84,31 +84,19 @@ void BattlerManager::initEnemies() {
 			chance = itemElement->DoubleAttribute("chance");
 
 			if(itemElement->Attribute("type", "Item")) {
-				enemies.back()->loot()->addItem(id, count, chance);
+				m_enemies.back()->loot()->addItem(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Armor")) {
-				enemies.back()->loot()->addArmor(id, count, chance);
+				m_enemies.back()->loot()->addArmor(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Weapon")) {
-				enemies.back()->loot()->addWeapon(id, count, chance);
+				m_enemies.back()->loot()->addWeapon(id, count, chance);
 			}
 
 			itemElement = itemElement->NextSiblingElement("item");
 		}
 
 		enemyElement = enemyElement->NextSiblingElement("enemy");
-	}
-}
-
-void BattlerManager::free() {
-	while(actors.size() != 0) {
-		delete actors.back();
-		actors.pop_back();
-	}
-
-	while(enemies.size() != 0) {
-		delete enemies.back();
-		enemies.pop_back();
 	}
 }
 

@@ -30,12 +30,12 @@ void VictoryWindow::init(Battle *battle) {
 
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();
 
-	CharacterManager::player->inventory()->add(&m_inventory);
+	CharacterManager::getInstance().getPlayer()->inventory()->add(&m_inventory);
 
-	for(u8 i = 0 ; i < CharacterManager::player->teamSize() ; i++) {
-		CharacterManager::player->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
+	for(u8 i = 0 ; i < CharacterManager::getInstance().getPlayer()->teamSize() ; i++) {
+		CharacterManager::getInstance().getPlayer()->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
 	}
-	CharacterManager::player->gainGold(m_battle->gold());
+	CharacterManager::getInstance().getPlayer()->gainGold(m_battle->gold());
 
 	gk::AudioPlayer::playSound("sound-confirm");
 }

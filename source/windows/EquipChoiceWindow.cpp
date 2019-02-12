@@ -29,7 +29,7 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 	SelectableWindow::draw(drawCursor);
 
 	if(!m_equipment->weapon()) {
-		ItemManager::weapons[0]->thumbnail().render(m_x + 20, m_y + 20);
+		ItemManager::getInstance().getWeapon(0)->thumbnail().render(m_x + 20, m_y + 20);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
 		Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::system);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
@@ -41,7 +41,7 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 	for(u8 slot = 0 ; slot < 3 ; slot++) {
 		Armor *armor = m_equipment->armor(slot);
 		if(!armor) {
-			for(auto it : ItemManager::armors) {
+			for(auto &it : ItemManager::getInstance().armors()) {
 				if(it->slot() == slot) {
 					it->thumbnail().render(m_x + 20, m_y + 52 + slot * 32);
 					break;

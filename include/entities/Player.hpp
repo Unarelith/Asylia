@@ -24,7 +24,7 @@ class Player : public Character {
 
 		void move();
 
-		void addTeamMember(u16 id) { m_team.push_back(BattlerManager::actors[id]); if(m_team.size() == 1) reload(m_team.back()->sprite()); }
+		void addTeamMember(u16 id) { m_team.push_back(BattlerManager::getInstance().getActor(id)); if(m_team.size() == 1) reload(m_team.back()->sprite()); }
 		Actor *getTeamMember(u8 i) { return m_team[i]; }
 
 		u16 teamSize() { return m_team.size(); }

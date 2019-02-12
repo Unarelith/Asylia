@@ -32,7 +32,7 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 	m_y = y;
 	m_area = area;
 
-	m_tileset = MapManager::tilesets[tilesetID];
+	m_tileset = MapManager::getInstance().getTileset(tilesetID);
 
 	m_data = new s16*[m_layers];
 
@@ -191,7 +191,9 @@ void Map::centerMapWithObject(s16 x, s16 y, u16 w, u16 h) {
 
 	if(scrollX < 0) scrollX = 0;
 	if(scrollY < 0) scrollY = 0;
-	if(scrollX + GameWindow::main->width() > MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth) scrollX = MapManager::currentMap->width() * MapManager::currentMap->tileset()->tileWidth - GameWindow::main->width() - 1;
-	if(scrollY + GameWindow::main->height() > MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight) scrollY = MapManager::currentMap->height() * MapManager::currentMap->tileset()->tileHeight - GameWindow::main->height() - 1;
+	if(scrollX + GameWindow::main->width() > MapManager::getInstance().getCurrentMap()->width() * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth)
+		scrollX = MapManager::getInstance().getCurrentMap()->width() * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth - GameWindow::main->width() - 1;
+	if(scrollY + GameWindow::main->height() > MapManager::getInstance().getCurrentMap()->height() * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight)
+		scrollY = MapManager::getInstance().getCurrentMap()->height() * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight - GameWindow::main->height() - 1;
 }
 

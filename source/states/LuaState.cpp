@@ -21,17 +21,17 @@ LuaState::LuaState(const std::string &filename, const std::string &table) {
 
 	m_table = table;
 
-	LuaHandler::doFile(filename.c_str());
-	LuaHandler::doString(table + ".init()");
+	LuaHandler::getInstance().doFile(filename.c_str());
+	LuaHandler::getInstance().doString(table + ".init()");
 }
 
 void LuaState::update() {
-	LuaHandler::doString(m_table + ".update()");
+	LuaHandler::getInstance().doString(m_table + ".update()");
 }
 
 void LuaState::render() {
 	SDL_RenderCopy(GameWindow::main->renderer(), m_background, nullptr, nullptr);
 
-	LuaHandler::doString(m_table + ".render()");
+	LuaHandler::getInstance().doString(m_table + ".render()");
 }
 

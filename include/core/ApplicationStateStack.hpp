@@ -45,7 +45,7 @@ class ApplicationStateStack : public Singleton<ApplicationStateStack> {
 
 		// FIXME: To remove
 		static BattleState *startBattle(u16 id, bool allowDefeat) {
-			return &getInstance().push<BattleState>(TroopManager::troops[id], allowDefeat);
+			return &getInstance().push<BattleState>(TroopManager::getInstance().getTroop(id), allowDefeat);
 		}
 
 	private:

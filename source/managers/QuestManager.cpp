@@ -14,7 +14,8 @@
 #include "QuestManager.hpp"
 #include "XMLFile.hpp"
 
-std::vector<Quest*> QuestManager::quests;
+template<>
+QuestManager *Singleton<QuestManager>::s_instance = nullptr;
 
 void QuestManager::init() {
 	XMLFile doc("data/config/quests.xml");
@@ -26,7 +27,7 @@ void QuestManager::init() {
 		exp = questElement->IntAttribute("exp");
 		gold = questElement->IntAttribute("gold");
 
-		quests.push_back(new Quest(exp, gold));
+		m_quests.emplace_back(new Quest(exp, gold));
 
 		tinyxml2::XMLElement *itemElement = questElement->FirstChildElement("item");
 		while(itemElement) {
@@ -36,13 +37,13 @@ void QuestManager::init() {
 			u16 count = itemElement->IntAttribute("count");
 
 			if(type == "Item") {
-				quests.back()->items()->addItem(id, count);
+				m_quests.back()->items()->addItem(id, count);
 			}
 			else if(type == "Weapon") {
-				quests.back()->items()->addWeapon(id, count);
+				m_quests.back()->items()->addWeapon(id, count);
 			}
 			else if(type == "Armor") {
-				quests.back()->items()->addArmor(id, count);
+				m_quests.back()->items()->addArmor(id, count);
 			}
 
 			itemElement = itemElement->NextSiblingElement("item");
@@ -57,38 +58,31 @@ void QuestManager::init() {
 				u16 id = objectiveElement->IntAttribute("id");
 				std::string event = objectiveElement->Attribute("event");
 
-				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, event));
+				m_quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, event));
 			}
 			else if(type == "GetItem") {
 				u16 type = objectiveElement->IntAttribute("itemtype");
 				u16 id = objectiveElement->IntAttribute("id");
 				u16 count = objectiveElement->IntAttribute("count");
 
-				quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, count));
+				m_quests.back()->addObjective(new QuestObjective(id, (Item::Type)type, count));
 			}
 			else if(type == "BeatEnemy") {
 				u16 id = objectiveElement->IntAttribute("id");
 				u16 count = objectiveElement->IntAttribute("count");
 
-				quests.back()->addObjective(new QuestObjective(id, count));
+				m_quests.back()->addObjective(new QuestObjective(id, count));
 			}
 			else if(type == "TalkToSomeone") {
 				std::string eventName = objectiveElement->Attribute("name");
 
-				quests.back()->addObjective(new QuestObjective(eventName));
+				m_quests.back()->addObjective(new QuestObjective(eventName));
 			}
 
 			objectiveElement = objectiveElement->NextSiblingElement("objective");
 		}
 
 		questElement = questElement->NextSiblingElement("quest");
-	}
-}
-
-void QuestManager::free() {
-	while(quests.size() != 0) {
-		delete quests.back();
-		quests.pop_back();
 	}
 }
 

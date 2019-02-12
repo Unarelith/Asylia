@@ -14,7 +14,8 @@
 #include "SpriteAnimationManager.hpp"
 #include "XMLFile.hpp"
 
-std::map<std::string, std::vector<SpriteAnimation>> SpriteAnimationManager::spriteAnimations;
+template<>
+SpriteAnimationManager *Singleton<SpriteAnimationManager>::s_instance = nullptr;
 
 void SpriteAnimationManager::init() {
 	XMLFile doc("data/config/spriteAnimations.xml");
@@ -41,16 +42,9 @@ void SpriteAnimationManager::init() {
 			framesElement = framesElement->NextSiblingElement("frames");
 		}
 
-		spriteAnimations[name] = animation;
+		m_spriteAnimations[name] = animation;
 
 		animationElement = animationElement->NextSiblingElement("animation");
 	}
-}
-
-void SpriteAnimationManager::free() {
-	for(auto &it : spriteAnimations) {
-		it.second.clear();
-	}
-	spriteAnimations.clear();
 }
 

@@ -14,23 +14,31 @@
 #ifndef MAPMANAGER_HPP_
 #define MAPMANAGER_HPP_
 
+#include <memory>
+
 #include "Map.hpp"
 
-#define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::maps[area].size()))
+#define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::getInstance().maps()[area].size()))
 
-class MapManager {
+class MapManager : public Singleton<MapManager> {
 	public:
-		static void init();
-		static void free();
+		void init();
 
-		static void initTilesets();
-		static void initMaps();
+		void initTilesets();
+		void initMaps();
 
-		static std::vector<Tileset*> tilesets;
-		static std::vector<std::vector<Map*>> maps;
+		Map *getCurrentMap() { return m_currentMap; }
+		void setCurrentMap(Map *currentMap) { m_currentMap = currentMap; }
 
-		static Map *getCurrentMap() { return currentMap; }
-		static Map *currentMap;
+		Tileset *getTileset(size_t i) { return m_tilesets[i].get(); }
+
+		std::vector<std::vector<std::unique_ptr<Map>>> &maps() { return m_maps; }
+
+	private:
+		std::vector<std::unique_ptr<Tileset>> m_tilesets;
+		std::vector<std::vector<std::unique_ptr<Map>>> m_maps;
+
+		Map *m_currentMap = nullptr;
 };
 
 void getNonPassableTiles(const char *filename, Tileset *tileset);

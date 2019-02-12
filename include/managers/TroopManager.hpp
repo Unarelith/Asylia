@@ -14,13 +14,18 @@
 #ifndef TROOPMANAGER_HPP_
 #define TROOPMANAGER_HPP_
 
+#include <memory>
+
 #include "Troop.hpp"
 
-namespace TroopManager {
-	void init();
-	void free();
+class TroopManager : public Singleton<TroopManager> {
+	public:
+		void init();
 
-	extern std::vector<Troop*> troops;
+		Troop *getTroop(size_t i) { return m_troops[i].get(); }
+
+	private:
+		std::vector<std::unique_ptr<Troop>> m_troops;
 };
 
 #endif // TROOPMANAGER_HPP_

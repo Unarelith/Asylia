@@ -21,18 +21,18 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 	if(appearance.find("event") != std::string::npos) {
 		m_type = Type::TypeEvent;
 
-		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_DOWN]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_LEFT]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_RIGHT]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Event"][DIR_UP]);
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Event", DIR_DOWN));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Event", DIR_LEFT));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Event", DIR_RIGHT));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Event", DIR_UP));
 	} else {
 		if(appearance == "") m_type = Type::TypeEvent;
 		else m_type = Type::TypeNPC;
 
-		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
-		addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_DOWN));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_LEFT));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_RIGHT));
+		addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_UP));
 	}
 
 	m_folder = std::string("data/events/") + name + "/";
@@ -42,12 +42,12 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 }
 
 void Event::init() {
-	LuaHandler::doFile((m_folder + "main.lua").c_str());
-	LuaHandler::doString(m_name + ".init()");
+	LuaHandler::getInstance().doFile((m_folder + "main.lua").c_str());
+	LuaHandler::getInstance().doString(m_name + ".init()");
 }
 
 void Event::move(std::string function) {
-	LuaHandler::doString(function);
+	LuaHandler::getInstance().doString(function);
 
 	Character::move();
 }
@@ -59,7 +59,7 @@ void Event::update() {
 		move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
 	}
 
-	LuaHandler::doString(m_name + ".update()");
+	LuaHandler::getInstance().doString(m_name + ".update()");
 }
 
 void Event::updateActions() {
@@ -67,13 +67,13 @@ void Event::updateActions() {
 }
 
 void Event::render() {
-	LuaHandler::doString(m_name + ".render()");
+	LuaHandler::getInstance().doString(m_name + ".render()");
 }
 
 void Event::collisionAction(Character *character) {
 	Character::collisionAction(character);
 	// FIXME: Doesn't work
 	if (character)
-		LuaHandler::doString("if " + m_name + ".collisionAction then " + m_name + ".collisionAction() end");
+		LuaHandler::getInstance().doString("if " + m_name + ".collisionAction then " + m_name + ".collisionAction() end");
 }
 

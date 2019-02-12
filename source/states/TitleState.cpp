@@ -46,7 +46,7 @@ void TitleState::update() {
 
 		switch(m_cmdwin.pos()) {
 			case 0:
-				ApplicationStateStack::getInstance().push<MapState>().init();
+				ApplicationStateStack::getInstance().push<MapState>();
 				break;
 			case 1: break;
 			case 2:

@@ -14,24 +14,26 @@
 #ifndef EVENTMANAGER_HPP_
 #define EVENTMANAGER_HPP_
 
+#include <memory>
+
 #include "Debug.hpp"
 #include "Event.hpp"
 #include "XMLFile.hpp"
 
-class EventManager {
+class EventManager : public Singleton<EventManager> {
 	public:
-		static void init();
-		static void free();
+		void init();
 
-		static void loadLibs();
+		void loadLibs();
 
-		static void initEvents();
-		static void loadCharacterEvent(tinyxml2::XMLElement *characterElement);
-		static void loadChestEvent(tinyxml2::XMLElement *chestEvent);
+		void initEvents();
+		void loadCharacterEvent(tinyxml2::XMLElement *characterElement);
+		void loadChestEvent(tinyxml2::XMLElement *chestEvent);
 
-		static Event *getEventByName(std::string name) { if(!events[name]) warning("Event %s not found", name.c_str()); return events[name]; }
+		Event *getEventByName(const std::string &name) { if(!m_events[name]) warning("Event %s not found", name.c_str()); return m_events[name].get(); }
 
-		static std::map<std::string, Event*> events;
+	private:
+		std::map<std::string, std::unique_ptr<Event>> m_events;
 };
 
 #endif // EVENTMANAGER_HPP_

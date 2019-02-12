@@ -19,7 +19,6 @@
 class ActorChoiceWindow : public SelectableWindow {
 	public:
 		ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height);
-		~ActorChoiceWindow();
 
 		void update();
 

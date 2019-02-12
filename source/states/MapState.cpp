@@ -13,76 +13,44 @@
  */
 #include <gk/audio/AudioPlayer.hpp>
 
-#include "LuaHandler.hpp"
-#include "AnimationManager.hpp"
-#include "ApplicationStateStack.hpp"
-#include "BattlerManager.hpp"
-#include "CharacterManager.hpp"
-#include "EventInterpreter.hpp"
-#include "EventManager.hpp"
-#include "ItemManager.hpp"
-#include "Keyboard.hpp"
-#include "MapManager.hpp"
 #include "MapState.hpp"
+#include "ApplicationStateStack.hpp"
+#include "EventInterpreter.hpp"
+#include "Keyboard.hpp"
 #include "MenuState.hpp"
-#include "QuestManager.hpp"
-#include "SpriteAnimationManager.hpp"
-#include "TroopManager.hpp"
 
 MapState::MapState() {
 	m_type = Type::Map;
-}
 
-MapState::~MapState() {
-	TroopManager::free();
+	LuaHandler::setInstance(m_luaHandler);
+	SpriteAnimationManager::setInstance(m_spriteAnimationManager);
+	AnimationManager::setInstance(m_animationManager);
+	EventManager::setInstance(m_eventManager);
+	MapManager::setInstance(m_mapManager);
+	ItemManager::setInstance(m_itemManager);
+	QuestManager::setInstance(m_questManager);
+	CharacterManager::setInstance(m_characterManager);
+	BattlerManager::setInstance(m_battlerManager);
+	TroopManager::setInstance(m_troopManager);
 
-	BattlerManager::free();
+	m_luaHandler.init();
+	m_spriteAnimationManager.init();
+	m_animationManager.init();
+	m_eventManager.init();
+	m_mapManager.init();
 
-	CharacterManager::free();
+	m_luaHandler.bindClasses();
 
-	QuestManager::free();
+	m_itemManager.init();
+	m_questManager.init();
+	m_characterManager.init();
+	m_battlerManager.init();
 
-	ItemManager::free();
+	m_characterManager.loadActorsTeam();
 
-	MapManager::free();
+	m_troopManager.init();
 
-	EventManager::free();
-
-	AnimationManager::free();
-
-	SpriteAnimationManager::free();
-
-	LuaHandler::free();
-
-	EventInterpreter::free();
-}
-
-void MapState::init() {
-	LuaHandler::init();
-
-	SpriteAnimationManager::init();
-
-	AnimationManager::init();
-
-	EventManager::init();
-
-	MapManager::init();
-
-	LuaHandler::bindClasses();
-
-	ItemManager::init();
-
-	QuestManager::init();
-
-	CharacterManager::init();
-
-	BattlerManager::init();
-
-	CharacterManager::loadActorsTeam();
-
-	TroopManager::init();
-
-	MapManager::currentMap->load();
+	m_mapManager.getCurrentMap()->load();
 
 	gk::AudioPlayer::playMusic("music-theme");
 }
@@ -94,33 +62,33 @@ void MapState::update() {
 		return;
 	}
 
-	CharacterManager::player->move();
+	CharacterManager::getInstance().getPlayer()->move();
 
-	Map::centerMapWithObject(CharacterManager::player->x(),
-							 CharacterManager::player->y(),
-							 CharacterManager::player->frameWidth(),
-							 CharacterManager::player->frameHeight());
+	Map::centerMapWithObject(CharacterManager::getInstance().getPlayer()->x(),
+							 CharacterManager::getInstance().getPlayer()->y(),
+							 CharacterManager::getInstance().getPlayer()->frameWidth(),
+							 CharacterManager::getInstance().getPlayer()->frameHeight());
 
-	MapManager::currentMap->eventsUpdate();
+	MapManager::getInstance().getCurrentMap()->eventsUpdate();
 }
 
 void MapState::render() {
-	MapManager::currentMap->render();
+	MapManager::getInstance().getCurrentMap()->render();
 
-	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
-		if(MapManager::currentMap->events()[i]->y() < CharacterManager::player->y()) {
-			MapManager::currentMap->events()[i]->render();
+	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
+		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() < CharacterManager::getInstance().getPlayer()->y()) {
+			MapManager::getInstance().getCurrentMap()->events()[i]->render();
 		}
 	}
 
-	CharacterManager::player->render();
+	CharacterManager::getInstance().getPlayer()->render();
 
-	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
-		if(MapManager::currentMap->events()[i]->y() >= CharacterManager::player->y()) {
-			MapManager::currentMap->events()[i]->render();
+	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
+		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() >= CharacterManager::getInstance().getPlayer()->y()) {
+			MapManager::getInstance().getCurrentMap()->events()[i]->render();
 		}
 	}
 
-	MapManager::currentMap->renderOverlay();
+	MapManager::getInstance().getCurrentMap()->renderOverlay();
 }
 

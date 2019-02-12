@@ -40,7 +40,7 @@ Battle::Battle() {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 
-	m_battleback = MapManager::currentMap->battleback();
+	m_battleback = MapManager::getInstance().getCurrentMap()->battleback();
 
 	m_exp = 0;
 	m_gold = 0;
@@ -86,7 +86,7 @@ void Battle::drawArrow(Battler *battler) {
 
 void Battle::enemyTurn() {
 	for(auto &it : m_enemies) {
-		pushAction(it.second, m_actors[rand() % m_actors.size()].second, ItemManager::skills[0]);
+		pushAction(it.second, m_actors[rand() % m_actors.size()].second, ItemManager::getInstance().getSkill(0));
 	}
 }
 

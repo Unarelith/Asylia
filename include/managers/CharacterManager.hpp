@@ -14,18 +14,20 @@
 #ifndef CHARACTERMANAGER_HPP_
 #define CHARACTERMANAGER_HPP_
 
+#include <memory>
+
 #include "Player.hpp"
 
-class CharacterManager {
+class CharacterManager : public Singleton<CharacterManager> {
 	public:
-		static void init();
-		static void free();
+		void init();
 
-		static void loadActorsTeam();
+		void loadActorsTeam();
 
-		static Player *getPlayer() { return player; }
+		Player *getPlayer() { return m_player.get(); }
 
-		static Player *player;
+	private:
+		std::unique_ptr<Player> m_player;
 };
 
 #endif // CHARACTERMANAGER_HPP_

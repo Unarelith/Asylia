@@ -1,7 +1,7 @@
 LuaEvent = {
 	new = function(eventName)
 		local initEvent = function(self)
-			self.event = MapManager.currentMap():getEvent(eventName)
+			self.event = MapManager.getInstance():getCurrentMap():getEvent(eventName)
 
 			self.addAction = function(self, id, actionID, ...)
 				local params = ParameterList.new()

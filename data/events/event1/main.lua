@@ -5,7 +5,7 @@ event1.init = function()
 
 	event1.update = function()
 		-- FIXME
-		if CharacterManager.player():inFrontOf(event1.event)
+		if CharacterManager.getInstance():player():inFrontOf(event1.event)
 		and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
 			event1.collisionAction()
 		end
@@ -20,7 +20,7 @@ event1.init = function()
 	end
 
 	event1.collisionAction = function()
-		CharacterManager.player():changeMap(0, 1, 0, 20, 29, 0)
+		CharacterManager.getInstance():player():changeMap(0, 1, 0, 20, 29, 0)
 	end
 
 	event1.movements = {

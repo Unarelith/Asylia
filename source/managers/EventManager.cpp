@@ -14,7 +14,8 @@
 #include "LuaHandler.hpp"
 #include "EventManager.hpp"
 
-std::map<std::string, Event*> EventManager::events;
+template<>
+EventManager *Singleton<EventManager>::s_instance = nullptr;
 
 void EventManager::init() {
 	loadLibs();
@@ -22,16 +23,9 @@ void EventManager::init() {
 	initEvents();
 }
 
-void EventManager::free() {
-	for(auto &it : events) {
-		delete it.second;
-	}
-	events.clear();
-}
-
 void EventManager::loadLibs() {
-	LuaHandler::doFile("data/lualibs/LuaEvent.lua");
-	LuaHandler::doFile("data/lualibs/ChestEvent.lua");
+	LuaHandler::getInstance().doFile("data/lualibs/LuaEvent.lua");
+	LuaHandler::getInstance().doFile("data/lualibs/ChestEvent.lua");
 }
 
 void EventManager::initEvents() {
@@ -80,7 +74,7 @@ void EventManager::loadCharacterEvent(tinyxml2::XMLElement *characterElement) {
 		frameHeight = 48;
 	}
 
-	events[name] = new Event(
+	m_events[name] = std::make_unique<Event>(
 		name, std::string("graphics/characters/") + appearance + ".png",
 		x * 32, y * 32, direction, solid, frameWidth, frameHeight
 	);
@@ -97,7 +91,7 @@ void EventManager::loadChestEvent(tinyxml2::XMLElement *chestElement) {
 
 	chestType = chestElement->IntAttribute("chestType");
 
-	events[name] = new Event(
+	m_events[name] = std::make_unique<Event>(
 		name, "graphics/events/Chest01.png",
 		x * 32, y * 32, chestType, true
 	);

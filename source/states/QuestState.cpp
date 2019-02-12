@@ -44,7 +44,7 @@ void QuestState::update() {
 			m_currentQuest = nullptr;
 
 			bool first = false;
-			for(auto it : CharacterManager::player->quests()) {
+			for(auto it : CharacterManager::getInstance().getPlayer()->quests()) {
 				switch(m_questCategorywin.pos()) {
 					case 0:
 						if(!first) {

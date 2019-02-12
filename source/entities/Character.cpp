@@ -135,20 +135,20 @@ void Character::mapCollisions() {
 }
 
 void Character::inCollisionWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
-	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
 	s16 x, y, x2, y2;
 
 	if(m_vx) {
-		x = (m_x + m_vx + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y = (m_y + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x = (m_x + m_vx + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+		y = (m_y + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -161,11 +161,11 @@ void Character::inCollisionWith(Character *c) {
 	}
 
 	if(m_vy) {
-		x = (m_x + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y = (m_y + m_vy + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x = (m_x + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+		y = (m_y + m_vy + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (MapManager::currentMap->tileset()->tileWidth * 2);
-		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::currentMap->tileset()->tileHeight * 2);
+		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -179,26 +179,26 @@ void Character::inCollisionWith(Character *c) {
 }
 
 bool Character::canInitiateConversationWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 x = (m_x + m_hitboxX) / (MapManager::currentMap->tileset()->tileWidth * 2);
-	s16 y = (m_y + m_hitboxY) / (MapManager::currentMap->tileset()->tileHeight * 2);
+	s16 x = (m_x + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
+	s16 y = (m_y + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
 
-	if(cx <= x && cx > x - c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2)) {
-		if(cy > y && cy <= y + c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
+	if(cx <= x && cx > x - c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2)) {
+		if(cy > y && cy <= y + c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
 			return true;
 		}
-		if(cy < y && cy >= y - c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2) && m_direction == DIR_UP) {
+		if(cy < y && cy >= y - c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_UP) {
 			return true;
 		}
 	}
 
-	if(cy <= y && cy > y - c->frameHeight() / (MapManager::currentMap->tileset()->tileHeight * 2)) {
-		if(cx > x && cx <= x + c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2) && m_direction == DIR_RIGHT) {
+	if(cy <= y && cy > y - c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2)) {
+		if(cx > x && cx <= x + c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_RIGHT) {
 			return true;
 		}
-		if(cx < x && cx >= x - c->frameWidth() / (MapManager::currentMap->tileset()->tileWidth * 2) && m_direction == DIR_LEFT) {
+		if(cx < x && cx >= x - c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_LEFT) {
 			return true;
 		}
 	}
@@ -209,17 +209,17 @@ bool Character::canInitiateConversationWith(Character *c) {
 void Character::eventCollisions() {
 	m_inFrontOf = nullptr;
 
-	for(u16 i = 0 ; i < MapManager::currentMap->events().size() ; i++) {
-		if(MapManager::currentMap->events()[i] != this) {
-			if(canInitiateConversationWith(MapManager::currentMap->events()[i])) {
-				m_inFrontOf = MapManager::currentMap->events()[i];
+	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
+		if(MapManager::getInstance().getCurrentMap()->events()[i] != this) {
+			if(canInitiateConversationWith(MapManager::getInstance().getCurrentMap()->events()[i])) {
+				m_inFrontOf = MapManager::getInstance().getCurrentMap()->events()[i];
 			}
-			inCollisionWith(MapManager::currentMap->events()[i]);
+			inCollisionWith(MapManager::getInstance().getCurrentMap()->events()[i]);
 		}
 	}
 
 	if(m_type == Type::TypeEvent || m_type == Type::TypeNPC) {
-		inCollisionWith(CharacterManager::player);
+		inCollisionWith(CharacterManager::getInstance().getPlayer());
 	}
 }
 
@@ -241,11 +241,11 @@ void Character::doMovement(s8 vx, s8 vy) {
 }
 
 void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction) {
-	MapManager::currentMap = MapManager::maps[area][MAP_POS(area, mapX, mapY)];
-	MapManager::currentMap->load();
+	MapManager::getInstance().setCurrentMap(MapManager::getInstance().maps()[area][MAP_POS(area, mapX, mapY)].get());
+	MapManager::getInstance().getCurrentMap()->load();
 	SDL_Delay(500);
-	m_x = x * MapManager::currentMap->tileset()->tileWidth;
-	m_y = y * MapManager::currentMap->tileset()->tileHeight;
+	m_x = x * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth;
+	m_y = y * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight;
 	m_direction = direction;
 	stop();
 }

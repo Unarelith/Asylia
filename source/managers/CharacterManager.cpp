@@ -15,7 +15,8 @@
 #include "CharacterManager.hpp"
 #include "XMLFile.hpp"
 
-Player *CharacterManager::player = nullptr;
+template<>
+CharacterManager *Singleton<CharacterManager>::s_instance = nullptr;
 
 void CharacterManager::init() {
 	XMLFile doc("data/config/player.xml");
@@ -23,14 +24,10 @@ void CharacterManager::init() {
 	const char *appearance = doc.FirstChildElement("player").ToElement()->Attribute("appearance");
 	tinyxml2::XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
 
-	player = new Player(std::string("graphics/characters/") + appearance + ".png",
+	m_player.reset(new Player(std::string("graphics/characters/") + appearance + ".png",
 						positionElement->IntAttribute("x") * 32,
 						positionElement->IntAttribute("y") * 32,
-						positionElement->IntAttribute("direction"));
-}
-
-void CharacterManager::free() {
-	delete player;
+						positionElement->IntAttribute("direction")));
 }
 
 void CharacterManager::loadActorsTeam() {
@@ -38,16 +35,16 @@ void CharacterManager::loadActorsTeam() {
 
 	tinyxml2::XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
 	while(actorElement) {
-		if(player->teamSize() == 4) {
+		if(m_player->teamSize() == 4) {
 			warning("Player can't handle more than 4 actors in team.");
 			break;
 		}
 
-		player->addTeamMember(actorElement->IntAttribute("id"));
+		m_player->addTeamMember(actorElement->IntAttribute("id"));
 
 		actorElement = actorElement->NextSiblingElement("actor");
 	}
 
-	player->getTeamMember(0)->equipment()->equipArmor(player->inventory()->getArmor(0));
+	m_player->getTeamMember(0)->equipment()->equipArmor(m_player->inventory()->getArmor(0));
 }
 

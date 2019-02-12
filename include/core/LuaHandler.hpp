@@ -18,16 +18,19 @@
 
 #include <sol.hpp>
 
-namespace LuaHandler {
-	void init();
-	void free();
+#include "Singleton.hpp"
 
-	void bindClasses();
+class LuaHandler : public Singleton<LuaHandler> {
+	public:
+		void init();
 
-	void doFile(const char *filename);
-	void doString(const std::string &str);
+		void bindClasses();
 
-	extern sol::state lua;
+		void doFile(const char *filename);
+		void doString(const std::string &str);
+
+	private:
+		sol::state m_lua;
 };
 
 #endif // LUAHANDLER_HPP_

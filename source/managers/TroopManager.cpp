@@ -15,7 +15,8 @@
 #include "TroopManager.hpp"
 #include "XMLFile.hpp"
 
-std::vector<Troop*> TroopManager::troops;
+template<>
+TroopManager *Singleton<TroopManager>::s_instance = nullptr;
 
 void TroopManager::init() {
 	XMLFile doc("data/config/troops.xml");
@@ -39,21 +40,14 @@ void TroopManager::init() {
 			x = enemyElement->IntAttribute("x");
 			y = enemyElement->IntAttribute("y");
 
-			currentTroop->addEnemy(BattlerManager::enemies[enemyElement->IntAttribute("id")], x, y);
+			currentTroop->addEnemy(BattlerManager::getInstance().getEnemy(enemyElement->IntAttribute("id")), x, y);
 
 			enemyElement = enemyElement->NextSiblingElement("enemy");
 		}
 
-		troops.push_back(currentTroop);
+		m_troops.emplace_back(currentTroop);
 
 		troopElement = troopElement->NextSiblingElement("troop");
-	}
-}
-
-void TroopManager::free() {
-	while(troops.size() != 0) {
-		delete troops.back();
-		troops.pop_back();
 	}
 }
 

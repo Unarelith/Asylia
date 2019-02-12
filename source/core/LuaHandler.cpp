@@ -27,22 +27,19 @@
 #include "Parameter.hpp"
 #include "Sprite.hpp"
 
-sol::state LuaHandler::lua;
+template<>
+LuaHandler *Singleton<LuaHandler>::s_instance = nullptr;
 
 void LuaHandler::init() {
-	lua.open_libraries(
+	m_lua.open_libraries(
 		sol::lib::base,
 		sol::lib::math,
 		sol::lib::table
 	);
 }
 
-void LuaHandler::free() {
-	lua.stack_clear();
-}
-
 void LuaHandler::bindClasses() {
-	lua.new_usertype<ApplicationStateStack>("StateManager",
+	m_lua.new_usertype<ApplicationStateStack>("StateManager",
 		"top", &ApplicationStateStack::top,
 		"pop", &ApplicationStateStack::pop,
 		// "push", &ApplicationStateStack::push,
@@ -51,11 +48,12 @@ void LuaHandler::bindClasses() {
 		"startBattle", &ApplicationStateStack::startBattle
 	);
 
-	lua.new_usertype<CharacterManager>("CharacterManager",
-		"player", &CharacterManager::getPlayer
+	m_lua.new_usertype<CharacterManager>("CharacterManager",
+		"player", &CharacterManager::getPlayer,
+		"getInstance", &CharacterManager::getInstance
 	);
 
-	lua.new_usertype<Event>("Event",
+	m_lua.new_usertype<Event>("Event",
 		"moveUp", &Character::moveUp,
 		"moveDown", &Character::moveDown,
 		"moveLeft", &Character::moveLeft,
@@ -73,29 +71,30 @@ void LuaHandler::bindClasses() {
 		sol::base_classes, sol::bases<Character, Sprite>()
 	);
 
-	lua.new_usertype<EventInterpreter>("EventInterpreter",
+	m_lua.new_usertype<EventInterpreter>("EventInterpreter",
 		"addActionToQueue", &EventInterpreter::addActionToQueue
 	);
 
-	lua.new_usertype<Image>("Image",
+	m_lua.new_usertype<Image>("Image",
 		sol::constructors<Image(const char*)>(),
 		"renderCopy", &Image::renderCopy,
 		"render", &Image::render
 	);
 
-	lua.new_usertype<Inventory>("Inventory",
+	m_lua.new_usertype<Inventory>("Inventory",
 		"addItem", &Inventory::addItem
 	);
 
-	lua.new_usertype<Item>("Item",
+	m_lua.new_usertype<Item>("Item",
 		"name", &Item::name
 	);
 
-	lua.new_usertype<ItemManager>("ItemManager",
-		"getItem", &ItemManager::getItem
+	m_lua.new_usertype<ItemManager>("ItemManager",
+		"getItem", &ItemManager::getItem,
+		"getInstance", &ItemManager::getInstance
 	);
 
-	lua.new_usertype<Keyboard>("Keyboard",
+	m_lua.new_usertype<Keyboard>("Keyboard",
 		"isKeyPressed", &Keyboard::isKeyPressed,
 		"isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay,
 		"isKeyPressedOnce", &Keyboard::isKeyPressedOnce
@@ -118,27 +117,28 @@ void LuaHandler::bindClasses() {
 		"Keyboard.GameMenu   = " + std::to_string(Keyboard::GameMenu)
 	);
 
-	lua.new_usertype<Map>("Map",
+	m_lua.new_usertype<Map>("Map",
 		"getEvent", &Map::getEvent,
 		"scrollX", &Map::getScrollX,
 		"scrollY", &Map::getScrollY
 	);
 
-	lua.new_usertype<BattleState>("BattleState");
+	m_lua.new_usertype<BattleState>("BattleState");
 
-	lua.new_usertype<MapState>("MapState");
+	m_lua.new_usertype<MapState>("MapState");
 
-	lua.new_usertype<MapManager>("MapManager",
+	m_lua.new_usertype<MapManager>("MapManager",
 		// "currentMap", sol::as_function(&MapManager::currentMap)
-		"currentMap", &MapManager::getCurrentMap
+		"getCurrentMap", &MapManager::getCurrentMap,
+		"getInstance", &MapManager::getInstance
 	);
 
-	lua.new_usertype<MessageState>("MessageState",
+	m_lua.new_usertype<MessageState>("MessageState",
 		"addCommand", &MessageState::addCommand,
 		"getCmdwinPos", &MessageState::getCmdwinPos
 	);
 
-	lua.new_usertype<ParameterList>("ParameterList",
+	m_lua.new_usertype<ParameterList>("ParameterList",
 		"addIntParameter", &ParameterList::addIntParameter,
 		"addBoolParameter", &ParameterList::addBoolParameter,
 		"addFloatParameter", &ParameterList::addFloatParameter,
@@ -146,11 +146,11 @@ void LuaHandler::bindClasses() {
 		"clear", &ParameterList::clear
 	);
 
-	lua.new_usertype<IntParameter>("IntParameter");
-	lua.new_usertype<FloatParameter>("FloatParameter");
-	lua.new_usertype<StringParameter>("StringParameter");
+	m_lua.new_usertype<IntParameter>("IntParameter");
+	m_lua.new_usertype<FloatParameter>("FloatParameter");
+	m_lua.new_usertype<StringParameter>("StringParameter");
 
-	lua.new_usertype<Player>("Player",
+	m_lua.new_usertype<Player>("Player",
 		"setDirection", &Character::setDirection,
 		"getDirection", &Character::getDirection,
 		"changeMap", &Character::changeMap,
@@ -162,14 +162,14 @@ void LuaHandler::bindClasses() {
 		sol::base_classes, sol::bases<Character, Sprite>()
 	);
 
-	lua.new_usertype<Sprite>("Sprite",
+	m_lua.new_usertype<Sprite>("Sprite",
 		sol::constructors<Sprite(const char *, u16, u16)>(),
 		"drawFrame", &Sprite::drawFrame,
 		"playAnimation", &Sprite::playAnimation,
 		"animationAtEnd", &Sprite::animationAtEnd
 	);
 
-	lua.new_usertype<LanguageManager>("LanguageManager",
+	m_lua.new_usertype<LanguageManager>("LanguageManager",
 		"getInstance", &LanguageManager::getInstance,
 		"translate", &LanguageManager::translate
 	);
@@ -178,16 +178,16 @@ void LuaHandler::bindClasses() {
 }
 
 void LuaHandler::doFile(const char *filename) {
-	if(luaL_dofile(lua.lua_state(), filename)) {
-		throw EXCEPTION(lua_tostring(lua.lua_state(), -1));
-		lua_pop(lua.lua_state(), 1);
+	if(luaL_dofile(m_lua.lua_state(), filename)) {
+		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
+		lua_pop(m_lua.lua_state(), 1);
 		Game::quit = true;
 	}
 }
 
 void LuaHandler::doString(const std::string &str) {
-	if(luaL_dostring(lua.lua_state(), str.c_str())) {
-		throw EXCEPTION(lua_tostring(lua.lua_state(), -1));
+	if(luaL_dostring(m_lua.lua_state(), str.c_str())) {
+		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
 		Game::quit = true;
 	}
 }

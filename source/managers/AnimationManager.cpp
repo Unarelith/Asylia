@@ -14,7 +14,8 @@
 #include "AnimationManager.hpp"
 #include "XMLFile.hpp"
 
-std::vector<Animation*> AnimationManager::animations;
+template<>
+AnimationManager *Singleton<AnimationManager>::s_instance = nullptr;
 
 void AnimationManager::init() {
 	XMLFile doc("data/config/animations.xml");
@@ -37,23 +38,16 @@ void AnimationManager::init() {
 			frameElement = frameElement->NextSiblingElement("frame");
 		}
 
-		animations.push_back(new Animation(filename.c_str(), name, delay, frames));
+		m_animations.emplace_back(new Animation(filename.c_str(), name, delay, frames));
 
 		animationElement = animationElement->NextSiblingElement("animation");
 	}
 }
 
-void AnimationManager::free() {
-	while(animations.size() != 0) {
-		delete animations.back();
-		animations.pop_back();
-	}
-}
-
 Animation *AnimationManager::getAnimationByName(const std::string &name) {
-	for(auto *it : animations) {
+	for(auto &it : m_animations) {
 		if(it->name() == name) {
-			return it;
+			return it.get();
 		}
 	}
 

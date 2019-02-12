@@ -14,13 +14,18 @@
 #ifndef QUESTMANAGER_HPP_
 #define QUESTMANAGER_HPP_
 
+#include <memory>
+
 #include "Quest.hpp"
 
-namespace QuestManager {
-	void init();
-	void free();
+class QuestManager : public Singleton<QuestManager> {
+	public:
+		void init();
 
-	extern std::vector<Quest*> quests;
+		Quest *getQuest(size_t i) { return m_quests[i].get(); }
+
+	private:
+		std::vector<std::unique_ptr<Quest>> m_quests;
 };
 
 #endif // QUESTMANAGER_HPP_

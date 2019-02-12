@@ -29,8 +29,8 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 	m_type = Type::BattleAct;
 
 	m_troop = troop;
-	for(u8 i = 0 ; i < CharacterManager::player->teamSize() ; i++) {
-		m_battle.addActor(CharacterManager::player->getTeamMember(i));
+	for(u8 i = 0 ; i < CharacterManager::getInstance().getPlayer()->teamSize() ; i++) {
+		m_battle.addActor(CharacterManager::getInstance().getPlayer()->getTeamMember(i));
 	}
 	m_battle.addTroop(m_troop);
 
@@ -39,7 +39,7 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 
 	m_mode = Mode::Choice;
 
-	m_itemwin.reset(new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, CharacterManager::player->inventory()));
+	m_itemwin.reset(new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, CharacterManager::getInstance().getPlayer()->inventory()));
 
 	m_currentItem = nullptr;
 
@@ -129,7 +129,7 @@ void BattleState::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			gk::AudioPlayer::playSound("sound-confirm");
-			m_currentItem = CharacterManager::player->inventory()->getItem(m_itemwin->pos());
+			m_currentItem = CharacterManager::getInstance().getPlayer()->inventory()->getItem(m_itemwin->pos());
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
@@ -187,7 +187,7 @@ void BattleState::update() {
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			gk::AudioPlayer::playSound("sound-confirm");
 
-			m_battle.pushAction(m_battle.getActor(m_currentPos), m_battle.getEnemy(m_arrowPos), ItemManager::skills[0]);
+			m_battle.pushAction(m_battle.getActor(m_currentPos), m_battle.getEnemy(m_arrowPos), ItemManager::getInstance().getSkill(0));
 			m_arrowPos = 0;
 			m_currentPos = m_battle.getNextActorPair(1, m_currentPos).first;
 			if(m_currentPos >= (s8)m_battle.actors().size()) {

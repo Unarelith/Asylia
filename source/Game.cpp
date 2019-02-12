@@ -41,7 +41,7 @@ void Game::init() {
 
 	m_languageManager.init("en-us");
 
-	m_stateStack.push<MapState>().init();
+	m_stateStack.push<MapState>();
 }
 
 void Game::mainLoop() {

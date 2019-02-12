@@ -2,7 +2,7 @@ ChestEvent = {}
 
 ChestEvent.new = function(eventName, itemID, itemCount)
 	local initChest = function(self)
-		self.character = MapManager.currentMap():getEvent(eventName)
+		self.character = MapManager.getInstance():getCurrentMap():getEvent(eventName)
 		self.opened = false
 		self.chestType = 1
 		self.animationAtEnd = false
@@ -12,19 +12,19 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 		self.itemCount = itemCount
 
 		self.update = function()
-			if CharacterManager.player():inFrontOf(self.character)
+			if CharacterManager.getInstance():player():inFrontOf(self.character)
 			and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-				if CharacterManager.player():getDirection() == 3 and not self.opened then
+				if CharacterManager.getInstance():player():getDirection() == 3 and not self.opened then
 					self.opened = true
 				end
 			end
 
 			if self.animationAtEnd and not self.empty then
-				local item = ItemManager.getItem(self.itemID)
+				local item = ItemManager.getInstance():getItem(self.itemID)
 
 				StateManager.drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 
-				CharacterManager.player():inventory():addItem(self.itemID, self.itemCount, 1)
+				CharacterManager.getInstance():player():inventory():addItem(self.itemID, self.itemCount, 1)
 
 				self.empty = true
 			end

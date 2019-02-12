@@ -14,18 +14,24 @@
 #ifndef BATTLERMANAGER_HPP_
 #define BATTLERMANAGER_HPP_
 
+#include <memory>
+
 #include "Actor.hpp"
 #include "Enemy.hpp"
 
-namespace BattlerManager {
-	void init();
-	void free();
+class BattlerManager : public Singleton<BattlerManager> {
+	public:
+		void init();
 
-	void initActors();
-	void initEnemies();
+		void initActors();
+		void initEnemies();
 
-	extern std::vector<Actor*> actors;
-	extern std::vector<Enemy*> enemies;
+		Actor *getActor(size_t i) { return m_actors[i].get(); }
+		Enemy *getEnemy(size_t i) { return m_enemies[i].get(); }
+
+	private:
+		std::vector<std::unique_ptr<Actor>> m_actors;
+		std::vector<std::unique_ptr<Enemy>> m_enemies;
 };
 
 #endif // BATTLERMANAGER_HPP_

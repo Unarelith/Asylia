@@ -53,10 +53,10 @@ Battler::Battler(const std::string &name, const std::string &appearance, u8 leve
 
 	std::string str = appearance;
 	m_sprite = new Sprite(str.replace(str.find("battlers"), 8, "characters").c_str(), 32, 48);
-	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_DOWN]);
-	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_LEFT]);
-	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_RIGHT]);
-	m_sprite->addAnimation(SpriteAnimationManager::spriteAnimations["Character"][DIR_UP]);
+	m_sprite->addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_DOWN));
+	m_sprite->addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_LEFT));
+	m_sprite->addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_RIGHT));
+	m_sprite->addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_UP));
 
 	m_level = level;
 	m_exp = 0;

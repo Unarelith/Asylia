@@ -59,7 +59,7 @@ void MessageState::update() {
 		}
 
 		ApplicationStateStack::getInstance().pop();
-		MapManager::currentMap->updateEventsActions();
+		MapManager::getInstance().getCurrentMap()->updateEventsActions();
 	}
 }
 
