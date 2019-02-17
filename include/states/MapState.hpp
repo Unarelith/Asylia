@@ -17,7 +17,6 @@
 #include <gk/core/ApplicationState.hpp>
 
 #include "LuaHandler.hpp"
-#include "CharacterManager.hpp"
 #include "EventManager.hpp"
 #include "MapManager.hpp"
 
@@ -32,7 +31,6 @@ class MapState : public gk::ApplicationState {
 		LuaHandler m_luaHandler;
 		EventManager m_eventManager;
 		MapManager m_mapManager;
-		CharacterManager m_characterManager;
 };
 
 #endif // MAPSTATE_HPP_

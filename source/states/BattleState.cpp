@@ -15,20 +15,20 @@
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "BattleState.hpp"
-#include "CharacterManager.hpp"
 #include "EndState.hpp"
 #include "EventListener.hpp"
 #include "InfoWindow.hpp"
 #include "Interface.hpp"
 #include "ItemWindow.hpp"
 #include "Keyboard.hpp"
+#include "Player.hpp"
 #include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
 	m_troop = troop;
-	for(u8 i = 0 ; i < CharacterManager::getInstance().getPlayer()->teamSize() ; i++) {
-		m_battle.addActor(CharacterManager::getInstance().getPlayer()->getTeamMember(i));
+	for(u8 i = 0 ; i < ResourceHelper::getPlayer()->teamSize() ; i++) {
+		m_battle.addActor(ResourceHelper::getPlayer()->getTeamMember(i));
 	}
 	m_battle.addTroop(m_troop);
 
@@ -37,7 +37,7 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 
 	m_mode = Mode::Choice;
 
-	m_itemwin.reset(new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, CharacterManager::getInstance().getPlayer()->inventory()));
+	m_itemwin.reset(new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, ResourceHelper::getPlayer()->inventory()));
 
 	m_currentItem = nullptr;
 
@@ -127,7 +127,7 @@ void BattleState::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			gk::AudioPlayer::playSound("sound-confirm");
-			m_currentItem = CharacterManager::getInstance().getPlayer()->inventory()->getItem(m_itemwin->pos());
+			m_currentItem = ResourceHelper::getPlayer()->inventory()->getItem(m_itemwin->pos());
 		}
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {

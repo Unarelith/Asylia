@@ -4,9 +4,9 @@ event3c.init = function()
 	event3c = event3c:initEvent()
 
 	event3c.update = function()
-		if CharacterManager.getInstance():player():inFrontOf(event3c.event)
+		if ResourceHelper.getPlayer():inFrontOf(event3c.event)
 		and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-			event3c.event:face(CharacterManager.getInstance():player())
+			event3c.event:face(ResourceHelper.getPlayer())
 
 			event3c:addAction(0, LuaEvent.drawText, _t("event3c-0"), 1)
 			event3c:addAction(1, LuaEvent.askQuestion, _t("event3c-1"),

@@ -14,11 +14,12 @@
 #include <gk/audio/AudioPlayer.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
-#include "CharacterManager.hpp"
 #include "CommandWindow.hpp"
 #include "InfoWindow.hpp"
 #include "Keyboard.hpp"
+#include "Player.hpp"
 #include "QuestState.hpp"
+#include "ResourceHelper.hpp"
 
 QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_mode = Mode::CategoryChoice;
@@ -44,7 +45,7 @@ void QuestState::update() {
 			m_currentQuest = nullptr;
 
 			bool first = false;
-			for(auto it : CharacterManager::getInstance().getPlayer()->quests()) {
+			for(auto it : ResourceHelper::getPlayer()->quests()) {
 				switch(m_questCategorywin.pos()) {
 					case 0:
 						if(!first) {

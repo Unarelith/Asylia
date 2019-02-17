@@ -12,10 +12,11 @@
  * =====================================================================================
  */
 #include "ActorChoiceWindow.hpp"
-#include "CharacterManager.hpp"
+#include "Player.hpp"
+#include "ResourceHelper.hpp"
 
 ActorChoiceWindow::ActorChoiceWindow(s16 x, s16 y, u16 width, u16 height) : SelectableWindow(x, y, width, height) {
-	m_itemMax = CharacterManager::getInstance().getPlayer()->teamSize();
+	m_itemMax = ResourceHelper::getPlayer()->teamSize();
 
 	m_pos = 0;
 }
@@ -29,16 +30,16 @@ void ActorChoiceWindow::update() {
 
 void ActorChoiceWindow::drawActor(u16 pos) {
 	u16 y = pos * (m_height - 20) / 4;
-	u16 charaY = m_y + y + ((m_height - 20) / 4 + 15) / 2 - CharacterManager::getInstance().getPlayer()->getTeamMember(pos)->sprite()->frameHeight() / 2;
+	u16 charaY = m_y + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(pos)->sprite()->frameHeight() / 2;
 
-	CharacterManager::getInstance().getPlayer()->getTeamMember(pos)->sprite()->playAnimation(m_x + 30, charaY, 0);
+	ResourceHelper::getPlayer()->getTeamMember(pos)->sprite()->playAnimation(m_x + 30, charaY, 0);
 
-	printName(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
-	printLevel(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 80, 57 + y, 140);
-	printState(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 170, 57 + y, 80);
-	printHP(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 310, 57 + y, 460, true);
-	printSP(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 310, 89 + y, 460, true);
-	printExp(CharacterManager::getInstance().getPlayer()->getTeamMember(pos), 80, 89 + y, 239, true);
+	printName(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
+	printLevel(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 57 + y, 140);
+	printState(ResourceHelper::getPlayer()->getTeamMember(pos), 170, 57 + y, 80);
+	printHP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 57 + y, 460, true);
+	printSP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 89 + y, 460, true);
+	printExp(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 89 + y, 239, true);
 }
 
 void ActorChoiceWindow::draw() {

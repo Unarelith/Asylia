@@ -11,8 +11,9 @@
  *
  * =====================================================================================
  */
-#include "CharacterManager.hpp"
 #include "ItemWindow.hpp"
+#include "Player.hpp"
+#include "ResourceHelper.hpp"
 
 ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
 	m_inventory = new Inventory(*inventory);
@@ -51,7 +52,7 @@ void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 	m_inventory->clear();
 
 	if(equipID == 0) {
-		for(auto& it : CharacterManager::getInstance().getPlayer()->inventory()->weapons()) {
+		for(auto& it : ResourceHelper::getPlayer()->inventory()->weapons()) {
 			if(!std::get<0>(it)->equipped() && std::get<0>(it)->equipType() == equipType && std::get<0>(it) != equipment->weapon()) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}
@@ -60,7 +61,7 @@ void ItemWindow::changeSet(u8 equipID, u8 equipType, Equipment *equipment) {
 		if(equipment->weapon()) m_itemMax = m_inventory->nbItems() + 1;
 		else m_itemMax = m_inventory->nbItems();
 	} else {
-		for(auto& it : CharacterManager::getInstance().getPlayer()->inventory()->armors()) {
+		for(auto& it : ResourceHelper::getPlayer()->inventory()->armors()) {
 			if(!std::get<0>(it)->equipped() && std::get<0>(it)->slot() == equipType && std::get<0>(it) != equipment->armor(std::get<0>(it)->slot())) {
 				m_inventory->pushBackItem((Item*)std::get<0>(it), std::get<1>(it));
 			}

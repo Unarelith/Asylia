@@ -16,7 +16,6 @@
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "BattleState.hpp"
-#include "CharacterManager.hpp"
 #include "Event.hpp"
 #include "EventInterpreter.hpp"
 #include "Keyboard.hpp"
@@ -25,6 +24,7 @@
 #include "MapState.hpp"
 #include "MessageState.hpp"
 #include "Parameter.hpp"
+#include "Player.hpp"
 #include "ResourceHelper.hpp"
 #include "Sprite.hpp"
 
@@ -43,11 +43,6 @@ void LuaHandler::bindClasses() {
 	m_lua["drawMessage"] = [&](const std::string &message) {
 		return &gk::ApplicationStateStack::getInstance().push<MessageState>(message);
 	};
-
-	m_lua.new_usertype<CharacterManager>("CharacterManager",
-		"player", &CharacterManager::getPlayer,
-		"getInstance", &CharacterManager::getInstance
-	);
 
 	m_lua.new_usertype<Event>("Event",
 		"moveUp", &Character::moveUp,
@@ -86,20 +81,14 @@ void LuaHandler::bindClasses() {
 	);
 
 	m_lua.new_usertype<ResourceHelper>("ResourceHelper",
-		"getItem", &ResourceHelper::getItem
+		"getItem", &ResourceHelper::getItem,
+		"getPlayer", &ResourceHelper::getPlayer
 	);
 
 	m_lua.new_usertype<Keyboard>("Keyboard",
 		"isKeyPressed", &Keyboard::isKeyPressed,
 		"isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay,
 		"isKeyPressedOnce", &Keyboard::isKeyPressedOnce
-		// "GameUp", Keyboard::GameUp,
-		// "GameDown", Keyboard::GameDown,
-		// "GameLeft", Keyboard::GameLeft,
-		// "GameRight", Keyboard::GameRight,
-		// "GameAttack", Keyboard::GameAttack,
-		// "GameBack", Keyboard::GameBack,
-		// "GameMenu", Keyboard::GameMenu
 	);
 
 	doString(

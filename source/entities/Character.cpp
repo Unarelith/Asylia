@@ -14,10 +14,11 @@
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "Character.hpp"
-#include "CharacterManager.hpp"
 #include "Event.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
+#include "ResourceHelper.hpp"
+#include "Player.hpp"
 
 Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_type = Type::None;
@@ -220,7 +221,7 @@ void Character::eventCollisions() {
 	}
 
 	if(m_type == Type::TypeEvent || m_type == Type::TypeNPC) {
-		inCollisionWith(CharacterManager::getInstance().getPlayer());
+		inCollisionWith(ResourceHelper::getPlayer());
 	}
 }
 

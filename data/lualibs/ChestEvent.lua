@@ -12,9 +12,9 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 		self.itemCount = itemCount
 
 		self.update = function()
-			if CharacterManager.getInstance():player():inFrontOf(self.character)
+			if ResourceHelper.getPlayer():inFrontOf(self.character)
 			and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-				if CharacterManager.getInstance():player():getDirection() == 3 and not self.opened then
+				if ResourceHelper.getPlayer():getDirection() == 3 and not self.opened then
 					self.opened = true
 				end
 			end
@@ -24,7 +24,7 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 
 				drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 
-				CharacterManager.getInstance():player():inventory():addItem(self.itemID, self.itemCount, 1)
+				ResourceHelper.getPlayer():inventory():addItem(self.itemID, self.itemCount, 1)
 
 				self.empty = true
 			end

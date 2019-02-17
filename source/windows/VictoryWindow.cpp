@@ -13,9 +13,10 @@
  */
 #include <gk/audio/AudioPlayer.hpp>
 
-#include "CharacterManager.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
+#include "Player.hpp"
+#include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
 
 VictoryWindow::VictoryWindow() : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
@@ -30,12 +31,12 @@ void VictoryWindow::init(Battle *battle) {
 
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();
 
-	CharacterManager::getInstance().getPlayer()->inventory()->add(&m_inventory);
+	ResourceHelper::getPlayer()->inventory()->add(&m_inventory);
 
-	for(u8 i = 0 ; i < CharacterManager::getInstance().getPlayer()->teamSize() ; i++) {
-		CharacterManager::getInstance().getPlayer()->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
+	for(u8 i = 0 ; i < ResourceHelper::getPlayer()->teamSize() ; i++) {
+		ResourceHelper::getPlayer()->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
 	}
-	CharacterManager::getInstance().getPlayer()->gainGold(m_battle->gold());
+	ResourceHelper::getPlayer()->gainGold(m_battle->gold());
 
 	gk::AudioPlayer::playSound("sound-confirm");
 }

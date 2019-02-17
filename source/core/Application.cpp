@@ -25,6 +25,7 @@
 #include "AudioLoader.hpp"
 #include "EnemyLoader.hpp"
 #include "ItemLoader.hpp"
+#include "PlayerLoader.hpp"
 #include "QuestLoader.hpp"
 #include "SkillLoader.hpp"
 #include "SpriteAnimationLoader.hpp"
@@ -53,6 +54,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<EnemyLoader>("resources/config/enemies.xml");
 	m_resourceHandler.loadConfigFile<TroopLoader>("resources/config/troops.xml");
 	m_resourceHandler.loadConfigFile<QuestLoader>("resources/config/quests.xml");
+	m_resourceHandler.loadConfigFile<PlayerLoader>("resources/config/player.xml");
 
 	Interface::init();
 

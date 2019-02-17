@@ -7,9 +7,9 @@ enemy0.init = function()
 	enemy0.event:setPosition(enemy0.event:x() - 8, enemy0.event:y() - 8)
 
 	enemy0.update = function()
-		if CharacterManager.getInstance():player():inFrontOf(enemy0.event)
+		if ResourceHelper.getPlayer():inFrontOf(enemy0.event)
 		and Keyboard.isKeyPressedOnce(Keyboard.GameAttack) then
-			enemy0.event:face(CharacterManager.getInstance():player())
+			enemy0.event:face(ResourceHelper.getPlayer())
 
 			enemy0:addAction(0, LuaEvent.startBattle, 0, false, -1, -1, -1);
 		end

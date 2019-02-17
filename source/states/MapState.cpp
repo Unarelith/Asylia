@@ -18,22 +18,19 @@
 #include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "MenuState.hpp"
+#include "ResourceHelper.hpp"
+#include "Player.hpp"
 
 MapState::MapState() {
 	LuaHandler::setInstance(m_luaHandler);
 	EventManager::setInstance(m_eventManager);
 	MapManager::setInstance(m_mapManager);
-	CharacterManager::setInstance(m_characterManager);
 
 	m_luaHandler.init();
 	m_eventManager.init();
 	m_mapManager.init();
 
 	m_luaHandler.bindClasses();
-
-	m_characterManager.init();
-
-	m_characterManager.loadActorsTeam();
 
 	m_mapManager.getCurrentMap()->load();
 
@@ -47,12 +44,12 @@ void MapState::update() {
 		return;
 	}
 
-	CharacterManager::getInstance().getPlayer()->move();
+	ResourceHelper::getPlayer()->move();
 
-	Map::centerMapWithObject(CharacterManager::getInstance().getPlayer()->x(),
-							 CharacterManager::getInstance().getPlayer()->y(),
-							 CharacterManager::getInstance().getPlayer()->frameWidth(),
-							 CharacterManager::getInstance().getPlayer()->frameHeight());
+	Map::centerMapWithObject(ResourceHelper::getPlayer()->x(),
+							 ResourceHelper::getPlayer()->y(),
+							 ResourceHelper::getPlayer()->frameWidth(),
+							 ResourceHelper::getPlayer()->frameHeight());
 
 	MapManager::getInstance().getCurrentMap()->eventsUpdate();
 }
@@ -61,15 +58,15 @@ void MapState::render() {
 	MapManager::getInstance().getCurrentMap()->render();
 
 	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
-		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() < CharacterManager::getInstance().getPlayer()->y()) {
+		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() < ResourceHelper::getPlayer()->y()) {
 			MapManager::getInstance().getCurrentMap()->events()[i]->render();
 		}
 	}
 
-	CharacterManager::getInstance().getPlayer()->render();
+	ResourceHelper::getPlayer()->render();
 
 	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
-		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() >= CharacterManager::getInstance().getPlayer()->y()) {
+		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {
 			MapManager::getInstance().getCurrentMap()->events()[i]->render();
 		}
 	}

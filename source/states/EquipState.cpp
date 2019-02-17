@@ -14,23 +14,24 @@
 #include <gk/audio/AudioPlayer.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
-#include "CharacterManager.hpp"
 #include "EquipState.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "MenuState.hpp"
+#include "Player.hpp"
+#include "ResourceHelper.hpp"
 
 EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
 	m_itemMode = false;
 
-	m_actor = CharacterManager::getInstance().getPlayer()->getTeamMember(actorPos);
+	m_actor = ResourceHelper::getPlayer()->getTeamMember(actorPos);
 
-	m_equipment = CharacterManager::getInstance().getPlayer()->getTeamMember(actorPos)->equipment();
+	m_equipment = ResourceHelper::getPlayer()->getTeamMember(actorPos)->equipment();
 
 	m_statswin.reset(new EquipStatsWindow(m_actor));
 	m_choicewin.reset(new EquipChoiceWindow(m_equipment));
 
-	m_itemwin.reset(new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, CharacterManager::getInstance().getPlayer()->inventory(), 150, 0));
+	m_itemwin.reset(new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, ResourceHelper::getPlayer()->inventory(), 150, 0));
 	m_itemwin->changeSet(0, 0, m_equipment);
 }
 

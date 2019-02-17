@@ -14,13 +14,14 @@
 #include <gk/audio/AudioPlayer.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
-#include "CharacterManager.hpp"
 #include "GameWindow.hpp"
 #include "ItemState.hpp"
 #include "Keyboard.hpp"
+#include "Player.hpp"
+#include "ResourceHelper.hpp"
 
 ItemState::ItemState(gk::ApplicationState *parent) : gk::ApplicationState(parent) {
-	m_itemwin.reset(new ItemWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52, CharacterManager::getInstance().getPlayer()->inventory(), 150, 0));
+	m_itemwin.reset(new ItemWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52, ResourceHelper::getPlayer()->inventory(), 150, 0));
 }
 
 void ItemState::update() {
