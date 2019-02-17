@@ -50,14 +50,12 @@ void EndState::update() {
 				ApplicationStateStack::getInstance().pop();
 				break;
 			case 1:
-				while(ApplicationStateStack::getInstance().size() > 0) {
-					ApplicationStateStack::getInstance().pop();
-				}
+				ApplicationStateStack::getInstance().clear();
 				ApplicationStateStack::getInstance().push<TitleState>();
 				break;
 			case 2:
 				SDL_Delay(100);
-				Game::quit = true;
+				ApplicationStateStack::getInstance().clear();
 				break;
 			default: break;
 		}

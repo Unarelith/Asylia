@@ -37,7 +37,7 @@ void ApplicationState::pollEvents() {
 	while(SDL_PollEvent(&event) != 0) {
 		switch(event.type) {
 			case SDL_QUIT:
-				Game::quit = true;
+				ApplicationStateStack::getInstance().clear();
 				break;
 			case SDL_FINGERDOWN:
 			case SDL_FINGERMOTION:
@@ -50,7 +50,7 @@ void ApplicationState::pollEvents() {
 				Game::paused = true;
 				break;
 			case SDL_APP_WILLENTERFOREGROUND:
-				Game::quit = true; // FIXME: See #9
+				ApplicationStateStack::getInstance().clear();
 				Game::paused = false;
 				if(ApplicationStateStack::getInstance().top().type() == Type::Map) {
 					ApplicationStateStack::getInstance().push<MenuState>();

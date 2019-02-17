@@ -16,3 +16,7 @@
 template<>
 ApplicationStateStack *Singleton<ApplicationStateStack>::s_instance = nullptr;
 
+void ApplicationStateStack::clear() {
+	while (!empty()) pop();
+}
+

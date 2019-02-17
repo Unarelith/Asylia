@@ -20,7 +20,6 @@
 #include "MapState.hpp"
 #include "TimeManager.hpp"
 
-bool Game::quit = false;
 bool Game::paused = false;
 
 Game::Game(int argc, char **argv) : gk::CoreApplication(argc, argv) {
@@ -45,22 +44,26 @@ void Game::init() {
 }
 
 void Game::mainLoop() {
-	while(!quit) {
+	while(m_stateStack.size()) {
 		if(TimeManager::isTimeToUpdate()) {
-			m_stateStack.top().pollEvents();
+			if (!m_stateStack.empty())
+				m_stateStack.top().pollEvents();
 
 			Keyboard::update();
 
 			if(Game::paused == true) continue;
 
-			m_stateStack.top().update();
+			if (!m_stateStack.empty())
+				m_stateStack.top().update();
 
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
 
 				m_window.clear();
 
-				m_stateStack.top().render();
+				if(!m_stateStack.empty()) {
+					m_stateStack.top().render();
+				}
 
 				TimeManager::renderRTMCounter(); // Rendering time mean
 
@@ -76,5 +79,32 @@ void Game::mainLoop() {
 
 		TimeManager::measureFrameDuration();
 	}
+
+	// while(m_stateStack.size()) {
+	// 	m_stateStack.top().pollEvents();
+    //
+	// 	Keyboard::update();
+    //
+	// 	if(Game::paused == true) continue;
+    //
+	// 	m_clock.updateGame([&] {
+	// 		if (!m_stateStack.empty())
+	// 			m_stateStack.top().update();
+	// 	});
+    //
+	// 	m_clock.drawGame([&] {
+	// 		m_window.clear();
+    //
+	// 		if(!m_stateStack.empty()) {
+	// 			m_stateStack.top().render();
+	// 		}
+    //
+	// 		TimeManager::renderRTMCounter(); // Rendering time mean
+    //
+	// 		Interface::renderHUD();
+    //
+	// 		m_window.update();
+	// 	});
+	// }
 }
 

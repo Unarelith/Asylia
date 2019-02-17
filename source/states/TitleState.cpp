@@ -51,7 +51,7 @@ void TitleState::update() {
 			case 1: break;
 			case 2:
 				SDL_Delay(100);
-				Game::quit = true;
+				ApplicationStateStack::getInstance().clear();
 				break;
 			default: break;
 		}

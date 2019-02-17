@@ -32,6 +32,8 @@ class ApplicationStateStack : public Singleton<ApplicationStateStack> {
 			return static_cast<T&>(top());
 		}
 
+		void clear();
+
 		void pop() { m_states.pop(); }
 		ApplicationState &top() const { return *m_states.top().get(); }
 		bool empty() const { return m_states.empty(); }

@@ -8,7 +8,7 @@
 			<frame id="71"/>
 		</frames>
 	</animation>
-	
+
 	<animation name="Character">
 		<frames delay="125">
 			<frame id="0"/>
@@ -28,14 +28,14 @@
 			<frame id="10"/>
 			<frame id="11"/>
 		</frames>
-		<frames delay="125"> 
+		<frames delay="125">
 			<frame id="12"/>
 			<frame id="13"/>
 			<frame id="14"/>
 			<frame id="15"/>
 		</frames>
 	</animation>
-	
+
 	<animation name="Event">
 		<frames delay="125">
 			<frame id="0"/>
@@ -63,4 +63,3 @@
 		</frames>
 	</animation>
 </spriteAnimations>
-

@@ -28,7 +28,6 @@ class Game : public gk::CoreApplication {
 
 		void init() override;
 
-		static bool quit;
 		static bool paused;
 
 	private:

@@ -181,14 +181,12 @@ void LuaHandler::doFile(const char *filename) {
 	if(luaL_dofile(m_lua.lua_state(), filename)) {
 		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
 		lua_pop(m_lua.lua_state(), 1);
-		Game::quit = true;
 	}
 }
 
 void LuaHandler::doString(const std::string &str) {
 	if(luaL_dostring(m_lua.lua_state(), str.c_str())) {
 		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
-		Game::quit = true;
 	}
 }
 
