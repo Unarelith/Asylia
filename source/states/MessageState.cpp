@@ -21,8 +21,6 @@
 #include "MessageState.hpp"
 
 MessageState::MessageState(const std::string &message, ApplicationState *parent) : ApplicationState(parent) {
-	m_type = Type::Message;
-
 	m_parent = parent;
 	if(m_parent == nullptr) {
 		m_parent = &ApplicationStateStack::getInstance().top();

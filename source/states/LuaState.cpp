@@ -17,8 +17,6 @@
 #include "SDLHeaders.hpp"
 
 LuaState::LuaState(const std::string &filename, const std::string &table) {
-	m_type = Type::Lua;
-
 	m_table = table;
 
 	LuaHandler::getInstance().doFile(filename.c_str());

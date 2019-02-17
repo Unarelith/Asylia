@@ -26,8 +26,6 @@
 #include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
-	m_type = Type::BattleAct;
-
 	m_troop = troop;
 	for(u8 i = 0 ; i < CharacterManager::getInstance().getPlayer()->teamSize() ; i++) {
 		m_battle.addActor(CharacterManager::getInstance().getPlayer()->getTeamMember(i));

@@ -20,8 +20,6 @@
 #include "TitleState.hpp"
 
 TitleState::TitleState() {
-	m_type = Type::TitleScreen;
-
 	m_cmdwin.addCommand("NewGame");
 	m_cmdwin.addCommand("Continue", true);
 	m_cmdwin.addCommand("Quit");

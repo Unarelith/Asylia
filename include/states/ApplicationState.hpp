@@ -27,14 +27,7 @@ class ApplicationState : public gk::ApplicationState {
 		typedef enum {
 			None,
 			Map,
-			Message,
 			Menu,
-			Lua,
-			TitleScreen,
-			GameEnd,
-			Items,
-			Equip,
-			BattleAct
 		} Type;
 
 		Type type() const { return m_type; }

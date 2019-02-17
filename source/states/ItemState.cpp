@@ -20,8 +20,6 @@
 #include "Keyboard.hpp"
 
 ItemState::ItemState(ApplicationState *parent) : ApplicationState(parent) {
-	m_type = Type::Items;
-
 	m_itemwin.reset(new ItemWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52, CharacterManager::getInstance().getPlayer()->inventory(), 150, 0));
 }
 

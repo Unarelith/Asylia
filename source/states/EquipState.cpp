@@ -21,8 +21,6 @@
 #include "MenuState.hpp"
 
 EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState(parent) {
-	m_type = Type::Equip;
-
 	m_itemMode = false;
 
 	m_actor = CharacterManager::getInstance().getPlayer()->getTeamMember(actorPos);
