@@ -15,8 +15,6 @@
 #define GAME_HPP_
 
 #include <gk/core/CoreApplication.hpp>
-#include <gk/core/SDLLoader.hpp>
-#include <gk/resource/ResourceHandler.hpp>
 
 #include "ApplicationStateStack.hpp"
 #include "GameWindow.hpp"
@@ -31,6 +29,7 @@ class Game : public gk::CoreApplication {
 		static bool paused;
 
 	private:
+		void onEvent(const SDL_Event &event) override;
 		void mainLoop() override;
 
 		ApplicationStateStack m_stateStack;

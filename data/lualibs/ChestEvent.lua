@@ -22,7 +22,7 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 			if self.animationAtEnd and not self.empty then
 				local item = ItemManager.getInstance():getItem(self.itemID)
 
-				StateManager.drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
+				drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 
 				CharacterManager.getInstance():player():inventory():addItem(self.itemID, self.itemCount, 1)
 

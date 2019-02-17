@@ -30,7 +30,8 @@ void LuaState::update() {
 }
 
 void LuaState::render() {
-	SDL_RenderCopy(GameWindow::main->renderer(), m_background, nullptr, nullptr);
+	if (m_parent)
+		m_parent->render();
 
 	LuaHandler::getInstance().doString(m_table + ".render()");
 }

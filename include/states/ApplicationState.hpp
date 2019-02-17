@@ -14,21 +14,15 @@
 #ifndef APPLICATIONSTATE_HPP_
 #define APPLICATIONSTATE_HPP_
 
-#include "SDLHeaders.hpp"
+#include <gk/core/ApplicationState.hpp>
 
-class ApplicationState {
+class ApplicationState : public gk::ApplicationState {
 	public:
 		ApplicationState(ApplicationState *parent = nullptr);
-		virtual ~ApplicationState() = 0;
+		virtual ~ApplicationState() = default;
 
 		virtual void update() = 0;
 		virtual void render() = 0;
-
-		void pollEvents();
-
-		void renderBackground();
-
-		void screenshot(ApplicationState *applicationstate);
 
 		typedef enum {
 			None,
@@ -51,8 +45,6 @@ class ApplicationState {
 		Type m_type;
 
 		ApplicationState *m_parent;
-
-		SDL_Texture *m_background;
 };
 
 #endif // APPLICATIONSTATE_HPP_

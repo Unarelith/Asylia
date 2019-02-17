@@ -64,7 +64,8 @@ void MessageState::update() {
 }
 
 void MessageState::render() {
-	renderBackground();
+	if (m_parent)
+		m_parent->render();
 
 	if(m_cmdwin->commands().size() > 0) {
 		m_cmdwin->draw();

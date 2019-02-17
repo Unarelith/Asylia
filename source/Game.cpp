@@ -31,7 +31,7 @@ void Game::init() {
 	m_window.open(APP_NAME);
 	GameWindow::main = &m_window;
 
-	ApplicationStateStack::setInstance(m_stateStack);
+	gk::ApplicationStateStack::setInstance(m_stateStack);
 	LanguageManager::setInstance(m_languageManager);
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
@@ -43,11 +43,16 @@ void Game::init() {
 	m_stateStack.push<MapState>();
 }
 
+void Game::onEvent(const SDL_Event &event) {
+	if (event.type == SDL_QUIT) {
+		m_stateStack.clear();
+	}
+}
+
 void Game::mainLoop() {
 	while(m_stateStack.size()) {
 		if(TimeManager::isTimeToUpdate()) {
-			if (!m_stateStack.empty())
-				m_stateStack.top().pollEvents();
+			handleEvents();
 
 			Keyboard::update();
 

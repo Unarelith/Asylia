@@ -39,7 +39,8 @@ void ItemState::update() {
 }
 
 void ItemState::render() {
-	renderBackground();
+	if (m_parent)
+		m_parent->render();
 
 	m_itemwin->draw();
 }

@@ -104,8 +104,8 @@ void QuestState::update() {
 }
 
 void QuestState::render() {
-	if (m_parent)
-		m_parent->renderBackground();
+	if (m_parent && m_parent->parent())
+		m_parent->parent()->render();
 
 	m_questTitlewin.drawTextCentered(_t("Quests"));
 

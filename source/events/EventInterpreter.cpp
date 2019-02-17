@@ -11,9 +11,12 @@
  *
  * =====================================================================================
  */
+#include "ApplicationStateStack.hpp"
+#include "BattleState.hpp"
 #include "EventInterpreter.hpp"
 #include "EventListener.hpp"
-#include "ApplicationStateStack.hpp"
+#include "MessageState.hpp"
+#include "TroopManager.hpp"
 
 std::map<std::string, std::vector<EventAction*>> EventInterpreter::actions;
 
@@ -58,7 +61,7 @@ void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		ApplicationStateStack::getInstance().drawMessage(*(std::string*)(params->at(0)->value()));
+		ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
 
@@ -77,7 +80,11 @@ void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isInteger() && !e->isLocked()) {
-		if(params->at(1)->isBoolean()) ApplicationStateStack::getInstance().startBattle(*(int*)(params->at(0)->value()), *(bool*)(params->at(1)->value()));
+		if(params->at(1)->isBoolean()) {
+			Troop *troop = TroopManager::getInstance().getTroop(*(int*)(params->at(0)->value()));
+			ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
+		}
+
 		e->lock();
 	}
 
@@ -93,11 +100,11 @@ void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		MessageState *state = ApplicationStateStack::getInstance().drawMessage(*(std::string*)(params->at(0)->value()));
+		MessageState &state = ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
 
 		for(u16 i = 1 ; i < params->size() ; i+=2) {
 			if(params->at(i)->isString()) {
-				state->addCommand(*(std::string*)params->at(i)->value());
+				state.addCommand(*(std::string*)params->at(i)->value());
 			}
 		}
 

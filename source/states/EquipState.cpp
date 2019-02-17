@@ -88,7 +88,8 @@ void EquipState::update() {
 }
 
 void EquipState::render() {
-	renderBackground();
+	if (m_parent)
+		m_parent->render();
 
 	if(m_itemMode) m_statswin->draw(m_itemwin->currentItem());
 	else m_statswin->draw();

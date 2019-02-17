@@ -83,11 +83,9 @@ void SettingsState::update() {
 			switch(m_language.pos()) {
 				case 0:
 					LanguageManager::getInstance().init("fr-fr");
-					screenshot(m_parent);
 					break;
 				case 1:
 					LanguageManager::getInstance().init("en-us");
-					screenshot(m_parent);
 					break;
 				default: break;
 			}
@@ -102,7 +100,8 @@ void SettingsState::update() {
 }
 
 void SettingsState::render() {
-	renderBackground();
+	if (m_parent)
+		m_parent->render();
 
 	if(m_mode == Mode::Settings) {
 		m_settings.draw();

@@ -101,7 +101,8 @@ void MenuState::update() {
 }
 
 void MenuState::render() {
-	renderBackground();
+	if (m_parent)
+		m_parent->render();
 
 	m_cmdwin->draw(&ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
 

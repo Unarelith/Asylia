@@ -14,10 +14,10 @@
 #include "LuaHandler.hpp"
 
 #include "ApplicationStateStack.hpp"
+#include "BattleState.hpp"
 #include "CharacterManager.hpp"
 #include "Event.hpp"
 #include "EventInterpreter.hpp"
-#include "Game.hpp"
 #include "ItemManager.hpp"
 #include "Keyboard.hpp"
 #include "Map.hpp"
@@ -39,14 +39,9 @@ void LuaHandler::init() {
 }
 
 void LuaHandler::bindClasses() {
-	m_lua.new_usertype<ApplicationStateStack>("StateManager",
-		"top", &ApplicationStateStack::top,
-		"pop", &ApplicationStateStack::pop,
-		// "push", &ApplicationStateStack::push,
-		"size", &ApplicationStateStack::size,
-		"drawMessage", &ApplicationStateStack::drawMessage,
-		"startBattle", &ApplicationStateStack::startBattle
-	);
+	m_lua["drawMessage"] = [&](const std::string &message) {
+		return &ApplicationStateStack::getInstance().push<MessageState>(message);
+	};
 
 	m_lua.new_usertype<CharacterManager>("CharacterManager",
 		"player", &CharacterManager::getPlayer,
@@ -178,15 +173,10 @@ void LuaHandler::bindClasses() {
 }
 
 void LuaHandler::doFile(const char *filename) {
-	if(luaL_dofile(m_lua.lua_state(), filename)) {
-		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
-		lua_pop(m_lua.lua_state(), 1);
-	}
+	m_lua.do_file(filename);
 }
 
 void LuaHandler::doString(const std::string &str) {
-	if(luaL_dostring(m_lua.lua_state(), str.c_str())) {
-		throw EXCEPTION(lua_tostring(m_lua.lua_state(), -1));
-	}
+	m_lua.do_string(str);
 }
 
