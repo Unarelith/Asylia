@@ -16,7 +16,6 @@
 
 #include <gk/core/CoreApplication.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "GameWindow.hpp"
 #include "LanguageManager.hpp"
 
@@ -29,8 +28,6 @@ class Application : public gk::CoreApplication {
 	private:
 		void onEvent(const SDL_Event &event) override;
 		void mainLoop() override;
-
-		ApplicationStateStack m_stateStack;
 
 		GameWindow m_window;
 

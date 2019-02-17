@@ -14,10 +14,11 @@
 #ifndef ENDSTATE_HPP_
 #define ENDSTATE_HPP_
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
+
 #include "CommandWindow.hpp"
 
-class EndState : public ApplicationState {
+class EndState : public gk::ApplicationState {
 	public:
 		EndState(bool disableCancel = false);
 

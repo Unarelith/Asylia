@@ -14,11 +14,12 @@
 #ifndef TITLESTATE_HPP_
 #define TITLESTATE_HPP_
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
+
 #include "CommandWindow.hpp"
 #include "Image.hpp"
 
-class TitleState : public ApplicationState {
+class TitleState : public gk::ApplicationState {
 	public:
 		TitleState();
 

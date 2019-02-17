@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
 #include "EquipState.hpp"
 #include "GameWindow.hpp"
@@ -78,8 +78,8 @@ void EquipState::update() {
 			m_itemwin->pos(0);
 			m_itemwin->update();
 		} else {
-			ApplicationStateStack::getInstance().pop();
-			((MenuState&)ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
+			gk::ApplicationStateStack::getInstance().pop();
+			((MenuState&)gk::ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
 		}
 	}
 }

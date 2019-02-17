@@ -16,20 +16,21 @@
 
 #include <memory>
 
+#include <gk/core/ApplicationState.hpp>
+#include <gk/core/IntTypes.hpp>
+
 #include "Actor.hpp"
-#include "ApplicationState.hpp"
 #include "Equipment.hpp"
 #include "EquipChoiceWindow.hpp"
 #include "EquipStatsWindow.hpp"
 #include "ItemWindow.hpp"
-#include <gk/core/IntTypes.hpp>
 
-class EquipState : public ApplicationState {
+class EquipState : public gk::ApplicationState {
 	public:
 		EquipState(u8 actorPos, ApplicationState *parent = nullptr);
 
-		void update();
-		void render();
+		void update() override;
+		void render() override;
 
 		bool itemMode() const { return m_itemMode; }
 

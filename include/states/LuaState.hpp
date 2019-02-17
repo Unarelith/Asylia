@@ -16,9 +16,9 @@
 
 #include <string>
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
 
-class LuaState : public ApplicationState {
+class LuaState : public gk::ApplicationState {
 	public:
 		LuaState(const std::string &filename, const std::string &table);
 

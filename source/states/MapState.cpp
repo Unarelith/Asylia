@@ -12,16 +12,14 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "MapState.hpp"
-#include "ApplicationStateStack.hpp"
 #include "EventInterpreter.hpp"
 #include "Keyboard.hpp"
+#include "MapState.hpp"
 #include "MenuState.hpp"
 
 MapState::MapState() {
-	m_type = Type::Map;
-
 	LuaHandler::setInstance(m_luaHandler);
 	SpriteAnimationManager::setInstance(m_spriteAnimationManager);
 	AnimationManager::setInstance(m_animationManager);
@@ -58,7 +56,7 @@ MapState::MapState() {
 void MapState::update() {
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
 		gk::AudioPlayer::playSound("sound-confirm");
-		ApplicationStateStack::getInstance().push<MenuState>(this);
+		gk::ApplicationStateStack::getInstance().push<MenuState>(this);
 		return;
 	}
 

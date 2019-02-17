@@ -14,19 +14,20 @@
 #ifndef QUESTSTATE_HPP_
 #define QUESTSTATE_HPP_
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
+
 #include "CommandWindow.hpp"
 #include "GameWindow.hpp"
 #include "InfoWindow.hpp"
 #include "Quest.hpp"
 #include "QuestInfoWindow.hpp"
 
-class QuestState : public ApplicationState {
+class QuestState : public gk::ApplicationState {
 	public:
-		QuestState(ApplicationState *parent);
+		QuestState(gk::ApplicationState *parent);
 
-		void update();
-		void render();
+		void update() override;
+		void render() override;
 
 		enum Mode {
 			CategoryChoice,

@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "BattleState.hpp"
 #include "CharacterManager.hpp"
 #include "EndState.hpp"
@@ -66,7 +66,7 @@ void BattleState::update() {
 				case 1:
 					gk::AudioPlayer::playSound("sound-back");
 
-					ApplicationStateStack::getInstance().pop();
+					gk::ApplicationStateStack::getInstance().pop();
 
 					EventListener::addBattleResult(1); // Escape
 
@@ -248,9 +248,9 @@ void BattleState::update() {
 		m_gameoverAlpha += 2;
 		if((m_gameoverAlpha > 350 && Keyboard::isKeyPressed(Keyboard::GameAttack)) || (m_gameoverAlpha > 100 && m_allowDefeat)) {
 			if(!m_allowDefeat) {
-				ApplicationStateStack::getInstance().push<EndState>(true);
+				gk::ApplicationStateStack::getInstance().push<EndState>(true);
 			} else {
-				ApplicationStateStack::getInstance().pop();
+				gk::ApplicationStateStack::getInstance().pop();
 
 				EventListener::addBattleResult(2); // Defeat
 			}
@@ -259,7 +259,7 @@ void BattleState::update() {
 
 	if(m_mode == Mode::Victory) {
 		if(Keyboard::isKeyPressed(Keyboard::GameAttack)) {
-			ApplicationStateStack::getInstance().pop();
+			gk::ApplicationStateStack::getInstance().pop();
 
 			EventListener::addBattleResult(0); // Victory
 

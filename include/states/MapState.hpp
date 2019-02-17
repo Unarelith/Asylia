@@ -14,9 +14,10 @@
 #ifndef MAPSTATE_HPP_
 #define MAPSTATE_HPP_
 
+#include <gk/core/ApplicationState.hpp>
+
 #include "LuaHandler.hpp"
 #include "AnimationManager.hpp"
-#include "ApplicationState.hpp"
 #include "BattlerManager.hpp"
 #include "CharacterManager.hpp"
 #include "EventManager.hpp"
@@ -26,12 +27,12 @@
 #include "SpriteAnimationManager.hpp"
 #include "TroopManager.hpp"
 
-class MapState : public ApplicationState {
+class MapState : public gk::ApplicationState {
 	public:
 		MapState();
 
-		void update();
-		void render();
+		void update() override;
+		void render() override;
 
 	private:
 		LuaHandler m_luaHandler;

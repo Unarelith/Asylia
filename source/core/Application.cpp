@@ -29,7 +29,6 @@ void Application::init() {
 	m_window.open(APP_NAME);
 	GameWindow::main = &m_window;
 
-	gk::ApplicationStateStack::setInstance(m_stateStack);
 	LanguageManager::setInstance(m_languageManager);
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");

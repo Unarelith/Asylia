@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "ApplicationStateStack.hpp"
+#include <gk/core/ApplicationStateStack.hpp>
+
 #include "BattleState.hpp"
 #include "EventInterpreter.hpp"
 #include "EventListener.hpp"
@@ -61,7 +62,7 @@ void EventInterpreter::action0(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
+		gk::ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
 	else {
@@ -80,7 +81,7 @@ void EventInterpreter::action1(Event *e) {
 
 	if(params->at(0)->isInteger() && !e->isLocked() && params->at(1)->isBoolean()) {
 		Troop *troop = TroopManager::getInstance().getTroop(*(int*)(params->at(0)->value()));
-		ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
+		gk::ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
 
 		e->lock();
 	}
@@ -96,7 +97,7 @@ void EventInterpreter::action2(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isString() && !e->isLocked()) {
-		MessageState &state = ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
+		MessageState &state = gk::ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
 
 		for(u16 i = 1 ; i < params->size() ; i+=2) {
 			if(params->at(i)->isString()) {

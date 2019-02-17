@@ -16,14 +16,15 @@
 
 #include <memory>
 
-#include "ApplicationState.hpp"
-#include "CommandWindow.hpp"
-#include "TextWindow.hpp"
+#include <gk/core/ApplicationState.hpp>
 #include <gk/core/IntTypes.hpp>
 
-class MessageState : public ApplicationState {
+#include "CommandWindow.hpp"
+#include "TextWindow.hpp"
+
+class MessageState : public gk::ApplicationState {
 	public:
-		MessageState(const std::string &message, ApplicationState *parent = nullptr);
+		MessageState(const std::string &message, gk::ApplicationState *parent = nullptr);
 
 		void addCommand(const std::string &command) { m_cmdwin->addCommand(command); updateCmdwinSize(); }
 

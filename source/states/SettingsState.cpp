@@ -12,12 +12,12 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "Keyboard.hpp"
 #include "SettingsState.hpp"
 
-SettingsState::SettingsState(ApplicationState *parent) : ApplicationState(parent) {
+SettingsState::SettingsState(gk::ApplicationState *parent) : gk::ApplicationState(parent) {
 	m_settings.addCommand("Sound");
 	m_settings.addCommand("Language");
 
@@ -49,7 +49,7 @@ void SettingsState::update() {
 
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 			gk::AudioPlayer::playSound("sound-back");
-			ApplicationStateStack::getInstance().pop();
+			gk::ApplicationStateStack::getInstance().pop();
 		}
 	}
 	else if(m_mode == Mode::Sound) {

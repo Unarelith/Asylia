@@ -15,7 +15,6 @@
 #include "EventInterpreter.hpp"
 #include "LuaHandler.hpp"
 #include "SpriteAnimationManager.hpp"
-#include "ApplicationStateStack.hpp"
 
 Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 y, u8 anim, bool solid, u16 frameWidth, u16 frameHeight) : Character(appearance.c_str(), x, y, anim, frameWidth, frameHeight) {
 	if(appearance.find("event") != std::string::npos) {

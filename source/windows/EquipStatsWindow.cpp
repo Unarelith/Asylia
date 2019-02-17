@@ -11,11 +11,12 @@
  *
  * =====================================================================================
  */
+#include <gk/core/ApplicationStateStack.hpp>
+
 #include "EquipState.hpp"
 #include "EquipStatsWindow.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
-#include "ApplicationStateStack.hpp"
 
 EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
 	m_actor = actor;
@@ -54,15 +55,15 @@ void EquipStatsWindow::draw(Item *currentItem) {
 			}
 		}
 	}
-	else if(((EquipState&)ApplicationStateStack::getInstance().top()).itemMode()) {
-		if(((EquipState&)ApplicationStateStack::getInstance().top()).choicewinPos() == 0) {
+	else if(((EquipState&)gk::ApplicationStateStack::getInstance().top()).itemMode()) {
+		if(((EquipState&)gk::ApplicationStateStack::getInstance().top()).choicewinPos() == 0) {
 			finalAtk = m_actor->atk();
 			finalDef = baseDef;
 
 			finalAtkColor = Color::red;
 		} else {
 			finalAtk = baseAtk;
-			finalDef = baseDef - m_actor->equipment()->armor(((EquipState&)ApplicationStateStack::getInstance().top()).choicewinPos() - 1)->def();
+			finalDef = baseDef - m_actor->equipment()->armor(((EquipState&)gk::ApplicationStateStack::getInstance().top()).choicewinPos() - 1)->def();
 
 			finalDefColor = Color::red;
 		}

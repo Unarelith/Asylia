@@ -11,12 +11,13 @@
  *
  * =====================================================================================
  */
+#include <gk/core/ApplicationStateStack.hpp>
+
 #include "Character.hpp"
 #include "CharacterManager.hpp"
 #include "Event.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
-#include "ApplicationStateStack.hpp"
 
 Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth, u16 frameHeight) : Sprite(filename, frameWidth, frameHeight) {
 	m_type = Type::None;
@@ -54,7 +55,7 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 }
 
 void Character::render() {
-	if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Map) {
+	if(gk::ApplicationStateStack::getInstance().size() < 2) {
 		if(!m_movementTimer.isStarted()) {
 			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
 				m_movementTimer.start();

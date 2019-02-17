@@ -14,12 +14,13 @@
 #ifndef SETTINGSSTATE_HPP_
 #define SETTINGSSTATE_HPP_
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
+
 #include "CommandWindow.hpp"
 
-class SettingsState : public ApplicationState {
+class SettingsState : public gk::ApplicationState {
 	public:
-		SettingsState(ApplicationState *parent = nullptr);
+		SettingsState(gk::ApplicationState *parent = nullptr);
 
 		void update();
 		void render();

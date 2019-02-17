@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "CharacterManager.hpp"
 #include "CommandWindow.hpp"
 #include "InfoWindow.hpp"
@@ -88,7 +88,7 @@ void QuestState::update() {
 
 			s_load = true;
 
-			ApplicationStateStack::getInstance().pop();
+			gk::ApplicationStateStack::getInstance().pop();
 		}
 	}
 	else if(m_mode == Mode::QuestChoice) {

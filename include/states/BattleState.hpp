@@ -16,8 +16,9 @@
 
 #include <memory>
 
+#include <gk/core/ApplicationState.hpp>
+
 #include "ActorStatsWindow.hpp"
-#include "ApplicationState.hpp"
 #include "Battle.hpp"
 #include "BattleActionWindow.hpp"
 #include "BattleChoiceWindow.hpp"
@@ -26,7 +27,7 @@
 #include "Troop.hpp"
 #include "VictoryWindow.hpp"
 
-class BattleState : public ApplicationState {
+class BattleState : public gk::ApplicationState {
 	public:
 		BattleState(Troop *troop, bool allowDefeat = false);
 

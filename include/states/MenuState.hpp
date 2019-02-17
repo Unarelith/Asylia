@@ -16,13 +16,14 @@
 
 #include <memory>
 
+#include <gk/core/ApplicationState.hpp>
+
 #include "ActorChoiceWindow.hpp"
-#include "ApplicationState.hpp"
 #include "CommandWindow.hpp"
 
-class MenuState : public ApplicationState {
+class MenuState : public gk::ApplicationState {
 	public:
-		MenuState(ApplicationState *parent = nullptr);
+		MenuState(gk::ApplicationState *parent = nullptr);
 
 		void loadCommandWindow();
 

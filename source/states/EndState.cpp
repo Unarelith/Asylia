@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "EndState.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
@@ -46,15 +46,15 @@ void EndState::update() {
 
 		switch(n) {
 			case 0:
-				ApplicationStateStack::getInstance().pop();
+				gk::ApplicationStateStack::getInstance().pop();
 				break;
 			case 1:
-				ApplicationStateStack::getInstance().clear();
-				ApplicationStateStack::getInstance().push<TitleState>();
+				gk::ApplicationStateStack::getInstance().clear();
+				gk::ApplicationStateStack::getInstance().push<TitleState>();
 				break;
 			case 2:
 				SDL_Delay(100);
-				ApplicationStateStack::getInstance().clear();
+				gk::ApplicationStateStack::getInstance().clear();
 				break;
 			default: break;
 		}
@@ -62,7 +62,7 @@ void EndState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		gk::AudioPlayer::playSound("sound-back");
-		ApplicationStateStack::getInstance().pop();
+		gk::ApplicationStateStack::getInstance().pop();
 	}
 }
 

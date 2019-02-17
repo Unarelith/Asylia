@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "MapState.hpp"
@@ -43,12 +43,13 @@ void TitleState::update() {
 
 		switch(m_cmdwin.pos()) {
 			case 0:
-				ApplicationStateStack::getInstance().push<MapState>();
+				gk::ApplicationStateStack::getInstance().clear();
+				gk::ApplicationStateStack::getInstance().push<MapState>();
 				break;
 			case 1: break;
 			case 2:
 				SDL_Delay(100);
-				ApplicationStateStack::getInstance().clear();
+				gk::ApplicationStateStack::getInstance().clear();
 				break;
 			default: break;
 		}

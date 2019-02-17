@@ -12,8 +12,8 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "EndState.hpp"
 #include "EquipState.hpp"
 #include "GameWindow.hpp"
@@ -57,7 +57,7 @@ void MenuState::update() {
 				switch(m_cmdwin->pos()) {
 					case 1: break;
 					case 2:
-						ApplicationStateStack::getInstance().push<EquipState>(m_actorChoicewin->pos(), this);
+					gk::ApplicationStateStack::getInstance().push<EquipState>(m_actorChoicewin->pos(), this);
 						break;
 					case 3: break;
 					default: break;
@@ -65,17 +65,17 @@ void MenuState::update() {
 			} else {
 				switch(m_cmdwin->pos()) {
 					case 0:
-						ApplicationStateStack::getInstance().push<ItemState>(this);
+						gk::ApplicationStateStack::getInstance().push<ItemState>(this);
 						break;
 					case 4:
-						ApplicationStateStack::getInstance().push<QuestState>(this);
+						gk::ApplicationStateStack::getInstance().push<QuestState>(this);
 						break;
 					case 5: break;
 					case 6:
-						ApplicationStateStack::getInstance().push<SettingsState>(this);
+						gk::ApplicationStateStack::getInstance().push<SettingsState>(this);
 						break;
 					case 7:
-						ApplicationStateStack::getInstance().push<EndState>();
+						gk::ApplicationStateStack::getInstance().push<EndState>();
 						break;
 					default:
 						m_actorChoiceMode = true;
@@ -90,7 +90,8 @@ void MenuState::update() {
 
 	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
 		gk::AudioPlayer::playSound("sound-back");
-		if(!m_actorChoiceMode) ApplicationStateStack::getInstance().pop();
+		if(!m_actorChoiceMode)
+			gk::ApplicationStateStack::getInstance().pop();
 		else {
 			m_actorChoiceMode = false;
 			m_actorChoicewin->pos(0);
@@ -102,7 +103,7 @@ void MenuState::render() {
 	if (m_parent)
 		m_parent->render();
 
-	m_cmdwin->draw(&ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
+	m_cmdwin->draw(&gk::ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
 
 	if(m_actorChoiceMode) {
 		m_actorChoicewin->draw();

@@ -12,18 +12,18 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/ApplicationStateStack.hpp>
 
-#include "ApplicationStateStack.hpp"
 #include "EventListener.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "MapManager.hpp"
 #include "MessageState.hpp"
 
-MessageState::MessageState(const std::string &message, ApplicationState *parent) : ApplicationState(parent) {
+MessageState::MessageState(const std::string &message, gk::ApplicationState *parent) : gk::ApplicationState(parent) {
 	m_parent = parent;
 	if(m_parent == nullptr) {
-		m_parent = &ApplicationStateStack::getInstance().top();
+		m_parent = &gk::ApplicationStateStack::getInstance().top();
 	}
 
 	m_txtwin.reset(new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3));
@@ -56,7 +56,7 @@ void MessageState::update() {
 			EventListener::addMessageStateAction(m_cmdwin->pos());
 		}
 
-		ApplicationStateStack::getInstance().pop();
+		gk::ApplicationStateStack::getInstance().pop();
 		MapManager::getInstance().getCurrentMap()->updateEventsActions();
 	}
 }

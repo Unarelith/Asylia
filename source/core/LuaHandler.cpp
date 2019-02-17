@@ -13,7 +13,8 @@
  */
 #include "LuaHandler.hpp"
 
-#include "ApplicationStateStack.hpp"
+#include <gk/core/ApplicationStateStack.hpp>
+
 #include "BattleState.hpp"
 #include "CharacterManager.hpp"
 #include "Event.hpp"
@@ -40,7 +41,7 @@ void LuaHandler::init() {
 
 void LuaHandler::bindClasses() {
 	m_lua["drawMessage"] = [&](const std::string &message) {
-		return &ApplicationStateStack::getInstance().push<MessageState>(message);
+		return &gk::ApplicationStateStack::getInstance().push<MessageState>(message);
 	};
 
 	m_lua.new_usertype<CharacterManager>("CharacterManager",

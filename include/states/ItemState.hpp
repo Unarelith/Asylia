@@ -16,12 +16,13 @@
 
 #include <memory>
 
-#include "ApplicationState.hpp"
+#include <gk/core/ApplicationState.hpp>
+
 #include "ItemWindow.hpp"
 
-class ItemState : public ApplicationState {
+class ItemState : public gk::ApplicationState {
 	public:
-		ItemState(ApplicationState *parent = nullptr);
+		ItemState(gk::ApplicationState *parent = nullptr);
 
 		void update();
 		void render();

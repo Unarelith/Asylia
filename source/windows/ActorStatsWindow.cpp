@@ -11,10 +11,11 @@
  *
  * =====================================================================================
  */
+#include <gk/core/ApplicationStateStack.hpp>
+
 #include "ActorStatsWindow.hpp"
 #include "BattleState.hpp"
 #include "GameWindow.hpp"
-#include "ApplicationStateStack.hpp"
 
 ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(), GameWindow::main->height() - 319) {
 }
@@ -28,7 +29,7 @@ void ActorStatsWindow::drawActors(const std::vector<std::pair<u8, Actor*>> &acto
 }
 
 void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
-	BattleState &battleState = ((BattleState&)ApplicationStateStack::getInstance().top());
+	BattleState &battleState = ((BattleState&)gk::ApplicationStateStack::getInstance().top());
 	u8 mode = battleState.mode();
 	if((mode == BattleState::Mode::Choice || mode == BattleState::Mode::EnemyTurn || mode == BattleState::Mode::ProcessActions || mode == BattleState::Mode::Victory)
 	|| (battleState.battle().actors()[battleState.currentPos()].second != actor)) {
