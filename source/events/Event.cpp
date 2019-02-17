@@ -55,9 +55,7 @@ void Event::move(std::string function) {
 void Event::update() {
 	updateActions();
 
-	if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Map) {
-		move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
-	}
+	move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
 
 	LuaHandler::getInstance().doString(m_name + ".update()");
 }
