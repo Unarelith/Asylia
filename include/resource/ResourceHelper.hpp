@@ -23,6 +23,7 @@ class Animation;
 class Armor;
 class Enemy;
 class Item;
+class Quest;
 class Skill;
 class SpriteAnimation;
 class Troop;
@@ -41,6 +42,8 @@ class ResourceHelper {
 		static Actor *getActor(u16 id);
 		static Enemy *getEnemy(u16 id);
 		static Troop *getTroop(u16 id);
+
+		static Quest *getQuest(u16 id);
 };
 
 #endif // RESOURCEHELPER_HPP_

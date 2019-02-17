@@ -20,7 +20,6 @@
 #include "CharacterManager.hpp"
 #include "EventManager.hpp"
 #include "MapManager.hpp"
-#include "QuestManager.hpp"
 
 class MapState : public gk::ApplicationState {
 	public:
@@ -33,7 +32,6 @@ class MapState : public gk::ApplicationState {
 		LuaHandler m_luaHandler;
 		EventManager m_eventManager;
 		MapManager m_mapManager;
-		QuestManager m_questManager;
 		CharacterManager m_characterManager;
 };
 

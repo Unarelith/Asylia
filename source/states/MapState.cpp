@@ -23,7 +23,6 @@ MapState::MapState() {
 	LuaHandler::setInstance(m_luaHandler);
 	EventManager::setInstance(m_eventManager);
 	MapManager::setInstance(m_mapManager);
-	QuestManager::setInstance(m_questManager);
 	CharacterManager::setInstance(m_characterManager);
 
 	m_luaHandler.init();
@@ -32,7 +31,6 @@ MapState::MapState() {
 
 	m_luaHandler.bindClasses();
 
-	m_questManager.init();
 	m_characterManager.init();
 
 	m_characterManager.loadActorsTeam();

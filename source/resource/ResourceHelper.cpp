@@ -19,6 +19,7 @@
 #include "Enemy.hpp"
 #include "Item.hpp"
 #include "ResourceHelper.hpp"
+#include "Quest.hpp"
 #include "Skill.hpp"
 #include "Troop.hpp"
 #include "Weapon.hpp"
@@ -57,5 +58,9 @@ Enemy *ResourceHelper::getEnemy(u16 id) {
 
 Troop *ResourceHelper::getTroop(u16 id) {
 	return &gk::ResourceHandler::getInstance().get<Troop>("troop-" + std::to_string(id));
+}
+
+Quest *ResourceHelper::getQuest(u16 id) {
+	return &gk::ResourceHandler::getInstance().get<Quest>("quest-" + std::to_string(id));
 }
 

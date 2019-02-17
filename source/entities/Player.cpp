@@ -15,7 +15,6 @@
 #include "Keyboard.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
-#include "QuestManager.hpp"
 
 Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
 	m_type = Type::Player;
@@ -46,7 +45,7 @@ Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Charac
 	m_inventory.addArmor(3, 1);
 	m_inventory.addArmor(4, 1);
 
-	m_quests.push_back(QuestManager::getInstance().getQuest(0));
+	m_quests.push_back(ResourceHelper::getQuest(0));
 }
 
 void Player::move() {
