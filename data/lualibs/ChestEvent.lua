@@ -20,7 +20,7 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 			end
 
 			if self.animationAtEnd and not self.empty then
-				local item = ItemManager.getInstance():getItem(self.itemID)
+				local item = ResourceHelper.getItem(self.itemID)
 
 				drawMessage(_t("Obtained") .. " " .. self.itemCount .. " " .. item:name())
 

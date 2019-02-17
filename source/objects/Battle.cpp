@@ -15,8 +15,8 @@
 
 #include "Battle.hpp"
 #include "Interface.hpp"
-#include "ItemManager.hpp"
 #include "MapManager.hpp"
+#include "ResourceHelper.hpp"
 
 Battle::Battle(const Battle &battle) {
 	for(auto &it : battle.m_actors) {
@@ -86,7 +86,7 @@ void Battle::drawArrow(Battler *battler) {
 
 void Battle::enemyTurn() {
 	for(auto &it : m_enemies) {
-		pushAction(it.second, m_actors[rand() % m_actors.size()].second, ItemManager::getInstance().getSkill(0));
+		pushAction(it.second, m_actors[rand() % m_actors.size()].second, ResourceHelper::getSkill(0));
 	}
 }
 

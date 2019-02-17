@@ -14,8 +14,9 @@
 #ifndef FONT_HPP_
 #define FONT_HPP_
 
+#include <gk/core/SDLHeaders.hpp>
+
 #include "Image.hpp"
-#include "SDLHeaders.hpp"
 
 typedef enum {
 	FONT_SMALL = 11,

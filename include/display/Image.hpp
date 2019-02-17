@@ -16,9 +16,10 @@
 
 #include <string>
 
-#include "Color.hpp"
-#include "SDLHeaders.hpp"
 #include <gk/core/IntTypes.hpp>
+#include <gk/core/SDLHeaders.hpp>
+
+#include "Color.hpp"
 
 class Image {
 	public:

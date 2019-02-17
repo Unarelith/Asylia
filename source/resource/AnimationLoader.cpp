@@ -1,24 +1,23 @@
 /*
  * =====================================================================================
  *
- *       Filename:  AnimationManager.cpp
+ *       Filename:  AnimationLoader.cpp
  *
  *    Description:
  *
- *        Created:  22/03/2014 19:35:16
+ *        Created:  17/02/2019 21:49:41
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#include "AnimationManager.hpp"
-#include "XMLFile.hpp"
+#include <gk/resource/ResourceHandler.hpp>
 
-template<>
-AnimationManager *Singleton<AnimationManager>::s_instance = nullptr;
+#include "Animation.hpp"
+#include "AnimationLoader.hpp"
 
-void AnimationManager::init() {
-	XMLFile doc("data/config/animations.xml");
+void AnimationLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
+	gk::XMLFile doc(xmlFilename);
 
 	tinyxml2::XMLElement *animationElement = doc.FirstChildElement("animations").FirstChildElement("animation").ToElement();
 	while(animationElement) {
@@ -38,19 +37,9 @@ void AnimationManager::init() {
 			frameElement = frameElement->NextSiblingElement("frame");
 		}
 
-		m_animations.emplace_back(new Animation(filename.c_str(), name, delay, frames));
+		handler.add<Animation>("animation-" + name, filename.c_str(), name, delay, frames);
 
 		animationElement = animationElement->NextSiblingElement("animation");
 	}
-}
-
-Animation *AnimationManager::getAnimationByName(const std::string &name) {
-	for(auto &it : m_animations) {
-		if(it->name() == name) {
-			return it.get();
-		}
-	}
-
-	return nullptr;
 }
 

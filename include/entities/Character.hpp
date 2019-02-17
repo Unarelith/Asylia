@@ -97,7 +97,7 @@ class Character : public Sprite {
 
 		u8 m_speed;
 
-		Timer m_movementTimer;
+		gk::Timer m_movementTimer{true}; // FIXME
 		u16 m_movementDelay;
 		u16 m_movementID;
 

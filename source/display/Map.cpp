@@ -11,18 +11,19 @@
  *
  * =====================================================================================
  */
+#include <gk/core/SDLHeaders.hpp>
+#include <gk/core/XMLFile.hpp>
+
 #include "Debug.hpp"
 #include "GameWindow.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
-#include "SDLHeaders.hpp"
-#include "XMLFile.hpp"
 
 s32 Map::scrollX = 0;
 s32 Map::scrollY = 0;
 
 Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID) {
-	XMLFile doc(filename);
+	gk::XMLFile doc(filename);
 
 	m_width = doc.FirstChildElement("map").ToElement()->IntAttribute("width");
 	m_height = doc.FirstChildElement("map").ToElement()->IntAttribute("height");

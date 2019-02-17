@@ -11,14 +11,15 @@
  *
  * =====================================================================================
  */
+#include <gk/core/XMLFile.hpp>
+
 #include "QuestManager.hpp"
-#include "XMLFile.hpp"
 
 template<>
 QuestManager *Singleton<QuestManager>::s_instance = nullptr;
 
 void QuestManager::init() {
-	XMLFile doc("data/config/quests.xml");
+	gk::XMLFile doc("data/config/quests.xml");
 
 	tinyxml2::XMLElement *questElement = doc.FirstChildElement("quests").FirstChildElement("quest").ToElement();
 	while(questElement) {

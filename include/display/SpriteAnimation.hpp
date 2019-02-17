@@ -17,19 +17,17 @@
 #include <vector>
 
 #include <gk/core/IntTypes.hpp>
-#include "Timer.hpp"
+#include <gk/core/Timer.hpp>
 
 struct SpriteAnimation {
-	SpriteAnimation(u16 _size, std::vector<u16> _tabAnim, u16 _delay, bool _isPlaying = false) :
+	SpriteAnimation(u16 _size, const std::vector<u16> &_tabAnim, u16 _delay, bool _isPlaying = false) :
 		size(_size), tabAnim(_tabAnim), delay(_delay), isPlaying(_isPlaying) {}
 
 	u16 size;
 	std::vector<u16> tabAnim;
 	u16 delay;
-	Timer timer;
+	gk::Timer timer{true}; // FIXME
 	bool isPlaying;
 };
-
-typedef SpriteAnimation SpriteAnimation;
 
 #endif // SPRITEANIMATION_HPP_

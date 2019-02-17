@@ -1,26 +1,25 @@
 /*
  * =====================================================================================
  *
- *       Filename:  TroopManager.cpp
+ *       Filename:  TroopLoader.cpp
  *
  *    Description:
  *
- *        Created:  27/04/2014 21:10:51
+ *        Created:  17/02/2019 20:58:38
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#include "BattlerManager.hpp"
-#include "TroopManager.hpp"
-#include "XMLFile.hpp"
+#include <gk/resource/ResourceHandler.hpp>
 
-template<>
-TroopManager *Singleton<TroopManager>::s_instance = nullptr;
+#include "Troop.hpp"
+#include "TroopLoader.hpp"
 
-void TroopManager::init() {
-	XMLFile doc("data/config/troops.xml");
+void TroopLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
+	gk::XMLFile doc(xmlFilename);
 
+	int troopCount = 0;
 	tinyxml2::XMLElement *troopElement = doc.FirstChildElement("troops").FirstChildElement("troop").ToElement();
 	while(troopElement) {
 		Troop *currentTroop;
@@ -28,9 +27,9 @@ void TroopManager::init() {
 
 		if(!troopElement->Attribute("battleback", "")) {
 			battleback = std::string("graphics/battlebacks/") + troopElement->Attribute("battleback") + ".jpg";
-			currentTroop = new Troop(battleback);
+			currentTroop = &handler.add<Troop>("troop-" + std::to_string(troopCount), battleback);
 		} else {
-			currentTroop = new Troop;
+			currentTroop = &handler.add<Troop>("troop-" + std::to_string(troopCount));
 		}
 
 		tinyxml2::XMLElement *enemyElement = troopElement->FirstChildElement("enemy");
@@ -40,12 +39,13 @@ void TroopManager::init() {
 			x = enemyElement->IntAttribute("x");
 			y = enemyElement->IntAttribute("y");
 
-			currentTroop->addEnemy(BattlerManager::getInstance().getEnemy(enemyElement->IntAttribute("id")), x, y);
+			Enemy *enemy = &handler.get<Enemy>("enemy-" + std::to_string(enemyElement->IntAttribute("id")));
+			currentTroop->addEnemy(enemy, x, y);
 
 			enemyElement = enemyElement->NextSiblingElement("enemy");
 		}
 
-		m_troops.emplace_back(currentTroop);
+		troopCount++;
 
 		troopElement = troopElement->NextSiblingElement("troop");
 	}

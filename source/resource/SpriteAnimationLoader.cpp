@@ -1,24 +1,23 @@
 /*
  * =====================================================================================
  *
- *       Filename:  SpriteAnimationManager.cpp
+ *       Filename:  SpriteAnimationLoader.cpp
  *
  *    Description:
  *
- *        Created:  26/05/2014 19:06:52
+ *        Created:  17/02/2019 21:34:14
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#include "SpriteAnimationManager.hpp"
-#include "XMLFile.hpp"
+#include <gk/resource/ResourceHandler.hpp>
 
-template<>
-SpriteAnimationManager *Singleton<SpriteAnimationManager>::s_instance = nullptr;
+#include "SpriteAnimation.hpp"
+#include "SpriteAnimationLoader.hpp"
 
-void SpriteAnimationManager::init() {
-	XMLFile doc("data/config/spriteAnimations.xml");
+void SpriteAnimationLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
+	gk::XMLFile doc(xmlFilename);
 
 	tinyxml2::XMLElement *animationElement = doc.FirstChildElement("spriteAnimations").FirstChildElement("animation").ToElement();
 	while(animationElement) {
@@ -42,7 +41,7 @@ void SpriteAnimationManager::init() {
 			framesElement = framesElement->NextSiblingElement("frames");
 		}
 
-		m_spriteAnimations[name] = animation;
+		handler.add<std::vector<SpriteAnimation>>("spriteanim-" + name, animation);
 
 		animationElement = animationElement->NextSiblingElement("animation");
 	}

@@ -21,32 +21,21 @@
 
 MapState::MapState() {
 	LuaHandler::setInstance(m_luaHandler);
-	SpriteAnimationManager::setInstance(m_spriteAnimationManager);
-	AnimationManager::setInstance(m_animationManager);
 	EventManager::setInstance(m_eventManager);
 	MapManager::setInstance(m_mapManager);
-	ItemManager::setInstance(m_itemManager);
 	QuestManager::setInstance(m_questManager);
 	CharacterManager::setInstance(m_characterManager);
-	BattlerManager::setInstance(m_battlerManager);
-	TroopManager::setInstance(m_troopManager);
 
 	m_luaHandler.init();
-	m_spriteAnimationManager.init();
-	m_animationManager.init();
 	m_eventManager.init();
 	m_mapManager.init();
 
 	m_luaHandler.bindClasses();
 
-	m_itemManager.init();
 	m_questManager.init();
 	m_characterManager.init();
-	m_battlerManager.init();
 
 	m_characterManager.loadActorsTeam();
-
-	m_troopManager.init();
 
 	m_mapManager.getCurrentMap()->load();
 

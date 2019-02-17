@@ -19,13 +19,13 @@
 #include "CharacterManager.hpp"
 #include "Event.hpp"
 #include "EventInterpreter.hpp"
-#include "ItemManager.hpp"
 #include "Keyboard.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
 #include "MapState.hpp"
 #include "MessageState.hpp"
 #include "Parameter.hpp"
+#include "ResourceHelper.hpp"
 #include "Sprite.hpp"
 
 template<>
@@ -85,9 +85,8 @@ void LuaHandler::bindClasses() {
 		"name", &Item::name
 	);
 
-	m_lua.new_usertype<ItemManager>("ItemManager",
-		"getItem", &ItemManager::getItem,
-		"getInstance", &ItemManager::getInstance
+	m_lua.new_usertype<ResourceHelper>("ResourceHelper",
+		"getItem", &ResourceHelper::getItem
 	);
 
 	m_lua.new_usertype<Keyboard>("Keyboard",

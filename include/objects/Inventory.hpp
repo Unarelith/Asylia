@@ -22,8 +22,7 @@
 
 class Inventory {
 	public:
-		Inventory();
-		~Inventory();
+		Inventory() = default;
 
 		void clear();
 

@@ -29,7 +29,7 @@ void EventManager::loadLibs() {
 }
 
 void EventManager::initEvents() {
-	XMLFile doc("data/config/events.xml");
+	gk::XMLFile doc("data/config/events.xml");
 
 	tinyxml2::XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
 	while(eventElement) {

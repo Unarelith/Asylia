@@ -12,14 +12,7 @@
  * =====================================================================================
  */
 #include "Inventory.hpp"
-#include "ItemManager.hpp"
-
-Inventory::Inventory() {
-}
-
-Inventory::~Inventory() {
-	clear();
-}
+#include "ResourceHelper.hpp"
 
 void Inventory::clear() {
 	m_items.clear();
@@ -29,19 +22,19 @@ void Inventory::clear() {
 
 void Inventory::addItem(u8 id, s16 count, double chance) {
 	for(auto &it : m_items) {
-		if(std::get<0>(it) == ItemManager::getInstance().getItem(id)) {
+		if(std::get<0>(it) == ResourceHelper::getItem(id)) {
 			std::get<1>(it) += count;
 			if(std::get<1>(it) > 99) std::get<1>(it) = 99;
 			return;
 		}
 	}
 
-	m_items.push_back(std::make_tuple(ItemManager::getInstance().getItem(id), count, chance));
+	m_items.push_back(std::make_tuple(ResourceHelper::getItem(id), count, chance));
 }
 
 void Inventory::removeItem(u8 id, s16 count) {
 	for(auto &it : m_items) {
-		if(std::get<0>(it) == ItemManager::getInstance().getItem(id)) {
+		if(std::get<0>(it) == ResourceHelper::getItem(id)) {
 			std::get<1>(it) -= count;
 		}
 	}
@@ -53,19 +46,19 @@ void Inventory::removeItem(u8 id, s16 count) {
 
 void Inventory::addArmor(u8 id, s16 count, double chance) {
 	for(auto &it : m_armors) {
-		if(std::get<0>(it) == ItemManager::getInstance().getArmor(id)) {
+		if(std::get<0>(it) == ResourceHelper::getArmor(id)) {
 			std::get<1>(it) += count;
 			if(std::get<1>(it) > 99) std::get<1>(it) = 99;
 			return;
 		}
 	}
 
-	m_armors.push_back(std::make_tuple(ItemManager::getInstance().getArmor(id), count, chance));
+	m_armors.push_back(std::make_tuple(ResourceHelper::getArmor(id), count, chance));
 }
 
 void Inventory::removeArmor(u8 id, s16 count) {
 	for(auto &it : m_armors) {
-		if(std::get<0>(it) == ItemManager::getInstance().getArmor(id)) {
+		if(std::get<0>(it) == ResourceHelper::getArmor(id)) {
 			std::get<1>(it) -= count;
 		}
 	}
@@ -77,19 +70,19 @@ void Inventory::removeArmor(u8 id, s16 count) {
 
 void Inventory::addWeapon(u8 id, s16 count, double chance) {
 	for(auto &it : m_weapons) {
-		if(std::get<0>(it) == ItemManager::getInstance().getWeapon(id)) {
+		if(std::get<0>(it) == ResourceHelper::getWeapon(id)) {
 			std::get<1>(it) += count;
 			if(std::get<1>(it) > 99) std::get<1>(it) = 99;
 			return;
 		}
 	}
 
-	m_weapons.push_back(std::make_tuple(ItemManager::getInstance().getWeapon(id), count, chance));
+	m_weapons.push_back(std::make_tuple(ResourceHelper::getWeapon(id), count, chance));
 }
 
 void Inventory::removeWeapon(u8 id, s16 count) {
 	for(auto &it : m_weapons) {
-		if(std::get<0>(it) == ItemManager::getInstance().getWeapon(id)) {
+		if(std::get<0>(it) == ResourceHelper::getWeapon(id)) {
 			std::get<1>(it) -= count;
 		}
 	}

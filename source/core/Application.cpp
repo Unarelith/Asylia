@@ -12,13 +12,23 @@
  * =====================================================================================
  */
 #include "Application.hpp"
-#include "AudioLoader.hpp"
 #include "Config.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 #include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "TimeManager.hpp"
+
+#include "ActorLoader.hpp"
+#include "AnimationLoader.hpp"
+#include "ArmorLoader.hpp"
+#include "AudioLoader.hpp"
+#include "EnemyLoader.hpp"
+#include "ItemLoader.hpp"
+#include "SkillLoader.hpp"
+#include "SpriteAnimationLoader.hpp"
+#include "TroopLoader.hpp"
+#include "WeaponLoader.hpp"
 
 Application::Application(int argc, char **argv) : gk::CoreApplication(argc, argv) {
 }
@@ -32,6 +42,15 @@ void Application::init() {
 	LanguageManager::setInstance(m_languageManager);
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
+	m_resourceHandler.loadConfigFile<SpriteAnimationLoader>("resources/config/spriteAnimations.xml");
+	m_resourceHandler.loadConfigFile<AnimationLoader>("resources/config/animations.xml");
+	m_resourceHandler.loadConfigFile<ItemLoader>("resources/config/items.xml");
+	m_resourceHandler.loadConfigFile<ArmorLoader>("resources/config/armors.xml");
+	m_resourceHandler.loadConfigFile<WeaponLoader>("resources/config/weapons.xml");
+	m_resourceHandler.loadConfigFile<SkillLoader>("resources/config/skills.xml");
+	m_resourceHandler.loadConfigFile<ActorLoader>("resources/config/actors.xml");
+	m_resourceHandler.loadConfigFile<EnemyLoader>("resources/config/enemies.xml");
+	m_resourceHandler.loadConfigFile<TroopLoader>("resources/config/troops.xml");
 
 	Interface::init();
 

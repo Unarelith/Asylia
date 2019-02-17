@@ -16,9 +16,10 @@
 
 #include <memory>
 
+#include <gk/core/XMLFile.hpp>
+
 #include "Debug.hpp"
 #include "Event.hpp"
-#include "XMLFile.hpp"
 
 class EventManager : public Singleton<EventManager> {
 	public:

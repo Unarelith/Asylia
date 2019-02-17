@@ -13,9 +13,10 @@
  */
 #include <sstream>
 
+#include <gk/core/XMLFile.hpp>
+
 #include "EventManager.hpp"
 #include "MapManager.hpp"
-#include "XMLFile.hpp"
 
 template<>
 MapManager *Singleton<MapManager>::s_instance = nullptr;
@@ -29,7 +30,7 @@ void MapManager::init() {
 }
 
 void MapManager::initTilesets() {
-	XMLFile doc("data/config/tilesets.xml");
+	gk::XMLFile doc("data/config/tilesets.xml");
 
 	tinyxml2::XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
 	while(tilesetElement) {
@@ -48,7 +49,7 @@ void MapManager::initTilesets() {
 }
 
 void MapManager::initMaps() {
-	XMLFile doc("data/config/maps.xml");
+	gk::XMLFile doc("data/config/maps.xml");
 
 	tinyxml2::XMLElement *areasElement = doc.FirstChildElement("maps").ToElement();
 	tinyxml2::XMLElement *areaElement = areasElement->FirstChildElement("area");
@@ -97,7 +98,7 @@ void MapManager::initMaps() {
 }
 
 void getNonPassableTiles(const char *filename, Tileset *tileset) {
-	XMLFile doc(filename);
+	gk::XMLFile doc(filename);
 
 	tinyxml2::XMLElement *nonPassableTilesElement = doc.FirstChildElement("map").FirstChildElement("layer").NextSiblingElement().ToElement();
 	if(!nonPassableTilesElement) return;

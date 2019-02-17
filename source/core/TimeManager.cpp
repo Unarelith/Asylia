@@ -13,9 +13,10 @@
  */
 #include <numeric>
 
+#include <gk/core/SDLHeaders.hpp>
+
 #include "GameWindow.hpp"
 #include "InfoWindow.hpp"
-#include "SDLHeaders.hpp"
 #include "TimeManager.hpp"
 
 u32 TimeManager::renderingTimeMean = 0;

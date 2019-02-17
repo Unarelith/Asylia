@@ -17,7 +17,7 @@
 #include "EventInterpreter.hpp"
 #include "EventListener.hpp"
 #include "MessageState.hpp"
-#include "TroopManager.hpp"
+#include "ResourceHelper.hpp"
 
 std::map<std::string, std::vector<EventAction*>> EventInterpreter::actions;
 
@@ -80,7 +80,7 @@ void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 
 	if(params->at(0)->isInteger() && !e->isLocked() && params->at(1)->isBoolean()) {
-		Troop *troop = TroopManager::getInstance().getTroop(*(int*)(params->at(0)->value()));
+		Troop *troop = ResourceHelper::getTroop(*(int*)(params->at(0)->value()));
 		gk::ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
 
 		e->lock();

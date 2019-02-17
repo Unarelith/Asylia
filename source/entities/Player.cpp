@@ -14,7 +14,7 @@
 #include "Config.hpp"
 #include "Keyboard.hpp"
 #include "Player.hpp"
-#include "SpriteAnimationManager.hpp"
+#include "ResourceHelper.hpp"
 #include "QuestManager.hpp"
 
 Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Character(filename.c_str(), x, y, direction) {
@@ -22,10 +22,10 @@ Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Charac
 
 	m_speed = CHARA_SPEED;
 
-	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_DOWN));
-	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_LEFT));
-	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_RIGHT));
-	addAnimation(SpriteAnimationManager::getInstance().getAnimation("Character", DIR_UP));
+	addAnimation(ResourceHelper::getAnimation("Character", DIR_DOWN));
+	addAnimation(ResourceHelper::getAnimation("Character", DIR_LEFT));
+	addAnimation(ResourceHelper::getAnimation("Character", DIR_RIGHT));
+	addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
 
 	m_inventory.addItem(0, 1);
 	m_inventory.addItem(1, 1);
@@ -101,5 +101,12 @@ void Player::move() {
 		m_vx = 0;
 		m_vy = 0;
 	}
+}
+
+void Player::addTeamMember(u16 id) {
+	m_team.push_back(ResourceHelper::getActor(id));
+
+	if(m_team.size() == 1)
+		reload(m_team.back()->sprite());
 }
 

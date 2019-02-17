@@ -14,7 +14,6 @@
 #include "GameWindow.hpp"
 #include "LuaState.hpp"
 #include "LuaHandler.hpp"
-#include "SDLHeaders.hpp"
 
 LuaState::LuaState(const std::string &filename, const std::string &table) {
 	m_table = table;

@@ -20,9 +20,9 @@
 #include "EventListener.hpp"
 #include "InfoWindow.hpp"
 #include "Interface.hpp"
-#include "ItemManager.hpp"
 #include "ItemWindow.hpp"
 #include "Keyboard.hpp"
+#include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
 
 BattleState::BattleState(Troop *troop, bool allowDefeat) {
@@ -185,7 +185,7 @@ void BattleState::update() {
 		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
 			gk::AudioPlayer::playSound("sound-confirm");
 
-			m_battle.pushAction(m_battle.getActor(m_currentPos), m_battle.getEnemy(m_arrowPos), ItemManager::getInstance().getSkill(0));
+			m_battle.pushAction(m_battle.getActor(m_currentPos), m_battle.getEnemy(m_arrowPos), ResourceHelper::getSkill(0));
 			m_arrowPos = 0;
 			m_currentPos = m_battle.getNextActorPair(1, m_currentPos).first;
 			if(m_currentPos >= (s8)m_battle.actors().size()) {

@@ -11,15 +11,16 @@
  *
  * =====================================================================================
  */
+#include <gk/core/XMLFile.hpp>
+
 #include "Debug.hpp"
 #include "CharacterManager.hpp"
-#include "XMLFile.hpp"
 
 template<>
 CharacterManager *Singleton<CharacterManager>::s_instance = nullptr;
 
 void CharacterManager::init() {
-	XMLFile doc("data/config/player.xml");
+	gk::XMLFile doc("data/config/player.xml");
 
 	const char *appearance = doc.FirstChildElement("player").ToElement()->Attribute("appearance");
 	tinyxml2::XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
@@ -31,7 +32,7 @@ void CharacterManager::init() {
 }
 
 void CharacterManager::loadActorsTeam() {
-	XMLFile doc("data/config/player.xml");
+	gk::XMLFile doc("data/config/player.xml");
 
 	tinyxml2::XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
 	while(actorElement) {

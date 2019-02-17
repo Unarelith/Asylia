@@ -11,9 +11,10 @@
  *
  * =====================================================================================
  */
-#include "LanguageManager.hpp"
 #include <gk/core/IntTypes.hpp>
-#include "XMLFile.hpp"
+#include <gk/core/XMLFile.hpp>
+
+#include "LanguageManager.hpp"
 
 template<>
 LanguageManager *Singleton<LanguageManager>::s_instance = nullptr;
@@ -23,7 +24,7 @@ void LanguageManager::init(const std::string &language) {
 
 	m_currentLanguage = language;
 
-	XMLFile doc(std::string(std::string("data/locale/") + language + ".xml").c_str());
+	gk::XMLFile doc(std::string(std::string("data/locale/") + language + ".xml").c_str());
 
 	/* INTERFACE */
 	tinyxml2::XMLElement *textElement = doc.FirstChildElement("language").FirstChildElement("text").ToElement();
