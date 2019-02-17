@@ -64,8 +64,7 @@ void EventInterpreter::action0(Event *e) {
 		ApplicationStateStack::getInstance().push<MessageState>(*(std::string*)(params->at(0)->value()));
 		e->lock();
 	}
-
-	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::Message) {
+	else {
 		if(params->size() == 2 && params->at(1)->isInteger()) {
 			e->currentActionID(*(int*)params->at(1)->value());
 		}
@@ -79,16 +78,13 @@ void EventInterpreter::action0(Event *e) {
 void EventInterpreter::action1(Event *e) {
 	ParameterList *params = getParameters(e);
 
-	if(params->at(0)->isInteger() && !e->isLocked()) {
-		if(params->at(1)->isBoolean()) {
-			Troop *troop = TroopManager::getInstance().getTroop(*(int*)(params->at(0)->value()));
-			ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
-		}
+	if(params->at(0)->isInteger() && !e->isLocked() && params->at(1)->isBoolean()) {
+		Troop *troop = TroopManager::getInstance().getTroop(*(int*)(params->at(0)->value()));
+		ApplicationStateStack::getInstance().push<BattleState>(troop, *(bool*)(params->at(1)->value()));
 
 		e->lock();
 	}
-
-	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::BattleAct) {
+	else {
 		e->currentActionID(*(int*)params->at(2 + EventListener::lastBattleResult())->value());
 
 		e->unlock();
@@ -110,8 +106,7 @@ void EventInterpreter::action2(Event *e) {
 
 		e->lock();
 	}
-
-	if(ApplicationStateStack::getInstance().top().type() != ApplicationState::Type::Message) {
+	else {
 		if(params->at((SelectableWindow::lastPos + 1) * 2)->isInteger()) {
 			e->currentActionID(*(int*)params->at((SelectableWindow::lastPos + 1) * 2)->value());
 		}
