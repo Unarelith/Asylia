@@ -24,8 +24,6 @@
 #include "SettingsState.hpp"
 
 MenuState::MenuState(ApplicationState *parent) : ApplicationState(parent) {
-	m_type = Type::Menu;
-
 	loadCommandWindow();
 
 	m_actorChoicewin.reset(new ActorChoiceWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height()));

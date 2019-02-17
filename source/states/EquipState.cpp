@@ -79,8 +79,7 @@ void EquipState::update() {
 			m_itemwin->update();
 		} else {
 			ApplicationStateStack::getInstance().pop();
-			if(ApplicationStateStack::getInstance().top().type() == ApplicationState::Type::Menu)
-				((MenuState&)ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
+			((MenuState&)ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
 		}
 	}
 }

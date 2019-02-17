@@ -27,7 +27,6 @@ class ApplicationState : public gk::ApplicationState {
 		typedef enum {
 			None,
 			Map,
-			Menu,
 		} Type;
 
 		Type type() const { return m_type; }
