@@ -15,7 +15,6 @@
 
 #include "ApplicationStateStack.hpp"
 #include "EndState.hpp"
-#include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "TitleState.hpp"

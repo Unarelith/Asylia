@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Game.cpp
+ *       Filename:  Application.cpp
  *
  *    Description:
  *
@@ -11,21 +11,19 @@
  *
  * =====================================================================================
  */
+#include "Application.hpp"
 #include "AudioLoader.hpp"
 #include "Config.hpp"
-#include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
 #include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "TimeManager.hpp"
 
-bool Game::paused = false;
-
-Game::Game(int argc, char **argv) : gk::CoreApplication(argc, argv) {
+Application::Application(int argc, char **argv) : gk::CoreApplication(argc, argv) {
 }
 
-void Game::init() {
+void Application::init() {
 	gk::CoreApplication::init();
 
 	m_window.open(APP_NAME);
@@ -43,20 +41,18 @@ void Game::init() {
 	m_stateStack.push<MapState>();
 }
 
-void Game::onEvent(const SDL_Event &event) {
+void Application::onEvent(const SDL_Event &event) {
 	if (event.type == SDL_QUIT) {
 		m_stateStack.clear();
 	}
 }
 
-void Game::mainLoop() {
+void Application::mainLoop() {
 	while(m_stateStack.size()) {
 		if(TimeManager::isTimeToUpdate()) {
 			handleEvents();
 
 			Keyboard::update();
-
-			if(Game::paused == true) continue;
 
 			if (!m_stateStack.empty())
 				m_stateStack.top().update();
@@ -89,8 +85,6 @@ void Game::mainLoop() {
 	// 	m_stateStack.top().pollEvents();
     //
 	// 	Keyboard::update();
-    //
-	// 	if(Game::paused == true) continue;
     //
 	// 	m_clock.updateGame([&] {
 	// 		if (!m_stateStack.empty())

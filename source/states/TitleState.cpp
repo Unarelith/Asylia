@@ -14,7 +14,6 @@
 #include <gk/audio/AudioPlayer.hpp>
 
 #include "ApplicationStateStack.hpp"
-#include "Game.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
 #include "MapState.hpp"

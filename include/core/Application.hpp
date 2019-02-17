@@ -1,7 +1,7 @@
 /*
  * =====================================================================================
  *
- *       Filename:  Game.hpp
+ *       Filename:  Application.hpp
  *
  *    Description:
  *
@@ -11,8 +11,8 @@
  *
  * =====================================================================================
  */
-#ifndef GAME_HPP_
-#define GAME_HPP_
+#ifndef APPLICATION_HPP_
+#define APPLICATION_HPP_
 
 #include <gk/core/CoreApplication.hpp>
 
@@ -20,13 +20,11 @@
 #include "GameWindow.hpp"
 #include "LanguageManager.hpp"
 
-class Game : public gk::CoreApplication {
+class Application : public gk::CoreApplication {
 	public:
-		Game(int argc, char **argv);
+		Application(int argc, char **argv);
 
 		void init() override;
-
-		static bool paused;
 
 	private:
 		void onEvent(const SDL_Event &event) override;
@@ -39,4 +37,4 @@ class Game : public gk::CoreApplication {
 		LanguageManager m_languageManager;
 };
 
-#endif // GAME_HPP_
+#endif // APPLICATION_HPP_
