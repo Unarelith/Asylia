@@ -22,15 +22,9 @@
 #include "Player.hpp"
 
 MapState::MapState() {
-	LuaHandler::setInstance(m_luaHandler);
-	EventManager::setInstance(m_eventManager);
 	MapManager::setInstance(m_mapManager);
 
-	m_luaHandler.init();
-	m_eventManager.init();
 	m_mapManager.init();
-
-	m_luaHandler.bindClasses();
 
 	m_mapManager.getCurrentMap()->load();
 

@@ -16,8 +16,6 @@
 
 #include <gk/core/ApplicationState.hpp>
 
-#include "LuaHandler.hpp"
-#include "EventManager.hpp"
 #include "MapManager.hpp"
 
 class MapState : public gk::ApplicationState {
@@ -28,8 +26,6 @@ class MapState : public gk::ApplicationState {
 		void render() override;
 
 	private:
-		LuaHandler m_luaHandler;
-		EventManager m_eventManager;
 		MapManager m_mapManager;
 };
 

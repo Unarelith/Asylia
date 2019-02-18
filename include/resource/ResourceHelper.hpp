@@ -22,6 +22,7 @@ class Actor;
 class Animation;
 class Armor;
 class Enemy;
+class Event;
 class Item;
 class Quest;
 class Player;
@@ -47,6 +48,7 @@ class ResourceHelper {
 		static Quest *getQuest(u16 id);
 
 		static Player *getPlayer();
+		static Event *getEvent(const std::string &name);
 };
 
 #endif // RESOURCEHELPER_HPP_

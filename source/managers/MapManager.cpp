@@ -15,8 +15,8 @@
 
 #include <gk/core/XMLFile.hpp>
 
-#include "EventManager.hpp"
 #include "MapManager.hpp"
+#include "ResourceHelper.hpp"
 
 template<>
 MapManager *Singleton<MapManager>::s_instance = nullptr;
@@ -75,7 +75,7 @@ void MapManager::initMaps() {
 
 			tinyxml2::XMLElement *eventElement = mapElement->FirstChildElement("event");
 			while(eventElement) {
-				currentArea.back()->addEvent(EventManager::getInstance().getEventByName(eventElement->Attribute("name")));
+				currentArea.back()->addEvent(ResourceHelper::getEvent(eventElement->Attribute("name")));
 
 				eventElement = eventElement->NextSiblingElement("event");
 			}

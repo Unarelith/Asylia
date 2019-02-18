@@ -18,6 +18,7 @@
 
 #include "GameWindow.hpp"
 #include "LanguageManager.hpp"
+#include "LuaHandler.hpp"
 
 class Application : public gk::CoreApplication {
 	public:
@@ -32,6 +33,8 @@ class Application : public gk::CoreApplication {
 		GameWindow m_window;
 
 		LanguageManager m_languageManager;
+
+		LuaHandler m_luaHandler;
 };
 
 #endif // APPLICATION_HPP_

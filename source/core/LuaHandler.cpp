@@ -37,6 +37,8 @@ void LuaHandler::init() {
 		sol::lib::math,
 		sol::lib::table
 	);
+
+	bindClasses();
 }
 
 void LuaHandler::bindClasses() {

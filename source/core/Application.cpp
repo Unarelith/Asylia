@@ -24,6 +24,7 @@
 #include "ArmorLoader.hpp"
 #include "AudioLoader.hpp"
 #include "EnemyLoader.hpp"
+#include "EventLoader.hpp"
 #include "ItemLoader.hpp"
 #include "PlayerLoader.hpp"
 #include "QuestLoader.hpp"
@@ -43,6 +44,9 @@ void Application::init() {
 
 	LanguageManager::setInstance(m_languageManager);
 
+	LuaHandler::setInstance(m_luaHandler);
+	m_luaHandler.init();
+
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 	m_resourceHandler.loadConfigFile<SpriteAnimationLoader>("resources/config/spriteAnimations.xml");
 	m_resourceHandler.loadConfigFile<AnimationLoader>("resources/config/animations.xml");
@@ -55,6 +59,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<TroopLoader>("resources/config/troops.xml");
 	m_resourceHandler.loadConfigFile<QuestLoader>("resources/config/quests.xml");
 	m_resourceHandler.loadConfigFile<PlayerLoader>("resources/config/player.xml");
+	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
 
 	Interface::init();
 

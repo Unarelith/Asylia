@@ -16,6 +16,8 @@
 
 #include <cstdio>
 
+#include <gk/core/SDLHeaders.hpp>
+
 #include "Config.hpp"
 
 #ifdef COLORED_DEBUG

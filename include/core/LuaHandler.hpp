@@ -24,12 +24,12 @@ class LuaHandler : public Singleton<LuaHandler> {
 	public:
 		void init();
 
-		void bindClasses();
-
 		void doFile(const char *filename);
 		void doString(const std::string &str);
 
 	private:
+		void bindClasses();
+
 		sol::state m_lua;
 };
 

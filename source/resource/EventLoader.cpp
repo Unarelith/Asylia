@@ -1,45 +1,36 @@
 /*
  * =====================================================================================
  *
- *       Filename:  EventManager.cpp
+ *       Filename:  EventLoader.cpp
  *
  *    Description:
  *
- *        Created:  24/05/2014 13:22:42
+ *        Created:  18/02/2019 08:23:30
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
 #include "LuaHandler.hpp"
-#include "EventManager.hpp"
+#include "Debug.hpp"
+#include "Event.hpp"
+#include "EventLoader.hpp"
 
-template<>
-EventManager *Singleton<EventManager>::s_instance = nullptr;
-
-void EventManager::init() {
-	loadLibs();
-
-	initEvents();
-}
-
-void EventManager::loadLibs() {
+void EventLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 	LuaHandler::getInstance().doFile("data/lualibs/LuaEvent.lua");
 	LuaHandler::getInstance().doFile("data/lualibs/ChestEvent.lua");
-}
 
-void EventManager::initEvents() {
-	gk::XMLFile doc("data/config/events.xml");
+	gk::XMLFile doc(xmlFilename);
 
 	tinyxml2::XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
 	while(eventElement) {
 		std::string eventType = eventElement->Attribute("type");
 
 		if(eventType == "Character") {
-			loadCharacterEvent(eventElement);
+			loadCharacterEvent(eventElement, handler);
 		}
 		else if(eventType == "Chest") {
-			loadChestEvent(eventElement);
+			loadChestEvent(eventElement, handler);
 		} else {
 			warning("Event type %s not recognized.", eventType.c_str());
 		}
@@ -48,7 +39,7 @@ void EventManager::initEvents() {
 	}
 }
 
-void EventManager::loadCharacterEvent(tinyxml2::XMLElement *characterElement) {
+void EventLoader::loadCharacterEvent(tinyxml2::XMLElement *characterElement, gk::ResourceHandler &handler) {
 	std::string name, appearance;
 	u16 x, y, direction;
 	int frameWidth, frameHeight;
@@ -74,13 +65,13 @@ void EventManager::loadCharacterEvent(tinyxml2::XMLElement *characterElement) {
 		frameHeight = 48;
 	}
 
-	m_events[name] = std::make_unique<Event>(
+	handler.add<Event>("event-" + name,
 		name, std::string("graphics/characters/") + appearance + ".png",
 		x * 32, y * 32, direction, solid, frameWidth, frameHeight
 	);
 }
 
-void EventManager::loadChestEvent(tinyxml2::XMLElement *chestElement) {
+void EventLoader::loadChestEvent(tinyxml2::XMLElement *chestElement, gk::ResourceHandler &handler) {
 	std::string name;
 	u16 x, y, chestType;
 
@@ -91,9 +82,10 @@ void EventManager::loadChestEvent(tinyxml2::XMLElement *chestElement) {
 
 	chestType = chestElement->IntAttribute("chestType");
 
-	m_events[name] = std::make_unique<Event>(
+	handler.add<Event>("event-" + name,
 		name, "graphics/events/Chest01.png",
 		x * 32, y * 32, chestType, true
 	);
 }
+
 

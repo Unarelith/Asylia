@@ -69,3 +69,7 @@ Player *ResourceHelper::getPlayer() {
 	return &gk::ResourceHandler::getInstance().get<Player>("player");
 }
 
+Event *ResourceHelper::getEvent(const std::string &name) {
+	return &gk::ResourceHandler::getInstance().get<Event>("event-" + name);
+}
+
