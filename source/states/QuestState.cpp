@@ -16,6 +16,7 @@
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "CommandWindow.hpp"
+#include "Config.hpp"
 #include "GameKey.hpp"
 #include "InfoWindow.hpp"
 #include "Player.hpp"
@@ -30,7 +31,7 @@ QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_questCategorywin.addCommand("Quests_Current");
 	m_questCategorywin.addCommand("Quests_Completed");
 
-	m_questListwin.height(GameWindow::main->height() - 116);
+	m_questListwin.height(SCREEN_HEIGHT - 116);
 }
 
 void QuestState::update() {
@@ -76,7 +77,7 @@ void QuestState::update() {
 					default: break;
 				}
 			}
-			m_questListwin.height(GameWindow::main->height() - 114);
+			m_questListwin.height(SCREEN_HEIGHT - 114);
 		}
 
 		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {

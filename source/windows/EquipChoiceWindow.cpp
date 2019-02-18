@@ -11,12 +11,12 @@
  *
  * =====================================================================================
  */
+#include "Config.hpp"
 #include "EquipChoiceWindow.hpp"
 #include "Font.hpp"
-#include "GameWindow.hpp"
 #include "ResourceHelper.hpp"
 
-EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(150 + (GameWindow::main->width() - 150) / 2, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
+EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(150 + (SCREEN_WIDTH - 150) / 2, 52, (SCREEN_WIDTH - 150) / 2, (SCREEN_HEIGHT - 52) / 2) {
 	m_itemMax = 4;
 	m_columnMax = 1;
 

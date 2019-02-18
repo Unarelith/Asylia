@@ -12,9 +12,9 @@
  * =====================================================================================
  */
 #include "BattleActionWindow.hpp"
-#include "GameWindow.hpp"
+#include "Config.hpp"
 
-BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, GameWindow::main->width() / 4) {
+BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, SCREEN_WIDTH / 4) {
 	addCommand("Attack");
 	addCommand("Skill", true);
 	addCommand("Defend", true);
@@ -25,7 +25,7 @@ BattleActionWindow::~BattleActionWindow() {
 }
 
 void BattleActionWindow::draw(u8 pos) {
-	m_x = pos * GameWindow::main->width() / 4;
+	m_x = pos * SCREEN_WIDTH / 4;
 
 	CommandWindow::draw();
 }

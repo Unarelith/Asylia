@@ -16,6 +16,7 @@
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "BattleState.hpp"
+#include "Config.hpp"
 #include "EndState.hpp"
 #include "EventListener.hpp"
 #include "Font.hpp"
@@ -38,7 +39,7 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 
 	m_mode = Mode::Choice;
 
-	m_itemwin.reset(new ItemWindow(0, 52, GameWindow::main->width(), 320 - 52, ResourceHelper::getPlayer()->inventory()));
+	m_itemwin.reset(new ItemWindow(0, 52, SCREEN_WIDTH, 320 - 52, ResourceHelper::getPlayer()->inventory()));
 
 	m_currentItem = nullptr;
 

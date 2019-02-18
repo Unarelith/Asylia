@@ -15,9 +15,9 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "EventListener.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "Map.hpp"
 #include "MessageState.hpp"
 #include "ResourceHelper.hpp"
@@ -28,7 +28,7 @@ MessageState::MessageState(const std::string &message, gk::ApplicationState *par
 		m_parent = &gk::ApplicationStateStack::getInstance().top();
 	}
 
-	m_txtwin.reset(new TextWindow(40, GameWindow::main->height() - GameWindow::main->height() / 3 - 20, GameWindow::main->width() - 80, GameWindow::main->height() / 3));
+	m_txtwin.reset(new TextWindow(40, SCREEN_HEIGHT - SCREEN_HEIGHT / 3 - 20, SCREEN_WIDTH - 80, SCREEN_HEIGHT / 3));
 
 	m_cmdwin.reset(new CommandWindow(m_txtwin->x(), 0, 150, 0));
 

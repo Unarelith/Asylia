@@ -19,8 +19,8 @@
 GameWindow *GameWindow::main = nullptr;
 
 void GameWindow::open(const char *caption) {
-	m_width = WIN_DEFAULT_WIDTH;
-	m_height = WIN_DEFAULT_HEIGHT;
+	m_width = SCREEN_WIDTH;
+	m_height = SCREEN_HEIGHT;
 
 	m_window.reset(SDL_CreateWindow(caption, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN));
 	if(!m_window) {

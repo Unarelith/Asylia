@@ -49,6 +49,7 @@ void Application::init() {
 	GameWindow::main = &m_window;
 
 	LanguageManager::setInstance(m_languageManager);
+	m_languageManager.init("en-us");
 
 	LuaHandler::setInstance(m_luaHandler);
 	m_luaHandler.init();
@@ -71,8 +72,6 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
 	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
 	m_resourceHandler.loadConfigFile<MapLoader>("resources/config/maps.xml");
-
-	m_languageManager.init("en-us");
 
 	m_stateStack.push<MapState>();
 }

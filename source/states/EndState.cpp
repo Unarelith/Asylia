@@ -15,9 +15,9 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "EndState.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "TitleState.hpp"
 
 EndState::EndState(bool disableCancel) {
@@ -25,8 +25,8 @@ EndState::EndState(bool disableCancel) {
 	m_cmdwin.addCommand("TitleScreen");
 	m_cmdwin.addCommand("Quit");
 
-	m_cmdwin.x(GameWindow::main->width() / 2 - m_cmdwin.width() / 2);
-	m_cmdwin.y(GameWindow::main->height() / 2 - m_cmdwin.height() / 2);
+	m_cmdwin.x(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
+	m_cmdwin.y(SCREEN_HEIGHT / 2 - m_cmdwin.height() / 2);
 }
 
 void EndState::update() {

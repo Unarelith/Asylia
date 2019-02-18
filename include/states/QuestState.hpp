@@ -17,7 +17,7 @@
 #include <gk/core/ApplicationState.hpp>
 
 #include "CommandWindow.hpp"
-#include "GameWindow.hpp"
+#include "Config.hpp"
 #include "InfoWindow.hpp"
 #include "Quest.hpp"
 #include "QuestInfoWindow.hpp"
@@ -39,11 +39,11 @@ class QuestState : public gk::ApplicationState {
 
 		Quest *m_currentQuest = nullptr;
 
-		InfoWindow m_questTitlewin{0, 0, GameWindow::main->width(), 52};
+		InfoWindow m_questTitlewin{0, 0, SCREEN_WIDTH, 52};
 
 		QuestInfoWindow m_questInfowin;
 
-		CommandWindow m_questCategorywin{0, 52, GameWindow::main->width(), true, true};
+		CommandWindow m_questCategorywin{0, 52, SCREEN_WIDTH, true, true};
 		CommandWindow m_questListwin{0, 116, 200};
 };
 

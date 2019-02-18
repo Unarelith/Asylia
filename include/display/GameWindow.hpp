@@ -38,8 +38,8 @@ class GameWindow {
 
 		SDL_Renderer *renderer() const { return m_renderer.get(); }
 
-		u16 width() const { return m_width; }
-		u16 height() const { return m_height; }
+		// u16 width() const { return m_width; }
+		// u16 height() const { return m_height; }
 
 		static GameWindow *main;
 

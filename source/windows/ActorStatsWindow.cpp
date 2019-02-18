@@ -15,9 +15,9 @@
 
 #include "ActorStatsWindow.hpp"
 #include "BattleState.hpp"
-#include "GameWindow.hpp"
+#include "Config.hpp"
 
-ActorStatsWindow::ActorStatsWindow() : Window(0, 319, GameWindow::main->width(), GameWindow::main->height() - 319) {
+ActorStatsWindow::ActorStatsWindow() : Window(0, 319, SCREEN_WIDTH, SCREEN_HEIGHT - 319) {
 }
 
 void ActorStatsWindow::drawActors(const std::vector<std::pair<u8, Actor*>> &actors) {
@@ -37,7 +37,7 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 		actor->image()->setAlphaMod(190);
 	}
 
-	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, GameWindow::main->height() - actor->image()->height());
+	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, SCREEN_HEIGHT - actor->image()->height());
 
 	printName(actor, 20 + m_width / 4 * pos, 20, m_width - 40);
 	printState(actor, 20 + m_width / 4 * pos, 116, m_width - 40);

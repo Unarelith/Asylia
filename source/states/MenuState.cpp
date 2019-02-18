@@ -15,10 +15,10 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "EndState.hpp"
 #include "EquipState.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "ItemState.hpp"
 #include "MenuState.hpp"
 #include "QuestState.hpp"
@@ -27,7 +27,7 @@
 MenuState::MenuState(ApplicationState *parent) : ApplicationState(parent) {
 	loadCommandWindow();
 
-	m_actorChoicewin.reset(new ActorChoiceWindow(150, 0, GameWindow::main->width() - 150, GameWindow::main->height()));
+	m_actorChoicewin.reset(new ActorChoiceWindow(150, 0, SCREEN_WIDTH - 150, SCREEN_HEIGHT));
 
 	m_actorChoiceMode = false;
 }

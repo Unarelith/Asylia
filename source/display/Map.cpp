@@ -155,12 +155,12 @@ void Map::render() {
 	SDL_Rect clip, pos;
 	clip.x = scrollX;
 	clip.y = scrollY;
-	clip.w = GameWindow::main->width();
-	clip.h = GameWindow::main->height();
+	clip.w = SCREEN_WIDTH;
+	clip.h = SCREEN_HEIGHT;
 	pos.x =	0;
 	pos.y = 0;
-	pos.w = GameWindow::main->width();
-	pos.h = GameWindow::main->height();
+	pos.w = SCREEN_WIDTH;
+	pos.h = SCREEN_HEIGHT;
 	SDL_RenderCopy(GameWindow::main->renderer(), m_sublayersTex, &clip, &pos);
 }
 
@@ -168,12 +168,12 @@ void Map::renderOverlay() {
 	SDL_Rect clip, pos;
 	clip.x = scrollX;
 	clip.y = scrollY;
-	clip.w = GameWindow::main->width();
-	clip.h = GameWindow::main->height();
+	clip.w = SCREEN_WIDTH;
+	clip.h = SCREEN_HEIGHT;
 	pos.x = 0;
 	pos.y = 0;
-	pos.w = GameWindow::main->width();
-	pos.h = GameWindow::main->height();
+	pos.w = SCREEN_WIDTH;
+	pos.h = SCREEN_HEIGHT;
 	SDL_RenderCopy(GameWindow::main->renderer(), m_overlayTex, &clip, &pos);
 }
 
@@ -188,7 +188,10 @@ s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {
 
 bool Map::passable(s16 x, s16 y) {
 	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->layers() ; i++) {
-		int tile = ResourceHelper::getCurrentMap()->getTile(x / ResourceHelper::getCurrentMap()->tileset()->tileWidth, y / ResourceHelper::getCurrentMap()->tileset()->tileHeight, i) - 1;
+		int tile = ResourceHelper::getCurrentMap()->getTile(
+				x / ResourceHelper::getCurrentMap()->tileset()->tileWidth,
+				y / ResourceHelper::getCurrentMap()->tileset()->tileHeight, i) - 1;
+
 		if(tile < 0 || ResourceHelper::getCurrentMap()->tileset()->nonPassableLayer[tile] == 0)
 			continue;
 		else return false;
@@ -198,14 +201,14 @@ bool Map::passable(s16 x, s16 y) {
 }
 
 void Map::centerMapWithObject(s16 x, s16 y, u16 w, u16 h) {
-	scrollX = x - GameWindow::main->width() / 2 + w / 2;
-	scrollY = y - GameWindow::main->height() / 2 + h / 2;
+	scrollX = x - SCREEN_WIDTH / 2 + w / 2;
+	scrollY = y - SCREEN_HEIGHT / 2 + h / 2;
 
 	if(scrollX < 0) scrollX = 0;
 	if(scrollY < 0) scrollY = 0;
-	if(scrollX + GameWindow::main->width() > ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth)
-		scrollX = ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth - GameWindow::main->width() - 1;
-	if(scrollY + GameWindow::main->height() > ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight)
-		scrollY = ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight - GameWindow::main->height() - 1;
+	if(scrollX + SCREEN_WIDTH > ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth)
+		scrollX = ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth - SCREEN_WIDTH - 1;
+	if(scrollY + SCREEN_HEIGHT > ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight)
+		scrollY = ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight - SCREEN_HEIGHT - 1;
 }
 

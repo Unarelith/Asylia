@@ -13,13 +13,13 @@
  */
 #include <gk/core/input/GamePad.hpp>
 
+#include "Config.hpp"
 #include "Font.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "QuestInfoWindow.hpp"
 #include "ResourceHelper.hpp"
 
-QuestInfoWindow::QuestInfoWindow() : Window(200, 116, GameWindow::main->width() - 200, GameWindow::main->height() - 116) {
+QuestInfoWindow::QuestInfoWindow() : Window(200, 116, SCREEN_WIDTH - 200, SCREEN_HEIGHT - 116) {
 	m_mode = Mode::ObjectivesMode;
 }
 
@@ -46,7 +46,7 @@ void QuestInfoWindow::draw(Quest *quest) {
 		std::string questName = _t(std::string("Quest") + std::to_string(quest->id()));
 		std::string questDesc = std::string("    ") + _t(std::string("Quest") + std::to_string(quest->id()) + "Desc");
 
-		ResourceHelper::getFont("default").printCentered(questName.c_str(), m_x, m_y, GameWindow::main->width() - m_x, 64, FONT_MAXI);
+		ResourceHelper::getFont("default").printCentered(questName.c_str(), m_x, m_y, SCREEN_WIDTH - m_x, 64, FONT_MAXI);
 
 		ResourceHelper::getFont("default").print((_t("Description") + ":").c_str(), m_x + 20, m_y + 80, FONT_LARGE, Color::System);
 

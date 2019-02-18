@@ -15,9 +15,9 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "EquipState.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "MenuState.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
@@ -32,7 +32,7 @@ EquipState::EquipState(u8 actorPos, ApplicationState *parent) : ApplicationState
 	m_statswin.reset(new EquipStatsWindow(m_actor));
 	m_choicewin.reset(new EquipChoiceWindow(m_equipment));
 
-	m_itemwin.reset(new ItemWindow(150, 52 + (GameWindow::main->height() - 52) / 2, GameWindow::main->width() - 150, (GameWindow::main->height() - 52) / 2, ResourceHelper::getPlayer()->inventory(), 150, 0));
+	m_itemwin.reset(new ItemWindow(150, 52 + (SCREEN_HEIGHT - 52) / 2, SCREEN_WIDTH - 150, (SCREEN_HEIGHT - 52) / 2, ResourceHelper::getPlayer()->inventory(), 150, 0));
 	m_itemwin->changeSet(0, 0, m_equipment);
 }
 

@@ -22,6 +22,7 @@
 #include "Battle.hpp"
 #include "BattleActionWindow.hpp"
 #include "BattleChoiceWindow.hpp"
+#include "Config.hpp"
 #include "GameWindow.hpp"
 #include "ItemWindow.hpp"
 #include "Troop.hpp"
@@ -69,7 +70,7 @@ class BattleState : public gk::ApplicationState {
 
 		std::unique_ptr<ItemWindow> m_itemwin;
 
-		InfoWindow m_infowin{0, 0, GameWindow::main->width(), 52};
+		InfoWindow m_infowin{0, 0, SCREEN_WIDTH, 52};
 
 		Item *m_currentItem;
 

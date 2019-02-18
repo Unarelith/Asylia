@@ -15,8 +15,8 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "MapState.hpp"
 #include "TitleState.hpp"
 
@@ -25,8 +25,8 @@ TitleState::TitleState() {
 	m_cmdwin.addCommand("Continue", true);
 	m_cmdwin.addCommand("Quit");
 
-	m_cmdwin.x(GameWindow::main->width() / 2 - m_cmdwin.width() / 2);
-	m_cmdwin.y(GameWindow::main->height() / 2 + int(GameWindow::main->height() / 10));
+	m_cmdwin.x(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
+	m_cmdwin.y(SCREEN_HEIGHT / 2 + int(SCREEN_HEIGHT / 10));
 
 	gk::AudioPlayer::playMusic("music-title");
 }

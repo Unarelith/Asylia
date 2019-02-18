@@ -13,13 +13,13 @@
  */
 #include <gk/audio/AudioPlayer.hpp>
 
-#include "GameWindow.hpp"
+#include "Config.hpp"
 #include "Font.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
 
-VictoryWindow::VictoryWindow() : Window(GameWindow::main->width() / 2 - 100, 0, 200, 150) {
+VictoryWindow::VictoryWindow() : Window(SCREEN_WIDTH / 2 - 100, 0, 200, 150) {
 }
 
 void VictoryWindow::init(Battle *battle) {
@@ -44,7 +44,7 @@ void VictoryWindow::init(Battle *battle) {
 void VictoryWindow::draw() {
 	m_height = 134 + 32 * m_itemsNb;
 
-	m_y = 319 / 2 - m_height / 2; // GameWindow::main->height() - 319 = ActorStatsWindow->height()
+	m_y = 319 / 2 - m_height / 2; // SCREEN_HEIGHT - 319 = ActorStatsWindow->height()
 
 	Window::draw();
 

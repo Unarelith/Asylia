@@ -15,14 +15,14 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "GameKey.hpp"
-#include "GameWindow.hpp"
 #include "ItemState.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 
 ItemState::ItemState(gk::ApplicationState *parent) : gk::ApplicationState(parent) {
-	m_itemwin.reset(new ItemWindow(150, 52, GameWindow::main->width() - 150, GameWindow::main->height() - 52, ResourceHelper::getPlayer()->inventory(), 150, 0));
+	m_itemwin.reset(new ItemWindow(150, 52, SCREEN_WIDTH - 150, SCREEN_HEIGHT - 52, ResourceHelper::getPlayer()->inventory(), 150, 0));
 }
 
 void ItemState::update() {

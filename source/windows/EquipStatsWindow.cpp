@@ -13,13 +13,13 @@
  */
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Config.hpp"
 #include "EquipState.hpp"
 #include "EquipStatsWindow.hpp"
 #include "Font.hpp"
-#include "GameWindow.hpp"
 #include "ResourceHelper.hpp"
 
-EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
+EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (SCREEN_WIDTH - 150) / 2, (SCREEN_HEIGHT - 52) / 2) {
 	m_actor = actor;
 }
 

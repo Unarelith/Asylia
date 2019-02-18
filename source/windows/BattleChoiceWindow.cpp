@@ -11,10 +11,10 @@
  *
  * =====================================================================================
  */
-#include "GameWindow.hpp"
+#include "Config.hpp"
 #include "BattleChoiceWindow.hpp"
 
-BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, GameWindow::main->width(), true, true) {
+BattleChoiceWindow::BattleChoiceWindow() : CommandWindow(0, 0, SCREEN_WIDTH, true, true) {
 	addCommand(_t("Fight"));
 	addCommand(_t("Escape"));
 

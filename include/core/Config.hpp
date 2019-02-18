@@ -14,19 +14,17 @@
 #ifndef CONFIG_HPP_
 #define CONFIG_HPP_
 
-#define APP_NAME "Asylia"
+namespace {
+	constexpr const char *APP_NAME = "Asylia";
 
-#define WIN_DEFAULT_WIDTH 640
-#define WIN_DEFAULT_HEIGHT 480
+	const unsigned int SCREEN_WIDTH  = 640;
+	const unsigned int SCREEN_HEIGHT = 480;
+}
 
 #define OVERWORLD_SIZE 1
 
 #define CHARA_SPEED 4
 
 #define COLORED_DEBUG
-
-#ifdef __ANDROID__
-	#define PAD
-#endif
 
 #endif // CONFIG_HPP_
