@@ -22,33 +22,6 @@ template<>
 MapManager *Singleton<MapManager>::s_instance = nullptr;
 
 void MapManager::init() {
-	initTilesets();
-	initMaps();
-
-	Map::scrollX = 0;
-	Map::scrollY = 0;
-}
-
-void MapManager::initTilesets() {
-	gk::XMLFile doc("data/config/tilesets.xml");
-
-	tinyxml2::XMLElement *tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
-	while(tilesetElement) {
-		std::stringstream tilesetFilename;
-		std::stringstream tilesetInfoFilename;
-
-		tilesetFilename << "graphics/tilesets/" << tilesetElement->Attribute("name") << ".png";
-		tilesetInfoFilename << "data/tilesets/" << tilesetElement->Attribute("name") << ".tmx";
-
-		m_tilesets.emplace_back(new Tileset);
-		m_tilesets.back()->tiles = new Image(tilesetFilename.str().c_str());
-		getNonPassableTiles(tilesetInfoFilename.str().c_str(), m_tilesets.back().get());
-
-		tilesetElement = tilesetElement->NextSiblingElement("tileset");
-	}
-}
-
-void MapManager::initMaps() {
 	gk::XMLFile doc("data/config/maps.xml");
 
 	tinyxml2::XMLElement *areasElement = doc.FirstChildElement("maps").ToElement();
@@ -95,30 +68,6 @@ void MapManager::initMaps() {
 	u16 starty = areasElement->IntAttribute("starty");
 
 	m_currentMap = m_maps[startarea][MAP_POS(startarea, startx, starty)].get();
-}
-
-void getNonPassableTiles(const char *filename, Tileset *tileset) {
-	gk::XMLFile doc(filename);
-
-	tinyxml2::XMLElement *nonPassableTilesElement = doc.FirstChildElement("map").FirstChildElement("layer").NextSiblingElement().ToElement();
-	if(!nonPassableTilesElement) return;
-
-	u16 size = nonPassableTilesElement->IntAttribute("width") * nonPassableTilesElement->IntAttribute("height");
-
-	tileset->nonPassableLayer = new u16[size];
-
-	tinyxml2::XMLElement *tileElement = nonPassableTilesElement->FirstChildElement("data")->FirstChildElement("tile");
-
-	for(u16 i = 0 ; i < size ; i++) {
-		if(!tileElement) break;
-
-		s16 tile = tileElement->IntAttribute("gid") - 1;
-
-		if(tile == -1) tileset->nonPassableLayer[i] = 0;
-		else tileset->nonPassableLayer[i] = tile;
-
-		tileElement = tileElement->NextSiblingElement("tile");
-	}
 }
 
 bool passable(s16 x, s16 y) {

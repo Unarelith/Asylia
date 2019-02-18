@@ -73,3 +73,7 @@ Event *ResourceHelper::getEvent(const std::string &name) {
 	return &gk::ResourceHandler::getInstance().get<Event>("event-" + name);
 }
 
+Tileset *ResourceHelper::getTileset(u16 id) {
+	return &gk::ResourceHandler::getInstance().get<Tileset>("tileset-" + std::to_string(id));
+}
+

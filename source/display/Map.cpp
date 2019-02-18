@@ -18,6 +18,7 @@
 #include "GameWindow.hpp"
 #include "Map.hpp"
 #include "MapManager.hpp"
+#include "ResourceHelper.hpp"
 
 s32 Map::scrollX = 0;
 s32 Map::scrollY = 0;
@@ -33,7 +34,7 @@ Map::Map(const char *filename, u16 x, u16 y, u16 area, u8 layers, u16 tilesetID)
 	m_y = y;
 	m_area = area;
 
-	m_tileset = MapManager::getInstance().getTileset(tilesetID);
+	m_tileset = ResourceHelper::getTileset(tilesetID);
 
 	m_data = new s16*[m_layers];
 

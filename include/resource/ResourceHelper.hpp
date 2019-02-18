@@ -28,6 +28,7 @@ class Quest;
 class Player;
 class Skill;
 class SpriteAnimation;
+class Tileset;
 class Troop;
 class Weapon;
 
@@ -49,6 +50,8 @@ class ResourceHelper {
 
 		static Player *getPlayer();
 		static Event *getEvent(const std::string &name);
+
+		static Tileset *getTileset(u16 id);
 };
 
 #endif // RESOURCEHELPER_HPP_

@@ -30,6 +30,7 @@
 #include "QuestLoader.hpp"
 #include "SkillLoader.hpp"
 #include "SpriteAnimationLoader.hpp"
+#include "TilesetLoader.hpp"
 #include "TroopLoader.hpp"
 #include "WeaponLoader.hpp"
 
@@ -60,6 +61,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<QuestLoader>("resources/config/quests.xml");
 	m_resourceHandler.loadConfigFile<PlayerLoader>("resources/config/player.xml");
 	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
+	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
 
 	Interface::init();
 
