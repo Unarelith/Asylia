@@ -243,7 +243,7 @@ void Character::doMovement(s8 vx, s8 vy) {
 }
 
 void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction) {
-	MapManager::getInstance().setCurrentMap(MapManager::getInstance().maps()[area][MAP_POS(area, mapX, mapY)].get());
+	MapManager::getInstance().setCurrentMap(MapManager::getInstance().getMap(area, mapX, mapY));
 	MapManager::getInstance().getCurrentMap()->load();
 	SDL_Delay(500);
 	m_x = x * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth;

@@ -18,7 +18,7 @@
 
 #include "Map.hpp"
 
-#define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::getInstance().maps()[area].size()))
+#define MAP_POS(x, y, area) (u16)((x) + (y) * sqrt((double)MapManager::getInstance().getAreaSize(area)))
 
 class MapManager : public Singleton<MapManager> {
 	public:
@@ -27,7 +27,8 @@ class MapManager : public Singleton<MapManager> {
 		Map *getCurrentMap() { return m_currentMap; }
 		void setCurrentMap(Map *currentMap) { m_currentMap = currentMap; }
 
-		std::vector<std::vector<std::unique_ptr<Map>>> &maps() { return m_maps; }
+		Map *getMap(u16 area, u16 x, u16 y) { return m_maps[area][MAP_POS(x, y, area)].get(); }
+		size_t getAreaSize(u16 area) { return m_maps[area].size(); }
 
 	private:
 		std::vector<std::vector<std::unique_ptr<Map>>> m_maps;
