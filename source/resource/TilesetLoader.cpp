@@ -27,7 +27,7 @@ void TilesetLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) 
 		std::string name = tilesetElement->Attribute("name");
 
 		tilesetFilename << "resources/graphics/tilesets/" << name << ".png";
-		tilesetInfoFilename << "data/tilesets/" << name << ".tmx";
+		tilesetInfoFilename << "resources/tilesets/" << name << ".tmx";
 
 		Tileset &tileset = handler.add<Tileset>("tileset-" + std::to_string(id++));
 		tileset.tiles = new Image(tilesetFilename.str().c_str());

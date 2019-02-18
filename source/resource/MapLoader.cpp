@@ -36,7 +36,7 @@ void MapLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 			y = mapElement->IntAttribute("y");
 			tilesetID = mapElement->IntAttribute("tilesetID");
 
-			mapFilename << "data/maps/map" << areaID << "-" << x << "-" << y << ".tmx";
+			mapFilename << "resources/maps/map" << areaID << "-" << x << "-" << y << ".tmx";
 
 			Map &map = handler.add<Map>(
 				"map-" + std::to_string(areaID) + "-" + std::to_string(x) + "-" + std::to_string(y),

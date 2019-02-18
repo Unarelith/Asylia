@@ -34,7 +34,7 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 		addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
 	}
 
-	m_folder = std::string("data/events/") + name + "/";
+	m_folder = std::string("resources/events/") + name + "/";
 	m_name = name;
 
 	m_solid = solid;

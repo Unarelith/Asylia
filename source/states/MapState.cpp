@@ -25,8 +25,8 @@
 MapState::MapState() {
 	ResourceHelper::getCurrentMap()->load();
 
-	Map::scrollX = 0;
-	Map::scrollY = 0;
+	// Map::scrollX = 0;
+	// Map::scrollY = 0;
 
 	gk::AudioPlayer::playMusic("music-theme");
 }

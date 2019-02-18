@@ -17,8 +17,8 @@
 #include "EventLoader.hpp"
 
 void EventLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
-	LuaHandler::getInstance().doFile("data/lualibs/LuaEvent.lua");
-	LuaHandler::getInstance().doFile("data/lualibs/ChestEvent.lua");
+	LuaHandler::getInstance().doFile("resources/lualibs/LuaEvent.lua");
+	LuaHandler::getInstance().doFile("resources/lualibs/ChestEvent.lua");
 
 	gk::XMLFile doc(xmlFilename);
 

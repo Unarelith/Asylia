@@ -24,7 +24,7 @@ void LanguageManager::init(const std::string &language) {
 
 	m_currentLanguage = language;
 
-	gk::XMLFile doc(std::string(std::string("data/locale/") + language + ".xml").c_str());
+	gk::XMLFile doc(std::string(std::string("resources/locale/") + language + ".xml").c_str());
 
 	/* INTERFACE */
 	tinyxml2::XMLElement *textElement = doc.FirstChildElement("language").FirstChildElement("text").ToElement();
