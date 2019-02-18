@@ -43,7 +43,7 @@ void MapLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 				mapFilename.str().c_str(), x, y, areaID, layers, tilesetID
 			);
 
-			map.setBattleback(new Image(std::string(std::string("graphics/battlebacks/") + mapElement->Attribute("battleback") + ".jpg").c_str()));
+			map.setBattleback(new Image(std::string(std::string("resources/graphics/battlebacks/") + mapElement->Attribute("battleback") + ".jpg").c_str()));
 
 			tinyxml2::XMLElement *eventElement = mapElement->FirstChildElement("event");
 			while(eventElement) {

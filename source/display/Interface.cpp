@@ -27,20 +27,20 @@ Image *Interface::interface = nullptr;
 void Interface::init() {
 	auto &r = gk::ResourceHandler::getInstance();
 
-	defaultFont = &r.add<Font>("font-default", "fonts/arial.ttf");
+	defaultFont = &r.add<Font>("font-default", "resources/fonts/arial.ttf");
 
-	interface = &r.add<Image>("image-interface", "graphics/interface/Interface.png");
+	interface = &r.add<Image>("image-interface", "resources/graphics/interface/Interface.png");
 
-	pad = &r.add<Image>("image-dpad", "graphics/interface/DPad.png");
+	pad = &r.add<Image>("image-dpad", "resources/graphics/interface/DPad.png");
 	pad->setAlphaMod(150);
 
-	buttonA = &r.add<Image>("image-buttonA", "graphics/interface/ButtonA.png");
+	buttonA = &r.add<Image>("image-buttonA", "resources/graphics/interface/ButtonA.png");
 	buttonA->setAlphaMod(150);
 
-	buttonB = &r.add<Image>("image-buttonB", "graphics/interface/ButtonA.png");
+	buttonB = &r.add<Image>("image-buttonB", "resources/graphics/interface/ButtonA.png");
 	buttonB->setAlphaMod(150);
 
-	buttonMenu = &r.add<Image>("image-buttonMenu", "graphics/interface/ButtonA.png");
+	buttonMenu = &r.add<Image>("image-buttonMenu", "resources/graphics/interface/ButtonA.png");
 	buttonMenu->setAlphaMod(150);
 }
 

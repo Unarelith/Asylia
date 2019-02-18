@@ -24,7 +24,7 @@ void PlayerLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 	tinyxml2::XMLElement *positionElement = doc.FirstChildElement("player").FirstChildElement("position").ToElement();
 
 	Player &player = handler.add<Player>("player",
-			std::string("graphics/characters/") + appearance + ".png",
+			std::string("resources/graphics/characters/") + appearance + ".png",
 			positionElement->IntAttribute("x") * 32,
 			positionElement->IntAttribute("y") * 32,
 			positionElement->IntAttribute("direction"));

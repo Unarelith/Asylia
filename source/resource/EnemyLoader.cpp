@@ -27,7 +27,7 @@ void EnemyLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		u8 level;
 
 		name = enemyElement->Attribute("name");
-		appearance = std::string("graphics/battlers/") + enemyElement->Attribute("appearance") + ".png";
+		appearance = std::string("resources/graphics/battlers/") + enemyElement->Attribute("appearance") + ".png";
 
 		level = enemyElement->IntAttribute("level");
 

@@ -33,7 +33,7 @@ void ItemLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		Item &item = handler.add<Item>("item-" + std::to_string(id),
 			"Item" + std::to_string(id),
 			"Item" + std::to_string(id) + "Desc",
-			"graphics/items/" + std::to_string(id) + ".png", anim
+			"resources/graphics/items/" + std::to_string(id) + ".png", anim
 		);
 
 		item.setID(id);

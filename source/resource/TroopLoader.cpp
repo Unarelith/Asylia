@@ -26,7 +26,7 @@ void TroopLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		std::string battleback;
 
 		if(!troopElement->Attribute("battleback", "")) {
-			battleback = std::string("graphics/battlebacks/") + troopElement->Attribute("battleback") + ".jpg";
+			battleback = std::string("resources/graphics/battlebacks/") + troopElement->Attribute("battleback") + ".jpg";
 			currentTroop = &handler.add<Troop>("troop-" + std::to_string(troopCount), battleback);
 		} else {
 			currentTroop = &handler.add<Troop>("troop-" + std::to_string(troopCount));

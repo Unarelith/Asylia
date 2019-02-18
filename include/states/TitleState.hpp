@@ -27,7 +27,7 @@ class TitleState : public gk::ApplicationState {
 		void render();
 
 	private:
-		Image m_background{"graphics/interface/TitleScreen.jpg"};
+		Image m_background{"resources/graphics/interface/TitleScreen.jpg"};
 		CommandWindow m_cmdwin{192};
 };
 

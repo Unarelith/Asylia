@@ -25,7 +25,7 @@ void WeaponLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		Weapon &weapon = handler.add<Weapon>("weapon-" + std::to_string(id),
 			"Weapon" + std::to_string(id),
 			"Weapon" + std::to_string(id) + "Desc",
-			"graphics/weapons/" + std::to_string(id) + ".png",
+			"resources/graphics/weapons/" + std::to_string(id) + ".png",
 			weaponElement->IntAttribute("damage"),
 			weaponElement->DoubleAttribute("hitRate")
 		);

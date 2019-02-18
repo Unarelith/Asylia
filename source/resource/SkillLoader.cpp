@@ -32,7 +32,7 @@ void SkillLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		Skill &skill = handler.add<Skill>("skill-" + std::to_string(id),
 			"Skill" + std::to_string(id),
 			"Skill" + std::to_string(id) + "Desc",
-			"graphics/skills/" + std::to_string(id) + ".png", anim,
+			"resources/graphics/skills/" + std::to_string(id) + ".png", anim,
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		);

@@ -25,7 +25,7 @@ void AnimationLoader::load(const char *xmlFilename, gk::ResourceHandler &handler
 		u16 delay;
 
 		name = animationElement->Attribute("name");
-		filename = std::string("graphics/animations/") + animationElement->Attribute("filename") + ".png";
+		filename = std::string("resources/graphics/animations/") + animationElement->Attribute("filename") + ".png";
 
 		delay = animationElement->IntAttribute("delay");
 
