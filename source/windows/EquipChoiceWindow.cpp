@@ -31,7 +31,7 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 	if(!m_equipment->weapon()) {
 		// ResourceHelper::getWeapon(0)->thumbnail().render(m_x + 20, m_y + 20);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
-		Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::system);
+		Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::System);
 		Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
 	} else {
 		m_equipment->weapon()->thumbnail().render(m_x + 20, m_y + 20);
@@ -49,7 +49,7 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 			// 	}
 			// }
 			Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
-			Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE, Color::system);
+			Interface::defaultFont->printScaled(_t("Empty").c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE, Color::System);
 			Interface::defaultFont->setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
 		} else {
 			armor->thumbnail().render(m_x + 20, m_y + 52 + slot * 32);

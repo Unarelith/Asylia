@@ -30,14 +30,14 @@ class Font {
 		Font(const char *filename);
 		~Font();
 
-		void print(const char *str, u16 x, u16 y, FontSize size, Color color = Color::white);
-		void printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::white);
-		void printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color = Color::white);
-		void printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color = Color::white);
-		void printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::white);
-		void printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color = Color::white);
+		void print(const char *str, u16 x, u16 y, FontSize size, const gk::Color &color = gk::Color::White);
+		void printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color = gk::Color::White);
+		void printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, const gk::Color &color = gk::Color::White);
+		void printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, const gk::Color &color = gk::Color::White);
+		void printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color = gk::Color::White);
+		void printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color = gk::Color::White);
 
-		void printDamages(u16 damages, u16 x, u16 y, Color color);
+		void printDamages(u16 damages, u16 x, u16 y, const gk::Color &color);
 
 		void setStyle(FontSize size, int style);
 

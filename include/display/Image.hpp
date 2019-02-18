@@ -39,7 +39,7 @@ class Image {
 		void setClipRect(s16 x, s16 y, u16 w, u16 h);
 
 		void setAlphaMod(u8 alpha) { SDL_SetTextureAlphaMod(m_texture, alpha); }
-		void setColorMod(Color color) { SDL_SetTextureColorMod(m_texture, color.r, color.g, color.b); setAlphaMod(color.a); }
+		void setColorMod(gk::Color color) { SDL_SetTextureColorMod(m_texture, color.r255(), color.g255(), color.b255()); setAlphaMod(color.a255()); }
 
 		const std::string &filename() const { return m_filename; }
 

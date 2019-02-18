@@ -47,12 +47,12 @@ void QuestInfoWindow::draw(Quest *quest) {
 
 		Interface::defaultFont->printCentered(questName.c_str(), m_x, m_y, GameWindow::main->width() - m_x, 64, FONT_MAXI);
 
-		Interface::defaultFont->print((_t("Description") + ":").c_str(), m_x + 20, m_y + 80, FONT_LARGE, Color::system);
+		Interface::defaultFont->print((_t("Description") + ":").c_str(), m_x + 20, m_y + 80, FONT_LARGE, Color::System);
 
 		Interface::defaultFont->printTextBox(questDesc.c_str(), m_x + 30, m_y + 110, m_width - 60, 64, FONT_LARGE);
 
 		if(m_mode == Mode::ObjectivesMode) {
-			Interface::defaultFont->print((_t("Objectives") + ":").c_str(), m_x + 20, m_y + 214, FONT_LARGE, Color::system);
+			Interface::defaultFont->print((_t("Objectives") + ":").c_str(), m_x + 20, m_y + 214, FONT_LARGE, Color::System);
 
 			for(auto it : quest->objectives()) {
 				std::string objectiveDesc = std::string("- ") + _t(std::string("Quest") + std::to_string(quest->id()) + "_Obj" + std::to_string(it->id()) + "Desc");
@@ -63,12 +63,12 @@ void QuestInfoWindow::draw(Quest *quest) {
 			}
 		}
 		else if(m_mode == Mode::RewardsMode) {
-			Interface::defaultFont->print((_t("Rewards") + ":").c_str(), m_x + 20, m_y + 214, FONT_LARGE, Color::system);
+			Interface::defaultFont->print((_t("Rewards") + ":").c_str(), m_x + 20, m_y + 214, FONT_LARGE, Color::System);
 
 			printStat(30, 260, _t("EXP"), quest->exp(), 60, m_width / 2 - 40);
 			printStat(30, 292, _t("Gold"), quest->gold(), 60, m_width / 2 - 40);
 
-			Interface::defaultFont->print((_t("Items") + ":").c_str(), m_x + m_width / 2 + 20, m_y + 214, FONT_LARGE, Color::system);
+			Interface::defaultFont->print((_t("Items") + ":").c_str(), m_x + m_width / 2 + 20, m_y + 214, FONT_LARGE, Color::System);
 
 			u16 j = 0;
 			for(u16 i = 0 ; i < quest->items()->nbItems() ; i++) {

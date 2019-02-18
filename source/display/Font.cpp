@@ -28,7 +28,7 @@ Font::~Font() {
 	TTF_CloseFont(m_fontMaxi);
 }
 
-void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
+void Font::print(const char *str, u16 x, u16 y, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -39,13 +39,13 @@ void Font::print(const char *str, u16 x, u16 y, FontSize size, Color color) {
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()});
 	Image textToDisplay(textSurface);
 
 	textToDisplay.render(x, y);
 }
 
-void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
+void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -56,7 +56,7 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()});
 
 	if(width > textSurface->w) width = textSurface->w;
 	if(height > textSurface->h) height = textSurface->h;
@@ -66,7 +66,7 @@ void Font::printScaled(const char *str, u16 x, u16 y, u16 width, u16 height, Fon
 	textToDisplay.render(x, y, width, height);
 }
 
-void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, Color color) {
+void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -77,13 +77,13 @@ void Font::printToImage(const char *str, u16 x, u16 y, Image *image, FontSize si
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()});
 
 	image->reload(text);
 	image->setPosRect(x, y, image->width(), image->height());
 }
 
-void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, Color color) {
+void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 height, Image *image, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -94,7 +94,7 @@ void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 heig
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	SDL_Surface *text = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()});
 
 	if(width > text->w) width = text->w;
 	if(height > text->h) height = text->h;
@@ -103,7 +103,7 @@ void Font::printScaledToImage(const char *str, u16 x, u16 y, u16 width, u16 heig
 	image->setPosRect(x, y, width, height);
 }
 
-void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
+void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -114,13 +114,13 @@ void Font::printTextBox(const char *str, u16 x, u16 y, u16 width, u16 height, Fo
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, str, SDL_Color{color.r, color.g, color.b, color.a}, width);
+	SDL_Surface *textSurface = TTF_RenderUTF8_Blended_Wrapped(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()}, width);
 	Image textToDisplay(textSurface);
 
 	textToDisplay.render(x, y, 0, 0, 0, 0, width, height);
 }
 
-void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, Color color) {
+void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, FontSize size, const gk::Color &color) {
 	TTF_Font *font = nullptr;
 
 	switch(size) {
@@ -131,24 +131,24 @@ void Font::printCentered(const char *str, u16 x, u16 y, u16 width, u16 height, F
 		default:			error("Bad font size");	return;
 	}
 
-	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r, color.g, color.b, color.a});
+	SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, str, SDL_Color{color.r255(), color.g255(), color.b255(), color.a255()});
 	Image textToDisplay(textSurface);
 
 	textToDisplay.render(x + width / 2 - textToDisplay.width() / 2,
 						 y + height / 2 - textToDisplay.height() / 2);
 }
 
-void Font::printDamages(u16 damages, u16 x, u16 y, Color color) {
+void Font::printDamages(u16 damages, u16 x, u16 y, const gk::Color &color) {
 	TTF_SetFontKerning(m_fontLarge, 0);
 	TTF_SetFontHinting(m_fontLarge, TTF_HINTING_NONE);
 
 	TTF_SetFontOutline(m_fontLarge, 3);
 
-	print(std::to_string(damages).c_str(), x - 3, y - 3, FONT_LARGE, Color::black);
+	print(std::to_string(damages).c_str(), x - 3, y - 3, FONT_LARGE, gk::Color::Black);
 
 	TTF_SetFontOutline(m_fontLarge, 2);
 
-	print(std::to_string(damages).c_str(), x - 2, y - 2, FONT_LARGE, Color::white);
+	print(std::to_string(damages).c_str(), x - 2, y - 2, FONT_LARGE, gk::Color::White);
 
 	TTF_SetFontOutline(m_fontLarge, 0);
 

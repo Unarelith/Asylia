@@ -24,7 +24,7 @@ EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::
 
 void EquipStatsWindow::draw(Item *currentItem) {
 	u16 baseAtk, finalAtk, baseDef, finalDef;
-	Color finalAtkColor(Color::white), finalDefColor(Color::white);
+	gk::Color finalAtkColor(gk::Color::White), finalDefColor(gk::Color::White);
 	Image arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
 
 	baseAtk = m_actor->totalAtk();
@@ -38,20 +38,20 @@ void EquipStatsWindow::draw(Item *currentItem) {
 			else finalDef = m_actor->totalDef() + ((Armor*)currentItem)->def();
 
 			if(finalDef > baseDef) {
-				finalDefColor = Color::green;
+				finalDefColor = Color::Green;
 			}
 			else if(finalDef < baseDef) {
-				finalDefColor = Color::red;
+				finalDefColor = Color::Red;
 			}
 		} else {
 			finalAtk = m_actor->atk() + ((Weapon*)currentItem)->atk();
 			finalDef = baseDef;
 
 			if(finalAtk > baseAtk) {
-				finalAtkColor = Color::green;
+				finalAtkColor = Color::Green;
 			}
 			else if(finalAtk < baseAtk) {
-				finalAtkColor = Color::red;
+				finalAtkColor = Color::Red;
 			}
 		}
 	}
@@ -60,12 +60,12 @@ void EquipStatsWindow::draw(Item *currentItem) {
 			finalAtk = m_actor->atk();
 			finalDef = baseDef;
 
-			finalAtkColor = Color::red;
+			finalAtkColor = Color::Red;
 		} else {
 			finalAtk = baseAtk;
 			finalDef = baseDef - m_actor->equipment()->armor(((EquipState&)gk::ApplicationStateStack::getInstance().top()).choicewinPos() - 1)->def();
 
-			finalDefColor = Color::red;
+			finalDefColor = Color::Red;
 		}
 	} else {
 		finalAtk = baseAtk;
@@ -77,13 +77,13 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	printName(m_actor, 20, 20, m_width - 130);
 	printLevel(m_actor, m_width - 90, 20, m_width - 20);
 
-	Interface::defaultFont->printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::system);
+	Interface::defaultFont->printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::System);
 
-	Interface::defaultFont->printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::system);
+	Interface::defaultFont->printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::System);
 	Interface::defaultFont->printToImage(std::to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);
 	Interface::defaultFont->printToImage(std::to_string(finalAtk).c_str(), m_x + m_width - 20, m_y + 52, &finalAtkImg, FONT_LARGE, finalAtkColor);
 
-	Interface::defaultFont->printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::system);
+	Interface::defaultFont->printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::System);
 	Interface::defaultFont->printToImage(std::to_string(baseDef).c_str(), 0, m_y + 84, &baseDefImg, FONT_LARGE);
 	Interface::defaultFont->printToImage(std::to_string(finalDef).c_str(), m_x + m_width - 20, m_y + 84, &finalDefImg, FONT_LARGE, finalDefColor);
 

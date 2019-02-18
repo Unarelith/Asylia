@@ -65,7 +65,7 @@ void Window::draw(bool cursor) {
 void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2, u16 max) {
 	Image statImg;
 
-	Interface::defaultFont->printScaled(statName.c_str(), m_x + x, m_y + y, nameWidth, 28, FONT_LARGE, Color::system);
+	Interface::defaultFont->printScaled(statName.c_str(), m_x + x, m_y + y, nameWidth, 28, FONT_LARGE, Color::System);
 
 	if(max == 0) Interface::defaultFont->printToImage(std::to_string(statValue).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);
 	else Interface::defaultFont->printToImage(std::string(std::to_string(statValue) + "/" + std::to_string(max)).c_str(), m_x + x2, m_y + y, &statImg, FONT_LARGE);

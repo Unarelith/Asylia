@@ -91,7 +91,7 @@ void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16
 }
 
 void Battler::blink() {
-	m_image->setColorMod(Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
+	m_image->setColorMod(gk::Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
 	m_image->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
 }
 
@@ -115,7 +115,7 @@ u8 a = 255;
 void Battler::kill() {
 	if(r < 248) {
 		r += 7;
-		m_image->setColorMod(Color(r, 128, 128));
+		m_image->setColorMod(gk::Color(r, 128, 128));
 	}
 
 	if(a > 20) {

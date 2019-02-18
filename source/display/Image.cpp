@@ -185,7 +185,7 @@ void Image::renderCopy() {
 			SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 		}
 	} else {
-		GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, Color(255, 255, SDL_GetTicks() % 256));
+		GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, gk::Color(255, 255, SDL_GetTicks() % 256));
 	}
 }
 
