@@ -14,8 +14,9 @@
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
 
+#include <gk/core/Rect.hpp>
+
 #include "Battler.hpp"
-#include "Rectangle.hpp"
 
 class Window {
 	public:
@@ -54,7 +55,7 @@ class Window {
 		u16 m_width;
 		u16 m_height;
 
-		Rectangle m_cursor;
+		gk::IntRect m_cursor;
 };
 
 #endif // WINDOW_HPP_

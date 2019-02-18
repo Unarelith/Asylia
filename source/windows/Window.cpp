@@ -21,7 +21,7 @@ Window::Window(s16 x, s16 y, u16 width, u16 height) {
 	m_width = width;
 	m_height = height;
 
-	m_cursor = Rectangle(0, 0, 0, 0);
+	m_cursor = gk::IntRect(0, 0, 0, 0);
 }
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
