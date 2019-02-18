@@ -12,10 +12,11 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "GameKey.hpp"
 #include "GameWindow.hpp"
-#include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "TitleState.hpp"
 
@@ -33,7 +34,7 @@ TitleState::TitleState() {
 void TitleState::update() {
 	m_cmdwin.update();
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 		if(m_cmdwin.disabled(m_cmdwin.pos())) {
 			gk::AudioPlayer::playSound("sound-blocked");
 			return;

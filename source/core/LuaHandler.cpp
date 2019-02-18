@@ -13,12 +13,13 @@
  */
 #include "LuaHandler.hpp"
 
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "BattleState.hpp"
 #include "Event.hpp"
 #include "EventInterpreter.hpp"
-#include "Keyboard.hpp"
+#include "GameKey.hpp"
 #include "Map.hpp"
 #include "MapState.hpp"
 #include "MessageState.hpp"
@@ -87,20 +88,20 @@ void LuaHandler::bindClasses() {
 		"getPlayer", &ResourceHelper::getPlayer
 	);
 
-	m_lua.new_usertype<Keyboard>("Keyboard",
-		"isKeyPressed", &Keyboard::isKeyPressed,
-		"isKeyPressedWithDelay", &Keyboard::isKeyPressedWithDelay,
-		"isKeyPressedOnce", &Keyboard::isKeyPressedOnce
+	m_lua.new_usertype<gk::GamePad>("Keyboard",
+		"isKeyPressed", &gk::GamePad::isKeyPressed,
+		"isKeyPressedWithDelay", &gk::GamePad::isKeyPressedWithDelay,
+		"isKeyPressedOnce", &gk::GamePad::isKeyPressedOnce
 	);
 
 	doString(
-		"Keyboard.GameUp     = " + std::to_string(Keyboard::GameUp) +
-		"Keyboard.GameDown   = " + std::to_string(Keyboard::GameDown) +
-		"Keyboard.GameLeft   = " + std::to_string(Keyboard::GameLeft) +
-		"Keyboard.GameRight  = " + std::to_string(Keyboard::GameRight) +
-		"Keyboard.GameAttack = " + std::to_string(Keyboard::GameAttack) +
-		"Keyboard.GameBack   = " + std::to_string(Keyboard::GameBack) +
-		"Keyboard.GameMenu   = " + std::to_string(Keyboard::GameMenu)
+		"Keyboard.GameUp     = " + std::to_string(GameKey::Up) +
+		"Keyboard.GameDown   = " + std::to_string(GameKey::Down) +
+		"Keyboard.GameLeft   = " + std::to_string(GameKey::Left) +
+		"Keyboard.GameRight  = " + std::to_string(GameKey::Right) +
+		"Keyboard.GameAttack = " + std::to_string(GameKey::A) +
+		"Keyboard.GameBack   = " + std::to_string(GameKey::B) +
+		"Keyboard.GameMenu   = " + std::to_string(GameKey::Start)
 	);
 
 	m_lua.new_usertype<Map>("Map",

@@ -12,10 +12,11 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "EventInterpreter.hpp"
-#include "Keyboard.hpp"
+#include "GameKey.hpp"
 #include "Map.hpp"
 #include "MapState.hpp"
 #include "MenuState.hpp"
@@ -32,7 +33,7 @@ MapState::MapState() {
 }
 
 void MapState::update() {
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameMenu)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::Start)) {
 		gk::AudioPlayer::playSound("sound-confirm");
 		gk::ApplicationStateStack::getInstance().push<MenuState>(this);
 		return;

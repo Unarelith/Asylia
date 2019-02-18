@@ -17,6 +17,7 @@
 #include <gk/core/CoreApplication.hpp>
 
 #include "GameWindow.hpp"
+#include "KeyboardHandler.hpp"
 #include "LanguageManager.hpp"
 #include "LuaHandler.hpp"
 
@@ -28,10 +29,11 @@ class Application : public gk::CoreApplication {
 
 	private:
 		void onEvent(const SDL_Event &event) override;
-		void handleEvents() override;
 		void mainLoop() override;
 
 		GameWindow m_window;
+
+		KeyboardHandler m_keyboardHandler;
 
 		LanguageManager m_languageManager;
 

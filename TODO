@@ -6,11 +6,16 @@ TODO
 • DONE: Delete `Asylia.hpp` and use headers when they’re needed
 • DONE: Replace `NULL` by `nullptr`
 • DONE: Use `sol2` instead of `SLB`
+• TODO: Replace `Interface` by new functions in `ResourceHelper`
+• TODO: `Image` and `Sprite` should load textures from `gk::ResourceHandler`
 • TODO: Remove useless dynamic allocations
 • TODO: Rework the rendering engine to make it compatible with GameKit
 • TODO: Move to `GameKit`
-   ◦ TODO: Basic stuff like `Debug`, `ApplicationStateStack`, `ResourceHandler`, `GameClock`, ...
-   ◦ TODO: Input system
+   ◦ DONE: ApplicationStateStack
+   ◦ DONE: Input system
+   ◦ TODO: Debug / Exception
+   ◦ TODO: ResourceHandler
+   ◦ TODO: GameClock
    ◦ TODO: Audio system
    ◦ TODO: Rendering system
 
@@ -20,4 +25,5 @@ TODO
 
 • TODO: Fix armor selection screen (items get deleted on selection)
 • TODO: Fix map reset (the map won’t be reset if the player exits and comes back)
+• TODO: Use events instead of a timer for key handling in `SelectableWindow`
 

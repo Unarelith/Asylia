@@ -11,8 +11,10 @@
  *
  * =====================================================================================
  */
+#include <gk/core/input/GamePad.hpp>
+
 #include "Config.hpp"
-#include "Keyboard.hpp"
+#include "GameKey.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 
@@ -52,26 +54,26 @@ void Player::move() {
 	if(m_vxCount == 0 && m_vyCount == 0) {
 		m_moving = false;
 
-		if(Keyboard::isKeyPressed(Keyboard::GameUp)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameDown)) {
+		if(gk::GamePad::isKeyPressed(GameKey::Up)) {
+			if(!gk::GamePad::isKeyPressed(GameKey::Down)) {
 				m_vy = -m_speed;
 				m_moving = true;
 			}
 		}
-		else if(Keyboard::isKeyPressed(Keyboard::GameDown)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameUp)) {
+		else if(gk::GamePad::isKeyPressed(GameKey::Down)) {
+			if(!gk::GamePad::isKeyPressed(GameKey::Up)) {
 				m_vy = m_speed;
 				m_moving = true;
 			}
 		}
-		else if(Keyboard::isKeyPressed(Keyboard::GameLeft)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameRight)) {
+		else if(gk::GamePad::isKeyPressed(GameKey::Left)) {
+			if(!gk::GamePad::isKeyPressed(GameKey::Right)) {
 				m_vx = -m_speed;
 				m_moving = true;
 			}
 		}
-		else if(Keyboard::isKeyPressed(Keyboard::GameRight)) {
-			if(!Keyboard::isKeyPressed(Keyboard::GameLeft)) {
+		else if(gk::GamePad::isKeyPressed(GameKey::Right)) {
+			if(!gk::GamePad::isKeyPressed(GameKey::Left)) {
 				m_vx = m_speed;
 				m_moving = true;
 			}

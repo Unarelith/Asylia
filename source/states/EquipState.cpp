@@ -12,11 +12,12 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "EquipState.hpp"
+#include "GameKey.hpp"
 #include "GameWindow.hpp"
-#include "Keyboard.hpp"
 #include "MenuState.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
@@ -46,7 +47,7 @@ void EquipState::update() {
 	if(m_itemMode) m_itemwin->update();
 	else m_choicewin->update();
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 		if(m_itemMode) {
 			gk::AudioPlayer::playSound("sound-confirm");
 
@@ -72,7 +73,7 @@ void EquipState::update() {
 		}
 	}
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 		gk::AudioPlayer::playSound("sound-back");
 		if(m_itemMode) {
 			m_itemMode = false;

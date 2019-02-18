@@ -12,13 +12,14 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "EndState.hpp"
 #include "EquipState.hpp"
+#include "GameKey.hpp"
 #include "GameWindow.hpp"
 #include "ItemState.hpp"
-#include "Keyboard.hpp"
 #include "MenuState.hpp"
 #include "QuestState.hpp"
 #include "SettingsState.hpp"
@@ -45,7 +46,7 @@ void MenuState::loadCommandWindow() {
 }
 
 void MenuState::update() {
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 		if(m_cmdwin->disabled(m_cmdwin->pos())) {
 			gk::AudioPlayer::playSound("sound-blocked");
 		} else {
@@ -88,7 +89,7 @@ void MenuState::update() {
 	if(!m_actorChoiceMode) m_cmdwin->update();
 	else m_actorChoicewin->update();
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 		gk::AudioPlayer::playSound("sound-back");
 		if(!m_actorChoiceMode)
 			gk::ApplicationStateStack::getInstance().pop();

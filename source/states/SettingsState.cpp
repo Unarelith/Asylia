@@ -12,9 +12,10 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
-#include "Keyboard.hpp"
+#include "GameKey.hpp"
 #include "SettingsState.hpp"
 
 SettingsState::SettingsState(gk::ApplicationState *parent) : gk::ApplicationState(parent) {
@@ -34,7 +35,7 @@ void SettingsState::update() {
 	if(m_mode == Mode::Settings) {
 		m_settings.update();
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 			gk::AudioPlayer::playSound("sound-confirm");
 			switch(m_settings.pos()) {
 				case 0:
@@ -47,7 +48,7 @@ void SettingsState::update() {
 			}
 		}
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 			gk::ApplicationStateStack::getInstance().pop();
 		}
@@ -55,7 +56,7 @@ void SettingsState::update() {
 	else if(m_mode == Mode::Sound) {
 		m_sound.update();
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 			switch(m_sound.pos()) {
 				case 0:
 					gk::AudioPlayer::setMuteState(false);
@@ -70,7 +71,7 @@ void SettingsState::update() {
 			}
 		}
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Settings;
 		}
@@ -78,7 +79,7 @@ void SettingsState::update() {
 	else if(m_mode == Mode::Language) {
 		m_language.update();
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 			gk::AudioPlayer::playSound("sound-confirm");
 			switch(m_language.pos()) {
 				case 0:
@@ -91,7 +92,7 @@ void SettingsState::update() {
 			}
 		}
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Settings;
 			m_settings.pos(1);

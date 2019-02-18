@@ -11,11 +11,12 @@
  *
  * =====================================================================================
  */
+#include <gk/core/input/GamePad.hpp>
+
 #include "Application.hpp"
 #include "Config.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
-#include "Keyboard.hpp"
 #include "MapState.hpp"
 #include "TimeManager.hpp"
 
@@ -40,6 +41,8 @@ Application::Application(int argc, char **argv) : gk::CoreApplication(argc, argv
 
 void Application::init() {
 	gk::CoreApplication::init();
+
+	gk::GamePad::init(m_keyboardHandler);
 
 	m_window.open(APP_NAME);
 	GameWindow::main = &m_window;
@@ -78,12 +81,6 @@ void Application::onEvent(const SDL_Event &event) {
 	}
 }
 
-void Application::handleEvents() {
-	gk::CoreApplication::handleEvents();
-
-	Keyboard::update();
-}
-
 void Application::mainLoop() {
 	while(m_stateStack.size()) {
 		if(TimeManager::isTimeToUpdate()) {
@@ -92,8 +89,12 @@ void Application::mainLoop() {
 			if (!m_stateStack.empty())
 				m_stateStack.top().update();
 
+			m_clock.updateGame([](){});
+
 			if(TimeManager::hasEnoughTimeToDraw()) {
 				TimeManager::beginMeasuringRenderingTime();
+
+				m_clock.drawGame([](){});
 
 				m_window.clear();
 

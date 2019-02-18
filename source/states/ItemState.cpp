@@ -12,11 +12,12 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "GameKey.hpp"
 #include "GameWindow.hpp"
 #include "ItemState.hpp"
-#include "Keyboard.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 
@@ -27,11 +28,11 @@ ItemState::ItemState(gk::ApplicationState *parent) : gk::ApplicationState(parent
 void ItemState::update() {
 	m_itemwin->update();
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 		gk::AudioPlayer::playSound("sound-confirm");
 	}
 
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 		gk::AudioPlayer::playSound("sound-back");
 		m_stateStack->pop();
 	}

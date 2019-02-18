@@ -11,9 +11,11 @@
  *
  * =====================================================================================
  */
+#include <gk/core/input/GamePad.hpp>
+
+#include "GameKey.hpp"
 #include "GameWindow.hpp"
 #include "Interface.hpp"
-#include "Keyboard.hpp"
 #include "QuestInfoWindow.hpp"
 
 QuestInfoWindow::QuestInfoWindow() : Window(200, 116, GameWindow::main->width() - 200, GameWindow::main->height() - 116) {
@@ -21,7 +23,7 @@ QuestInfoWindow::QuestInfoWindow() : Window(200, 116, GameWindow::main->width() 
 }
 
 void QuestInfoWindow::update() {
-	if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+	if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 		if(m_mode == Mode::ObjectivesMode) m_mode = Mode::RewardsMode;
 		else if(m_mode == Mode::RewardsMode) m_mode = Mode::ObjectivesMode;
 	}

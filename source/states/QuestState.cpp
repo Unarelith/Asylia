@@ -12,11 +12,12 @@
  * =====================================================================================
  */
 #include <gk/audio/AudioPlayer.hpp>
+#include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
 
 #include "CommandWindow.hpp"
+#include "GameKey.hpp"
 #include "InfoWindow.hpp"
-#include "Keyboard.hpp"
 #include "Player.hpp"
 #include "QuestState.hpp"
 #include "ResourceHelper.hpp"
@@ -38,7 +39,7 @@ void QuestState::update() {
 	if(m_mode == Mode::CategoryChoice) {
 		m_questCategorywin.update();
 
-		if(s_load || Keyboard::isKeyPressedOnce(Keyboard::GameLeft) || Keyboard::isKeyPressedOnce(Keyboard::GameRight)) {
+		if(s_load || gk::GamePad::isKeyPressedOnce(GameKey::Left) || gk::GamePad::isKeyPressedOnce(GameKey::Right)) {
 			s_load = false;
 
 			m_questListwin.clear();
@@ -78,13 +79,13 @@ void QuestState::update() {
 			m_questListwin.height(GameWindow::main->height() - 114);
 		}
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameAttack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
 			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_mode = Mode::QuestChoice;
 		}
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 
 			s_load = true;
@@ -96,7 +97,7 @@ void QuestState::update() {
 		m_questListwin.update();
 		m_questInfowin.update();
 
-		if(Keyboard::isKeyPressedOnce(Keyboard::GameBack)) {
+		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 
 			m_mode = Mode::CategoryChoice;
