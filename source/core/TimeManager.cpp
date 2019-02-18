@@ -86,11 +86,3 @@ void TimeManager::measureFrameDuration() {
 	}
 }
 
-void TimeManager::renderRTMCounter() {
-	InfoWindow win(GameWindow::main->width() - 120,
-				   GameWindow::main->height() - 52,
-				   120, 52);
-
-	win.drawTextCentered(std::string("RTM: ") + std::to_string(renderingTimeMean));
-}
-

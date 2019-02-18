@@ -28,6 +28,7 @@ class Application : public gk::CoreApplication {
 
 	private:
 		void onEvent(const SDL_Event &event) override;
+		void handleEvents() override;
 		void mainLoop() override;
 
 		GameWindow m_window;

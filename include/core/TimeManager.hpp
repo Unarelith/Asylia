@@ -27,8 +27,6 @@ namespace TimeManager {
 	void waitUntilItsTime();
 	void measureFrameDuration();
 
-	void renderRTMCounter();
-
 	extern u32 renderingTimeMean;
 	extern u32 tempBeginRendering;
 	extern u32 frameBegin;

@@ -78,12 +78,16 @@ void Application::onEvent(const SDL_Event &event) {
 	}
 }
 
+void Application::handleEvents() {
+	gk::CoreApplication::handleEvents();
+
+	Keyboard::update();
+}
+
 void Application::mainLoop() {
 	while(m_stateStack.size()) {
 		if(TimeManager::isTimeToUpdate()) {
 			handleEvents();
-
-			Keyboard::update();
 
 			if (!m_stateStack.empty())
 				m_stateStack.top().update();
@@ -97,8 +101,6 @@ void Application::mainLoop() {
 					m_stateStack.top().render();
 				}
 
-				TimeManager::renderRTMCounter(); // Rendering time mean
-
 				m_window.update();
 
 				TimeManager::endMeasuringRenderingTime();
@@ -109,28 +111,5 @@ void Application::mainLoop() {
 
 		TimeManager::measureFrameDuration();
 	}
-
-	// while(m_stateStack.size()) {
-	// 	m_stateStack.top().pollEvents();
-    //
-	// 	Keyboard::update();
-    //
-	// 	m_clock.updateGame([&] {
-	// 		if (!m_stateStack.empty())
-	// 			m_stateStack.top().update();
-	// 	});
-    //
-	// 	m_clock.drawGame([&] {
-	// 		m_window.clear();
-    //
-	// 		if(!m_stateStack.empty()) {
-	// 			m_stateStack.top().render();
-	// 		}
-    //
-	// 		TimeManager::renderRTMCounter(); // Rendering time mean
-    //
-	// 		m_window.update();
-	// 	});
-	// }
 }
 
