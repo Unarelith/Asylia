@@ -14,7 +14,7 @@
 #include <gk/audio/AudioPlayer.hpp>
 
 #include "GameWindow.hpp"
-#include "Interface.hpp"
+#include "Font.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
@@ -48,7 +48,7 @@ void VictoryWindow::draw() {
 
 	Window::draw();
 
-	Interface::defaultFont->printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
+	ResourceHelper::getFont("default").printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
 	printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
 	printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
 

@@ -11,7 +11,8 @@
  *
  * =====================================================================================
  */
-#include "Interface.hpp"
+#include "Font.hpp"
+#include "ResourceHelper.hpp"
 #include "TextWindow.hpp"
 
 TextWindow::TextWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
@@ -20,6 +21,6 @@ TextWindow::TextWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width
 void TextWindow::draw(const std::string &text) {
 	Window::draw();
 
-	Interface::defaultFont->printTextBox(text.c_str(), m_x + 22, m_y + 21, m_width - 44, m_height - 42, FONT_LARGE);
+	ResourceHelper::getFont("default").printTextBox(text.c_str(), m_x + 22, m_y + 21, m_width - 44, m_height - 42, FONT_LARGE);
 }
 

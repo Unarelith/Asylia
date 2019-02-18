@@ -15,8 +15,9 @@
 
 #include "Application.hpp"
 #include "Config.hpp"
+#include "Font.hpp"
 #include "GameWindow.hpp"
-#include "Interface.hpp"
+#include "Image.hpp"
 #include "MapState.hpp"
 #include "TimeManager.hpp"
 
@@ -52,6 +53,9 @@ void Application::init() {
 	LuaHandler::setInstance(m_luaHandler);
 	m_luaHandler.init();
 
+	m_resourceHandler.add<Font>("font-default", "resources/fonts/arial.ttf");
+	m_resourceHandler.add<Image>("image-interface", "resources/graphics/interface/Interface.png");
+
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 	m_resourceHandler.loadConfigFile<SpriteAnimationLoader>("resources/config/spriteAnimations.xml");
 	m_resourceHandler.loadConfigFile<AnimationLoader>("resources/config/animations.xml");
@@ -67,8 +71,6 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
 	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
 	m_resourceHandler.loadConfigFile<MapLoader>("resources/config/maps.xml");
-
-	Interface::init();
 
 	m_languageManager.init("en-us");
 

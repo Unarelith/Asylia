@@ -27,6 +27,14 @@
 
 Map *ResourceHelper::s_currentMap = nullptr;
 
+Image &ResourceHelper::getImage(const std::string &name) {
+	return gk::ResourceHandler::getInstance().get<Image>("image-" + name);
+}
+
+Font &ResourceHelper::getFont(const std::string &name) {
+	return gk::ResourceHandler::getInstance().get<Font>("font-" + name);
+}
+
 SpriteAnimation &ResourceHelper::getAnimation(const std::string &name, size_t id) {
 	return gk::ResourceHandler::getInstance().get<std::vector<SpriteAnimation>>("spriteanim-" + name)[id];
 }

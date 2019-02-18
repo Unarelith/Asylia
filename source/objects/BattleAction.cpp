@@ -12,7 +12,8 @@
  * =====================================================================================
  */
 #include "BattleAction.hpp"
-#include "Interface.hpp"
+#include "Font.hpp"
+#include "ResourceHelper.hpp"
 
 BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
 	m_actor = actor;
@@ -92,7 +93,7 @@ bool BattleAction::drawDamages() {
 		}
 
 		u16 dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - log10(m_damages + 10) * 9 / 2;
-		Interface::defaultFont->printDamages(m_damages, dmgx, m_dmgy - 8, gk::Color(255, 42, 36));
+		ResourceHelper::getFont("default").printDamages(m_damages, dmgx, m_dmgy - 8, gk::Color(255, 42, 36));
 	}
 
 	return false;

@@ -23,6 +23,8 @@ class Animation;
 class Armor;
 class Enemy;
 class Event;
+class Font;
+class Image;
 class Item;
 class Map;
 class Quest;
@@ -35,6 +37,9 @@ class Weapon;
 
 class ResourceHelper {
 	public:
+		static Image &getImage(const std::string &name);
+		static Font &getFont(const std::string &name);
+
 		static SpriteAnimation &getAnimation(const std::string &name, size_t id);
 		static Animation *getAnimationByName(const std::string &name);
 

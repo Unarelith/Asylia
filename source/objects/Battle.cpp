@@ -15,7 +15,6 @@
 
 #include "Battle.hpp"
 #include "Map.hpp"
-#include "Interface.hpp"
 #include "ResourceHelper.hpp"
 
 Battle::Battle(const Battle &battle) {
@@ -81,7 +80,7 @@ void Battle::drawArrow(Battler *battler) {
 	x = battler->image()->posRect().x + width / 2 - 16;
 	y = battler->image()->posRect().y + height / 2;
 
-	Interface::interface->render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
+	ResourceHelper::getImage("interface").render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
 
 void Battle::enemyTurn() {

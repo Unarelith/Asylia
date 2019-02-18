@@ -12,7 +12,8 @@
  * =====================================================================================
  */
 #include "CommandWindow.hpp"
-#include "Interface.hpp"
+#include "Font.hpp"
+#include "ResourceHelper.hpp"
 
 CommandWindow::CommandWindow(s16 x, s16 y, u16 width, bool horizontal, bool centered) : SelectableWindow(x, y, width, (horizontal)?(64):(32)) {
 	m_horizontal = horizontal;
@@ -33,7 +34,7 @@ CommandWindow::CommandWindow(u16 width) : SelectableWindow(0, 0, width, 32) {
 }
 
 void CommandWindow::drawItem(u8 pos) {
-	Interface::defaultFont->printScaled(_t(m_commands[pos].first).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
+	ResourceHelper::getFont("default").printScaled(_t(m_commands[pos].first).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
 }
 
 void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
@@ -43,7 +44,7 @@ void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
 	x = pos % m_columnMax * (width + 32) + 16;
 	y = pos / m_columnMax * 32 + 16;
 
-	Interface::defaultFont->printCentered(_t(m_commands[pos].first).c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
+	ResourceHelper::getFont("default").printCentered(_t(m_commands[pos].first).c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
 }
 
 void CommandWindow::draw(bool cursor) {

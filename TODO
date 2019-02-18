@@ -6,7 +6,7 @@ TODO
 • DONE: Delete `Asylia.hpp` and use headers when they’re needed
 • DONE: Replace `NULL` by `nullptr`
 • DONE: Use `sol2` instead of `SLB`
-• TODO: Replace `Interface` by new functions in `ResourceHelper`
+• DONE: Replace `Interface` by new functions in `ResourceHelper`
 • TODO: `Image` and `Sprite` should load textures from `gk::ResourceHandler`
 • TODO: Remove useless dynamic allocations
 • TODO: Rework the rendering engine to make it compatible with GameKit

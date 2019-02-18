@@ -15,8 +15,9 @@
 
 #include "EquipState.hpp"
 #include "EquipStatsWindow.hpp"
+#include "Font.hpp"
 #include "GameWindow.hpp"
-#include "Interface.hpp"
+#include "ResourceHelper.hpp"
 
 EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (GameWindow::main->width() - 150) / 2, (GameWindow::main->height() - 52) / 2) {
 	m_actor = actor;
@@ -77,15 +78,15 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	printName(m_actor, 20, 20, m_width - 130);
 	printLevel(m_actor, m_width - 90, 20, m_width - 20);
 
-	Interface::defaultFont->printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::System);
+	ResourceHelper::getFont("default").printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::System);
 
-	Interface::defaultFont->printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::System);
-	Interface::defaultFont->printToImage(std::to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);
-	Interface::defaultFont->printToImage(std::to_string(finalAtk).c_str(), m_x + m_width - 20, m_y + 52, &finalAtkImg, FONT_LARGE, finalAtkColor);
+	ResourceHelper::getFont("default").printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::System);
+	ResourceHelper::getFont("default").printToImage(std::to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);
+	ResourceHelper::getFont("default").printToImage(std::to_string(finalAtk).c_str(), m_x + m_width - 20, m_y + 52, &finalAtkImg, FONT_LARGE, finalAtkColor);
 
-	Interface::defaultFont->printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::System);
-	Interface::defaultFont->printToImage(std::to_string(baseDef).c_str(), 0, m_y + 84, &baseDefImg, FONT_LARGE);
-	Interface::defaultFont->printToImage(std::to_string(finalDef).c_str(), m_x + m_width - 20, m_y + 84, &finalDefImg, FONT_LARGE, finalDefColor);
+	ResourceHelper::getFont("default").printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::System);
+	ResourceHelper::getFont("default").printToImage(std::to_string(baseDef).c_str(), 0, m_y + 84, &baseDefImg, FONT_LARGE);
+	ResourceHelper::getFont("default").printToImage(std::to_string(finalDef).c_str(), m_x + m_width - 20, m_y + 84, &finalDefImg, FONT_LARGE, finalDefColor);
 
 	finalAtkImg.render(finalAtkImg.posRect().x - finalAtkImg.width());
 	finalDefImg.render(finalDefImg.posRect().x - finalDefImg.width());

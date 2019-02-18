@@ -18,9 +18,9 @@
 #include "BattleState.hpp"
 #include "EndState.hpp"
 #include "EventListener.hpp"
+#include "Font.hpp"
 #include "GameKey.hpp"
 #include "InfoWindow.hpp"
-#include "Interface.hpp"
 #include "ItemWindow.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
@@ -316,7 +316,7 @@ void BattleState::render() {
 			if(m_gameoverAlpha < 256) m_gameover.setAlphaMod(m_gameoverAlpha);
 			m_gameover.render();
 			if(m_gameoverAlpha > 400) {
-				Interface::defaultFont->print("Press A to continue", 3, 3, FONT_LARGE);
+				ResourceHelper::getFont("default").print("Press A to continue", 3, 3, FONT_LARGE);
 			}
 		} else {
 			m_battle.renderBattleback();
