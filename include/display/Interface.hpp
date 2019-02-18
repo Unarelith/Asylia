@@ -27,11 +27,6 @@ class Interface {
 	// private:
 		static Font *defaultFont;
 		static Image *interface;
-
-		static Image *pad;
-		static Image *buttonA;
-		static Image *buttonB;
-		static Image *buttonMenu;
 };
 
 #endif // INTERFACE_HPP_

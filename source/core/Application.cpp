@@ -99,8 +99,6 @@ void Application::mainLoop() {
 
 				TimeManager::renderRTMCounter(); // Rendering time mean
 
-				Interface::renderHUD();
-
 				m_window.update();
 
 				TimeManager::endMeasuringRenderingTime();
@@ -130,8 +128,6 @@ void Application::mainLoop() {
 	// 		}
     //
 	// 		TimeManager::renderRTMCounter(); // Rendering time mean
-    //
-	// 		Interface::renderHUD();
     //
 	// 		m_window.update();
 	// 	});
