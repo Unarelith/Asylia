@@ -21,10 +21,6 @@ class Interface {
 	public:
 		static void init();
 
-		static void renderPad();
-		static void renderHUD();
-
-	// private:
 		static Font *defaultFont;
 		static Image *interface;
 };
