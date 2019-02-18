@@ -16,7 +16,6 @@
 #include "Character.hpp"
 #include "Event.hpp"
 #include "Map.hpp"
-#include "MapManager.hpp"
 #include "ResourceHelper.hpp"
 #include "Player.hpp"
 
@@ -109,27 +108,27 @@ void Character::testCollisions() {
 }
 
 void Character::mapCollisions() {
-	if((!passable(m_x + m_hitboxX + m_vx,
-				  m_y + m_hitboxY))
-	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
-				  m_y + m_hitboxY))
-	|| (!passable(m_x + m_hitboxX + m_vx,
-				  m_y + m_hitboxY + m_hitboxH - 1))
-	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
-				  m_y + m_hitboxY + m_hitboxH - 1))) {
+	if((!Map::passable(m_x + m_hitboxX + m_vx,
+	                   m_y + m_hitboxY))
+	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
+	                   m_y + m_hitboxY))
+	|| (!Map::passable(m_x + m_hitboxX + m_vx,
+	                   m_y + m_hitboxY + m_hitboxH - 1))
+	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
+	                   m_y + m_hitboxY + m_hitboxH - 1))) {
 		m_vx = 0;
 		m_vxCount = 32;
 		collisionAction(nullptr);
 	}
 
-	if((!passable(m_x + m_hitboxX,
-				  m_y + m_hitboxY + m_vy))
-	|| (!passable(m_x + m_hitboxX,
-				  m_y + m_hitboxY + m_hitboxH - 1 + m_vy))
-	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1,
-				  m_y + m_hitboxY + m_vy))
-	|| (!passable(m_x + m_hitboxX + m_hitboxW - 1,
-				  m_y + m_hitboxY + m_hitboxH - 1 + m_vy))) {
+	if((!Map::passable(m_x + m_hitboxX,
+	                   m_y + m_hitboxY + m_vy))
+	|| (!Map::passable(m_x + m_hitboxX,
+	                   m_y + m_hitboxY + m_hitboxH - 1 + m_vy))
+	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1,
+	                   m_y + m_hitboxY + m_vy))
+	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1,
+	                   m_y + m_hitboxY + m_hitboxH - 1 + m_vy))) {
 		m_vy = 0;
 		m_vyCount = 32;
 		collisionAction(nullptr);
@@ -137,20 +136,20 @@ void Character::mapCollisions() {
 }
 
 void Character::inCollisionWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx = (c->m_x + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->m_y + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 	s16 x, y, x2, y2;
 
 	if(m_vx) {
-		x = (m_x + m_vx + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-		y = (m_y + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+		x = (m_x + m_vx + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y = (m_y + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -163,11 +162,11 @@ void Character::inCollisionWith(Character *c) {
 	}
 
 	if(m_vy) {
-		x = (m_x + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-		y = (m_y + m_vy + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+		x = (m_x + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y = (m_y + m_vy + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -181,26 +180,26 @@ void Character::inCollisionWith(Character *c) {
 }
 
 bool Character::canInitiateConversationWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx = (c->m_x + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->m_y + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 x = (m_x + m_hitboxX) / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2);
-	s16 y = (m_y + m_hitboxY) / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2);
+	s16 x = (m_x + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 y = (m_y + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-	if(cx <= x && cx > x - c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2)) {
-		if(cy > y && cy <= y + c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
+	if(cx <= x && cx > x - c->frameWidth() / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2)) {
+		if(cy > y && cy <= y + c->frameHeight() / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
 			return true;
 		}
-		if(cy < y && cy >= y - c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_UP) {
+		if(cy < y && cy >= y - c->frameHeight() / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_UP) {
 			return true;
 		}
 	}
 
-	if(cy <= y && cy > y - c->frameHeight() / (MapManager::getInstance().getCurrentMap()->tileset()->tileHeight * 2)) {
-		if(cx > x && cx <= x + c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_RIGHT) {
+	if(cy <= y && cy > y - c->frameHeight() / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2)) {
+		if(cx > x && cx <= x + c->frameWidth() / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_RIGHT) {
 			return true;
 		}
-		if(cx < x && cx >= x - c->frameWidth() / (MapManager::getInstance().getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_LEFT) {
+		if(cx < x && cx >= x - c->frameWidth() / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2) && m_direction == DIR_LEFT) {
 			return true;
 		}
 	}
@@ -211,12 +210,12 @@ bool Character::canInitiateConversationWith(Character *c) {
 void Character::eventCollisions() {
 	m_inFrontOf = nullptr;
 
-	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
-		if(MapManager::getInstance().getCurrentMap()->events()[i] != this) {
-			if(canInitiateConversationWith(MapManager::getInstance().getCurrentMap()->events()[i])) {
-				m_inFrontOf = MapManager::getInstance().getCurrentMap()->events()[i];
+	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
+		if(ResourceHelper::getCurrentMap()->events()[i] != this) {
+			if(canInitiateConversationWith(ResourceHelper::getCurrentMap()->events()[i])) {
+				m_inFrontOf = ResourceHelper::getCurrentMap()->events()[i];
 			}
-			inCollisionWith(MapManager::getInstance().getCurrentMap()->events()[i]);
+			inCollisionWith(ResourceHelper::getCurrentMap()->events()[i]);
 		}
 	}
 
@@ -243,11 +242,11 @@ void Character::doMovement(s8 vx, s8 vy) {
 }
 
 void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 direction) {
-	MapManager::getInstance().setCurrentMap(MapManager::getInstance().getMap(area, mapX, mapY));
-	MapManager::getInstance().getCurrentMap()->load();
+	ResourceHelper::setCurrentMap(ResourceHelper::getMap(area, mapX, mapY));
+	ResourceHelper::getCurrentMap()->load();
 	SDL_Delay(500);
-	m_x = x * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth;
-	m_y = y * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight;
+	m_x = x * ResourceHelper::getCurrentMap()->tileset()->tileWidth;
+	m_y = y * ResourceHelper::getCurrentMap()->tileset()->tileHeight;
 	m_direction = direction;
 	stop();
 }

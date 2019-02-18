@@ -49,6 +49,8 @@ class Map {
 
 		void setBattleback(Image *battleback) { m_battleback = battleback; }
 
+		static bool passable(s16 x, s16 y);
+
 		static s32 scrollX;
 		static s32 scrollY;
 

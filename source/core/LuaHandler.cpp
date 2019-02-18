@@ -20,7 +20,6 @@
 #include "EventInterpreter.hpp"
 #include "Keyboard.hpp"
 #include "Map.hpp"
-#include "MapManager.hpp"
 #include "MapState.hpp"
 #include "MessageState.hpp"
 #include "Parameter.hpp"
@@ -84,6 +83,7 @@ void LuaHandler::bindClasses() {
 
 	m_lua.new_usertype<ResourceHelper>("ResourceHelper",
 		"getItem", &ResourceHelper::getItem,
+		"getCurrentMap", &ResourceHelper::getCurrentMap,
 		"getPlayer", &ResourceHelper::getPlayer
 	);
 
@@ -112,12 +112,6 @@ void LuaHandler::bindClasses() {
 	m_lua.new_usertype<BattleState>("BattleState");
 
 	m_lua.new_usertype<MapState>("MapState");
-
-	m_lua.new_usertype<MapManager>("MapManager",
-		// "currentMap", sol::as_function(&MapManager::currentMap)
-		"getCurrentMap", &MapManager::getCurrentMap,
-		"getInstance", &MapManager::getInstance
-	);
 
 	m_lua.new_usertype<MessageState>("MessageState",
 		"addCommand", &MessageState::addCommand,

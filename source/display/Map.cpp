@@ -17,7 +17,6 @@
 #include "Debug.hpp"
 #include "GameWindow.hpp"
 #include "Map.hpp"
-#include "MapManager.hpp"
 #include "ResourceHelper.hpp"
 
 s32 Map::scrollX = 0;
@@ -187,15 +186,26 @@ s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {
 	}
 }
 
+bool Map::passable(s16 x, s16 y) {
+	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->layers() ; i++) {
+		int tile = ResourceHelper::getCurrentMap()->getTile(x / ResourceHelper::getCurrentMap()->tileset()->tileWidth, y / ResourceHelper::getCurrentMap()->tileset()->tileHeight, i) - 1;
+		if(tile < 0 || ResourceHelper::getCurrentMap()->tileset()->nonPassableLayer[tile] == 0)
+			continue;
+		else return false;
+	}
+
+	return true;
+}
+
 void Map::centerMapWithObject(s16 x, s16 y, u16 w, u16 h) {
 	scrollX = x - GameWindow::main->width() / 2 + w / 2;
 	scrollY = y - GameWindow::main->height() / 2 + h / 2;
 
 	if(scrollX < 0) scrollX = 0;
 	if(scrollY < 0) scrollY = 0;
-	if(scrollX + GameWindow::main->width() > MapManager::getInstance().getCurrentMap()->width() * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth)
-		scrollX = MapManager::getInstance().getCurrentMap()->width() * MapManager::getInstance().getCurrentMap()->tileset()->tileWidth - GameWindow::main->width() - 1;
-	if(scrollY + GameWindow::main->height() > MapManager::getInstance().getCurrentMap()->height() * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight)
-		scrollY = MapManager::getInstance().getCurrentMap()->height() * MapManager::getInstance().getCurrentMap()->tileset()->tileHeight - GameWindow::main->height() - 1;
+	if(scrollX + GameWindow::main->width() > ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth)
+		scrollX = ResourceHelper::getCurrentMap()->width() * ResourceHelper::getCurrentMap()->tileset()->tileWidth - GameWindow::main->width() - 1;
+	if(scrollY + GameWindow::main->height() > ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight)
+		scrollY = ResourceHelper::getCurrentMap()->height() * ResourceHelper::getCurrentMap()->tileset()->tileHeight - GameWindow::main->height() - 1;
 }
 

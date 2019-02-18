@@ -24,6 +24,7 @@ class Armor;
 class Enemy;
 class Event;
 class Item;
+class Map;
 class Quest;
 class Player;
 class Skill;
@@ -52,6 +53,13 @@ class ResourceHelper {
 		static Event *getEvent(const std::string &name);
 
 		static Tileset *getTileset(u16 id);
+
+		static Map *getMap(u16 area, u16 x, u16 y);
+		static Map *getCurrentMap() { return s_currentMap; }
+		static void setCurrentMap(Map *currentMap) { s_currentMap = currentMap; }
+
+	private:
+		static Map *s_currentMap;
 };
 
 #endif // RESOURCEHELPER_HPP_

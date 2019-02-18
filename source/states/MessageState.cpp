@@ -17,8 +17,9 @@
 #include "EventListener.hpp"
 #include "GameWindow.hpp"
 #include "Keyboard.hpp"
-#include "MapManager.hpp"
+#include "Map.hpp"
 #include "MessageState.hpp"
+#include "ResourceHelper.hpp"
 
 MessageState::MessageState(const std::string &message, gk::ApplicationState *parent) : gk::ApplicationState(parent) {
 	m_parent = parent;
@@ -57,7 +58,7 @@ void MessageState::update() {
 		}
 
 		gk::ApplicationStateStack::getInstance().pop();
-		MapManager::getInstance().getCurrentMap()->updateEventsActions();
+		ResourceHelper::getCurrentMap()->updateEventsActions();
 	}
 }
 

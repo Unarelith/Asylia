@@ -2,7 +2,7 @@ ChestEvent = {}
 
 ChestEvent.new = function(eventName, itemID, itemCount)
 	local initChest = function(self)
-		self.character = MapManager.getInstance():getCurrentMap():getEvent(eventName)
+		self.character = ResourceHelper.getCurrentMap():getEvent(eventName)
 		self.opened = false
 		self.chestType = 1
 		self.animationAtEnd = false

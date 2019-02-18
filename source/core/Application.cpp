@@ -26,6 +26,7 @@
 #include "EnemyLoader.hpp"
 #include "EventLoader.hpp"
 #include "ItemLoader.hpp"
+#include "MapLoader.hpp"
 #include "PlayerLoader.hpp"
 #include "QuestLoader.hpp"
 #include "SkillLoader.hpp"
@@ -62,6 +63,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<PlayerLoader>("resources/config/player.xml");
 	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
 	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
+	m_resourceHandler.loadConfigFile<MapLoader>("resources/config/maps.xml");
 
 	Interface::init();
 

@@ -16,17 +16,12 @@
 
 #include <gk/core/ApplicationState.hpp>
 
-#include "MapManager.hpp"
-
 class MapState : public gk::ApplicationState {
 	public:
 		MapState();
 
 		void update() override;
 		void render() override;
-
-	private:
-		MapManager m_mapManager;
 };
 
 #endif // MAPSTATE_HPP_

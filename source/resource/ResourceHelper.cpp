@@ -25,6 +25,8 @@
 #include "Troop.hpp"
 #include "Weapon.hpp"
 
+Map *ResourceHelper::s_currentMap = nullptr;
+
 SpriteAnimation &ResourceHelper::getAnimation(const std::string &name, size_t id) {
 	return gk::ResourceHandler::getInstance().get<std::vector<SpriteAnimation>>("spriteanim-" + name)[id];
 }
@@ -75,5 +77,11 @@ Event *ResourceHelper::getEvent(const std::string &name) {
 
 Tileset *ResourceHelper::getTileset(u16 id) {
 	return &gk::ResourceHandler::getInstance().get<Tileset>("tileset-" + std::to_string(id));
+}
+
+Map *ResourceHelper::getMap(u16 area, u16 x, u16 y) {
+	return &gk::ResourceHandler::getInstance().get<Map>("map-"
+			+ std::to_string(area) + "-"
+			+ std::to_string(x) + "-" + std::to_string(y));
 }
 

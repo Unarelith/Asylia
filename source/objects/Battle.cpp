@@ -14,8 +14,8 @@
 #include <algorithm>
 
 #include "Battle.hpp"
+#include "Map.hpp"
 #include "Interface.hpp"
-#include "MapManager.hpp"
 #include "ResourceHelper.hpp"
 
 Battle::Battle(const Battle &battle) {
@@ -40,7 +40,7 @@ Battle::Battle() {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 
-	m_battleback = MapManager::getInstance().getCurrentMap()->battleback();
+	m_battleback = ResourceHelper::getCurrentMap()->battleback();
 
 	m_exp = 0;
 	m_gold = 0;

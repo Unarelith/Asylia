@@ -16,17 +16,14 @@
 
 #include "EventInterpreter.hpp"
 #include "Keyboard.hpp"
+#include "Map.hpp"
 #include "MapState.hpp"
 #include "MenuState.hpp"
 #include "ResourceHelper.hpp"
 #include "Player.hpp"
 
 MapState::MapState() {
-	MapManager::setInstance(m_mapManager);
-
-	m_mapManager.init();
-
-	m_mapManager.getCurrentMap()->load();
+	ResourceHelper::getCurrentMap()->load();
 
 	Map::scrollX = 0;
 	Map::scrollY = 0;
@@ -48,26 +45,26 @@ void MapState::update() {
 							 ResourceHelper::getPlayer()->frameWidth(),
 							 ResourceHelper::getPlayer()->frameHeight());
 
-	MapManager::getInstance().getCurrentMap()->eventsUpdate();
+	ResourceHelper::getCurrentMap()->eventsUpdate();
 }
 
 void MapState::render() {
-	MapManager::getInstance().getCurrentMap()->render();
+	ResourceHelper::getCurrentMap()->render();
 
-	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
-		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() < ResourceHelper::getPlayer()->y()) {
-			MapManager::getInstance().getCurrentMap()->events()[i]->render();
+	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
+		if(ResourceHelper::getCurrentMap()->events()[i]->y() < ResourceHelper::getPlayer()->y()) {
+			ResourceHelper::getCurrentMap()->events()[i]->render();
 		}
 	}
 
 	ResourceHelper::getPlayer()->render();
 
-	for(u16 i = 0 ; i < MapManager::getInstance().getCurrentMap()->events().size() ; i++) {
-		if(MapManager::getInstance().getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {
-			MapManager::getInstance().getCurrentMap()->events()[i]->render();
+	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
+		if(ResourceHelper::getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {
+			ResourceHelper::getCurrentMap()->events()[i]->render();
 		}
 	}
 
-	MapManager::getInstance().getCurrentMap()->renderOverlay();
+	ResourceHelper::getCurrentMap()->renderOverlay();
 }
 
