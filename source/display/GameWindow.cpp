@@ -11,41 +11,26 @@
  *
  * =====================================================================================
  */
+#include <gk/core/Exception.hpp>
+
 #include "Config.hpp"
-#include "Debug.hpp"
 #include "GameWindow.hpp"
 
 GameWindow *GameWindow::main = nullptr;
 
 void GameWindow::open(const char *caption) {
-#ifdef __ANDROID__
-	SDL_DisplayMode current;
-	SDL_GetCurrentDisplayMode(0, &current);
-
-	info("Current display: %dx%d", current.w, current.h);
-
-	m_width = current.w / 1.25;
-	m_height = current.h / 1.25;
-#else
 	m_width = WIN_DEFAULT_WIDTH;
 	m_height = WIN_DEFAULT_HEIGHT;
-#endif
 
 	m_window.reset(SDL_CreateWindow(caption, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, m_width, m_height, SDL_WINDOW_SHOWN));
 	if(!m_window) {
-		error("Error while initializing window: %s\n", SDL_GetError());
-		exit(EXIT_FAILURE);
+		throw EXCEPTION("Error while initializing window:", SDL_GetError());
 	}
 
 	m_renderer.reset(SDL_CreateRenderer(m_window.get(), -1, SDL_RENDERER_ACCELERATED));
 	if(!m_renderer) {
-		error("Renderer couldn't be created: %s\n", SDL_GetError());
-		exit(EXIT_FAILURE);
+		throw EXCEPTION("Renderer couldn't be created:", SDL_GetError());
 	}
-
-#ifdef __ANDROID__
-	SDL_RenderSetLogicalSize(m_renderer, m_width, m_height);
-#endif
 }
 
 void GameWindow::clear() {
