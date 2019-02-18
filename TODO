@@ -1,4 +1,6 @@
-# TODO
+TODO
+
+# Refactoring
 
 • DONE: Rename “Activity” into “State” to prepare for GameKit migration
 • DONE: Delete `Asylia.hpp` and use headers when they’re needed
@@ -13,4 +15,9 @@
    ◦ TODO: Rendering system
 
 • TODO: Move `Singleton` class into GameKit and use it in relevant places
+
+# Refactoring issues
+
+• TODO: Fix armor selection screen (items get deleted on selection)
+• TODO: Fix map reset (the map won’t be reset if the player exits and comes back)
 
