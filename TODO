@@ -7,17 +7,17 @@ TODO
 • DONE: Replace `NULL` by `nullptr`
 • DONE: Use `sol2` instead of `SLB`
 • DONE: Replace `Interface` by new functions in `ResourceHelper`
-• TODO: `Image` and `Sprite` should load textures from `gk::ResourceHandler`
+• DONE: Rework the rendering engine to make it compatible with GameKit
+• DONE: `Image` and `Sprite` should load textures from `gk::ResourceHandler`
 • TODO: Remove useless dynamic allocations
-• TODO: Rework the rendering engine to make it compatible with GameKit
 • TODO: Move to `GameKit`
    ◦ DONE: ApplicationStateStack
    ◦ DONE: Input system
+   ◦ DONE: ResourceHandler
+   ◦ DONE: Audio system
+   ◦ WIP: Rendering system
    ◦ TODO: Debug / Exception
-   ◦ TODO: ResourceHandler
    ◦ TODO: GameClock
-   ◦ TODO: Audio system
-   ◦ TODO: Rendering system
 
 • TODO: Move `Singleton` class into GameKit and use it in relevant places
 

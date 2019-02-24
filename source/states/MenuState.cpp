@@ -86,10 +86,7 @@ void MenuState::update() {
 		}
 	}
 
-	if (&gk::ApplicationStateStack::getInstance().top() != this || m_actorChoiceMode)
-		m_cmdwin->setCursorVisible(false);
-	else
-		m_cmdwin->setCursorVisible(true);
+	m_cmdwin->setCursorVisible(&gk::ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
 
 	if(!m_actorChoiceMode) m_cmdwin->update();
 	else m_actorChoicewin->update();
@@ -109,7 +106,6 @@ void MenuState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
 		target.draw(*m_parent, states);
 
-	// m_cmdwin->draw(&gk::ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
 	target.draw(*m_cmdwin.get(), states);
 
 	if(m_actorChoiceMode) {
