@@ -14,6 +14,8 @@
 #ifndef INFOWINDOW_HPP_
 #define INFOWINDOW_HPP_
 
+#include <gk/graphics/Text.hpp>
+
 #include "Window.hpp"
 
 class InfoWindow : public Window {
@@ -22,6 +24,13 @@ class InfoWindow : public Window {
 
 		// void drawTextScaled(std::string text);
 		// void drawTextCentered(std::string text);
+
+		void setText(const std::string &text) { m_text.setText(text); }
+
+	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
+		gk::Text m_text{"font-default", 18};
 };
 
 #endif // INFOWINDOW_HPP_

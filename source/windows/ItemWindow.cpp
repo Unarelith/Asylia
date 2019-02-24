@@ -26,6 +26,15 @@ ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory
 	m_infoWindow.reset(new InfoWindow(infowinX, infowinY, width, 52));
 }
 
+void ItemWindow::update(bool infowinText) {
+	SelectableWindow::update();
+
+	if(infowinText && m_pos < m_inventory->nbItems())
+		m_infoWindow->setText(m_inventory->getItem(m_pos)->description());
+	else
+		m_infoWindow->setText(" ");
+}
+
 // void ItemWindow::drawItem(u8 pos) {
 // 	s16 x, y, width;
 //
@@ -79,5 +88,25 @@ Item *ItemWindow::currentItem() {
 
 void ItemWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	Window::draw(target, states);
+
+	if (m_infoWindow)
+		target.draw(*m_infoWindow, states);
+
+	states.transform *= getTransform();
+
+	for(u8 i = 0 ; i < m_inventory->nbItems() ; i++) {
+		s16 x, y, width;
+
+		width = m_width / m_columnMax - 32;
+
+		x = 22 + i % m_columnMax * (width + 32);
+		y = 21 + i / m_columnMax * 32 - m_scroll * 32;
+
+		// printItem(m_inventory->getItem(i), m_inventory->getItemCount(i), x, y, width);
+		gk::Text text{"font-default", 18};
+		text.setText(m_inventory->getItem(i)->name());
+		text.setPosition(x, y);
+		target.draw(text, states);
+	}
 }
 

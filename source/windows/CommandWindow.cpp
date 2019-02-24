@@ -11,6 +11,7 @@
  *
  * =====================================================================================
  */
+#include "Color.hpp"
 #include "CommandWindow.hpp"
 #include "ResourceHelper.hpp"
 
@@ -64,10 +65,29 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 	states.transform *= getTransform();
 
 	// FIXME
+	int i = 0;
 	for (auto &it : m_commands) {
-		gk::Text t{it.text().text(), "font-default", 18};
-		t.setPosition(it.text().getPosition());
-		target.draw(t, states);
+		if (!m_horizontal && !m_centered) {
+			gk::Text t{it.text().text(), "font-default", 18};
+			t.setPosition(it.text().getPosition());
+			t.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
+			target.draw(t, states);
+		}
+		else {
+			u16 x, y, width;
+
+			width = m_width / m_columnMax - 32;
+			x = (i % m_columnMax) * (width + 32) + 16;
+			y = (i / m_columnMax) * 32 + 16;
+
+			gk::Text t{it.text().text(), "font-default", 18};
+			t.setPosition(it.text().getPosition().x + x, it.text().getPosition().y + y);
+			t.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
+			target.draw(t, states);
+		}
+
+		++i;
+
 		// target.draw(it.text(), states);
 	}
 }

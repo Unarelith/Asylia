@@ -15,6 +15,7 @@
 #include "ResourceHelper.hpp"
 
 InfoWindow::InfoWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width, height) {
+	m_text.setPosition(18, 15);
 }
 
 // void InfoWindow::drawTextScaled(std::string text) {
@@ -28,4 +29,12 @@ InfoWindow::InfoWindow(s16 x, s16 y, u16 width, u16 height) : Window(x, y, width
 //
 // 	ResourceHelper::getFont("default").printCentered(text.c_str(), m_x, m_y, m_width, m_height, FONT_LARGE);
 // }
+
+void InfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Window::draw(target, states);
+
+	states.transform *= getTransform();
+
+	target.draw(m_text, states);
+}
 
