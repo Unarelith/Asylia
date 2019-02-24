@@ -23,10 +23,6 @@ class Window : public gk::IDrawable, public gk::Transformable {
 	public:
 		Window(s16 x, s16 y, u16 width, u16 height);
 
-		// void drawCursor(s16 x, s16 y, u16 width, u16 height);
-		// void drawWindow(s16 x, s16 y, u16 width, u16 height);
-		// void draw(bool cursor = true);
-
 		s16 x() const { return getPosition().x; }
 		s16 y() const { return getPosition().y; }
 
@@ -38,6 +34,8 @@ class Window : public gk::IDrawable, public gk::Transformable {
 
 		void setWidth(u16 width) { m_width = width; }
 		void setHeight(u16 height) { m_height = height; }
+
+		void setCursorVisible(bool isCursorVisible) { m_isCursorVisible = isCursorVisible; }
 
 		// void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width, u16 max = 0);
 		// void printName(Battler *battler, s16 x, s16 y, u16 width);
@@ -51,6 +49,9 @@ class Window : public gk::IDrawable, public gk::Transformable {
 
 	protected:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+		void drawWindow(gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawCursor(gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawImagePart(gk::RenderTarget &target, gk::RenderStates states, int posX, int posY, int posW, int posH, int clipX, int clipY, int clipW, int clipH) const;
 
 		u16 m_width;
 		u16 m_height;
@@ -58,7 +59,8 @@ class Window : public gk::IDrawable, public gk::Transformable {
 		gk::IntRect m_cursorRect;
 
 		mutable gk::Image m_window{"texture-interface-window"}; // FIXME
-		mutable gk::Image m_cursor{"texture-interface-window"}; // FIXME
+
+		bool m_isCursorVisible = true;
 };
 
 #endif // WINDOW_HPP_

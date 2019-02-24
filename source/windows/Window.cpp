@@ -21,49 +21,8 @@ Window::Window(s16 x, s16 y, u16 width, u16 height) {
 	m_height = height;
 
 	m_cursorRect = gk::IntRect(0, 0, 0, 0);
-
-	m_window.setClipRect(0, 0, 128, 128);
-	m_cursor.setClipRect(132, 68, 23, 23);
 }
 
-// void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
-// 	ResourceHelper::getImage("interface").setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
-//
-// 	ResourceHelper::getImage("interface").render(x, y, width, height, 132, 68, 23, 23);
-//
-// 	ResourceHelper::getImage("interface").render(x, y, 1, height, 128, 64, 1, 32);
-// 	ResourceHelper::getImage("interface").render(x + width - 1, y, 1, height, 159, 64, 1, 32);
-//
-// 	ResourceHelper::getImage("interface").render(x, y, width, 1, 129, 64, 31, 1);
-// 	ResourceHelper::getImage("interface").render(x, y + height - 1, width, 1, 129, 95, 31, 1);
-//
-// 	ResourceHelper::getImage("interface").setAlphaMod(255);
-// }
-//
-// void Window::drawWindow(s16 x, s16 y, u16 width, u16 height) {
-// 	ResourceHelper::getImage("interface").setAlphaMod(225);
-// 	ResourceHelper::getImage("interface").render(x + 1, y + 1, width - 2, height - 2, 0, 0, 128, 128);
-// 	ResourceHelper::getImage("interface").setAlphaMod(255);
-//
-// 	ResourceHelper::getImage("interface").render(x, y, 3, 3, 128, 0, 3, 3);
-// 	ResourceHelper::getImage("interface").render(x + width - 3, y, 3, 3, 189, 0, 3, 3);
-// 	ResourceHelper::getImage("interface").render(x, y + height - 3, 3, 3, 128, 61, 3, 3);
-// 	ResourceHelper::getImage("interface").render(x + width - 3, y + height - 3, 3, 3, 189, 61, 3, 3);
-//
-// 	ResourceHelper::getImage("interface").render(x + 3, y, width - 6, 3, 132, 0, 58, 3);
-// 	ResourceHelper::getImage("interface").render(x, y + 3, 3, height - 6, 128, 3, 3, 58);
-// 	ResourceHelper::getImage("interface").render(x + 3, y + height - 3, width - 6, 3, 132, 61, 58, 3);
-// 	ResourceHelper::getImage("interface").render(x + width - 3, y + 3, 3, height - 6, 189, 3, 3, 58);
-// }
-//
-// void Window::draw(bool cursor) {
-// 	drawWindow(m_x, m_y, m_width, m_height);
-//
-// 	if(m_cursorRect.width > 0 && cursor) {
-// 		drawCursor(16 + m_x + m_cursorRect.x, 16 + m_y + m_cursorRect.y, m_cursorRect.width, m_cursorRect.height);
-// 	}
-// }
-//
 // void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2, u16 max) {
 // 	Image statImg;
 //
@@ -128,10 +87,49 @@ Window::Window(s16 x, s16 y, u16 width, u16 height) {
 void Window::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	states.transform *= getTransform();
 
-	m_window.setPosRect(0, 0, m_width, m_height);
-	target.draw(m_window, states);
+	drawWindow(target, states);
+	drawCursor(target, states);
+}
 
-	m_cursor.setPosRect(16 + m_cursorRect.x, 16 + m_cursorRect.y, m_cursorRect.width, m_cursorRect.height);
-	target.draw(m_cursor, states);
+void Window::drawWindow(gk::RenderTarget &target, gk::RenderStates states) const {
+	// m_window.setAlphaMod(225);
+	drawImagePart(target, states, 1, 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
+	// m_window.setAlphaMod(255);
+
+	drawImagePart(target, states, 0, 0, 3, 3, 128, 0, 3, 3);
+	drawImagePart(target, states, m_width - 3, 0, 3, 3, 189, 0, 3, 3);
+	drawImagePart(target, states, 0, m_height - 3, 3, 3, 128, 61, 3, 3);
+	drawImagePart(target, states, m_width - 3, m_height - 3, 3, 3, 189, 61, 3, 3);
+
+	drawImagePart(target, states, 3, 0, m_width - 6, 3, 132, 0, 58, 3);
+	drawImagePart(target, states, 0, 3, 3, m_height - 6, 128, 3, 3, 58);
+	drawImagePart(target, states, 3, m_height - 3, m_width - 6, 3, 132, 61, 58, 3);
+	drawImagePart(target, states, m_width - 3, 3, 3, m_height - 6, 189, 3, 3, 58);
+}
+
+void Window::drawCursor(gk::RenderTarget &target, gk::RenderStates states) const {
+	// m_window.setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+
+	int x = 16 + m_cursorRect.x;
+	int y = 16 + m_cursorRect.y;
+
+	int width = m_cursorRect.width;
+	int height = m_cursorRect.height;
+
+	drawImagePart(target, states, x, y, width, height, 132, 68, 23, 23);
+
+	drawImagePart(target, states, x, y, 1, height, 128, 64, 1, 32);
+	drawImagePart(target, states, x + width - 1, y, 1, height, 159, 64, 1, 32);
+
+	drawImagePart(target, states, x, y, width, 1, 129, 64, 31, 1);
+	drawImagePart(target, states, x, y + height - 1, width, 1, 129, 95, 31, 1);
+
+	// m_window.setAlphaMod(255);
+}
+
+void Window::drawImagePart(gk::RenderTarget &target, gk::RenderStates states, int posX, int posY, int posW, int posH, int clipX, int clipY, int clipW, int clipH) const {
+	m_window.setClipRect(clipX, clipY, clipW, clipH);
+	m_window.setPosRect(posX, posY, posW, posH);
+	target.draw(m_window, states);
 }
 
