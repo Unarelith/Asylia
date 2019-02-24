@@ -41,27 +41,3 @@ void GameWindow::update() {
 	SDL_RenderPresent(m_renderer.get());
 }
 
-void GameWindow::setRendererColor(const gk::Color &color) {
-	SDL_SetRenderDrawColor(m_renderer.get(), color.r255(), color.g255(), color.b255(), color.a255());
-}
-
-void GameWindow::drawRect(s16 x, s16 y, u16 w, u16 h, const gk::Color &c) {
-	setRendererColor(c);
-
-	SDL_Rect r = {x, y, w, h};
-
-	SDL_RenderDrawRect(m_renderer.get(), &r);
-
-	setRendererColor(gk::Color::Black);
-}
-
-void GameWindow::drawFillRect(s16 x, s16 y, u16 w, u16 h, const gk::Color &c) {
-	setRendererColor(c);
-
-	SDL_Rect r = {x, y, w, h};
-
-	SDL_RenderFillRect(m_renderer.get(), &r);
-
-	setRendererColor(gk::Color::Black);
-}
-

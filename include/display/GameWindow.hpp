@@ -18,7 +18,6 @@
 
 #include <gk/core/IntTypes.hpp>
 #include <gk/core/SDLHeaders.hpp>
-#include <gk/graphics/Color.hpp>
 
 class GameWindow {
 	public:
@@ -30,16 +29,7 @@ class GameWindow {
 
 		void update();
 
-		void setRendererColor(const gk::Color &color);
-
-		void drawRect(s16 x, s16 y, u16 w, u16 h, const gk::Color &c);
-
-		void drawFillRect(s16 x, s16 y, u16 w, u16 h, const gk::Color &c);
-
 		SDL_Renderer *renderer() const { return m_renderer.get(); }
-
-		// u16 width() const { return m_width; }
-		// u16 height() const { return m_height; }
 
 		static GameWindow *main;
 

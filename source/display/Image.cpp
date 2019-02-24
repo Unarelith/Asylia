@@ -180,13 +180,8 @@ void Image::reload(SDL_Surface *surface) {
 }
 
 void Image::renderCopy() {
-	if(m_texture) {
-		if(!m_hidden) {
-			SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
-		}
-	} else {
-		GameWindow::main->drawFillRect(m_posRect.x, m_posRect.y, m_posRect.w, m_posRect.h, gk::Color(255, 255, SDL_GetTicks() % 256));
-	}
+	if(m_texture && !m_hidden)
+		SDL_RenderCopy(GameWindow::main->renderer(), m_texture, &m_clipRect, &m_posRect);
 }
 
 void Image::render(s16 x, s16 y, u16 w, u16 h, s16 clipX, s16 clipY, s16 clipW, s16 clipH) {
