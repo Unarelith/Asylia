@@ -86,6 +86,11 @@ void MenuState::update() {
 		}
 	}
 
+	if (&gk::ApplicationStateStack::getInstance().top() != this || m_actorChoiceMode)
+		m_cmdwin->setCursorVisible(false);
+	else
+		m_cmdwin->setCursorVisible(true);
+
 	if(!m_actorChoiceMode) m_cmdwin->update();
 	else m_actorChoicewin->update();
 

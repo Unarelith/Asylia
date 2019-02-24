@@ -84,6 +84,9 @@ void QuestState::update() {
 			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_mode = Mode::QuestChoice;
+
+			m_questCategorywin.setCursorVisible(false);
+			m_questListwin.setCursorVisible(true);
 		}
 
 		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
@@ -102,6 +105,9 @@ void QuestState::update() {
 			gk::AudioPlayer::playSound("sound-back");
 
 			m_mode = Mode::CategoryChoice;
+
+			m_questCategorywin.setCursorVisible(true);
+			m_questListwin.setCursorVisible(false);
 		}
 	}
 }

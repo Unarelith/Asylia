@@ -46,6 +46,9 @@ void SettingsState::update() {
 					break;
 				default: break;
 			}
+
+			if (m_mode != Mode::Settings)
+				m_settings.setCursorVisible(false);
 		}
 
 		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
@@ -74,6 +77,7 @@ void SettingsState::update() {
 		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Settings;
+			m_settings.setCursorVisible(true);
 		}
 	}
 	else if(m_mode == Mode::Language) {
@@ -95,6 +99,7 @@ void SettingsState::update() {
 		if(gk::GamePad::isKeyPressedOnce(GameKey::B)) {
 			gk::AudioPlayer::playSound("sound-back");
 			m_mode = Mode::Settings;
+			m_settings.setCursorVisible(true);
 			m_settings.pos(1);
 		}
 	}
@@ -108,14 +113,10 @@ void SettingsState::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 		target.draw(m_settings, states);
 	}
 	else if(m_mode == Mode::Sound) {
-		// m_settings.draw(false); // FIXME
-
 		target.draw(m_settings, states);
 		target.draw(m_sound, states);
 	}
 	else if(m_mode == Mode::Language) {
-		// m_settings.draw(false); // FIXME
-
 		target.draw(m_settings, states);
 		target.draw(m_language, states);
 	}

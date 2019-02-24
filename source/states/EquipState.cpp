@@ -51,6 +51,9 @@ void EquipState::update() {
 		if(m_itemMode) {
 			gk::AudioPlayer::playSound("sound-confirm");
 
+			// m_choicewin->setCursorVisible(true);
+			m_itemwin->setCursorVisible(false);
+
 			Item *currentItem = m_itemwin->currentItem();
 			if(m_choicewin->pos() == 0) {
 				if(currentItem) m_equipment->equipWeapon((Weapon*)currentItem);
@@ -70,6 +73,9 @@ void EquipState::update() {
 			gk::AudioPlayer::playSound("sound-confirm");
 
 			m_itemMode = true;
+
+			// m_choicewin->setCursorVisible(false);
+			m_itemwin->setCursorVisible(true);
 		}
 	}
 
@@ -79,6 +85,9 @@ void EquipState::update() {
 			m_itemMode = false;
 			m_itemwin->pos(0);
 			m_itemwin->update();
+			m_itemwin->setCursorVisible(false);
+
+			// m_choicewin->setCursorVisible(true);
 		} else {
 			gk::ApplicationStateStack::getInstance().pop();
 			((MenuState&)gk::ApplicationStateStack::getInstance().top()).actorChoiceModeOn();

@@ -90,7 +90,9 @@ void Window::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	states.transform *= getTransform();
 
 	drawWindow(target, states);
-	drawCursor(target, states);
+
+	if (m_isCursorVisible)
+		drawCursor(target, states);
 }
 
 void Window::drawWindow(gk::RenderTarget &target, gk::RenderStates states) const {
