@@ -37,6 +37,8 @@ class ItemWindow : public SelectableWindow {
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
 		Inventory *m_inventory;
+
+		mutable gk::Text m_text{"font-default", 18}; // FIXME
 };
 
 #endif // ITEMWINDOW_HPP_

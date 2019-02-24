@@ -29,7 +29,7 @@ class Item {
 
 		u8 level() const { return m_level; }
 
-		const gk::Image &thumbnail() const { return m_thumbnail; }
+		gk::Image &thumbnail() { return m_thumbnail; }
 
 		enum Type {
 			BasicItem,

@@ -68,10 +68,10 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 	int i = 0;
 	for (auto &it : m_commands) {
 		if (!m_horizontal && !m_centered) {
-			gk::Text t{_t(it.text().text()), "font-default", 18};
-			t.setPosition(it.text().getPosition());
-			t.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
-			target.draw(t, states);
+			m_text.setText(_t(it.text().text()));
+			m_text.setPosition(it.text().getPosition());
+			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
+			target.draw(m_text, states);
 		}
 		else {
 			u16 x, y, width;
@@ -80,10 +80,10 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 			x = (i % m_columnMax) * (width + 32) + 16;
 			y = (i / m_columnMax) * 32 + 16;
 
-			gk::Text t{_t(it.text().text()), "font-default", 18};
-			t.setPosition(it.text().getPosition().x + x, it.text().getPosition().y + y);
-			t.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
-			target.draw(t, states);
+			m_text.setText(_t(it.text().text()));
+			m_text.setPosition(it.text().getPosition().x + x, it.text().getPosition().y + y);
+			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
+			target.draw(m_text, states);
 		}
 
 		++i;

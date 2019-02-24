@@ -21,12 +21,12 @@ class EquipChoiceWindow : public SelectableWindow {
 	public:
 		EquipChoiceWindow(Equipment *equipment);
 
-		// void draw(bool drawCursor = true);
-
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
 		Equipment *m_equipment;
+
+		mutable gk::Text m_text{"font-default", 18}; // FIXME
 };
 
 #endif // EQUIPCHOICEWINDOW_HPP_

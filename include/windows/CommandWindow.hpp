@@ -66,6 +66,8 @@ class CommandWindow : public SelectableWindow {
 
 		std::vector<Command> m_commands;
 
+		mutable gk::Text m_text{"font-default", 18}; // FIXME
+
 		bool m_horizontal;
 		bool m_centered;
 };

@@ -11,6 +11,8 @@
  *
  * =====================================================================================
  */
+#include <gk/core/SDLHeaders.hpp>
+
 #include "ResourceHelper.hpp"
 #include "Window.hpp"
 
@@ -92,9 +94,9 @@ void Window::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 }
 
 void Window::drawWindow(gk::RenderTarget &target, gk::RenderStates states) const {
-	// m_window.setAlphaMod(225);
+	m_window.setAlphaMod(225);
 	drawImagePart(target, states, 1, 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
-	// m_window.setAlphaMod(255);
+	m_window.setAlphaMod(255);
 
 	drawImagePart(target, states, 0, 0, 3, 3, 128, 0, 3, 3);
 	drawImagePart(target, states, m_width - 3, 0, 3, 3, 189, 0, 3, 3);
@@ -108,7 +110,8 @@ void Window::drawWindow(gk::RenderTarget &target, gk::RenderStates states) const
 }
 
 void Window::drawCursor(gk::RenderTarget &target, gk::RenderStates states) const {
-	// m_window.setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+	m_window.setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+	// m_window.setAlphaMod(abs(sin(SDL_GetTicks() * 0.002)) * 128 + 64);
 
 	int x = 16 + m_cursorRect.x;
 	int y = 16 + m_cursorRect.y;
@@ -124,7 +127,7 @@ void Window::drawCursor(gk::RenderTarget &target, gk::RenderStates states) const
 	drawImagePart(target, states, x, y, width, 1, 129, 64, 31, 1);
 	drawImagePart(target, states, x, y + height - 1, width, 1, 129, 95, 31, 1);
 
-	// m_window.setAlphaMod(255);
+	m_window.setAlphaMod(255);
 }
 
 void Window::drawImagePart(gk::RenderTarget &target, gk::RenderStates states, int posX, int posY, int posW, int posH, int clipX, int clipY, int clipW, int clipH) const {
