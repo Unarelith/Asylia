@@ -21,7 +21,7 @@
 class Command {
 	public:
 		Command(const std::string &text, bool isEnabled, u16 x, u16 y)
-			: m_text{_t(text), "font-default", 18}, m_isEnabled(isEnabled)
+			: m_text{text, "font-default", 18}, m_isEnabled(isEnabled)
 		{
 			m_text.setPosition(x, y);
 		}
