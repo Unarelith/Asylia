@@ -32,10 +32,11 @@ class MessageState : public gk::ApplicationState {
 
 		u16 getCmdwinPos() { return m_cmdwin->pos(); }
 
-		void update();
-		void render();
+		void update() override;
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		std::unique_ptr<TextWindow> m_txtwin;
 		std::unique_ptr<CommandWindow> m_cmdwin;
 

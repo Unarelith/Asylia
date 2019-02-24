@@ -22,9 +22,8 @@ class ActorChoiceWindow : public SelectableWindow {
 
 		void update();
 
-		void drawActor(u16 pos);
-
-		void draw();
+	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 };
 
 #endif // ACTORCHOICEWINDOW_HPP_

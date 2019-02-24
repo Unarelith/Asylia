@@ -22,8 +22,8 @@ class ItemWindow : public SelectableWindow {
 	public:
 		ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX = 0, s16 infowinY = 0);
 
-		void drawItem(u8 pos);
-		void draw(bool cursor = true, bool infoWinText = true);
+		// void drawItem(u8 pos);
+		// void draw(bool cursor = true, bool infoWinText = true);
 
 		void changeSet(u8 equipID, u8 equipType, Equipment *equipment);
 

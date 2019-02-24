@@ -20,8 +20,8 @@ class InfoWindow : public Window {
 	public:
 		InfoWindow(s16 x, s16 y, u16 width, u16 height);
 
-		void drawTextScaled(std::string text);
-		void drawTextCentered(std::string text);
+		// void drawTextScaled(std::string text);
+		// void drawTextCentered(std::string text);
 };
 
 #endif // INFOWINDOW_HPP_

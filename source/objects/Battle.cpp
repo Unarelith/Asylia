@@ -143,8 +143,7 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 	return m_enemies[current];
 }
 
-void Battle::renderBattleback() {
-	// FIXME
-	// m_battleback->render();
+void Battle::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	target.draw(*m_battleback, states);
 }
 

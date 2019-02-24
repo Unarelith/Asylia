@@ -31,8 +31,7 @@ class BattleState : public gk::ApplicationState {
 	public:
 		BattleState(Troop *troop, bool allowDefeat = false);
 
-		void update();
-		void render();
+		void update() override;
 
 		Battle &battle() { return m_battle; }
 
@@ -53,6 +52,8 @@ class BattleState : public gk::ApplicationState {
 		};
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		Troop *m_troop = nullptr;
 
 		Battle m_battle;

@@ -23,7 +23,7 @@ class VictoryWindow : public Window {
 
 		void init(Battle *battle);
 
-		void draw();
+		// void draw();
 
 	private:
 		Battle *m_battle = nullptr;

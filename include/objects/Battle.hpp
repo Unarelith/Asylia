@@ -19,7 +19,7 @@
 #include "Item.hpp"
 #include "Troop.hpp"
 
-class Battle {
+class Battle : public gk::IDrawable {
 	public:
 		Battle(const Battle &battle);
 		Battle();
@@ -59,12 +59,12 @@ class Battle {
 
 		void setBattleback(gk::Image *battleback) { m_battleback = battleback; }
 
-		void renderBattleback();
-
 		u16 exp() const { return m_exp; }
 		u16 gold() const { return m_gold; }
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		std::vector<std::pair<u8, Actor*>> m_actors;
 		std::vector<std::pair<u8, Enemy*>> m_enemies;
 

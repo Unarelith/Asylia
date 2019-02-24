@@ -21,7 +21,7 @@ class EquipChoiceWindow : public SelectableWindow {
 	public:
 		EquipChoiceWindow(Equipment *equipment);
 
-		void draw(bool drawCursor = true);
+		// void draw(bool drawCursor = true);
 
 	private:
 		Equipment *m_equipment;

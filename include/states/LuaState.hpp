@@ -22,10 +22,11 @@ class LuaState : public gk::ApplicationState {
 	public:
 		LuaState(const std::string &filename, const std::string &table);
 
-		void update();
-		void render();
+		void update() override;
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		std::string m_table;
 };
 

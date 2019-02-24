@@ -32,40 +32,43 @@ CommandWindow::CommandWindow(u16 width) : SelectableWindow(0, 0, width, 32) {
 	m_pos = 0;
 }
 
-void CommandWindow::drawItem(u8 pos) {
-	// FIXME
-	// ResourceHelper::getFont("default").printScaled(_t(m_commands[pos].first).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
-}
-
-void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
-	u16 x, y, width;
-
-	width = m_width / m_columnMax - 32;
-	x = pos % m_columnMax * (width + 32) + 16;
-	y = pos / m_columnMax * 32 + 16;
-
-	// FIXME
-	// ResourceHelper::getFont("default").printCentered(_t(m_commands[pos].first).c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
-}
-
-void CommandWindow::draw(bool cursor) {
-	SelectableWindow::draw(cursor);
-
-	for(u8 i = 0 ; i < m_itemMax ; i++) {
-		if(!m_horizontal && !m_centered) {
-			drawItem(i);
-		} else {
-			drawHorizontalCenteredItem(i);
-		}
-	}
-}
+// void CommandWindow::drawItem(u8 pos) {
+// 	ResourceHelper::getFont("default").printScaled(_t(m_commands[pos].first).c_str(), m_x + 22, m_y + 22 + 32 * pos, m_width - 40 - 5, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
+// }
+//
+// void CommandWindow::drawHorizontalCenteredItem(u8 pos) {
+// 	u16 x, y, width;
+//
+// 	width = m_width / m_columnMax - 32;
+// 	x = pos % m_columnMax * (width + 32) + 16;
+// 	y = pos / m_columnMax * 32 + 16;
+//
+// 	ResourceHelper::getFont("default").printCentered(_t(m_commands[pos].first).c_str(), m_x + x, m_y + y, width, 32, FONT_LARGE, (!m_commands[pos].second)?(gk::Color::White):(Color::Disabled));
+// }
+//
+// void CommandWindow::draw(bool cursor) {
+// 	SelectableWindow::draw(cursor);
+//
+// 	for(u8 i = 0 ; i < m_itemMax ; i++) {
+// 		if(!m_horizontal && !m_centered) {
+// 			drawItem(i);
+// 		} else {
+// 			drawHorizontalCenteredItem(i);
+// 		}
+// 	}
+// }
 
 void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	Window::draw(target, states);
 
 	states.transform *= getTransform();
 
-	for (auto &it : m_commands)
-		target.draw(it.text(), states);
+	// FIXME
+	for (auto &it : m_commands) {
+		gk::Text t{it.text().text(), "font-default", 18};
+		t.setPosition(it.text().getPosition());
+		target.draw(t, states);
+		// target.draw(it.text(), states);
+	}
 }
 

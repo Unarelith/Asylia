@@ -22,7 +22,6 @@ class QuestInfoWindow : public Window {
 		QuestInfoWindow();
 
 		void update();
-		void draw(Quest *quest);
 
 		enum Mode {
 			ObjectivesMode,

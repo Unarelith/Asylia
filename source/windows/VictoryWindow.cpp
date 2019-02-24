@@ -41,31 +41,29 @@ void VictoryWindow::init(Battle *battle) {
 	gk::AudioPlayer::playSound("sound-confirm");
 }
 
-void VictoryWindow::draw() {
-	m_height = 134 + 32 * m_itemsNb;
-
-	// FIXME
-	// m_y = 319 / 2 - m_height / 2; // SCREEN_HEIGHT - 319 = ActorStatsWindow->height()
-
-	Window::draw();
-
-	// FIXME
-	// ResourceHelper::getFont("default").printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
-	// printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
-	// printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
-    //
-	// u16 i = 0;
-	// for(u16 j = 0 ; j < m_inventory.nbItems() ; j++) {
-	// 	printItem(m_inventory.getItem(j), m_inventory.getItemCount(j), 20, 116 + i * 32, 175);
-	// 	i++;
-	// }
-	// for(u16 j = 0 ; j < m_inventory.nbArmors() ; j++) {
-	// 	printItem(m_inventory.getArmor(j), m_inventory.getArmorCount(j), 20, 116 + i * 32, 175);
-	// 	i++;
-	// }
-	// for(u16 j = 0 ; j < m_inventory.nbWeapons() ; j++) {
-	// 	printItem(m_inventory.getWeapon(j), m_inventory.getWeaponCount(j), 20, 116 + i * 32, 175);
-	// 	i++;
-	// }
-}
+// void VictoryWindow::draw() {
+// 	m_height = 134 + 32 * m_itemsNb;
+//
+// 	m_y = 319 / 2 - m_height / 2; // SCREEN_HEIGHT - 319 = ActorStatsWindow->height()
+//
+// 	Window::draw();
+//
+// 	ResourceHelper::getFont("default").printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
+// 	printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
+// 	printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
+//
+// 	u16 i = 0;
+// 	for(u16 j = 0 ; j < m_inventory.nbItems() ; j++) {
+// 		printItem(m_inventory.getItem(j), m_inventory.getItemCount(j), 20, 116 + i * 32, 175);
+// 		i++;
+// 	}
+// 	for(u16 j = 0 ; j < m_inventory.nbArmors() ; j++) {
+// 		printItem(m_inventory.getArmor(j), m_inventory.getArmorCount(j), 20, 116 + i * 32, 175);
+// 		i++;
+// 	}
+// 	for(u16 j = 0 ; j < m_inventory.nbWeapons() ; j++) {
+// 		printItem(m_inventory.getWeapon(j), m_inventory.getWeaponCount(j), 20, 116 + i * 32, 175);
+// 		i++;
+// 	}
+// }
 

@@ -25,9 +25,9 @@ void LuaState::update() {
 	LuaHandler::getInstance().doString(m_table + ".update()");
 }
 
-void LuaState::render() {
+void LuaState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
-		m_parent->render();
+		target.draw(*m_parent, states);
 
 	LuaHandler::getInstance().doString(m_table + ".render()");
 }

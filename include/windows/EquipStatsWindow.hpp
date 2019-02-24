@@ -21,7 +21,7 @@ class EquipStatsWindow : public Window {
 	public:
 		EquipStatsWindow(Actor *actor);
 
-		void draw(Item *currentItem = nullptr);
+		// void draw(Item *currentItem = nullptr);
 
 	private:
 		Actor *m_actor;

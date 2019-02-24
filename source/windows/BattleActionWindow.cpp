@@ -21,12 +21,7 @@ BattleActionWindow::BattleActionWindow() : CommandWindow(0, 159, SCREEN_WIDTH / 
 	addCommand("Item");
 }
 
-BattleActionWindow::~BattleActionWindow() {
-}
-
-void BattleActionWindow::draw(u8 pos) {
+void BattleActionWindow::setPos(u8 pos) {
 	setX(pos * SCREEN_WIDTH / 4);
-
-	CommandWindow::draw();
 }
 

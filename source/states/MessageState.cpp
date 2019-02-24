@@ -64,16 +64,15 @@ void MessageState::update() {
 	}
 }
 
-void MessageState::render() {
-	// FIXME
-	// if (m_parent)
-	// 	m_parent->render();
+void MessageState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	if (m_parent)
+		target.draw(*m_parent, states);
 
 	if(m_cmdwin->commands().size() > 0) {
-		m_cmdwin->draw();
+		target.draw(*m_cmdwin, states);
 	}
 
-	// FIXME
-	// m_txtwin->draw(m_message);
+	m_txtwin->setText(m_message);
+	target.draw(*m_txtwin, states);
 }
 

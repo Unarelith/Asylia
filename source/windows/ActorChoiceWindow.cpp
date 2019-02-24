@@ -28,26 +28,23 @@ void ActorChoiceWindow::update() {
 	m_cursorRect.y = (m_cursorRect.height + 11) * m_pos;
 }
 
-void ActorChoiceWindow::drawActor(u16 pos) {
-	u16 y = pos * (m_height - 20) / 4;
-	u16 charaY = Window::y() + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(pos)->sprite().frameHeight() / 2;
-
-	// FIXME
-	// ResourceHelper::getPlayer()->getTeamMember(pos)->sprite().playAnimation(m_x + 30, charaY, 0);
-
-	printName(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
-	printLevel(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 57 + y, 140);
-	printState(ResourceHelper::getPlayer()->getTeamMember(pos), 170, 57 + y, 80);
-	printHP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 57 + y, 460, true);
-	printSP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 89 + y, 460, true);
-	printExp(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 89 + y, 239, true);
-}
-
-void ActorChoiceWindow::draw() {
-	Window::draw();
+void ActorChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Window::draw(target, states);
 
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
-		drawActor(i);
+		u16 y = i * (m_height - 20) / 4;
+		u16 charaY = Window::y() + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(i)->sprite().frameHeight() / 2;
+
+		gk::Sprite &sprite = ResourceHelper::getPlayer()->getTeamMember(i)->sprite();
+		sprite.setPosition(Window::x() + 30, charaY);
+		target.draw(sprite, states);
+
+		// 	printName(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
+		// 	printLevel(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 57 + y, 140);
+		// 	printState(ResourceHelper::getPlayer()->getTeamMember(pos), 170, 57 + y, 80);
+		// 	printHP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 57 + y, 460, true);
+		// 	printSP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 89 + y, 460, true);
+		// 	printExp(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 89 + y, 239, true);
 	}
 }
 

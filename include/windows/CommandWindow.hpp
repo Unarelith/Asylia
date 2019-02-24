@@ -21,7 +21,7 @@
 class Command {
 	public:
 		Command(const std::string &text, bool isEnabled, u16 x, u16 y)
-			: m_text{text, "font-default", 18}, m_isEnabled(isEnabled)
+			: m_text{_t(text), "font-default", 18}, m_isEnabled(isEnabled)
 		{
 			m_text.setPosition(x, y);
 		}
@@ -52,14 +52,10 @@ class CommandWindow : public SelectableWindow {
 			if(!m_horizontal)
 				m_height += 32;
 
-			m_commands.emplace_back(cmd, !disabled, 22, 22 + 32 * (m_commands.size() - 1));
+			m_commands.emplace_back(cmd, !disabled, 22, 22 + 32 * m_commands.size());
 
 			m_itemMax++;
 		}
-
-		void drawItem(u8 pos);
-		void drawHorizontalCenteredItem(u8 pos);
-		void draw(bool cursor = true);
 
 		bool disabled(u8 pos) const { return !m_commands[pos].isEnabled(); }
 
