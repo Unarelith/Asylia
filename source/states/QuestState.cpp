@@ -32,6 +32,9 @@ QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_questCategorywin.addCommand("Quests_Completed");
 
 	m_questListwin.setHeight(SCREEN_HEIGHT - 116);
+
+	// FIXME: Needs to be centered
+	m_questTitlewin.setText(_t("Quests"));
 }
 
 void QuestState::update() {
@@ -77,6 +80,9 @@ void QuestState::update() {
 					default: break;
 				}
 			}
+
+			m_questInfowin.setQuest(m_currentQuest);
+
 			m_questListwin.setHeight(SCREEN_HEIGHT - 114);
 		}
 
@@ -117,10 +123,10 @@ void QuestState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 		target.draw(*m_parent->parent(), states);
 
 	// m_questTitlewin.drawTextCentered(_t("Quests"));
-    //
+
 	// m_questCategorywin.draw(m_mode == Mode::CategoryChoice);
 	// m_questListwin.draw(m_mode == Mode::QuestChoice);
-    //
+
 	// m_questInfowin.draw(m_currentQuest);
 
 	target.draw(m_questTitlewin, states);

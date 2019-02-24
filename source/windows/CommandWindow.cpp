@@ -80,8 +80,9 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 			x = (i % m_columnMax) * (width + 32) + 16;
 			y = (i / m_columnMax) * 32 + 16;
 
+			// FIXME: Draw centered
 			m_text.setText(_t(it.text().text()));
-			m_text.setPosition(it.text().getPosition().x + x, it.text().getPosition().y + y);
+			m_text.setPosition(x, y);
 			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
 			target.draw(m_text, states);
 		}
