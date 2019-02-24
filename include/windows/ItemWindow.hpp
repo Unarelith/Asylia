@@ -32,6 +32,8 @@ class ItemWindow : public SelectableWindow {
 		Item *currentItem();
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		Inventory *m_inventory;
 };
 

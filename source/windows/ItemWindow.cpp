@@ -77,3 +77,7 @@ Item *ItemWindow::currentItem() {
 	else return m_inventory->getItem(m_pos);
 }
 
+void ItemWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Window::draw(target, states);
+}
+

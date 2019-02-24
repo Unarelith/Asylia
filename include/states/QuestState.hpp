@@ -27,7 +27,6 @@ class QuestState : public gk::ApplicationState {
 		QuestState(gk::ApplicationState *parent);
 
 		void update() override;
-		void render() override;
 
 		enum Mode {
 			CategoryChoice,
@@ -35,6 +34,8 @@ class QuestState : public gk::ApplicationState {
 		};
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		Mode m_mode;
 
 		Quest *m_currentQuest = nullptr;

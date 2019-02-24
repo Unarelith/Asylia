@@ -27,14 +27,15 @@ class MenuState : public gk::ApplicationState {
 
 		void loadCommandWindow();
 
-		void update();
-		void render();
+		void update() override;
 
 		CommandWindow *cmdwin() { return m_cmdwin.get(); }
 
 		void actorChoiceModeOn() { m_actorChoiceMode = true; }
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		std::unique_ptr<CommandWindow> m_cmdwin;
 		std::unique_ptr<ActorChoiceWindow> m_actorChoicewin;
 

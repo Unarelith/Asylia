@@ -25,8 +25,8 @@ TitleState::TitleState() {
 	m_cmdwin.addCommand("Continue", true);
 	m_cmdwin.addCommand("Quit");
 
-	m_cmdwin.x(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
-	m_cmdwin.y(SCREEN_HEIGHT / 2 + int(SCREEN_HEIGHT / 10));
+	m_cmdwin.setX(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
+	m_cmdwin.setY(SCREEN_HEIGHT / 2 + int(SCREEN_HEIGHT / 10));
 
 	gk::AudioPlayer::playMusic("music-title");
 }
@@ -59,6 +59,6 @@ void TitleState::update() {
 
 void TitleState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	target.draw(m_background, states);
-	// m_cmdwin.draw(); // FIXME
+	target.draw(m_cmdwin, states);
 }
 

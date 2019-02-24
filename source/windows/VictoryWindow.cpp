@@ -44,7 +44,8 @@ void VictoryWindow::init(Battle *battle) {
 void VictoryWindow::draw() {
 	m_height = 134 + 32 * m_itemsNb;
 
-	m_y = 319 / 2 - m_height / 2; // SCREEN_HEIGHT - 319 = ActorStatsWindow->height()
+	// FIXME
+	// m_y = 319 / 2 - m_height / 2; // SCREEN_HEIGHT - 319 = ActorStatsWindow->height()
 
 	Window::draw();
 

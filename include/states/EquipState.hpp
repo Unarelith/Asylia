@@ -30,13 +30,14 @@ class EquipState : public gk::ApplicationState {
 		EquipState(u8 actorPos, ApplicationState *parent = nullptr);
 
 		void update() override;
-		void render() override;
 
 		bool itemMode() const { return m_itemMode; }
 
 		u16 choicewinPos() { return m_choicewin->pos(); }
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		bool m_itemMode;
 
 		Actor *m_actor = nullptr;

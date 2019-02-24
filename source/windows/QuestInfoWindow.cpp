@@ -30,15 +30,15 @@ void QuestInfoWindow::update() {
 }
 
 void QuestInfoWindow::draw(Quest *quest) {
-	drawWindow(m_x, m_y, m_width, 64);
-	drawWindow(m_x, m_y + 64, m_width, 134);
+	// drawWindow(m_x, m_y, m_width, 64);
+	// drawWindow(m_x, m_y + 64, m_width, 134);
 
 	if(m_mode == Mode::ObjectivesMode) {
-		drawWindow(m_x, m_y + 198, m_width, m_height - 198);
+		// drawWindow(m_x, m_y + 198, m_width, m_height - 198);
 	}
 	else if(m_mode == Mode::RewardsMode) {
-		drawWindow(m_x, m_y + 198, m_width / 2, m_height - 198);
-		drawWindow(m_x + m_width / 2, m_y + 198, m_width / 2, m_height - 198);
+		// drawWindow(m_x, m_y + 198, m_width / 2, m_height - 198);
+		// drawWindow(m_x + m_width / 2, m_y + 198, m_width / 2, m_height - 198);
 	}
 
 	if(quest) {

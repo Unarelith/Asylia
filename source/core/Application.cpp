@@ -17,8 +17,8 @@
 
 #include "Application.hpp"
 #include "Config.hpp"
-#include "MapState.hpp"
 #include "TimeManager.hpp"
+#include "TitleState.hpp"
 
 #include "ActorLoader.hpp"
 #include "ArmorLoader.hpp"
@@ -58,7 +58,7 @@ void Application::init() {
 	m_resourceHandler.add<gk::Font>("font-default", "resources/fonts/arial.ttf");
 
 	m_resourceHandler.loadConfigFile<TextureLoader>("resources/config/textures.xml");
-	m_resourceHandler.add<gk::Image>("image-interface", "texture-interface");
+	m_resourceHandler.add<gk::Image>("image-interface", "texture-interface-window");
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 	m_resourceHandler.loadConfigFile<SpriteAnimationLoader>("resources/config/spriteAnimations.xml");
@@ -75,7 +75,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
 	m_resourceHandler.loadConfigFile<MapLoader>("resources/config/maps.xml");
 
-	m_stateStack.push<MapState>();
+	m_stateStack.push<TitleState>();
 }
 
 void Application::onEvent(const SDL_Event &event) {

@@ -60,3 +60,12 @@ void CommandWindow::draw(bool cursor) {
 	}
 }
 
+void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Window::draw(target, states);
+
+	states.transform *= getTransform();
+
+	for (auto &it : m_commands)
+		target.draw(it.text(), states);
+}
+

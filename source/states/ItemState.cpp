@@ -38,10 +38,10 @@ void ItemState::update() {
 	}
 }
 
-void ItemState::render() {
+void ItemState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
-		m_parent->render();
+		target.draw(*m_parent, states);
 
-	m_itemwin->draw();
+	target.draw(*m_itemwin, states);
 }
 

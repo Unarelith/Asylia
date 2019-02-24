@@ -86,13 +86,22 @@ void EquipState::update() {
 	}
 }
 
-void EquipState::render() {
+void EquipState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
-		m_parent->render();
+		target.draw(*m_parent, states);
 
-	if(m_itemMode) m_statswin->draw(m_itemwin->currentItem());
-	else m_statswin->draw();
-	m_choicewin->draw(!m_itemMode);
-	m_itemwin->draw(m_itemMode, m_itemMode);
+	if(m_itemMode) {
+		// m_statswin->draw(m_itemwin->currentItem());
+		target.draw(*m_statswin, states);
+	}
+	else {
+		// m_statswin->draw();
+		target.draw(*m_statswin, states);
+	}
+
+	// m_choicewin->draw(!m_itemMode);
+	// m_itemwin->draw(m_itemMode, m_itemMode);
+	target.draw(*m_choicewin, states);
+	target.draw(*m_itemwin, states);
 }
 

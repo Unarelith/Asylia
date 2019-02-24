@@ -25,8 +25,8 @@ EndState::EndState(bool disableCancel) {
 	m_cmdwin.addCommand("TitleScreen");
 	m_cmdwin.addCommand("Quit");
 
-	m_cmdwin.x(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
-	m_cmdwin.y(SCREEN_HEIGHT / 2 - m_cmdwin.height() / 2);
+	m_cmdwin.setX(SCREEN_WIDTH / 2 - m_cmdwin.width() / 2);
+	m_cmdwin.setY(SCREEN_HEIGHT / 2 - m_cmdwin.height() / 2);
 }
 
 void EndState::update() {
@@ -67,7 +67,7 @@ void EndState::update() {
 	}
 }
 
-void EndState::render() {
-	m_cmdwin.draw();
+void EndState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	target.draw(m_cmdwin, states);
 }
 

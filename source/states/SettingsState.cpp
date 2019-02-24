@@ -100,22 +100,24 @@ void SettingsState::update() {
 	}
 }
 
-void SettingsState::render() {
+void SettingsState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
-		m_parent->render();
+		target.draw(*m_parent, states);
 
 	if(m_mode == Mode::Settings) {
-		m_settings.draw();
+		target.draw(m_settings, states);
 	}
 	else if(m_mode == Mode::Sound) {
-		m_settings.draw(false);
+		// m_settings.draw(false); // FIXME
 
-		m_sound.draw();
+		target.draw(m_settings, states);
+		target.draw(m_sound, states);
 	}
 	else if(m_mode == Mode::Language) {
-		m_settings.draw(false);
+		// m_settings.draw(false); // FIXME
 
-		m_language.draw();
+		target.draw(m_settings, states);
+		target.draw(m_language, states);
 	}
 }
 

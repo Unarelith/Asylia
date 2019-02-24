@@ -31,7 +31,7 @@ QuestState::QuestState(ApplicationState *parent) : ApplicationState(parent) {
 	m_questCategorywin.addCommand("Quests_Current");
 	m_questCategorywin.addCommand("Quests_Completed");
 
-	m_questListwin.height(SCREEN_HEIGHT - 116);
+	m_questListwin.setHeight(SCREEN_HEIGHT - 116);
 }
 
 void QuestState::update() {
@@ -77,7 +77,7 @@ void QuestState::update() {
 					default: break;
 				}
 			}
-			m_questListwin.height(SCREEN_HEIGHT - 114);
+			m_questListwin.setHeight(SCREEN_HEIGHT - 114);
 		}
 
 		if(gk::GamePad::isKeyPressedOnce(GameKey::A)) {
@@ -106,15 +106,20 @@ void QuestState::update() {
 	}
 }
 
-void QuestState::render() {
+void QuestState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent && m_parent->parent())
-		m_parent->parent()->render();
+		target.draw(*m_parent->parent(), states);
 
-	m_questTitlewin.drawTextCentered(_t("Quests"));
+	// m_questTitlewin.drawTextCentered(_t("Quests"));
+    //
+	// m_questCategorywin.draw(m_mode == Mode::CategoryChoice);
+	// m_questListwin.draw(m_mode == Mode::QuestChoice);
+    //
+	// m_questInfowin.draw(m_currentQuest);
 
-	m_questCategorywin.draw(m_mode == Mode::CategoryChoice);
-	m_questListwin.draw(m_mode == Mode::QuestChoice);
-
-	m_questInfowin.draw(m_currentQuest);
+	target.draw(m_questTitlewin, states);
+	target.draw(m_questCategorywin, states);
+	target.draw(m_questListwin, states);
+	target.draw(m_questInfowin, states);
 }
 

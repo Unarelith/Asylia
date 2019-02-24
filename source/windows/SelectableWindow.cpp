@@ -35,7 +35,7 @@ void SelectableWindow::updateCursor() {
 	x = m_pos % m_columnMax * (cursorWidth + 32);
 	y = m_pos / m_columnMax * 32 - m_scroll * 32;
 
-	m_cursor = gk::IntRect(x, y, cursorWidth, 32);
+	m_cursorRect = gk::IntRect(x, y, cursorWidth, 32);
 
 	lastPos = m_pos;
 }

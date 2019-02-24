@@ -25,7 +25,7 @@ BattleActionWindow::~BattleActionWindow() {
 }
 
 void BattleActionWindow::draw(u8 pos) {
-	m_x = pos * SCREEN_WIDTH / 4;
+	setX(pos * SCREEN_WIDTH / 4);
 
 	CommandWindow::draw();
 }

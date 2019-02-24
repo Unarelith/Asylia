@@ -22,10 +22,11 @@ class EndState : public gk::ApplicationState {
 	public:
 		EndState(bool disableCancel = false);
 
-		void update();
-		void render();
+		void update() override;
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		CommandWindow m_cmdwin{192};
 };
 

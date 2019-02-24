@@ -24,10 +24,11 @@ class ItemState : public gk::ApplicationState {
 	public:
 		ItemState(gk::ApplicationState *parent = nullptr);
 
-		void update();
-		void render();
+		void update() override;
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		std::unique_ptr<ItemWindow> m_itemwin;
 };
 

@@ -15,10 +15,11 @@
 #define WINDOW_HPP_
 
 #include <gk/core/Rect.hpp>
+#include <gk/gl/IDrawable.hpp>
 
 #include "Battler.hpp"
 
-class Window {
+class Window : public gk::IDrawable, public gk::Transformable {
 	public:
 		Window(s16 x, s16 y, u16 width, u16 height);
 
@@ -26,17 +27,17 @@ class Window {
 		void drawWindow(s16 x, s16 y, u16 width, u16 height);
 		void draw(bool cursor = true);
 
-		s16 x() const { return m_x; }
-		s16 y() const { return m_y; }
+		s16 x() const { return getPosition().x; }
+		s16 y() const { return getPosition().y; }
 
 		u16 width() const { return m_width; }
 		u16 height() const { return m_height; }
 
-		void x(s16 x) { m_x = x; }
-		void y(s16 y) { m_y = y; }
+		void setX(s16 x) { setPosition(x, getPosition().y); }
+		void setY(s16 y) { setPosition(getPosition().x, y); }
 
-		void width(u16 width) { m_width = width; }
-		void height(u16 height) { m_height = height; }
+		void setWidth(u16 width) { m_width = width; }
+		void setHeight(u16 height) { m_height = height; }
 
 		void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width, u16 max = 0);
 		void printName(Battler *battler, s16 x, s16 y, u16 width);
@@ -49,13 +50,15 @@ class Window {
 		void printItem(Item *item, u16 count, s16 x, s16 y, u16 width);
 
 	protected:
-		s16 m_x;
-		s16 m_y;
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
 		u16 m_width;
 		u16 m_height;
 
-		gk::IntRect m_cursor;
+		gk::IntRect m_cursorRect;
+
+		mutable gk::Image m_window{"texture-interface-window"}; // FIXME
+		mutable gk::Image m_cursor{"texture-interface-window"}; // FIXME
 };
 
 #endif // WINDOW_HPP_

@@ -28,7 +28,7 @@ class TitleState : public gk::ApplicationState {
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
-		gk::Image m_background{"resources/graphics/interface/TitleScreen.jpg"};
+		gk::Image m_background{"texture-interface-titlescreen"};
 		CommandWindow m_cmdwin{192};
 };
 

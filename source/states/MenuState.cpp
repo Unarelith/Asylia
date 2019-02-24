@@ -100,14 +100,15 @@ void MenuState::update() {
 	}
 }
 
-void MenuState::render() {
+void MenuState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
-		m_parent->render();
+		target.draw(*m_parent, states);
 
-	m_cmdwin->draw(&gk::ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
+	// m_cmdwin->draw(&gk::ApplicationStateStack::getInstance().top() == this && !m_actorChoiceMode);
+	target.draw(*m_cmdwin.get(), states);
 
 	if(m_actorChoiceMode) {
-		m_actorChoicewin->draw();
+		target.draw(*m_actorChoicewin.get(), states);
 	}
 }
 

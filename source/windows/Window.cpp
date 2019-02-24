@@ -15,13 +15,15 @@
 #include "Window.hpp"
 
 Window::Window(s16 x, s16 y, u16 width, u16 height) {
-	m_x = x;
-	m_y = y;
+	setPosition(x, y);
 
 	m_width = width;
 	m_height = height;
 
-	m_cursor = gk::IntRect(0, 0, 0, 0);
+	m_cursorRect = gk::IntRect(0, 0, 0, 0);
+
+	m_window.setClipRect(0, 0, 128, 128);
+	m_cursor.setClipRect(132, 68, 23, 23);
 }
 
 void Window::drawCursor(s16 x, s16 y, u16 width, u16 height) {
@@ -57,11 +59,11 @@ void Window::drawWindow(s16 x, s16 y, u16 width, u16 height) {
 }
 
 void Window::draw(bool cursor) {
-	drawWindow(m_x, m_y, m_width, m_height);
-
-	if(m_cursor.width > 0 && cursor) {
-		drawCursor(16 + m_x + m_cursor.x, 16 + m_y + m_cursor.y, m_cursor.width, m_cursor.height);
-	}
+	// drawWindow(m_x, m_y, m_width, m_height);
+    //
+	// if(m_cursorRect.width > 0 && cursor) {
+	// 	drawCursor(16 + m_x + m_cursorRect.x, 16 + m_y + m_cursorRect.y, m_cursorRect.width, m_cursorRect.height);
+	// }
 }
 
 void Window::printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 x2, u16 max) {
@@ -108,9 +110,9 @@ void Window::drawBattler(Battler *battler, s16 x, s16 y) {
 }
 
 void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
-	gk::Image countImg, itemImg;
-
 	// FIXME
+	// gk::Image countImg, itemImg;
+	//
 	// item->thumbnail().render(m_x + x, m_y + y);
     //
 	// if(count != 0) {
@@ -128,5 +130,15 @@ void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width) {
 	// } else {
 	// 	itemImg.render(-1, -1, 0, 0, -1, -1, 0, 0);
 	// }
+}
+
+void Window::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	states.transform *= getTransform();
+
+	m_window.setPosRect(0, 0, m_width, m_height);
+	target.draw(m_window, states);
+
+	m_cursor.setPosRect(16 + m_cursorRect.x, 16 + m_cursorRect.y, m_cursorRect.width, m_cursorRect.height);
+	target.draw(m_cursor, states);
 }
 

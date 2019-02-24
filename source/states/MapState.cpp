@@ -50,22 +50,23 @@ void MapState::update() {
 }
 
 void MapState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
-	ResourceHelper::getCurrentMap()->render();
-
-	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
-		if(ResourceHelper::getCurrentMap()->events()[i]->y() < ResourceHelper::getPlayer()->y()) {
-			ResourceHelper::getCurrentMap()->events()[i]->render();
-		}
-	}
-
+	// FIXME
+	// ResourceHelper::getCurrentMap()->render();
+    //
+	// for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
+	// 	if(ResourceHelper::getCurrentMap()->events()[i]->y() < ResourceHelper::getPlayer()->y()) {
+	// 		ResourceHelper::getCurrentMap()->events()[i]->render();
+	// 	}
+	// }
+    //
 	// ResourceHelper::getPlayer()->render();
-
-	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
-		if(ResourceHelper::getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {
-			ResourceHelper::getCurrentMap()->events()[i]->render();
-		}
-	}
-
-	ResourceHelper::getCurrentMap()->renderOverlay();
+    //
+	// for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
+	// 	if(ResourceHelper::getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {
+	// 		ResourceHelper::getCurrentMap()->events()[i]->render();
+	// 	}
+	// }
+    //
+	// ResourceHelper::getCurrentMap()->renderOverlay();
 }
 
