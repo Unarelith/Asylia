@@ -15,7 +15,7 @@
 
 Troop::Troop(const std::string &battleback) {
 	if (!battleback.empty()) {
-		m_battleback.reload(battleback.c_str());
+		m_battleback.load(battleback);
 		m_isBattlebackLoaded = true;
 	}
 }

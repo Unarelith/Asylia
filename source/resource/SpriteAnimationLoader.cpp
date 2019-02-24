@@ -11,9 +11,9 @@
  *
  * =====================================================================================
  */
+#include <gk/graphics/SpriteAnimation.hpp>
 #include <gk/resource/ResourceHandler.hpp>
 
-#include "SpriteAnimation.hpp"
 #include "SpriteAnimationLoader.hpp"
 
 void SpriteAnimationLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
@@ -22,26 +22,26 @@ void SpriteAnimationLoader::load(const char *xmlFilename, gk::ResourceHandler &h
 	tinyxml2::XMLElement *animationElement = doc.FirstChildElement("spriteAnimations").FirstChildElement("animation").ToElement();
 	while(animationElement) {
 		std::string name = animationElement->Attribute("name");
-		std::vector<SpriteAnimation> animation;
+		std::vector<gk::SpriteAnimation> animation;
 
 		tinyxml2::XMLElement *framesElement = animationElement->FirstChildElement("frames");
 		while(framesElement) {
-			std::vector<u16> frames;
 			u16 delay = framesElement->IntAttribute("delay");
+			animation.emplace_back(delay);
+
+			gk::SpriteAnimation &anim = animation.back();
 
 			tinyxml2::XMLElement *frameElement = framesElement->FirstChildElement("frame");
 			while(frameElement) {
-				frames.push_back(frameElement->IntAttribute("id"));
+				anim.addFrame(frameElement->IntAttribute("id"));
 
 				frameElement = frameElement->NextSiblingElement("frame");
 			}
 
-			animation.push_back(SpriteAnimation(frames.size(), frames, delay));
-
 			framesElement = framesElement->NextSiblingElement("frames");
 		}
 
-		handler.add<std::vector<SpriteAnimation>>("spriteanim-" + name, animation);
+		handler.add<std::vector<gk::SpriteAnimation>>("spriteanim-" + name, animation);
 
 		animationElement = animationElement->NextSiblingElement("animation");
 	}

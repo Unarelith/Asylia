@@ -23,7 +23,7 @@ Battle::Battle(const Battle &battle) {
 	}
 
 	for(auto &it : battle.m_enemies) {
-		m_enemies.push_back(std::make_pair(it.first, new Enemy(*it.second)));
+		m_enemies.emplace_back(it.first, it.second);
 	}
 
 	m_actorsCount = battle.m_actorsCount;
@@ -39,7 +39,7 @@ Battle::Battle() {
 	m_actorsCount = 0;
 	m_enemiesCount = 0;
 
-	m_battleback = ResourceHelper::getCurrentMap()->battleback();
+	m_battleback = &ResourceHelper::getCurrentMap()->battleback();
 
 	m_exp = 0;
 	m_gold = 0;
@@ -60,7 +60,7 @@ void Battle::addTroop(Troop *troop) {
 }
 
 void Battle::addEnemy(Enemy *enemy, s16 x, s16 y) {
-	m_enemies.push_back(std::make_pair(m_enemiesCount, new Enemy(*enemy)));
+	m_enemies.emplace_back(m_enemiesCount, enemy);
 
 	m_enemies.back().second->setPosition(x, y);
 
@@ -74,13 +74,14 @@ void Battle::drawArrow(Battler *battler) {
 	s16 x, y;
 	u16 width, height;
 
-	width = battler->image()->posRect().w;
-	height = battler->image()->posRect().h;
+	width = battler->image().width();
+	height = battler->image().height();
 
-	x = battler->image()->posRect().x + width / 2 - 16;
-	y = battler->image()->posRect().y + height / 2;
+	x = battler->image().getPosition().x + width / 2 - 16;
+	y = battler->image().getPosition().y + height / 2;
 
-	ResourceHelper::getImage("interface").render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
+	// FIXME
+	// ResourceHelper::getImage("interface").render(x, y, 32, 32, 128 + 32 * (SDL_GetTicks() / 4 % 2), 96, 32, 32);
 }
 
 void Battle::enemyTurn() {
@@ -143,6 +144,7 @@ std::pair<u8, Enemy*> Battle::getNextEnemyPair(s8 v, s8 current) {
 }
 
 void Battle::renderBattleback() {
-	m_battleback->render();
+	// FIXME
+	// m_battleback->render();
 }
 

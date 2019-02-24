@@ -1,24 +1,24 @@
 /*
  * =====================================================================================
  *
- *       Filename:  AnimationLoader.hpp
+ *       Filename:  TextureLoader.hpp
  *
  *    Description:
  *
- *        Created:  17/02/2019 21:48:56
+ *        Created:  09/04/2018 01:37:23
  *
  *         Author:  Quentin Bazin, <quent42340@gmail.com>
  *
  * =====================================================================================
  */
-#ifndef ANIMATIONLOADER_HPP_
-#define ANIMATIONLOADER_HPP_
+#ifndef TEXTURELOADER_HPP_
+#define TEXTURELOADER_HPP_
 
 #include <gk/resource/IResourceLoader.hpp>
 
-class AnimationLoader : public gk::IResourceLoader {
+class TextureLoader : public gk::IResourceLoader {
 	public:
-		void load(const char *xmlFilename, gk::ResourceHandler &handler) override;
+		void load(const char *xmlFilename, gk::ResourceHandler &handler);
 };
 
-#endif // ANIMATIONLOADER_HPP_
+#endif // TEXTURELOADER_HPP_

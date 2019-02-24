@@ -18,7 +18,7 @@
 
 class Skill : public Item {
 	public:
-		Skill(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation, u16 atk, double hitRate);
+		Skill(const std::string &name, const std::string &description, const std::string &thumbnail, u16 atk, double hitRate);
 
 		u16 atk() const { return m_atk; }
 		double hitRate() const { return m_hitRate; }

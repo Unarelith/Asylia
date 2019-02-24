@@ -66,7 +66,7 @@ void EventLoader::loadCharacterEvent(tinyxml2::XMLElement *characterElement, gk:
 	}
 
 	handler.add<Event>("event-" + name,
-		name, std::string("resources/graphics/characters/") + appearance + ".png",
+		name, std::string("texture-character-") + appearance,
 		x * 32, y * 32, direction, solid, frameWidth, frameHeight
 	);
 }
@@ -83,7 +83,7 @@ void EventLoader::loadChestEvent(tinyxml2::XMLElement *chestElement, gk::Resourc
 	chestType = chestElement->IntAttribute("chestType");
 
 	handler.add<Event>("event-" + name,
-		name, "resources/graphics/events/Chest01.png",
+		name, "texture-event-Chest01",
 		x * 32, y * 32, chestType, true
 	);
 }

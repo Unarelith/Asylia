@@ -13,7 +13,7 @@
  */
 #include "Item.hpp"
 
-Item::Item(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation) {
+Item::Item(const std::string &name, const std::string &description, const std::string &thumbnail) {
 	m_id = 0;
 
 	m_type = Type::BasicItem;
@@ -25,9 +25,7 @@ Item::Item(const std::string &name, const std::string &description, const std::s
 
 	m_level = 1;
 
-	m_thumbnail.reload(thumbnail.c_str());
-
-	m_battleAnimation = battleAnimation;
+	m_thumbnail.load(thumbnail);
 
 	m_equipped = false;
 }

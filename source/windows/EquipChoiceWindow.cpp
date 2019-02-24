@@ -13,7 +13,6 @@
  */
 #include "Config.hpp"
 #include "EquipChoiceWindow.hpp"
-#include "Font.hpp"
 #include "ResourceHelper.hpp"
 
 EquipChoiceWindow::EquipChoiceWindow(Equipment *equipment) : SelectableWindow(150 + (SCREEN_WIDTH - 150) / 2, 52, (SCREEN_WIDTH - 150) / 2, (SCREEN_HEIGHT - 52) / 2) {
@@ -30,12 +29,15 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 
 	if(!m_equipment->weapon()) {
 		// ResourceHelper::getWeapon(0)->thumbnail().render(m_x + 20, m_y + 20);
-		ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
-		ResourceHelper::getFont("default").printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::System);
-		ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
+		// FIXME
+		// ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
+		// ResourceHelper::getFont("default").printScaled(_t("Empty").c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE, Color::System);
+		// ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
 	} else {
-		m_equipment->weapon()->thumbnail().render(m_x + 20, m_y + 20);
-		ResourceHelper::getFont("default").printScaled(m_equipment->weapon()->name().c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE);
+		// FIXME
+		// m_equipment->weapon()->thumbnail().render(m_x + 20, m_y + 20);
+		// FIXME
+		// ResourceHelper::getFont("default").printScaled(m_equipment->weapon()->name().c_str(), m_x + 48, m_y + 20, m_width - 40, 32, FONT_LARGE);
 	}
 
 	for(u8 slot = 0 ; slot < 3 ; slot++) {
@@ -48,12 +50,14 @@ void EquipChoiceWindow::draw(bool drawCursor) {
 			// 		break;
 			// 	}
 			// }
-			ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
-			ResourceHelper::getFont("default").printScaled(_t("Empty").c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE, Color::System);
-			ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
+			// FIXME
+			// ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_ITALIC);
+			// ResourceHelper::getFont("default").printScaled(_t("Empty").c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE, Color::System);
+			// ResourceHelper::getFont("default").setStyle(FONT_LARGE, TTF_STYLE_NORMAL);
 		} else {
-			armor->thumbnail().render(m_x + 20, m_y + 52 + slot * 32);
-			ResourceHelper::getFont("default").printScaled(armor->name().c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE);
+			// FIXME
+			// armor->thumbnail().render(m_x + 20, m_y + 52 + slot * 32);
+			// ResourceHelper::getFont("default").printScaled(armor->name().c_str(), m_x + 48, m_y + 52 + slot * 32, m_width - 40, 32, FONT_LARGE);
 		}
 	}
 }

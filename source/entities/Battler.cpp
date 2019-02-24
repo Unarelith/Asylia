@@ -11,52 +11,23 @@
  *
  * =====================================================================================
  */
+#include <gk/core/SDLHeaders.hpp>
+
 #include "Battler.hpp"
 #include "Character.hpp"
 #include "ResourceHelper.hpp"
 
-Battler::Battler(const Battler &battler) {
-	m_name = battler.m_name;
-
-	m_image = new Image(*battler.m_image);
-
-	m_sprite = new Sprite(*battler.m_sprite);
-
-	m_level = battler.m_level;
-	m_exp = battler.m_exp;
-
-	m_hp = battler.m_hp;
-	m_sp = battler.m_sp;
-
-	m_basehp = battler.m_basehp;
-	m_basesp = battler.m_basesp;
-
-	m_atk = battler.m_atk;
-	m_def = battler.m_def;
-
-	m_agi = battler.m_agi;
-	m_vit = battler.m_vit;
-	m_dex = battler.m_dex;
-	m_str = battler.m_str;
-	m_wis = battler.m_wis;
-	m_int = battler.m_int;
-
-	m_state = battler.m_state;
-
-	m_type = battler.m_type;
-}
-
 Battler::Battler(const std::string &name, const std::string &appearance, u8 level) {
 	m_name = name;
 
-	m_image = new Image(appearance.c_str());
+	m_image.load(appearance);
 
 	std::string str = appearance;
-	m_sprite = new Sprite(str.replace(str.find("battlers"), 8, "characters").c_str(), 32, 48);
-	m_sprite->addAnimation(ResourceHelper::getAnimation("Character", DIR_DOWN));
-	m_sprite->addAnimation(ResourceHelper::getAnimation("Character", DIR_LEFT));
-	m_sprite->addAnimation(ResourceHelper::getAnimation("Character", DIR_RIGHT));
-	m_sprite->addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
+	m_sprite.load(str.replace(str.find("battler"), 7, "character"), 32, 48);
+	m_sprite.addAnimation(ResourceHelper::getAnimation("Character", DIR_DOWN));
+	m_sprite.addAnimation(ResourceHelper::getAnimation("Character", DIR_LEFT));
+	m_sprite.addAnimation(ResourceHelper::getAnimation("Character", DIR_RIGHT));
+	m_sprite.addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
 
 	m_level = level;
 	m_exp = 0;
@@ -64,12 +35,6 @@ Battler::Battler(const std::string &name, const std::string &appearance, u8 leve
 	m_state = State::Normal;
 
 	m_type = Type::TypeNone;
-}
-
-Battler::~Battler() {
-	delete m_sprite;
-
-	delete m_image;
 }
 
 void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell) {
@@ -91,8 +56,8 @@ void Battler::calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16
 }
 
 void Battler::blink() {
-	m_image->setColorMod(gk::Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
-	m_image->setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
+	m_image.setColor(gk::Color(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127, abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127));
+	// m_image.setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127); // FIXME
 }
 
 std::string Battler::getStateString() {
@@ -115,16 +80,16 @@ u8 a = 255;
 void Battler::kill() {
 	if(r < 248) {
 		r += 7;
-		m_image->setColorMod(gk::Color(r, 128, 128));
+		m_image.setColor(gk::Color(r, 128, 128));
 	}
 
 	if(a > 20) {
 		a -= 20;
-		m_image->setAlphaMod(a);
+		// m_image.setAlphaMod(a); // FIXME
 	}
 
 	if(a <= 20) {
-		m_image->hidden(true);
+		// m_image.hidden(true); // FIXME
 		a = 255;
 		r = 0;
 	}

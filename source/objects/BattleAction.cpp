@@ -12,7 +12,6 @@
  * =====================================================================================
  */
 #include "BattleAction.hpp"
-#include "Font.hpp"
 #include "ResourceHelper.hpp"
 
 BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
@@ -32,9 +31,6 @@ BattleAction::BattleAction(Battler *actor, Battler *receiver, Item *item) {
 	m_dmgmvcount = 0;
 }
 
-BattleAction::~BattleAction() {
-}
-
 void BattleAction::process() {
 	if(m_actor->hp() == 0) return;
 	if(!m_receiver) return;
@@ -49,9 +45,10 @@ void BattleAction::process() {
 }
 
 void BattleAction::updateDamages() {
-	if(m_item->battleAnimation()->animationAtEnd(0)) {
-		m_dmgy = m_receiver->image()->posRect().y + m_receiver->image()->height() / 2 - 8;
-	}
+	// FIXME
+	// if(m_item->battleAnimation()->animationAtEnd(0)) {
+	// 	m_dmgy = m_receiver->image()->posRect().y + m_receiver->image()->height() / 2 - 8;
+	// }
 
 	if(m_animationAtEnd) {
 		if(m_dmgmvcount < 8) {
@@ -77,24 +74,25 @@ bool BattleAction::drawDamages() {
 	if(m_actor->hp() == 0) return true;
 	if(!m_receiver) return true;
 
-	if(m_item->battleAnimation()->animationAtEnd(0)) {
-		m_item->battleAnimation()->stopAnimation(0);
-		m_item->battleAnimation()->resetAnimation(0);
-
-		m_animationAtEnd = true;
-
-	} else {
-		if(!m_animationAtEnd) m_item->battleAnimation()->play(m_receiver);
-	}
-
-	if(m_animationAtEnd) {
-		if(m_dmgmvcount >= 30) {
-			return true;
-		}
-
-		u16 dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - log10(m_damages + 10) * 9 / 2;
-		ResourceHelper::getFont("default").printDamages(m_damages, dmgx, m_dmgy - 8, gk::Color(255, 42, 36));
-	}
+	// FIXME
+	// if(m_item->battleAnimation()->animationAtEnd(0)) {
+	// 	m_item->battleAnimation()->stopAnimation(0);
+	// 	m_item->battleAnimation()->resetAnimation(0);
+    //
+	// 	m_animationAtEnd = true;
+    //
+	// } else {
+	// 	if(!m_animationAtEnd) m_item->battleAnimation()->play(m_receiver);
+	// }
+    //
+	// if(m_animationAtEnd) {
+	// 	if(m_dmgmvcount >= 30) {
+	// 		return true;
+	// 	}
+    //
+	// 	u16 dmgx = m_receiver->image()->posRect().x + m_receiver->image()->posRect().w / 2 - log10(m_damages + 10) * 9 / 2;
+	// 	ResourceHelper::getFont("default").printDamages(m_damages, dmgx, m_dmgy - 8, gk::Color(255, 42, 36));
+	// }
 
 	return false;
 }

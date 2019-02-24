@@ -16,16 +16,13 @@
 
 #include <string>
 
-#include "Image.hpp"
+#include <gk/graphics/Sprite.hpp>
+
 #include "Skill.hpp"
-#include "Sprite.hpp"
-#include <gk/core/IntTypes.hpp>
 
 class Battler {
 	public:
-		Battler(const Battler &battler);
 		Battler(const std::string &name, const std::string &appearance, u8 level);
-		~Battler();
 
 		void calculateAllStats(u16 agi, u16 vit, u16 dex, u16 str, u16 wis, u16 intell);
 
@@ -35,9 +32,8 @@ class Battler {
 
 		const std::string &name() const { return m_name; }
 
-		Image *image() const { return m_image; }
-
-		Sprite *sprite() const { return m_sprite; }
+		gk::Image &image() { return m_image; }
+		gk::Sprite &sprite() { return m_sprite; }
 
 		u8 level() const { return m_level; }
 
@@ -57,7 +53,7 @@ class Battler {
 
 		u16 exp() const { return m_exp; }
 
-		void setPosition(s16 x, s16 y) { m_image->setPosRect(x, y, m_image->width(), m_image->height()); }
+		void setPosition(s16 x, s16 y) { m_image.setPosition(x, y); }
 
 		void hurt(u16 damages) { m_hp -= damages; if(m_hp < 0) m_hp = 0; }
 		void heal(u16 p = 100) { m_hp += s16(p / 100 * m_basehp); }
@@ -101,9 +97,8 @@ class Battler {
 	protected:
 		std::string m_name;
 
-		Image *m_image;
-
-		Sprite *m_sprite;
+		gk::Image m_image;
+		gk::Sprite m_sprite;
 
 		u8 m_level;
 		u16 m_exp;

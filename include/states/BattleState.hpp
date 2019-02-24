@@ -23,7 +23,6 @@
 #include "BattleActionWindow.hpp"
 #include "BattleChoiceWindow.hpp"
 #include "Config.hpp"
-#include "GameWindow.hpp"
 #include "ItemWindow.hpp"
 #include "Troop.hpp"
 #include "VictoryWindow.hpp"
@@ -76,7 +75,7 @@ class BattleState : public gk::ApplicationState {
 
 		bool m_processingAction;
 
-		Image m_gameover{"resources/graphics/interface/Gameover.jpg"};
+		gk::Image m_gameover{"resources/graphics/interface/Gameover.jpg"};
 		u16 m_gameoverAlpha;
 
 		VictoryWindow m_victorywin;

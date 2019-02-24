@@ -23,16 +23,10 @@ void SkillLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 	tinyxml2::XMLElement *skillElement = doc.FirstChildElement("skills").FirstChildElement("skill").ToElement();
 	u16 id = 0;
 	while(skillElement) {
-		const char *animation = skillElement->Attribute("animation");
-
-		Animation *anim = nullptr;
-		if (animation)
-			anim = ResourceHelper::getAnimationByName(animation);
-
 		Skill &skill = handler.add<Skill>("skill-" + std::to_string(id),
 			"Skill" + std::to_string(id),
 			"Skill" + std::to_string(id) + "Desc",
-			"resources/graphics/skills/" + std::to_string(id) + ".png", anim,
+			"texture-skill-" + std::to_string(id),
 			skillElement->IntAttribute("damage"),
 			skillElement->DoubleAttribute("hitRate")
 		);

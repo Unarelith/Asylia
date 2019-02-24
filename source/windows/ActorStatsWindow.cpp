@@ -33,11 +33,13 @@ void ActorStatsWindow::drawActor(Actor *actor, u8 pos) {
 	u8 mode = battleState.mode();
 	if((mode == BattleState::Mode::Choice || mode == BattleState::Mode::EnemyTurn || mode == BattleState::Mode::ProcessActions || mode == BattleState::Mode::Victory)
 	|| (battleState.battle().actors()[battleState.currentPos()].second != actor)) {
-		actor->image()->setColorMod(gk::Color::White);
-		actor->image()->setAlphaMod(190);
+		actor->image().setColor(gk::Color::White);
+		// FIXME
+		// actor->image()->setAlphaMod(190);
 	}
 
-	drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, SCREEN_HEIGHT - actor->image()->height());
+	// FIXME
+	// drawBattler(actor, m_width / 4 * (pos + 0.5) - actor->image()->width() / 2, SCREEN_HEIGHT - actor->image()->height());
 
 	printName(actor, 20 + m_width / 4 * pos, 20, m_width - 40);
 	printState(actor, 20 + m_width / 4 * pos, 116, m_width - 40);
@@ -52,6 +54,7 @@ void ActorStatsWindow::drawEnemies(const std::vector<std::pair<u8, Enemy*>> &ene
 }
 
 void ActorStatsWindow::drawEnemy(Enemy *enemy, u8 pos, u8 max) {
-	drawBattler(enemy, enemy->image()->posRect().x, enemy->image()->posRect().y);
+	// FIXME
+	// drawBattler(enemy, enemy->image()->posRect().x, enemy->image()->posRect().y);
 }
 

@@ -49,7 +49,7 @@ void MapState::update() {
 	ResourceHelper::getCurrentMap()->eventsUpdate();
 }
 
-void MapState::render() {
+void MapState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	ResourceHelper::getCurrentMap()->render();
 
 	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
@@ -58,7 +58,7 @@ void MapState::render() {
 		}
 	}
 
-	ResourceHelper::getPlayer()->render();
+	// ResourceHelper::getPlayer()->render();
 
 	for(u16 i = 0 ; i < ResourceHelper::getCurrentMap()->events().size() ; i++) {
 		if(ResourceHelper::getCurrentMap()->events()[i]->y() >= ResourceHelper::getPlayer()->y()) {

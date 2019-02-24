@@ -15,7 +15,6 @@
 
 #include <gk/core/SDLHeaders.hpp>
 
-#include "GameWindow.hpp"
 #include "InfoWindow.hpp"
 #include "TimeManager.hpp"
 

@@ -21,7 +21,9 @@ class MapState : public gk::ApplicationState {
 		MapState();
 
 		void update() override;
-		void render() override;
+
+	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 };
 
 #endif // MAPSTATE_HPP_

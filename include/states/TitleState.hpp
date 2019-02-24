@@ -15,19 +15,20 @@
 #define TITLESTATE_HPP_
 
 #include <gk/core/ApplicationState.hpp>
+#include <gk/graphics/Image.hpp>
 
 #include "CommandWindow.hpp"
-#include "Image.hpp"
 
 class TitleState : public gk::ApplicationState {
 	public:
 		TitleState();
 
-		void update();
-		void render();
+		void update() override;
 
 	private:
-		Image m_background{"resources/graphics/interface/TitleScreen.jpg"};
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
+		gk::Image m_background{"resources/graphics/interface/TitleScreen.jpg"};
 		CommandWindow m_cmdwin{192};
 };
 

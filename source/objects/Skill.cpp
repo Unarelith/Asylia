@@ -13,7 +13,7 @@
  */
 #include "Skill.hpp"
 
-Skill::Skill(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation, u16 atk, double hitRate) : Item(name, description, thumbnail, battleAnimation) {
+Skill::Skill(const std::string &name, const std::string &description, const std::string &thumbnail, u16 atk, double hitRate) : Item(name, description, thumbnail) {
 	m_type = Type::Skill;
 
 	m_atk = atk;

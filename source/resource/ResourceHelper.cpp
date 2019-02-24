@@ -14,7 +14,6 @@
 #include <gk/resource/ResourceHandler.hpp>
 
 #include "Actor.hpp"
-#include "Animation.hpp"
 #include "Armor.hpp"
 #include "Enemy.hpp"
 #include "Item.hpp"
@@ -27,20 +26,16 @@
 
 Map *ResourceHelper::s_currentMap = nullptr;
 
-Image &ResourceHelper::getImage(const std::string &name) {
-	return gk::ResourceHandler::getInstance().get<Image>("image-" + name);
+gk::Image &ResourceHelper::getImage(const std::string &name) {
+	return gk::ResourceHandler::getInstance().get<gk::Image>("image-" + name);
 }
 
-Font &ResourceHelper::getFont(const std::string &name) {
-	return gk::ResourceHandler::getInstance().get<Font>("font-" + name);
+gk::Font &ResourceHelper::getFont(const std::string &name) {
+	return gk::ResourceHandler::getInstance().get<gk::Font>("font-" + name);
 }
 
-SpriteAnimation &ResourceHelper::getAnimation(const std::string &name, size_t id) {
-	return gk::ResourceHandler::getInstance().get<std::vector<SpriteAnimation>>("spriteanim-" + name)[id];
-}
-
-Animation *ResourceHelper::getAnimationByName(const std::string &name) {
-	return &gk::ResourceHandler::getInstance().get<Animation>("animation-" + name);
+gk::SpriteAnimation &ResourceHelper::getAnimation(const std::string &name, size_t id) {
+	return gk::ResourceHandler::getInstance().get<std::vector<gk::SpriteAnimation>>("spriteanim-" + name)[id];
 }
 
 Item *ResourceHelper::getItem(u16 id) {

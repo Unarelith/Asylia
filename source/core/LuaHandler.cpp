@@ -26,7 +26,6 @@
 #include "Parameter.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
-#include "Sprite.hpp"
 
 template<>
 LuaHandler *Singleton<LuaHandler>::s_instance = nullptr;
@@ -54,24 +53,21 @@ void LuaHandler::bindClasses() {
 		"setDirection", &Character::setDirection,
 		"getDirection", &Character::getDirection,
 		"getTicks", &SDL_GetTicks,
-		"render", &Character::render,
 		"x", &Character::x,
 		"y", &Character::y,
 		"setHitbox", &Character::setHitbox,
 		"setPosition", &Character::setPosition,
 		"name", &Event::name,
 		"face", &Character::face,
-		sol::base_classes, sol::bases<Character, Sprite>()
+		sol::base_classes, sol::bases<Character, gk::Sprite>()
 	);
 
 	m_lua.new_usertype<EventInterpreter>("EventInterpreter",
 		"addActionToQueue", &EventInterpreter::addActionToQueue
 	);
 
-	m_lua.new_usertype<Image>("Image",
-		sol::constructors<Image(const char*)>(),
-		"renderCopy", &Image::renderCopy,
-		"render", &Image::render
+	m_lua.new_usertype<gk::Image>("Image",
+		sol::constructors<gk::Image(const char*)>()
 	);
 
 	m_lua.new_usertype<Inventory>("Inventory",
@@ -140,14 +136,11 @@ void LuaHandler::bindClasses() {
 		"x", &Character::x,
 		"y", &Character::y,
 		"inFrontOf", &Character::inFrontOf,
-		sol::base_classes, sol::bases<Character, Sprite>()
+		sol::base_classes, sol::bases<Character, gk::Sprite>()
 	);
 
-	m_lua.new_usertype<Sprite>("Sprite",
-		sol::constructors<Sprite(const char *, u16, u16)>(),
-		"drawFrame", &Sprite::drawFrame,
-		"playAnimation", &Sprite::playAnimation,
-		"animationAtEnd", &Sprite::animationAtEnd
+	m_lua.new_usertype<gk::Sprite>("Sprite",
+		sol::constructors<gk::Sprite(const char *, u16, u16)>()
 	);
 
 	m_lua.new_usertype<LanguageManager>("LanguageManager",

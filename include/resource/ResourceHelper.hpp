@@ -18,30 +18,31 @@
 
 #include <gk/core/IntTypes.hpp>
 
+namespace gk {
+	class Font;
+	class Image;
+	class SpriteAnimation;
+}
+
 class Actor;
-class Animation;
 class Armor;
 class Enemy;
 class Event;
-class Font;
-class Image;
 class Item;
 class Map;
 class Quest;
 class Player;
 class Skill;
-class SpriteAnimation;
 class Tileset;
 class Troop;
 class Weapon;
 
 class ResourceHelper {
 	public:
-		static Image &getImage(const std::string &name);
-		static Font &getFont(const std::string &name);
+		static gk::Image &getImage(const std::string &name);
+		static gk::Font &getFont(const std::string &name);
 
-		static SpriteAnimation &getAnimation(const std::string &name, size_t id);
-		static Animation *getAnimationByName(const std::string &name);
+		static gk::SpriteAnimation &getAnimation(const std::string &name, size_t id);
 
 		static Item   *getItem(u16 id);
 		static Armor  *getArmor(u16 id);

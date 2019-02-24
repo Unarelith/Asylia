@@ -27,7 +27,7 @@ void EnemyLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		u8 level;
 
 		name = enemyElement->Attribute("name");
-		appearance = std::string("resources/graphics/battlers/") + enemyElement->Attribute("appearance") + ".png";
+		appearance = std::string("texture-battler-") + enemyElement->Attribute("appearance");
 
 		level = enemyElement->IntAttribute("level");
 
@@ -53,13 +53,13 @@ void EnemyLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 			chance = itemElement->DoubleAttribute("chance");
 
 			if(itemElement->Attribute("type", "Item")) {
-				enemy.loot()->addItem(id, count, chance);
+				enemy.loot().addItem(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Armor")) {
-				enemy.loot()->addArmor(id, count, chance);
+				enemy.loot().addArmor(id, count, chance);
 			}
 			else if(itemElement->Attribute("type", "Weapon")) {
-				enemy.loot()->addWeapon(id, count, chance);
+				enemy.loot().addWeapon(id, count, chance);
 			}
 
 			itemElement = itemElement->NextSiblingElement("item");

@@ -57,8 +57,8 @@ void TitleState::update() {
 	}
 }
 
-void TitleState::render() {
-	m_background.renderCopy();
-	m_cmdwin.draw();
+void TitleState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	target.draw(m_background, states);
+	// m_cmdwin.draw(); // FIXME
 }
 

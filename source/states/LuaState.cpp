@@ -11,7 +11,6 @@
  *
  * =====================================================================================
  */
-#include "GameWindow.hpp"
 #include "LuaState.hpp"
 #include "LuaHandler.hpp"
 

@@ -14,12 +14,12 @@
 #ifndef TILESET_HPP_
 #define TILESET_HPP_
 
-#include "Image.hpp"
+#include <gk/graphics/Image.hpp>
 
 struct Tileset {
 	Tileset() : tileWidth(16), tileHeight(16) {}
 
-	Image *tiles;
+	gk::Image tiles;
 
 	u16 tileWidth;
 	u16 tileHeight;

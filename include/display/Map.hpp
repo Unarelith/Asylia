@@ -14,6 +14,8 @@
 #ifndef MAP_HPP_
 #define MAP_HPP_
 
+#include <gk/core/SDLHeaders.hpp>
+
 #include "Event.hpp"
 #include "Tileset.hpp"
 
@@ -43,11 +45,9 @@ class Map {
 
 		u8 layers() const { return m_layers; }
 
-		std::vector<Event*> events() const { return m_events; }
+		const std::vector<Event*> &events() const { return m_events; }
 
-		Image *battleback() const { return m_battleback; }
-
-		void setBattleback(Image *battleback) { m_battleback = battleback; }
+		gk::Image &battleback() { return m_battleback; }
 
 		static bool passable(s16 x, s16 y);
 
@@ -79,7 +79,7 @@ class Map {
 
 		std::vector<Event*> m_events;
 
-		Image *m_battleback;
+		gk::Image m_battleback;
 };
 
 #endif // MAP_HPP_

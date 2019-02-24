@@ -19,7 +19,6 @@
 class BattleAction {
 	public:
 		BattleAction(Battler *actor, Battler *receiver, Item *item);
-		~BattleAction();
 
 		void process();
 

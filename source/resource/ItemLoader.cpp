@@ -23,17 +23,12 @@ void ItemLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 	tinyxml2::XMLElement *itemElement = doc.FirstChildElement("items").FirstChildElement("item").ToElement();
 	u16 id = 0;
 	while(itemElement) {
-		const char *animation = itemElement->Attribute("animation");
 		int effect;
-
-		Animation *anim = nullptr;
-		if (animation)
-			anim = ResourceHelper::getAnimationByName(animation);
 
 		Item &item = handler.add<Item>("item-" + std::to_string(id),
 			"Item" + std::to_string(id),
 			"Item" + std::to_string(id) + "Desc",
-			"resources/graphics/items/" + std::to_string(id) + ".png", anim
+			"texture-item-" + std::to_string(id)
 		);
 
 		item.setID(id);

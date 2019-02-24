@@ -13,7 +13,7 @@
  */
 #include "Enemy.hpp"
 
-Enemy::Enemy(std::string name, std::string appearance, u8 level) : Battler(name, appearance, level) {
+Enemy::Enemy(const std::string &name, const std::string &appearance, u8 level) : Battler(name, appearance, level) {
 	m_type = Type::TypeEnemy;
 }
 

@@ -108,6 +108,6 @@ void Player::addTeamMember(u16 id) {
 	m_team.push_back(ResourceHelper::getActor(id));
 
 	if(m_team.size() == 1)
-		reload(m_team.back()->sprite());
+		load(m_team.back()->sprite());
 }
 

@@ -13,10 +13,10 @@
  */
 #include <gk/core/ApplicationStateStack.hpp>
 
+#include "Color.hpp"
 #include "Config.hpp"
 #include "EquipState.hpp"
 #include "EquipStatsWindow.hpp"
-#include "Font.hpp"
 #include "ResourceHelper.hpp"
 
 EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (SCREEN_WIDTH - 150) / 2, (SCREEN_HEIGHT - 52) / 2) {
@@ -26,7 +26,7 @@ EquipStatsWindow::EquipStatsWindow(Actor *actor) : Window(150, 52, (SCREEN_WIDTH
 void EquipStatsWindow::draw(Item *currentItem) {
 	u16 baseAtk, finalAtk, baseDef, finalDef;
 	gk::Color finalAtkColor(gk::Color::White), finalDefColor(gk::Color::White);
-	Image arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
+	gk::Image arrow, baseAtkImg, finalAtkImg, baseDefImg, finalDefImg;
 
 	baseAtk = m_actor->totalAtk();
 	baseDef = m_actor->totalDef();
@@ -78,28 +78,29 @@ void EquipStatsWindow::draw(Item *currentItem) {
 	printName(m_actor, 20, 20, m_width - 130);
 	printLevel(m_actor, m_width - 90, 20, m_width - 20);
 
-	ResourceHelper::getFont("default").printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::System);
-
-	ResourceHelper::getFont("default").printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::System);
-	ResourceHelper::getFont("default").printToImage(std::to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);
-	ResourceHelper::getFont("default").printToImage(std::to_string(finalAtk).c_str(), m_x + m_width - 20, m_y + 52, &finalAtkImg, FONT_LARGE, finalAtkColor);
-
-	ResourceHelper::getFont("default").printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::System);
-	ResourceHelper::getFont("default").printToImage(std::to_string(baseDef).c_str(), 0, m_y + 84, &baseDefImg, FONT_LARGE);
-	ResourceHelper::getFont("default").printToImage(std::to_string(finalDef).c_str(), m_x + m_width - 20, m_y + 84, &finalDefImg, FONT_LARGE, finalDefColor);
-
-	finalAtkImg.render(finalAtkImg.posRect().x - finalAtkImg.width());
-	finalDefImg.render(finalDefImg.posRect().x - finalDefImg.width());
-
-	if(m_actor->atk() > m_actor->def()) {
-		arrow.render(finalAtkImg.posRect().x - arrow.width() - 8);
-		arrow.render(-1, arrow.posRect().y + 32);
-	} else {
-		arrow.render(finalDefImg.posRect().x - arrow.width() - 8, arrow.posRect().y + 32);
-		arrow.render(-1, arrow.posRect().y - 32);
-	}
-
-	baseAtkImg.render(arrow.posRect().x - baseAtkImg.width() - 10);
-	baseDefImg.render(arrow.posRect().x - baseDefImg.width() - 10);
+	// FIXME
+	// ResourceHelper::getFont("default").printToImage("->", 0, m_y + 52, &arrow, FONT_LARGE, Color::System);
+    //
+	// ResourceHelper::getFont("default").printScaled(_t("ATK").c_str(), m_x + 20, m_y + 52, 60, 32, FONT_LARGE, Color::System);
+	// ResourceHelper::getFont("default").printToImage(std::to_string(baseAtk).c_str(), 0, m_y + 52, &baseAtkImg, FONT_LARGE);
+	// ResourceHelper::getFont("default").printToImage(std::to_string(finalAtk).c_str(), m_x + m_width - 20, m_y + 52, &finalAtkImg, FONT_LARGE, finalAtkColor);
+    //
+	// ResourceHelper::getFont("default").printScaled(_t("DEF").c_str(), m_x + 20, m_y + 84, 60, 32, FONT_LARGE, Color::System);
+	// ResourceHelper::getFont("default").printToImage(std::to_string(baseDef).c_str(), 0, m_y + 84, &baseDefImg, FONT_LARGE);
+	// ResourceHelper::getFont("default").printToImage(std::to_string(finalDef).c_str(), m_x + m_width - 20, m_y + 84, &finalDefImg, FONT_LARGE, finalDefColor);
+    //
+	// finalAtkImg.render(finalAtkImg.posRect().x - finalAtkImg.width());
+	// finalDefImg.render(finalDefImg.posRect().x - finalDefImg.width());
+    //
+	// if(m_actor->atk() > m_actor->def()) {
+	// 	arrow.render(finalAtkImg.posRect().x - arrow.width() - 8);
+	// 	arrow.render(-1, arrow.posRect().y + 32);
+	// } else {
+	// 	arrow.render(finalDefImg.posRect().x - arrow.width() - 8, arrow.posRect().y + 32);
+	// 	arrow.render(-1, arrow.posRect().y - 32);
+	// }
+    //
+	// baseAtkImg.render(arrow.posRect().x - baseAtkImg.width() - 10);
+	// baseDefImg.render(arrow.posRect().x - baseDefImg.width() - 10);
 }
 

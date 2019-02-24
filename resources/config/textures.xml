@@ -1,0 +1,56 @@
+<textures>
+	<texture name="interface" path="resources/graphics/interface/Interface.png" />
+
+	<texture name="item-0" path="resources/graphics/items/0.png" />
+	<texture name="item-1" path="resources/graphics/items/1.png" />
+	<texture name="item-2" path="resources/graphics/items/2.png" />
+	<texture name="item-3" path="resources/graphics/items/3.png" />
+	<texture name="item-4" path="resources/graphics/items/4.png" />
+	<texture name="item-5" path="resources/graphics/items/5.png" />
+	<texture name="item-6" path="resources/graphics/items/6.png" />
+
+	<texture name="armor-0" path="resources/graphics/armors/0.png" />
+	<texture name="armor-1" path="resources/graphics/armors/1.png" />
+	<texture name="armor-2" path="resources/graphics/armors/2.png" />
+	<texture name="armor-3" path="resources/graphics/armors/3.png" />
+	<texture name="armor-4" path="resources/graphics/armors/4.png" />
+	<texture name="armor-5" path="resources/graphics/armors/5.png" />
+	<texture name="armor-6" path="resources/graphics/armors/6.png" />
+	<texture name="armor-7" path="resources/graphics/armors/7.png" />
+	<texture name="armor-8" path="resources/graphics/armors/8.png" />
+	<texture name="armor-9" path="resources/graphics/armors/9.png" />
+
+	<texture name="weapon-0" path="resources/graphics/weapons/0.png" />
+	<texture name="weapon-1" path="resources/graphics/weapons/1.png" />
+	<texture name="weapon-2" path="resources/graphics/weapons/2.png" />
+	<texture name="weapon-3" path="resources/graphics/weapons/3.png" />
+	<texture name="weapon-4" path="resources/graphics/weapons/4.png" />
+	<texture name="weapon-5" path="resources/graphics/weapons/5.png" />
+	<texture name="weapon-6" path="resources/graphics/weapons/6.png" />
+	<texture name="weapon-7" path="resources/graphics/weapons/7.png" />
+
+	<texture name="skill-0" path="resources/graphics/skills/0.png" />
+	<texture name="skill-1" path="resources/graphics/skills/1.png" />
+
+	<texture name="battler-Cleric01"  path="resources/graphics/battlers/Cleric01.png" />
+	<texture name="battler-Devil03"   path="resources/graphics/battlers/Devil03.png" />
+	<texture name="battler-Fighter01" path="resources/graphics/battlers/Fighter01.png" />
+	<texture name="battler-Lancer01"  path="resources/graphics/battlers/Lancer01.png" />
+	<texture name="battler-Mage01"    path="resources/graphics/battlers/Mage01.png" />
+	<texture name="battler-Undead01"  path="resources/graphics/battlers/Undead01.png" />
+
+	<texture name="character-Cleric01"  path="resources/graphics/characters/Cleric01.png" />
+	<texture name="character-Devil03"   path="resources/graphics/characters/Devil03.png" />
+	<texture name="character-Fighter01" path="resources/graphics/characters/Fighter01.png" />
+	<texture name="character-Fighter02" path="resources/graphics/characters/Fighter02.png" />
+	<texture name="character-Fighter03" path="resources/graphics/characters/Fighter03.png" />
+	<texture name="character-Lancer01"  path="resources/graphics/characters/Lancer01.png" />
+	<texture name="character-Mage01"    path="resources/graphics/characters/Mage01.png" />
+	<texture name="character-Undead01"  path="resources/graphics/characters/Undead01.png" />
+
+	<texture name="event-Chest01"  path="resources/graphics/events/Chest01.png" />
+
+	<texture name="battleback-Grassland"  path="resources/graphics/battlebacks/Grassland.jpg" />
+
+	<texture name="tileset-Grassland" path="resources/graphics/tilesets/Grassland.png" />
+</textures>

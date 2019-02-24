@@ -14,21 +14,22 @@
 #ifndef ITEM_HPP_
 #define ITEM_HPP_
 
-#include "Animation.hpp"
+#include <gk/graphics/Image.hpp>
+
 #include "LanguageManager.hpp"
 
 class Item {
 	public:
-		Item(const std::string &name, const std::string &description, const std::string &thumbnail, Animation *battleAnimation = nullptr);
+		Item(const std::string &name, const std::string &description, const std::string &thumbnail);
 
 		u16 id() const { return m_id; }
 
-		std::string name() const { return _t(m_name); }
-		std::string description() const { return _t(m_description); }
+		const std::string &name() const { return _t(m_name); }
+		const std::string &description() const { return _t(m_description); }
 
 		u8 level() const { return m_level; }
 
-		Image &thumbnail() { return m_thumbnail; }
+		const gk::Image &thumbnail() const { return m_thumbnail; }
 
 		enum Type {
 			BasicItem,
@@ -46,8 +47,6 @@ class Item {
 		Type type() const { return m_type; }
 
 		Effect effect() const { return m_effect; }
-
-		Animation *battleAnimation() const { return m_battleAnimation; }
 
 		bool equipped() const { return m_equipped; }
 
@@ -69,9 +68,7 @@ class Item {
 
 		u8 m_level;
 
-		Image m_thumbnail;
-
-		Animation *m_battleAnimation;
+		gk::Image m_thumbnail;
 
 		bool m_equipped;
 };

@@ -14,12 +14,12 @@
 #include <gk/audio/AudioPlayer.hpp>
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
+#include <gk/graphics/Font.hpp>
 
 #include "BattleState.hpp"
 #include "Config.hpp"
 #include "EndState.hpp"
 #include "EventListener.hpp"
-#include "Font.hpp"
 #include "GameKey.hpp"
 #include "InfoWindow.hpp"
 #include "ItemWindow.hpp"
@@ -314,11 +314,12 @@ void BattleState::render() {
 		}
 	} else {
 		if(!m_allowDefeat) {
-			if(m_gameoverAlpha < 256) m_gameover.setAlphaMod(m_gameoverAlpha);
-			m_gameover.render();
-			if(m_gameoverAlpha > 400) {
-				ResourceHelper::getFont("default").print("Press A to continue", 3, 3, FONT_LARGE);
-			}
+			// FIXME
+			// if(m_gameoverAlpha < 256) m_gameover.setAlphaMod(m_gameoverAlpha);
+			// m_gameover.render();
+			// if(m_gameoverAlpha > 400) {
+			// 	ResourceHelper::getFont("default").print("Press A to continue", 3, 3, FONT_LARGE);
+			// }
 		} else {
 			m_battle.renderBattleback();
 

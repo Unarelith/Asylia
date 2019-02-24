@@ -15,8 +15,8 @@
 #define APPLICATION_HPP_
 
 #include <gk/core/CoreApplication.hpp>
+#include <gk/gl/Shader.hpp>
 
-#include "GameWindow.hpp"
 #include "KeyboardHandler.hpp"
 #include "LanguageManager.hpp"
 #include "LuaHandler.hpp"
@@ -31,13 +31,13 @@ class Application : public gk::CoreApplication {
 		void onEvent(const SDL_Event &event) override;
 		void mainLoop() override;
 
-		GameWindow m_window;
-
 		KeyboardHandler m_keyboardHandler;
 
 		LanguageManager m_languageManager;
 
 		LuaHandler m_luaHandler;
+
+		gk::Shader m_shader;
 };
 
 #endif // APPLICATION_HPP_

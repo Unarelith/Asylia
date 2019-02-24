@@ -25,7 +25,7 @@ class Battle {
 		Battle();
 		~Battle();
 
-		void addActor(Actor *actor) { m_actors.push_back(std::make_pair(m_actorsCount, new Actor(*actor))); m_actorsCount++; }
+		void addActor(Actor *actor) { m_actors.emplace_back(m_actorsCount, actor); m_actorsCount++; }
 
 		void addTroop(Troop *troop);
 		void addEnemy(Enemy *enemy, s16 x, s16 y);
@@ -54,10 +54,10 @@ class Battle {
 		std::pair<u8, Actor*> getNextActorPair(s8 v, s8 current);
 		std::pair<u8, Enemy*> getNextEnemyPair(s8 v, s8 current);
 
-		std::vector<std::pair<u8, Actor*>> actors() { return m_actors; }
-		std::vector<std::pair<u8, Enemy*>> enemies() { return m_enemies; }
+		const std::vector<std::pair<u8, Actor*>> &actors() { return m_actors; }
+		const std::vector<std::pair<u8, Enemy*>> &enemies() { return m_enemies; }
 
-		void setBattleback(Image *battleback) { m_battleback = battleback; }
+		void setBattleback(gk::Image *battleback) { m_battleback = battleback; }
 
 		void renderBattleback();
 
@@ -71,7 +71,7 @@ class Battle {
 		u8 m_actorsCount;
 		u8 m_enemiesCount;
 
-		Image *m_battleback;
+		gk::Image *m_battleback;
 
 		std::vector<BattleAction*> m_actions;
 

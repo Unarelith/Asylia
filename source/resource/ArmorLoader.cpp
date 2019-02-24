@@ -25,7 +25,7 @@ void ArmorLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		Armor &armor = handler.add<Armor>("armor-" + std::to_string(id),
 			"Armor" + std::to_string(id),
 			"Armor" + std::to_string(id) + "Desc",
-			"resources/graphics/armors/" + std::to_string(id) + ".png",
+			"texture-armor-" + std::to_string(id),
 			armorElement->IntAttribute("slot"),
 			armorElement->IntAttribute("defense")
 		);

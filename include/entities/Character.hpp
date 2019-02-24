@@ -14,21 +14,21 @@
 #ifndef CHARACTER_HPP_
 #define CHARACTER_HPP_
 
+#include <gk/graphics/Sprite.hpp>
+
 #include "Inventory.hpp"
-#include "Sprite.hpp"
 
 #define DIR_DOWN 0
 #define DIR_LEFT 1
 #define DIR_RIGHT 2
 #define DIR_UP 3
 
-class Character : public Sprite {
+class Character : public gk::Sprite {
 	public:
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth = 32, u16 frameHeight = 48);
 		virtual ~Character() = default;
 
 		void move();
-		void render();
 
 		void testCollisions();
 
@@ -78,6 +78,8 @@ class Character : public Sprite {
 		};
 
 	protected:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		Type m_type;
 
 		u16 m_gold;

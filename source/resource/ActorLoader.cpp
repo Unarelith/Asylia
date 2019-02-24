@@ -27,7 +27,7 @@ void ActorLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 		u8 level;
 
 		name = actorElement->Attribute("name");
-		appearance = std::string("resources/graphics/battlers/") + actorElement->Attribute("appearance") + ".png";
+		appearance = std::string("texture-battler-") + actorElement->Attribute("appearance");
 
 		level = actorElement->IntAttribute("level");
 

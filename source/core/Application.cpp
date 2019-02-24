@@ -12,17 +12,15 @@
  * =====================================================================================
  */
 #include <gk/core/input/GamePad.hpp>
+#include <gk/graphics/Font.hpp>
+#include <gk/graphics/Image.hpp>
 
 #include "Application.hpp"
 #include "Config.hpp"
-#include "Font.hpp"
-#include "GameWindow.hpp"
-#include "Image.hpp"
 #include "MapState.hpp"
 #include "TimeManager.hpp"
 
 #include "ActorLoader.hpp"
-#include "AnimationLoader.hpp"
 #include "ArmorLoader.hpp"
 #include "AudioLoader.hpp"
 #include "EnemyLoader.hpp"
@@ -33,6 +31,7 @@
 #include "QuestLoader.hpp"
 #include "SkillLoader.hpp"
 #include "SpriteAnimationLoader.hpp"
+#include "TextureLoader.hpp"
 #include "TilesetLoader.hpp"
 #include "TroopLoader.hpp"
 #include "WeaponLoader.hpp"
@@ -45,8 +44,10 @@ void Application::init() {
 
 	gk::GamePad::init(m_keyboardHandler);
 
-	m_window.open(APP_NAME);
-	GameWindow::main = &m_window;
+	createWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_NAME);
+
+	m_shader.loadFromFile("resources/shaders/game.v.glsl", "resources/shaders/game.f.glsl");
+	m_renderStates.shader = &m_shader;
 
 	LanguageManager::setInstance(m_languageManager);
 	m_languageManager.init("en-us");
@@ -54,12 +55,13 @@ void Application::init() {
 	LuaHandler::setInstance(m_luaHandler);
 	m_luaHandler.init();
 
-	m_resourceHandler.add<Font>("font-default", "resources/fonts/arial.ttf");
-	m_resourceHandler.add<Image>("image-interface", "resources/graphics/interface/Interface.png");
+	m_resourceHandler.add<gk::Font>("font-default", "resources/fonts/arial.ttf");
+
+	m_resourceHandler.loadConfigFile<TextureLoader>("resources/config/textures.xml");
+	m_resourceHandler.add<gk::Image>("image-interface", "texture-interface");
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
 	m_resourceHandler.loadConfigFile<SpriteAnimationLoader>("resources/config/spriteAnimations.xml");
-	m_resourceHandler.loadConfigFile<AnimationLoader>("resources/config/animations.xml");
 	m_resourceHandler.loadConfigFile<ItemLoader>("resources/config/items.xml");
 	m_resourceHandler.loadConfigFile<ArmorLoader>("resources/config/armors.xml");
 	m_resourceHandler.loadConfigFile<WeaponLoader>("resources/config/weapons.xml");
@@ -99,11 +101,10 @@ void Application::mainLoop() {
 
 				m_window.clear();
 
-				if(!m_stateStack.empty()) {
-					m_stateStack.top().render();
-				}
+				if(!m_stateStack.empty())
+					m_window.draw(m_stateStack.top(), m_renderStates);
 
-				m_window.update();
+				m_window.display();
 
 				TimeManager::endMeasuringRenderingTime();
 			}

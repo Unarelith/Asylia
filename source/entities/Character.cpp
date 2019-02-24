@@ -54,27 +54,28 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 	m_solid = true;
 }
 
-void Character::render() {
-	if(gk::ApplicationStateStack::getInstance().size() < 2) {
-		if(!m_movementTimer.isStarted()) {
-			if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
-				m_movementTimer.start();
-			}
-			else if(m_type == Type::TypeNPC && !((Event*)(this))->isLocked()) {
-				m_movementTimer.start();
-			}
-		}
-
-		if(m_moving) {
-			playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
-		} else {
-			drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
-		}
-	} else {
-		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
-		stopAnimation(m_direction);
-		m_movementTimer.stop();
-	}
+void Character::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Sprite::draw(target, states);
+	// if(gk::ApplicationStateStack::getInstance().size() < 2) {
+	// 	if(!m_movementTimer.isStarted()) {
+	// 		if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
+	// 			m_movementTimer.start();
+	// 		}
+	// 		else if(m_type == Type::TypeNPC && !((Event*)(this))->isLocked()) {
+	// 			m_movementTimer.start();
+	// 		}
+	// 	}
+    //
+	// 	if(m_moving) {
+	// 		playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
+	// 	} else {
+	// 		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
+	// 	}
+	// } else {
+	// 	drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
+	// 	stopAnimation(m_direction);
+	// 	m_movementTimer.stop();
+	// }
 }
 
 void Character::move() {

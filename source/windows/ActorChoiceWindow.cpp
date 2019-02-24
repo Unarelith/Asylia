@@ -30,9 +30,10 @@ void ActorChoiceWindow::update() {
 
 void ActorChoiceWindow::drawActor(u16 pos) {
 	u16 y = pos * (m_height - 20) / 4;
-	u16 charaY = m_y + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(pos)->sprite()->frameHeight() / 2;
+	u16 charaY = m_y + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(pos)->sprite().frameHeight() / 2;
 
-	ResourceHelper::getPlayer()->getTeamMember(pos)->sprite()->playAnimation(m_x + 30, charaY, 0);
+	// FIXME
+	// ResourceHelper::getPlayer()->getTeamMember(pos)->sprite().playAnimation(m_x + 30, charaY, 0);
 
 	printName(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
 	printLevel(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 57 + y, 140);

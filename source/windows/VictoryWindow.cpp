@@ -14,7 +14,6 @@
 #include <gk/audio/AudioPlayer.hpp>
 
 #include "Config.hpp"
-#include "Font.hpp"
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 #include "VictoryWindow.hpp"
@@ -26,7 +25,7 @@ void VictoryWindow::init(Battle *battle) {
 	m_battle = battle;
 
 	for(auto &it : m_battle->enemies()) {
-		m_inventory.add(it.second->loot(), true);
+		m_inventory.add(&it.second->loot(), true);
 	}
 
 	m_itemsNb = m_inventory.nbItems() + m_inventory.nbArmors() + m_inventory.nbWeapons();
@@ -36,6 +35,7 @@ void VictoryWindow::init(Battle *battle) {
 	for(u8 i = 0 ; i < ResourceHelper::getPlayer()->teamSize() ; i++) {
 		ResourceHelper::getPlayer()->getTeamMember(i)->gainExp(m_battle->exp() / m_battle->actors().size());
 	}
+
 	ResourceHelper::getPlayer()->gainGold(m_battle->gold());
 
 	gk::AudioPlayer::playSound("sound-confirm");
@@ -48,22 +48,23 @@ void VictoryWindow::draw() {
 
 	Window::draw();
 
-	ResourceHelper::getFont("default").printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
-	printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
-	printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
-
-	u16 i = 0;
-	for(u16 j = 0 ; j < m_inventory.nbItems() ; j++) {
-		printItem(m_inventory.getItem(j), m_inventory.getItemCount(j), 20, 116 + i * 32, 175);
-		i++;
-	}
-	for(u16 j = 0 ; j < m_inventory.nbArmors() ; j++) {
-		printItem(m_inventory.getArmor(j), m_inventory.getArmorCount(j), 20, 116 + i * 32, 175);
-		i++;
-	}
-	for(u16 j = 0 ; j < m_inventory.nbWeapons() ; j++) {
-		printItem(m_inventory.getWeapon(j), m_inventory.getWeaponCount(j), 20, 116 + i * 32, 175);
-		i++;
-	}
+	// FIXME
+	// ResourceHelper::getFont("default").printCentered(_t("Victory").c_str(), m_x, m_y + 20, m_width, 21, FONT_LARGE);
+	// printStat(20, 52, _t("EXP"), m_battle->exp(), 60, 180);
+	// printStat(20, 84, _t("Gold"), m_battle->gold(), 60, 180);
+    //
+	// u16 i = 0;
+	// for(u16 j = 0 ; j < m_inventory.nbItems() ; j++) {
+	// 	printItem(m_inventory.getItem(j), m_inventory.getItemCount(j), 20, 116 + i * 32, 175);
+	// 	i++;
+	// }
+	// for(u16 j = 0 ; j < m_inventory.nbArmors() ; j++) {
+	// 	printItem(m_inventory.getArmor(j), m_inventory.getArmorCount(j), 20, 116 + i * 32, 175);
+	// 	i++;
+	// }
+	// for(u16 j = 0 ; j < m_inventory.nbWeapons() ; j++) {
+	// 	printItem(m_inventory.getWeapon(j), m_inventory.getWeaponCount(j), 20, 116 + i * 32, 175);
+	// 	i++;
+	// }
 }
 
