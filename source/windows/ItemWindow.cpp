@@ -103,8 +103,12 @@ void ItemWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 		y = 21 + i / m_columnMax * 32 - m_scroll * 32;
 
 		// printItem(m_inventory->getItem(i), m_inventory->getItemCount(i), x, y, width);
+
+		m_inventory->getItem(i)->thumbnail().setPosition(x, y);
+		target.draw(m_inventory->getItem(i)->thumbnail(), states);
+
 		m_text.setText(m_inventory->getItem(i)->name());
-		m_text.setPosition(x, y);
+		m_text.setPosition(x + 32, y);
 		target.draw(m_text, states);
 	}
 }
