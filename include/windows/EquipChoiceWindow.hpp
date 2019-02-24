@@ -24,6 +24,8 @@ class EquipChoiceWindow : public SelectableWindow {
 		// void draw(bool drawCursor = true);
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		Equipment *m_equipment;
 };
 
