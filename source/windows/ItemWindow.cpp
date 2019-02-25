@@ -15,24 +15,25 @@
 #include "Player.hpp"
 #include "ResourceHelper.hpp"
 
-ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY) : SelectableWindow(x, y, width, height) {
+ItemWindow::ItemWindow(s16 x, s16 y, u16 width, u16 height, Inventory *inventory, s16 infowinX, s16 infowinY)
+	: SelectableWindow(x, y, width, height),
+	  m_infoWindow(infowinX, infowinY, width, 52)
+{
 	m_inventory = new Inventory(*inventory);
 
 	m_itemMax = m_inventory->nbItems();
 	m_columnMax = 2;
 
 	m_pos = 0;
-
-	m_infoWindow.reset(new InfoWindow(infowinX, infowinY, width, 52));
 }
 
 void ItemWindow::update(bool infowinText) {
 	SelectableWindow::update();
 
 	if(infowinText && m_pos < m_inventory->nbItems())
-		m_infoWindow->setText(m_inventory->getItem(m_pos)->description());
+		m_infoWindow.setText(m_inventory->getItem(m_pos)->description());
 	else
-		m_infoWindow->setText(" ");
+		m_infoWindow.setText(" ");
 }
 
 // void ItemWindow::drawItem(u8 pos) {
@@ -89,8 +90,7 @@ Item *ItemWindow::currentItem() {
 void ItemWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	Window::draw(target, states);
 
-	if (m_infoWindow)
-		target.draw(*m_infoWindow, states);
+	target.draw(m_infoWindow, states);
 
 	states.transform *= getTransform();
 

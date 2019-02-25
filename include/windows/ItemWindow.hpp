@@ -39,6 +39,8 @@ class ItemWindow : public SelectableWindow {
 		Inventory *m_inventory;
 
 		mutable gk::Text m_text{"font-default", 18}; // FIXME
+
+		InfoWindow m_infoWindow;
 };
 
 #endif // ITEMWINDOW_HPP_
