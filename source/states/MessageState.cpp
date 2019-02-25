@@ -36,15 +36,15 @@ MessageState::MessageState(const std::string &message, gk::ApplicationState *par
 }
 
 void MessageState::updateCmdwinSize() {
-	// FIXME
-	// u16 sizeMax = 0;
-	// for(auto &it : m_cmdwin->commands()) {
-	// 	if(it.first.size() > sizeMax) sizeMax = it.first.size();
-	// }
-    //
-	// m_cmdwin->setWidth(sizeMax * 20 + 40);
-	// m_cmdwin->setHeight(m_cmdwin->commands().size() * 32 + 32);
-	// m_cmdwin->setY(m_txtwin->y() - m_cmdwin->height());
+	u16 sizeMax = 0;
+	for(auto &it : m_cmdwin->commands()) {
+		if(it.text().text().length() > sizeMax)
+			sizeMax = it.text().text().length();
+	}
+
+	m_cmdwin->setWidth(sizeMax * 20 + 40);
+	m_cmdwin->setHeight(m_cmdwin->commands().size() * 32 + 32);
+	m_cmdwin->setY(m_txtwin->y() - m_cmdwin->height());
 }
 
 void MessageState::update() {
