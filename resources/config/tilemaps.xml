@@ -1,0 +1,4 @@
+<tilemaps>
+	<tilemap name="map0-0-0" tileset="Grassland" battleback="Grassland" />
+	<tilemap name="map0-1-0" tileset="Grassland" battleback="Grassland" />
+</tilemaps>

@@ -11,6 +11,7 @@
  *
  * =====================================================================================
  */
+#include <gk/graphics/Tileset.hpp>
 #include <gk/resource/ResourceHandler.hpp>
 
 #include "Tileset.hpp"
@@ -32,6 +33,18 @@ void TilesetLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) 
 		Tileset &tileset = handler.add<Tileset>("tileset-" + std::to_string(id++));
 		tileset.tiles.load(tilesetFilename.str());
 		getNonPassableTiles(tilesetInfoFilename.str().c_str(), &tileset);
+
+		tilesetElement = tilesetElement->NextSiblingElement("tileset");
+	}
+
+	tilesetElement = doc.FirstChildElement("tilesets").FirstChildElement("tileset").ToElement();
+	while(tilesetElement) {
+		std::string name = tilesetElement->Attribute("name");
+		std::string filename = "resources/graphics/tilesets/" + name + ".png";
+
+		std::string configFile = "resources/tilesets/" + name + ".tsx";
+
+		handler.add<gk::Tileset>(name, filename, configFile);
 
 		tilesetElement = tilesetElement->NextSiblingElement("tileset");
 	}

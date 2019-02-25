@@ -22,20 +22,25 @@ void EventLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 
 	gk::XMLFile doc(xmlFilename);
 
-	tinyxml2::XMLElement *eventElement = doc.FirstChildElement("events").FirstChildElement("event").ToElement();
-	while(eventElement) {
-		std::string eventType = eventElement->Attribute("type");
+	tinyxml2::XMLElement *tilemapElement = doc.FirstChildElement("events").FirstChildElement("tilemap").ToElement();
+	while (tilemapElement) {
+		tinyxml2::XMLElement *eventElement = tilemapElement->FirstChildElement("event");
+		while(eventElement) {
+			std::string eventType = eventElement->Attribute("type");
 
-		if(eventType == "Character") {
-			loadCharacterEvent(eventElement, handler);
-		}
-		else if(eventType == "Chest") {
-			loadChestEvent(eventElement, handler);
-		} else {
-			warning("Event type %s not recognized.", eventType.c_str());
+			if(eventType == "Character") {
+				loadCharacterEvent(eventElement, handler);
+			}
+			else if(eventType == "Chest") {
+				loadChestEvent(eventElement, handler);
+			} else {
+				warning("Event type %s not recognized.", eventType.c_str());
+			}
+
+			eventElement = eventElement->NextSiblingElement("event");
 		}
 
-		eventElement = eventElement->NextSiblingElement("event");
+		tilemapElement = tilemapElement->NextSiblingElement("tilemap");
 	}
 }
 

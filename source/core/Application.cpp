@@ -33,6 +33,7 @@
 #include "SpriteAnimationLoader.hpp"
 #include "TextureLoader.hpp"
 #include "TilesetLoader.hpp"
+#include "TilemapLoader.hpp"
 #include "TroopLoader.hpp"
 #include "WeaponLoader.hpp"
 
@@ -74,6 +75,7 @@ void Application::init() {
 	m_resourceHandler.loadConfigFile<EventLoader>("resources/config/events.xml");
 	m_resourceHandler.loadConfigFile<TilesetLoader>("resources/config/tilesets.xml");
 	m_resourceHandler.loadConfigFile<MapLoader>("resources/config/maps.xml");
+	m_resourceHandler.loadConfigFile<TilemapLoader>("resources/config/tilemaps.xml");
 
 	m_stateStack.push<TitleState>();
 }
