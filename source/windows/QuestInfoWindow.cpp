@@ -50,32 +50,30 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 		std::string questName = _t("Quest" + std::to_string(m_quest->id()));
 		std::string questDesc = "    " + _t("Quest" + std::to_string(m_quest->id()) + "Desc");
 
-		// FIXME: Needs to be centered
 		m_text.setCharacterSize(22);
 		m_text.setText(questName);
 		m_text.setPosition(0, 0);
 		m_text.setColor(gk::Color::White);
-		// m_text.setSize(SCREEN_WIDTH - x(), 64);
-		// m_text.setWrapped(false);
-		// m_text.setCentered(true);
+		m_text.setSize({static_cast<int>(SCREEN_WIDTH - x()), 64});
+		m_text.setWrapped(false);
+		m_text.setCentered(true);
 		target.draw(m_text, states);
 
 		m_text.setCharacterSize(18);
 		m_text.setText(_t("Description") + ":");
 		m_text.setPosition(20, 80);
 		m_text.setColor(Color::System);
-		// m_text.setWrapped(false);
-		// m_text.setCentered(false);
+		m_text.setWrapped(false);
+		m_text.setCentered(false);
 		target.draw(m_text, states);
 
-		// FIXME: Needs to be wrapped in a textbox
 		m_text.setCharacterSize(18);
 		m_text.setText(questDesc);
 		m_text.setPosition(30, 110);
 		m_text.setColor(gk::Color::White);
-		// m_text.setSize(m_width - 60, 64);
-		// m_text.setWrapped(true);
-		// m_text.setCentered(false);
+		m_text.setSize({m_width - 60, 64});
+		m_text.setWrapped(true);
+		m_text.setCentered(false);
 		target.draw(m_text, states);
 
 		if(m_mode == Mode::ObjectivesMode) {
@@ -83,8 +81,8 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 			m_text.setText(_t("Objectives") + ":");
 			m_text.setPosition(20, 214);
 			m_text.setColor(Color::System);
-			// m_text.setWrapped(false);
-			// m_text.setCentered(false);
+			m_text.setWrapped(false);
+			m_text.setCentered(false);
 			target.draw(m_text, states);
 
 			for(auto it : m_quest->objectives()) {
@@ -94,8 +92,8 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 				m_text.setText(objectiveDesc);
 				m_text.setPosition(30, 242 + 28 * it->id());
 				m_text.setColor(gk::Color::White);
-				// m_text.setWrapped(false);
-				// m_text.setCentered(false);
+				m_text.setWrapped(false);
+				m_text.setCentered(false);
 				target.draw(m_text, states);
 
 				// printStat(0, 242 + 28 * it->id(), " ", 1, 0, m_width - 30, 5);
@@ -106,8 +104,8 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 			m_text.setText(_t("Rewards") + ":");
 			m_text.setPosition(20, 214);
 			m_text.setColor(Color::System);
-			// m_text.setWrapped(false);
-			// m_text.setCentered(false);
+			m_text.setWrapped(false);
+			m_text.setCentered(false);
 			target.draw(m_text, states);
 
 			// printStat(30, 260, _t("EXP"), quest->exp(), 60, m_width / 2 - 40);
@@ -117,8 +115,8 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 			m_text.setText(_t("Items") + ":");
 			m_text.setPosition(m_width / 2 + 20, 214);
 			m_text.setColor(Color::System);
-			// m_text.setWrapped(false);
-			// m_text.setCentered(false);
+			m_text.setWrapped(false);
+			m_text.setCentered(false);
 			target.draw(m_text, states);
 
 			// u16 j = 0;

@@ -67,13 +67,12 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 	int i = 0;
 	for (auto &it : m_commands) {
 		if (!m_horizontal && !m_centered) {
-			// FIXME: Draw scaled
 			m_text.setText(_t(it.text().text()));
 			m_text.setPosition(it.text().getPosition());
 			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
-			// m_text.setScaled(true);
-			// m_text.setCentered(false);
-			// m_text.setSize(m_width - 40 - 5, 32);
+			m_text.setScaled(true);
+			m_text.setCentered(false);
+			m_text.setSize({m_width - 40 - 5, 32});
 			target.draw(m_text, states);
 		}
 		else {
@@ -83,13 +82,12 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 			x = (i % m_columnMax) * (width + 32) + 16;
 			y = (i / m_columnMax) * 32 + 16;
 
-			// FIXME: Draw centered
 			m_text.setText(_t(it.text().text()));
 			m_text.setPosition(x, y);
 			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
-			// m_text.setScaled(false);
-			// m_text.setCentered(true);
-			// m_text.setSize(width, 32);
+			m_text.setScaled(false);
+			m_text.setCentered(true);
+			m_text.setSize({width, 32});
 			target.draw(m_text, states);
 		}
 
