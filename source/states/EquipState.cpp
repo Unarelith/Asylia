@@ -65,7 +65,7 @@ void EquipState::update() {
 
 			m_itemMode = false;
 			m_itemwin->pos(0);
-			m_itemwin->update();
+			m_itemwin->update(false);
 		}
 		else if(m_itemwin->itemMax() == 0) {
 			gk::AudioPlayer::playSound("sound-blocked");
@@ -84,7 +84,7 @@ void EquipState::update() {
 		if(m_itemMode) {
 			m_itemMode = false;
 			m_itemwin->pos(0);
-			m_itemwin->update();
+			m_itemwin->update(false);
 			m_itemwin->setCursorVisible(false);
 
 			// m_choicewin->setCursorVisible(true);
