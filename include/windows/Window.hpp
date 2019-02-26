@@ -49,9 +49,9 @@ class Window : public gk::IDrawable, public gk::Transformable {
 
 	protected:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
-		void drawWindow(gk::RenderTarget &target, gk::RenderStates states) const;
-		void drawCursor(gk::RenderTarget &target, gk::RenderStates states) const;
-		void drawImagePart(gk::RenderTarget &target, gk::RenderStates states, int posX, int posY, int posW, int posH, int clipX, int clipY, int clipW, int clipH) const;
+		void drawWindow(int x, int y, u16 width, u16 height, gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawCursor(int x, int y, u16 width, u16 height, gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawImagePart(const gk::IntRect &posRect, const gk::IntRect &clipRect, gk::RenderTarget &target, gk::RenderStates states) const;
 
 		u16 m_width;
 		u16 m_height;

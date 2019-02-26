@@ -31,20 +31,20 @@ void QuestInfoWindow::update() {
 }
 
 void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
-	Window::draw(target, states);
+	// Window::draw(target, states);
 
 	states.transform *= getTransform();
 
-	// drawWindow(m_x, m_y, m_width, 64);
-	// drawWindow(m_x, m_y + 64, m_width, 134);
-    //
-	// if(m_mode == Mode::ObjectivesMode) {
-	// 	drawWindow(m_x, m_y + 198, m_width, m_height - 198);
-	// }
-	// else if(m_mode == Mode::RewardsMode) {
-	// 	drawWindow(m_x, m_y + 198, m_width / 2, m_height - 198);
-	// 	drawWindow(m_x + m_width / 2, m_y + 198, m_width / 2, m_height - 198);
-	// }
+	drawWindow(0, 0, m_width, 64, target, states);
+	drawWindow(0, 64, m_width, 134, target, states);
+
+	if(m_mode == Mode::ObjectivesMode) {
+		drawWindow(0, 198, m_width, m_height - 198, target, states);
+	}
+	else if(m_mode == Mode::RewardsMode) {
+		drawWindow(0, 198, m_width / 2, m_height - 198, target, states);
+		drawWindow(m_width / 2, 198, m_width / 2, m_height - 198, target, states);
+	}
 
 	if(m_quest) {
 		std::string questName = _t("Quest" + std::to_string(m_quest->id()));

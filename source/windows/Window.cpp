@@ -89,52 +89,45 @@ Window::Window(s16 x, s16 y, u16 width, u16 height) {
 void Window::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	states.transform *= getTransform();
 
-	drawWindow(target, states);
+	drawWindow(0, 0, m_width, m_height, target, states);
 
 	if (m_isCursorVisible)
-		drawCursor(target, states);
+		drawCursor(16 + m_cursorRect.x, 16 + m_cursorRect.y, m_cursorRect.width, m_cursorRect.height, target, states);
 }
 
-void Window::drawWindow(gk::RenderTarget &target, gk::RenderStates states) const {
+void Window::drawWindow(int x, int y, u16 width, u16 height, gk::RenderTarget &target, gk::RenderStates states) const {
 	m_window.setAlphaMod(225);
-	drawImagePart(target, states, 1, 1, m_width - 2, m_height - 2, 0, 0, 128, 128);
+	drawImagePart({x + 1, y + 1, width - 2, height - 2}, {0, 0, 128, 128}, target, states);
 	m_window.setAlphaMod(255);
 
-	drawImagePart(target, states, 0, 0, 3, 3, 128, 0, 3, 3);
-	drawImagePart(target, states, m_width - 3, 0, 3, 3, 189, 0, 3, 3);
-	drawImagePart(target, states, 0, m_height - 3, 3, 3, 128, 61, 3, 3);
-	drawImagePart(target, states, m_width - 3, m_height - 3, 3, 3, 189, 61, 3, 3);
+	drawImagePart({x, y, 3, 3}, {128, 0, 3, 3}, target, states);
+	drawImagePart({x + width - 3, y, 3, 3}, {189, 0, 3, 3}, target, states);
+	drawImagePart({x, y + height - 3, 3, 3}, {128, 61, 3, 3}, target, states);
+	drawImagePart({x + width - 3, y + height - 3, 3, 3}, {189, 61, 3, 3}, target, states);
 
-	drawImagePart(target, states, 3, 0, m_width - 6, 3, 132, 0, 58, 3);
-	drawImagePart(target, states, 0, 3, 3, m_height - 6, 128, 3, 3, 58);
-	drawImagePart(target, states, 3, m_height - 3, m_width - 6, 3, 132, 61, 58, 3);
-	drawImagePart(target, states, m_width - 3, 3, 3, m_height - 6, 189, 3, 3, 58);
+	drawImagePart({x + 3, y, width - 6, 3}, {132, 0, 58, 3}, target, states);
+	drawImagePart({x, y + 3, 3, height - 6}, {128, 3, 3, 58}, target, states);
+	drawImagePart({x + 3, y + height - 3, width - 6, 3}, {132, 61, 58, 3}, target, states);
+	drawImagePart({x + width - 3, y + 3, 3, height - 6}, {189, 3, 3, 58}, target, states);
 }
 
-void Window::drawCursor(gk::RenderTarget &target, gk::RenderStates states) const {
+void Window::drawCursor(int x, int y, u16 width, u16 height, gk::RenderTarget &target, gk::RenderStates states) const {
 	m_window.setAlphaMod(abs(int(SDL_GetTicks() / 4 % 255 - 128)) + 127);
-	// m_window.setAlphaMod(abs(sin(SDL_GetTicks() * 0.002)) * 128 + 64);
 
-	int x = 16 + m_cursorRect.x;
-	int y = 16 + m_cursorRect.y;
+	drawImagePart({x, y, width, height}, {132, 68, 23, 23}, target, states);
 
-	int width = m_cursorRect.width;
-	int height = m_cursorRect.height;
+	drawImagePart({x, y, 1, height}, {128, 64, 1, 32}, target, states);
+	drawImagePart({x + width - 1, y, 1, height}, {159, 64, 1, 32}, target, states);
 
-	drawImagePart(target, states, x, y, width, height, 132, 68, 23, 23);
-
-	drawImagePart(target, states, x, y, 1, height, 128, 64, 1, 32);
-	drawImagePart(target, states, x + width - 1, y, 1, height, 159, 64, 1, 32);
-
-	drawImagePart(target, states, x, y, width, 1, 129, 64, 31, 1);
-	drawImagePart(target, states, x, y + height - 1, width, 1, 129, 95, 31, 1);
+	drawImagePart({x, y, width, 1}, {129, 64, 31, 1}, target, states);
+	drawImagePart({x, y + height - 1, width, 1}, {129, 95, 31, 1}, target, states);
 
 	m_window.setAlphaMod(255);
 }
 
-void Window::drawImagePart(gk::RenderTarget &target, gk::RenderStates states, int posX, int posY, int posW, int posH, int clipX, int clipY, int clipW, int clipH) const {
-	m_window.setClipRect(clipX, clipY, clipW, clipH);
-	m_window.setPosRect(posX, posY, posW, posH);
+void Window::drawImagePart(const gk::IntRect &posRect, const gk::IntRect &clipRect, gk::RenderTarget &target, gk::RenderStates states) const {
+	m_window.setClipRect(clipRect.x, clipRect.y, clipRect.width, clipRect.height);
+	m_window.setPosRect(posRect.x, posRect.y, posRect.width, posRect.height);
 	target.draw(m_window, states);
 }
 
