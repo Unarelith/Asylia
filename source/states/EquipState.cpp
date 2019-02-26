@@ -93,20 +93,18 @@ void EquipState::update() {
 			((MenuState&)gk::ApplicationStateStack::getInstance().top()).actorChoiceModeOn();
 		}
 	}
+
+	if (m_itemMode)
+		m_statswin->setCursorItem(m_itemwin->currentItem());
+	else
+		m_statswin->setCursorItem(nullptr);
 }
 
 void EquipState::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	if (m_parent)
 		target.draw(*m_parent, states);
 
-	if(m_itemMode) {
-		// m_statswin->draw(m_itemwin->currentItem());
-		target.draw(*m_statswin, states);
-	}
-	else {
-		// m_statswin->draw();
-		target.draw(*m_statswin, states);
-	}
+	target.draw(*m_statswin, states);
 
 	// m_choicewin->draw(!m_itemMode);
 	// m_itemwin->draw(m_itemMode, m_itemMode);
