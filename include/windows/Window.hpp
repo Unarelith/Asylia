@@ -15,7 +15,7 @@
 #define WINDOW_HPP_
 
 #include <gk/core/Rect.hpp>
-#include <gk/gl/IDrawable.hpp>
+#include <gk/graphics/Text.hpp>
 
 #include "Battler.hpp"
 
@@ -37,15 +37,15 @@ class Window : public gk::IDrawable, public gk::Transformable {
 
 		void setCursorVisible(bool isCursorVisible) { m_isCursorVisible = isCursorVisible; }
 
-		// void printStat(s16 x, s16 y, std::string statName, s32 statValue, u16 nameWidth, u16 width, u16 max = 0);
-		// void printName(Battler *battler, s16 x, s16 y, u16 width);
-		// void printState(Battler *battler, s16 x, s16 y, u16 width);
-		// void printLevel(Battler *battler, s16 x, s16 y, s16 x2);
-		// void printHP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
-		// void printSP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
-		// void printExp(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum = false);
-		// void drawBattler(Battler *battler, s16 x, s16 y);
-		// void printItem(Item *item, u16 count, s16 x, s16 y, u16 width);
+		void printStat(s16 x, s16 y, const std::string &statName, s32 statValue, u16 nameWidth, u16 width, u16 max, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printName(Battler *battler, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printState(Battler *battler, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printLevel(Battler *battler, s16 x, s16 y, s16 x2, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printHP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printSP(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printExp(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum, gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawBattler(Battler *battler, s16 x, s16 y, gk::RenderTarget &target, gk::RenderStates states) const;
+		void printItem(Item *item, u16 count, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const;
 
 	protected:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
@@ -59,6 +59,7 @@ class Window : public gk::IDrawable, public gk::Transformable {
 		gk::IntRect m_cursorRect;
 
 		mutable gk::Image m_window{"texture-interface-window"}; // FIXME
+		mutable gk::Text m_text{"font-default", 18}; // FIXME
 
 		bool m_isCursorVisible = true;
 };

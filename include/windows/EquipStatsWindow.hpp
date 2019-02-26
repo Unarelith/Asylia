@@ -21,9 +21,13 @@ class EquipStatsWindow : public Window {
 	public:
 		EquipStatsWindow(Actor *actor);
 
-		// void draw(Item *currentItem = nullptr);
+		void setCursorItem(Item *currentItem) { m_currentItem = currentItem; }
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const;
+
+		Item *m_currentItem = nullptr;
+
 		Actor *m_actor;
 };
 

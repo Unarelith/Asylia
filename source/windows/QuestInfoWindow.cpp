@@ -96,7 +96,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 				m_text.setCentered(false);
 				target.draw(m_text, states);
 
-				// printStat(0, 242 + 28 * it->id(), " ", 1, 0, m_width - 30, 5);
+				printStat(0, 242 + 28 * it->id(), " ", 1, 0, m_width - 30, 5, target, states);
 			}
 		}
 		else if(m_mode == Mode::RewardsMode) {
@@ -108,8 +108,8 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 			m_text.setCentered(false);
 			target.draw(m_text, states);
 
-			// printStat(30, 260, _t("EXP"), quest->exp(), 60, m_width / 2 - 40);
-			// printStat(30, 292, _t("Gold"), quest->gold(), 60, m_width / 2 - 40);
+			printStat(30, 260, _t("EXP"), m_quest->exp(), 60, m_width / 2 - 40, 0, target, states);
+			printStat(30, 292, _t("Gold"), m_quest->gold(), 60, m_width / 2 - 40, 0, target, states);
 
 			m_text.setCharacterSize(18);
 			m_text.setText(_t("Items") + ":");

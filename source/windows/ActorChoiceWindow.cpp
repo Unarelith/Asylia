@@ -31,20 +31,22 @@ void ActorChoiceWindow::update() {
 void ActorChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	Window::draw(target, states);
 
+	states.transform *= getTransform();
+
 	for(u8 i = 0 ; i < m_itemMax ; i++) {
 		u16 y = i * (m_height - 20) / 4;
-		u16 charaY = Window::y() + y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(i)->sprite().frameHeight() / 2;
+		u16 charaY = y + ((m_height - 20) / 4 + 15) / 2 - ResourceHelper::getPlayer()->getTeamMember(i)->sprite().frameHeight() / 2;
 
 		gk::Sprite &sprite = ResourceHelper::getPlayer()->getTeamMember(i)->sprite();
-		sprite.setPosition(Window::x() + 30, charaY);
+		sprite.setPosition(30, charaY);
 		target.draw(sprite, states);
 
-		// 	printName(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 25 + y, 150);
-		// 	printLevel(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 57 + y, 140);
-		// 	printState(ResourceHelper::getPlayer()->getTeamMember(pos), 170, 57 + y, 80);
-		// 	printHP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 57 + y, 460, true);
-		// 	printSP(ResourceHelper::getPlayer()->getTeamMember(pos), 310, 89 + y, 460, true);
-		// 	printExp(ResourceHelper::getPlayer()->getTeamMember(pos), 80, 89 + y, 239, true);
+			printName(ResourceHelper::getPlayer()->getTeamMember(i), 80, 25 + y, 150, target, states);
+			printLevel(ResourceHelper::getPlayer()->getTeamMember(i), 80, 57 + y, 140, target, states);
+			printState(ResourceHelper::getPlayer()->getTeamMember(i), 170, 57 + y, 80, target, states);
+			printHP(ResourceHelper::getPlayer()->getTeamMember(i), 310, 57 + y, 460, true, target, states);
+			printSP(ResourceHelper::getPlayer()->getTeamMember(i), 310, 89 + y, 460, true, target, states);
+			printExp(ResourceHelper::getPlayer()->getTeamMember(i), 80, 89 + y, 239, true, target, states);
 	}
 }
 
