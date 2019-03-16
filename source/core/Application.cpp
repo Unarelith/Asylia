@@ -14,6 +14,7 @@
 #include <gk/core/input/GamePad.hpp>
 #include <gk/graphics/Font.hpp>
 #include <gk/graphics/Image.hpp>
+#include <gk/resource/TextureLoader.hpp>
 
 #include "Application.hpp"
 #include "Config.hpp"
@@ -31,7 +32,6 @@
 #include "QuestLoader.hpp"
 #include "SkillLoader.hpp"
 #include "SpriteAnimationLoader.hpp"
-#include "TextureLoader.hpp"
 #include "TilesetLoader.hpp"
 #include "TilemapLoader.hpp"
 #include "TroopLoader.hpp"
@@ -58,7 +58,7 @@ void Application::init() {
 
 	m_resourceHandler.add<gk::Font>("font-default", "resources/fonts/arial.ttf");
 
-	m_resourceHandler.loadConfigFile<TextureLoader>("resources/config/textures.xml");
+	m_resourceHandler.loadConfigFile<gk::TextureLoader>("resources/config/textures.xml");
 	m_resourceHandler.add<gk::Image>("image-interface", "texture-interface-window");
 
 	m_resourceHandler.loadConfigFile<AudioLoader>("resources/config/audio.xml");
