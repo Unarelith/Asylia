@@ -28,6 +28,7 @@ class Character : public gk::Sprite {
 		Character(const char *filename, s16 x, s16 y, u8 direction, u16 frameWidth = 32, u16 frameHeight = 48);
 		virtual ~Character() = default;
 
+		virtual void update();
 		void move();
 
 		void testCollisions();

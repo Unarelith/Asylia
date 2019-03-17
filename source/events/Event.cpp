@@ -32,6 +32,8 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 		addAnimation(ResourceHelper::getAnimation("Character", DIR_LEFT));
 		addAnimation(ResourceHelper::getAnimation("Character", DIR_RIGHT));
 		addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
+
+		Character::update();
 	}
 
 	m_folder = "resources/events/" + name + "/";
@@ -58,7 +60,7 @@ void Event::update() {
 
 	LuaHandler::getInstance().doString(m_name + ".update()");
 
-	updateAnimations();
+	Character::update();
 }
 
 void Event::updateActions() {

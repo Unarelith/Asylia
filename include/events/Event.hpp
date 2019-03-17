@@ -24,7 +24,7 @@ class Event : public Character {
 
 		void move(const std::string &function);
 
-		void update();
+		void update() override;
 		void updateActions();
 
 		void collisionAction(Character *character) override;
