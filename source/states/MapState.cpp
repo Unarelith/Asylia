@@ -28,8 +28,10 @@ MapState::MapState() {
 	ResourceHelper::getCurrentMap()->load();
 
 	m_currentMap = ResourceHelper::getCurrentTilemap();
-	if (!m_currentMap)
+	if (!m_currentMap) {
 		m_currentMap = &gk::ResourceHandler::getInstance().get<Tilemap>("map0-0-0");
+		m_currentMap->initEvents();
+	}
 
 	// Map::scrollX = 0;
 	// Map::scrollY = 0;

@@ -24,6 +24,12 @@ Event *Tilemap::getEvent(const std::string &name) {
 	return nullptr;
 }
 
+void Tilemap::initEvents() {
+	for (auto &it : m_events) {
+		it.second->init();
+	}
+}
+
 void Tilemap::updateEvents() {
 	for (auto &it : m_events) {
 		it.second->update();

@@ -34,7 +34,7 @@ Event::Event(const std::string &name, const std::string &appearance, u16 x, u16 
 		addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
 	}
 
-	m_folder = std::string("resources/events/") + name + "/";
+	m_folder = "resources/events/" + name + "/";
 	m_name = name;
 
 	m_solid = solid;
@@ -45,7 +45,7 @@ void Event::init() {
 	LuaHandler::getInstance().doString(m_name + ".init()");
 }
 
-void Event::move(std::string function) {
+void Event::move(const std::string &function) {
 	LuaHandler::getInstance().doString(function);
 
 	Character::move();
@@ -57,14 +57,12 @@ void Event::update() {
 	move(m_name + ".movements[" + std::to_string(m_movementID) + " % #" + m_name + ".movements + 1](" + std::to_string(m_speed) + ")");
 
 	LuaHandler::getInstance().doString(m_name + ".update()");
+
+	updateAnimations();
 }
 
 void Event::updateActions() {
 	EventInterpreter::update(this);
-}
-
-void Event::render() {
-	LuaHandler::getInstance().doString(m_name + ".render()");
 }
 
 void Event::collisionAction(Character *character) {
@@ -72,5 +70,10 @@ void Event::collisionAction(Character *character) {
 	// FIXME: Doesn't work
 	if (character)
 		LuaHandler::getInstance().doString("if " + m_name + ".collisionAction then " + m_name + ".collisionAction() end");
+}
+
+void Event::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	// LuaHandler::getInstance().doString(m_name + ".render()");
+	Character::draw(target, states);
 }
 

@@ -22,16 +22,14 @@ class Event : public Character {
 
 		void init();
 
-		void move(std::string function);
+		void move(const std::string &function);
 
 		void update();
 		void updateActions();
 
-		void render();
-
 		void collisionAction(Character *character) override;
 
-		std::string name() const { return m_name; }
+		const std::string &name() const { return m_name; }
 
 		void lock() { m_locked = true; }
 		void unlock() { m_locked = false; }
@@ -41,6 +39,8 @@ class Event : public Character {
 		void currentActionID(s16 actionID) { m_currentActionID = actionID; }
 
 	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+
 		s16 m_currentActionID = 0;
 
 		std::string m_folder;

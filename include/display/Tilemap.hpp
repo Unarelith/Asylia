@@ -28,6 +28,7 @@ class Tilemap : public gk::Tilemap {
 		void addEvent(Event *event);
 		Event *getEvent(const std::string &name);
 
+		void initEvents();
 		void updateEvents();
 		void updateEventsActions();
 

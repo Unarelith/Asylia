@@ -28,19 +28,24 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 
 				self.empty = true
 			end
+
+			if self.opened then
+				if not self.character:currentAnimation():isFinished() then
+					self.character:setCurrentAnimation(self.chestType)
+					self.character:setAnimated(true)
+				else
+					self.animationAtEnd = true
+					self.character:setCurrentFrame(self.chestType + 3 * 4)
+					self.character:setAnimated(false)
+				end
+			else
+				self.character:setCurrentFrame(self.chestType)
+				self.character:setAnimated(false)
+			end
 		end
 
 		self.render = function()
-			if self.opened then
-				if not self.character:animationAtEnd(self.chestType) then
-					self.character:playAnimation(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType)
-				else
-					self.animationAtEnd = true
-					self.character:drawFrame(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType + 3 * 4)
-				end
-			else
-				self.character:drawFrame(self.character:x() - Map.scrollX(), self.character:y() - Map.scrollY(), self.chestType)
-			end
+			self.event:render()
 		end
 
 		self.movements = {

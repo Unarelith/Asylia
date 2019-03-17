@@ -15,6 +15,7 @@
 
 #include <gk/core/input/GamePad.hpp>
 #include <gk/core/ApplicationStateStack.hpp>
+#include <gk/core/Exception.hpp>
 
 #include "BattleState.hpp"
 #include "Event.hpp"
@@ -140,7 +141,16 @@ void LuaHandler::bindClasses() {
 	);
 
 	m_lua.new_usertype<gk::Sprite>("Sprite",
-		sol::constructors<gk::Sprite(const char *, u16, u16)>()
+		sol::constructors<gk::Sprite(const char *, u16, u16)>(),
+		"currentAnimation", (gk::SpriteAnimation &(gk::Sprite::*)())&gk::Sprite::currentAnimation,
+		"setCurrentAnimation", &gk::Sprite::setCurrentAnimation,
+		"setCurrentFrame", &gk::Sprite::setCurrentFrame,
+		"setAnimated", &gk::Sprite::setAnimated,
+		"updateAnimations", &gk::Sprite::updateAnimations
+	);
+
+	m_lua.new_usertype<gk::SpriteAnimation>("SpriteAnimation",
+		"isFinished", &gk::SpriteAnimation::isFinished
 	);
 
 	m_lua.new_usertype<LanguageManager>("LanguageManager",
@@ -152,10 +162,18 @@ void LuaHandler::bindClasses() {
 }
 
 void LuaHandler::doFile(const char *filename) {
-	m_lua.do_file(filename);
+	sol::protected_function_result result = m_lua.do_file(filename);
+	if (!result.valid()) {
+		sol::error err = result;
+		throw EXCEPTION("LuaHandler::doFile() failed:", err.what());
+	}
 }
 
 void LuaHandler::doString(const std::string &str) {
-	m_lua.do_string(str);
+	sol::protected_function_result result = m_lua.do_string(str);
+	if (!result.valid()) {
+		sol::error err = result;
+		throw EXCEPTION("LuaHandler::doString() failed:", err.what());
+	}
 }
 
