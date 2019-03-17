@@ -24,8 +24,7 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 
 	m_gold = 0;
 
-	m_x = x;
-	m_y = y + 16;
+	setPosition(x, y + 16);
 
 	m_direction = direction;
 
@@ -54,30 +53,6 @@ Character::Character(const char *filename, s16 x, s16 y, u8 direction, u16 frame
 	m_solid = true;
 }
 
-void Character::draw(gk::RenderTarget &target, gk::RenderStates states) const {
-	Sprite::draw(target, states);
-	// if(gk::ApplicationStateStack::getInstance().size() < 2) {
-	// 	if(!m_movementTimer.isStarted()) {
-	// 		if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
-	// 			m_movementTimer.start();
-	// 		}
-	// 		else if(m_type == Type::TypeNPC && !((Event*)(this))->isLocked()) {
-	// 			m_movementTimer.start();
-	// 		}
-	// 	}
-    //
-	// 	if(m_moving) {
-	// 		playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
-	// 	} else {
-	// 		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
-	// 	}
-	// } else {
-	// 	drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
-	// 	stopAnimation(m_direction);
-	// 	m_movementTimer.stop();
-	// }
-}
-
 void Character::move() {
 	if(m_vx > 0) m_direction = DIR_RIGHT;
 	if(m_vx < 0) m_direction = DIR_LEFT;
@@ -89,8 +64,7 @@ void Character::move() {
 	m_vxCount += abs(m_vx);
 	m_vyCount += abs(m_vy);
 
-	m_x += m_vx;
-	m_y += m_vy;
+	gk::Sprite::move(m_vx, m_vy);
 
 	if(m_vxCount >= 32 || m_vyCount >= 32) {
 		m_vxCount = 0;
@@ -109,27 +83,27 @@ void Character::testCollisions() {
 }
 
 void Character::mapCollisions() {
-	if((!Map::passable(m_x + m_hitboxX + m_vx,
-	                   m_y + m_hitboxY))
-	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
-	                   m_y + m_hitboxY))
-	|| (!Map::passable(m_x + m_hitboxX + m_vx,
-	                   m_y + m_hitboxY + m_hitboxH - 1))
-	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1 + m_vx,
-	                   m_y + m_hitboxY + m_hitboxH - 1))) {
+	if((!Map::passable(x() + m_hitboxX + m_vx,
+	                   y() + m_hitboxY))
+	|| (!Map::passable(x() + m_hitboxX + m_hitboxW - 1 + m_vx,
+	                   y() + m_hitboxY))
+	|| (!Map::passable(x() + m_hitboxX + m_vx,
+	                   y() + m_hitboxY + m_hitboxH - 1))
+	|| (!Map::passable(x() + m_hitboxX + m_hitboxW - 1 + m_vx,
+	                   y() + m_hitboxY + m_hitboxH - 1))) {
 		m_vx = 0;
 		m_vxCount = 32;
 		collisionAction(nullptr);
 	}
 
-	if((!Map::passable(m_x + m_hitboxX,
-	                   m_y + m_hitboxY + m_vy))
-	|| (!Map::passable(m_x + m_hitboxX,
-	                   m_y + m_hitboxY + m_hitboxH - 1 + m_vy))
-	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1,
-	                   m_y + m_hitboxY + m_vy))
-	|| (!Map::passable(m_x + m_hitboxX + m_hitboxW - 1,
-	                   m_y + m_hitboxY + m_hitboxH - 1 + m_vy))) {
+	if((!Map::passable(x() + m_hitboxX,
+	                   y() + m_hitboxY + m_vy))
+	|| (!Map::passable(x() + m_hitboxX,
+	                   y() + m_hitboxY + m_hitboxH - 1 + m_vy))
+	|| (!Map::passable(x() + m_hitboxX + m_hitboxW - 1,
+	                   y() + m_hitboxY + m_vy))
+	|| (!Map::passable(x() + m_hitboxX + m_hitboxW - 1,
+	                   y() + m_hitboxY + m_hitboxH - 1 + m_vy))) {
 		m_vy = 0;
 		m_vyCount = 32;
 		collisionAction(nullptr);
@@ -137,20 +111,20 @@ void Character::mapCollisions() {
 }
 
 void Character::inCollisionWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx = (c->x() + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->y() + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 cx2 = (c->m_x + c->m_hitboxX + c->m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy2 = (c->m_y + c->m_hitboxY + c->m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx2 = (c->x() + c->m_hitboxX + c->m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy2 = (c->y() + c->m_hitboxY + c->m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 	s16 x, y, x2, y2;
 
 	if(m_vx) {
-		x = (m_x + m_vx + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-		y = (m_y + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+		x = (Character::x() + m_vx + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y = (Character::y() + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_vx + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-		y2 = (m_y + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+		x2 = (Character::x() + m_vx + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (Character::y() + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -163,11 +137,11 @@ void Character::inCollisionWith(Character *c) {
 	}
 
 	if(m_vy) {
-		x = (m_x + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-		y = (m_y + m_vy + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+		x = (Character::x() + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y = (Character::y() + m_vy + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-		x2 = (m_x + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-		y2 = (m_y + m_vy + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+		x2 = (Character::x() + m_hitboxX + m_hitboxW - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+		y2 = (Character::y() + m_vy + m_hitboxY + m_hitboxH - 1) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 		if((x >= cx && x <= cx2 && y >= cy && y <= cy2)
 		|| (x2 >= cx && x2 <= cx2 && y >= cy && y <= cy2)
@@ -181,11 +155,11 @@ void Character::inCollisionWith(Character *c) {
 }
 
 bool Character::canInitiateConversationWith(Character *c) {
-	s16 cx = (c->m_x + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-	s16 cy = (c->m_y + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+	s16 cx = (c->x() + c->m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 cy = (c->y() + c->m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
-	s16 x = (m_x + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
-	s16 y = (m_y + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
+	s16 x = (Character::x() + m_hitboxX) / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2);
+	s16 y = (Character::y() + m_hitboxY) / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2);
 
 	if(cx <= x && cx > x - c->frameWidth() / (ResourceHelper::getCurrentMap()->tileset()->tileWidth * 2)) {
 		if(cy > y && cy <= y + c->frameHeight() / (ResourceHelper::getCurrentMap()->tileset()->tileHeight * 2) && m_direction == DIR_DOWN) {
@@ -246,8 +220,12 @@ void Character::changeMap(u16 area, u16 mapX, u16 mapY, u16 x, u16 y, u8 directi
 	ResourceHelper::setCurrentMap(ResourceHelper::getMap(area, mapX, mapY));
 	ResourceHelper::getCurrentMap()->load();
 	SDL_Delay(500);
-	m_x = x * ResourceHelper::getCurrentMap()->tileset()->tileWidth;
-	m_y = y * ResourceHelper::getCurrentMap()->tileset()->tileHeight;
+
+	setPosition(
+		x * ResourceHelper::getCurrentMap()->tileset()->tileWidth,
+		y * ResourceHelper::getCurrentMap()->tileset()->tileHeight
+	);
+
 	m_direction = direction;
 	stop();
 }
@@ -257,5 +235,29 @@ void Character::setHitbox(s16 x, s16 y, u16 width, u16 height) {
 	m_hitboxY = y;
 	m_hitboxW = width;
 	m_hitboxH = height;
+}
+
+void Character::draw(gk::RenderTarget &target, gk::RenderStates states) const {
+	Sprite::draw(target, states);
+	// if(gk::ApplicationStateStack::getInstance().size() < 2) {
+	// 	if(!m_movementTimer.isStarted()) {
+	// 		if(m_type != Type::TypeNPC && m_type == Type::TypeEvent) {
+	// 			m_movementTimer.start();
+	// 		}
+	// 		else if(m_type == Type::TypeNPC && !((Event*)(this))->isLocked()) {
+	// 			m_movementTimer.start();
+	// 		}
+	// 	}
+    //
+	// 	if(m_moving) {
+	// 		playAnimation(m_x - Map::scrollX, m_y - Map::scrollY, m_direction);
+	// 	} else {
+	// 		drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_animations[m_direction].tabAnim[0]);
+	// 	}
+	// } else {
+	// 	drawFrame(m_x - Map::scrollX, m_y - Map::scrollY, m_lastFrameDisplayed);
+	// 	stopAnimation(m_direction);
+	// 	m_movementTimer.stop();
+	// }
 }
 

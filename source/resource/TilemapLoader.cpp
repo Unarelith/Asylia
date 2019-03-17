@@ -12,9 +12,10 @@
  * =====================================================================================
  */
 #include <gk/core/XMLFile.hpp>
-#include <gk/graphics/Tilemap.hpp>
 #include <gk/resource/ResourceHandler.hpp>
 
+#include "ResourceHelper.hpp"
+#include "Tilemap.hpp"
 #include "TilemapLoader.hpp"
 
 void TilemapLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
@@ -26,13 +27,20 @@ void TilemapLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) 
 		std::string tileset = tilemapElement->Attribute("tileset");
 		// std::string battleback = tilemapElement->Attribute("battleback");
 
-		loadMap(name, tileset, handler);
+		Tilemap &map = loadMap(name, tileset, handler);
+
+		tinyxml2::XMLElement *eventElement = tilemapElement->FirstChildElement("event");
+		while(eventElement) {
+			map.addEvent(ResourceHelper::getEvent(eventElement->Attribute("name")));
+
+			eventElement = eventElement->NextSiblingElement("event");
+		}
 
 		tilemapElement = tilemapElement->NextSiblingElement("tilemap");
 	}
 }
 
-void TilemapLoader::loadMap(const std::string &name, const std::string &tilesetName, gk::ResourceHandler &handler) {
+Tilemap &TilemapLoader::loadMap(const std::string &name, const std::string &tilesetName, gk::ResourceHandler &handler) {
 	gk::XMLFile doc("resources/maps/" + name + ".tmx");
 
 	tinyxml2::XMLElement *mapElement = doc.FirstChildElement("map").ToElement();
@@ -60,8 +68,9 @@ void TilemapLoader::loadMap(const std::string &name, const std::string &tilesetN
 	}
 
 	gk::Tileset &tileset = handler.get<gk::Tileset>(tilesetName);
-	gk::Tilemap &map = handler.add<gk::Tilemap>(name, width, height, tileset, data);
+	Tilemap &map = handler.add<Tilemap>(name, width, height, tileset, data);
 	map.setTilesetOffset(1);
 	map.updateTiles();
+	return map;
 }
 

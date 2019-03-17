@@ -90,8 +90,7 @@ void Player::move() {
 	m_vxCount += abs(m_vx);
 	m_vyCount += abs(m_vy);
 
-	m_x += m_vx;
-	m_y += m_vy;
+	gk::Sprite::move(m_vx, m_vy);
 
 	if(m_vxCount >= 32 || m_vyCount >= 32) {
 		m_vxCount = 0;

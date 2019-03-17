@@ -25,7 +25,7 @@
 #include "Weapon.hpp"
 
 Map *ResourceHelper::s_currentMap = nullptr;
-gk::Tilemap *ResourceHelper::s_currentTilemap = nullptr;
+Tilemap *ResourceHelper::s_currentTilemap = nullptr;
 
 gk::Image &ResourceHelper::getImage(const std::string &name) {
 	return gk::ResourceHandler::getInstance().get<gk::Image>("image-" + name);
@@ -89,8 +89,8 @@ Map *ResourceHelper::getMap(u16 area, u16 x, u16 y) {
 			+ std::to_string(x) + "-" + std::to_string(y));
 }
 
-gk::Tilemap *ResourceHelper::getTilemap(u16 area, u16 x, u16 y) {
-	return &gk::ResourceHandler::getInstance().get<gk::Tilemap>("map"
+Tilemap *ResourceHelper::getTilemap(u16 area, u16 x, u16 y) {
+	return &gk::ResourceHandler::getInstance().get<Tilemap>("map"
 			+ std::to_string(area) + "-"
 			+ std::to_string(x) + "-" + std::to_string(y));
 }

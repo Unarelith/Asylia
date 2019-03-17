@@ -22,7 +22,6 @@ namespace gk {
 	class Font;
 	class Image;
 	class SpriteAnimation;
-	class Tilemap;
 }
 
 class Actor;
@@ -34,6 +33,7 @@ class Map;
 class Quest;
 class Player;
 class Skill;
+class Tilemap;
 class Tileset;
 class Troop;
 class Weapon;
@@ -65,13 +65,13 @@ class ResourceHelper {
 		static Map *getCurrentMap() { return s_currentMap; }
 		static void setCurrentMap(Map *currentMap) { s_currentMap = currentMap; }
 
-		static gk::Tilemap *getTilemap(u16 area, u16 x, u16 y);
-		static gk::Tilemap *getCurrentTilemap() { return s_currentTilemap; }
-		static void setCurrentTilemap(gk::Tilemap *currentTilemap) { s_currentTilemap = currentTilemap; }
+		static Tilemap *getTilemap(u16 area, u16 x, u16 y);
+		static Tilemap *getCurrentTilemap() { return s_currentTilemap; }
+		static void setCurrentTilemap(Tilemap *currentTilemap) { s_currentTilemap = currentTilemap; }
 
 	private:
 		static Map *s_currentMap;
-		static gk::Tilemap *s_currentTilemap;
+		static Tilemap *s_currentTilemap;
 };
 
 #endif // RESOURCEHELPER_HPP_

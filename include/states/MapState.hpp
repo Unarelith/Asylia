@@ -15,7 +15,8 @@
 #define MAPSTATE_HPP_
 
 #include <gk/core/ApplicationState.hpp>
-#include <gk/graphics/Tilemap.hpp>
+
+#include "Tilemap.hpp"
 
 class MapState : public gk::ApplicationState {
 	public:
@@ -26,7 +27,7 @@ class MapState : public gk::ApplicationState {
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
-		gk::Tilemap *m_currentMap = nullptr;
+		Tilemap *m_currentMap = nullptr;
 };
 
 #endif // MAPSTATE_HPP_

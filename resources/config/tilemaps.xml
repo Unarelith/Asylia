@@ -1,4 +1,13 @@
 <tilemaps>
-	<tilemap name="map0-0-0" tileset="Grassland" battleback="Grassland" />
-	<tilemap name="map0-1-0" tileset="Grassland" battleback="Grassland" />
+	<tilemap name="map0-0-0" tileset="Grassland" battleback="Grassland">
+		<event name="event0" />
+		<event name="event1" />
+		<event name="event3c" />
+		<event name="enemy0" />
+		<event name="chest0" />
+	</tilemap>
+
+	<tilemap name="map0-1-0" tileset="Grassland" battleback="Grassland">
+		<event name="event2" />
+	</tilemap>
 </tilemaps>

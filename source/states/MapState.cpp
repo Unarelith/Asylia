@@ -29,7 +29,7 @@ MapState::MapState() {
 
 	m_currentMap = ResourceHelper::getCurrentTilemap();
 	if (!m_currentMap)
-		m_currentMap = &gk::ResourceHandler::getInstance().get<gk::Tilemap>("map0-0-0");
+		m_currentMap = &gk::ResourceHandler::getInstance().get<Tilemap>("map0-0-0");
 
 	// Map::scrollX = 0;
 	// Map::scrollY = 0;
@@ -44,14 +44,15 @@ void MapState::update() {
 		return;
 	}
 
-	ResourceHelper::getPlayer()->move();
+	// ResourceHelper::getPlayer()->move();
 
-	Map::centerMapWithObject(ResourceHelper::getPlayer()->x(),
-							 ResourceHelper::getPlayer()->y(),
-							 ResourceHelper::getPlayer()->frameWidth(),
-							 ResourceHelper::getPlayer()->frameHeight());
+	// Map::centerMapWithObject(ResourceHelper::getPlayer()->x(),
+	// 						 ResourceHelper::getPlayer()->y(),
+	// 						 ResourceHelper::getPlayer()->frameWidth(),
+	// 						 ResourceHelper::getPlayer()->frameHeight());
 
-	ResourceHelper::getCurrentMap()->eventsUpdate();
+	if (m_currentMap)
+		m_currentMap->updateEvents();
 }
 
 void MapState::draw(gk::RenderTarget &target, gk::RenderStates states) const {

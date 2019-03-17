@@ -16,12 +16,14 @@
 
 #include <gk/resource/IResourceLoader.hpp>
 
+class Tilemap;
+
 class TilemapLoader : public gk::IResourceLoader {
 	public:
 		void load(const char *xmlFilename, gk::ResourceHandler &handler);
 
 	private:
-		void loadMap(const std::string &name, const std::string &tilesetName, gk::ResourceHandler &handler);
+		Tilemap &loadMap(const std::string &name, const std::string &tilesetName, gk::ResourceHandler &handler);
 };
 
 #endif // TILEMAPLOADER_HPP_

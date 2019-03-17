@@ -53,8 +53,8 @@ class Character : public gk::Sprite {
 		void gainGold(u16 value) { m_gold += value; }
 		void loseGold(u16 value) { m_gold += value; }
 
-		s16 x() const { return m_x; }
-		s16 y() const { return m_y; }
+		s16 x() const { return getPosition().x; }
+		s16 y() const { return getPosition().y; }
 
 		u8 getDirection() const { return m_direction; }
 		void setDirection(u8 direction) { m_direction = direction; }
@@ -65,7 +65,7 @@ class Character : public gk::Sprite {
 
 		void setHitbox(s16 x, s16 y, u16 width, u16 height);
 
-		void setPosition(s16 x, s16 y) { m_x = x; m_y = y; }
+		void setPosition(s16 x, s16 y) { gk::Sprite::setPosition(x, y); }
 
 		Inventory *inventory() { return &m_inventory; }
 
@@ -83,9 +83,6 @@ class Character : public gk::Sprite {
 		Type m_type;
 
 		u16 m_gold;
-
-		s16 m_x;
-		s16 m_y;
 
 		u8 m_direction;
 
