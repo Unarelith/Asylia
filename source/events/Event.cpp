@@ -74,6 +74,7 @@ void Event::collisionAction(Character *character) {
 
 void Event::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 	// LuaHandler::getInstance().doString(m_name + ".render()");
-	Character::draw(target, states);
+	if (m_isVisible)
+		Character::draw(target, states);
 }
 

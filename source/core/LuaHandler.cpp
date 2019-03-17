@@ -60,6 +60,7 @@ void LuaHandler::bindClasses() {
 		"setPosition", &Character::setPosition,
 		"name", &Event::name,
 		"face", &Character::face,
+		"setVisible", &Event::setVisible,
 		sol::base_classes, sol::bases<Character, gk::Sprite>()
 	);
 

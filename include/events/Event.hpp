@@ -38,6 +38,8 @@ class Event : public Character {
 		s16 currentActionID() const { return m_currentActionID; }
 		void currentActionID(s16 actionID) { m_currentActionID = actionID; }
 
+		void setVisible(bool isVisible) { m_isVisible = isVisible; }
+
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
 
@@ -47,6 +49,7 @@ class Event : public Character {
 		std::string m_name;
 
 		bool m_locked = false;
+		bool m_isVisible = true;
 };
 
 #endif // EVENT_HPP_

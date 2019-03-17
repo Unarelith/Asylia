@@ -2,6 +2,7 @@ event2 = LuaEvent.new("event2")
 
 event2.init = function()
 	event2 = event2:initEvent()
+	event2.event:setVisible(false)
 
 	event2.update = function()
 		-- FIXME
@@ -11,12 +12,7 @@ event2.init = function()
 		end
 	end
 
-	event2.render = function()
-
-	end
-
 	event2.action = function()
-
 	end
 
 	event2.collisionAction = function()

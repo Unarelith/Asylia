@@ -2,11 +2,13 @@ ChestEvent = {}
 
 ChestEvent.new = function(eventName, itemID, itemCount)
 	local initChest = function(self)
-		self.character = ResourceHelper.getCurrentMap():getEvent(eventName)
 		self.opened = false
 		self.chestType = 1
 		self.animationAtEnd = false
 		self.empty = false
+
+		self.character = ResourceHelper.getCurrentMap():getEvent(eventName)
+		self.character:setCurrentFrame(self.chestType)
 
 		self.itemID = itemID
 		self.itemCount = itemCount
@@ -42,10 +44,6 @@ ChestEvent.new = function(eventName, itemID, itemCount)
 				self.character:setCurrentFrame(self.chestType)
 				self.character:setAnimated(false)
 			end
-		end
-
-		self.render = function()
-			self.event:render()
 		end
 
 		self.movements = {

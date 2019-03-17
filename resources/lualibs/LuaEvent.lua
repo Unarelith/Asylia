@@ -27,10 +27,6 @@ LuaEvent = {
 
 			self.update = function() end
 
-			self.render = function()
-				self.event:render()
-			end
-
 			return self
 		end
 
