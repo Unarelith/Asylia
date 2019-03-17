@@ -76,7 +76,7 @@ class BattleState : public gk::ApplicationState {
 
 		bool m_processingAction;
 
-		gk::Image m_gameover{"resources/graphics/interface/Gameover.jpg"};
+		gk::Image m_gameover{"texture-interface-gameover"};
 		u16 m_gameoverAlpha;
 
 		VictoryWindow m_victorywin;

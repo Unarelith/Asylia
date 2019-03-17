@@ -1,6 +1,7 @@
 <textures>
 	<texture name="interface-window"      path="resources/graphics/interface/Interface.png" />
 	<texture name="interface-titlescreen" path="resources/graphics/interface/TitleScreen.jpg" />
+	<texture name="interface-gameover"    path="resources/graphics/interface/Gameover.jpg" />
 
 	<texture name="item-0" path="resources/graphics/items/0.png" />
 	<texture name="item-1" path="resources/graphics/items/1.png" />

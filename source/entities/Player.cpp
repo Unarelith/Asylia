@@ -28,6 +28,8 @@ Player::Player(const std::string &filename, s16 x, s16 y, u8 direction) : Charac
 	addAnimation(ResourceHelper::getAnimation("Character", DIR_RIGHT));
 	addAnimation(ResourceHelper::getAnimation("Character", DIR_UP));
 
+	Character::update();
+
 	m_inventory.addItem(0, 1);
 	m_inventory.addItem(1, 1);
 	m_inventory.addItem(5, 1);
