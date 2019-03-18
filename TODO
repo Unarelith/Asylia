@@ -42,4 +42,14 @@ TODO
 • TODO: Map change is broken
 • TODO: Fix map overlay
 • TODO: Add a `TextBox` in GameKit for dialog messages
+• TODO: Fix tile display
+
+# After the migration
+
+• TODO: Rework `Parameter`, `EventInterpeter` and related classes
+• TODO: Rework `Character` and `Event`, use `gk::Scene` for this
+• TODO: Rework `Window`, `CommandWindow`, etc...
+• TODO: Rework `Battle`, `Actor`, `Enemy`, etc...
+• TODO: Rework resource loading (too many `ResourceLoader`s)
+• TODO: Rework Lua API
 
