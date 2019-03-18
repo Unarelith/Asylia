@@ -95,9 +95,8 @@ void Window::printExp(Battler *battler, s16 x, s16 y, s16 x2, bool onMaximum, gk
 }
 
 void Window::drawBattler(Battler *battler, s16 x, s16 y, gk::RenderTarget &target, gk::RenderStates states) const {
-	// battler->image().render(x, y);
-
-	// TODO
+	battler->image().setPosition(x, y);
+	target.draw(battler->image(), states);
 }
 
 void Window::printItem(Item *item, u16 count, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const {

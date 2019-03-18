@@ -10,12 +10,13 @@ TODO
 • DONE: Rework the rendering engine to make it compatible with GameKit
 • DONE: `Image` and `Sprite` should load textures from `gk::ResourceHandler`
 • TODO: Remove useless dynamic allocations
-• TODO: Move to `GameKit`
+• TODO: Check for useless `std::string` copies
+• WIP: Move to `GameKit`
    ◦ DONE: ApplicationStateStack
    ◦ DONE: Input system
    ◦ DONE: ResourceHandler
    ◦ DONE: Audio system
-   ◦ WIP: Rendering system
+   ◦ DONE: Rendering system
    ◦ TODO: Debug / Exception
    ◦ TODO: GameClock
 
@@ -26,4 +27,19 @@ TODO
 • TODO: Fix armor selection screen (items get deleted on selection)
 • TODO: Fix map reset (the map won’t be reset if the player exits and comes back)
 • TODO: Use events instead of a timer for key handling in `SelectableWindow`
+
+# GameKit issues
+
+• WIP: Fix battle system
+   ◦ DONE: Fix `ActorStatsWindow`
+   ◦ TODO: Fix arrow display
+   ◦ TODO: Fix enemy position
+   ◦ TODO: Fix current player blinking effect
+   ◦ TODO: Fix animations
+• TODO: Fix player animation
+• TODO: Fix chest not opening
+• TODO: Map scrolling doesn’t work anymore
+• TODO: Map change is broken
+• TODO: Fix map overlay
+• TODO: Add a `TextBox` in GameKit for dialog messages
 

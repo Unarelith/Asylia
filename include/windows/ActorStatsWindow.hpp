@@ -14,19 +14,21 @@
 #ifndef ACTORSTATSWINDOW_HPP_
 #define ACTORSTATSWINDOW_HPP_
 
-#include "Actor.hpp"
-#include "Enemy.hpp"
+#include "Battle.hpp"
 #include "Window.hpp"
 
 class ActorStatsWindow : public Window {
 	public:
 		ActorStatsWindow();
 
-		// void drawActors(const std::vector<std::pair<u8, Actor*>> &actors);
-		// void drawActor(Actor *actor, u8 pos);
-        //
-		// void drawEnemies(const std::vector<std::pair<u8, Enemy*>> &enemies);
-		// void drawEnemy(Enemy *enemy, u8 pos, u8 max);
+		void setBattle(Battle *battle) { m_battle = battle; }
+
+	private:
+		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;
+		void drawActor(Actor *actor, u8 pos, gk::RenderTarget &target, gk::RenderStates states) const;
+		void drawEnemy(Enemy *enemy, gk::RenderTarget &target, gk::RenderStates states) const;
+
+		Battle *m_battle = nullptr;
 };
 
 #endif // ACTORSTATSWINDOW_HPP_

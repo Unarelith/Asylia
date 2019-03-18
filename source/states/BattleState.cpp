@@ -52,6 +52,8 @@ BattleState::BattleState(Troop *troop, bool allowDefeat) {
 	m_victorywin.init(&m_battle);
 
 	gk::AudioPlayer::playMusic("music-battle");
+
+	m_actorStatswin.setBattle(&m_battle);
 }
 
 void BattleState::update() {
@@ -274,57 +276,58 @@ void BattleState::draw(gk::RenderTarget &target, gk::RenderStates states) const 
 	if(m_mode != Mode::GameOver) {
 		target.draw(m_battle, states);
 
-	// 	m_actorStatswin.drawEnemies(m_battle.enemies());
-    //
-	// 	if(m_mode == Mode::Choice) {
-	// 		m_battleChoicewin.draw();
-	// 	}
-    //
-	// 	if(m_mode == Mode::Action) {
-	// 		m_battleActionwin.draw(m_currentPos);
-	// 	}
-    //
-	// 	if(m_mode == Mode::ItemWin) {
-	// 		m_itemwin->draw();
-	// 	}
-    //
-	// 	if(m_mode == Mode::ChooseActorTarget) {
-	// 		m_battle.drawArrow(m_battle.getActor(m_arrowPos));
-	// 	}
-    //
-	// 	if(m_mode == Mode::ChooseEnemyTarget) {
-	// 		Enemy *enemy = m_battle.getEnemy(m_arrowPos);
-	// 		m_battle.drawArrow(enemy);
-	// 		m_infowin.drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + std::to_string(enemy->hp()) + "/" + std::to_string(enemy->basehp()) + "]");
-	// 	}
-    //
-	// 	m_actorStatswin.drawActors(m_battle.actors());
-    //
-	// 	if(m_mode == Mode::ProcessActions) {
-	// 		if(m_processingAction) {
-	// 			if(m_battle.drawAction()) {
-	// 				m_processingAction = false;
-	// 				m_battle.popAction();
-	// 			}
-	// 		}
-	// 	}
-    //
-	// 	if(m_mode == Mode::Victory) {
-	// 		m_victorywin.draw();
-	// 	}
+		target.draw(m_actorStatswin, states);
+
+		if(m_mode == Mode::Choice) {
+			target.draw(m_battleChoicewin, states);
+		}
+
+		if(m_mode == Mode::Action) {
+			// m_battleActionwin.draw(m_currentPos);
+			target.draw(m_battleActionwin, states);
+		}
+
+		if(m_mode == Mode::ItemWin) {
+			target.draw(*m_itemwin, states);
+		}
+
+		// if(m_mode == Mode::ChooseActorTarget) {
+		// 	m_battle.drawArrow(m_battle.getActor(m_arrowPos));
+		// }
+
+		// if(m_mode == Mode::ChooseEnemyTarget) {
+		// 	Enemy *enemy = m_battle.getEnemy(m_arrowPos);
+		// 	m_battle.drawArrow(enemy);
+		// 	m_infowin.drawTextCentered(enemy->name() + " [" + _t("HP") + ": " + std::to_string(enemy->hp()) + "/" + std::to_string(enemy->basehp()) + "]");
+		// }
+
+		// if(m_mode == Mode::ProcessActions) {
+		// 	if(m_processingAction) {
+		// 		if(m_battle.drawAction()) {
+		// 			m_processingAction = false;
+		// 			m_battle.popAction();
+		// 		}
+		// 	}
+		// }
+
+		if(m_mode == Mode::Victory) {
+			target.draw(m_victorywin, states);
+		}
 	} else {
 		if(!m_allowDefeat) {
-	// 		if(m_gameoverAlpha < 256) m_gameover.setAlphaMod(m_gameoverAlpha);
-	// 		m_gameover.render();
-	// 		if(m_gameoverAlpha > 400) {
-	// 			ResourceHelper::getFont("default").print("Press A to continue", 3, 3, FONT_LARGE);
-	// 		}
+			// FIXME
+			// if(m_gameoverAlpha < 256) m_gameover.setAlphaMod(m_gameoverAlpha);
+			target.draw(m_gameover, states);
+			// FIXME
+			// if(m_gameoverAlpha > 400) {
+			// 	ResourceHelper::getFont("default").print("Press A to continue", 3, 3, FONT_LARGE);
+			// }
 		} else {
 			target.draw(m_battle, states);
 
-	// 		m_actorStatswin.drawEnemies(m_battle.enemies());
-    //
-	// 		m_actorStatswin.drawActors(m_battle.actors());
+			// m_actorStatswin.drawEnemies(m_battle.enemies());
+
+			// m_actorStatswin.drawActors(m_battle.actors());
 		}
 	}
 }
