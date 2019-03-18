@@ -17,7 +17,7 @@ TODO
    ◦ DONE: ResourceHandler
    ◦ DONE: Audio system
    ◦ DONE: Rendering system
-   ◦ TODO: Debug / Exception
+   ◦ DONE: Debug / Exception
    ◦ TODO: GameClock
 
 • TODO: Move `Singleton` class into GameKit and use it in relevant places

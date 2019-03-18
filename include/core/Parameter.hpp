@@ -15,14 +15,15 @@
 #define PARAMETER_HPP_
 
 #include <string>
+#include <memory>
 #include <vector>
 
 #include <gk/core/IntTypes.hpp>
 
 class Parameter {
 	public:
-		Parameter();
-		virtual ~Parameter();
+		Parameter() = default;
+		virtual ~Parameter() = default;
 
 		virtual void *value() = 0;
 
@@ -42,13 +43,12 @@ class Parameter {
 		Type type() const { return m_type; }
 
 	protected:
-		Type m_type;
+		Type m_type = Type::Undefined;
 };
 
 class IntParameter : public Parameter {
 	public:
 		IntParameter(int value);
-		~IntParameter();
 
 		void *value() { return (void*)&m_value; }
 
@@ -59,7 +59,6 @@ class IntParameter : public Parameter {
 class BoolParameter : public Parameter {
 	public:
 		BoolParameter(bool value);
-		~BoolParameter();
 
 		void *value() { return (void*)&m_value; }
 
@@ -70,7 +69,6 @@ class BoolParameter : public Parameter {
 class FloatParameter : public Parameter {
 	public:
 		FloatParameter(float value);
-		~FloatParameter();
 
 		void *value() { return (void*)&m_value; }
 
@@ -80,8 +78,7 @@ class FloatParameter : public Parameter {
 
 class StringParameter : public Parameter {
 	public:
-		StringParameter(std::string value);
-		~StringParameter();
+		StringParameter(const std::string &value);
 
 		void *value() { return (void*)&m_value; }
 
@@ -91,24 +88,22 @@ class StringParameter : public Parameter {
 
 class ParameterList {
 	public:
-		ParameterList(const ParameterList &list);
-		ParameterList();
-		~ParameterList();
+		ParameterList() = default;
 
-		void clear();
+		void clear() { m_list.clear(); }
 
-		Parameter *at(u16 id) const { return m_list[id]; }
-		Parameter *operator[](u16 id) const { return m_list[id]; }
+		Parameter *at(u16 id) const { return m_list[id].get(); }
+		Parameter *operator[](u16 id) const { return m_list[id].get(); }
 
 		u16 size() const { return m_list.size(); }
 
-		void addIntParameter(int param) { m_list.push_back((Parameter*)(new IntParameter(param))); }
-		void addBoolParameter(bool param) { m_list.push_back((Parameter*)(new BoolParameter(param))); }
-		void addFloatParameter(float param) { m_list.push_back((Parameter*)(new FloatParameter(param))); }
-		void addStringParameter(std::string param) { m_list.push_back((Parameter*)(new StringParameter(param))); }
+		void addIntParameter(int param) { m_list.emplace_back(new IntParameter(param)); }
+		void addBoolParameter(bool param) { m_list.emplace_back(new BoolParameter(param)); }
+		void addFloatParameter(float param) { m_list.emplace_back(new FloatParameter(param)); }
+		void addStringParameter(const std::string &param) { m_list.emplace_back(new StringParameter(param)); }
 
 	private:
-		std::vector<Parameter*> m_list;
+		std::vector<std::shared_ptr<Parameter>> m_list;
 };
 
 #endif // PARAMETER_HPP_

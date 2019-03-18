@@ -13,7 +13,6 @@
  */
 #include <gk/resource/ResourceHandler.hpp>
 
-#include "Debug.hpp"
 #include "Player.hpp"
 #include "PlayerLoader.hpp"
 
@@ -32,7 +31,7 @@ void PlayerLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 	tinyxml2::XMLElement *actorElement = doc.FirstChildElement("player").FirstChildElement("team").FirstChildElement("actor").ToElement();
 	while(actorElement) {
 		if(player.teamSize() == 4) {
-			warning("Player can't handle more than 4 actors in team.");
+			DEBUG("Warning: Player can't handle more than 4 actors in team.");
 			break;
 		}
 

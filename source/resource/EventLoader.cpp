@@ -12,7 +12,6 @@
  * =====================================================================================
  */
 #include "LuaHandler.hpp"
-#include "Debug.hpp"
 #include "Event.hpp"
 #include "EventLoader.hpp"
 
@@ -34,7 +33,7 @@ void EventLoader::load(const char *xmlFilename, gk::ResourceHandler &handler) {
 			else if(eventType == "Chest") {
 				loadChestEvent(eventElement, handler);
 			} else {
-				warning("Event type %s not recognized.", eventType.c_str());
+				DEBUG("Warning: Event type", eventType, "not recognized.");
 			}
 
 			eventElement = eventElement->NextSiblingElement("event");

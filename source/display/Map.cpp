@@ -11,10 +11,11 @@
  *
  * =====================================================================================
  */
+#include <gk/core/Debug.hpp>
 #include <gk/core/SDLHeaders.hpp>
 #include <gk/core/XMLFile.hpp>
 
-#include "Debug.hpp"
+#include "Config.hpp"
 #include "Map.hpp"
 #include "ResourceHelper.hpp"
 
@@ -178,7 +179,7 @@ s16 Map::getTile(u16 tileX, u16 tileY, u16 layer) {
 	if(tileX + tileY * m_width < m_width * m_height) {
 		return m_data[layer][tileX + tileY * m_width];
 	} else {
-		warning("Tile out of range: (%d;%d) at layer %d", tileX, tileY, layer);
+		DEBUG("Warning: Tile out of range: (", tileX, ";", tileY, ") at layer", layer);
 		return -1; // The tile is out of range
 	}
 }
