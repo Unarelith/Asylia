@@ -9,11 +9,15 @@
 
 **Note:** I originally made this project in 2014. It's old, there's probably a lot of design issues, but I decided to migrate it to GameKit in order to keep consistency between my old projects.
 
+- [Screenshots](#screenshots)
+- [Keys](#keys)
+- [How to compile](#how-to-compile)
+
 ## Screenshots
 
- ![](http://sdz-upload.s3.amazonaws.com/prod/upload/Capture%20d%27%C3%A9cran%20-%2016052014%20-%2021%3A09%3A25.png)
- ![](https://sdz-upload.s3.amazonaws.com/prod/upload/Capture%20d%27%C3%A9cran%20-%2016052014%20-%2021%3A11%3A35.png)
- ![](http://sdz-upload.s3.amazonaws.com/prod/upload/Capture%20d%27%C3%A9cran%20-%2016052014%20-%2021%3A12%3A00.png)
+![](screenshot1.png?raw=true)
+![](screenshot2.png?raw=true)
+![](screenshot3.png?raw=true)
 
 ## Keys
 
