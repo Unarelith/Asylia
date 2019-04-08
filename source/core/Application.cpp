@@ -43,8 +43,6 @@ Application::Application(int argc, char **argv) : gk::CoreApplication(argc, argv
 void Application::init() {
 	gk::CoreApplication::init();
 
-	gk::GamePad::init(m_keyboardHandler);
-
 	createWindow(SCREEN_WIDTH, SCREEN_HEIGHT, APP_NAME);
 
 	m_shader.loadFromFile("resources/shaders/game.v.glsl", "resources/shaders/game.f.glsl");
@@ -55,6 +53,9 @@ void Application::init() {
 
 	LuaHandler::setInstance(m_luaHandler);
 	m_luaHandler.init();
+
+	m_keyboardHandler.loadKeysFromFile("resources/config/keys.xml");
+	gk::GamePad::init(m_keyboardHandler);
 
 	m_resourceHandler.add<gk::Font>("font-default", "resources/fonts/arial.ttf");
 
