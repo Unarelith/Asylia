@@ -19,7 +19,7 @@
 #include "Item.hpp"
 #include "Troop.hpp"
 
-class Battle : public gk::IDrawable {
+class Battle : public gk::Drawable {
 	public:
 		Battle(const Battle &battle);
 		Battle();

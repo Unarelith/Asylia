@@ -51,7 +51,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 		std::string questDesc = "    " + _t("Quest" + std::to_string(m_quest->id()) + "Desc");
 
 		m_text.setCharacterSize(22);
-		m_text.setText(questName);
+		m_text.setString(questName);
 		m_text.setPosition(0, 0);
 		m_text.setColor(gk::Color::White);
 		m_text.setSize({static_cast<int>(SCREEN_WIDTH - x()), 64});
@@ -60,7 +60,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 		target.draw(m_text, states);
 
 		m_text.setCharacterSize(18);
-		m_text.setText(_t("Description") + ":");
+		m_text.setString(_t("Description") + ":");
 		m_text.setPosition(20, 80);
 		m_text.setColor(Color::System);
 		m_text.setWrapped(false);
@@ -68,7 +68,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 		target.draw(m_text, states);
 
 		m_text.setCharacterSize(18);
-		m_text.setText(questDesc);
+		m_text.setString(questDesc);
 		m_text.setPosition(30, 110);
 		m_text.setColor(gk::Color::White);
 		m_text.setSize({m_width - 60, 64});
@@ -78,7 +78,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 
 		if(m_mode == Mode::ObjectivesMode) {
 			m_text.setCharacterSize(18);
-			m_text.setText(_t("Objectives") + ":");
+			m_text.setString(_t("Objectives") + ":");
 			m_text.setPosition(20, 214);
 			m_text.setColor(Color::System);
 			m_text.setWrapped(false);
@@ -89,7 +89,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 				std::string objectiveDesc = "- " + _t("Quest" + std::to_string(m_quest->id()) + "_Obj" + std::to_string(it->id()) + "Desc");
 
 				m_text.setCharacterSize(18);
-				m_text.setText(objectiveDesc);
+				m_text.setString(objectiveDesc);
 				m_text.setPosition(30, 242 + 28 * it->id());
 				m_text.setColor(gk::Color::White);
 				m_text.setWrapped(false);
@@ -101,7 +101,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 		}
 		else if(m_mode == Mode::RewardsMode) {
 			m_text.setCharacterSize(18);
-			m_text.setText(_t("Rewards") + ":");
+			m_text.setString(_t("Rewards") + ":");
 			m_text.setPosition(20, 214);
 			m_text.setColor(Color::System);
 			m_text.setWrapped(false);
@@ -112,7 +112,7 @@ void QuestInfoWindow::draw(gk::RenderTarget &target, gk::RenderStates states) co
 			printStat(30, 292, _t("Gold"), m_quest->gold(), 60, m_width / 2 - 40, 0, target, states);
 
 			m_text.setCharacterSize(18);
-			m_text.setText(_t("Items") + ":");
+			m_text.setString(_t("Items") + ":");
 			m_text.setPosition(m_width / 2 + 20, 214);
 			m_text.setColor(Color::System);
 			m_text.setWrapped(false);

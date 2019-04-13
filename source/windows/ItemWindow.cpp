@@ -107,7 +107,7 @@ void ItemWindow::draw(gk::RenderTarget &target, gk::RenderStates states) const {
 		m_inventory->getItem(i)->thumbnail().setPosition(x, y);
 		target.draw(m_inventory->getItem(i)->thumbnail(), states);
 
-		m_text.setText(m_inventory->getItem(i)->name());
+		m_text.setString(m_inventory->getItem(i)->name());
 		m_text.setPosition(x + 32, y);
 		target.draw(m_text, states);
 	}

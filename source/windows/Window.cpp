@@ -39,7 +39,7 @@ void Window::printStat(s16 x, s16 y, const std::string &statName, s32 statValue,
     //
 	// statImg.render(statImg.posRect().x - statImg.width());
 
-	m_text.setText(statName);
+	m_text.setString(statName);
 	m_text.setColor(Color::System);
 	m_text.setScaled(true);
 	m_text.setSize({nameWidth, 28});
@@ -47,9 +47,9 @@ void Window::printStat(s16 x, s16 y, const std::string &statName, s32 statValue,
 	target.draw(m_text, states);
 
 	if (max == 0)
-		m_text.setText(std::to_string(statValue));
+		m_text.setString(std::to_string(statValue));
 	else
-		m_text.setText(std::to_string(statValue) + "/" + std::to_string(max));
+		m_text.setString(std::to_string(statValue) + "/" + std::to_string(max));
 	m_text.setColor(gk::Color::White);
 	m_text.setScaled(false);
 	m_text.setPosition(x2 - m_text.getLocalBounds().width, y);
@@ -59,7 +59,7 @@ void Window::printStat(s16 x, s16 y, const std::string &statName, s32 statValue,
 void Window::printName(Battler *battler, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const {
 	// ResourceHelper::getFont("default").printScaled(battler->name().c_str(), m_x + x, m_y + y, width, 28, FONT_LARGE);
 
-	m_text.setText(battler->name());
+	m_text.setString(battler->name());
 	m_text.setColor(Color::System);
 	m_text.setScaled(true);
 	m_text.setSize({width, 28});
@@ -70,7 +70,7 @@ void Window::printName(Battler *battler, s16 x, s16 y, u16 width, gk::RenderTarg
 void Window::printState(Battler *battler, s16 x, s16 y, u16 width, gk::RenderTarget &target, gk::RenderStates states) const {
 	// ResourceHelper::getFont("default").printScaled(battler->getStateString().c_str(), m_x + x, m_y + y, width, 28, FONT_LARGE);
 
-	m_text.setText(battler->getStateString());
+	m_text.setString(battler->getStateString());
 	m_text.setColor(Color::System);
 	m_text.setScaled(true);
 	m_text.setSize({width, 28});

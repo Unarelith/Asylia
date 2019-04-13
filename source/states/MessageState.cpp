@@ -38,8 +38,8 @@ MessageState::MessageState(const std::string &message, gk::ApplicationState *par
 void MessageState::updateCmdwinSize() {
 	u16 sizeMax = 0;
 	for(auto &it : m_cmdwin->commands()) {
-		if(it.text().text().length() > sizeMax)
-			sizeMax = it.text().text().length();
+		if(it.text().string().length() > sizeMax)
+			sizeMax = it.text().string().length();
 	}
 
 	m_cmdwin->setWidth(sizeMax * 20 + 40);

@@ -34,7 +34,7 @@ void EquipChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) 
 		// FIXME
 		// ResourceHelper::getWeapon(0)->thumbnail().render(m_x + 20, m_y + 20);
 
-		m_text.setText(_t("Empty"));
+		m_text.setString(_t("Empty"));
 		m_text.setColor(Color::System);
 		m_text.setStyle(gk::Text::Italic);
 		m_text.setPosition(48, 20);
@@ -44,7 +44,7 @@ void EquipChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) 
 		m_equipment->weapon()->thumbnail().setPosition(20, 20);
 		target.draw(m_equipment->weapon()->thumbnail(), states);
 
-		m_text.setText(m_equipment->weapon()->name());
+		m_text.setString(m_equipment->weapon()->name());
 		m_text.setStyle(gk::Text::Normal);
 		m_text.setColor(gk::Color::White);
 		m_text.setPosition(48, 20);
@@ -61,7 +61,7 @@ void EquipChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) 
 			// 	}
 			// }
 
-			m_text.setText(_t("Empty"));
+			m_text.setString(_t("Empty"));
 			m_text.setColor(Color::System);
 			m_text.setStyle(gk::Text::Italic);
 			m_text.setPosition(48, 52 + slot * 32);
@@ -76,7 +76,7 @@ void EquipChoiceWindow::draw(gk::RenderTarget &target, gk::RenderStates states) 
 			target.draw(armor->thumbnail(), states);
 
 
-			m_text.setText(armor->name());
+			m_text.setString(armor->name());
 			m_text.setStyle(gk::Text::Normal);
 			m_text.setColor(gk::Color::White);
 			m_text.setPosition(48, 52 + slot * 32);

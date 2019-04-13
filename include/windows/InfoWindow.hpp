@@ -25,7 +25,7 @@ class InfoWindow : public Window {
 		// void drawTextScaled(std::string text);
 		// void drawTextCentered(std::string text);
 
-		void setText(const std::string &text) { m_text.setText(text); }
+		void setText(const std::string &text) { m_text.setString(text); }
 
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;

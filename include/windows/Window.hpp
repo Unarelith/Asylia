@@ -19,7 +19,7 @@
 
 #include "Battler.hpp"
 
-class Window : public gk::IDrawable, public gk::Transformable {
+class Window : public gk::Drawable, public gk::Transformable {
 	public:
 		Window(s16 x, s16 y, u16 width, u16 height);
 

@@ -22,7 +22,7 @@ class TextWindow : public Window {
 	public:
 		TextWindow(s16 x, s16 y, u16 width, u16 height);
 
-		void setText(const std::string &text) { m_text.setText(text); }
+		void setText(const std::string &text) { m_text.setString(text); }
 
 	private:
 		void draw(gk::RenderTarget &target, gk::RenderStates states) const override;

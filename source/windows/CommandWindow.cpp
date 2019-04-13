@@ -67,7 +67,7 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 	int i = 0;
 	for (auto &it : m_commands) {
 		if (!m_horizontal && !m_centered) {
-			m_text.setText(_t(it.text().text()));
+			m_text.setString(_t(it.text().string()));
 			m_text.setPosition(it.text().getPosition());
 			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
 			m_text.setScaled(true);
@@ -82,7 +82,7 @@ void CommandWindow::draw(gk::RenderTarget &target, gk::RenderStates states) cons
 			x = (i % m_columnMax) * (width + 32) + 16;
 			y = (i / m_columnMax) * 32 + 16;
 
-			m_text.setText(_t(it.text().text()));
+			m_text.setString(_t(it.text().string()));
 			m_text.setPosition(x, y);
 			m_text.setColor(it.isEnabled() ? gk::Color::White : Color::Disabled);
 			m_text.setScaled(false);
